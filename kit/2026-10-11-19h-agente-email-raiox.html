@@ -102,8 +102,9 @@ function s2(t, lt) {
   }
   if (ag > .5) draw(ag, 600, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(W - M - 190, 780); ctx.bezierCurveTo(W - M - 190, 900, W / 2 + 200, 980, W / 2 + 110, 980); ctx.stroke(); ctx.restore(); });
   // sem tabela: o valor vira um chute
-  if (sem > 0 && volta < 1) {
-    ctx.save(); ctx.globalAlpha = sem * (1 - volta);
+  const some = prog(lt, cue('regras') - .6, cue('regras') - .15); // R$ ??? sai antes de "regras" entrar no mesmo lugar
+  if (sem > 0 && some < 1) {
+    ctx.save(); ctx.globalAlpha = sem * (1 - some);
     txt('R$ ???', W / 2, 1250, EXP, 90, COL.red, { align: 'center' }); ctx.restore();
   }
   if (volta > 0) kinetic([{ w: 'regras', t: cue('regras') }, { w: 'primeiro', t: cue('primeiro') }], M, 1250, lt, { size: 84, hl: [0] });

@@ -159,7 +159,7 @@ function toolCard(x, y, name, sub, a, accent) {
 function stamp(x, y, str, a, size = 34) {
   if (a <= 0) return;
   const p = back(clamp(a)); const w = measure(str.toUpperCase(), EXP, size) + 50;
-  ctx.save(); ctx.translate(x, y); ctx.rotate(-.03); ctx.scale(p, p);
+  ctx.save(); ctx.translate(x, y); ctx.scale(p, p);
   ctx.fillStyle = COL.cyan; ctx.fillRect(-w / 2, -size * .9, w, size * 1.8);
   txt(str.toUpperCase(), 0, 2, EXP, size, COL.black, { align: 'center' }); ctx.restore();
 }
@@ -188,7 +188,7 @@ function lens(cx, cy, r, p = 1) {
 // final: lente + nome + cota + carimbo do CTA (posicionado acima da faixa de legenda)
 function endCard(t, t0, cta = 'salva e segue') {
   const lt = t - t0; if (lt < 0) return;
-  ctx.save(); ctx.fillStyle = 'rgba(10,29,69,.92)'; ctx.globalAlpha = prog(lt, 0, .25); ctx.fillRect(40, 560, W - 80, 820); ctx.restore();
+  ctx.save(); ctx.fillStyle = COL.paper; ctx.globalAlpha = prog(lt, 0, .25); ctx.fillRect(42, 42, W - 84, H - 84); ctx.restore(); // cobre a cena inteira: nada aparece por trás do card
   lens(W / 2, 790, 140, prog(lt, 0, .8));
   txt('IA SEM MISTÉRIO', W / 2, 1040, EXP, 62, COL.ink, { align: 'center', alpha: prog(lt, .5, .8) });
   dimLine(160, 920, 1110, 'por dentro da IA', prog(lt, .7, 1.0));

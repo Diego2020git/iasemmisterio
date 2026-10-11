@@ -85,7 +85,7 @@ function s3(t, lt) {
   [M, W - M - 400].forEach((x, i) => { const al = i ? a : prog(lt, 0, .5); for (let j = 0; j < 4; j++) { ctx.save(); ctx.globalAlpha = al; ctx.strokeStyle = j === 2 && c > 0 ? COL.cyan : COL.dim; ctx.lineWidth = 3; ctx.strokeRect(x + 30, 470 + j * 62, 340, 48); if (j === 2 && c > 0) { ctx.fillStyle = 'rgba(46,230,255,.25)'; ctx.fillRect(x + 30, 470 + j * 62, 340 * c, 48); } ctx.restore(); } });
   if (c > 0) { draw(c, 400, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(M + 400, 619); ctx.lineTo(W - M - 400, 619); ctx.stroke(); ctx.restore(); }); }
   odometer(15 * easeInOut(c), 2, W / 2 - 150, 880, 150);
-  txt('h', W / 2 + 80, 880, EXP, 110, COL.cyan, { alpha: c });
+  txt('h', W / 2 + 150, 880, EXP, 110, COL.cyan, { alpha: c });
   const e = prog(lt, cue('convite') - .1, cue('email') + .6);
   envelope(lerp(W / 2 - 120, W + 100, easeInOut(prog(lt, cue('email') + .3, cue('email') + 1.2))), 1080, 240, 160, e);
   stamp(W / 2, 1330, 'convite enviado', prog(lt, cue('email') + .5, cue('email') + .9), 34);
@@ -97,19 +97,19 @@ function s4(t, lt) {
   const cx = W / 2, cy = 820;
   wire(Mesh.box(1, 1, 1), { x: cx, y: cy, s: 200, rx: -.4, ry: lt * .9, d: 4 }, prog(lt, 0, .6), COL.cyan, 3);
   [['agenda', 'AGENDA'], ['email', 'E-MAIL'], ['planilha', 'PLANILHA']].forEach(([w, l], i) => {
-    const a = prog(lt, cue(w) - .1, cue(w) + .4), ang = -Math.PI / 2 + i * 2 * Math.PI / 3 + lt * .4, x = cx + Math.cos(ang) * 330, y = cy + Math.sin(ang) * 250;
+    const a = prog(lt, cue(w) - .1, cue(w) + .4), ang = -Math.PI / 2 + i * 2 * Math.PI / 3, x = cx + Math.cos(ang) * 340, y = cy + Math.sin(ang) * 300;
     if (a <= 0) return;
-    draw(a, 400, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y); ctx.stroke(); ctx.restore(); });
+    draw(a, 400, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx + (x - cx) * .45, cy + (y - cy) * .45); ctx.lineTo(x + (cx - x) * .2, y + (cy - y) * .2); ctx.stroke(); ctx.restore(); });
     panel(x - 110, y - 40, 220, 80, a); txt(l, x, y + 2, ARC, 28, COL.ink, { align: 'center', weight: 600, ls: 3, alpha: a });
   });
   const cb = prog(lt, cue('chatbot') - .1, cue('chatbot') + .4);
-  bubble(M, 1180, 360, 'só conversa', cb);
+  bubble(M, 1250, 360, 'só conversa', cb);
 }
 // 5 · fecha: responde x executa, e o card final
 CAMS[5] = () => [[0, 0, 30, 1.05, 0], [cue('executa'), 0, 0, 1, 0]];
 function s5(t, lt) {
-  kinetic([{ w: 'Chatbot', t: cue('chatbot') }, { w: 'responde', t: cue('responde') }], M, 230, lt, { size: 80, maxW: 1000 });
-  kinetic([{ w: 'Agente', t: cue('agente') }, { w: 'executa', t: cue('executa') }], M, 340, lt, { size: 80, hl: [1], maxW: 1000 });
+  kinetic([{ w: 'Chatbot', t: cue('chatbot') }, { w: 'responde', t: cue('responde') }], M, 220, lt, { size: 60, maxW: 1000 });
+  kinetic([{ w: 'Agente', t: cue('agente') }, { w: 'executa', t: cue('executa') }], M, 320, lt, { size: 60, hl: [1], maxW: 1000 });
   endCard(t, SC[5] + cue('salva') - .25);
 }
 const SCENES = [s0, s1, s2, s3, s4, s5];

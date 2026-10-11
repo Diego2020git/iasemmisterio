@@ -42,7 +42,7 @@ const CAMS = [];
 function camAt(i, lt) {
   const k = (typeof CAMS[i] === 'function' ? CAMS[i]() : CAMS[i]) || [[0, 0, 0, 1, 0]]; // função: pode usar cue()
   const [x, y, z, r] = keys(k, lt);
-  return { x, y, z: z * (1 + .006 * lt), r: r * Math.PI / 180 }; // + empurrão lento e contínuo
+  return { x: clamp(x, -30, 30), y: clamp(y, -30, 30), z: Math.min(1.04, z * (1 + .004 * lt)), r: 0 }; // limites: título e bordas nunca saem do quadro // + empurrão lento e contínuo. Sem giro: o Diego achou as formas tortas (11/10)
 }
 function applyCam(cam) {
   ctx.translate(W / 2, H / 2); ctx.scale(cam.z, cam.z); ctx.rotate(cam.r); ctx.translate(-W / 2 - cam.x, -H / 2 - cam.y);
@@ -81,7 +81,7 @@ function kinetic(words, x, y, lt, o = {}) {
   });
   lay.forEach(l => {
     const p = prog(lt, l.t - .08, l.t + .32); if (p <= 0) return;
-    const e = easeOutBack(p), sc = lerp(1.7, 1, e), dy = (1 - smooth(p)) * size * .55, rot = (1 - smooth(p)) * (l.i % 2 ? .12 : -.12);
+    const e = easeOutBack(p), sc = lerp(1.25, 1, e), dy = (1 - smooth(p)) * size * .55, rot = 0; // palavras entram retas (Diego, 11/10)
     const hot = prog(lt, l.t, l.t + .05) * (1 - prog(lt, l.t + .45, l.t + .8)); // palavra falada agora: ciano por um instante
     const hl = (o.hl || []).includes(l.i);
     ctx.save();
@@ -107,7 +107,7 @@ function kineticLetters(str, x, y, lt, t0, o = {}) {
   [...s].forEach((ch, i) => {
     const p = prog(lt, t0 + i * .045, t0 + i * .045 + .4);
     if (p > 0) {
-      ctx.save(); ctx.translate(cx + ws[i] / 2, y - (1 - easeOut(p)) * size * .8); ctx.rotate((1 - easeOut(p)) * (i % 2 ? .5 : -.5));
+      ctx.save(); ctx.translate(cx + ws[i] / 2, y - (1 - easeOut(p)) * size * .8); 
       ctx.globalAlpha *= clamp(p * 2);
       txt(ch, 0, 0, f, size, o.color ?? COL.ink, { align: 'center' }); ctx.restore();
     }
@@ -182,6 +182,7 @@ function proj3(v, o) { const [x, y, z] = rot3(v, o.rx || 0, o.ry || 0, o.rz || 0
 // p: quanto da malha já foi traçado (arestas em ordem); arestas do fundo ficam mais apagadas
 function wire(mesh, o, p = 1, color = COL.ink, lw = 3) {
   if (p <= 0) return;
+  o = { ...o, rx: -.42, ry: .62, rz: 0 }; // vista isométrica fixa: o objeto não gira nem fica torto (Diego, 11/10)
   const P = mesh.v.map(v => proj3(v, o)); const n = mesh.e.length; const upto = n * clamp(p);
   ctx.save(); ctx.lineCap = 'round'; ctx.strokeStyle = color; ctx.lineWidth = lw;
   mesh.e.forEach(([i, j], k) => {
@@ -266,9 +267,8 @@ function captions(t) {
   ctx.restore();
 }
 
-// ---------- montagem com câmera e transição por forma ----------
-// troca de cena: a cena nova aparece dentro de uma forma que cresce e se transforma (círculo -> quadrado -> tela),
-// enquanto a cena antiga avança a câmera para dentro dela. TRANS = duração (s).
+// ---------- montagem com câmera e transição por scan ----------
+// troca de cena: uma linha de scan desce e revela a cena nova. TRANS = duração (s).
 const TRANS = .5;
 function drawScene(i, t) {
   const lt = t - SC[i]; SCENE_I = i; const cam = camAt(i, lt);
@@ -279,18 +279,16 @@ function renderMotion(t) {
   let i = SCENES.length - 1; for (let k = 0; k < SCENES.length; k++) if (t < SC[k + 1]) { i = k; break; }
   const lt = t - SC[i];
   if (i > 0 && lt < TRANS) {
-    const p = lt / TRANS, e = easeInOut(p);
-    // cena anterior: câmera avança 18% e gira levemente
-    const prev = i - 1; SCENE_I = prev; const c0 = camAt(prev, t - SC[prev]); c0.z *= 1 + .18 * e; c0.r += .03 * e;
-    bgPaper(c0); ctx.save(); applyCam(c0); SCENES[prev](t, t - SC[prev]); ctx.restore();
-    // máscara: círculo pequeno -> quadrado -> retângulo da tela
-    const cx = W / 2, cy = H * .42, r = lerp(40, 260, smooth(p * 2));
-    const a = shape('circle', cx, cy, r), b = shape('square', cx, cy, r * 1.1), full = shape('rect', W / 2, H / 2, 0, { w: W * 1.6, h: H * 1.6 });
-    const pts = p < .5 ? morph(a, b, p * 2) : morph(b, full, (p - .5) * 2);
-    ctx.save(); pathPts(pts); ctx.clip();
-    SCENE_I = i; const c1 = camAt(i, lt); c1.z *= lerp(1.25, 1, e);
-    bgPaper(c1); ctx.save(); applyCam(c1); SCENES[i](t, lt); ctx.restore(); ctx.restore();
-    strokeShape(pts, { color: COL.cyan, lw: 6 });
+    // transição: linha de scan desce e revela a cena nova por baixo da anterior (sem giro nem forma deformada, pedido do Diego 11/10)
+    const e = easeInOut(lt / TRANS), y = H * e;
+    SCENE_I = i; const c1 = camAt(i, lt);
+    bgPaper(c1); ctx.save(); applyCam(c1); SCENES[i](t, lt); ctx.restore();
+    const prev = i - 1; SCENE_I = prev; const c0 = camAt(prev, t - SC[prev]);
+    ctx.save(); ctx.beginPath(); ctx.rect(0, y, W, H - y); ctx.clip();
+    bgPaper(c0); ctx.save(); applyCam(c0); SCENES[prev](t, t - SC[prev]); ctx.restore(); ctx.restore();
+    SCENE_I = i;
+    ctx.fillStyle = 'rgba(46,230,255,.18)'; ctx.fillRect(0, y - 70, W, 70);
+    ctx.fillStyle = COL.cyan; ctx.fillRect(0, y - 3, W, 6);
   } else drawScene(i, t);
   hud(t);
   captions(t);
