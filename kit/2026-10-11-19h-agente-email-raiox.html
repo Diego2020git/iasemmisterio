@@ -1,0 +1,182 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-11-19h-agente-email.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="raiox-motion.js"></script>
+<script>
+// 11/10/2026 · Agente na Prática · agente que lê o e-mail, consulta, escreve o rascunho e pede aprovação. Tempos em TEMPOS (voz.py).
+const EP = '15';
+const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
+
+// linha da caixa de entrada: envelope pequeno + remetente + etiqueta
+function inboxRow(x, y, w, from, tag, a, tagColor = COL.cyan) {
+  if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha *= clamp(a * 2);
+  envelope(x + 20, y - 26, 70, 52, clamp(a));
+  txt(from, x + 120, y, ARC, 36, COL.ink, { weight: 600 });
+  if (tag) {
+    const tw = measure(tag, ARC, 26, 600, 3) + 36;
+    ctx.strokeStyle = tagColor; ctx.lineWidth = 3; ctx.strokeRect(x + w - tw - 20, y - 24, tw, 48);
+    txt(tag, x + w - tw / 2 - 20, y + 1, ARC, 26, tagColor, { align: 'center', weight: 600, ls: 3 });
+  }
+  ctx.restore();
+}
+
+// 0 · gancho: caixa de entrada com respostas prontas, cada uma com o botão aprovar; o cubo do agente gira no centro
+CAMS[0] = () => [[0, 0, 40, 1.08, -1], [1, 0, 0, 1, 0], [cue('agente') - .2, 0, 0, 1, 0], [cue('ia') + .4, 0, 40, 1.03, .6]];
+function s0(t, lt) {
+  kinetic([{ w: 'Respostas', t: cue('respostas') }, { w: 'prontas', t: cue('prontas') }], M, 230, lt, { size: 104, hl: [1] });
+  panel(M, 440, W - 2 * M, 470, prog(lt, cue('email') - .2, cue('email') + .5), 'caixa de entrada');
+  ['Cliente A', 'Cliente B', 'Cliente C'].forEach((f, i) => {
+    const a = prog(lt, cue('respostas') + i * .15, cue('respostas') + .4 + i * .15);
+    const ok = lt > cue('aprovar') + i * .12;
+    inboxRow(M + 20, 540 + i * 130, W - 2 * M - 40, f, ok ? 'APROVAR?' : 'PRONTA', a, ok ? COL.cyan : COL.dim);
+  });
+  const o = { x: W / 2, y: 1170, s: 200, rx: -.4, ry: lt * .9, d: 4 };
+  const ag = prog(lt, cue('agente') - .2, cue('agente') + .6);
+  wire(Mesh.box(1, 1, 1), o, ag, COL.cyan, 3);
+  wire(Mesh.sphere(.32, 6, 10), o, prog(ag, .4, 1), COL.ink, 2);
+  if (ag > 0) stamp(W / 2, 1390, 'agente de ia', prog(lt, cue('ia') - .1, cue('ia') + .3), 36);
+}
+
+// 1 · chega o pedido: o envelope entra, abre e é triado em três gavetas (orçamento, dúvida, reclamação)
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('separa') - .2, 0, 0, 1, 0], [cue('reclamação') + .4, 0, 60, 1.04, -.4]];
+function s1(t, lt) {
+  stepTag(1, 4, lt, 320);
+  title(['Lê'], lt, .05, 200, 92);
+  fig('fig. 02 · triagem do e-mail', lt, .2, 320);
+  const inA = easeOut(prog(lt, cue('chega') - .2, cue('pedido') + .3));
+  const ex = lerp(-200, W / 2 - 130, inA);
+  envelope(ex, 470, 260, 180, prog(lt, cue('chega') - .2, cue('chega') + .5));
+  txt('PEDIDO DE ORÇAMENTO', W / 2, 700, ARC, 28, COL.dim, { align: 'center', weight: 600, ls: 4, alpha: prog(lt, cue('pedido'), cue('pedido') + .3) });
+  // a lente do agente passa por cima (lê)
+  const rd = prog(lt, cue('lê') - .1, cue('lê') + .8);
+  if (rd > 0 && rd < 1) lens(lerp(W / 2 - 120, W / 2 + 120, rd), 560, 70, 1);
+  const bins = [['orçamento', 'ORÇAMENTO', 2], ['dúvida', 'DÚVIDA', 1], ['reclamação', 'RECLAMAÇÃO', 1]];
+  bins.forEach(([w, label, n], i) => {
+    const x = M + i * ((W - 2 * M) / 3) + 10, bw = (W - 2 * M) / 3 - 20, t0 = cue(w, n), a = prog(lt, t0 - .2, t0 + .3);
+    panel(x, 900, bw, 240, a);
+    txt(label, x + bw / 2, 1190, ARC, 26, i === 0 ? COL.cyan : COL.ink, { align: 'center', weight: 600, ls: 3, alpha: a });
+  });
+  // o envelope cai na gaveta do orçamento
+  const drop = easeInOut(prog(lt, cue('reclamação') + .3, cue('reclamação') + .9));
+  if (drop > 0) { const bw = (W - 2 * M) / 3 - 20; envelope(lerp(W / 2 - 60, M + 10 + bw / 2 - 60, drop), lerp(800, 980, drop), 120, 84, 1); }
+  if (drop >= 1) stamp(M + 10 + ((W - 2 * M) / 3 - 20) / 2, 1270, 'é orçamento', 1, 28);
+}
+
+// 2 · consulta: tabela de preços e agenda são puxadas por linhas até o agente; sem tabela, o valor vira "?"
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('chutaria') - .3, 0, 0, 1, 0], [cue('regras') + .3, 0, 60, 1.05, .5]];
+function s2(t, lt) {
+  stepTag(2, 4, lt, 320);
+  title(['Consulta'], lt, .05, 200, 92);
+  fig('fig. 03 · contexto antes da resposta', lt, .2, 320);
+  const o = { x: W / 2, y: 980, s: 170, rx: -.4, ry: lt * .9, d: 4 };
+  wire(Mesh.box(1, 1, 1), o, prog(lt, 0, .6), COL.cyan, 3);
+  txt('AGENTE', W / 2, 1110, ARC, 26, COL.dim, { align: 'center', weight: 600, ls: 4, alpha: prog(lt, .3, .6) });
+  // tabela de preços
+  const tb = prog(lt, cue('tabela') - .2, cue('tabela') + .4), sem = prog(lt, cue('chutaria') - .2, cue('chutaria') + .3), volta = prog(lt, cue('regras') - .1, cue('regras') + .3);
+  const tab = tb * (1 - sem) + volta;
+  panel(M, 430, 380, 340, clamp(tab), 'tabela de preços');
+  [['Corte', 'R$ 40'], ['Barba', 'R$ 30'], ['Combo', 'R$ 60']].forEach(([a, b], i) => {
+    txt(a, M + 30, 500 + i * 90, ARC, 36, COL.ink, { weight: 600, alpha: clamp(tab) });
+    txt(b, M + 350, 500 + i * 90, ARC, 36, COL.cyan, { align: 'right', weight: 600, alpha: clamp(tab) });
+  });
+  if (tab > .5) draw(clamp(tab), 600, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(M + 190, 780); ctx.bezierCurveTo(M + 190, 900, W / 2 - 200, 980, W / 2 - 110, 980); ctx.stroke(); ctx.restore(); });
+  // agenda: grade com horários livres
+  const ag = prog(lt, cue('agenda') - .2, cue('agenda') + .4);
+  panel(W - M - 380, 430, 380, 340, ag, 'agenda');
+  for (let k = 0; k < 8; k++) {
+    const x = W - M - 350 + (k % 4) * 85, y = 500 + Math.floor(k / 4) * 120, free = k === 2 || k === 5;
+    if (ag <= 0) break;
+    ctx.save(); ctx.globalAlpha = prog(ag, .3 + k * .05, .6 + k * .05);
+    ctx.strokeStyle = free ? COL.cyan : COL.dim; ctx.lineWidth = 3; ctx.strokeRect(x, y, 70, 90);
+    if (!free) { ctx.fillStyle = 'rgba(124,147,196,.25)'; ctx.fillRect(x, y, 70, 90); }
+    txt(free ? 'LIVRE' : '', x + 35, y + 45, ARC, 18, COL.cyan, { align: 'center', weight: 600 });
+    ctx.restore();
+  }
+  if (ag > .5) draw(ag, 600, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(W - M - 190, 780); ctx.bezierCurveTo(W - M - 190, 900, W / 2 + 200, 980, W / 2 + 110, 980); ctx.stroke(); ctx.restore(); });
+  // sem tabela: o valor vira um chute
+  if (sem > 0 && volta < 1) {
+    ctx.save(); ctx.globalAlpha = sem * (1 - volta);
+    txt('R$ ???', W / 2, 1250, EXP, 90, COL.red, { align: 'center' }); ctx.restore();
+  }
+  if (volta > 0) kinetic([{ w: 'regras', t: cue('regras') }, { w: 'primeiro', t: cue('primeiro') }], M, 1250, lt, { size: 84, hl: [0] });
+}
+
+// 3 · escreve: o rascunho é digitado no ritmo da fala; o botão enviar fica travado
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('envia') - .2, 0, 0, 1, 0], [cue('sozinho') + .3, 0, 30, 1.03, -.5]];
+function s3(t, lt) {
+  stepTag(3, 4, lt, 320);
+  title(['Escreve'], lt, .05, 200, 92);
+  fig('fig. 04 · rascunho da resposta', lt, .2, 320);
+  const str = 'Olá! O corte sai por R$ 40. Tenho amanhã às 10h ou às 15h. Qual prefere?';
+  promptBox(M, 420, W - 2 * M, str, prog(lt, cue('rascunho') - .1, cue('horário') + .4), t, 'rascunho');
+  annot(M + 380, 590, 860, 760, 'preço da tabela', prog(lt, cue('preço'), cue('preço') + .4), 'L');
+  annot(M + 250, 590, 260, 860, '2 horários livres', prog(lt, cue('2'), cue('2') + .4), 'R');
+  // botão enviar com cadeado
+  const b = prog(lt, cue('envia') - .2, cue('envia') + .3);
+  if (b > 0) {
+    const x = W / 2 - 200, y = 1000;
+    panel(x, y, 400, 130, b);
+    txt('ENVIAR', W / 2 + 30, y + 65, EXP, 46, COL.dim, { align: 'center', alpha: b });
+    const lk = prog(lt, cue('sozinho') - .1, cue('sozinho') + .3);
+    ctx.save(); ctx.globalAlpha = lk; ctx.strokeStyle = COL.cyan; ctx.lineWidth = 5;
+    ctx.strokeRect(x + 40, y + 60, 54, 44); ctx.beginPath(); ctx.arc(x + 67, y + 60, 18, Math.PI, 0); ctx.stroke(); ctx.restore();
+    strike(x + 110, y + 65, 260, lk, COL.red);
+    stamp(W / 2, 1270, 'não envia sozinho', lk, 34);
+  }
+}
+
+// 4 · aprova: você ajusta e aprova com um clique; reclamação acende um alerta pra você
+CAMS[4] = () => [[0, 0, 0, 1, 0], [cue('reclamação') - .3, 0, 0, 1, 0], [cue('avisa') + .3, 0, 60, 1.05, .5]];
+function s4(t, lt) {
+  stepTag(4, 4, lt, 320);
+  title(['Você aprova'], lt, .05, 200, 84);
+  fig('fig. 05 · humano no controle', lt, .2, 320);
+  panel(M, 430, W - 2 * M, 260, prog(lt, 0, .5), 'rascunho');
+  txt('Tenho amanhã às 10h ou às 15h.', M + 40, 520, ARC, 38, COL.ink, { weight: 600, alpha: prog(lt, .2, .5) });
+  const aj = prog(lt, cue('ajusta') - .1, cue('ajusta') + .4);
+  strike(M + 450, 520, 130, aj, COL.cyan);
+  if (aj > .5) txt('16h', M + 600, 590, ARC, 38, COL.cyan, { weight: 600, alpha: aj });
+  // botão aprovar: círculo vira o visto
+  const ap = prog(lt, cue('aprova') - .1, cue('clique') + .3);
+  if (ap > 0) {
+    const cx = W / 2, cy = 870;
+    strokeShape(morph(shape('circle', cx, cy, 90), shape('rect', cx, cy, 0, { w: 420, h: 130 }), prog(ap, 0, .5)), { color: COL.cyan, lw: 5, fill: ap > .8 ? COL.cyan : null });
+    txt('APROVAR', cx, cy + 2, EXP, 44, ap > .8 ? COL.black : COL.cyan, { align: 'center', alpha: prog(ap, .4, .7) });
+  }
+  // reclamação: alerta para o dono
+  const rc = prog(lt, cue('reclamação') - .1, cue('reclamação') + .4);
+  if (rc > 0) {
+    inboxRow(M, 1100, W - 2 * M, 'Cliente D', 'RECLAMAÇÃO', rc, COL.red);
+    const av = prog(lt, cue('avisa') - .1, cue('avisa') + .3);
+    strokeShape(morphSeq([[0, shape('circle', W / 2, 1270, 50)], [cue('avisa'), shape('triangle', W / 2, 1270, 60)]], lt), { color: av > .5 ? COL.red : COL.ink, lw: 5, p: rc });
+    txt('!', W / 2, 1282, EXP, 46, COL.red, { align: 'center', alpha: av });
+    annot(W / 2 + 60, 1270, 860, 1360, 'avisa você', av, 'L');
+  }
+}
+
+// 5 · fecha: os 4 verbos acendem em sequência num fluxo e o card final entra
+CAMS[5] = () => [[0, 0, 30, 1.05, 0], [cue('agente'), 0, 0, 1, 0]];
+function s5(t, lt) {
+  const steps = [['ler', 'LER'], ['consultar', 'CONSULTAR'], ['escrever', 'ESCREVER'], ['aprovação', 'APROVAÇÃO']];
+  steps.forEach(([w, label], i) => {
+    const y = 300 + i * 190, t0 = cue(w), a = prog(lt, t0 - .2, t0 + .3); if (a <= 0) return;
+    panel(M + 80, y, W - 2 * M - 160, 130, a, '0' + (i + 1));
+    txt(label, W / 2, y + 66, EXP, 56, i === 3 ? COL.cyan : COL.ink, { align: 'center', alpha: a });
+    if (i < 3) { const ar = prog(lt, t0 + .2, t0 + .5); if (ar > 0) { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(W / 2, y + 140); ctx.lineTo(W / 2, y + 140 + 40 * ar); ctx.stroke(); ctx.restore(); } }
+  });
+  stamp(W / 2, 1150, 'isso é um agente', prog(lt, cue('agente'), cue('agente') + .35), 40);
+  endCard(t, SC[5] + cue('salva') - .25);
+}
+
+const SCENES = [s0, s1, s2, s3, s4, s5];
+window.DURATION = TEMPOS.duracao;
+</script>
+</body></html>

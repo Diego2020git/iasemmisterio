@@ -1,0 +1,129 @@
+{
+  "id": "2026-10-11-faca-com-ia",
+  "serie": "Faça com IA",
+  "data": "2026-10-11",
+  "horario": "12:00",
+  "titulo": "Estude com IA de graça: NotebookLM vira seu professor",
+  "descricao": "Seu material de estudo vira um professor particular no NotebookLM, do Google 📚\n1️⃣ Entre em notebooklm.google com sua conta Google e crie um caderno\n2️⃣ Suba suas fontes: PDF da apostila, link de site ou vídeo do YouTube\n3️⃣ Pergunte: ele responde só com base no que você subiu e mostra de onde tirou\n4️⃣ Peça o resumo em áudio: vira uma conversa tipo podcast pra ouvir no caminho\nDica pra concurso: suba a lei do edital e peça 10 perguntas de prova.\nO NotebookLM tem plano grátis. Salva!\n\nFonte: site oficial do NotebookLM (notebooklm.google). Plano grátis conferido em 11/10/2026 (TechRadar, review do NotebookLM).\n\n#notebooklm #estudarcomia #concurso #inteligenciaartificial #ia #google",
+  "hashtags": [
+    "notebooklm",
+    "estudarcomia",
+    "concurso",
+    "inteligenciaartificial",
+    "ia",
+    "google"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "notebooklm como usar": {
+        "demanda_views_top10": 141959,
+        "concorrencia_canais_100k": 1
+      },
+      "como usar ia para estudar para concurso": {
+        "demanda_views_top10": 6550,
+        "concorrencia_canais_100k": 2
+      }
+    }
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "NotebookLM tem plano grátis",
+      "fonte": "https://www.techradar.com/pro/notebooklm-review",
+      "conferido": "2026-10-11"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "estudar com notebooklm",
+    "chaves": [
+      "notebooklm",
+      "estudar",
+      "concurso",
+      "resumo em audio"
+    ]
+  },
+  "video": "videos/2026-10-11-12h-notebooklm-raiox.mp4",
+  "fonte_html": "kit/2026-10-11-12h-notebooklm-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Essa ferramenta do Google transforma o seu material de estudo num professor.",
+          "legenda": "Essa ferramenta do Google transforma o seu material de estudo num professor."
+        },
+        {
+          "fala": "Chama Notebook L M, e tem plano grátis.",
+          "legenda": "Chama NotebookLM, e tem plano grátis."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: entra com a sua conta Google e cria um caderno.",
+          "legenda": "1: entra com a sua conta Google e cria um caderno."
+        },
+        {
+          "fala": "Sobe o PDF da apostila, um link ou até um vídeo do YouTube.",
+          "legenda": "Sobe o PDF da apostila, um link ou até um vídeo do YouTube."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: faz perguntas sobre o material.",
+          "legenda": "2: faz perguntas sobre o material."
+        },
+        {
+          "fala": "Ele responde só com o que você subiu, e mostra de onde tirou cada resposta.",
+          "legenda": "Ele responde só com o que você subiu, e mostra de onde tirou cada resposta."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: pede o resumo em áudio.",
+          "legenda": "3: pede o resumo em áudio."
+        },
+        {
+          "fala": "Vira uma conversa tipo podcast, pra você ouvir no ônibus.",
+          "legenda": "Vira uma conversa tipo podcast, pra você ouvir no ônibus."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Por exemplo: sobe a lei do edital e pede dez perguntas de prova sobre ela.",
+          "legenda": "Por exemplo: sobe a lei do edital e pede 10 perguntas de prova sobre ela."
+        },
+        {
+          "fala": "Você treina com o seu próprio material.",
+          "legenda": "Você treina com o seu próprio material."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Como ele usa só as suas fontes, fica bem mais difícil inventar resposta.",
+          "legenda": "Como ele usa só as suas fontes, fica bem mais difícil inventar resposta."
+        },
+        {
+          "fala": "Salva esse vídeo e me segue pra mais.",
+          "legenda": "Salva esse vídeo e me segue pra mais."
+        }
+      ]
+    }
+  ]
+}
