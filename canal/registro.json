@@ -332,6 +332,56 @@
     "instagram": "6acb5940ed92ed8fa5fa7b57"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-14-19h-agente-vendas-raiox.mp4"
+  },
+  {
+   "id": "2026-10-15-faca-com-ia",
+   "data": "2026-10-15",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Fórmula de planilha com IA no ChatGPT (prompt na legenda)",
+   "narracao": "Não sabe fazer fórmula de planilha? A IA escreve pra você. Usando o ChatGPT, de graça. Um: abre o ChatGPT. O plano grátis já resolve. Dois: explica o que tem em cada coluna da planilha. Exemplo: coluna A, o produto. B, o preço. C, a quantidade. Quero o total de cada venda na coluna D. Ele devolve a fórmula pronta: igual, B dois, vezes C dois. E explica onde colar e como arrastar pra baixo. Três: deu erro? Cola a mensagem de erro e pede a correção. Serve pro Excel e pro Google Planilhas. O pedido pronto, o prompt, está na legenda pra copiar. Salva esse vídeo e me segue pra mais.",
+   "video": "videos/2026-10-15-12h-formula-planilha-raiox.mp4",
+   "registro": {
+    "tema": "fórmula de planilha com ia",
+    "chaves": [
+     "planilha",
+     "fórmula",
+     "excel",
+     "chatgpt"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acb5dd9ed92ed8fa5fb432a",
+    "instagram": "6acb5dd9bba9419ccb2fb0e8"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-15-12h-formula-planilha-raiox.mp4"
+  },
+  {
+   "id": "2026-10-15-agente-na-pratica",
+   "data": "2026-10-15",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Agente financeiro: avisa o boleto e só paga com o seu sim",
+   "narracao": "Boleto vencido de novo? Um agente financeiro cuida disso pra você. E não paga nada sem a sua aprovação. Ele lê os boletos e as notas que chegam no seu e-mail. E anota valor, vencimento e fornecedor numa planilha. Três dias antes de vencer, ele te avisa. Com o valor e o link do boleto. Você responde: pode pagar. Só aí ele agenda o pagamento. Sem a sua resposta, ele não mexe em nada. No fim do mês, ele manda um resumo: quanto entrou, quanto saiu e o que vence. E os limites, quem define é você, nas regras do agente. Ler, anotar, avisar e esperar o seu sim. Isso é um agente financeiro. Salva e me segue pra montar o seu.",
+   "video": "videos/2026-10-15-19h-agente-financeiro-raiox.mp4",
+   "registro": {
+    "tema": "agente financeiro que cuida de boletos",
+    "chaves": [
+     "financeiro",
+     "boleto",
+     "vencimento",
+     "pagamento"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acb5ddabba9419ccb2fb111",
+    "instagram": "6acb5ddbed92ed8fa5fb43a2"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-15-19h-agente-financeiro-raiox.mp4"
   }
  ]
 }
