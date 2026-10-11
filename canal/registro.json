@@ -207,6 +207,56 @@
     "instagram": "6acb0e85b07d37ac97956aaf"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-11-19h-agente-email-raiox.mp4"
+  },
+  {
+   "id": "2026-10-12-faca-com-ia",
+   "data": "2026-10-12",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Qual IA usar pra cada tarefa (todas com plano grátis)",
+   "narracao": "Qual é a melhor inteligência artificial? Depende da tarefa. Aqui vão quatro, uma pra cada coisa, e todas têm plano grátis. Pra escrever texto, e-mail ou ideia de post: ChatGPT. Você explica o que quer, ele escreve o rascunho. Pra criar imagem: Gemini, do Google. Descreve a cena e ele desenha em segundos. Pra estudar com o seu próprio material: Notebook L M. Ele responde só com o que você subiu. E pra vídeo: o Flow, também do Google. Você descreve a cena e ele gera o vídeo. Texto, imagem, estudo e vídeo. Cada uma no que faz melhor. Salva esse vídeo pra consultar depois e me segue.",
+   "video": "videos/2026-10-12-12h-qual-ia-usar-raiox.mp4",
+   "registro": {
+    "tema": "qual ia usar para cada tarefa",
+    "chaves": [
+     "melhor ia",
+     "comparativo",
+     "cada tarefa",
+     "ferramentas gratis"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acb589bc4de2d2b1257228b",
+    "instagram": "6acb589cbba9419ccb2ef046"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-12-12h-qual-ia-usar-raiox.mp4"
+  },
+  {
+   "id": "2026-10-12-agente-na-pratica",
+   "data": "2026-10-12",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Agente de IA ou chatbot? A diferença em 40 segundos",
+   "narracao": "Chatbot, aquele robô de conversa, e agente de inteligência artificial não são a mesma coisa. A diferença é simples: um conversa, o outro resolve. Pede pro chatbot de conversa: marca uma reunião com o João na quinta. Ele te explica como marcar. E para aí. Agora pede a mesma coisa pro agente. Ele abre a sua agenda e acha um horário livre na quinta. Depois olha a agenda do João, confirma às três da tarde e manda o convite por e-mail. Ou seja: o agente tem ferramentas e permissão pra agir. Agenda, e-mail, planilha. O chatbot só tem a conversa. Chatbot responde. Agente executa. Salva e me segue pra ver agentes na prática.",
+   "video": "videos/2026-10-12-19h-agente-vs-chatbot-raiox.mp4",
+   "registro": {
+    "tema": "diferença entre agente e chatbot",
+    "chaves": [
+     "chatbot",
+     "diferença",
+     "agente de ia",
+     "reunião"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acb589dbba9419ccb2ef070",
+    "instagram": "6acb589dd9cab260a7f19c4b"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-12-19h-agente-vs-chatbot-raiox.mp4"
   }
  ]
 }
