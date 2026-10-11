@@ -14,7 +14,7 @@ function person(cx, cy, r, a, color = COL.ink) {
 CAMS[0] = () => [[0, 0, 30, 1.06, -1], [1, 0, 0, 1, 0], [cue('resolve') + .2, 0, 30, 1.03, .5]];
 function s0(t, lt) {
   kinetic([{ w: 'Só', t: cue('só') }, { w: 'olhando?', t: cue('olhando') }], M, 230, lt, { size: 100, hl: [1] });
-  for (let i = 0; i < 5; i++) person(M + 90 + i * 200, 620, 80, prog(lt, .3 + i * .15, .8 + i * .15), COL.dim);
+  for (let i = 0; i < 5; i++) person(M + 90 + i * (W - 2 * M - 180) / 4, 620, 80, prog(lt, .3 + i * .15, .8 + i * .15), COL.dim);
   wire(Mesh.box(1, 1, 1), { x: W / 2, y: 1000, s: 220, rx: -.4, ry: lt * .9, d: 4 }, prog(lt, cue('agente') - .1, cue('agente') + .6), COL.cyan, 3);
   stamp(W / 2, 1260, 'agente de vendas', prog(lt, cue('vendas'), cue('vendas') + .35), 34);
 }
@@ -63,7 +63,7 @@ CAMS[4] = () => [[0, 0, 0, 1, 0], [cue('regras'), 0, 40, 1.04, -.4]];
 function s4(t, lt) {
   kinetic([{ w: 'Pronto pra', t: cue('pronto') }, { w: 'comprar', t: cue('comprar') }], M, 230, lt, { size: 84, hl: [1], maxW: 1000 });
   person(W / 2, 640, 140, prog(lt, cue('fala') - .2, cue('fala') + .4), COL.cyan);
-  for (let i = 0; i < 4; i++) person(M + 80 + i * 300, 640 + (i < 2 ? 0 : 0), 60, prog(lt, 0, .5) * (1 - prog(lt, cue('tempo'), cue('tempo') + .6)), COL.dim);
+  for (let i = 0; i < 4; i++) person([M + 70, M + 230, W - M - 230, W - M - 70][i], 660, 60, prog(lt, 0, .5) * (1 - prog(lt, cue('tempo'), cue('tempo') + .6)), COL.dim);
   panel(M, 900, W - 2 * M, 380, prog(lt, cue('define') - .2, cue('regras') + .3), 'regras · quem define é você');
   ['perguntas', 'notas'].forEach((w, i) => txt('→ ' + (i ? 'as notas' : 'as perguntas'), M + 40, 1000 + i * 100, ARC, 42, COL.ink, { weight: 600, alpha: prog(lt, cue(w) - .1, cue(w) + .3) }));
 }

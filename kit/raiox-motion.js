@@ -117,7 +117,7 @@ function kineticLetters(str, x, y, lt, t0, o = {}) {
 // contador tipo odômetro: dígitos rolam na vertical
 function odometer(value, digits, x, y, size, color = COL.cyan) {
   const v = Math.max(0, value); const dw = measure('0', EXP, size) * 1.02;
-  ctx.save(); ctx.beginPath(); ctx.rect(x - 4, y - size * .62, dw * digits + 8, size * 1.24); ctx.clip();
+  ctx.save(); ctx.beginPath(); ctx.rect(x - 4, y - size * .44, dw * digits + 8, size * .88); ctx.clip();
   for (let d = 0; d < digits; d++) {
     const place = Math.pow(10, digits - 1 - d); const raw = v / place;
     const cur = Math.floor(raw) % 10, frac = d === digits - 1 ? raw - Math.floor(raw) : smooth(clamp((raw % 1 - .85) / .15));
@@ -154,7 +154,13 @@ function shape(type, cx, cy, r, o = {}) {
     case 'star': return samplePoly(Array.from({ length: 10 }, (_, i) => { const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * .45 : r; return [cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]; }));
   }
 }
-function morph(a, b, p) { const e = easeInOut(clamp(p)); return a.map((v, i) => [lerp(v[0], b[i][0], e), lerp(v[1], b[i][1], e)]); }
+// troca de forma sem deformar: a forma antiga encolhe até o centro e a nova cresce no lugar (nada fica torto no meio do caminho)
+function morph(a, b, p) {
+  const e = easeInOut(clamp(p)); if (e <= 0) return a; if (e >= 1) return b;
+  const src = e < .5 ? a : b, k = e < .5 ? 1 - e * 2 : e * 2 - 1, s = .25 + .75 * k;
+  const cx = src.reduce((m, v) => m + v[0], 0) / src.length, cy = src.reduce((m, v) => m + v[1], 0) / src.length;
+  return src.map(v => [cx + (v[0] - cx) * s, cy + (v[1] - cy) * s]);
+}
 function pathPts(pts) { ctx.beginPath(); pts.forEach((v, i) => i ? ctx.lineTo(v[0], v[1]) : ctx.moveTo(v[0], v[1])); ctx.closePath(); }
 function strokeShape(pts, o = {}) {
   ctx.save(); ctx.lineJoin = 'round'; ctx.strokeStyle = o.color ?? COL.ink; ctx.lineWidth = o.lw ?? 5;
