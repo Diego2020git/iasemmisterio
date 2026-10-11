@@ -13,8 +13,8 @@ RAIZ = Path(__file__).resolve().parent.parent
 CANAL = RAIZ / "canal"
 
 # Grade aprovada pelo Diego em 11/10/2026: todos os dias, uma série por horário.
-GRADE = {"Faça com IA": "12:00", "Agente na Prática": "19:00"}
-DIAS_DA_SERIE = {"Faça com IA": range(7), "Agente na Prática": range(7)}  # 0 = segunda
+GRADE = {"Faça com IA": "12:00", "Agente na Prática": "19:00", "Carrossel da Semana": "10:00"}
+DIAS_DA_SERIE = {"Faça com IA": range(7), "Agente na Prática": range(7), "Carrossel da Semana": [5]}  # 0 = segunda; carrossel só no Instagram, sábado (Diego, 11/10)
 DUR_MIN, DUR_MAX = 35.0, 45.0
 TITULO_MAX = 70
 TRAVESSOES = "—–"
