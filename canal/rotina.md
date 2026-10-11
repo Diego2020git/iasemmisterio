@@ -1,0 +1,73 @@
+# canal/rotina.md (aprovada pelo Diego em 11/10/2026, 03:56 UTC)
+
+Fonte da verdade da operação IA Sem Mistério. Toda rotina começa com `git pull` e relendo este arquivo.
+Regras completas: /mnt/project-files/operacao/prompt-operacao-v2.md.
+
+## Grade fixa (2 vídeos por dia, revisada em 11/10 após a escolha Buffer + Metricool)
+
+| Dia | Horário | Série | O que é |
+|---|---|---|---|
+| Todos | 12h | Faça com IA | Uma tarefa do dia a dia resolvida com uma ferramenta que tem plano grátis. |
+| Todos | 19h | Agente na Prática | Agentes e automação: o que fazem, como montar, um caso real por vídeo. |
+
+Fuso America/Sao_Paulo. Instagram e YouTube no mesmo dia e horário.
+
+## Agendamento
+
+- **Buffer Free (principal):** fila de no máximo 10 posts por rede ao mesmo tempo, sem teto mensal. Com 2 vídeos por dia, a fila cobre 5 dias à frente. BUFFER_API_KEY e api.buffer.com funcionam (testado em 11/10). Canais: Instagram iasemmisterio.ai e YouTube IA Sem Mistério. Vídeo vai por link raw do GitHub.
+- **Primeiro comentário:** o Buffer Free não aceita no Instagram. Roteiro com comentario_fixado: o Instagram vai pelo Metricool (firstCommentText) e o YouTube pelo Buffer com o prompt no fim da descrição. Sem cota no Metricool, `--so-buffer` põe o prompt na legenda. Roteiros novos preferem dizer "o prompt está na legenda" para não depender do comentário.
+- **Metricool Free (reserva e métricas):** 20 posts por mês (outubro já usou 12 com os vídeos 01 a 06). Fica com a coleta de métricas, com o Instagram dos vídeos que têm comentário e entra se o Buffer falhar. Marca blogId 7280938.
+- Se os dois recusarem, anotar aqui e avisar o Diego.
+- Voz: cerca de 650 caracteres por vídeo, 60 vídeos por mês, uns 39 mil caracteres, bem abaixo do 1 milhão grátis do Google.
+
+## Fila inicial (da pauta)
+
+- Faça com IA: 08 IA que cria vídeos de graça, 09 editar vídeo com IA, 14 texto em vídeo, 10 estudar para concurso, 11 qual a melhor IA.
+- Agente na Prática: 07 agente no ChatGPT de graça, 13 agente para vendas e atendimento, 12 Gemini como assistente pessoal.
+Cada tema é revalidado na YouTube Data API antes de virar roteiro.
+
+## Arquivos
+
+- kit/: raiox-kit.js, raiox-motion.js, render.mjs, voz.py, fontes/, HTML de cada vídeo e audio/ com os tempos.
+- canal/roteiros/: um JSON por vídeo. canal/validar.py, canal/publicar.py, canal/glossario.json, canal/origens.json, canal/registro.json.
+- videos/: MP4 finais (link raw usado no agendamento).
+
+## Rotinas
+
+- **Vigia diária, 6h30:** lê a agenda real (`python3 canal/publicar.py --agenda 7` e getScheduledPosts do Metricool), confere série, dia, horário, vídeo e rótulo de IA, conserta, produz o slot que faltar e faz a checagem de véspera.
+- **Produção, domingo, quarta e sexta às 7h:** produz os slots vazios até encher a fila do Buffer (5 dias à frente).
+- **Mínimo de segurança:** hoje e os 3 dias seguintes sempre agendados.
+- A rotina antiga das 6h49 é apagada quando estas forem criadas.
+
+## Passo a passo de cada rodada
+
+1. `git pull`, reler este arquivo e canal/registro.json.
+2. Pesquisa: YouTube Data API, últimos 30 dias, pt-BR. Demanda = soma das visualizações dos 10 primeiros; concorrência = quantos são de canais com mais de 100 mil inscritos. Reforço: sugestões do YouTube e Google Trends Brasil (os dois respondem neste ambiente). Teto de 3 mil unidades por rodada.
+3. Roteiro em canal/roteiros/AAAA-MM-DD-serie.json.
+4. Voz: Google Cloud TTS, voz escolhida pelo Diego, velocidade 1,06, WAV 24 kHz mono, loudnorm -14 LUFS, por cena. Anotar caracteres gastos no mês.
+4b. `python3 kit/voz.py canal/roteiros/X.json kit/audio/NN-slug` (gera .wav e .tempos.js).
+5. Montagem com o kit Raio-X de kit/ (raiox-kit.js + raiox-motion.js, cue() sincroniza com a fala): `node kit/render.mjs kit/NN-slug-raiox.html videos/NN-slug-raiox-final.mp4 kit/audio/NN-slug.wav`.
+6. `python3 canal/validar.py canal/roteiros/X.json` (antes da voz, use `--sem-mp4`). Se barrar, corrigir e rodar de novo.
+7. MP4 em videos/ do repositório, commit e push.
+8. `python3 canal/publicar.py canal/roteiros/X.json`: valida de novo, confere o link raw e agenda no Buffer com rótulo de IA. Se imprimir que o Instagram vai pelo Metricool, agendar com createScheduledPost usando canal/metricool/<id>.json e rodar `--metricool-ok <id> <plannerUrl>`. Se o Buffer recusar, agendar tudo pelo Metricool e anotar aqui.
+9. Conferir na agenda real, atualizar este arquivo, a pauta, o registro e a memória. Commit e push.
+10. Mensagem curta: tabela Dia | Horário | Vídeo | Série, agendado até quando, comentários a fixar e problemas.
+
+## Estado dos serviços (11/10/2026)
+
+| Serviço | Estado |
+|---|---|
+| GOOGLE_API_KEY | definida |
+| BUFFER_API_KEY / api.buffer.com | funcionam (11/10); primeiro comentário no IG só no plano pago |
+| YouTube Data API v3 | responde |
+| Google Cloud TTS (Chirp 3 HD pt-BR) | responde |
+| suggestqueries.google.com | responde |
+| trends.google.com | responde (RSS de tendências do Brasil) |
+| Azure Speech | bloqueado pela rede |
+| ELEVENLABS_API_KEY, RUNWAYML_API_SECRET | vazias |
+
+## Gasto do mês
+
+| Mês | Caracteres de voz (Google) | Unidades YouTube API |
+|---|---|---|
+| 10/2026 | 948 (teste de vozes) | ~100 (teste) |

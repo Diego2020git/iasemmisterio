@@ -1,0 +1,184 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/13-ia-video-gratis.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="raiox-motion.js"></script>
+<script>
+// 13/10/2026 · Faça com IA · IA que cria vídeo de graça (Google Flow). Tempos da fala em TEMPOS (voz.py).
+const EP = '13';
+const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
+const GBLUE = '#4285f4';
+
+// 0 · gancho: título cinético + tela em 3D com o play que nasce de um círculo
+CAMS[0] = () => [[0, 0, 40, 1.1, -1.5], [1.2, 0, 0, 1, 0], [cue('google') - .3, 0, 0, 1, 0], [cue('flow') + .2, 0, 110, 1.04, .8]];
+function s0(t, lt) {
+  kinetic([{ w: 'Vídeo', t: cue('vídeo') }, { w: 'com IA', t: cue('ia') }, { w: 'de graça', t: cue('graça') }], M, 230, lt, { size: 108, hl: [2] });
+  const P = prog(lt, .1, 1.3), cx = W / 2, cy = 930;
+  const o = { x: cx, y: cy, s: 430, rx: -.12 + .05 * Math.sin(lt * 1.3), ry: .55 * Math.sin(lt * .7) + .25, d: 4 };
+  wire(Mesh.box(.56, 1, .07), o, P, COL.ink, 4);
+  wire(Mesh.box(.5, .92, .001), o, prog(lt, .6, 1.5), COL.dim, 2);
+  const c = proj3([0, 0, -.04], o);
+  const play = morphSeq([[0, shape('circle', c[0], c[1], 70)], [cue('vídeo'), shape('play', c[0] + 8, c[1], 70)]], lt);
+  strokeShape(play, { color: COL.cyan, lw: 6, p: prog(lt, .4, 1.1), fill: lt > cue('graça') ? `rgba(46,230,255,${.85 * prog(lt, cue('graça'), cue('graça') + .3)})` : null });
+  stamp(W / 2, 640, 'todo dia', prog(lt, cue('todo'), cue('todo') + .35), 40);
+  const top = proj3([.28, -.5, 0], o);
+  annot(top[0], top[1], 900, 760, 'você cria', prog(lt, cue('criar') + .3, cue('criar') + .8), 'L');
+  toolCard(W / 2, 1270, 'Flow', 'labs.google/flow · tem plano grátis', prog(lt, cue('google') - .1, cue('google') + .3), GBLUE);
+  if (lt > cue('flow')) dimLine(M + 60, W - M - 60, 1390, 'ferramenta do google', prog(lt, cue('flow'), cue('flow') + .3));
+}
+
+// 1 · entra: conta (círculo) vira ficha de crédito, a pilha 3D sobe e o contador rola até 50
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('ganha') - .2, 0, 0, 1, 0], [cue('50') + .5, 50, 70, 1.07, 0]];
+function s1(t, lt) {
+  stepTag(1, 3, lt, 320);
+  title(['Entre'], lt, .05, 200, 92);
+  fig('fig. 02 · conta → créditos', lt, .2, 320);
+  const ax = 280, ay = 680;
+  const sh = morphSeq([[0, shape('circle', ax, ay, 130)], [cue('ganha'), shape('hexagon', ax, ay, 140)]], lt, .5);
+  strokeShape(sh, { color: lt > cue('ganha') ? COL.cyan : COL.ink, lw: 5, p: prog(lt, .1, .7) });
+  const head = 1 - prog(lt, cue('ganha') - .1, cue('ganha') + .2);
+  if (head > 0) {
+    ctx.save(); ctx.globalAlpha = head * prog(lt, cue('conta') - .2, cue('conta') + .2); ctx.strokeStyle = COL.ink; ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.arc(ax, ay - 30, 42, 0, 7); ctx.stroke(); ctx.beginPath(); ctx.arc(ax, ay + 95, 80, Math.PI * 1.15, Math.PI * 1.85); ctx.stroke(); ctx.restore();
+  }
+  if (lt > cue('ganha')) txt('+50', ax, ay + 4, EXP, 64, COL.cyan, { align: 'center', alpha: prog(lt, cue('ganha') + .2, cue('ganha') + .5) });
+  txt('SUA CONTA', ax, ay + 190, ARC, 28, COL.dim, { align: 'center', weight: 600, ls: 4, alpha: prog(lt, cue('conta'), cue('conta') + .3) });
+  // pilha de 5 fichas (10 créditos cada) em 3D
+  const o = { x: 760, y: 760, s: 300, rx: -.5, ry: lt * .7, d: 4 };
+  for (let k = 0; k < 5; k++) {
+    const t0 = cue('50') - .25 + k * .09, p = prog(lt, t0, t0 + .35); if (p <= 0) continue;
+    const drop = (1 - easeOut(p)) * -1.2;
+    wire(Mesh.cylinder(.5, .1, 30, .25 - k * .13 + drop), o, clamp(p * 1.6), k === 4 ? COL.cyan : COL.ink, 3);
+  }
+  annot(890, 640, 940, 520, '5 × 10', prog(lt, cue('créditos'), cue('créditos') + .4), 'L', COL.cyan);
+  const v = 50 * easeInOut(prog(lt, cue('ganha'), cue('créditos') + .1));
+  if (lt > cue('ganha') - .1) {
+    odometer(v, 2, M + 10, 1110, 170);
+    kinetic([{ w: 'créditos', t: cue('créditos') }, { w: 'por dia', t: cue('dia') }], M + 300, 1075, lt, { size: 58, maxW: 560, lh: 70 });
+  }
+  dimLine(M, W - M, 1290, 'sem assinatura', prog(lt, cue('assina'), cue('assina') + .3));
+}
+
+// 2 · escolhe: seleção do modelo e conta 50 ÷ 10 = 5, com cada bloco virando um play
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('cada') - .2, 0, 0, 1, 0], [cue('cada') + .7, 0, 250, 1.05, 0], [cue('5'), 0, 280, 1.08, -.8], [cue('dia') + .3, 0, 280, 1.08, -.8]];
+function s2(t, lt) {
+  stepTag(2, 3, lt, 320);
+  title(['Escolha'], lt, .05, 200, 92);
+  fig('fig. 03 · modelo e custo', lt, .2, 320);
+  panel(M, 420, W - 2 * M, 330, prog(lt, .2, .9), 'modelos de vídeo · flow');
+  const rows = [['Veo 3.1 Lite', '10 créditos'], ['Veo 3.1 Quality', '100 créditos']];
+  rows.forEach(([a, b], i) => {
+    const y = 520 + i * 130, p = prog(lt, cue('modelo') + i * .15, cue('modelo') + .3 + i * .15); if (p <= 0) return;
+    const sel = i === 0 ? prog(lt, cue('lite'), cue('lite') + .4) : 0;
+    const rad = morph(shape('circle', M + 70, y, 22), shape('square', M + 70, y, 20), sel);
+    strokeShape(rad, { color: sel > .5 ? COL.cyan : COL.dim, lw: 4, fill: sel > .5 ? COL.cyan : null });
+    txt(a, M + 120, y, EXP, 40, sel > .5 ? COL.cyan : COL.ink, { alpha: p });
+    txt(b, W - M - 40, y, ARC, 34, COL.dim, { align: 'right', weight: 600, alpha: p });
+  });
+  stamp(W - M - 150, 455, 'o mais barato', prog(lt, cue('lite') + .2, cue('lite') + .6), 26);
+  // conta
+  kinetic([{ w: '10', t: cue('10') }, { w: 'por vídeo', t: cue('créditos') }], M, 900, lt, { size: 84, hl: [0] });
+  const bx = M, bw = (W - 2 * M - 4 * 22) / 5, by = 1020, bh = 150;
+  for (let k = 0; k < 5; k++) {
+    const x = bx + k * (bw + 22), cxk = x + bw / 2, cyk = by + bh / 2;
+    const app = prog(lt, cue('gasta') + k * .08, cue('gasta') + .3 + k * .08); if (app <= 0) continue;
+    const m = prog(lt, cue('5') + k * .12, cue('5') + .45 + k * .12);
+    const pts = morph(shape('rect', cxk, cyk, 0, { w: bw, h: bh }), shape('play', cxk + 8, cyk, 62), m);
+    strokeShape(pts, { color: m > .5 ? COL.cyan : COL.ink, lw: 4, p: app });
+    txt('10', cxk, cyk, EXP, 44, COL.ink, { align: 'center', alpha: app * (1 - m) });
+  }
+  dimLine(bx, W - M, by + bh + 50, '50 créditos', prog(lt, cue('gasta') + .4, cue('gasta') + .8));
+  kinetic([{ w: '=', t: cue('uns') }, { w: '5 vídeos', t: cue('5') }, { w: 'por dia', t: cue('dia') }], M, 1330, lt, { size: 72, hl: [1], maxW: 1000 });
+}
+
+// 3 · descreve: 4 caixas acendem quando cada parte é falada e a câmera visita uma por uma
+const BOX = [[M, 620], [W / 2 + 15, 620], [M, 960], [W / 2 + 15, 960]], BW = W / 2 - M - 15, BH = 300;
+CAMS[3] = () => {
+  const ks = [[0, 0, 0, 1, 0], [cue('quem') - .35, 0, 0, 1, 0]];
+  const at = [[cue('quem'), -100, -130, 1.08, -.5], [cue('faz'), 100, -130, 1.08, .5], [cue('câmera'), -100, 170, 1.08, -.5], [cue('estilo'), 100, 170, 1.08, .5]];
+  at.forEach(([tt, x, y, z, r], i) => { ks.push([tt + .05, x, y, z, r]); const nx = at[i + 1]; ks.push([nx ? nx[0] - .3 : tt + .8, x, y, z, r]); });
+  ks.push([cue('estilo') + 1.3, 0, 60, 1, 0]); return ks;
+};
+function s3(t, lt) {
+  stepTag(3, 3, lt, 320);
+  title(['Descreva'], lt, .05, 200, 92);
+  fig('fig. 04 · a cena em 4 partes', lt, .2, 320);
+  kinetic([{ w: '4', t: cue('4') }, { w: 'partes', t: cue('partes') }], M, 450, lt, { size: 110, hl: [0] });
+  const parts = [['quem', 'QUEM APARECE'], ['faz', 'O QUE FAZ'], ['câmera', 'CÂMERA'], ['estilo', 'ESTILO']];
+  parts.forEach(([w, label], i) => {
+    const [x, y] = BOX[i], t0 = cue(w), p = prog(lt, t0 - .25, t0 + .35); if (p <= 0) return;
+    const on = lt >= t0 && (i === 3 || lt < cue(parts[i + 1][0]));
+    panel(x, y, BW, BH, p, '0' + (i + 1));
+    const cx = x + BW / 2, cy = y + 120, k = lt - t0;
+    if (i === 0) { const o = { x: cx, y: cy, s: 170, rx: .2, ry: k * .9, d: 4 }; wire(Mesh.sphere(.5, 7, 12), o, prog(k, -.1, .6), on ? COL.cyan : COL.ink, 2.5); }
+    if (i === 1) strokeShape(morphSeq([[0, shape('circle', cx, cy, 70)], [.15, shape('play', cx + 10, cy, 75)]], k), { color: on ? COL.cyan : COL.ink, lw: 5, p: prog(k, -.2, .3) });
+    if (i === 2) { const o = { x: cx, y: cy, s: 190, rx: -.25, ry: -.6 + .5 * Math.sin(k * 1.4), d: 4 }; wire(Mesh.camera(), o, prog(k, -.1, .7), on ? COL.cyan : COL.ink, 2.5); }
+    if (i === 3) strokeShape(morphSeq([[0, shape('square', cx, cy, 60)], [.2, shape('star', cx, cy, 82)], [1.2, shape('hexagon', cx, cy, 75)]], k), { color: on ? COL.cyan : COL.ink, lw: 5, p: prog(k, -.2, .3) });
+    txt(label, cx, y + BH - 55, EXP, 34, on ? COL.cyan : COL.ink, { align: 'center', alpha: prog(k, -.1, .25) });
+  });
+}
+
+// 4 · exemplo: o prompt é digitado no ritmo da fala e a cena 3D faz o que o texto diz (a câmera se aproxima de verdade)
+CAMS[4] = () => [[0, 0, 0, 1, 0], [cue('aproximando') - .1, 0, 0, 1, 0], [cueEnd('devagar') + 1.4, 0, 120, 1.28, 0]];
+function s4(t, lt) {
+  title(['Exemplo'], lt, .05, 200, 92);
+  fig('fig. 05 · do texto à cena', lt, .2, 320);
+  const str = 'Um gato astronauta flutuando numa estação espacial. Câmera se aproximando devagar. Estilo cinema.';
+  promptBox(M, 400, W - 2 * M, str, prog(lt, cue('gato') - .1, cueEnd('cinema')), t, 'prompt');
+  const cx = W / 2, cy = 1010;
+  const st = { x: cx, y: cy, s: 300, rx: -.95, ry: lt * .35, rz: .12, d: 4 };
+  wire(Mesh.torus(1, .2, 34, 8), st, prog(lt, cue('estação') - .1, cue('estação') + .9), COL.ink, 2.5);
+  const bob = Math.sin(lt * 2.2) * 18, hp = prog(lt, cue('gato') - .1, cue('astronauta') + .4);
+  const hel = { x: cx, y: cy - 40 + bob, s: 220, rx: .25, ry: lt * .8, d: 4 };
+  wire(Mesh.sphere(.42, 7, 12), hel, hp, COL.cyan, 2.5);
+  if (hp > .6) { // orelhas do gato
+    ctx.save(); ctx.globalAlpha = prog(hp, .6, 1); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 4; ctx.lineJoin = 'round';
+    [[-1, 1], [1, 1]].forEach(([s]) => { ctx.beginPath(); ctx.moveTo(cx + s * 50, cy - 115 + bob); ctx.lineTo(cx + s * 72, cy - 168 + bob); ctx.lineTo(cx + s * 92, cy - 100 + bob); ctx.stroke(); });
+    ctx.restore();
+  }
+  annot(cx + 90, cy - 70 + bob, 900, 690, 'quem', prog(lt, cue('astronauta'), cue('astronauta') + .4), 'L');
+  annot(cx - 90, cy - 20 + bob, 200, 690, 'faz', prog(lt, cue('flutuando'), cue('flutuando') + .4), 'R');
+  // visor de câmera e barras de cinema
+  const vf = prog(lt, cue('câmera') - .1, cue('câmera') + .3);
+  if (vf > 0) {
+    const x = M + 40, y = 760, w = W - 2 * M - 80, h = 520, k = 50;
+    ctx.save(); ctx.globalAlpha = vf; ctx.strokeStyle = COL.ink; ctx.lineWidth = 5;
+    [[x, y, 1, 1], [x + w, y, -1, 1], [x, y + h, 1, -1], [x + w, y + h, -1, -1]].forEach(([px, py, sx, sy]) => { ctx.beginPath(); ctx.moveTo(px + sx * k, py); ctx.lineTo(px, py); ctx.lineTo(px, py + sy * k); ctx.stroke(); });
+    if (Math.floor(lt * 2) % 2 === 0) { ctx.fillStyle = COL.red; ctx.beginPath(); ctx.arc(x + 40, y + 40, 12, 0, 7); ctx.fill(); }
+    txt('REC', x + 64, y + 41, ARC, 26, COL.ink, { weight: 600, ls: 3 });
+    ctx.restore();
+    const lb = easeInOut(prog(lt, cue('cinema') - .1, cue('cinema') + .4));
+    if (lb > 0) { ctx.fillStyle = COL.black; ctx.fillRect(x, y, w, 70 * lb); ctx.fillRect(x, y + h - 70 * lb, w, 70 * lb); txt('ESTILO CINEMA', x + w / 2, y + h - 35 * lb, ARC, 28, COL.cyan, { align: 'center', weight: 600, ls: 5, alpha: lb }); }
+  }
+}
+
+// 5 · fecha: créditos de ontem caem (não acumulam), cada dia ganha um visto, prompt no comentário e card final
+CAMS[5] = () => [[0, 0, 30, 1.05, 0], [cue('acumulam'), 0, 0, 1, 0]];
+function s5(t, lt) {
+  kinetic([{ w: 'Não', t: cue('não') }, { w: 'acumula', t: cue('acumulam') }], M, 230, lt, { size: 110, hl: [1] });
+  const days = ['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB', 'DOM'], cw = 112, gap = (W - 2 * M - 7 * cw) / 6;
+  days.forEach((d, i) => {
+    const x = M + i * (cw + gap), y = 520, p = prog(lt, .1 + i * .06, .5 + i * .06); if (p <= 0) return;
+    panel(x, y, cw, 170, p);
+    txt(d, x + cw / 2, y - 26, ARC, 24, COL.dim, { align: 'center', weight: 600, ls: 3, alpha: p });
+    const fall = prog(lt, cue('acumulam') + i * .05, cue('acumulam') + .7 + i * .05);
+    const g = fall * fall * 520;
+    if (fall < 1) txt('50', x + cw / 2, y + 85 + g, EXP, 44, COL.ink, { align: 'center', alpha: p * (1 - fall) });
+    const ck = prog(lt, cue('usa') + i * .09, cue('usa') + .3 + i * .09);
+    if (ck > 0) draw(ck, 120, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x + 28, y + 88); ctx.lineTo(x + 50, y + 112); ctx.lineTo(x + 86, y + 60); ctx.stroke(); ctx.restore(); });
+  });
+  dimLine(M, W - M, 770, 'use todo dia', prog(lt, cue('usa'), cue('usa') + .3));
+  stamp(W / 2, 930, 'prompt no comentário', prog(lt, cue('prompt'), cue('prompt') + .35), 40);
+  endCard(t, SC[5] + cue('salva') - .25);
+}
+
+const SCENES = [s0, s1, s2, s3, s4, s5];
+window.DURATION = TEMPOS.duracao;
+</script>
+</body></html>

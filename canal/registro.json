@@ -1,0 +1,135 @@
+{
+ "_como_usar": "Tudo o que foi publicado ou agendado. validar.py compara título, narração (trigramas) e assunto. publicar.py acrescenta e atualiza.",
+ "videos": [
+  {
+   "id": "01",
+   "data": "2026-10-07",
+   "horario": "08:38",
+   "serie": "Agente na Prática",
+   "titulo": "Como criar um agente de IA que responde seu WhatsApp",
+   "narracao": "Seu WhatsApp pode responder cliente e marcar horário sozinho. Enquanto você dorme. Isso é um agente de IA. E pra criar o seu, você só precisa pensar em quatro coisas. Um: objetivo. O que ele precisa fazer? Aqui: atender o cliente e marcar horário. Dois: contexto. Seus preços, seus horários, suas regras. Sem isso, ele inventa. Três: ferramentas. O WhatsApp pra conversar e a agenda pra ver os horários livres. Quatro: ação. Ele responde, marca na agenda e te avisa. E você decide o que ele pode fazer sozinho. Na prática: o cliente pergunta \"tem horário amanhã?\". O agente entende, olha a agenda e responde: \"Tenho às 10h ou às 15h. Qual prefere?\" Objetivo, contexto, ferramentas, ação. Salva esse vídeo e me segue pra ver o passo a passo.",
+   "video": "videos/01-agente-de-ia-final.mp4",
+   "registro": {
+    "tema": "criar agente de ia",
+    "chaves": [
+     "agente de ia",
+     "whatsapp",
+     "objetivo contexto ferramentas acao"
+    ]
+   },
+   "status": "publicado",
+   "links": {
+    "instagram": "https://www.instagram.com/reel/DeMRSRJE2Jf/",
+    "youtube": "https://www.youtube.com/shorts/K9IDfvF6jRk"
+   },
+   "agendador": "Metricool"
+  },
+  {
+   "id": "02",
+   "data": "2026-10-07",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Passo a passo: agente de IA no WhatsApp com n8n",
+   "narracao": "Prometi o passo a passo. Bora montar o agente que responde seu WhatsApp. Passo um: crie uma conta no n8n e abra um fluxo novo. Passo dois: coloque o gatilho do WhatsApp. Toda mensagem que chegar começa o fluxo. Passo três: conecte o nó Agente de IA e escolha o modelo, ChatGPT ou Gemini. Passo quatro: no prompt, escreva o objetivo e o contexto. Seus serviços, preços e horários. Passo cinco: dê a ferramenta Google Agenda pra ele consultar e marcar horários. Passo seis: ligue o envio de mensagem do WhatsApp pra ele responder. Testa mandando \"tem horário amanhã?\". Respondeu certo? Ativa o fluxo. O prompt pronto tá no comentário fixado. Salva e me segue pra mais agentes.",
+   "video": "videos/02-passo-a-passo-n8n-final.mp4",
+   "registro": {
+    "tema": "agente no whatsapp com n8n",
+    "chaves": [
+     "n8n",
+     "whatsapp",
+     "agente de ia",
+     "passo a passo"
+    ]
+   },
+   "status": "publicado",
+   "links": {
+    "instagram": "https://www.instagram.com/reel/DeNYshxD7gc/",
+    "youtube": "https://www.youtube.com/shorts/CBZAwiwIVyw"
+   },
+   "agendador": "Metricool"
+  },
+  {
+   "id": "03",
+   "data": "2026-10-08",
+   "horario": "12:00",
+   "serie": "Agente na Prática",
+   "titulo": "O que um agente de IA faz? 3 exemplos reais",
+   "narracao": "Todo mundo fala de agente de IA. Mas o que ele faz de verdade? Três exemplos. Um: atendimento. O cliente manda mensagem às onze da noite, e o agente responde, tira a dúvida e marca o horário. Dois: e-mail. Chegou um pedido de orçamento? O agente lê, resume e deixa a resposta pronta pra você só aprovar. Três: vendas. Alguém pediu o preço e sumiu? No dia seguinte, o agente manda o lembrete sozinho. A diferença pro chatbot comum: o agente não só conversa. Ele usa ferramentas e executa a tarefa. Qual desses você quer primeiro? Comenta aqui.",
+   "video": "videos/03-o-que-um-agente-faz-final.mp4",
+   "registro": {
+    "tema": "o que um agente de ia faz",
+    "chaves": [
+     "agente de ia",
+     "exemplos",
+     "atendimento",
+     "vendas"
+    ]
+   },
+   "status": "publicado",
+   "links": {},
+   "agendador": "Metricool"
+  },
+  {
+   "id": "04",
+   "data": "2026-10-08",
+   "horario": "19:00",
+   "serie": "Faça com IA",
+   "titulo": "Como criar um avatar com IA (seu clone que grava vídeo)",
+   "narracao": "Dá pra criar um clone seu que grava vídeo por você. Olha como. Passo um: grave dois minutos de você falando, olhando pra câmera, com boa luz e sem barulho. Passo dois: suba esse vídeo numa ferramenta de avatar, como o HeyGen. Ela aprende o seu rosto e a sua voz. Passo três: cole o roteiro. Em alguns minutos, o seu avatar entrega o vídeo pronto. Um cuidado: use só o seu rosto, ou o de quem te deu autorização. Salva esse vídeo e testa hoje.",
+   "video": "videos/04-avatar-com-ia-final.mp4",
+   "registro": {
+    "tema": "avatar com ia",
+    "chaves": [
+     "heygen",
+     "avatar",
+     "clone digital"
+    ]
+   },
+   "status": "publicado",
+   "links": {},
+   "agendador": "Metricool"
+  },
+  {
+   "id": "05",
+   "data": "2026-10-09",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Como criar um e-book com IA numa tarde (passo a passo)",
+   "narracao": "Dá pra criar um e-book inteiro com IA numa tarde. Olha o passo a passo. Um: escolha um problema real do seu público. Por exemplo: como organizar as finanças em trinta dias. Dois: peça pro ChatGPT o sumário. Dez capítulos curtos e práticos. Três: escreva capítulo por capítulo com a IA, e revise com a sua experiência. É isso que deixa o e-book com a sua cara. Quatro: monte no Canva, com um modelo de e-book, e exporte em PDF. Pronto. Pra vender, crie uma conta grátis na Hotmart ou na Kiwify. Você só paga uma taxa quando vende. Salva e me segue pra mais.",
+   "video": "videos/05-ebook-com-ia-final.mp4",
+   "registro": {
+    "tema": "e-book com ia",
+    "chaves": [
+     "ebook",
+     "chatgpt",
+     "canva",
+     "hotmart"
+    ]
+   },
+   "status": "publicado",
+   "links": {},
+   "agendador": "Metricool"
+  },
+  {
+   "id": "06",
+   "data": "2026-10-09",
+   "horario": "19:00",
+   "serie": "Faça com IA",
+   "titulo": "Como criar carrossel para Instagram com IA (em 10 minutos)",
+   "narracao": "Dá pra criar um carrossel pro Instagram em dez minutos com IA. Olha como. Um: peça pro ChatGPT o texto. Sete slides, um gancho forte no primeiro, uma ideia por slide e uma chamada no último. O prompt pronto está no comentário. Dois: abra o Canva e escolha um modelo de carrossel no tamanho do Instagram. Três: cole um texto em cada slide. Frase curta, letra grande, e troque as cores pelas da sua marca. Quatro: baixe em PNG e poste os slides na ordem. O ChatGPT e o Canva funcionam no plano grátis. Salva esse vídeo e me segue pra mais.",
+   "video": "videos/06-carrossel-instagram-final.mp4",
+   "registro": {
+    "tema": "carrossel para instagram com ia",
+    "chaves": [
+     "carrossel",
+     "instagram",
+     "chatgpt",
+     "canva"
+    ]
+   },
+   "status": "publicado",
+   "links": {},
+   "agendador": "Metricool"
+  }
+ ]
+}

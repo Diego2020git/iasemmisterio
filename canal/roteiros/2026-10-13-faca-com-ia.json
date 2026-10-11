@@ -1,0 +1,138 @@
+{
+  "id": "2026-10-13-faca-com-ia",
+  "serie": "Faça com IA",
+  "data": "2026-10-13",
+  "horario": "12:00",
+  "titulo": "IA que cria vídeo de graça todo dia (Google Flow)",
+  "descricao": "Vídeo com IA de graça, todo dia, no Google Flow 🎬\n1️⃣ Entre em labs.google/flow com sua conta Google: quem não assina ganha 50 créditos por dia\n2️⃣ Escolha o Veo 3.1 Lite: 10 créditos por vídeo, uns 5 vídeos por dia\n3️⃣ Descreva a cena em 4 partes: quem aparece, o que faz, a câmera e o estilo\nOs créditos grátis não acumulam de um dia pro outro.\nO modelo de prompt está no comentário fixado. Salva!\n\nFonte: Google Flow Help, \"Manage your AI Credits in Flow\" (support.google.com/flow/answer/16526234), conferido em 11/10/2026.\n\n#videocomia #googleflow #veo #inteligenciaartificial #ia #iagratis",
+  "hashtags": [
+    "videocomia",
+    "googleflow",
+    "veo",
+    "inteligenciaartificial",
+    "ia",
+    "iagratis"
+  ],
+  "comentario_fixado": "Modelo de prompt pro Flow (troque o que está entre colchetes):\n\n[Quem aparece] [fazendo o quê], [onde]. Câmera: [se aproximando devagar / girando em volta / parada]. Estilo: [cinema / animação 3D / documentário], luz [suave / de fim de tarde].\n\nExemplo: Um gato astronauta flutuando dentro de uma estação espacial. Câmera se aproximando devagar. Estilo cinema, luz suave.",
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "ia que cria videos gratis": {
+        "demanda_views_top10": 178818,
+        "concorrencia_canais_100k": 1
+      },
+      "como criar video com ia gratis": {
+        "demanda_views_top10": 108754,
+        "concorrencia_canais_100k": 3
+      },
+      "ia para fazer video": {
+        "demanda_views_top10": 220825,
+        "concorrencia_canais_100k": 4
+      }
+    }
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "Flow grátis: 50 créditos por dia, não acumulam",
+      "fonte": "https://support.google.com/flow/answer/16526234",
+      "conferido": "2026-10-11"
+    },
+    {
+      "dado": "Veo 3.1 Lite: 10 créditos por geração",
+      "fonte": "https://support.google.com/flow/answer/16526234",
+      "conferido": "2026-10-11"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "gerar vídeo com IA de graça",
+    "chaves": [
+      "google flow",
+      "veo",
+      "video com ia",
+      "gratis"
+    ]
+  },
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Dá pra criar vídeo com inteligência artificial de graça, todo dia.",
+          "legenda": "Dá pra criar vídeo com IA de graça, todo dia."
+        },
+        {
+          "fala": "A ferramenta é do Google e se chama Flow.",
+          "legenda": "A ferramenta é do Google e se chama Flow."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: entra no Flow com a sua conta Google.",
+          "legenda": "1: entra no Flow com a sua conta Google."
+        },
+        {
+          "fala": "Quem não assina ganha cinquenta créditos por dia.",
+          "legenda": "Quem não assina ganha 50 créditos por dia."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: escolhe o modelo Veo três ponto um Lite.",
+          "legenda": "2: escolhe o modelo Veo 3.1 Lite."
+        },
+        {
+          "fala": "Cada vídeo gasta dez créditos, então dá uns cinco vídeos por dia.",
+          "legenda": "Cada vídeo gasta 10 créditos, então dá uns 5 vídeos por dia."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: descreve a cena em quatro partes.",
+          "legenda": "3: descreve a cena em 4 partes."
+        },
+        {
+          "fala": "Quem aparece, o que faz, como a câmera se mexe e qual é o estilo.",
+          "legenda": "Quem aparece, o que faz, como a câmera se mexe e qual é o estilo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Por exemplo: um gato astronauta flutuando numa estação espacial,",
+          "legenda": "Por exemplo: um gato astronauta flutuando numa estação espacial,"
+        },
+        {
+          "fala": "câmera se aproximando devagar, estilo cinema.",
+          "legenda": "câmera se aproximando devagar, estilo cinema."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Os créditos grátis não acumulam, então usa todo dia.",
+          "legenda": "Os créditos grátis não acumulam, então usa todo dia."
+        },
+        {
+          "fala": "O modelo de prompt, o texto pronto, está no comentário. Salva e me segue.",
+          "legenda": "O modelo de prompt, o texto pronto, está no comentário. Salva e me segue."
+        }
+      ]
+    }
+  ],
+  "video": "videos/13-ia-video-gratis-raiox-final.mp4",
+  "fonte_html": "kit/13-ia-video-gratis-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir"
+}

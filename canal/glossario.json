@@ -1,0 +1,32 @@
+{
+  "_como_usar": "explicar=true: a frase da narração que cita o termo precisa ter uma das pistas (a explicação simples). explicar=false: palavra que o público já entende, liberada. Termo técnico novo entra aqui com a explicação antes de o vídeo passar.",
+  "termos": {
+    "inteligência artificial": {"explicar": false},
+    "ia": {"explicar": false},
+    "agente": {"explicar": false, "nota": "explicado nos vídeos 01 e 03: IA que usa ferramentas e executa a tarefa"},
+    "agentes": {"explicar": false},
+    "prompt": {"explicar": true, "pistas": ["texto pronto", "pedido", "instrução", "o que você escreve", "texto que você"]},
+    "prompts": {"explicar": true, "pistas": ["texto pronto", "pedido", "instrução", "o que você escreve", "texto que você"]},
+    "créditos": {"explicar": false},
+    "modelo": {"explicar": false},
+    "chatbot": {"explicar": true, "pistas": ["só conversa", "conversa", "robô de conversa"]},
+    "automação": {"explicar": false},
+    "fluxo": {"explicar": false},
+    "gatilho": {"explicar": true, "pistas": ["começa", "dispara", "toda mensagem"]},
+    "api": {"explicar": true, "pistas": ["conexão", "conecta", "ponte"]},
+    "webhook": {"explicar": true, "pistas": ["aviso", "avisa", "chama"]},
+    "token": {"explicar": true, "pistas": ["pedaço de texto", "pedaço"]},
+    "tokens": {"explicar": true, "pistas": ["pedaço de texto", "pedaço"]},
+    "llm": {"explicar": true, "pistas": ["modelo de linguagem", "cérebro"]},
+    "rag": {"explicar": true, "pistas": ["seus documentos", "consulta", "busca"]},
+    "mcp": {"explicar": true, "pistas": ["conector", "conecta", "tomada"]},
+    "workflow": {"explicar": true, "pistas": ["fluxo", "passo a passo", "sequência"]},
+    "plugin": {"explicar": true, "pistas": ["extensão", "complemento"]},
+    "crm": {"explicar": true, "pistas": ["cadastro de clientes", "lista de clientes"]},
+    "nuvem": {"explicar": false},
+    "app": {"explicar": false},
+    "link": {"explicar": false}
+  },
+  "suspeitos": ["api", "webhook", "token", "tokens", "llm", "rag", "mcp", "workflow", "plugin", "crm", "sdk", "json", "python", "script", "deploy", "framework", "backend", "frontend", "endpoint", "embedding", "embeddings", "vetor", "vetorial", "fine-tuning", "finetuning", "gpu", "servidor", "self-hosted", "open source", "código aberto", "multimodal", "prompt", "prompts", "chatbot", "gatilho", "nó"],
+  "liberados": ["chatgpt", "gemini", "google", "flow", "veo", "lite", "canva", "n8n", "whatsapp", "heygen", "hotmart", "kiwify", "notebooklm", "instagram", "youtube", "claude", "copilot", "meta", "pdf", "png"]
+}
