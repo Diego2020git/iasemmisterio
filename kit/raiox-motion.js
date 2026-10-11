@@ -80,7 +80,8 @@ function kinetic(words, x, y, lt, o = {}) {
     lay.push({ s, ww, x: cx, y: cy, t: wd.t, i }); cx += ww + gap;
   });
   lay.forEach(l => {
-    const p = prog(lt, l.t - .08, l.t + .32); if (p <= 0) return;
+    const ta = SCENE_I === 0 && o.gancho !== false ? -1 : l.t; // cena 0: título inteiro já no quadro 1, segura quem passa o dedo (Diego, 11/10)
+    const p = prog(lt, ta - .08, ta + .32); if (p <= 0) return;
     const e = easeOutBack(p), sc = lerp(1.25, 1, e), dy = (1 - smooth(p)) * size * .55, rot = 0; // palavras entram retas (Diego, 11/10)
     const hot = prog(lt, l.t, l.t + .05) * (1 - prog(lt, l.t + .45, l.t + .8)); // palavra falada agora: ciano por um instante
     const hl = (o.hl || []).includes(l.i);

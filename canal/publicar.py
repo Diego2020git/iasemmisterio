@@ -16,6 +16,7 @@ Regras:
   createScheduledPost do Metricool, depois roda --metricool-ok <id> <link_do_planner>. Sem cota no Metricool, use --so-buffer.
 - YouTube sempre pelo Buffer, com o prompt no fim da descrição. O comentário no YouTube é do Diego.
 - Todo post sai com o rótulo de conteúdo feito com IA.
+- Capa: rode canal/capa.py antes do commit; se videos/<nome>-capa.jpg estiver no GitHub, vai como thumbnailUrl.
 Precisa de BUFFER_API_KEY no ambiente.
 """
 import json, os, subprocess, sys, urllib.request
@@ -70,7 +71,11 @@ def com_prompt(texto, r):
 
 
 def criar(canal, r, url, due):
-    base = {"channelId": CANAIS[canal], "assets": [{"video": {"url": url}}], "mode": "customScheduled",
+    video = {"url": url}
+    capa = url.rsplit(".", 1)[0] + "-capa.jpg"  # canal/capa.py; sem ela, a plataforma usa o primeiro quadro
+    if link_ok(capa):
+        video["thumbnailUrl"] = capa
+    base = {"channelId": CANAIS[canal], "assets": [{"video": video}], "mode": "customScheduled",
             "dueAt": due, "schedulingType": "automatic", "aiAssisted": True, "source": "iasemmisterio/publicar.py"}
     if canal == "instagram":
         base["text"] = r["_legenda_ig"]
@@ -155,6 +160,9 @@ def publicar(caminho, so_buffer=False, substituir=False):
             "draft": False, "providers": [{"network": "instagram"}],
             "publicationDate": {"dateTime": local.strftime("%Y-%m-%dT%H:%M:%S"), "timezone": "America/Sao_Paulo"},
             "instagramData": {"type": "REEL", "showReelOnFeed": True, "isAiGenerated": True}}}
+        capa = url.rsplit(".", 1)[0] + "-capa.jpg"
+        if link_ok(capa):
+            pedido["info"]["videoThumbnailUrl"] = capa
         arq = CANAL / "metricool" / f"{r['id']}.json"
         json.dump(pedido, open(arq, "w"), ensure_ascii=False, indent=1)
         campos["metricool"] = {"instagram": "pendente"}
