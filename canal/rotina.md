@@ -9,7 +9,7 @@ Regras completas: /mnt/project-files/operacao/prompt-operacao-v2.md.
 |---|---|---|---|
 | Todos | 12h | Faça com IA | Uma tarefa do dia a dia resolvida com uma ferramenta que tem plano grátis. |
 | Todos | 19h | Agente na Prática | Agentes e automação: o que fazem, como montar, um caso real por vídeo. |
-| Sábado | 10h | Carrossel da Semana | Só no Instagram (escolha do Diego em 11/10). Resume o melhor tutorial da semana em 7 a 10 slides no traço Raio-X, com o prompt no último slide. Primeiro em 17/10, feito na produção de quarta. |
+| Sábado | 10h | Carrossel da Semana | Só no Instagram (escolha do Diego em 11/10). Resume o melhor tutorial da semana em 7 a 10 slides no traço Raio-X, com o prompt no último slide. Primeiro em 17/10, feito na produção de quarta. Teste em 11/10 15h (4 IAs grátis). Como fazer: HTML 1080x1350 em kit/carrossel-*.html (render(i) = slide i), `node kit/render.mjs pagina.html pasta stills 0,1,...`, JPGs em carrosseis/<data-slug>/, Buffer createPost com assets image e metadata.instagram.type post (testado, aceita 8 imagens). |
 
 Fuso America/Sao_Paulo. Instagram e YouTube no mesmo dia e horário.
 
