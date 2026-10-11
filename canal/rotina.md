@@ -37,7 +37,7 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 - **Vigia diária, 6h30:** lê a agenda real (`python3 canal/publicar.py --agenda 7` e getScheduledPosts do Metricool), confere série, dia, horário, vídeo e rótulo de IA, conserta, produz o slot que faltar e faz a checagem de véspera.
 - **Produção, domingo, quarta e sexta às 7h:** produz os slots vazios até encher a fila do Buffer (5 dias à frente).
 - **Mínimo de segurança:** hoje e os 3 dias seguintes sempre agendados.
-- A rotina antiga das 6h49 é apagada quando estas forem criadas.
+- Criadas em 11/10/2026, disparando no thread "Buffer: testar agendamento": vigia todo dia 6h27 e produção dom, qua e sex 6h52 (minutos deslocados para não cair na hora cheia). A rotina antiga das 6h49 foi apagada.
 
 ## Passo a passo de cada rodada
 
