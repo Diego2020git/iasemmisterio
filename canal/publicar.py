@@ -16,10 +16,12 @@ Regras:
   createScheduledPost do Metricool, depois roda --metricool-ok <id> <link_do_planner>. Sem cota no Metricool, use --so-buffer.
 - YouTube sempre pelo Buffer, com o prompt no fim da descrição. O comentário no YouTube é do Diego.
 - Todo post sai com o rótulo de conteúdo feito com IA.
-- Capa: rode canal/capa.py antes do commit; se videos/<nome>-capa.jpg estiver no GitHub, vai como thumbnailUrl.
+- Capa: o Instagram recebe thumbnailOffset no último quadro da abertura (canal/capa.py). O YouTube Shorts escolhe a capa sozinho;
+  a imagem videos/<nome>-capa.jpg serve para o Metricool (videoThumbnailUrl) e para conferir.
 Precisa de BUFFER_API_KEY no ambiente.
 """
 import json, os, subprocess, sys, urllib.request
+from capa import instante_capa
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -72,9 +74,8 @@ def com_prompt(texto, r):
 
 def criar(canal, r, url, due):
     video = {"url": url}
-    capa = url.rsplit(".", 1)[0] + "-capa.jpg"  # canal/capa.py; sem ela, a plataforma usa o primeiro quadro
-    if link_ok(capa):
-        video["thumbnailUrl"] = capa
+    if canal == "instagram":  # capa = último quadro da abertura (canal/capa.py); o Buffer só aceita o instante, e só no Instagram
+        video["metadata"] = {"thumbnailOffset": int(instante_capa(r) * 1000)}
     base = {"channelId": CANAIS[canal], "assets": [{"video": video}], "mode": "customScheduled",
             "dueAt": due, "schedulingType": "automatic", "aiAssisted": True, "source": "iasemmisterio/publicar.py"}
     if canal == "instagram":
