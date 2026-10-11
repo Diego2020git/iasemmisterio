@@ -48,6 +48,7 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 4. Voz: Google Cloud TTS, voz escolhida pelo Diego, velocidade 1,06, WAV 24 kHz mono, loudnorm -14 LUFS, por cena. Anotar caracteres gastos no mês.
 4b. `python3 kit/voz.py canal/roteiros/X.json kit/audio/NN-slug` (gera .wav e .tempos.js).
 5. Montagem com o kit Raio-X de kit/ (raiox-kit.js + raiox-motion.js, cue() sincroniza com a fala): `node kit/render.mjs kit/NN-slug-raiox.html videos/NN-slug-raiox-final.mp4 kit/audio/NN-slug.wav`.
+   - Regras de forma (Diego, 11/10): nada torto nem sobreposto. Câmera não gira, objeto 3D fica em vista fixa (sem rodar), selo reto, troca de forma por encolher e crescer (sem deformar), transição por varredura. Objeto achatado (celular, papel) vai em traço 2D, não em 3D. Antes de renderizar, conferir a folha de quadros a cada 1,5 s: nada cortado na borda, nenhum texto em cima de forma.
 6. `python3 canal/validar.py canal/roteiros/X.json` (antes da voz, use `--sem-mp4`). Se barrar, corrigir e rodar de novo.
 7. MP4 em videos/ do repositório, commit e push.
 8. `python3 canal/publicar.py canal/roteiros/X.json`: valida de novo, confere o link raw e agenda no Buffer com rótulo de IA. Se imprimir que o Instagram vai pelo Metricool, agendar com createScheduledPost usando canal/metricool/<id>.json e rodar `--metricool-ok <id> <plannerUrl>`. Se o Buffer recusar, agendar tudo pelo Metricool e anotar aqui.
