@@ -1,0 +1,123 @@
+{
+  "id": "2026-10-14-agente-na-pratica",
+  "serie": "Agente na Prática",
+  "data": "2026-10-14",
+  "horario": "19:00",
+  "titulo": "Agente de IA que separa o cliente pronto pra comprar",
+  "descricao": "Agente de vendas: ele conversa com todo mundo e te passa só quem está pronto 👇\n1️⃣ Faz 3 perguntas: o que precisa, para quando e quanto quer investir\n2️⃣ Dá uma nota pra cada contato: quente, morno ou frio\n3️⃣ Quente vai pra você com o resumo. Morno recebe um lembrete. Frio recebe conteúdo.\nVocê para de gastar tempo com quem só estava olhando.\nSalva e me segue pra montar o seu.\n\nFonte: exemplo montado pelo canal, sem números de terceiros.\n\n#agentedeia #vendas #inteligenciaartificial #automacao #ia",
+  "hashtags": [
+    "agentedeia",
+    "vendas",
+    "inteligenciaartificial",
+    "automacao",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "agente de ia para atendimento": {
+        "demanda_views_top10": 199918,
+        "concorrencia_canais_100k": 3
+      },
+      "agente de ia gratis": {
+        "demanda_views_top10": 741037,
+        "concorrencia_canais_100k": 6
+      }
+    }
+  },
+  "dados_que_envelhecem": [],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "agente de vendas que qualifica contatos",
+    "chaves": [
+      "vendas",
+      "qualificar",
+      "quente morno frio",
+      "lead"
+    ]
+  },
+  "video": "videos/2026-10-14-19h-agente-vendas-raiox.mp4",
+  "fonte_html": "kit/2026-10-14-19h-agente-vendas-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "20",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Você perde tempo respondendo quem só está olhando?",
+          "legenda": "Você perde tempo respondendo quem só está olhando?"
+        },
+        {
+          "fala": "Um agente de vendas resolve isso.",
+          "legenda": "Um agente de vendas resolve isso."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Ele conversa com cada contato e faz três perguntas.",
+          "legenda": "Ele conversa com cada contato e faz 3 perguntas."
+        },
+        {
+          "fala": "O que precisa, pra quando e quanto quer investir.",
+          "legenda": "O que precisa, pra quando e quanto quer investir."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Com as respostas, ele dá uma nota.",
+          "legenda": "Com as respostas, ele dá uma nota."
+        },
+        {
+          "fala": "Quente, morno ou frio.",
+          "legenda": "Quente, morno ou frio."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Quente vai direto pra você, com o resumo da conversa.",
+          "legenda": "Quente vai direto pra você, com o resumo da conversa."
+        },
+        {
+          "fala": "Morno recebe um lembrete em dois dias. Frio recebe conteúdo.",
+          "legenda": "Morno recebe um lembrete em 2 dias. Frio recebe conteúdo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Você para de perder tempo e só fala com quem está pronto pra comprar.",
+          "legenda": "Você para de perder tempo e só fala com quem está pronto pra comprar."
+        },
+        {
+          "fala": "E as perguntas e as notas, quem define é você, nas regras do agente.",
+          "legenda": "E as perguntas e as notas, quem define é você, nas regras do agente."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Perguntar, separar e passar pra você. Isso é um agente de vendas.",
+          "legenda": "Perguntar, separar e passar pra você. Isso é um agente de vendas."
+        },
+        {
+          "fala": "Salva e me segue pra montar o seu.",
+          "legenda": "Salva e me segue pra montar o seu."
+        }
+      ]
+    }
+  ]
+}

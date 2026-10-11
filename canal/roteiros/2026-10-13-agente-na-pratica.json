@@ -1,0 +1,119 @@
+{
+  "id": "2026-10-13-agente-na-pratica",
+  "serie": "Agente na Prática",
+  "data": "2026-10-13",
+  "horario": "19:00",
+  "titulo": "Agente de atendimento que sabe a hora de chamar você",
+  "descricao": "O agente de atendimento bom não responde tudo 👇\n1️⃣ Pergunta simples (horário, preço, endereço): ele responde na hora\n2️⃣ Cliente irritado ou pedido fora da regra: ele passa pra você, com o resumo da conversa\n3️⃣ Você entra já sabendo o que aconteceu, sem o cliente repetir tudo\nA regra de quando chamar um humano é você que escreve.\nSalva e me segue pra montar o seu.\n\nFonte: exemplo montado pelo canal, sem números de terceiros.\n\n#agentedeia #atendimento #inteligenciaartificial #whatsapp #ia",
+  "hashtags": [
+    "agentedeia",
+    "atendimento",
+    "inteligenciaartificial",
+    "whatsapp",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "agente de ia para atendimento": {
+        "demanda_views_top10": 199918,
+        "concorrencia_canais_100k": 3
+      }
+    }
+  },
+  "dados_que_envelhecem": [],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "agente de atendimento que passa para humano",
+    "chaves": [
+      "atendimento",
+      "humano",
+      "transferência",
+      "resumo"
+    ]
+  },
+  "video": "videos/2026-10-13-19h-agente-chama-humano-raiox.mp4",
+  "fonte_html": "kit/2026-10-13-19h-agente-chama-humano-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "18",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "O melhor agente de atendimento não é o que responde tudo.",
+          "legenda": "O melhor agente de atendimento não é o que responde tudo."
+        },
+        {
+          "fala": "É o que sabe a hora de chamar você.",
+          "legenda": "É o que sabe a hora de chamar você."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Pergunta simples, tipo horário, preço ou endereço?",
+          "legenda": "Pergunta simples, tipo horário, preço ou endereço?"
+        },
+        {
+          "fala": "O agente responde na hora, de madrugada ou no domingo.",
+          "legenda": "O agente responde na hora, de madrugada ou no domingo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Mas o cliente chegou irritado, ou pediu algo fora da regra?",
+          "legenda": "Mas o cliente chegou irritado, ou pediu algo fora da regra?"
+        },
+        {
+          "fala": "Aí o agente para e passa a conversa pra você.",
+          "legenda": "Aí o agente para e passa a conversa pra você."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E não passa de qualquer jeito: manda um resumo.",
+          "legenda": "E não passa de qualquer jeito: manda um resumo."
+        },
+        {
+          "fala": "Quem é o cliente, o que ele quer e o que já foi dito.",
+          "legenda": "Quem é o cliente, o que ele quer e o que já foi dito."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Você entra sabendo de tudo, e o cliente não repete nada.",
+          "legenda": "Você entra sabendo de tudo, e o cliente não repete nada."
+        },
+        {
+          "fala": "Quem decide quando chamar um humano é você, nas regras do agente.",
+          "legenda": "Quem decide quando chamar um humano é você, nas regras do agente."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O agente cuida do simples. Você cuida do importante.",
+          "legenda": "O agente cuida do simples. Você cuida do importante."
+        },
+        {
+          "fala": "Salva e me segue pra montar o seu.",
+          "legenda": "Salva e me segue pra montar o seu."
+        }
+      ]
+    }
+  ]
+}

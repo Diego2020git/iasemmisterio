@@ -1,0 +1,120 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-13-19h-agente-chama-humano.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="raiox-motion.js"></script>
+<script>
+// 13/10/2026 · Agente na Prática · agente de atendimento que sabe a hora de chamar você. Tempos em TEMPOS (voz.py).
+const EP = '18';
+const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
+// celular em traço com a tela onde a conversa acontece
+function phone(x, y, w, h, a) {
+  if (a <= 0) return;
+  ctx.save(); ctx.strokeStyle = COL.ink; ctx.lineWidth = 5;
+  draw(a, 2 * (w + h), () => { rr(x, y, w, h, 46); ctx.stroke(); });
+  ctx.globalAlpha = prog(a, .5, 1); ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(x + w / 2 - 50, y + 34); ctx.lineTo(x + w / 2 + 50, y + 34); ctx.stroke();
+  ctx.restore();
+}
+function chip(x, y, str, a, color = COL.ink, right = false) {
+  if (a <= 0) return;
+  const w = measure(str, ARC, 32, 600) + 56, xx = right ? x - w : x;
+  ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.strokeStyle = color; ctx.lineWidth = 3;
+  draw(clamp(a), 2 * w + 140, () => { rr(xx, y - 34, w, 68, 30); ctx.stroke(); });
+  txt(str, xx + 28, y + 1, ARC, 32, COL.ink, { weight: 600, alpha: prog(a, .3, 1) }); ctx.restore();
+}
+// pessoa em traço (cabeça + ombros)
+function person(cx, cy, r, a, color = COL.ink) {
+  if (a <= 0) return;
+  ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 5;
+  draw(a, 2 * Math.PI * r * 2.2, () => { ctx.beginPath(); ctx.arc(cx, cy - r * .5, r * .45, 0, 7); ctx.stroke(); ctx.beginPath(); ctx.arc(cx, cy + r * 1.05, r * .95, Math.PI * 1.12, Math.PI * 1.88); ctx.stroke(); });
+  ctx.restore();
+}
+
+// 0 · gancho: "responde tudo" riscado; o agente aponta para você
+CAMS[0] = () => [[0, 0, 30, 1.06, -1], [1, 0, 0, 1, 0], [cue('você') + .3, 0, 30, 1.03, .5]];
+function s0(t, lt) {
+  kinetic([{ w: 'Responde', t: cue('responde') }, { w: 'tudo?', t: cue('tudo') }], M, 260, lt, { size: 100 });
+  const w = measure('RESPONDE TUDO?', EXP, 100);
+  strike(M - 10, 280, Math.min(W - 2 * M, w), prog(lt, cue('sabe') - .2, cue('sabe') + .3));
+  wire(Mesh.box(1, 1, 1), { x: 330, y: 880, s: 220, rx: -.4, ry: lt * .9, d: 4 }, prog(lt, cue('agente') - .1, cue('agente') + .6), COL.cyan, 3);
+  person(760, 860, 140, prog(lt, cue('chamar') - .1, cue('chamar') + .5), COL.ink);
+  const ar = prog(lt, cue('chamar'), cue('você') + .3);
+  if (ar > 0) draw(ar, 400, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(470, 880); ctx.lineTo(600, 880); ctx.moveTo(575, 855); ctx.lineTo(600, 880); ctx.lineTo(575, 905); ctx.stroke(); ctx.restore(); });
+  stamp(W / 2, 1220, 'sabe a hora de chamar você', prog(lt, cue('você'), cue('você') + .35), 32);
+}
+// 1 · perguntas simples: chips de horário, preço e endereço respondidos na hora; relógio de madrugada e "DOM"
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('domingo'), 0, 40, 1.04, .4]];
+function s1(t, lt) {
+  title(['Simples'], lt, .05, 200, 92);
+  fig('fig. 02 · o agente responde', lt, .2, 320);
+  phone(M + 60, 400, W - 2 * M - 120, 860, prog(lt, 0, .6));
+  [['horário', 'Que horas abre?', 'Das 9h às 18h.'], ['preço', 'Quanto é o corte?', 'R$ 40.'], ['endereço', 'Onde fica?', 'Rua das Flores, 10.']].forEach(([w, q, r], i) => {
+    const y = 500 + i * 230, a = prog(lt, cue(w) - .15, cue(w) + .35), b = prog(lt, cue('responde') + i * .25, cue('responde') + .4 + i * .25);
+    chip(W - M - 100, y, q, a, COL.ink, true);
+    chip(M + 100, y + 95, r, b, COL.cyan);
+  });
+  const clk = prog(lt, cue('madrugada') - .1, cue('madrugada') + .3);
+  if (clk > 0) txt('03:12', W - M - 20, 360, EXP, 44, COL.cyan, { align: 'right', alpha: clk });
+  stamp(W - M - 120, 1310, 'domingo', prog(lt, cue('domingo'), cue('domingo') + .35), 30);
+}
+// 2 · fora da regra: balão vermelho chega, o trilho da conversa desvia do agente para você
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('passa') - .2, 0, 0, 1, 0], [cue('você') + .3, 40, 50, 1.05, -.5]];
+function s2(t, lt) {
+  title(['Fora da regra'], lt, .05, 200, 80);
+  fig('fig. 03 · o agente para', lt, .2, 320);
+  chip(M, 470, 'Já é a terceira vez que dá errado!', prog(lt, cue('irritado') - .2, cue('irritado') + .4), COL.red);
+  chip(M, 580, 'Quero um desconto especial.', prog(lt, cue('fora') - .2, cue('regra') + .3), COL.red);
+  const sw = easeInOut(prog(lt, cue('para') - .1, cue('passa') + .4));
+  const ox = W / 2, oy = 760;
+  ctx.save(); ctx.strokeStyle = COL.dim; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ox, oy + 120); ctx.stroke();
+  ctx.strokeStyle = COL.cyan; ctx.beginPath(); ctx.moveTo(ox, oy + 120); ctx.lineTo(lerp(ox - 250, ox + 250, sw), oy + 330); ctx.stroke(); ctx.restore();
+  wire(Mesh.box(1, 1, 1), { x: ox - 250, y: oy + 450, s: 150, rx: -.4, ry: lt * .9, d: 4 }, prog(lt, 0, .6), sw > .5 ? COL.dim : COL.cyan, 3);
+  person(ox + 250, oy + 440, 110, prog(lt, cue('passa') - .2, cue('passa') + .4), sw > .5 ? COL.cyan : COL.ink);
+  txt('AGENTE', ox - 250, oy + 600, ARC, 26, COL.dim, { align: 'center', weight: 600, ls: 4, alpha: prog(lt, .3, .6) });
+  txt('VOCÊ', ox + 250, oy + 600, ARC, 26, COL.cyan, { align: 'center', weight: 600, ls: 4, alpha: prog(lt, cue('você') - .2, cue('você') + .2) });
+}
+// 3 · o resumo: ficha com cliente, pedido e histórico, preenchida no ritmo da fala
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('dito'), 0, 40, 1.04, .4]];
+function s3(t, lt) {
+  title(['Resumo'], lt, .05, 200, 92, 0);
+  fig('fig. 04 · passagem para você', lt, .2, 320);
+  panel(M, 430, W - 2 * M, 720, prog(lt, cue('resumo') - .2, cue('resumo') + .5), 'resumo da conversa');
+  [['quem', 'CLIENTE', 'Ana Souza, cliente desde 2024'], ['quer', 'QUER', 'Refazer o serviço sem custo'], ['dito', 'JÁ FOI DITO', 'Problema na entrega, 2ª vez']].forEach(([w, l, v], i) => {
+    const a = prog(lt, cue(w) - .15, cue(w) + .5), y = 540 + i * 200;
+    txt(l, M + 40, y, ARC, 24, COL.cyan, { weight: 600, ls: 4, alpha: a });
+    txt(typed(v, a), M + 40, y + 60, ARC, 40, COL.ink, { weight: 600 });
+    if (i < 2) { ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = COL.dim; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(M + 40, y + 120); ctx.lineTo(W - M - 40, y + 120); ctx.stroke(); ctx.restore(); }
+  });
+}
+// 4 · você entra sabendo; o painel de regras mostra quem decide
+CAMS[4] = () => [[0, 0, 0, 1, 0], [cue('regras'), 0, 40, 1.04, -.4]];
+function s4(t, lt) {
+  title(['Você decide'], lt, .05, 200, 84);
+  fig('fig. 05 · regras do agente', lt, .2, 320);
+  person(260, 620, 130, prog(lt, cue('entra') - .1, cue('entra') + .5), COL.cyan);
+  chip(430, 560, 'Oi Ana, já vi tudo.', prog(lt, cue('sabendo') - .1, cue('sabendo') + .4), COL.cyan);
+  chip(430, 680, 'Nada a repetir ✓', prog(lt, cue('repete') - .1, cue('repete') + .4));
+  const r = prog(lt, cue('decide') - .2, cue('regras') + .3);
+  panel(M, 880, W - 2 * M, 380, r, 'regras · chamar um humano');
+  ['Cliente irritado', 'Pedido de desconto', 'Reclamação repetida'].forEach((s, i) => {
+    const a = prog(lt, cue('humano') + i * .2, cue('humano') + .3 + i * .2);
+    txt('→ ' + s, M + 40, 960 + i * 90, ARC, 38, COL.ink, { weight: 600, alpha: a });
+  });
+}
+// 5 · fecha: simples x importante; card final
+CAMS[5] = () => [[0, 0, 30, 1.05, 0], [cue('importante'), 0, 0, 1, 0]];
+function s5(t, lt) {
+  kinetic([{ w: 'Agente:', t: cue('agente') }, { w: 'o simples', t: cue('simples') }], M, 220, lt, { size: 62, maxW: 1000 });
+  kinetic([{ w: 'Você:', t: cue('você') }, { w: 'o importante', t: cue('importante') }], M, 320, lt, { size: 62, hl: [1], maxW: 1000 });
+  endCard(t, SC[5] + cue('salva') - .25);
+}
+const SCENES = [s0, s1, s2, s3, s4, s5];
+window.DURATION = TEMPOS.duracao;
+</script>
+</body></html>

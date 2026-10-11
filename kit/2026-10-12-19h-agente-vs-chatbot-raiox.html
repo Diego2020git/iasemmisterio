@@ -1,0 +1,118 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-12-19h-agente-vs-chatbot.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="raiox-motion.js"></script>
+<script>
+// 12/10/2026 · Agente na Prática · chatbot conversa, agente resolve (marcar reunião com o João). Tempos em TEMPOS (voz.py).
+const EP = '17';
+const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
+// balão de conversa em traço com texto
+function bubble(x, y, w, str, a, right = false, color = COL.ink) {
+  if (a <= 0) return 0;
+  const lines = wrap(str, w - 60, ARC, 34, 600), h = lines.length * 48 + 44;
+  ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.strokeStyle = color; ctx.lineWidth = 4;
+  draw(clamp(a), 2 * (w + h) + 60, () => { rr(x, y, w, h, 22); ctx.stroke(); ctx.beginPath(); const bx = right ? x + w - 40 : x + 40; ctx.moveTo(bx - 14, y + h); ctx.lineTo(bx, y + h + 26); ctx.lineTo(bx + 14, y + h); ctx.stroke(); });
+  lines.forEach((l, i) => txt(l, x + 30, y + 44 + i * 48, ARC, 34, COL.ink, { weight: 600, alpha: prog(a, .4, 1) }));
+  ctx.restore(); return h;
+}
+// semana em grade: 5 dias x 4 horários; livres em ciano
+function week(x, y, w, h, a, free, pick = -1, pickP = 0) {
+  panel(x, y, w, h, a, 'agenda');
+  const days = ['SEG', 'TER', 'QUA', 'QUI', 'SEX'], cw = (w - 60) / 5, ch = (h - 110) / 4;
+  days.forEach((d, i) => {
+    txt(d, x + 30 + i * cw + cw / 2, y + 45, ARC, 22, i === 3 ? COL.cyan : COL.dim, { align: 'center', weight: 600, ls: 3, alpha: a });
+    for (let j = 0; j < 4; j++) {
+      const k = i * 4 + j, cx = x + 30 + i * cw + 6, cy = y + 80 + j * ch, f = free.includes(k);
+      ctx.save(); ctx.globalAlpha = prog(a, .4 + k * .01, .8 + k * .01);
+      ctx.strokeStyle = f ? COL.cyan : COL.dim; ctx.lineWidth = 2; ctx.strokeRect(cx, cy, cw - 12, ch - 10);
+      if (!f) { ctx.fillStyle = 'rgba(124,147,196,.22)'; ctx.fillRect(cx, cy, cw - 12, ch - 10); }
+      if (k === pick && pickP > 0) { ctx.fillStyle = COL.cyan; ctx.globalAlpha *= pickP; ctx.fillRect(cx, cy, cw - 12, ch - 10); }
+      ctx.restore();
+    }
+  });
+}
+
+// 0 · gancho: balão (chatbot) x cubo (agente) lado a lado; "conversa" x "resolve"
+CAMS[0] = () => [[0, 0, 30, 1.06, -1], [1, 0, 0, 1, 0], [cue('resolve') + .2, 0, 30, 1.03, .5]];
+function s0(t, lt) {
+  kinetic([{ w: 'Chatbot', t: cue('chatbot') }, { w: '≠', t: cue('agente') - .2 }, { w: 'agente', t: cue('agente') }], M, 230, lt, { size: 100, hl: [2] });
+  const a = prog(lt, cue('chatbot') - .1, cue('chatbot') + .6), b = prog(lt, cue('agente') - .1, cue('agente') + .6);
+  strokeShape(morphSeq([[0, shape('circle', 300, 760, 150)], [.6, shape('rect', 300, 760, 0, { w: 320, h: 220 })]], lt), { color: COL.ink, lw: 5, p: a });
+  if (a > .5) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = COL.ink; [250, 300, 350].forEach((x, i) => { ctx.beginPath(); ctx.arc(x, 760, 14 + 4 * Math.sin(lt * 6 + i), 0, 7); ctx.fill(); }); ctx.restore(); }
+  wire(Mesh.box(1, 1, 1), { x: 780, y: 760, s: 230, rx: -.4, ry: lt * .9, d: 4 }, b, COL.cyan, 3);
+  txt('CHATBOT', 300, 960, ARC, 28, COL.dim, { align: 'center', weight: 600, ls: 4, alpha: a });
+  txt('AGENTE', 780, 960, ARC, 28, COL.cyan, { align: 'center', weight: 600, ls: 4, alpha: b });
+  kinetic([{ w: 'conversa', t: cue('conversa', 2) }], 140, 1120, lt, { size: 56 });
+  kinetic([{ w: 'resolve', t: cue('resolve') }], 640, 1120, lt, { size: 56, hl: [0] });
+}
+// 1 · pede pro chatbot: balão do pedido, resposta com passo a passo e um "fim" seco
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('para'), 0, 40, 1.04, -.5]];
+function s1(t, lt) {
+  title(['Chatbot'], lt, .05, 200, 92);
+  fig('fig. 02 · só conversa', lt, .2, 320);
+  bubble(W - M - 640, 430, 640, 'Marca uma reunião com o João na quinta.', prog(lt, cue('marca') - .2, cue('quinta') + .2), true, COL.cyan);
+  bubble(M, 720, 700, 'Claro! Abra sua agenda, escolha um horário e envie um convite para o João.', prog(lt, cue('explica') - .1, cue('marcar') + .4));
+  const fim = prog(lt, cue('para') - .1, cue('para') + .3);
+  stamp(W / 2, 1180, 'e para aí', fim, 40);
+  if (fim > 0) { const o = { x: W / 2, y: 1000, s: 1 }; strokeShape(morph(shape('circle', W / 2, 1010, 60), shape('square', W / 2, 1010, 50), fim), { color: COL.red, lw: 6 }); }
+}
+// 2 · pede pro agente: o cubo abre a agenda e varre a quinta até achar o horário livre
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('livre') - .2, 0, 0, 1, 0], [cue('livre') + .6, 60, 60, 1.06, .4]];
+function s2(t, lt) {
+  title(['Agente'], lt, .05, 200, 92, 0);
+  fig('fig. 03 · usa a sua agenda', lt, .2, 320);
+  wire(Mesh.box(1, 1, 1), { x: W - M - 90, y: 230, s: 120, rx: -.4, ry: lt * .9, d: 4 }, prog(lt, 0, .6), COL.cyan, 3);
+  const a = prog(lt, cue('abre') - .1, cue('agenda') + .4);
+  const scan = prog(lt, cue('acha') - .1, cue('livre') + .2), pick = 12 + Math.min(3, Math.floor(scan * 3.99));
+  week(M, 430, W - 2 * M, 640, a, [2, 6, 14, 17], scan >= 1 ? 14 : pick, scan > 0 ? (scan >= 1 ? 1 : .5) : 0);
+  annot(M + 30 + 3 * ((W - 2 * M - 60) / 5) + 70, 430 + 80 + 2 * ((640 - 110) / 4) + 30, 860, 1180, 'quinta, livre', prog(lt, cue('livre'), cue('livre') + .4), 'L', COL.cyan);
+}
+// 3 · confere a agenda do João, confirma às 15h e o convite sai por e-mail
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('convite'), 0, 40, 1.04, -.4]];
+function s3(t, lt) {
+  title(['Confirma'], lt, .05, 200, 92);
+  fig('fig. 04 · duas agendas, um horário', lt, .2, 320);
+  const a = prog(lt, cue('olha') - .1, cue('joão') + .4), c = prog(lt, cue('confirma') - .1, cue('15h') + .3);
+  panel(M, 430, 400, 300, prog(lt, 0, .5), 'você');
+  panel(W - M - 400, 430, 400, 300, a, 'joão');
+  [M, W - M - 400].forEach((x, i) => { const al = i ? a : prog(lt, 0, .5); for (let j = 0; j < 4; j++) { ctx.save(); ctx.globalAlpha = al; ctx.strokeStyle = j === 2 && c > 0 ? COL.cyan : COL.dim; ctx.lineWidth = 3; ctx.strokeRect(x + 30, 470 + j * 62, 340, 48); if (j === 2 && c > 0) { ctx.fillStyle = 'rgba(46,230,255,.25)'; ctx.fillRect(x + 30, 470 + j * 62, 340 * c, 48); } ctx.restore(); } });
+  if (c > 0) { draw(c, 400, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(M + 400, 619); ctx.lineTo(W - M - 400, 619); ctx.stroke(); ctx.restore(); }); }
+  odometer(15 * easeInOut(c), 2, W / 2 - 150, 880, 150);
+  txt('h', W / 2 + 80, 880, EXP, 110, COL.cyan, { alpha: c });
+  const e = prog(lt, cue('convite') - .1, cue('email') + .6);
+  envelope(lerp(W / 2 - 120, W + 100, easeInOut(prog(lt, cue('email') + .3, cue('email') + 1.2))), 1080, 240, 160, e);
+  stamp(W / 2, 1330, 'convite enviado', prog(lt, cue('email') + .5, cue('email') + .9), 34);
+}
+// 4 · o que muda: ferramentas orbitam o cubo do agente; o balão do chatbot fica sozinho
+CAMS[4] = () => [[0, 0, 0, 1, 0], [cue('chatbot') - .2, 0, 0, 1, 0], [cue('conversa') + .3, 0, 40, 1.04, .5]];
+function s4(t, lt) {
+  kinetic([{ w: 'Ferramentas', t: cue('ferramentas') }, { w: '+ permissão', t: cue('permissão') }], M, 230, lt, { size: 84, hl: [1] });
+  const cx = W / 2, cy = 820;
+  wire(Mesh.box(1, 1, 1), { x: cx, y: cy, s: 200, rx: -.4, ry: lt * .9, d: 4 }, prog(lt, 0, .6), COL.cyan, 3);
+  [['agenda', 'AGENDA'], ['email', 'E-MAIL'], ['planilha', 'PLANILHA']].forEach(([w, l], i) => {
+    const a = prog(lt, cue(w) - .1, cue(w) + .4), ang = -Math.PI / 2 + i * 2 * Math.PI / 3 + lt * .4, x = cx + Math.cos(ang) * 330, y = cy + Math.sin(ang) * 250;
+    if (a <= 0) return;
+    draw(a, 400, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y); ctx.stroke(); ctx.restore(); });
+    panel(x - 110, y - 40, 220, 80, a); txt(l, x, y + 2, ARC, 28, COL.ink, { align: 'center', weight: 600, ls: 3, alpha: a });
+  });
+  const cb = prog(lt, cue('chatbot') - .1, cue('chatbot') + .4);
+  bubble(M, 1180, 360, 'só conversa', cb);
+}
+// 5 · fecha: responde x executa, e o card final
+CAMS[5] = () => [[0, 0, 30, 1.05, 0], [cue('executa'), 0, 0, 1, 0]];
+function s5(t, lt) {
+  kinetic([{ w: 'Chatbot', t: cue('chatbot') }, { w: 'responde', t: cue('responde') }], M, 230, lt, { size: 80, maxW: 1000 });
+  kinetic([{ w: 'Agente', t: cue('agente') }, { w: 'executa', t: cue('executa') }], M, 340, lt, { size: 80, hl: [1], maxW: 1000 });
+  endCard(t, SC[5] + cue('salva') - .25);
+}
+const SCENES = [s0, s1, s2, s3, s4, s5];
+window.DURATION = TEMPOS.duracao;
+</script>
+</body></html>

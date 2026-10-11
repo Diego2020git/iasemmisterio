@@ -1,0 +1,141 @@
+{
+  "id": "2026-10-12-faca-com-ia",
+  "serie": "Faça com IA",
+  "data": "2026-10-12",
+  "horario": "12:00",
+  "titulo": "Qual IA usar pra cada tarefa (todas com plano grátis)",
+  "descricao": "Não existe uma melhor IA. Existe a melhor pra cada tarefa 👇\n✍️ Texto, e-mail e ideias: ChatGPT (chatgpt.com)\n🎨 Imagem: Gemini (gemini.google.com)\n📚 Estudar com o seu material: NotebookLM (notebooklm.google)\n🎬 Vídeo: Google Flow (labs.google/flow)\nAs quatro têm plano grátis, com limite de uso por dia.\nSalva pra consultar depois!\n\nFonte: sites oficiais das ferramentas. Planos grátis conferidos em 11/10/2026 (Engadget sobre o ChatGPT grátis, ago/2026; Google Flow Help; TechRadar sobre o NotebookLM; DataCamp sobre imagens no Gemini).\n\n#qualamelhoria #chatgpt #gemini #notebooklm #inteligenciaartificial #ia",
+  "hashtags": [
+    "qualamelhoria",
+    "chatgpt",
+    "gemini",
+    "notebooklm",
+    "inteligenciaartificial",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "qual a melhor ia": {
+        "demanda_views_top10": 746338,
+        "concorrencia_canais_100k": 5
+      }
+    }
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "ChatGPT tem plano grátis",
+      "fonte": "https://engadget.com/2234173/chatgpt-free-features-2026",
+      "conferido": "2026-10-11"
+    },
+    {
+      "dado": "Gemini grátis gera imagens com limite diário",
+      "fonte": "https://www.datacamp.com/blog/best-free-ai-image-generators",
+      "conferido": "2026-10-11"
+    },
+    {
+      "dado": "NotebookLM tem plano grátis",
+      "fonte": "https://www.techradar.com/pro/notebooklm-review",
+      "conferido": "2026-10-11"
+    },
+    {
+      "dado": "Flow grátis: créditos diários",
+      "fonte": "https://support.google.com/flow/answer/16526234",
+      "conferido": "2026-10-11"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "qual ia usar para cada tarefa",
+    "chaves": [
+      "melhor ia",
+      "comparativo",
+      "cada tarefa",
+      "ferramentas gratis"
+    ]
+  },
+  "video": "videos/2026-10-12-12h-qual-ia-usar-raiox.mp4",
+  "fonte_html": "kit/2026-10-12-12h-qual-ia-usar-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "16",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Qual é a melhor inteligência artificial? Depende da tarefa.",
+          "legenda": "Qual é a melhor IA? Depende da tarefa."
+        },
+        {
+          "fala": "Aqui vão quatro, uma pra cada coisa, e todas têm plano grátis.",
+          "legenda": "Aqui vão 4, uma pra cada coisa, e todas têm plano grátis."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Pra escrever texto, e-mail ou ideia de post: ChatGPT.",
+          "legenda": "Pra escrever texto, e-mail ou ideia de post: ChatGPT."
+        },
+        {
+          "fala": "Você explica o que quer, ele escreve o rascunho.",
+          "legenda": "Você explica o que quer, ele escreve o rascunho."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Pra criar imagem: Gemini, do Google.",
+          "legenda": "Pra criar imagem: Gemini, do Google."
+        },
+        {
+          "fala": "Descreve a cena e ele desenha em segundos.",
+          "legenda": "Descreve a cena e ele desenha em segundos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Pra estudar com o seu próprio material: Notebook L M.",
+          "legenda": "Pra estudar com o seu próprio material: NotebookLM."
+        },
+        {
+          "fala": "Ele responde só com o que você subiu.",
+          "legenda": "Ele responde só com o que você subiu."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E pra vídeo: o Flow, também do Google.",
+          "legenda": "E pra vídeo: o Flow, também do Google."
+        },
+        {
+          "fala": "Você descreve a cena e ele gera o vídeo.",
+          "legenda": "Você descreve a cena e ele gera o vídeo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Texto, imagem, estudo e vídeo. Cada uma no que faz melhor.",
+          "legenda": "Texto, imagem, estudo e vídeo. Cada uma no que faz melhor."
+        },
+        {
+          "fala": "Salva esse vídeo pra consultar depois e me segue.",
+          "legenda": "Salva esse vídeo pra consultar depois e me segue."
+        }
+      ]
+    }
+  ]
+}
