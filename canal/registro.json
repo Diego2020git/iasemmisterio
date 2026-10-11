@@ -157,6 +157,56 @@
    "metricool": {
     "instagram": "https://app.metricool.com/planner/calendar?blogId=7280938&openWithPostUuid=1198058211128921693"
    }
+  },
+  {
+   "id": "2026-10-11-faca-com-ia",
+   "data": "2026-10-11",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Estude com IA de graça: NotebookLM vira seu professor",
+   "narracao": "Essa ferramenta do Google transforma o seu material de estudo num professor. Chama Notebook L M, e tem plano grátis. Um: entra com a sua conta Google e cria um caderno. Sobe o PDF da apostila, um link ou até um vídeo do YouTube. Dois: faz perguntas sobre o material. Ele responde só com o que você subiu, e mostra de onde tirou cada resposta. Três: pede o resumo em áudio. Vira uma conversa tipo podcast, pra você ouvir no ônibus. Por exemplo: sobe a lei do edital e pede dez perguntas de prova sobre ela. Você treina com o seu próprio material. Como ele usa só as suas fontes, fica bem mais difícil inventar resposta. Salva esse vídeo e me segue pra mais.",
+   "video": "videos/2026-10-11-12h-notebooklm-raiox.mp4",
+   "registro": {
+    "tema": "estudar com notebooklm",
+    "chaves": [
+     "notebooklm",
+     "estudar",
+     "concurso",
+     "resumo em audio"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acb0e83d9cab260a7e71f8a",
+    "instagram": "6acb0e83c4de2d2b124c25fb"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-11-12h-notebooklm-raiox.mp4"
+  },
+  {
+   "id": "2026-10-11-agente-na-pratica",
+   "data": "2026-10-11",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Agente de IA que responde seus e-mails (e pede sua aprovação)",
+   "narracao": "Imagina abrir o e-mail e as respostas já estarem prontas, esperando você aprovar. Isso é um agente de inteligência artificial. Chega um pedido de orçamento. O agente lê e separa: é orçamento, dúvida ou reclamação? Se é orçamento, ele consulta a sua tabela de preços e a agenda. Sem a tabela, ele chutaria o valor. Por isso as suas regras vêm primeiro. Aí ele escreve o rascunho da resposta, com o preço certo e duas opções de horário. Mas não envia sozinho. Você lê, ajusta se quiser e aprova com um clique. Reclamação? Ele não responde. Te avisa na hora. Ler, consultar, escrever e pedir aprovação. Isso é um agente. Salva e me segue pra montar o seu.",
+   "video": "videos/2026-10-11-19h-agente-email-raiox.mp4",
+   "registro": {
+    "tema": "agente que responde e-mail com aprovação",
+    "chaves": [
+     "agente de ia",
+     "e-mail",
+     "rascunho",
+     "aprovação"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acb0e84ed92ed8fa5eef42b",
+    "instagram": "6acb0e85b07d37ac97956aaf"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-11-19h-agente-email-raiox.mp4"
   }
  ]
 }
