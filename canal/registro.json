@@ -382,6 +382,31 @@
     "instagram": "6acbc3ecea568e911a35adf2"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/5e8dd7da120af25484d13dfe358cd10ce16ca7aa/videos/2026-10-15-19h-agente-financeiro-raiox.mp4"
+  },
+  {
+   "id": "2026-10-16-faca-com-ia",
+   "data": "2026-10-16",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Carrossel pronto em 10 minutos com IA (e de graça)",
+   "narracao": "Carrossel pronto em dez minutos. E de graça. O ChatGPT escreve os sete slides. O pedido pronto, o prompt, está na legenda. No Canva você escolhe um modelo de carrossel e cola uma frase em cada slide. Troca pras cores da sua marca, baixa em PNG e posta. Os dois têm plano grátis. Salva esse vídeo e me segue pra mais.",
+   "video": "videos/2026-10-16-12h-carrossel-curto-raiox.mp4",
+   "registro": {
+    "tema": "carrossel para instagram com ia (versão curta, teste de retenção)",
+    "chaves": [
+     "carrossel",
+     "instagram",
+     "slides",
+     "canva"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acc325afa026cfb811f47a0",
+    "instagram": "6acc325aea568e911a48c4f9"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-16-12h-carrossel-curto-raiox.mp4"
   }
  ]
 }
