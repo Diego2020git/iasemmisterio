@@ -46,74 +46,43 @@
     {
       "frases": [
         {
-          "fala": "O melhor agente de atendimento não é o que responde tudo.",
-          "legenda": "O melhor agente de atendimento não é o que responde tudo."
-        },
-        {
-          "fala": "É o que sabe a hora de chamar você.",
-          "legenda": "É o que sabe a hora de chamar você."
+          "fala": "Esse agente atende sozinho e sabe a hora de chamar você.",
+          "legenda": "Esse agente atende sozinho e sabe a hora de chamar você."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Pergunta simples, tipo horário, preço ou endereço?",
-          "legenda": "Pergunta simples, tipo horário, preço ou endereço?"
-        },
-        {
-          "fala": "O agente responde na hora, de madrugada ou no domingo.",
-          "legenda": "O agente responde na hora, de madrugada ou no domingo."
+          "fala": "Horário, preço, endereço? Ele responde na hora, até de madrugada.",
+          "legenda": "Horário, preço, endereço? Ele responde na hora, até de madrugada."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Mas o cliente chegou irritado, ou pediu algo fora da regra?",
-          "legenda": "Mas o cliente chegou irritado, ou pediu algo fora da regra?"
-        },
-        {
-          "fala": "Aí o agente para e passa a conversa pra você.",
-          "legenda": "Aí o agente para e passa a conversa pra você."
+          "fala": "Cliente irritado ou pedido fora da regra? Ele passa a conversa pra você.",
+          "legenda": "Cliente irritado ou pedido fora da regra? Ele passa a conversa pra você."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "E não passa de qualquer jeito: manda um resumo.",
-          "legenda": "E não passa de qualquer jeito: manda um resumo."
-        },
-        {
-          "fala": "Quem é o cliente, o que ele quer e o que já foi dito.",
-          "legenda": "Quem é o cliente, o que ele quer e o que já foi dito."
+          "fala": "Com um resumo: quem é, o que quer e o que já foi dito.",
+          "legenda": "Com um resumo: quem é, o que quer e o que já foi dito."
         }
       ]
     },
     {
       "frases": [
-        {
-          "fala": "Você entra sabendo de tudo, e o cliente não repete nada.",
-          "legenda": "Você entra sabendo de tudo, e o cliente não repete nada."
-        },
-        {
-          "fala": "Quem decide quando chamar um humano é você, nas regras do agente.",
-          "legenda": "Quem decide quando chamar um humano é você, nas regras do agente."
-        }
-      ]
-    },
-    {
-      "frases": [
-        {
-          "fala": "O agente cuida do simples. Você cuida do importante.",
-          "legenda": "O agente cuida do simples. Você cuida do importante."
-        },
         {
           "fala": "Salva e me segue pra montar o seu.",
           "legenda": "Salva e me segue pra montar o seu."
         }
       ]
     }
-  ]
+  ],
+  "formato": "curto"
 }
