@@ -137,7 +137,7 @@
    "horario": "12:00",
    "serie": "Faça com IA",
    "titulo": "IA que cria vídeo de graça todo dia (Google Flow)",
-   "narracao": "Dá pra criar vídeo com inteligência artificial de graça, todo dia. A ferramenta é do Google e se chama Flow. Um: entra no Flow com a sua conta Google. Quem não assina ganha cinquenta créditos por dia. Dois: escolhe o modelo Veo três ponto um Lite. Cada vídeo gasta dez créditos, então dá uns cinco vídeos por dia. Três: descreve a cena em quatro partes. Quem aparece, o que faz, como a câmera se mexe e qual é o estilo. Por exemplo: um gato astronauta flutuando numa estação espacial, câmera se aproximando devagar, estilo cinema. Os créditos grátis não acumulam, então usa todo dia. O modelo de prompt, o texto pronto, está no comentário. Salva e me segue.",
+   "narracao": "Vídeo com IA de graça, todo dia: é o Flow, do Google. Entra com a sua conta Google e ganha cinquenta créditos por dia. No Veo três ponto um Lite, cada vídeo gasta dez. Dá uns cinco por dia. Descreve em quatro partes: quem aparece, o que faz, a câmera e o estilo. O modelo de prompt, o texto pronto, está no comentário. Salva e me segue.",
    "video": "videos/13-ia-video-gratis-raiox-final.mp4",
    "registro": {
     "tema": "gerar vídeo com IA de graça",
@@ -151,9 +151,9 @@
    "status": "agendado",
    "agendador": "Buffer",
    "buffer": {
-    "youtube": "6acbc3e2ea568e911a35ac5c"
+    "youtube": "6acc34b38e8dd50ffc60b57b"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/5e8dd7da120af25484d13dfe358cd10ce16ca7aa/videos/13-ia-video-gratis-raiox-final.mp4",
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/13-ia-video-gratis-raiox-final.mp4",
    "metricool": {
     "instagram": "https://app.metricool.com/planner/calendar?blogId=7280938&openWithPostUuid=1198058211128921693"
    }
