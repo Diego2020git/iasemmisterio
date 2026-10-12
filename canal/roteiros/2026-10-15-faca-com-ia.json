@@ -53,74 +53,47 @@
     {
       "frases": [
         {
-          "fala": "Não sabe fazer fórmula de planilha? A IA escreve pra você.",
-          "legenda": "Não sabe fazer fórmula de planilha? A IA escreve pra você."
-        },
-        {
-          "fala": "Usando o ChatGPT, de graça.",
-          "legenda": "Usando o ChatGPT, de graça."
+          "fala": "Fórmula de planilha sem decorar: o ChatGPT escreve.",
+          "legenda": "Fórmula de planilha sem decorar: o ChatGPT escreve."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Um: abre o ChatGPT. O plano grátis já resolve.",
-          "legenda": "1: abre o ChatGPT. O plano grátis já resolve."
-        },
-        {
-          "fala": "Dois: explica o que tem em cada coluna da planilha.",
-          "legenda": "2: explica o que tem em cada coluna da planilha."
+          "fala": "Explica as colunas: A, produto. B, preço. C, quantidade.",
+          "legenda": "Explica as colunas: A, produto. B, preço. C, quantidade."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Exemplo: coluna A, o produto. B, o preço. C, a quantidade.",
-          "legenda": "Exemplo: coluna A, o produto. B, o preço. C, a quantidade."
-        },
-        {
-          "fala": "Quero o total de cada venda na coluna D.",
-          "legenda": "Quero o total de cada venda na coluna D."
+          "fala": "Pede o total na coluna D. Ele devolve: igual, B dois, vezes C dois.",
+          "legenda": "Pede o total na coluna D. Ele devolve: =B2*C2."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Ele devolve a fórmula pronta: igual, B dois, vezes C dois.",
-          "legenda": "Ele devolve a fórmula pronta: =B2*C2."
-        },
-        {
-          "fala": "E explica onde colar e como arrastar pra baixo.",
-          "legenda": "E explica onde colar e como arrastar pra baixo."
+          "fala": "Deu erro? Cola o erro e ele corrige.",
+          "legenda": "Deu erro? Cola o erro e ele corrige."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Três: deu erro? Cola a mensagem de erro e pede a correção.",
-          "legenda": "3: deu erro? Cola a mensagem de erro e pede a correção."
+          "fala": "O pedido pronto, o prompt, está na legenda.",
+          "legenda": "O pedido pronto, o prompt, está na legenda."
         },
         {
-          "fala": "Serve pro Excel e pro Google Planilhas.",
-          "legenda": "Serve pro Excel e pro Google Planilhas."
-        }
-      ]
-    },
-    {
-      "frases": [
-        {
-          "fala": "O pedido pronto, o prompt, está na legenda pra copiar.",
-          "legenda": "O pedido pronto, o prompt, está na legenda pra copiar."
-        },
-        {
-          "fala": "Salva esse vídeo e me segue pra mais.",
-          "legenda": "Salva esse vídeo e me segue pra mais."
+          "fala": "Salva e me segue pra mais.",
+          "legenda": "Salva e me segue pra mais."
         }
       ]
     }
-  ]
+  ],
+  "formato": "curto"
 }

@@ -314,7 +314,7 @@
    "horario": "19:00",
    "serie": "Agente na Prática",
    "titulo": "Agente de IA que separa o cliente pronto pra comprar",
-   "narracao": "Você perde tempo respondendo quem só está olhando? Um agente de vendas resolve isso. Ele conversa com cada contato e faz três perguntas. O que precisa, pra quando e quanto quer investir. Com as respostas, ele dá uma nota. Quente, morno ou frio. Quente vai direto pra você, com o resumo da conversa. Morno recebe um lembrete em dois dias. Frio recebe conteúdo. Você para de perder tempo e só fala com quem está pronto pra comprar. E as perguntas e as notas, quem define é você, nas regras do agente. Perguntar, separar e passar pra você. Isso é um agente de vendas. Salva e me segue pra montar o seu.",
+   "narracao": "Esse agente separa quem quer comprar de quem só está olhando. Ele faz três perguntas: o que precisa, pra quando e quanto quer investir. E dá uma nota: quente, morno ou frio. Quente vai direto pra você. Morno ganha lembrete. Frio recebe conteúdo. Salva e me segue pra montar o seu.",
    "video": "videos/2026-10-14-19h-agente-vendas-raiox.mp4",
    "registro": {
     "tema": "agente de vendas que qualifica contatos",
@@ -328,10 +328,10 @@
    "status": "agendado",
    "agendador": "Buffer",
    "buffer": {
-    "youtube": "6acbc3e87db619a2913fcd74",
-    "instagram": "6acbc3e8fa026cfb810c2649"
+    "youtube": "6acc35ef8e8dd50ffc60f477",
+    "instagram": "6acc35ef7db619a291537338"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/5e8dd7da120af25484d13dfe358cd10ce16ca7aa/videos/2026-10-14-19h-agente-vendas-raiox.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-14-19h-agente-vendas-raiox.mp4"
   },
   {
    "id": "2026-10-15-faca-com-ia",
