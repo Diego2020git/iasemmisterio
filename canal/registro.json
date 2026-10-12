@@ -214,7 +214,7 @@
    "horario": "12:00",
    "serie": "Faça com IA",
    "titulo": "Qual IA usar pra cada tarefa (todas com plano grátis)",
-   "narracao": "Qual é a melhor inteligência artificial? Depende da tarefa. Aqui vão quatro, uma pra cada coisa, e todas têm plano grátis. Pra escrever texto, e-mail ou ideia de post: ChatGPT. Você explica o que quer, ele escreve o rascunho. Pra criar imagem: Gemini, do Google. Descreve a cena e ele desenha em segundos. Pra estudar com o seu próprio material: Notebook L M. Ele responde só com o que você subiu. E pra vídeo: o Flow, também do Google. Você descreve a cena e ele gera o vídeo. Texto, imagem, estudo e vídeo. Cada uma no que faz melhor. Salva esse vídeo pra consultar depois e me segue.",
+   "narracao": "Não existe a melhor IA. Existe a certa pra cada tarefa. Texto e e-mail: ChatGPT. Imagem: Gemini, do Google. Estudar com o seu material: Notebook L M. Vídeo: o Flow, também do Google. As quatro têm plano grátis. Salva pra consultar depois e me segue pra mais.",
    "video": "videos/2026-10-12-12h-qual-ia-usar-raiox.mp4",
    "registro": {
     "tema": "qual ia usar para cada tarefa",
@@ -228,18 +228,18 @@
    "status": "agendado",
    "agendador": "Buffer",
    "buffer": {
-    "youtube": "6acbc3dfa9411fbcc552690c",
-    "instagram": "6acbc3dfa9411fbcc5526936"
+    "youtube": "6acc342063ff33d8c9a088fc",
+    "instagram": "6acc3420ea568e911a4918cd"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/5e8dd7da120af25484d13dfe358cd10ce16ca7aa/videos/2026-10-12-12h-qual-ia-usar-raiox.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-12-12h-qual-ia-usar-raiox.mp4"
   },
   {
    "id": "2026-10-12-agente-na-pratica",
    "data": "2026-10-12",
    "horario": "19:00",
    "serie": "Agente na Prática",
-   "titulo": "Agente de IA ou chatbot? A diferença em 40 segundos",
-   "narracao": "Chatbot, aquele robô de conversa, e agente de inteligência artificial não são a mesma coisa. A diferença é simples: um conversa, o outro resolve. Pede pro chatbot de conversa: marca uma reunião com o João na quinta. Ele te explica como marcar. E para aí. Agora pede a mesma coisa pro agente. Ele abre a sua agenda e acha um horário livre na quinta. Depois olha a agenda do João, confirma às três da tarde e manda o convite por e-mail. Ou seja: o agente tem ferramentas e permissão pra agir. Agenda, e-mail, planilha. O chatbot só tem a conversa. Chatbot responde. Agente executa. Salva e me segue pra ver agentes na prática.",
+   "titulo": "Agente de IA ou chatbot? A diferença em 20 segundos",
+   "narracao": "O chatbot conversa. O agente de IA resolve. Pede pro chatbot de conversa: marca uma reunião com o João na quinta. Ele só explica como. O agente abre a sua agenda e acha um horário livre na quinta. Confirma às três da tarde e manda o convite por e-mail. Ele tem ferramentas: agenda, e-mail e planilha. Salva e me segue pra ver agentes na prática.",
    "video": "videos/2026-10-12-19h-agente-vs-chatbot-raiox.mp4",
    "registro": {
     "tema": "diferença entre agente e chatbot",
@@ -253,10 +253,10 @@
    "status": "agendado",
    "agendador": "Buffer",
    "buffer": {
-    "youtube": "6acbc3e17db619a2913fcc16",
-    "instagram": "6acbc3e17db619a2913fcc41"
+    "youtube": "6acc3422fa026cfb811f9f28",
+    "instagram": "6acc34227db619a291532b6f"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/5e8dd7da120af25484d13dfe358cd10ce16ca7aa/videos/2026-10-12-19h-agente-vs-chatbot-raiox.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-12-19h-agente-vs-chatbot-raiox.mp4"
   },
   {
    "id": "2026-10-13-agente-na-pratica",

@@ -62,77 +62,50 @@
     {
       "frases": [
         {
-          "fala": "Dá pra criar vídeo com inteligência artificial de graça, todo dia.",
-          "legenda": "Dá pra criar vídeo com IA de graça, todo dia."
-        },
-        {
-          "fala": "A ferramenta é do Google e se chama Flow.",
-          "legenda": "A ferramenta é do Google e se chama Flow."
+          "fala": "Vídeo com IA de graça, todo dia: é o Flow, do Google.",
+          "legenda": "Vídeo com IA de graça, todo dia: é o Flow, do Google."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Um: entra no Flow com a sua conta Google.",
-          "legenda": "1: entra no Flow com a sua conta Google."
-        },
-        {
-          "fala": "Quem não assina ganha cinquenta créditos por dia.",
-          "legenda": "Quem não assina ganha 50 créditos por dia."
+          "fala": "Entra com a sua conta Google e ganha cinquenta créditos por dia.",
+          "legenda": "Entra com a sua conta Google e ganha 50 créditos por dia."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Dois: escolhe o modelo Veo três ponto um Lite.",
-          "legenda": "2: escolhe o modelo Veo 3.1 Lite."
-        },
-        {
-          "fala": "Cada vídeo gasta dez créditos, então dá uns cinco vídeos por dia.",
-          "legenda": "Cada vídeo gasta 10 créditos, então dá uns 5 vídeos por dia."
+          "fala": "No Veo três ponto um Lite, cada vídeo gasta dez. Dá uns cinco por dia.",
+          "legenda": "No Veo 3.1 Lite, cada vídeo gasta 10. Dá uns 5 por dia."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Três: descreve a cena em quatro partes.",
-          "legenda": "3: descreve a cena em 4 partes."
-        },
-        {
-          "fala": "Quem aparece, o que faz, como a câmera se mexe e qual é o estilo.",
-          "legenda": "Quem aparece, o que faz, como a câmera se mexe e qual é o estilo."
+          "fala": "Descreve em quatro partes: quem aparece, o que faz, a câmera e o estilo.",
+          "legenda": "Descreve em 4 partes: quem aparece, o que faz, a câmera e o estilo."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Por exemplo: um gato astronauta flutuando numa estação espacial,",
-          "legenda": "Por exemplo: um gato astronauta flutuando numa estação espacial,"
+          "fala": "O modelo de prompt, o texto pronto, está no comentário.",
+          "legenda": "O modelo de prompt, o texto pronto, está no comentário."
         },
         {
-          "fala": "câmera se aproximando devagar, estilo cinema.",
-          "legenda": "câmera se aproximando devagar, estilo cinema."
-        }
-      ]
-    },
-    {
-      "frases": [
-        {
-          "fala": "Os créditos grátis não acumulam, então usa todo dia.",
-          "legenda": "Os créditos grátis não acumulam, então usa todo dia."
-        },
-        {
-          "fala": "O modelo de prompt, o texto pronto, está no comentário. Salva e me segue.",
-          "legenda": "O modelo de prompt, o texto pronto, está no comentário. Salva e me segue."
+          "fala": "Salva e me segue.",
+          "legenda": "Salva e me segue."
         }
       ]
     }
   ],
   "video": "videos/13-ia-video-gratis-raiox-final.mp4",
   "fonte_html": "kit/13-ia-video-gratis-raiox.html",
-  "voz": "pt-BR-Chirp3-HD-Fenrir"
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "formato": "curto"
 }
