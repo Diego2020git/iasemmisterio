@@ -10,7 +10,7 @@ html,body{margin:0;background:#000}canvas{display:block}
 <script src="raiox-kit.js"></script>
 <script src="raiox-motion.js"></script>
 <script>
-// 12/10/2026 · Faça com IA · qual IA usar pra cada tarefa (ChatGPT, Gemini, NotebookLM, Flow). Tempos em TEMPOS (voz.py).
+// 12/10/2026 · Faça com IA (versão curta pelas diretrizes de retenção) · qual IA usar pra cada tarefa (ChatGPT, Gemini, NotebookLM, Flow). Tempos em TEMPOS (voz.py).
 const EP = '16';
 const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
 const TOOLS = [['ChatGPT', 'chatgpt.com', '#10a37f', 'TEXTO'], ['Gemini', 'gemini.google.com', '#4285f4', 'IMAGEM'], ['NotebookLM', 'notebooklm.google', '#4285f4', 'ESTUDO'], ['Flow', 'labs.google/flow', '#4285f4', 'VÍDEO']];
@@ -25,68 +25,64 @@ function taskIcon(k, cx, cy, r, p, color = COL.ink) {
   ctx.restore();
 }
 
-// 0 · gancho: uma "?" vira 4 quadrados, um por tarefa, e o carimbo "todas grátis"
-CAMS[0] = () => [[0, 0, 30, 1.06, -1], [1, 0, 0, 1, 0], [cue('grátis') + .3, 0, 30, 1.03, .5]];
+// 0 · gancho (versão curta, 12/10): o quadro 1 já mostra o resultado, as 4 tarefas com a IA certa de cada uma
+CAMS[0] = () => [[0, 0, 30, 1.04, 0], [cue('tarefa'), 0, 0, 1, 0]];
 function s0(t, lt) {
-  kinetic([{ w: 'Qual a', t: cue('qual') }, { w: 'melhor IA?', t: cue('melhor') }], M, 230, lt, { size: 100, hl: [1] });
-  const split = prog(lt, cue('4') - .1, cue('4') + .6);
-  if (split < 1) txt('?', W / 2, 820, EXP, 360, COL.cyan, { align: 'center', alpha: prog(lt, .2, .6) * (1 - split) });
-  kinetic([{ w: 'depende', t: cue('depende') }, { w: 'da tarefa', t: cue('tarefa') }], M, 1150, lt, { size: 70, hl: [1] });
+  kinetic([{ w: 'A IA certa', t: cue('certa') }, { w: 'pra cada', t: cue('cada') }, { w: 'tarefa', t: cue('tarefa') }], M, 230, lt, { size: 84, hl: [0], maxW: 900 });
+  const hot = Math.floor(lt / .7) % 4; // as tarefas acendem em sequência: o quadro nunca fica parado
   TOOLS.forEach((tl, k) => {
-    const x = k % 2 ? W / 2 + 20 : M, y = k < 2 ? 450 : 780, w = W / 2 - M - 20, h = 250, p = prog(split, k * .15, k * .15 + .5);
-    panel(x, y, w, h, p, tl[3]);
-    taskIcon(k, x + w / 2, y + h / 2, 80, p);
+    const x = k % 2 ? W / 2 + 20 : M, y = k < 2 ? 540 : 910, w = W / 2 - M - 20, h = 290;
+    panel(x, y, w, h, 1, tl[3]);
+    taskIcon(k, x + w / 2, y + 120, 60, 1, k === hot ? COL.cyan : COL.ink);
+    txt(tl[0], x + w / 2, y + 245, EXP, tl[0].length > 8 ? 36 : 44, k === hot ? COL.cyan : COL.ink, { align: 'center' });
   });
-  stamp(W / 2, 1360, 'todas com plano grátis', prog(lt, cue('grátis'), cue('grátis') + .35), 34);
+  stamp(W / 2, 1300, 'todas com plano grátis', prog(lt, cue('existe', 2), cue('existe', 2) + .3), 34);
 }
 // cena de ferramenta: título com a tarefa, ícone grande que reage à fala e selo da ferramenta
 function toolScene(k, lt, w1, w2, extra) {
-  stepTag(k + 1, 4, lt, 320);
-  title([TOOLS[k][3]], lt, .05, 200, 92, 0);
-  fig(`fig. 0${k + 2} · ferramenta da tarefa`, lt, .2, 320);
-  const o = { x: W / 2, y: 720, s: 1 };
-  taskIcon(k, W / 2, 700, 170, prog(lt, cue(w1) - .2, cue(w1) + .8), COL.ink);
-  toolCard(W / 2, 1060, TOOLS[k][0], TOOLS[k][1] + ' · tem plano grátis', prog(lt, cue(w2) - .1, cue(w2) + .3), TOOLS[k][2]);
+  title([TOOLS[k][3]], lt, 0, 200, 92, 0);
+  taskIcon(k, W / 2, 640, 170, prog(lt, cue(w1) - .3, cue(w1) + .6), COL.ink);
+  toolCard(W / 2, 980, TOOLS[k][0], TOOLS[k][1] + ' · tem plano grátis', prog(lt, cue(w2) - .2, cue(w2) + .2), TOOLS[k][2]);
   extra && extra();
 }
-CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('rascunho'), 0, 40, 1.04, .4]];
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('chatgpt'), 0, 30, 1.04, 0]];
 function s1(t, lt) {
-  toolScene(0, lt, 'escrever', 'chatgpt', () => {
-    const p = prog(lt, cue('explica') - .1, cue('rascunho') + .4);
-    if (p > 0) promptBox(M, 1220, W - 2 * M, 'Escreve um post sobre a promoção de sábado.', p, t, 'você explica');
+  toolScene(0, lt, 'texto', 'chatgpt', () => {
+    const p = prog(lt, cue('email') - .1, cue('chatgpt') + .8);
+    if (p > 0) promptBox(M, 1120, W - 2 * M, 'Escreve um e-mail pro cliente.', p, t, 'você pede');
   });
 }
-CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('desenha'), 0, 40, 1.04, -.4]];
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('google'), 0, 30, 1.04, 0]];
 function s2(t, lt) {
   toolScene(1, lt, 'imagem', 'gemini', () => {
-    const d = prog(lt, cue('desenha') - .1, cue('desenha') + .8);
-    if (d > 0) { ctx.save(); ctx.globalAlpha = d; ctx.fillStyle = 'rgba(46,230,255,.18)'; ctx.fillRect(W / 2 - 136, 700 - 102, 272 * d, 204); ctx.restore(); }
-    dimLine(M, W - M, 1230, 'em segundos', prog(lt, cue('segundos'), cue('segundos') + .3));
+    const d = prog(lt, cue('google') - .2, cue('google') + .5);
+    if (d > 0) { ctx.save(); ctx.globalAlpha = d; ctx.fillStyle = 'rgba(46,230,255,.18)'; ctx.fillRect(W / 2 - 136, 640 - 102, 272 * d, 204); ctx.restore(); }
+    dimLine(M, W - M, 1150, 'imagem em segundos', prog(lt, cue('google'), cue('google') + .3));
   });
 }
-CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('subiu'), 0, 40, 1.04, .4]];
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('notebooklm'), 0, 30, 1.04, 0]];
 function s3(t, lt) {
   toolScene(2, lt, 'estudar', 'notebooklm', () => {
-    const a = prog(lt, cue('responde') - .1, cue('responde') + .4);
-    annot(W / 2 + 120, 640, 900, 470, 'só o seu material', a, 'L', COL.cyan);
-    dimLine(M, W - M, 1230, 'responde com a fonte', prog(lt, cue('subiu'), cue('subiu') + .3));
+    annot(W / 2 + 120, 580, 900, 400, 'o seu material', prog(lt, cue('material') - .1, cue('material') + .3), 'L', COL.cyan);
+    dimLine(M, W - M, 1150, 'responde com a fonte', prog(lt, cue('notebooklm'), cue('notebooklm') + .3));
   });
 }
-CAMS[4] = () => [[0, 0, 0, 1, 0], [cue('gera'), 0, 40, 1.04, -.4]];
+CAMS[4] = () => [[0, 0, 0, 1, 0], [cue('google'), 0, 30, 1.04, 0]];
 function s4(t, lt) {
   toolScene(3, lt, 'vídeo', 'flow', () => {
-    dimLine(M, W - M, 1230, 'do texto ao vídeo', prog(lt, cue('gera'), cue('gera') + .3));
+    dimLine(M, W - M, 1150, 'do texto ao vídeo', prog(lt, cue('google'), cue('google') + .3));
   });
 }
-// 5 · fecha: os 4 quadrados voltam, cada um acende quando a tarefa é falada; card final
-CAMS[5] = () => [[0, 0, 30, 1.05, 0], [cue('texto'), 0, 0, 1, 0]];
+// 5 · fecha: as 4 ferramentas, carimbo grátis, card final
+CAMS[5] = () => [[0, 0, 30, 1.04, 0], [cue('salva'), 0, 0, 1, 0]];
 function s5(t, lt) {
-  const ws = ['texto', 'imagem', 'estudo', 'vídeo'];
+  kinetic([{ w: 'Plano', t: cue('plano') }, { w: 'grátis', t: cue('grátis') }], M, 230, lt, { size: 96, hl: [1], maxW: 900 });
   TOOLS.forEach((tl, k) => {
-    const x = k % 2 ? W / 2 + 20 : M, y = k < 2 ? 280 : 620, w = W / 2 - M - 20, h = 250, t0 = cue(ws[k]), p = prog(lt, t0 - .25, t0 + .3);
+    const x = k % 2 ? W / 2 + 20 : M, y = k < 2 ? 480 : 700, w = W / 2 - M - 20, h = 170, p = prog(lt, k * .12, k * .12 + .4);
     panel(x, y, w, h, p, tl[3]);
-    txt(tl[0], x + w / 2, y + h / 2, EXP, tl[0].length > 8 ? 40 : 52, lt > t0 ? COL.cyan : COL.ink, { align: 'center', alpha: p });
+    txt(tl[0], x + w / 2, y + h / 2 + 15, EXP, tl[0].length > 8 ? 36 : 46, COL.ink, { align: 'center', alpha: p });
   });
+  stamp(W / 2, 1000, 'as quatro de graça', prog(lt, cue('grátis') - .1, cue('grátis') + .25), 38);
   endCard(t, SC[5] + cue('salva') - .25);
 }
 const SCENES = [s0, s1, s2, s3, s4, s5];

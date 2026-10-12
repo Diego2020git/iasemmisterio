@@ -68,74 +68,55 @@
     {
       "frases": [
         {
-          "fala": "Qual é a melhor inteligência artificial? Depende da tarefa.",
-          "legenda": "Qual é a melhor IA? Depende da tarefa."
-        },
-        {
-          "fala": "Aqui vão quatro, uma pra cada coisa, e todas têm plano grátis.",
-          "legenda": "Aqui vão 4, uma pra cada coisa, e todas têm plano grátis."
+          "fala": "Não existe a melhor IA. Existe a certa pra cada tarefa.",
+          "legenda": "Não existe a melhor IA. Existe a certa pra cada tarefa."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Pra escrever texto, e-mail ou ideia de post: ChatGPT.",
-          "legenda": "Pra escrever texto, e-mail ou ideia de post: ChatGPT."
-        },
-        {
-          "fala": "Você explica o que quer, ele escreve o rascunho.",
-          "legenda": "Você explica o que quer, ele escreve o rascunho."
+          "fala": "Texto e e-mail: ChatGPT.",
+          "legenda": "Texto e e-mail: ChatGPT."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Pra criar imagem: Gemini, do Google.",
-          "legenda": "Pra criar imagem: Gemini, do Google."
-        },
-        {
-          "fala": "Descreve a cena e ele desenha em segundos.",
-          "legenda": "Descreve a cena e ele desenha em segundos."
+          "fala": "Imagem: Gemini, do Google.",
+          "legenda": "Imagem: Gemini, do Google."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Pra estudar com o seu próprio material: Notebook L M.",
-          "legenda": "Pra estudar com o seu próprio material: NotebookLM."
-        },
-        {
-          "fala": "Ele responde só com o que você subiu.",
-          "legenda": "Ele responde só com o que você subiu."
+          "fala": "Estudar com o seu material: Notebook L M.",
+          "legenda": "Estudar com o seu material: NotebookLM."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "E pra vídeo: o Flow, também do Google.",
-          "legenda": "E pra vídeo: o Flow, também do Google."
-        },
-        {
-          "fala": "Você descreve a cena e ele gera o vídeo.",
-          "legenda": "Você descreve a cena e ele gera o vídeo."
+          "fala": "Vídeo: o Flow, também do Google.",
+          "legenda": "Vídeo: o Flow, também do Google."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Texto, imagem, estudo e vídeo. Cada uma no que faz melhor.",
-          "legenda": "Texto, imagem, estudo e vídeo. Cada uma no que faz melhor."
+          "fala": "As quatro têm plano grátis.",
+          "legenda": "As quatro têm plano grátis."
         },
         {
-          "fala": "Salva esse vídeo pra consultar depois e me segue.",
-          "legenda": "Salva esse vídeo pra consultar depois e me segue."
+          "fala": "Salva pra consultar depois e me segue pra mais.",
+          "legenda": "Salva pra consultar depois e me segue pra mais."
         }
       ]
     }
-  ]
+  ],
+  "formato": "curto"
 }
