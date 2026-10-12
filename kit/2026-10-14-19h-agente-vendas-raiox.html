@@ -22,27 +22,30 @@ function person(cx, cy, r, a, color = COL.ink) {
   ctx.restore();
 }
 
-// 0 · gancho: fila de contatos "só olhando"; o cubo do agente chega
-CAMS[0] = () => [[0, 0, 30, 1.06, -1], [1, 0, 0, 1, 0], [cue('resolve') + .2, 0, 30, 1.03, .5]];
+// 0 · gancho (versão curta, 12/10): no quadro 1 os contatos já estão separados por cor; o quente vai pra você
+CAMS[0] = () => [[0, 0, 30, 1.04, 0], [cue('olhando'), 0, 0, 1, 0]];
 function s0(t, lt) {
-  kinetic([{ w: 'Só', t: cue('só') }, { w: 'olhando?', t: cue('olhando') }], M, 230, lt, { size: 100, hl: [1] });
-  for (let i = 0; i < 5; i++) person(M + 90 + i * (W - 2 * M - 180) / 4, 620, 80, prog(lt, .3 + i * .15, .8 + i * .15), COL.dim);
-  wire(Mesh.box(1, 1, 1), { x: W / 2, y: 1000, s: 220, rx: -.4, ry: lt * .9, d: 4 }, prog(lt, cue('agente') - .1, cue('agente') + .6), COL.cyan, 3);
-  stamp(W / 2, 1260, 'agente de vendas', prog(lt, cue('vendas'), cue('vendas') + .35), 34);
+  kinetic([{ w: 'Quem compra', t: cue('comprar') }, { w: 'x quem olha', t: cue('olhando') }], M, 230, lt, { size: 84, hl: [0], maxW: 900 });
+  const cols = [COL.red, '#f2b84b', COL.cyan, COL.cyan, '#f2b84b'];
+  for (let i = 0; i < 5; i++) person(M + 90 + i * (W - 2 * M - 180) / 4, 560, 80, 1, cols[i]);
+  wire(Mesh.box(1, 1, 1), { x: W / 2, y: 900, s: 200, rx: -.4, ry: -.6, d: 4 }, 1, COL.cyan, 3);
+  const up = .5 + .5 * Math.sin(lt * 4);
+  ctx.save(); ctx.strokeStyle = COL.red; ctx.lineWidth = 6; ctx.globalAlpha = .4 + .6 * up; ctx.beginPath(); ctx.moveTo(M + 90, 700); ctx.lineTo(M + 90, 1080); ctx.lineTo(W / 2 - 60, 1080); ctx.stroke(); ctx.restore();
+  txt('QUENTE → VOCÊ', W / 2 + 40, 1090, EXP, 40, COL.red, { alpha: prog(lt, cue('comprar') - .1, cue('comprar') + .3) });
+  stamp(W / 2, 1270, 'agente de vendas', prog(lt, cue('agente') - .1, cue('agente') + .25), 34);
 }
 // 1 · 3 perguntas aparecem uma a uma
-CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('investir'), 0, 40, 1.04, .4]];
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('investir'), 0, 30, 1.04, 0]];
 function s1(t, lt) {
-  title(['3 perguntas'], lt, .05, 200, 84, 0);
-  fig('fig. 02 · conversa com cada contato', lt, .2, 320);
+  title(['3 perguntas'], lt, 0, 200, 84, 0);
   [['precisa', 'O que você precisa?'], ['quando', 'Pra quando?'], ['investir', 'Quanto quer investir?']].forEach(([w, q], i) => {
     const a = prog(lt, cue(w) - .3, cue(w) + .3), y = 470 + i * 250;
-    panel(M, y, W - 2 * M, 190, a, 'pergunta ' + (i + 1));
+    panel(M, y, W - 2 * M, 190, prog(lt, i * .12, .4 + i * .12), 'pergunta ' + (i + 1));
     txt(typed(q, a), M + 40, y + 115, ARC, 48, COL.ink, { weight: 600 });
   });
 }
 // 2 · a nota: termômetro com três faixas
-CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('frio'), 0, 40, 1.04, -.4]];
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('frio'), 0, 30, 1.04, 0]];
 function s2(t, lt) {
   title(['A nota'], lt, .05, 200, 92, 0);
   fig('fig. 03 · cada contato recebe uma', lt, .2, 320);
@@ -56,10 +59,10 @@ function s2(t, lt) {
   });
 }
 // 3 · o destino de cada nota: quente para você, morno lembrete em 2 dias, frio conteúdo
-CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('conteúdo'), 0, 40, 1.04, .4]];
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('conteúdo'), 0, 30, 1.04, 0]];
 function s3(t, lt) {
   title(['Destino'], lt, .05, 200, 92, 0);
-  const rows = [[cue('quente'), 'QUENTE', COL.red, 'direto pra você + resumo'], [cue('morno'), 'MORNO', '#f2b84b', 'lembrete em 2 dias'], [cue('frio'), 'FRIO', COL.cyan, 'recebe conteúdo']];
+  const rows = [[cue('quente'), 'QUENTE', COL.red, 'direto pra você + resumo'], [cue('morno'), 'MORNO', '#f2b84b', 'ganha um lembrete'], [cue('frio'), 'FRIO', COL.cyan, 'recebe conteúdo']];
   rows.forEach(([t0, l, c, d], i) => {
     const a = prog(lt, t0 - .1, t0 + .4), y = 440 + i * 280;
     if (a <= 0) return;
@@ -70,23 +73,11 @@ function s3(t, lt) {
   });
 
 }
-// 4 · você só fala com quem está pronto; regras do agente
-CAMS[4] = () => [[0, 0, 0, 1, 0], [cue('regras'), 0, 40, 1.04, -.4]];
+// 4 · card final
 function s4(t, lt) {
-  kinetic([{ w: 'Pronto pra', t: cue('pronto') }, { w: 'comprar', t: cue('comprar') }], M, 230, lt, { size: 84, hl: [1], maxW: 1000 });
-  person(W / 2, 640, 140, prog(lt, cue('fala') - .2, cue('fala') + .4), COL.cyan);
-  for (let i = 0; i < 4; i++) person([M + 70, M + 230, W - M - 230, W - M - 70][i], 660, 60, prog(lt, 0, .5) * (1 - prog(lt, cue('tempo'), cue('tempo') + .6)), COL.dim);
-  panel(M, 900, W - 2 * M, 380, prog(lt, cue('define') - .2, cue('regras') + .3), 'regras · quem define é você');
-  ['perguntas', 'notas'].forEach((w, i) => txt('→ ' + (i ? 'as notas' : 'as perguntas'), M + 40, 1000 + i * 100, ARC, 42, COL.ink, { weight: 600, alpha: prog(lt, cue(w) - .1, cue(w) + .3) }));
+  endCard(t, SC[4] + cue('salva') - .25);
 }
-// 5 · fecha: três verbos e card final
-CAMS[5] = () => [[0, 0, 30, 1.05, 0], [cue('separar'), 0, 0, 1, 0]];
-function s5(t, lt) {
-  kinetic([{ w: 'Perguntar,', t: cue('perguntar') }, { w: 'separar', t: cue('separar') }], M, 220, lt, { size: 56, maxW: 1000 });
-  kinetic([{ w: 'e passar', t: cue('passar') }, { w: 'pra você', t: cue('você') }], M, 320, lt, { size: 56, hl: [1], maxW: 1000 });
-  endCard(t, SC[5] + cue('salva') - .25);
-}
-const SCENES = [s0, s1, s2, s3, s4, s5];
+const SCENES = [s0, s1, s2, s3, s4];
 window.DURATION = TEMPOS.duracao;
 </script>
 </body></html>

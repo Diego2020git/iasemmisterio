@@ -289,7 +289,7 @@
    "horario": "12:00",
    "serie": "Faça com IA",
    "titulo": "Logo com IA de graça no Gemini (prompt na legenda)",
-   "narracao": "Dá pra criar o logo do seu negócio com inteligência artificial, de graça. Usando o Gemini, do Google. Um: entra no Gemini com a sua conta Google. O plano grátis já gera imagens, com um limite por dia. Dois: pede o logo com quatro informações. Nome, ramo do negócio, estilo e cores. Por exemplo: logo pra Doce Lar, uma confeitaria. Estilo minimalista, rosa e marrom, fundo branco. Três: gostou de um? Pede ajuste. Mais simples, só o símbolo, ou outra cor. O pedido pronto, o prompt, está na legenda pra copiar. Salva esse vídeo e me segue pra mais.",
+   "narracao": "O logo do seu negócio com IA, de graça, no Gemini. Pede com quatro informações: nome, ramo, estilo e cores. Tipo: logo pra Doce Lar, confeitaria, minimalista, rosa e marrom. Não gostou? Pede só o símbolo ou outra cor. O pedido pronto, o prompt, está na legenda. Salva e me segue pra mais.",
    "video": "videos/2026-10-14-12h-logo-gemini-raiox.mp4",
    "registro": {
     "tema": "criar logo com ia",
@@ -303,10 +303,10 @@
    "status": "agendado",
    "agendador": "Buffer",
    "buffer": {
-    "youtube": "6acbc3e68e8dd50ffc4d4906",
-    "instagram": "6acbc3e68e8dd50ffc4d493a"
+    "youtube": "6acc3597ea568e911a495b28",
+    "instagram": "6acc35977db619a2915364fb"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/5e8dd7da120af25484d13dfe358cd10ce16ca7aa/videos/2026-10-14-12h-logo-gemini-raiox.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-14-12h-logo-gemini-raiox.mp4"
   },
   {
    "id": "2026-10-14-agente-na-pratica",
