@@ -3,7 +3,7 @@
   "serie": "Agente na Prática",
   "data": "2026-10-15",
   "horario": "19:00",
-  "titulo": "Agente financeiro: avisa o boleto e só paga com o seu sim",
+  "titulo": "Boleto vencido nunca mais: um agente avisa e só paga com o seu sim",
   "descricao": "Agente financeiro: ele cuida dos boletos e não paga nada sem você 👇\n1️⃣ Lê boletos e notas que chegam no e-mail e anota numa planilha\n2️⃣ Avisa 3 dias antes do vencimento, com valor e link\n3️⃣ Só agenda o pagamento depois do seu \"pode pagar\"\nNo fim do mês, manda o resumo: o que entrou, o que saiu e o que vence.\nSalva e me segue pra montar o seu.\n\nFonte: exemplo montado pelo canal, sem números de terceiros.\n\n#agentedeia #financas #inteligenciaartificial #automacao #ia",
   "hashtags": [
     "agentedeia",
@@ -46,36 +46,24 @@
     {
       "frases": [
         {
-          "fala": "Boleto vencido de novo? Um agente financeiro cuida disso pra você.",
-          "legenda": "Boleto vencido de novo? Um agente financeiro cuida disso pra você."
-        },
-        {
-          "fala": "E não paga nada sem a sua aprovação.",
-          "legenda": "E não paga nada sem a sua aprovação."
+          "fala": "Boleto vencido? Nunca mais. Um agente avisa e só paga com o seu sim.",
+          "legenda": "Boleto vencido? Nunca mais. Um agente avisa e só paga com o seu sim."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Ele lê os boletos e as notas que chegam no seu e-mail.",
-          "legenda": "Ele lê os boletos e as notas que chegam no seu e-mail."
-        },
-        {
-          "fala": "E anota valor, vencimento e fornecedor numa planilha.",
-          "legenda": "E anota valor, vencimento e fornecedor numa planilha."
+          "fala": "Ele lê os boletos do seu e-mail e anota tudo numa planilha.",
+          "legenda": "Ele lê os boletos do seu e-mail e anota tudo numa planilha."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Três dias antes de vencer, ele te avisa.",
-          "legenda": "3 dias antes de vencer, ele te avisa."
-        },
-        {
-          "fala": "Com o valor e o link do boleto.",
-          "legenda": "Com o valor e o link do boleto."
+          "fala": "Três dias antes de vencer, te avisa com o valor e o link.",
+          "legenda": "3 dias antes de vencer, te avisa com o valor e o link."
         }
       ]
     },
@@ -84,36 +72,17 @@
         {
           "fala": "Você responde: pode pagar. Só aí ele agenda o pagamento.",
           "legenda": "Você responde: pode pagar. Só aí ele agenda o pagamento."
-        },
-        {
-          "fala": "Sem a sua resposta, ele não mexe em nada.",
-          "legenda": "Sem a sua resposta, ele não mexe em nada."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "No fim do mês, ele manda um resumo: quanto entrou, quanto saiu e o que vence.",
-          "legenda": "No fim do mês, ele manda um resumo: quanto entrou, quanto saiu e o que vence."
-        },
-        {
-          "fala": "E os limites, quem define é você, nas regras do agente.",
-          "legenda": "E os limites, quem define é você, nas regras do agente."
-        }
-      ]
-    },
-    {
-      "frases": [
-        {
-          "fala": "Ler, anotar, avisar e esperar o seu sim. Isso é um agente financeiro.",
-          "legenda": "Ler, anotar, avisar e esperar o seu sim. Isso é um agente financeiro."
-        },
-        {
-          "fala": "Salva e me segue pra montar o seu.",
-          "legenda": "Salva e me segue pra montar o seu."
+          "fala": "Sem a sua resposta, não mexe em nada. Salva e me segue pra montar o seu.",
+          "legenda": "Sem a sua resposta, não mexe em nada. Salva e me segue pra montar o seu."
         }
       ]
     }
-  ]
+  ],
+  "formato": "curto"
 }
