@@ -15,7 +15,9 @@ CANAL = RAIZ / "canal"
 # Grade aprovada pelo Diego em 11/10/2026: todos os dias, uma série por horário.
 GRADE = {"Faça com IA": "12:00", "Agente na Prática": "19:00", "Carrossel da Semana": "10:00"}
 DIAS_DA_SERIE = {"Faça com IA": range(7), "Agente na Prática": range(7), "Carrossel da Semana": [5]}  # 0 = segunda; carrossel só no Instagram, sábado (Diego, 11/10)
-DUR_MIN, DUR_MAX = 35.0, 45.0
+# formato "curto" (diretrizes de retenção do Diego, 11/10/2026): 15 a 25 s de fala, card final pode passar um pouco.
+# "demo" (padrão até aqui): 35 a 45 s, quando a demonstração exige.
+DURACOES = {"curto": (15.0, 27.0), "demo": (35.0, 45.0)}
 TITULO_MAX = 70
 TRAVESSOES = "—–"
 TRIGRAMA_MAX = 0.60
@@ -71,11 +73,16 @@ def validar(caminho, sem_mp4=False):
         erros.append(f"data {dia} já passou")
 
     # duração estimada e real
+    formato = r.get("formato", "demo")
+    if formato not in DURACOES:
+        erros.append(f"formato '{formato}' desconhecido ({', '.join(DURACOES)})")
+        formato = "demo"
+    DUR_MIN, DUR_MAX = DURACOES[formato]
     falas = frases_da_narracao(r)
     caracteres = sum(len(f) for f in falas)
     estimada = caracteres / 17 + 4.5
-    if estimada < DUR_MIN:
-        erros.append(f"duração estimada {estimada:.1f} s abaixo de {DUR_MIN:.0f} s ({caracteres} caracteres)")
+    if not DUR_MIN <= estimada <= DUR_MAX + 3:
+        erros.append(f"duração estimada {estimada:.1f} s fora de {DUR_MIN:.0f} a {DUR_MAX:.0f} s ({caracteres} caracteres, formato {formato})")
     if not sem_mp4:
         mp4 = RAIZ / (r.get("video") or "")
         if not r.get("video") or not mp4.is_file():
@@ -146,8 +153,12 @@ def validar(caminho, sem_mp4=False):
     tri = trigramas(" ".join(falas))
     chaves = {norm(c) for c in r.get("registro", {}).get("chaves", [])}
     tema = norm(r.get("registro", {}).get("tema", ""))
+    refaz = r.get("refaz")  # teste controlado: nova versão de um vídeo publicado, mesmo tema de propósito
     for v in reg:
         if v["id"] == rid:
+            continue
+        if refaz and v["id"] == refaz:
+            avisos.append(f"refaz o vídeo {refaz} (teste controlado): repetição de tema liberada")
             continue
         if norm(v["titulo"]) == norm(titulo):
             erros.append(f"título igual ao do vídeo {v['id']}")
