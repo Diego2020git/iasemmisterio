@@ -53,74 +53,47 @@
     {
       "frases": [
         {
-          "fala": "Dá pra criar o logo do seu negócio com inteligência artificial, de graça.",
-          "legenda": "Dá pra criar o logo do seu negócio com IA, de graça."
-        },
-        {
-          "fala": "Usando o Gemini, do Google.",
-          "legenda": "Usando o Gemini, do Google."
+          "fala": "O logo do seu negócio com IA, de graça, no Gemini.",
+          "legenda": "O logo do seu negócio com IA, de graça, no Gemini."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Um: entra no Gemini com a sua conta Google.",
-          "legenda": "1: entra no Gemini com a sua conta Google."
-        },
-        {
-          "fala": "O plano grátis já gera imagens, com um limite por dia.",
-          "legenda": "O plano grátis já gera imagens, com um limite por dia."
+          "fala": "Pede com quatro informações: nome, ramo, estilo e cores.",
+          "legenda": "Pede com 4 informações: nome, ramo, estilo e cores."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Dois: pede o logo com quatro informações.",
-          "legenda": "2: pede o logo com 4 informações."
-        },
-        {
-          "fala": "Nome, ramo do negócio, estilo e cores.",
-          "legenda": "Nome, ramo do negócio, estilo e cores."
+          "fala": "Tipo: logo pra Doce Lar, confeitaria, minimalista, rosa e marrom.",
+          "legenda": "Tipo: logo pra Doce Lar, confeitaria, minimalista, rosa e marrom."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Por exemplo: logo pra Doce Lar, uma confeitaria.",
-          "legenda": "Por exemplo: logo pra Doce Lar, uma confeitaria."
-        },
-        {
-          "fala": "Estilo minimalista, rosa e marrom, fundo branco.",
-          "legenda": "Estilo minimalista, rosa e marrom, fundo branco."
+          "fala": "Não gostou? Pede só o símbolo ou outra cor.",
+          "legenda": "Não gostou? Pede só o símbolo ou outra cor."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Três: gostou de um? Pede ajuste.",
-          "legenda": "3: gostou de um? Pede ajuste."
+          "fala": "O pedido pronto, o prompt, está na legenda.",
+          "legenda": "O pedido pronto, o prompt, está na legenda."
         },
         {
-          "fala": "Mais simples, só o símbolo, ou outra cor.",
-          "legenda": "Mais simples, só o símbolo, ou outra cor."
-        }
-      ]
-    },
-    {
-      "frases": [
-        {
-          "fala": "O pedido pronto, o prompt, está na legenda pra copiar.",
-          "legenda": "O pedido pronto, o prompt, está na legenda pra copiar."
-        },
-        {
-          "fala": "Salva esse vídeo e me segue pra mais.",
-          "legenda": "Salva esse vídeo e me segue pra mais."
+          "fala": "Salva e me segue pra mais.",
+          "legenda": "Salva e me segue pra mais."
         }
       ]
     }
-  ]
+  ],
+  "formato": "curto"
 }

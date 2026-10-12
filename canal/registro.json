@@ -264,7 +264,7 @@
    "horario": "19:00",
    "serie": "Agente na Prática",
    "titulo": "Agente de atendimento que sabe a hora de chamar você",
-   "narracao": "O melhor agente de atendimento não é o que responde tudo. É o que sabe a hora de chamar você. Pergunta simples, tipo horário, preço ou endereço? O agente responde na hora, de madrugada ou no domingo. Mas o cliente chegou irritado, ou pediu algo fora da regra? Aí o agente para e passa a conversa pra você. E não passa de qualquer jeito: manda um resumo. Quem é o cliente, o que ele quer e o que já foi dito. Você entra sabendo de tudo, e o cliente não repete nada. Quem decide quando chamar um humano é você, nas regras do agente. O agente cuida do simples. Você cuida do importante. Salva e me segue pra montar o seu.",
+   "narracao": "Esse agente atende sozinho e sabe a hora de chamar você. Horário, preço, endereço? Ele responde na hora, até de madrugada. Cliente irritado ou pedido fora da regra? Ele passa a conversa pra você. Com um resumo: quem é, o que quer e o que já foi dito. Salva e me segue pra montar o seu.",
    "video": "videos/2026-10-13-19h-agente-chama-humano-raiox.mp4",
    "registro": {
     "tema": "agente de atendimento que passa para humano",
@@ -278,10 +278,10 @@
    "status": "agendado",
    "agendador": "Buffer",
    "buffer": {
-    "youtube": "6acbc3e4a9411fbcc5526a11",
-    "instagram": "6acbc3e4fa026cfb810c2582"
+    "youtube": "6acc352fa9411fbcc565bc76",
+    "instagram": "6acc353063ff33d8c9a0b7ed"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/5e8dd7da120af25484d13dfe358cd10ce16ca7aa/videos/2026-10-13-19h-agente-chama-humano-raiox.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-13-19h-agente-chama-humano-raiox.mp4"
   },
   {
    "id": "2026-10-14-faca-com-ia",
