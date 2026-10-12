@@ -363,8 +363,8 @@
    "data": "2026-10-15",
    "horario": "19:00",
    "serie": "Agente na Prática",
-   "titulo": "Agente financeiro: avisa o boleto e só paga com o seu sim",
-   "narracao": "Boleto vencido de novo? Um agente financeiro cuida disso pra você. E não paga nada sem a sua aprovação. Ele lê os boletos e as notas que chegam no seu e-mail. E anota valor, vencimento e fornecedor numa planilha. Três dias antes de vencer, ele te avisa. Com o valor e o link do boleto. Você responde: pode pagar. Só aí ele agenda o pagamento. Sem a sua resposta, ele não mexe em nada. No fim do mês, ele manda um resumo: quanto entrou, quanto saiu e o que vence. E os limites, quem define é você, nas regras do agente. Ler, anotar, avisar e esperar o seu sim. Isso é um agente financeiro. Salva e me segue pra montar o seu.",
+   "titulo": "Boleto vencido nunca mais: um agente avisa e só paga com o seu sim",
+   "narracao": "Boleto vencido? Nunca mais. Um agente avisa e só paga com o seu sim. Ele lê os boletos do seu e-mail e anota tudo numa planilha. Três dias antes de vencer, te avisa com o valor e o link. Você responde: pode pagar. Só aí ele agenda o pagamento. Sem a sua resposta, não mexe em nada. Salva e me segue pra montar o seu.",
    "video": "videos/2026-10-15-19h-agente-financeiro-raiox.mp4",
    "registro": {
     "tema": "agente financeiro que cuida de boletos",
@@ -378,10 +378,10 @@
    "status": "agendado",
    "agendador": "Buffer",
    "buffer": {
-    "youtube": "6acbc3ec63ff33d8c98d5544",
-    "instagram": "6acbc3ecea568e911a35adf2"
+    "youtube": "6acc373c7db619a29153cd51",
+    "instagram": "6acc373c63ff33d8c9a10def"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/5e8dd7da120af25484d13dfe358cd10ce16ca7aa/videos/2026-10-15-19h-agente-financeiro-raiox.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-15-19h-agente-financeiro-raiox.mp4"
   },
   {
    "id": "2026-10-16-faca-com-ia",
