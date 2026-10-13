@@ -303,10 +303,10 @@
    "status": "agendado",
    "agendador": "Buffer",
    "buffer": {
-    "youtube": "6acc3597ea568e911a495b28",
-    "instagram": "6acc35977db619a2915364fb"
+    "youtube": "6acdfa8fe8e81feddfcef9be",
+    "instagram": "6acdfa90f79d2d8aed420c0d"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-14-12h-logo-gemini-raiox.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-14-12h-logo-gemini-raiox.mp4"
   },
   {
    "id": "2026-10-14-agente-na-pratica",
@@ -407,6 +407,31 @@
     "instagram": "6acc325aea568e911a48c4f9"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-16-12h-carrossel-curto-raiox.mp4"
+  },
+  {
+   "id": "2026-10-16-agente-na-pratica",
+   "data": "2026-10-16",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Gemini de assistente pessoal: marca na agenda e acha e-mail, de graça",
+   "narracao": "Seu assistente pessoal de graça já está no celular: o Gemini. Nas configurações, abra Apps conectados e ligue o Gmail e a Agenda. Agora é só pedir: arroba Agenda, marca dentista sexta às dez. Ou: arroba Gmail, acha o e-mail do boleto da luz. Tudo no plano grátis, com conta pessoal. Salva e testa hoje.",
+   "video": "videos/2026-10-16-19h-gemini-assistente-raiox.mp4",
+   "registro": {
+    "tema": "Gemini como assistente pessoal com Gmail e Agenda",
+    "chaves": [
+     "gemini",
+     "assistente",
+     "agenda",
+     "gmail"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acdfa6ee8e81feddfcef2d1",
+    "instagram": "6acdfa6ff79d2d8aed4204ed"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-16-19h-gemini-assistente-raiox.mp4"
   }
  ]
 }

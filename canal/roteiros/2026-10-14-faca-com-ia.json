@@ -4,7 +4,7 @@
   "data": "2026-10-14",
   "horario": "12:00",
   "titulo": "Logo com IA de graça no Gemini (prompt na legenda)",
-  "descricao": "Logo com IA de graça no Gemini, do Google 🎨\n1️⃣ Entre em gemini.google.com com sua conta Google\n2️⃣ Peça o logo com 4 informações: nome, ramo, estilo e cores\n3️⃣ Gostou de um? Peça ajustes: \"mais simples\", \"fundo branco\", \"só o símbolo\"\nO Gemini tem plano grátis, com limite de imagens por dia.\n\nPrompt (troque o que está entre colchetes):\nCrie um logo para [nome], uma [ramo]. Estilo [minimalista / moderno / divertido], cores [cor 1 e cor 2], fundo branco, sem texto pequeno.\n\nSalva!\n\nFonte: gemini.google.com (site oficial). Plano grátis com geração de imagem conferido em 11/10/2026 (DataCamp, \"Best free AI image generators\").\n\n#logo #gemini #logocomia #inteligenciaartificial #ia #empreendedorismo",
+  "descricao": "Logo com IA de graça no Gemini, do Google 🎨\n1️⃣ Entre em gemini.google.com com sua conta Google\n2️⃣ Peça o logo com 4 informações: nome, ramo, estilo e cores\n3️⃣ Gostou de um? Peça ajustes: \"mais simples\", \"fundo branco\", \"só o símbolo\"\nO Gemini tem plano grátis, com limite de uso para imagens.\n\nPrompt (troque o que está entre colchetes):\nCrie um logo para [nome], uma [ramo]. Estilo [minimalista / moderno / divertido], cores [cor 1 e cor 2], fundo branco, sem texto pequeno.\n\nSalva!\n\nFonte: gemini.google.com (site oficial). Plano grátis com geração de imagem conferido em 13/10/2026.\n\n#logo #gemini #logocomia #inteligenciaartificial #ia #empreendedorismo",
   "hashtags": [
     "logo",
     "gemini",
@@ -25,9 +25,9 @@
   },
   "dados_que_envelhecem": [
     {
-      "dado": "Gemini grátis gera imagens com limite diário",
+      "dado": "Gemini grátis gera imagens com limite de uso (o Google não publica um número fixo)",
       "fonte": "https://www.datacamp.com/blog/best-free-ai-image-generators",
-      "conferido": "2026-10-11"
+      "conferido": "2026-10-13"
     }
   ],
   "imagens": [
