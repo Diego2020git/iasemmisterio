@@ -432,6 +432,55 @@
     "instagram": "6acdfa6ff79d2d8aed4204ed"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-16-19h-gemini-assistente-raiox.mp4"
+  },
+  {
+   "id": "2026-10-17-faca-com-ia",
+   "data": "2026-10-17",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Legenda automática de graça e sem marca d'água no Clipchamp",
+   "narracao": "Legenda automática no seu vídeo, de graça e sem marca d'água. Abra o Clipchamp, da Microsoft, e suba o seu vídeo. Na aba Legendas, ative as legendas automáticas. Em segundos a fala vira texto. Corrija o que precisar. Exporta em mil e oitenta no plano grátis. Salva e testa hoje.",
+   "video": "videos/2026-10-17-12h-legenda-clipchamp-neon.mp4",
+   "registro": {
+    "tema": "legenda automática grátis no Clipchamp",
+    "chaves": [
+     "clipchamp",
+     "legenda",
+     "editar video"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acf50afc684a175c4b7f7f6",
+    "instagram": "6acf50b0b399690063004859"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-12h-legenda-clipchamp-neon.mp4"
+  },
+  {
+   "id": "2026-10-17-agente-na-pratica",
+   "data": "2026-10-17",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Paciente faltou de novo? Um agente confirma a consulta por você",
+   "narracao": "Paciente faltou de novo? Um agente confirma a consulta por você. Um dia antes, ele manda no WhatsApp: confirma amanhã às dez? Se o paciente pede outro horário, ele mostra os livres e remarca. Dúvida de saúde ele não responde: passa pra recepção. Agenda cheia e sem buraco. Salva e me segue pra montar o seu.",
+   "video": "videos/2026-10-17-19h-agente-clinica-neon.mp4",
+   "registro": {
+    "tema": "agente de IA que confirma consultas em clínica",
+    "chaves": [
+     "clinica",
+     "consulta",
+     "confirmacao",
+     "remarcar"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acf50b1789ade897f08b3e3",
+    "instagram": "6acf50b1b3996900630048c5"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-19h-agente-clinica-neon.mp4"
   }
  ]
 }
