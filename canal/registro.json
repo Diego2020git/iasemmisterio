@@ -481,6 +481,56 @@
     "instagram": "6acf547eb389ea654705b5fb"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-19h-agente-clinica-neon.mp4"
+  },
+  {
+   "id": "2026-10-18-faca-com-ia",
+   "data": "2026-10-18",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Currículo com IA de graça: o ChatGPT reescreve pra vaga certa",
+   "narracao": "Currículo que chama atenção, feito com IA e de graça. Abra o ChatGPT no plano grátis e cole o seu currículo. Peça pra reescrever com foco na vaga. O pedido pronto está na legenda. Ele troca tarefa por resultado. Só não deixe inventar nada. Confira cada dado e envie. Salva e testa hoje.",
+   "video": "videos/2026-10-18-12h-curriculo-chatgpt-neon.mp4",
+   "registro": {
+    "tema": "currículo reescrito pra vaga com ChatGPT grátis",
+    "chaves": [
+     "curriculo",
+     "emprego",
+     "chatgpt",
+     "vaga"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acf587d635a3a53a6f16fc2",
+    "instagram": "6acf587e0901e7a6582720af"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-12h-curriculo-chatgpt-neon.mp4"
+  },
+  {
+   "id": "2026-10-18-agente-na-pratica",
+   "data": "2026-10-18",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Delivery lotado? Um agente de IA anota o pedido no WhatsApp",
+   "narracao": "Delivery lotado? Um agente de IA anota os pedidos no WhatsApp. O cliente pede, e ele confirma o sabor, o endereço e o total. Confirmou? O pedido cai direto na cozinha. Reclamação ou pedido fora do cardápio, ele passa pra você. Ninguém fica sem resposta. Salva e segue pra montar o seu.",
+   "video": "videos/2026-10-18-19h-agente-delivery-neon.mp4",
+   "registro": {
+    "tema": "agente de IA que anota pedidos de delivery no WhatsApp",
+    "chaves": [
+     "delivery",
+     "restaurante",
+     "pedido",
+     "whatsapp"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acf587f4aaa0bb6abd45b5f",
+    "instagram": "6acf5880635a3a53a6f170ae"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-19h-agente-delivery-neon.mp4"
   }
  ]
 }
