@@ -15,7 +15,7 @@ def caminho_capa(video):
 
 def instante_capa(r):
     """Segundos do quadro da capa: logo antes da primeira troca de cena."""
-    slug = Path(r["video"]).stem.replace("-raiox-final", "").replace("-raiox", "")
+    slug = Path(r["video"]).stem.replace("-raiox-final", "").replace("-raiox", "").replace("-neon", "")
     tempos = json.load(open(RAIZ / "kit" / "audio" / f"{slug}.tempos.json"))
     return max(.5, tempos["cenas"][1] - .3)
 

@@ -1,0 +1,78 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-17-19h-agente-clinica.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script>
+// 17/10/2026 · Agente na Prática · agente que confirma consultas na clínica. Estilo neon (teste 2). Exemplo montado pelo canal.
+const T0 = TEMPOS.cenas, FIMV = T0[5], TS = wt('salva', 4) - .1;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], TS, FIMV + 1.6];
+const DURATION = SC[6], IMPACTO = TS + .4;
+const COR = [AZ, CI, AZ, CI, IN, AZ];
+const HITS = [wt('confirma', 0), wt('whatsapp', 1), wt('remarca', 2), wt('recepcao', 3), wt('cheia', 4)];
+const CLIQUES = [wt('remarca', 2)];
+// marca X (falta) que vira check (confirmado)
+function xis(x, y, s, a) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.strokeStyle = '#ff5a76'; ctx.lineWidth = 14; ctx.lineCap = 'round'; ctx.shadowColor = '#ff5a76'; ctx.shadowBlur = 30;
+  ctx.beginPath(); ctx.moveTo(x - s, y - s); ctx.lineTo(x + s, y + s); ctx.moveTo(x + s, y - s); ctx.lineTo(x - s, y + s); ctx.stroke(); ctx.restore(); }
+// horário em pílula (escolhido fica ciano)
+function slot(str, x, y, a, on) { if (a <= 0) return; const e = back(clamp(a)), w = 250;
+  ctx.save(); ctx.translate(x, y); ctx.scale(e, e); ctx.globalAlpha = clamp(a * 2); ctx.shadowColor = on ? CI : AZ; ctx.shadowBlur = on ? 40 : 15;
+  ctx.fillStyle = on ? CI : 'rgba(10,30,60,.85)'; rr(-w / 2, -44, w, 88, 44); ctx.fill(); ctx.strokeStyle = on ? CI : AZ; ctx.lineWidth = 3; rr(-w / 2, -44, w, 88, 44); ctx.stroke(); ctx.shadowBlur = 0;
+  txt(str, 0, 2, ARC, 40, on ? '#03121a' : BR, { align: 'center', weight: 600 }); ctx.restore(); }
+const CK = [[0, 860, 1520, 58, .3], [T0[1] + .3, 880, 1300, 60, -.2], [T0[2] + .3, 860, 1480, 56, .3], [CLIQUES[0] - .4, 700, 1000, 54, 0], [T0[3] + .4, 860, 1500, 56, .3],
+  [T0[4] + .3, 860, 1500, 56, -.2], [TS + .2, 860, 1500, 56, -.2], [TS + .7, 800, 1600, 0, .5]];
+const S = [
+  // 0 · gancho: título inteiro no quadro 1; a falta (X) vira consulta confirmada (check)
+  (t, lt) => {
+    frase('Paciente faltou?', 320, -1, SC[1] - .2, 92, { t, hot: 'faltou?' });
+    const tc = wt('confirma', 0), vira = prog(t, tc - .1, tc + .3);
+    neon3d(P.calendario, cx0, cy0 - 20, 230, .35 * Math.sin(t * .8), .3, vira > .5 ? CI : AZ, 1, .2);
+    xis(cx0, cy0 + 20, 60, 1 - vira);
+    neon3d(P.check, cx0, cy0 + 20, 110 * back(vira), 0, 0, CI, vira, .5);
+    frase('O agente confirma', 1300, wt('agente', 0) - .1, SC[1] - .2, 64, { t, hot: 'confirma', cor: CI });
+  },
+  // 1 · um dia antes, mensagem no WhatsApp
+  (t, lt) => {
+    exemplo(cx0, 300, prog(lt, 0, .3));
+    celular(cx0, cy0 + 20, .9, -.2 + .15 * sm(lt / 3), prog(lt, 0, .3), (x, y, w, s) => {
+      let yy = y; yy += msg(x, yy, w, 'Oi, Ana! Confirma sua consulta amanhã às 10h?', false, prog(t, wt('manda', 1), wt('manda', 1) + .3), s);
+      msg(x, yy, w, 'Confirmo ✅', true, prog(t, wt('10h', 1) + .3, wt('10h', 1) + .6), s);
+    }, 'Clínica Sorriso', CI);
+    frase('1 dia antes', 1400, wt('dia', 1) - .1, SC[2] - .2, 60, { t, hot: '1 dia' });
+  },
+  // 2 · outro horário: mostra os livres e remarca
+  (t, lt) => {
+    frase('Quer outro horário?', 340, SC[2] + .1, SC[3] - .2, 76, { t, hot: 'outro horário?' });
+    const tl = wt('livres', 2), tr = wt('remarca', 2);
+    slot('qui 14h', cx0, cy0 - 120, prog(t, tl - .2, tl + .1), false);
+    slot('sex 9h', cx0, cy0 + 10, prog(t, tl, tl + .3), t > tr);
+    slot('sex 16h', cx0, cy0 + 140, prog(t, tl + .2, tl + .5), false);
+    selo('remarcado', cx0, cy0 + 300, prog(t, tr + .1, tr + .4));
+  },
+  // 3 · dúvida de saúde vai pra recepção
+  (t, lt) => {
+    frase('Dúvida de saúde?', 340, wt('duvida', 3) - .1, SC[4] - .2, 80, { t, hot: 'saúde?' });
+    neon3d(P.balao, cx0 - 190, cy0 - 20, 130 * back(prog(lt, .05, .4)), .3 * Math.sin(t), .3, AZ, prog(lt, .05, .3));
+    neon3d(P.pessoa, cx0 + 190, cy0 - 20, 150 * back(prog(t, wt('recepcao', 3) - .3, wt('recepcao', 3) + .1)), -.3 * Math.sin(t), .3, CI, prog(t, wt('recepcao', 3) - .3, wt('recepcao', 3)));
+    const k = ease(prog(t, wt('passa', 3) - .1, wt('recepcao', 3)));
+    if (k > 0) { ctx.save(); ctx.strokeStyle = CI; ctx.lineWidth = 6; ctx.shadowColor = CI; ctx.shadowBlur = 20; ctx.setLineDash([18, 14]); ctx.beginPath(); ctx.moveTo(cx0 - 80, cy0 - 20); ctx.lineTo(cx0 - 80 + 160 * k, cy0 - 20); ctx.stroke(); ctx.restore(); }
+    frase('passa pra recepção', cy0 + 230, wt('passa', 3) - .1, SC[4] - .2, 64, { t, hot: 'recepção', cor: CI });
+  },
+  // 4 · agenda cheia
+  (t, lt) => {
+    neon3d(P.calendario, cx0, cy0 - 80, 220 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .8), .3, CI, prog(lt, .05, .3), .4);
+    neon3d(P.check, cx0, cy0 - 50, 90 * back(prog(lt, .4, .8)), 0, 0, BR, prog(lt, .4, .6), .5);
+    frase('Agenda cheia', cy0 + 230, wt('agenda', 4) - .1, SC[5] + .1, 88, { t, hot: 'cheia' });
+    frase('sem buraco', cy0 + 340, wt('sem', 4) - .1, SC[5] + .1, 56, { t });
+  },
+  // 5 · logo + chamada
+  (t, lt) => fim(t, lt, 'Salva e segue', 'pra montar o seu'),
+];
+</script></body></html>
