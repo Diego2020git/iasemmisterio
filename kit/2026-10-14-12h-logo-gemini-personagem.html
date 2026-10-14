@@ -5,123 +5,162 @@
 @font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
 html,body{margin:0;background:#000}canvas{display:block}
 </style></head><body>
-<img id="p-frente" src="personagem/frente.png" style="display:none"><img id="p-falando" src="personagem/falando.png" style="display:none"><img id="p-pensativo" src="personagem/pensativo.png" style="display:none"><img id="p-rindo" src="personagem/rindo.png" style="display:none"><img id="p-surpreso" src="personagem/surpreso.png" style="display:none">
+<img id="p-frente" src="personagem/frente.png" style="display:none"><img id="p-falando" src="personagem/falando.png" style="display:none"><img id="p-pensativo" src="personagem/pensativo.png" style="display:none"><img id="p-rindo" src="personagem/rindo.png" style="display:none"><img id="p-surpreso" src="personagem/surpreso.png" style="display:none"><img id="p-apontando" src="personagem/apontando.png" style="display:none">
 <canvas id="c" width="1080" height="1920"></canvas>
 <script src="audio/2026-10-14-12h-logo-gemini.tempos.js"></script>
 <script src="personagem/logo-gemini.env.js"></script>
 <script src="raiox-kit.js"></script>
 <script src="raiox-motion.js"></script>
 <script>
-// 14/10/2026 · Faça com IA · logo do seu negócio com o Gemini, de graça. Tempos em TEMPOS (voz.py).
+// Teste do personagem (v2, revisão de direção 14/10): logo com Gemini narrado pelo nerd 3D.
+// Layout: conteúdo em y 160-1120; faixa de baixo com o personagem à esquerda e a legenda à direita,
+// fora da coluna de ícones do Reels (x > 960) e da área da descrição (y > 1650).
 const EP = '19';
 const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
-// logo de exemplo em traço: casinha (Doce Lar) com um cupcake no lugar da porta; v = variação (0 completo, 1 só símbolo)
-function logoDraft(cx, cy, s, a, color = COL.ink, v = 0) {
-  if (a <= 0) return;
-  ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 5; ctx.lineJoin = 'round';
-  draw(a, 9 * s, () => {
-    ctx.beginPath(); ctx.moveTo(cx - s * .8, cy - s * .1); ctx.lineTo(cx, cy - s * .8); ctx.lineTo(cx + s * .8, cy - s * .1); ctx.stroke();
-    ctx.strokeRect(cx - s * .6, cy - s * .1, s * 1.2, s * .9);
-    ctx.beginPath(); ctx.arc(cx, cy + s * .25, s * .22, Math.PI, 0); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(cx - s * .22, cy + s * .25); ctx.lineTo(cx - s * .15, cy + s * .6); ctx.lineTo(cx + s * .15, cy + s * .6); ctx.lineTo(cx + s * .22, cy + s * .25); ctx.stroke();
+const CREME = '#fbf3ea', MARROM = '#7a4a2e', ROSA = '#e37a9b';
+
+// logo de exemplo (ilustração): casinha marrom, cupcake rosa no lugar da porta
+function logo(cx, cy, s, p, c1 = MARROM, c2 = ROSA, nome = true) {
+  if (p <= 0) return;
+  ctx.save(); ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.lineWidth = s * .075;
+  ctx.strokeStyle = c1;
+  draw(prog(p, 0, .6), 6 * s, () => {
+    ctx.beginPath(); ctx.moveTo(cx - s * .85, cy - s * .05); ctx.lineTo(cx, cy - s * .8); ctx.lineTo(cx + s * .85, cy - s * .05); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx - s * .62, cy - s * .2); ctx.lineTo(cx - s * .62, cy + s * .75); ctx.lineTo(cx + s * .62, cy + s * .75); ctx.lineTo(cx + s * .62, cy - s * .2); ctx.stroke();
   });
+  const q = prog(p, .35, .85);
+  if (q > 0) {
+    ctx.globalAlpha = q; ctx.fillStyle = c2;
+    ctx.beginPath(); ctx.arc(cx, cy + s * .22, s * .26, Math.PI, 0); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(cx - s * .24, cy + s * .26); ctx.lineTo(cx - s * .17, cy + s * .62); ctx.lineTo(cx + s * .17, cy + s * .62); ctx.lineTo(cx + s * .24, cy + s * .26); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = c1; ctx.beginPath(); ctx.arc(cx, cy - s * .06, s * .06, 0, 7); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  if (nome) txt('DOCE LAR', cx, cy + s * 1.18, EXP, s * .34, c1, { align: 'center', alpha: prog(p, .7, 1) });
   ctx.restore();
-  if (!v) txt('DOCE LAR', cx, cy + s * 1.2, EXP, s * .38, color, { align: 'center', alpha: prog(a, .6, 1) });
+}
+// cartão claro de contraste para o resultado
+function cartao(x, y, w, h, a = 1, rotulo = 'exemplo ilustrativo') {
+  if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = CREME; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = COL.cyan; ctx.lineWidth = 5; const k = 28;
+  [[x, y, 1, 1], [x + w, y, -1, 1], [x, y + h, 1, -1], [x + w, y + h, -1, -1]].forEach(([px, py, sx, sy]) => { ctx.beginPath(); ctx.moveTo(px + sx * k, py); ctx.lineTo(px, py); ctx.lineTo(px, py + sy * k); ctx.stroke(); });
+  if (rotulo) txt(rotulo.toUpperCase(), x + w, y + h + 34, ARC, 22, COL.dim, { align: 'right', weight: 600, ls: 3 });
+  ctx.restore();
 }
 
-// 0 · gancho (versão curta, 12/10): o logo pronto já está no quadro 1, com as cores escolhidas
-CAMS[0] = () => [[0, 0, 30, 1.04, 0], [cue('gemini'), 0, 0, 1, 0]];
+// 0 · gancho: o resultado pronto já no quadro 1
+CAMS[0] = () => [[0, 0, 20, 1.03, 0], [cue('gemini'), 0, 0, 1, 0]];
 function s0(t, lt) {
-  kinetic([{ w: 'Seu logo', t: cue('logo') }, { w: 'com IA', t: cue('ia') }], M, 230, lt, { size: 100, hl: [1] });
-  panel(M + 120, 470, W - 2 * M - 240, 560, 1, 'logo pronto');
-  logoDraft(W / 2, 680, 200, 1, COL.cyan);
-  [['#e88aa8'], ['#8a5a3c']].forEach(([c], i) => { ctx.fillStyle = c; ctx.beginPath(); ctx.arc(W - M - 170, 560 + i * 90, 32 + 4 * Math.sin(lt * 4 + i), 0, 7); ctx.fill(); });
-  stamp(W / 2, 1110, 'de graça', prog(lt, cue('graça') - .1, cue('graça') + .25), 40);
-  toolCard(W / 2, 1270, 'Gemini', 'gemini.google.com · tem plano grátis', prog(lt, cue('gemini') - .1, cue('gemini') + .25), '#4285f4');
+  kinetic([{ w: 'Seu logo', t: cue('logo') }, { w: 'com IA', t: cue('ia') }], M, 220, lt, { size: 92, hl: [1] });
+  const pop = easeOutBack(clamp(lt / .4));
+  ctx.save(); ctx.translate(W / 2, 700); ctx.scale(lerp(.94, 1, pop), lerp(.94, 1, pop)); ctx.translate(-W / 2, -700);
+  cartao(220, 390, 640, 620, 1); logo(W / 2, 650, 210, 1); ctx.restore();
+  toolCard(W / 2, 1150, 'Gemini', 'gemini.google.com · tem plano grátis', prog(lt, cue('gemini') - .15, cue('gemini') + .2), '#4285f4');
 }
-// 1 · as 4 informações: as 4 informações viram campos do pedido
-CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('cores'), 0, 30, 1.04, 0]];
+// 1 · as 4 informações, já preenchidas com o exemplo; cada uma acende na fala
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('cores'), 0, 20, 1.02, 0]];
 function s1(t, lt) {
-  title(['4 informações'], lt, 0, 200, 80, 0);
-  [['nome', 'NOME'], ['ramo', 'RAMO'], ['estilo', 'ESTILO'], ['cores', 'CORES']].forEach(([w, l], i) => {
-    const x = i % 2 ? W / 2 + 20 : M, y = i < 2 ? 470 : 800, a = prog(lt, cue(w) - .15, cue(w) + .4);
-    panel(x, y, W / 2 - M - 20, 260, prog(lt, i * .1, .4 + i * .1), 'campo ' + (i + 1));
-    txt(l, x + (W / 2 - M - 20) / 2, y + 140, EXP, 56, lt > cue(w) ? COL.cyan : COL.ink, { align: 'center', alpha: a });
+  title(['4 informações'], lt, 0, 210, 76, 0);
+  [['nome', 'NOME', 'Doce Lar'], ['ramo', 'RAMO', 'Confeitaria'], ['estilo', 'ESTILO', 'Minimalista'], ['cores', 'CORES', '']].forEach(([w, l, v], i) => {
+    const bw = (W - 2 * M - 30) / 2, x = M + (i % 2) * (bw + 30), y = i < 2 ? 330 : 730, on = prog(lt, cue(w) - .15, cue(w) + .15);
+    ctx.save(); ctx.globalAlpha = lerp(.35, 1, on);
+    panel(x, y, bw, 360, prog(lt, i * .08, .35 + i * .08));
+    txt(l, x + 34, y + 80, ARC, 30, COL.cyan, { weight: 600, ls: 4 });
+    if (v) txt(v, x + 34, y + 220, EXP, v.length > 9 ? 40 : 50, COL.ink);
+    else { ctx.fillStyle = ROSA; ctx.fillRect(x + 34, y + 140, 110, 110); ctx.fillStyle = MARROM; ctx.fillRect(x + 164, y + 140, 110, 110); txt('rosa + marrom', x + 34, y + 310, ARC, 30, COL.ink, { weight: 600 }); }
+    ctx.restore();
+    if (on > 0 && on < 1) { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 6; ctx.globalAlpha = 1 - on; ctx.strokeRect(x - 8, y - 8, bw + 16, 376); ctx.restore(); }
   });
 }
-// 2 · exemplo: o pedido é digitado e o logo aparece ao lado das cores
-CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('marrom'), 0, 30, 1.04, 0]];
+// 2 · o pedido em letra grande e o resultado aparecendo com as cores pedidas
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('marrom'), 0, 20, 1.03, 0]];
 function s2(t, lt) {
-  title(['Exemplo'], lt, .05, 200, 92, 0);
-  fig('fig. 04 · o pedido', lt, .2, 320);
-  promptBox(M, 420, W - 2 * M, 'Cria um logo pra Doce Lar, uma confeitaria. Estilo minimalista, rosa e marrom.', prog(lt, 0, cue('marrom') + .4), t, 'você pede');
-  logoDraft(W / 2, 960, 170, prog(lt, cue('minimalista') - .1, cue('marrom') + .6), COL.ink);
-  [['rosa', '#e88aa8'], ['marrom', '#8a5a3c']].forEach(([w, c], i) => { const a = prog(lt, cue(w) - .1, cue(w) + .3); if (a > 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = c; ctx.beginPath(); ctx.arc(W - M - 60, 860 + i * 120, 40, 0, 7); ctx.fill(); ctx.restore(); } });
-}
-// 3 · ajuste: ajuste; o logo completo se transforma só no símbolo e troca de cor
-CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('símbolo'), 0, 30, 1.04, 0]];
-function s3(t, lt) {
-  title(['Ajusta'], lt, 0, 200, 92, 0);
-  const sym = prog(lt, cue('símbolo') - .1, cue('símbolo') + .4), cor = prog(lt, cue('cor') - .1, cue('cor') + .4);
-  logoDraft(W / 2, 760, 200 + 60 * easeInOut(sym), prog(lt, 0, .6), cor > .5 ? COL.cyan : COL.ink, sym > .5 ? 1 : 0);
-  [['símbolo', 'só o símbolo'], ['cor', 'outra cor']].forEach(([w, l], i) => {
-    const a = prog(lt, cue(w) - .1, cue(w) + .35);
-    txt('→ ' + l, M + 20, 1160 + i * 80, ARC, 40, lt > cue(w) ? COL.cyan : COL.ink, { weight: 600, alpha: a });
+  const pedido = [['Logo pra', 'logo'], ['Doce Lar,', 'doce'], ['confeitaria,', 'confeitaria'], ['minimalista,', 'minimalista'], ['rosa', 'rosa'], ['e marrom.', 'marrom']];
+  panel(M, 200, W - 2 * M, 250, prog(lt, 0, .3), 'você pede no Gemini');
+  let x = M + 36, y = 280;
+  pedido.forEach(([w, c]) => {
+    const ww = measure(w + ' ', ARC, 48, 600); if (x + ww > W - M - 30) { x = M + 36; y += 66; }
+    const said = lt >= cue(c) - .05, hot = lt >= cue(c) - .05 && lt < cue(c) + .45;
+    txt(w, x, y, ARC, 48, hot ? COL.cyan : COL.ink, { weight: 600, alpha: said ? 1 : .3 }); x += ww;
   });
+  cartao(240, 520, 600, 600, prog(lt, cue('minimalista') - .3, cue('minimalista')));
+  const cor = prog(lt, cue('rosa') - .1, cue('marrom') + .3);
+  logo(W / 2, 760, 190, prog(lt, cue('minimalista') - .1, cue('marrom') + .4), cor > .5 ? MARROM : '#9aa6bf', cor > .5 ? ROSA : '#c9d1e0');
 }
-// 4 · fecha: prompt na legenda; card final
-CAMS[4] = () => [[0, 0, 30, 1.04, 0], [cue('legenda'), 0, 0, 1, 0]];
+// 3 · ajuste: original -> só o símbolo -> outra cor
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('cor'), 0, 20, 1.02, 0]];
+function s3(t, lt) {
+  title(['Não gostou?'], lt, 0, 210, 76, 0);
+  const cw = 290, gap = 25, x0 = (W - 3 * cw - 2 * gap) / 2;
+  [['original', 0, null], ['só o símbolo', cue('símbolo'), 's'], ['outra cor', cue('cor'), 'c']].forEach(([l, tt, k], i) => {
+    const a = i === 0 ? 1 : prog(lt, tt - .15, tt + .25), x = x0 + i * (cw + gap), y = 330;
+    if (a <= 0) return;
+    ctx.save(); ctx.globalAlpha = a;
+    cartao(x, y, cw, 400, 1, '');
+    if (k === 's') logo(x + cw / 2, y + 200, 110, 1, MARROM, ROSA, false);
+    else if (k === 'c') logo(x + cw / 2, y + 165, 85, 1, '#1d4ed8', '#f59e0b');
+    else logo(x + cw / 2, y + 165, 85, 1);
+    txt(l.toUpperCase(), x + cw / 2, y + 450, ARC, 26, i ? COL.cyan : COL.dim, { align: 'center', weight: 600, ls: 3 });
+    ctx.restore();
+    if (i) txt('→', x - gap / 2, y + 200, EXP, 34, COL.cyan, { align: 'center', alpha: a });
+  });
+  txt('é só pedir de novo, na mesma conversa', W / 2, 920, ARC, 38, COL.ink, { align: 'center', weight: 600, alpha: prog(lt, cue('pede') - .1, cue('pede') + .3) });
+}
+// 4 · encerramento: resultado visível, prompt na legenda e assinatura curta
+CAMS[4] = () => [[0, 0, 0, 1, 0]];
 function s4(t, lt) {
-  kinetic([{ w: 'Prompt', t: cue('prompt') }, { w: 'na legenda', t: cue('legenda') }], M, 230, lt, { size: 80, hl: [1], maxW: 1000 });
-  logoDraft(W / 2, 760, 200, prog(lt, 0, .5), COL.cyan);
-  stamp(W / 2, 1180, 'copia e cola', prog(lt, cue('legenda'), cue('legenda') + .3), 40);
-  endCard(t, SC[4] + cue('salva') - .25);
+  kinetic([{ w: 'Prompt', t: cue('prompt') }, { w: 'na legenda', t: cue('legenda') }], M, 220, lt, { size: 80, hl: [1], maxW: 900 });
+  cartao(270, 400, 540, 540, 1, ''); logo(W / 2, 620, 170, 1);
+  const s = prog(lt, cue('salva') - .1, cue('salva') + .4);
+  if (s > 0) { lens(W / 2 - 230, 1030, 50, s); txt('IA SEM MISTÉRIO', W / 2 - 160, 1045, EXP, 40, COL.ink, { alpha: s }); stamp(W / 2, 1130, 'salva e segue', prog(lt, cue('segue') - .1, cue('segue') + .3), 36); }
 }
 const SCENES = [s0, s1, s2, s3, s4];
 
-// Teste de personagem (13/10): o nerd 3D do Diego narra no canto, abaixo da legenda. Só essa variável muda em relação ao vídeo de 14/10.
+// ---- personagem ----
 const PIMG = n => document.getElementById('p-' + n);
-// poses por tempo global: [início, pose]; 'fala' = boca sincronizada com a voz
-const POSES = [[0, 'surpreso'], [1.5, 'fala'], [13.70, 'pensativo'], [14.9, 'fala'], [20.80, 'rindo']];
-function poseAt(t) { let k = 0; for (let i = 0; i < POSES.length; i++) if (t >= POSES[i][0]) k = i; return [POSES[k][1], t - POSES[k][0]]; }
+// [início, pose, tamanho]: maior na apresentação e nas reações, menor na demonstração
+const POSES = [[0, 'surpreso', 560], [1.45, 'fala', 540], [3.6, 'fala', 440], [13.75, 'pensativo', 540], [15.0, 'fala', 480], [17.35, 'apontando', 640], [20.85, 'rindo', 560]];
+function poseAt(t) { let k = 0; for (let i = 0; i < POSES.length; i++) if (t >= POSES[i][0]) k = i; return k; }
 function personagem(t) {
-  const [p, lp] = poseAt(t), S = 500, x = 600, y = 1420;
-  const pop = easeOutBack(clamp(lp / .3)), s = lerp(.9, 1, pop), bob = Math.sin(t * 2.4) * 6;
-  ctx.save(); ctx.translate(x + S / 2, y + S + bob); ctx.scale(s, s); ctx.rotate(Math.sin(t * 1.3) * .02); ctx.translate(-S / 2, -S);
+  const k = poseAt(t), [t0, p, S1] = POSES[k], S0 = k ? POSES[k - 1][2] : S1, lp = t - t0;
+  const S = lerp(S0, S1, easeInOut(clamp(lp / .35))), pop = easeOutBack(clamp(lp / .3)), sc = lerp(.92, 1, pop);
+  const x = 10, base = 1770, bob = Math.sin(t * 2.2) * 4;
+  ctx.save(); ctx.translate(x + S / 2, base + bob); ctx.scale(sc, sc); ctx.translate(-S / 2, -S);
   if (p === 'fala') {
-    const e = ENV[Math.min(ENV.length - 1, Math.round(t * 30))] || 0, o = clamp((e - .12) / .3);
+    const i = Math.round(t * 30), e = ((ENV[i - 1] || 0) + 2 * (ENV[i] || 0) + (ENV[i + 1] || 0)) / 4, o = clamp((e - .14) / .28);
     ctx.drawImage(PIMG('frente'), 0, 0, S, S); if (o > 0) { ctx.globalAlpha = o; ctx.drawImage(PIMG('falando'), 0, 0, S, S); }
   } else ctx.drawImage(PIMG(p), 0, 0, S, S);
   ctx.restore();
 }
-// legenda à esquerda (mesmo estilo do kit), o personagem ocupa a direita
-function legendaLado(t) {
+// legenda: até 2 linhas por vez, à direita do personagem
+function legenda(t) {
   const F = TEMPOS.frases; let fi = -1;
   for (let k = 0; k < F.length; k++) if (t >= F[k][0] - .05 && (k === F.length - 1 ? t < F[k][1] + .5 : t < F[k + 1][0] - .05)) { fi = k; break; }
   if (fi < 0) return;
-  const [a, b] = F[fi]; const size = 46, X0 = 60, BW = 600, LH = 64;
+  const [a, b] = F[fi]; const size = 42, X0 = 450, BW = 510, LH = 58;
   const ws = TEMPOS.palavras.filter(p => p.t0 >= a - .01 && p.t1 <= b + .01);
   const lines = []; let cur = []; let lw = 0;
-  ws.forEach((w, i) => { const ww = measure(w.w + ' ', ARC, size, 600); if (lw + ww > BW - 60 && cur.length) { lines.push(cur); cur = []; lw = 0; } cur.push({ ...w, ww, i }); lw += ww; });
+  ws.forEach(w => { const ww = measure(w.w + ' ', ARC, size, 600); if (lw + ww > BW - 50 && cur.length) { lines.push(cur); cur = []; lw = 0; } cur.push({ ...w, ww }); lw += ww; });
   lines.push(cur);
-  const bh = lines.length * LH + 40, by = 1600 - bh / 2, y0 = by + 56;
-  const pin = easeOutBack(prog(t, a - .05, a + .2));
-  ctx.save(); ctx.translate(X0 + BW / 2, by + bh / 2); ctx.scale(lerp(.92, 1, pin), lerp(.92, 1, pin)); ctx.translate(-(X0 + BW / 2), -(by + bh / 2));
+  const pages = []; for (let i = 0; i < lines.length; i += 2) pages.push(lines.slice(i, i + 2));
+  let pg = 0; pages.forEach((pp, i) => { if (t >= pp[0][0].t0 - .05) pg = i; });
+  const page = pages[pg], pa = page[0][0].t0;
+  const bh = page.length * LH + 40, by = 1490 - bh / 2, y0 = by + 54;
+  const pin = easeOutBack(prog(t, pa - .05, pa + .18));
+  ctx.save(); ctx.translate(X0 + BW / 2, by + bh / 2); ctx.scale(lerp(.94, 1, pin), lerp(.94, 1, pin)); ctx.translate(-(X0 + BW / 2), -(by + bh / 2));
   ctx.fillStyle = COL.black; ctx.fillRect(X0, by, BW, bh);
-  ctx.strokeStyle = COL.cyan; ctx.lineWidth = 5; const k = 30;
-  [[X0, by, 1, 1], [X0 + BW, by, -1, 1], [X0, by + bh, 1, -1], [X0 + BW, by + bh, -1, -1]].forEach(([x, y, sx, sy]) => { ctx.beginPath(); ctx.moveTo(x + sx * k, y); ctx.lineTo(x, y); ctx.lineTo(x, y + sy * k); ctx.stroke(); });
-  lines.forEach((ln, li) => {
+  ctx.strokeStyle = COL.cyan; ctx.lineWidth = 5; const kk = 28;
+  [[X0, by, 1, 1], [X0 + BW, by, -1, 1], [X0, by + bh, 1, -1], [X0 + BW, by + bh, -1, -1]].forEach(([x, y, sx, sy]) => { ctx.beginPath(); ctx.moveTo(x + sx * kk, y); ctx.lineTo(x, y); ctx.lineTo(x, y + sy * kk); ctx.stroke(); });
+  page.forEach((ln, li) => {
     const lwid = ln.reduce((s, w) => s + w.ww, 0); let x = X0 + BW / 2 - lwid / 2; const y = y0 + li * LH;
-    ln.forEach(w => {
-      const on = t >= w.t0 && t < w.t1, said = t >= w.t0, pop = 1 + .12 * Math.sin(Math.PI * prog(t, w.t0, w.t0 + .22)), ww = measure(w.w, ARC, size, 600);
-      ctx.save(); ctx.translate(x + ww / 2, y); ctx.scale(pop, pop);
-      txt(w.w, 0, 0, ARC, size, on ? COL.cyan : COL.ink, { weight: 600, align: 'center', alpha: said ? 1 : .55 }); ctx.restore();
-      x += w.ww;
-    });
+    ln.forEach(w => { const on = t >= w.t0 && t < w.t1, ww = measure(w.w, ARC, size, 600);
+      txt(w.w, x + ww / 2, y, ARC, size, on ? COL.cyan : COL.ink, { weight: 600, align: 'center', alpha: t >= w.t0 ? 1 : .55 }); x += w.ww; });
   });
   ctx.restore();
 }
-captions = function (t) { personagem(t); legendaLado(t); };
+hud = function () {}; // sem moldura nem rodapé técnico: menos elementos disputando atenção
+captions = function (t) { personagem(t); legenda(t); };
 window.DURATION = TEMPOS.duracao;
 </script>
 </body></html>
