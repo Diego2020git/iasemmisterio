@@ -61,6 +61,11 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 - De 17 a 23/10 os vídeos saem no estilo neon: fundo preto, luz colorida vindo de baixo, um elemento por vez no centro, ícones 3D com brilho em azul elétrico e ciano, celular, roda de cartões, cursor 3D e texto limpo com rastro de luz. Modelo e peças vêm do thread de retenção.
 - Ainda falta a resposta do Diego no card "Só 19h ou Todos". Até lá, o neon vai só nas 19h e as 12h continuam no Raio-X, como comparação.
 - Continua valendo todo o resto: formato curto, título no quadro 1, nada sobreposto e folha de quadros antes do render.
+- Modelo neon: kit/marca-apresentacao-neon.html (commit 3c2a250 do thread de retenção), logo em kit/marca/logo.png (nunca redesenhar).
+  - Peças reaproveitáveis: fundo()/luz()/acabamento() com a cor de cada cena em COR; frase() (texto com rastro de luz e palavra em destaque); neon3d(path) com os ícones em P (engrenagem, relógio, coração, balão, seta, check). Ícone novo é um path num quadrado de -100 a 100. Também celular() com msg() (tela de ferramenta), roda() com os ícones em IC, cursor() com os keyframes CK [t, x, y, tamanho, giro] (longe do texto) e a transição zoom, desfoque e flash em render().
+  - Layout: um elemento por vez, centrado em y≈860. Nada abaixo de y 1650 nem à direita de x 960.
+  - Trilha: TODO vídeo neon leva a música gerada por renderAudio(). Ajustar os tempos de whoosh, clique e impacto às cenas (SC) e ao DURATION de cada vídeo. `node kit/render.mjs pagina.html trilha.wav audio` e depois mixar com a voz: ffmpeg -i trilha.wav -i voz.wav -filter_complex "[1:a]aresample=48000,aformat=channel_layouts=stereo,asplit=2[v][sc];[0:a]volume=0.55[m0];[m0][sc]sidechaincompress=threshold=0.02:ratio=5:attack=15:release=350[m];[m][v]amix=inputs=2:normalize=0:duration=first,loudnorm=I=-14:TP=-1.5:LRA=11" final.wav. Renderizar o vídeo com esse final.wav.
+  - As 12h (Raio-X) ficam iguais a hoje, sem música.
 
 ## Estado dos serviços (11/10/2026)
 
