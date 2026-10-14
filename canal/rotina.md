@@ -55,14 +55,12 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 9. Conferir na agenda real, atualizar este arquivo, a pauta, o registro e a memória. Commit e push.
 10. Mensagem curta: tabela Dia | Horário | Vídeo | Série, agendado até quando, comentários a fixar e problemas.
 
-## Teste do personagem narrador (decisão do Diego em 14/10, card no thread "Retenção: gancho e ritmo")
+## Teste 2 de 17 a 23/10: estilo neon (Diego, 14/10 02h48, thread "Retenção: gancho e ritmo")
 
-- De 17/10 a 23/10, SÓ os vídeos das 19h (Agente na Prática) usam o personagem. Os das 12h ficam sem ele, para servir de comparação. Se a retenção das 19h sair melhor, o personagem vira padrão em tudo (o thread de retenção lê o resultado junto com o teste 1 de 16/10).
-- Modelo: kit/2026-10-14-12h-logo-gemini-personagem.html. Copiar as funções personagem() e legenda() e o bloco final (hud vazio, captions = personagem + legenda). Poses em kit/personagem/*.png (frente, falando, surpreso, pensativo, apontando, rindo).
-- Boca: `python3 kit/envelope.py kit/audio/<slug>.wav kit/personagem/<slug>.env.js` (30 quadros/s) e carregar esse .env.js no HTML.
-- Layout: conteúdo entre y 160 e 1120. Faixa de baixo com o personagem à esquerda e a legenda à direita, com no máximo 2 linhas. Personagem grande na abertura e nas reações, menor na demonstração (lista POSES com início, pose e tamanho). Um foco por cena.
-- Toda simulação (tela, logo, conversa inventada) leva o selo "exemplo ilustrativo".
-- Continua tudo o resto: formato curto, título no quadro 1, regras de forma, folha de quadros antes do render.
+- O personagem narrador foi ADIADO: não usar por enquanto. O modelo fica em kit/2026-10-14-12h-logo-gemini-personagem.html e kit/envelope.py gera a boca, para quando ele voltar.
+- De 17 a 23/10 os vídeos saem no estilo neon: fundo preto, luz colorida vindo de baixo, um elemento por vez no centro, ícones 3D com brilho em azul elétrico e ciano, celular, roda de cartões, cursor 3D e texto limpo com rastro de luz. Modelo e peças vêm do thread de retenção.
+- Ainda falta a resposta do Diego no card "Só 19h ou Todos". Até lá, o neon vai só nas 19h e as 12h continuam no Raio-X, como comparação.
+- Continua valendo todo o resto: formato curto, título no quadro 1, nada sobreposto e folha de quadros antes do render.
 
 ## Estado dos serviços (11/10/2026)
 
