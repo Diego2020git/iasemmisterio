@@ -26,8 +26,13 @@ function slot(str, x, y, a, on) { if (a <= 0) return; const e = back(clamp(a)), 
   ctx.save(); ctx.translate(x, y); ctx.scale(e, e); ctx.globalAlpha = clamp(a * 2); ctx.shadowColor = on ? CI : AZ; ctx.shadowBlur = on ? 40 : 15;
   ctx.fillStyle = on ? CI : 'rgba(10,30,60,.85)'; rr(-w / 2, -44, w, 88, 44); ctx.fill(); ctx.strokeStyle = on ? CI : AZ; ctx.lineWidth = 3; rr(-w / 2, -44, w, 88, 44); ctx.stroke(); ctx.shadowBlur = 0;
   txt(str, 0, 2, ARC, 40, on ? '#03121a' : BR, { align: 'center', weight: 600 }); ctx.restore(); }
-const CK = [[0, 860, 1520, 58, .3], [T0[1] + .3, 880, 1300, 60, -.2], [T0[2] + .3, 860, 1480, 56, .3], [CLIQUES[0] - .4, 700, 1000, 54, 0], [T0[3] + .4, 860, 1500, 56, .3],
-  [T0[4] + .3, 860, 1500, 56, -.2], [TS + .2, 860, 1500, 56, -.2], [TS + .7, 800, 1600, 0, .5]];
+// cursor parado ao lado do elemento principal de cada cena; só se move nas trocas de cena (fora das linhas de texto)
+const CPOS = [[850, 900, 58, .3], [850, 1000, 60, -.2], [640, 885, 54, 0], [920, 760, 56, .3], [820, 900, 56, -.2], [820, 900, 56, -.2]];
+const CK = [[0, ...CPOS[0]]];
+CPOS.forEach((c, i) => { if (i) CK.push([SC[i] - .25, ...CPOS[i - 1]]); CK.push([SC[i] + .3, ...c]); });
+// cena 2: o cursor some na troca e só volta quando os horários aparecem (nunca sozinho na tela)
+{ const k = CK.findIndex(c => c[0] === SC[2] + .3); CK[k][3] = 0; CK.splice(k + 1, 0, [wt('livres', 2) + .1, 640, 885, 0, 0], [wt('livres', 2) + .4, 640, 885, 54, 0]); }
+CK.push([SC[5] + .35, 800, 1600, 0, .5]);
 const S = [
   // 0 · gancho: título inteiro no quadro 1; a falta (X) vira consulta confirmada (check)
   (t, lt) => {
