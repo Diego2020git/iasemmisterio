@@ -1,6 +1,7 @@
 // Render quadro a quadro de um vídeo Raio-X, sem dependências (Chromium headless + DevTools Protocol + ffmpeg).
 // Uso: node render.mjs pagina.html saida.mp4 [audio.wav]      -> MP4 30 fps com a narração
 //      node render.mjs pagina.html pasta/ stills t1,t2,...    -> JPGs nos instantes pedidos
+//      node render.mjs pagina.html trilha.wav audio           -> WAV da trilha feita em Web Audio (renderAudio() da página)
 // Cada quadro chama render(i/30) na página e copia o canvas; nada depende do relógio real.
 import { spawn } from 'node:child_process';
 import { resolve } from 'node:path';
@@ -36,7 +37,9 @@ await new Promise(r => { loaded = r; send('Page.navigate', { url: 'file://' + re
 await ev('Promise.all([...document.fonts].map(f => f.load())).then(() => document.fonts.ready).then(() => 1)');
 const frame = async (t, q = .92) => Buffer.from((await ev(`(render(${t}), document.getElementById('c').toDataURL('image/jpeg', ${q}))`)).split(',')[1], 'base64');
 
-if (a3 === 'stills') {
+if (a3 === 'audio') {
+  writeFileSync(out, Buffer.from(await ev('renderAudio()'), 'base64'));
+} else if (a3 === 'stills') {
   mkdirSync(out, { recursive: true });
   for (const t of a4.split(',').map(Number)) writeFileSync(`${out}/still_${t.toFixed(2).padStart(5, '0')}.jpg`, await frame(t, .85));
 } else {
