@@ -1,0 +1,47 @@
+{
+ "id": "marca-apresentacao",
+ "formato": "curto",
+ "titulo": "IA Sem Mistério: apresentação do canal",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Você usa IA só pra fazer pergunta?",
+     "legenda": "Você usa IA só pra fazer pergunta?"
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Ela pode trabalhar por você.",
+     "legenda": "Ela pode trabalhar por você."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Aqui no IA Sem Mistério você aprende a criar agentes, automatizar tarefas e usar ferramentas grátis.",
+     "legenda": "Aqui no IA Sem Mistério você aprende a criar agentes, automatizar tarefas e usar ferramentas grátis."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Passo a passo, sem enrolação, todo dia ao meio-dia e às sete da noite.",
+     "legenda": "Passo a passo, sem enrolação, todo dia ao meio-dia e às sete da noite."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Curte e comenta pra receber mais.",
+     "legenda": "Curte e comenta pra receber mais."
+    }
+   ]
+  }
+ ]
+}
