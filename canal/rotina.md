@@ -7,8 +7,11 @@ Regras completas: /mnt/project-files/operacao/prompt-operacao-v2.md.
 
 | Dia | Horário | Série | O que é |
 |---|---|---|---|
-| Todos | 12h | Faça com IA | Uma tarefa do dia a dia resolvida com uma ferramenta que tem plano grátis. |
-| Todos | 19h | Agente na Prática | A partir de 19/10 (Diego, card "Série do zero" de 16/10): série "Monte seu agente do zero", um episódio por dia, na ordem, até o agente responder no WhatsApp. Ver a seção da série abaixo. Até 18/10: agentes soltos, já agendados. |
+| Todos | 12h | Radar IA (a partir de 19/10) | Notícias de IA: lançamentos, comparação de modelos, notícias importantes e preços. Feito pela VIGIA (6h27) no próprio dia, com notícias das últimas 24 a 72 h. Até 18/10 era "Faça com IA". |
+| Seg, Qua, Sex | 19h | Agente do zero (a partir de 19/10) | Série "Monte seu agente do zero": ep 1 em 19/10, ep 2 em 21/10, ep 3 em 23/10... |
+| Ter, Sáb | 19h | Automação do zero (a partir de 20/10) | Série com o mesmo Make grátis. Ep 1 (20/10): anexo do Gmail salvo sozinho no Drive; ep 2: formulário vira linha na planilha + e-mail de resposta; ep 3: lembrete no WhatsApp de evento da agenda. |
+| Qui | 19h | Termo de IA (a partir de 22/10) | Um termo de negócio em 35 s: RAG, token, embedding, fine-tuning, alucinação, MCP, API, agente x chatbot. Termo explicado entra em canal/glossario.json pra não repetir. |
+| Dom | 19h | Modelos e parâmetros (a partir de 25/10) | Nomenclatura e comparação: mini/flash/pro, temperatura, janela de contexto, modelo com raciocínio, aberto x fechado. |
 | Sábado | 10h | Carrossel da Semana | Só no Instagram (escolha do Diego em 11/10). Resume o melhor tutorial da semana em 7 a 10 slides no traço Raio-X, com o prompt no último slide. Primeiro em 17/10, feito na produção de quarta. Teste em 11/10 15h (4 IAs grátis). Como fazer: HTML 1080x1350 em kit/carrossel-*.html (render(i) = slide i), `node kit/render.mjs pagina.html pasta stills 0,1,...`, JPGs em carrosseis/<data-slug>/, Buffer createPost com assets image e metadata.instagram.type post (testado, aceita 8 imagens). 17/10 (fórmula de planilha, 7 slides, kit/carrossel-2026-10-17-formula-planilha.html) foi pelo Metricool com publicação automática e sem música, porque o Buffer grátis estava com o Instagram cheio (10 de 10). |
 
 Fuso America/Sao_Paulo. Instagram e YouTube no mesmo dia e horário.
@@ -55,10 +58,19 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 9. Conferir na agenda real, atualizar este arquivo, a pauta, o registro e a memória. Commit e push.
 10. Mensagem curta: tabela Dia | Horário | Vídeo | Série, agendado até quando, comentários a fixar e problemas.
 
+## Grade nova de 19/10/2026 (Diego, 16/10 04h11, thread "Retenção: gancho e ritmo")
+
+- Detalhes em /mnt/project-files/operacao/grade-2026-10-19.md (ler antes de produzir). Nomes de série no roteiro: "Radar IA", "Agente do zero", "Automação do zero", "Termo de IA", "Modelos e parâmetros" (o validar.py confere dia e horário de cada um e barra "Faça com IA" e "Agente na Prática" de 19/10 em diante).
+- 12h Radar IA: a VIGIA diária produz o 12h do mesmo dia. A produção de dom/qua/sex não adianta mais o 12h, só o 19h. Se a vigia falhar, o 12h sai com o tema mais quente da semana, com fonte.
+  - Estrutura 35 s: 0-3 a notícia mais forte com a data; 3-25 três notícias numeradas (o que é, o que muda pra você, preço ou acesso); 25-31 "qual testar hoje" (grátis ou pago com valor); 31-35 chamada + logo.
+  - Fonte oficial (blog ou anúncio da empresa, página de preços, documentação); imprensa grande só de apoio; boato e vazamento não entram. Preço em US$ com a data conferida (R$ se houver oficial). Comparação só com número publicado e nome da fonte. Links das fontes na legenda.
+- 19h em rodízio (tabela da grade acima). Séries grátis e que funcionam, um passo real por episódio, nome real de botão; ferramenta paga só dizendo o preço. Termo e parâmetro: 0-3 a pergunta; 3-7 onde você já viu; 7-25 explicação em 3 partes com exemplo do dia a dia; 25-31 quando usar e quanto custa; 31-35 chamada.
+- Tudo no formato "completo" de 35 s; neon com trilha até 23/10. Cada vídeo pronto: MP4 em /mnt/project-files/videos/ e caminho para a sessão do thread de retenção.
+
 ## Série "Monte seu agente do zero" (19h, a partir de 19/10/2026)
 
 - Decisão do Diego no card de 16/10 ("Série do zero"). Plano, ferramentas, custos e regras em /mnt/project-files/operacao/serie-agente-do-zero.md (ler antes de cada episódio).
-- Ep 1 no primeiro 19h ainda não produzido (19/10), depois um por dia na ordem dos 11 episódios: sem pular nem repetir. O que já estava agendado (até 18/10) fica.
+- Ep 1 em 19/10 19h; sai às seg, qua e sex (grade de 19/10), na ordem dos 11 episódios: sem pular nem repetir. O que já estava agendado (até 18/10) fica.
 - Ferramentas fixas a série toda: Gemini API pelo Google AI Studio (cérebro), Make.com (ligações), WhatsApp Cloud API da Meta (boca).
 - Formato "completo" de 35 s; o bloco final é "amanhã: <próximo passo>" + logo. Título "Agente do zero #N: <passo>" (no roteiro, campo "serie_ep": N). Capa com o número grande do episódio. Legenda com os passos por escrito e "episódio anterior: #N-1". No YouTube, playlist "Monte seu agente do zero".
 - Neon com trilha de 17 a 23/10. Na tela, só nomes reais de botões e menus; se não tiver certeza do nome, mostrar a ação ("abra a área de chaves"). Nunca mostrar uma chave de API de verdade.
@@ -71,7 +83,7 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 - Todo roteiro novo leva `"formato": "completo"` (o validar.py barra "curto" depois de 18/10). Fala de uns 32 s (cerca de 470 a 560 caracteres) + logo.
 - Estrutura fixa (detalhe e exemplo em /mnt/project-files/operacao/roteiro-35s.md): 0-3 gancho com o resultado pronto e o problema; 3-7 por que importa; 7-25 três passos numerados com a ferramenta nomeada, onde clicar e o pedido (prompt) completo na tela por pelo menos 3 s; 25-31 antes e depois + custo ou limite do plano grátis conferido no dia; 31-35 uma chamada só + logo.
 - Todo vídeo responde: o que eu ganho, com qual ferramenta e como faço. O pedido completo também vai na legenda do post.
-- "Agente na Prática" sempre nomeia a ferramenta pra montar o agente (ex.: n8n, Make, Zapier), diz quanto custa e mostra os 3 passos de montagem; só mostrar o agente funcionando não basta.
+- Vídeo de agente ou automação sempre nomeia a ferramenta pra montar (ex.: n8n, Make, Zapier), diz quanto custa e mostra os 3 passos de montagem; só mostrar o agente funcionando não basta.
 - Temas: nada de repetir assunto já publicado ou agendado (conferir canal/registro.json antes de escolher). Cada vídeo ensina uma tarefa nova e útil.
 - O estilo neon com trilha continua até 23/10.
 

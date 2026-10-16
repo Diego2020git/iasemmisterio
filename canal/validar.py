@@ -15,6 +15,13 @@ CANAL = RAIZ / "canal"
 # Grade aprovada pelo Diego em 11/10/2026: todos os dias, uma série por horário.
 GRADE = {"Faça com IA": "12:00", "Agente na Prática": "19:00", "Carrossel da Semana": "10:00"}
 DIAS_DA_SERIE = {"Faça com IA": range(7), "Agente na Prática": range(7), "Carrossel da Semana": [5]}  # 0 = segunda; carrossel só no Instagram, sábado (Diego, 11/10)
+# Grade nova do Diego (16/10/2026), valendo de 19/10: 12h "Radar IA" (notícias, feito pela vigia no próprio dia);
+# 19h em rodízio de quadros. Ver /mnt/project-files/operacao/grade-2026-10-19.md.
+GRADE_NOVA_DESDE = "2026-10-19"
+GRADE.update({"Radar IA": "12:00", "Agente do zero": "19:00", "Automação do zero": "19:00", "Termo de IA": "19:00", "Modelos e parâmetros": "19:00"})
+DIAS_DA_SERIE.update({"Radar IA": range(7), "Agente do zero": [0, 2, 4], "Automação do zero": [1, 5], "Termo de IA": [3], "Modelos e parâmetros": [6]})
+SERIES_ANTIGAS = {"Faça com IA", "Agente na Prática"}  # só até 18/10
+SERIES_NOVAS = {"Radar IA", "Agente do zero", "Automação do zero", "Termo de IA", "Modelos e parâmetros"}
 # formato "curto" (diretrizes de retenção do Diego, 11/10/2026): 15 a 25 s de fala, card final pode passar um pouco.
 # "demo" (padrão até aqui): 35 a 45 s, quando a demonstração exige.
 # "completo" (Diego, 16/10/2026, thread "Retenção: gancho e ritmo"): 35 s com passo a passo, ferramenta, pedido na tela,
@@ -69,6 +76,10 @@ def validar(caminho, sem_mp4=False):
             erros.append(f"{serie} não sai em {dia}")
         if hora != GRADE[serie]:
             erros.append(f"horário {hora} não é o slot de {serie} ({GRADE[serie]})")
+        if serie in SERIES_ANTIGAS and dia >= GRADE_NOVA_DESDE:
+            erros.append(f"'{serie}' saiu da grade em {GRADE_NOVA_DESDE} (Diego, 16/10): 12h é Radar IA e 19h segue o rodízio do dia")
+        if serie in SERIES_NOVAS and dia < GRADE_NOVA_DESDE:
+            erros.append(f"'{serie}' só começa em {GRADE_NOVA_DESDE}")
     for plat, p in (r.get("plataformas") or {}).items():
         if p.get("data", dia) != dia or p.get("horario", hora) != hora:
             erros.append(f"{plat} ficou em dia ou horário diferente das outras plataformas")
