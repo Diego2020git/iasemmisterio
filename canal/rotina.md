@@ -7,7 +7,7 @@ Regras completas: /mnt/project-files/operacao/prompt-operacao-v2.md.
 
 | Dia | Horário | Série | O que é |
 |---|---|---|---|
-| Todos | 12h | Radar IA (a partir de 17/10) | Notícias de IA: lançamentos, comparação de modelos, notícias importantes e preços. Feito pela VIGIA (6h27) no próprio dia, com notícias das últimas 24 a 72 h. Até 16/10 era "Faça com IA". |
+| Todos | 12h | Radar IA (a partir de 16/10) | Notícias de IA: lançamentos, comparação de modelos, notícias importantes e preços. Feito pela VIGIA (6h27) no próprio dia, com notícias das últimas 24 a 72 h. Até 15/10 era "Faça com IA". |
 | Seg, Qua, Sex | 19h | Agente do zero (a partir de 19/10) | Série "Monte seu agente do zero": ep 1 em 19/10, ep 2 em 21/10, ep 3 em 23/10... |
 | Ter, Sáb | 19h | Automação do zero (a partir de 17/10) | Série com o mesmo Make grátis. Ep 1 (17/10, feito no thread de retenção): anexo do Gmail salvo sozinho no Drive; ep 2: formulário vira linha na planilha + e-mail de resposta; ep 3: lembrete no WhatsApp de evento da agenda. |
 | Qui | 19h | Termo de IA (a partir de 22/10) | Um termo de negócio em 35 s: RAG, token, embedding, fine-tuning, alucinação, MCP, API, agente x chatbot. Termo explicado entra em canal/glossario.json pra não repetir. |
@@ -60,8 +60,7 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 
 ## Grade nova de 19/10/2026 (Diego, 16/10 04h11, thread "Retenção: gancho e ritmo"), ANTECIPADA para 17/10 (Diego, 16/10 04h13)
 
-- Vale desde sáb 17/10. Os vídeos de 17/10 (12h Radar IA e 19h Automação do zero ep 1) são feitos pela sessão do thread de retenção (session_01KnRMZcWxFwradJVTTVCgGb); não mexer nos posts de 17/10 até ela mandar os MP4 aprovados. A Automação do zero do ep 2 em diante é da produção.
-- 18/10 (dom): 12h Radar IA feito pela vigia no dia; 19h Modelos e parâmetros. 19/10 (seg): 12h Radar IA; 19h Agente do zero ep 1. Os 18/10 neon antigos (currículo e delivery) saem da agenda quando o substituto estiver aprovado.
+- Antecipada de novo pelo Diego (16/10 04h47): vale desde HOJE, sex 16/10, e tudo o que estava agendado de 16 a 18/10 sai da agenda. 16/10: 12h Radar IA #1 e 19h Agente do zero ep 1 (os dois feitos pela sessão do thread de retenção, session_01KnRMZcWxFwradJVTTVCgGb). 17/10: 12h Radar IA da vigia; 19h Automação do zero ep 1 (retenção). 18/10: 12h Radar IA da vigia; 19h Modelos e parâmetros #1 (produção). Agente do zero: ep 2 em 19/10, ep 3 em 21/10, ep 4 em 23/10. A Automação do zero do ep 2 em diante é da produção.
 - APROVAÇÃO (Diego, 16/10): vídeo novo só é agendado depois do ok do Diego. Pronto o MP4, copiar para /mnt/project-files/videos/ e mandar o caminho, o horário e o tema à sessão do thread de retenção, que mostra ao Diego; agendar (ou `--substituir`) só quando ela avisar o ok. Como o Radar IA sai no mesmo dia, a vigia manda o 12h assim que ficar pronto.
 
 - Detalhes em /mnt/project-files/operacao/grade-2026-10-19.md (ler antes de produzir). Nomes de série no roteiro: "Radar IA", "Agente do zero", "Automação do zero", "Termo de IA", "Modelos e parâmetros" (o validar.py confere dia e horário de cada um e barra "Faça com IA" e "Agente na Prática" de 17/10 em diante).
@@ -74,7 +73,7 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 ## Série "Monte seu agente do zero" (19h, a partir de 19/10/2026)
 
 - Decisão do Diego no card de 16/10 ("Série do zero"). Plano, ferramentas, custos e regras em /mnt/project-files/operacao/serie-agente-do-zero.md (ler antes de cada episódio).
-- Ep 1 em 19/10 19h; sai às seg, qua e sex (grade de 19/10), na ordem dos 11 episódios: sem pular nem repetir. O que já estava agendado (até 18/10) fica.
+- Ep 1 em sex 16/10 19h (grade antecipada); sai às seg, qua e sex (grade de 19/10), na ordem dos 11 episódios: sem pular nem repetir. O que já estava agendado (até 18/10) fica.
 - Ferramentas fixas a série toda: Gemini API pelo Google AI Studio (cérebro), Make.com (ligações), WhatsApp Cloud API da Meta (boca).
 - Formato "completo" de 35 s; o bloco final é "amanhã: <próximo passo>" + logo. Título "Agente do zero #N: <passo>" (no roteiro, campo "serie_ep": N). Capa com o número grande do episódio. Legenda com os passos por escrito e "episódio anterior: #N-1". No YouTube, playlist "Monte seu agente do zero".
 - Neon com trilha de 17 a 23/10. Na tela, só nomes reais de botões e menus; se não tiver certeza do nome, mostrar a ação ("abra a área de chaves"). Nunca mostrar uma chave de API de verdade.

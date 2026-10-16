@@ -17,7 +17,7 @@ GRADE = {"Faça com IA": "12:00", "Agente na Prática": "19:00", "Carrossel da S
 DIAS_DA_SERIE = {"Faça com IA": range(7), "Agente na Prática": range(7), "Carrossel da Semana": [5]}  # 0 = segunda; carrossel só no Instagram, sábado (Diego, 11/10)
 # Grade nova do Diego (16/10/2026), valendo de 19/10: 12h "Radar IA" (notícias, feito pela vigia no próprio dia);
 # 19h em rodízio de quadros. Ver /mnt/project-files/operacao/grade-2026-10-19.md.
-GRADE_NOVA_DESDE = "2026-10-17"  # antecipada pelo Diego em 16/10 04h13 (era 19/10)
+GRADE_NOVA_DESDE = "2026-10-16"  # antecipada pelo Diego em 16/10 (04h13 para 17/10, 04h47 para hoje)
 GRADE.update({"Radar IA": "12:00", "Agente do zero": "19:00", "Automação do zero": "19:00", "Termo de IA": "19:00", "Modelos e parâmetros": "19:00"})
 DIAS_DA_SERIE.update({"Radar IA": range(7), "Agente do zero": [0, 2, 4], "Automação do zero": [1, 5], "Termo de IA": [3], "Modelos e parâmetros": [6]})
 SERIES_ANTIGAS = {"Faça com IA", "Agente na Prática"}  # só até 18/10
@@ -27,7 +27,7 @@ SERIES_NOVAS = {"Radar IA", "Agente do zero", "Automação do zero", "Termo de I
 # "completo" (Diego, 16/10/2026, thread "Retenção: gancho e ritmo"): 35 s com passo a passo, ferramenta, pedido na tela,
 # antes e depois e custo. Padrão a partir de 16/10; ver /mnt/project-files/operacao/roteiro-35s.md. "curto" fica só para vídeos antigos.
 DURACOES = {"curto": (15.0, 27.0), "completo": (31.0, 38.0), "demo": (35.0, 45.0)}
-CURTO_ATE = "2026-10-16"  # último dia com vídeos curtos já agendados
+CURTO_ATE = "2026-10-15"  # último dia com vídeos curtos já agendados
 TITULO_MAX = 70
 TRAVESSOES = "—–"
 TRIGRAMA_MAX = 0.60
