@@ -1,0 +1,91 @@
+{
+  "id": "2026-10-16-extra-tesla-roadster",
+  "serie": "Radar IA",
+  "data": "2026-10-16",
+  "horario": "15:00",
+  "titulo": "A Tesla mostrou um carro que \"voa\": o que é verdade",
+  "descricao": "O novo Tesla Roadster \"voa\"? 🚗💨\nEm 15/10, num campo de testes da SpaceX no Texas, o carro subiu numa rampa, ficou de cabeça pra baixo e girou no ar.\n1️⃣ 10 bicos de ar em altíssima pressão, com tecnologia da SpaceX\n2️⃣ Promessa da Tesla: 0 a 60 mph (96 km/h) em menos de 1 segundo\n3️⃣ Produção só em 2028, sem preço; reserva de US$ 50 mil\nPrometido desde 2017, e o próprio Musk disse que não é um carro otimizado pra segurança. Por enquanto são saltos curtos, não voo.\nVocê compraria? Comenta aí 👇\n\nFontes (16/10/2026): cnn.com/2026/10/15/business/tesla-unveils-what-it-says-is-a-flying-car · cnbc.com/2026/10/15/tesla-roadster-reveal-what-to-know-about-the-delayed-ev.html\n\n#tesla #roadster #elonmusk #spacex #tecnologia #carros",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "extra-tesla",
+  "estilo": "neon",
+  "formato": "completo",
+  "dados_que_envelhecem": [
+    {
+      "dado": "Roadster: produção prevista para 2028, sem preço, reserva US$ 50 mil",
+      "fonte": "https://www.cnbc.com/2026/10/15/tesla-roadster-reveal-what-to-know-about-the-delayed-ev.html",
+      "conferido": "2026-10-16"
+    },
+    {
+      "dado": "10 bicos e tanques de ar em altíssima pressão; Musk: não otimizado pra segurança",
+      "fonte": "https://www.cnn.com/2026/10/15/business/tesla-unveils-what-it-says-is-a-flying-car",
+      "conferido": "2026-10-16"
+    }
+  ],
+  "registro": {
+    "tema": "extra: Tesla Roadster que voa (revelado 15/10)",
+    "chaves": [
+      "tesla",
+      "roadster",
+      "spacex"
+    ]
+  },
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "A Tesla mostrou um carro que voa. Mas calma.",
+          "legenda": "A Tesla mostrou um carro que voa. Mas calma."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Ontem, num campo da SpaceX no Texas, o novo Roadster subiu numa rampa, ficou de cabeça pra baixo e girou no ar.",
+          "legenda": "Ontem, num campo da SpaceX no Texas, o novo Roadster subiu numa rampa, ficou de cabeça pra baixo e girou no ar."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: o truque são dez bicos de ar em altíssima pressão, com tecnologia da SpaceX.",
+          "legenda": "Um: o truque são dez bicos de ar em altíssima pressão, com tecnologia da SpaceX."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: a Tesla promete de zero a quase cem em menos de um segundo.",
+          "legenda": "Dois: a Tesla promete de zero a quase cem em menos de um segundo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: produção só em 2028, sem preço. A reserva custa cinquenta mil dólares.",
+          "legenda": "Três: produção só em 2028, sem preço. A reserva custa US$ 50 mil."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Prometido desde 2017. E o Musk admitiu: não é otimizado pra segurança.",
+          "legenda": "Prometido desde 2017. E o Musk admitiu: não é otimizado pra segurança."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Você compraria? Comenta aí e segue o canal.",
+          "legenda": "Você compraria? Comenta aí e segue o canal."
+        }
+      ]
+    }
+  ]
+}
