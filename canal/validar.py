@@ -17,7 +17,10 @@ GRADE = {"Faça com IA": "12:00", "Agente na Prática": "19:00", "Carrossel da S
 DIAS_DA_SERIE = {"Faça com IA": range(7), "Agente na Prática": range(7), "Carrossel da Semana": [5]}  # 0 = segunda; carrossel só no Instagram, sábado (Diego, 11/10)
 # formato "curto" (diretrizes de retenção do Diego, 11/10/2026): 15 a 25 s de fala, card final pode passar um pouco.
 # "demo" (padrão até aqui): 35 a 45 s, quando a demonstração exige.
-DURACOES = {"curto": (15.0, 27.0), "demo": (35.0, 45.0)}
+# "completo" (Diego, 16/10/2026, thread "Retenção: gancho e ritmo"): 35 s com passo a passo, ferramenta, pedido na tela,
+# antes e depois e custo. Padrão a partir de 16/10; ver /mnt/project-files/operacao/roteiro-35s.md. "curto" fica só para vídeos antigos.
+DURACOES = {"curto": (15.0, 27.0), "completo": (31.0, 38.0), "demo": (35.0, 45.0)}
+CURTO_ATE = "2026-10-18"  # último dia com vídeos curtos já agendados
 TITULO_MAX = 70
 TRAVESSOES = "—–"
 TRIGRAMA_MAX = 0.60
@@ -77,6 +80,8 @@ def validar(caminho, sem_mp4=False):
     if formato not in DURACOES:
         erros.append(f"formato '{formato}' desconhecido ({', '.join(DURACOES)})")
         formato = "demo"
+    if formato == "curto" and dia > CURTO_ATE:
+        erros.append(f"formato 'curto' acabou em {CURTO_ATE} (Diego, 16/10): use \"formato\": \"completo\" (35 s)")
     DUR_MIN, DUR_MAX = DURACOES[formato]
     falas = frases_da_narracao(r)
     caracteres = sum(len(f) for f in falas)

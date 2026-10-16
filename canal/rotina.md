@@ -55,12 +55,22 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 9. Conferir na agenda real, atualizar este arquivo, a pauta, o registro e a memória. Commit e push.
 10. Mensagem curta: tabela Dia | Horário | Vídeo | Série, agendado até quando, comentários a fixar e problemas.
 
+## Duração: 35 s com conteúdo completo (Diego, 16/10/2026 01h, thread "Retenção: gancho e ritmo")
+
+- O Diego achou os vídeos de 18 a 24 s incompletos e repetitivos ("não está ensinando nada produtivo") e voltou para 35 s. Os curtos de 17 e 18/10 já agendados ficam como estão.
+- Todo roteiro novo leva `"formato": "completo"` (o validar.py barra "curto" depois de 18/10). Fala de uns 32 s (cerca de 470 a 560 caracteres) + logo.
+- Estrutura fixa (detalhe e exemplo em /mnt/project-files/operacao/roteiro-35s.md): 0-3 gancho com o resultado pronto e o problema; 3-7 por que importa; 7-25 três passos numerados com a ferramenta nomeada, onde clicar e o pedido (prompt) completo na tela por pelo menos 3 s; 25-31 antes e depois + custo ou limite do plano grátis conferido no dia; 31-35 uma chamada só + logo.
+- Todo vídeo responde: o que eu ganho, com qual ferramenta e como faço. O pedido completo também vai na legenda do post.
+- "Agente na Prática" sempre nomeia a ferramenta pra montar o agente (ex.: n8n, Make, Zapier), diz quanto custa e mostra os 3 passos de montagem; só mostrar o agente funcionando não basta.
+- Temas: nada de repetir assunto já publicado ou agendado (conferir canal/registro.json antes de escolher). Cada vídeo ensina uma tarefa nova e útil.
+- O estilo neon com trilha continua até 23/10.
+
 ## Teste 2 de 17 a 23/10: estilo neon (Diego, 14/10 02h48, thread "Retenção: gancho e ritmo")
 
 - O personagem narrador foi ADIADO: não usar por enquanto. O modelo fica em kit/2026-10-14-12h-logo-gemini-personagem.html e kit/envelope.py gera a boca, para quando ele voltar.
 - De 17 a 23/10 os vídeos saem no estilo neon: fundo preto, luz colorida vindo de baixo, um elemento por vez no centro, ícones 3D com brilho em azul elétrico e ciano, celular, roda de cartões, cursor 3D e texto limpo com rastro de luz. Modelo e peças vêm do thread de retenção.
 - Diego escolheu "Todos" no card (14/10 02h50): de 17 a 23/10 TODOS os vídeos, das 12h e das 19h, saem em neon e com a trilha. Não há controle em Raio-X nesta semana; a comparação é com a semana anterior.
-- Continua valendo todo o resto: formato curto, título no quadro 1, nada sobreposto e folha de quadros antes do render.
+- Continua valendo: título no quadro 1, nada sobreposto e folha de quadros antes do render.
 - Kit pronto: kit/neon-kit.js (peças do modelo + fim() com a logo, selo(), exemplo(), ícones extras e renderAudio() com os tempos do vídeo) e kit/_neon_head.txt. Exemplos: kit/2026-10-17-12h-legenda-clipchamp-neon.html e kit/2026-10-17-19h-agente-clinica-neon.html. A página define SC (cenas da voz + cena final da logo em "salva"), DURATION, COR, S, CK, CLIQUES, HITS e IMPACTO.
 - Modelo neon: kit/marca-apresentacao-neon.html (commit 3c2a250 do thread de retenção), logo em kit/marca/logo.png (nunca redesenhar).
   - Peças reaproveitáveis: fundo()/luz()/acabamento() com a cor de cada cena em COR; frase() (texto com rastro de luz e palavra em destaque); neon3d(path) com os ícones em P (engrenagem, relógio, coração, balão, seta, check). Ícone novo é um path num quadrado de -100 a 100. Também celular() com msg() (tela de ferramenta), roda() com os ícones em IC, cursor() com os keyframes CK [t, x, y, tamanho, giro] (longe do texto) e a transição zoom, desfoque e flash em render().
