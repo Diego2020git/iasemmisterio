@@ -400,13 +400,15 @@
      "canva"
     ]
    },
-   "status": "agendado",
+   "status": "retirado",
    "agendador": "Buffer",
    "buffer": {
     "youtube": "6acc325afa026cfb811f47a0",
     "instagram": "6acc325aea568e911a48c4f9"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-16-12h-carrossel-curto-raiox.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-16-12h-carrossel-curto-raiox.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
   },
   {
    "id": "2026-10-16-agente-na-pratica",
@@ -425,13 +427,15 @@
      "gmail"
     ]
    },
-   "status": "agendado",
+   "status": "retirado",
    "agendador": "Buffer",
    "buffer": {
     "youtube": "6acdfa6ee8e81feddfcef2d1",
     "instagram": "6acdfa6ff79d2d8aed4204ed"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-16-19h-gemini-assistente-raiox.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-16-19h-gemini-assistente-raiox.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
   },
   {
    "id": "2026-10-17-faca-com-ia",
@@ -449,13 +453,15 @@
      "editar video"
     ]
    },
-   "status": "agendado",
+   "status": "retirado",
    "agendador": "Buffer",
    "buffer": {
     "youtube": "6acf547cdd6faa9f508aa4c9",
     "instagram": "6acf547c4c17f8453734a1a0"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-12h-legenda-clipchamp-neon.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-12h-legenda-clipchamp-neon.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
   },
   {
    "id": "2026-10-17-agente-na-pratica",
@@ -474,13 +480,15 @@
      "remarcar"
     ]
    },
-   "status": "agendado",
+   "status": "retirado",
    "agendador": "Buffer",
    "buffer": {
     "youtube": "6acf547ea7d5819cfeb0e036",
     "instagram": "6acf547eb389ea654705b5fb"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-19h-agente-clinica-neon.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-19h-agente-clinica-neon.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
   },
   {
    "id": "2026-10-18-faca-com-ia",
@@ -499,13 +507,15 @@
      "vaga"
     ]
    },
-   "status": "agendado",
+   "status": "retirado",
    "agendador": "Buffer",
    "buffer": {
     "youtube": "6acf587d635a3a53a6f16fc2",
     "instagram": "6acf587e0901e7a6582720af"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-12h-curriculo-chatgpt-neon.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-12h-curriculo-chatgpt-neon.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
   },
   {
    "id": "2026-10-18-agente-na-pratica",
@@ -524,13 +534,15 @@
      "whatsapp"
     ]
    },
-   "status": "agendado",
+   "status": "retirado",
    "agendador": "Buffer",
    "buffer": {
     "youtube": "6acf587f4aaa0bb6abd45b5f",
     "instagram": "6acf5880635a3a53a6f170ae"
    },
-   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-19h-agente-delivery-neon.mp4"
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-19h-agente-delivery-neon.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
   }
  ]
 }
