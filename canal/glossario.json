@@ -60,7 +60,8 @@
       "pistas": [
         "começa",
         "dispara",
-        "toda mensagem"
+        "toda mensagem",
+        "evento"
       ]
     },
     "api": {
@@ -206,6 +207,7 @@
     "copilot",
     "meta",
     "pdf",
-    "png"
+    "png",
+    "gpt"
   ]
 }

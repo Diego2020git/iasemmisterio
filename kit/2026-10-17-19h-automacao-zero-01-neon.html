@@ -1,0 +1,94 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-17-automacao-do-zero-01.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 17/10/2026 · 19h · Automação do zero #1: anexo do Gmail salvo sozinho no Google Drive (Zapier grátis). Neon.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const COR = [AZ, CI, AZ, CI, IN, CI, AZ];
+const HITS = [wt('graça', 0), wt('automação', 1), wt('zapier', 2), wt('attachment', 3), wt('upload', 4), wt('100', 5)];
+const CL = { create: wt('create', 2) - .05, zap: wt('zap', 2) + .05, ev: wt('new', 3), conta: wt('entre', 3) + .2, pasta: wt('pasta', 4), file: wt('anexo', 4), pub: wt('publique', 4) + .1 };
+const CLIQUES = [CL.create, CL.zap, CL.ev, CL.pasta, CL.file, CL.pub];
+// cursor: aparece só nos passos, sempre à direita do campo que está sendo clicado
+const CK = [[0, 0, 0, 0, 0], [SC[2] + .2, 0, 0, 0, 0], [SC[2] + .5, 820, 980, 55, .2], [CL.create + .1, 820, 980, 55, .2], [CL.zap - .2, 820, 1110, 55, .2],
+  [SC[3] + .5, 900, 1020, 55, .2], [SC[4] - .3, 900, 1020, 55, .2], [SC[4] + .5, 900, 1150, 55, .2], [CL.file - .3, 900, 1150, 55, .2], [CL.file, 900, 1280, 55, .2],
+  [CL.pub - .3, 900, 1280, 55, .2], [CL.pub, 640, 1440, 55, .2], [SC[5] - .3, 640, 1440, 55, .2], [SC[5] + .1, 640, 1440, 0, .2]];
+const S = [
+  // 0 · gancho: Gmail -> Drive, sozinho; título inteiro no quadro 1
+  (t, lt) => {
+    frase('Anexo do Gmail', 330, -1, SC[1] - .2, 84, { t, hot: 'Gmail', cor: CI });
+    frase('salvo sozinho no Drive', 440, -1, SC[1] - .2, 68, { t, hot: 'sozinho' });
+    neon3d(P.envelope, cx0 - 250, cy0 + 40, 150, .3 * Math.sin(t * .9), .3, AZ, 1);
+    neon3d(P.pasta, cx0 + 250, cy0 + 40, 150, -.3 * Math.sin(t * .9), .3, CI, 1);
+    for (let k = 0; k < 4; k++) { const q = ((t * .9 + k / 4) % 1), x = lerp(cx0 - 130, cx0 + 130, q); ctx.save(); ctx.globalAlpha = Math.sin(q * Math.PI);
+      ctx.fillStyle = BR; ctx.shadowColor = CI; ctx.shadowBlur = 20; rr(x - 22, cy0 + 40 - 28 - 10 * Math.sin(q * Math.PI), 44, 56, 8); ctx.fill(); ctx.restore(); }
+    frase('de graça', 1220, wt('de', 0) - .1, SC[1] - .2, 80, { t, hot: 'de graça', cor: CI });
+  },
+  // 1 · série
+  (t, lt) => {
+    neon3d(P.engrenagem, cx0, cy0 - 100, 210 * back(prog(lt, .05, .5)), .3 * Math.sin(t), .3 + t * .0, CI, prog(lt, .05, .3));
+    frase('Automação do zero', cy0 + 220, wt('automacao', 1) - .1, SC[2] - .2, 86, { t, hot: 'zero', cor: CI });
+    selo('episódio 1', cx0, cy0 + 360, prog(t, wt('episodio', 1), wt('episodio', 1) + .3));
+    linhaTxt('nunca mais baixe arquivo um por um', cy0 + 480, wt('nunca', 1), SC[2] - .2, t, 42);
+  },
+  // 2 · passo 1: conta grátis no Zapier, + Create > Zap
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    frase('Conta grátis no Zapier', 470, wt('crie', 2) - .1, SC[3] - .2, 70, { t, hot: 'Zapier', cor: CI });
+    janela(640, 620, prog(lt, .1, .4), 'zapier.com', (x, y, w) => {
+      botao(x, y + 160, '+ Create', 1, prog(t, CL.create, CL.create + .3));
+      const m = prog(t, CL.create + .15, CL.create + .4); if (m > 0) { ctx.save(); ctx.globalAlpha *= m;
+        ctx.fillStyle = '#ffffff'; ctx.shadowColor = 'rgba(0,0,0,.2)'; ctx.shadowBlur = 20; rr(x, y + 270, 360, 110, 16); ctx.fill(); ctx.shadowBlur = 0;
+        const on = prog(t, CL.zap, CL.zap + .2); ctx.fillStyle = on > 0 ? '#dbe6ff' : '#ffffff'; rr(x + 10, y + 282, 340, 86, 12); ctx.fill();
+        txt('Zap', x + 40, y + 326, ARC, 40, '#1b2440', { weight: 600 }); ctx.restore(); }
+    });
+    exemplo(cx0, 1460, prog(lt, .4, .7));
+  },
+  // 3 · passo 2: gatilho Gmail, New Attachment
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    frase('Gatilho: Gmail', 470, wt('gatilho', 3) - .1, SC[4] - .2, 76, { t, hot: 'Gmail', cor: CI });
+    janela(640, 560, prog(lt, .1, .4), 'Trigger', (x, y, w) => {
+      let yy = y; yy += campo(x, yy, w - 140, 'App', 'Gmail', prog(t, wt('gmail', 3), wt('gmail', 3) + .3));
+      yy += campo(x, yy, w - 140, 'Event', 'New Attachment', prog(t, CL.ev - .1, CL.ev + .2), prog(t, CL.ev, CL.ev + .2));
+      campo(x, yy, w - 140, 'Account', '✓ sua conta Google', prog(t, CL.conta - .2, CL.conta + .1));
+    });
+    exemplo(cx0, 1460, prog(lt, .4, .7));
+  },
+  // 4 · passo 3: ação Google Drive, Upload File, pasta, arquivo, Publish
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    frase('Ação: Google Drive', 470, wt('acao', 4) - .1, SC[5] - .2, 74, { t, hot: 'Google Drive', cor: CI });
+    janela(600, 760, prog(lt, .1, .4), 'Action', (x, y, w) => {
+      let yy = y; yy += campo(x, yy, w - 140, 'App', 'Google Drive', prog(t, wt('google', 4), wt('google', 4) + .3));
+      yy += campo(x, yy, w - 140, 'Event', 'Upload File', prog(t, wt('upload', 4) - .1, wt('upload', 4) + .2));
+      yy += campo(x, yy, w - 140, 'Folder', 'Anexos', prog(t, CL.pasta - .1, CL.pasta + .2), prog(t, CL.pasta, CL.pasta + .2));
+      yy += campo(x, yy, w - 140, 'File', 'Attachment (do Gmail)', prog(t, CL.file - .1, CL.file + .2), prog(t, CL.file, CL.file + .2));
+      botao(x, yy + 10, 'Publish', prog(t, CL.pub - .4, CL.pub - .1), prog(t, CL.pub, CL.pub + .3));
+    });
+    exemplo(cx0, 1460, prog(lt, .4, .7));
+  },
+  // 5 · resultado + limite grátis
+  (t, lt) => {
+    neon3d(P.pasta, cx0, cy0 - 140, 190 * back(prog(lt, .05, .5)), .3 * Math.sin(t * .8), .3, CI, prog(lt, .05, .3));
+    for (let k = 0; k < 3; k++) { const t0 = SC[5] + .3 + k * .8, q = prog(t, t0, t0 + .6); if (q <= 0 || q >= 1) continue;
+      ctx.save(); ctx.globalAlpha = Math.sin(q * Math.PI); ctx.fillStyle = BR; ctx.shadowColor = CI; ctx.shadowBlur = 20; rr(cx0 - 26, lerp(380, cy0 - 170, ease(q)), 52, 66, 8); ctx.fill(); ctx.restore(); }
+    frase('Todo anexo novo cai na pasta', cy0 + 140, wt('todo', 5) - .1, SC[6] - .2, 60, { t, hot: 'na pasta', cor: CI });
+    selo('grátis: 100 por mês', cx0, cy0 + 290, prog(t, wt('gratis', 5), wt('gratis', 5) + .3));
+    linhaTxt('confere a cada 15 min · 1 anexo = 1 tarefa', cy0 + 410, wt('gratis', 5) + .3, SC[6] - .2, t, 38, 'rgba(244,248,255,.8)');
+  },
+  // 6 · logo + chamada
+  (t, lt) => fim(t, lt, 'Salva pra fazer hoje', 'terça: episódio 2'),
+];
+</script></body></html>

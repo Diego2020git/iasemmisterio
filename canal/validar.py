@@ -62,7 +62,7 @@ def termo_na_frase(termo, frase):
     return re.search(r"(?<![\wà-ü])" + re.escape(termo) + r"(?![\wà-ü])", frase.lower()) is not None
 
 
-def validar(caminho, sem_mp4=False):
+def validar(caminho, sem_mp4=False, trocar_slot=False):
     r = json.load(open(caminho))
     erros, avisos = [], []
     rid = r.get("id") or Path(caminho).stem
@@ -114,7 +114,7 @@ def validar(caminho, sem_mp4=False):
         erros.append("sem título")
     if len(titulo) > TITULO_MAX:
         erros.append(f"título com {len(titulo)} caracteres (máximo {TITULO_MAX})")
-    if not re.search(r"\bfonte\b", desc, re.I):
+    if not re.search(r"\bfontes?\b", desc, re.I):
         erros.append("descrição sem 'Fonte:' (vídeo sem números usa o site oficial da ferramenta)")
 
     # travessão em qualquer texto que vai ao ar
@@ -189,7 +189,7 @@ def validar(caminho, sem_mp4=False):
         if mesmo:
             (erros if v.get("serie") == serie else avisos).append(
                 f"assunto repetido com o vídeo {v['id']} ({v['serie']})")
-        if v.get("status") in ("agendado", "publicado") and v.get("data") == dia and v.get("horario") == hora:
+        if v.get("status") in ("agendado", "publicado") and v.get("data") == dia and v.get("horario") == hora and not (trocar_slot and v.get("status") == "agendado"):
             erros.append(f"slot {dia} {hora} já ocupado pelo vídeo {v['id']}")
 
     return erros, avisos, {"caracteres": caracteres, "estimada": round(estimada, 1)}
@@ -197,7 +197,7 @@ def validar(caminho, sem_mp4=False):
 
 if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    erros, avisos, info = validar(args[0], "--sem-mp4" in sys.argv)
+    erros, avisos, info = validar(args[0], "--sem-mp4" in sys.argv, "--trocar-slot" in sys.argv)
     for a in avisos:
         print("AVISO:", a)
     if erros:

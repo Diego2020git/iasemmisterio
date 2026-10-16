@@ -4,6 +4,8 @@ Uso:
   python3 canal/publicar.py canal/roteiros/X.json            agenda Instagram e YouTube
   python3 canal/publicar.py canal/roteiros/X.json --so-buffer  Instagram também pelo Buffer, com o prompt na legenda
   python3 canal/publicar.py canal/roteiros/X.json --substituir apaga os posts antigos desse roteiro no Buffer e agenda de novo
+  python3 canal/publicar.py canal/roteiros/X.json --trocar-slot  troca OUTRO vídeo já agendado no mesmo dia e horário:
+    apaga os posts dele no Buffer, marca o roteiro antigo como "trocado" no registro e agenda este (troca aprovada pelo Diego)
   python3 canal/publicar.py --agenda [dias]                    lista o que está agendado no Buffer (padrão: 7 dias)
   python3 canal/publicar.py --apagar <id_do_post_buffer>       apaga um post do Buffer
 
@@ -129,8 +131,8 @@ def registrar(r, campos):
     return v
 
 
-def publicar(caminho, so_buffer=False, substituir=False):
-    val = subprocess.run([sys.executable, str(CANAL / "validar.py"), caminho], capture_output=True, text=True)
+def publicar(caminho, so_buffer=False, substituir=False, trocar_slot=False):
+    val = subprocess.run([sys.executable, str(CANAL / "validar.py"), caminho] + (["--trocar-slot"] if trocar_slot else []), capture_output=True, text=True)
     print(val.stdout.strip())
     if val.returncode != 0:
         sys.exit("Não agendei: o validador barrou.")
@@ -149,6 +151,14 @@ def publicar(caminho, so_buffer=False, substituir=False):
     if substituir:
         for pid in (antigo.get("buffer") or {}).values():
             print("apagado do Buffer:", pid, apagar(pid))
+    if trocar_slot:
+        for v in reg["videos"]:
+            if v["id"] != r["id"] and v.get("status") == "agendado" and v.get("data") == r["data"] and v.get("horario") == r["horario"]:
+                for pid in (v.get("buffer") or {}).values():
+                    print(f"apagado do Buffer ({v['id']}):", pid, apagar(pid))
+                v["status"] = "trocado"
+                v["trocado_por"] = r["id"]
+        json.dump(reg, open(CANAL / "registro.json", "w"), ensure_ascii=False, indent=1)
 
     ig_metricool = bool(r.get("comentario_fixado")) and not so_buffer
     r["_legenda_ig"] = r["descricao"] if ig_metricool else com_prompt(r["descricao"], r)
@@ -193,4 +203,4 @@ if __name__ == "__main__":
         json.dump(reg, open(p, "w"), ensure_ascii=False, indent=1)
         print("registro atualizado:", v["id"], v["metricool"])
     else:
-        publicar(a[0], "--so-buffer" in a, "--substituir" in a)
+        publicar(a[0], "--so-buffer" in a, "--substituir" in a, "--trocar-slot" in a)

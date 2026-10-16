@@ -16,7 +16,10 @@ def caminho_capa(video):
 def instante_capa(r):
     """Segundos do quadro da capa: logo antes da primeira troca de cena."""
     slug = Path(r["video"]).stem.replace("-raiox-final", "").replace("-raiox", "").replace("-neon", "")
-    tempos = json.load(open(RAIZ / "kit" / "audio" / f"{slug}.tempos.json"))
+    arq = RAIZ / "kit" / "audio" / f"{slug}.tempos.json"
+    if not arq.is_file():  # áudio com o nome do roteiro (ex.: 2026-10-17-radar-ia)
+        arq = RAIZ / "kit" / "audio" / f"{r['id']}.tempos.json"
+    tempos = json.load(open(arq))
     return max(.5, tempos["cenas"][1] - .3)
 
 
