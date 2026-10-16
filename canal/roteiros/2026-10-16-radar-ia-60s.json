@@ -1,0 +1,102 @@
+{
+  "id": "2026-10-16-radar-ia-60s",
+  "serie": "Radar IA",
+  "data": "2026-10-16",
+  "horario": "12:00",
+  "titulo": "Radar IA: GPT-6 de graça, Gemini 4 pago e Claude 90% mais barato",
+  "descricao": "Radar IA da semana 📡\n1️⃣ GPT-6 chegou pra todo mundo no ChatGPT, inclusive no plano grátis (versão Luna), com respostas em gráfico, mapa e botões. Liberado em 07/10 nos pagos e 08/10 no grátis.\n2️⃣ Gemini 4 Argon, o modelo mais forte do Google, abriu em 13/10. Só pago: não está no plano grátis nem no Google AI Pro. API: US$ 2 por milhão de tokens de entrada e US$ 10 de saída até 30/11; a partir de 01/12, US$ 4 e US$ 20.\n3️⃣ Claude Haiku 5.5 (07/10): US$ 0,10 por milhão de tokens de entrada e US$ 0,50 de saída, preço por token 90% menor que o Haiku 4.5 (US$ 1 e US$ 5). A Anthropic estima o uso real cerca de 75% mais barato.\n\nTeste hoje (grátis): no ChatGPT, peça \"Monte um gráfico de pizza dos meus gastos do mês: aluguel 1500, mercado 800, transporte 300, lazer 200.\"\n\nFontes oficiais (conferidas em 16/10/2026): openai.com/index/gpt-6-for-everyone · blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon · ai.google.dev/gemini-api/docs/pricing · anthropic.com/claude-haiku-5-5 · platform.claude.com/docs/en/about-claude/pricing\n\n#ia #inteligenciaartificial #chatgpt #gpt6 #gemini #claude #noticiasdeia",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "r1",
+  "estilo": "neon",
+  "formato": "radar-60",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "GPT seis de graça, Gemini quatro pago e Claude noventa por cento mais barato.",
+          "legenda": "GPT-6 de graça, Gemini 4 pago e Claude 90% mais barato."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "São as três notícias de IA da semana, no Radar IA.",
+          "legenda": "São as três notícias de IA da semana, no Radar IA."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: o GPT seis chegou ao ChatGPT: versão Luna no grátis, Sol no pago. A novidade é a Interface Inteligente: a resposta vem com gráfico, mapa e botões.",
+          "legenda": "Um: o GPT-6 chegou ao ChatGPT: versão Luna no grátis, Sol no pago. A novidade é a Interface Inteligente: a resposta vem com gráfico, mapa e botões."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: o Gemini quatro Argon, o mais forte do Google, abriu dia treze. É feito pra programação, mas não está no grátis nem no AI Pro. Na API, dois dólares por milhão de tokens até trinta de novembro. Em dezembro, dobra.",
+          "legenda": "Dois: o Gemini 4 Argon, o mais forte do Google, abriu dia 13. É feito pra programação, mas não está no grátis nem no AI Pro. Na API, 2 dólares por milhão de tokens até 30 de novembro. Em dezembro, dobra."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: o Claude Haiku cinco ponto cinco custa dez centavos de dólar por milhão de tokens, noventa por cento menos que o anterior. Pra quem monta agentes, cada resposta sai quase de graça.",
+          "legenda": "Três: o Claude Haiku 5.5 custa 10 centavos de dólar por milhão de tokens, 90% menos que o anterior. Pra quem monta agentes, cada resposta sai quase de graça."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Qual testar hoje? O GPT seis, de graça: peça um gráfico dos seus gastos. O pedido está na legenda.",
+          "legenda": "Qual testar hoje? O GPT-6, de graça: peça um gráfico dos seus gastos. O pedido está na legenda."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Segue pro Radar IA todo dia ao meio-dia.",
+          "legenda": "Segue pro Radar IA todo dia ao meio-dia."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "GPT-6 para todos no ChatGPT; Free/Go com GPT-6 Luna desde 08/10",
+      "fonte": "https://openai.com/index/gpt-6-for-everyone/",
+      "conferido": "2026-10-16"
+    },
+    {
+      "dado": "Gemini 4 Argon GA 13/10; fora do Free e do Google AI Pro",
+      "fonte": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
+      "conferido": "2026-10-16"
+    },
+    {
+      "dado": "Gemini 4 Argon API US$2/US$10 até 30/11, US$4/US$20 a partir de 01/12",
+      "fonte": "https://ai.google.dev/gemini-api/docs/pricing",
+      "conferido": "2026-10-16"
+    },
+    {
+      "dado": "Claude Haiku 5.5 US$0,10/US$0,50 por milhão (até 100 mil tokens); Haiku 4.5 era US$1/US$5",
+      "fonte": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "conferido": "2026-10-16"
+    }
+  ],
+  "registro": {
+    "tema": "radar IA 17/10: GPT-6 grátis, Gemini 4 Argon, Claude Haiku 5.5",
+    "chaves": [
+      "gpt-6",
+      "gemini 4",
+      "haiku 5.5",
+      "radar"
+    ]
+  }
+}
