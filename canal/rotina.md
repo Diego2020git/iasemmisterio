@@ -8,7 +8,7 @@ Regras completas: /mnt/project-files/operacao/prompt-operacao-v2.md.
 | Dia | Horário | Série | O que é |
 |---|---|---|---|
 | Todos | 12h | Faça com IA | Uma tarefa do dia a dia resolvida com uma ferramenta que tem plano grátis. |
-| Todos | 19h | Agente na Prática | Agentes e automação: o que fazem, como montar, um caso real por vídeo. |
+| Todos | 19h | Agente na Prática | A partir de 19/10 (Diego, card "Série do zero" de 16/10): série "Monte seu agente do zero", um episódio por dia, na ordem, até o agente responder no WhatsApp. Ver a seção da série abaixo. Até 18/10: agentes soltos, já agendados. |
 | Sábado | 10h | Carrossel da Semana | Só no Instagram (escolha do Diego em 11/10). Resume o melhor tutorial da semana em 7 a 10 slides no traço Raio-X, com o prompt no último slide. Primeiro em 17/10, feito na produção de quarta. Teste em 11/10 15h (4 IAs grátis). Como fazer: HTML 1080x1350 em kit/carrossel-*.html (render(i) = slide i), `node kit/render.mjs pagina.html pasta stills 0,1,...`, JPGs em carrosseis/<data-slug>/, Buffer createPost com assets image e metadata.instagram.type post (testado, aceita 8 imagens). 17/10 (fórmula de planilha, 7 slides, kit/carrossel-2026-10-17-formula-planilha.html) foi pelo Metricool com publicação automática e sem música, porque o Buffer grátis estava com o Instagram cheio (10 de 10). |
 
 Fuso America/Sao_Paulo. Instagram e YouTube no mesmo dia e horário.
@@ -54,6 +54,16 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 8. `python3 canal/publicar.py canal/roteiros/X.json`: valida de novo, confere o link raw e agenda no Buffer com rótulo de IA. Se imprimir que o Instagram vai pelo Metricool, agendar com createScheduledPost usando canal/metricool/<id>.json e rodar `--metricool-ok <id> <plannerUrl>`. Se o Buffer recusar, agendar tudo pelo Metricool e anotar aqui.
 9. Conferir na agenda real, atualizar este arquivo, a pauta, o registro e a memória. Commit e push.
 10. Mensagem curta: tabela Dia | Horário | Vídeo | Série, agendado até quando, comentários a fixar e problemas.
+
+## Série "Monte seu agente do zero" (19h, a partir de 19/10/2026)
+
+- Decisão do Diego no card de 16/10 ("Série do zero"). Plano, ferramentas, custos e regras em /mnt/project-files/operacao/serie-agente-do-zero.md (ler antes de cada episódio).
+- Ep 1 no primeiro 19h ainda não produzido (19/10), depois um por dia na ordem dos 11 episódios: sem pular nem repetir. O que já estava agendado (até 18/10) fica.
+- Ferramentas fixas a série toda: Gemini API pelo Google AI Studio (cérebro), Make.com (ligações), WhatsApp Cloud API da Meta (boca).
+- Formato "completo" de 35 s; o bloco final é "amanhã: <próximo passo>" + logo. Título "Agente do zero #N: <passo>" (no roteiro, campo "serie_ep": N). Capa com o número grande do episódio. Legenda com os passos por escrito e "episódio anterior: #N-1". No YouTube, playlist "Monte seu agente do zero".
+- Neon com trilha de 17 a 23/10. Na tela, só nomes reais de botões e menus; se não tiver certeza do nome, mostrar a ação ("abra a área de chaves"). Nunca mostrar uma chave de API de verdade.
+- Ep 10: antes de ir ao ar, conferir na página de preços da Meta se a cobrança anunciada para 01/10/2026 existe.
+- Cada episódio pronto: copiar o MP4 para /mnt/project-files/videos/ e mandar o caminho à sessão do thread de retenção (session_01KnRMZcWxFwradJVTTVCgGb).
 
 ## Duração: 35 s com conteúdo completo (Diego, 16/10/2026 01h, thread "Retenção: gancho e ritmo")
 
