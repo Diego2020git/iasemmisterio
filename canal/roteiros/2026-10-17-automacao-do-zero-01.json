@@ -1,0 +1,87 @@
+{
+  "id": "2026-10-17-automacao-do-zero-01",
+  "serie": "Automação do zero",
+  "data": "2026-10-17",
+  "horario": "19:00",
+  "titulo": "Automação do zero #1: anexo do Gmail salvo sozinho no Drive",
+  "descricao": "Automação do zero, episódio 1 ⚙️\nTodo anexo que chega no Gmail vai sozinho pro Google Drive, de graça.\n1️⃣ Crie a conta grátis em zapier.com e clique em + Create → Zap\n2️⃣ Gatilho (Trigger): app Gmail, evento New Attachment. Entre com sua conta Google.\n3️⃣ Ação (Action): app Google Drive, evento Upload File. Escolha a pasta (ex.: Anexos) e, no campo File, o anexo do e-mail. Teste e clique em Publish.\nPlano grátis do Zapier: 100 tarefas por mês, Zaps de 2 passos e checagem a cada 15 minutos. Cada anexo salvo = 1 tarefa.\nTerça: episódio 2.\n\nFonte: planos do Zapier (zapier.com/pricing), conferido em 16/10/2026.\n\n#automacao #zapier #gmail #googledrive #produtividade #ia",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "a1",
+  "estilo": "neon",
+  "formato": "completo",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Todo anexo do seu Gmail salvo sozinho no Google Drive. De graça.",
+          "legenda": "Todo anexo do seu Gmail salvo sozinho no Google Drive. De graça."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Automação do zero, episódio um. Nunca mais baixe arquivo um por um.",
+          "legenda": "Automação do zero, episódio 1. Nunca mais baixe arquivo um por um."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: crie a conta grátis no Zapier e clique em Create, Zap.",
+          "legenda": "Um: crie a conta grátis no Zapier e clique em Create, Zap."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: no gatilho, escolha o Gmail e o evento New Attachment. Entre com sua conta Google.",
+          "legenda": "Dois: no gatilho, escolha o Gmail e o evento New Attachment. Entre com sua conta Google."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: na ação, Google Drive, Upload File. Escolha a pasta e, no arquivo, o anexo. Publique.",
+          "legenda": "Três: na ação, Google Drive, Upload File. Escolha a pasta e, no arquivo, o anexo. Publique."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Pronto: todo anexo novo cai na pasta. Grátis até cem por mês.",
+          "legenda": "Pronto: todo anexo novo cai na pasta. Grátis até 100 por mês."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva pra fazer hoje. Terça tem o episódio dois.",
+          "legenda": "Salva pra fazer hoje. Terça tem o episódio 2."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Zapier grátis: 100 tarefas/mês, Zaps de 2 passos, checagem a cada 15 min",
+      "fonte": "https://zapier.com/pricing",
+      "conferido": "2026-10-16"
+    }
+  ],
+  "registro": {
+    "tema": "automação: anexo do Gmail para o Google Drive com Zapier",
+    "chaves": [
+      "zapier",
+      "gmail",
+      "google drive",
+      "anexo"
+    ]
+  }
+}
