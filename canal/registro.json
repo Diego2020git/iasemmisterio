@@ -618,6 +618,106 @@
     "instagram": "6ad1b6084ed7d375a447ac06"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-19h-automacao-zero-01-neon.mp4"
+  },
+  {
+   "id": "2026-10-18-modelos-e-parametros-01",
+   "data": "2026-10-18",
+   "horario": "19:00",
+   "serie": "Modelos e parâmetros",
+   "titulo": "Modelos e parâmetros #1: mini, flash e pro, qual a diferença?",
+   "narracao": "Mini, flash, pro: o que esses nomes dizem? Modelos e parâmetros, episódio um. Nomes que aparecem ao escolher o modelo. Um: mini, flash, lite e haiku são os pequenos: rápidos e baratos. Dois: pro e opus são do time dos grandes. Pensam mais, mas custam mais. Três: no meio, o equilíbrio, como o Sonnet. Pra resumo, use o pequeno. Na Anthropic: Haiku, dez centavos de dólar por milhão de tokens, os pedaços de texto. Opus, quatro dólares. Salva. Domingo que vem: temperatura.",
+   "video": "videos/2026-10-18-19h-modelos-01-neon.mp4",
+   "registro": {
+    "tema": "nomenclatura de modelos: mini, flash, pro",
+    "chaves": [
+     "mini",
+     "flash",
+     "pro",
+     "tamanho de modelo"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad20f42b948bf9e9d91e056",
+    "instagram": "6ad20f43f24c5797a2397148"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-19h-modelos-01-neon.mp4"
+  },
+  {
+   "id": "2026-10-19-agente-do-zero-02",
+   "data": "2026-10-19",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #2: a chave grátis do Gemini",
+   "narracao": "A chave que liga o cérebro do seu agente. Grátis, em dois minutos. Agente do zero, episódio dois. Sem essa chave, o Make não conversa com o Gemini. Um: entre no Google AI Studio com a sua conta Google. Dois: no menu da esquerda, clique em Get API key, a chave de conexão. Depois, Create API key. Três: copie a chave e guarde num lugar seguro. Nunca poste nem mande pra ninguém. Pronto: chave criada. Grátis nos modelos Flash, com limite por dia. Quarta tem o episódio três: as instruções do agente.",
+   "video": "videos/2026-10-19-19h-agente-do-zero-02-neon.mp4",
+   "registro": {
+    "tema": "agente do zero ep 2: chave de API do Gemini no AI Studio",
+    "chaves": [
+     "chave de api",
+     "get api key",
+     "ai studio",
+     "create api key"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad20f4425d13dd62ee42e49",
+    "instagram": "6ad20f442fe657de6ea15c00"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-19-19h-agente-do-zero-02-neon.mp4"
+  },
+  {
+   "id": "2026-10-20-automacao-do-zero-02",
+   "data": "2026-10-20",
+   "horario": "19:00",
+   "serie": "Automação do zero",
+   "titulo": "Automação do zero #2: formulário vira planilha e e-mail sozinho",
+   "narracao": "Respondeu seu formulário? Vira linha na planilha e e-mail na hora. Automação do zero, episódio dois. Nada de copiar resposta à mão. Um: no Google Formulários, aba Respostas, ligue o formulário a uma planilha. Sem Zapier. Dois: no Zapier, crie um Zap. O gatilho, que dispara tudo: Google Forms, New Form Response. Três: ação: Gmail, Send Email, para o e-mail de quem respondeu. Publique. Pronto: planilha cheia e resposta automática. Grátis até cem tarefas por mês. Salva pra fazer hoje. Sábado tem o episódio três.",
+   "video": "videos/2026-10-20-19h-automacao-zero-02-neon.mp4",
+   "registro": {
+    "tema": "automação ep 2: Google Forms para planilha e e-mail de resposta (Zapier)",
+    "chaves": [
+     "google forms",
+     "formulário",
+     "send email",
+     "planilha"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad20f46b948bf9e9d91e11a",
+    "instagram": "6ad20f4625d13dd62ee42e9b"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-20-19h-automacao-zero-02-neon.mp4"
+  },
+  {
+   "id": "2026-10-21-agente-do-zero-03",
+   "data": "2026-10-21",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #3: as instruções do agente",
+   "narracao": "Seu agente já sabe quem ele é e do que pode falar. Agente do zero, episódio três. Sem instruções, a IA responde qualquer coisa. Um: no Google AI Studio, abra um chat novo e ache o campo System instructions. Dois: cole o pedido: você é o atendente da Padaria Sol. Responda curto e só sobre a padaria. Três: teste. Pergunte o horário e depois sobre futebol. Ele deve recusar. Pronto: o jeito do agente está definido. Grátis, ainda no AI Studio. Sexta tem o episódio quatro: dar conhecimento ao agente.",
+   "video": "videos/2026-10-21-19h-agente-do-zero-03-neon.mp4",
+   "registro": {
+    "tema": "agente do zero ep 3: instruções do agente (system instructions) no AI Studio",
+    "chaves": [
+     "system instructions",
+     "instruções",
+     "prompt de sistema",
+     "padaria"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad20f4863c879f958562ff7",
+    "instagram": "6ad20f4825d13dd62ee42ef9"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-21-19h-agente-do-zero-03-neon.mp4"
   }
  ]
 }
