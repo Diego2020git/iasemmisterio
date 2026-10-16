@@ -1,0 +1,100 @@
+{
+ "id": "2026-10-16-agente-do-zero-01",
+ "serie": "Agente do zero",
+ "data": "2026-10-16",
+ "horario": "19:00",
+ "titulo": "Agente do zero #1: o mapa do agente de IA no WhatsApp",
+ "descricao": "Agente do zero, episódio 1 🤖\nVamos montar, do zero e de graça, um agente de IA que responde seus clientes no WhatsApp. Um passo por vídeo.\nAs 3 peças:\n1️⃣ Cérebro: Gemini (Google AI Studio). Entende a mensagem e escreve a resposta. Grátis com limite diário.\n2️⃣ Boca: WhatsApp Cloud API, com o número de teste grátis da Meta.\n3️⃣ Ligações: Make.com. Chegou mensagem, o Gemini responde, o WhatsApp envia. Grátis até 1.000 operações por mês.\nSegunda, episódio 2: a chave grátis do Gemini.\n\nFontes (conferidas em 16/10/2026): make.com/en/pricing · ai.google.dev/gemini-api/docs/pricing · developers.facebook.com/docs/whatsapp/cloud-api\n\n#agentedeia #whatsapp #gemini #make #automacao #ia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "z1",
+ "estilo": "neon",
+ "formato": "completo",
+ "dados_que_envelhecem": [
+  {
+   "dado": "Make grátis: 1.000 operações por mês",
+   "fonte": "https://www.make.com/en/pricing",
+   "conferido": "2026-10-16"
+  },
+  {
+   "dado": "Gemini API com camada grátis no AI Studio (limite por projeto)",
+   "fonte": "https://ai.google.dev/gemini-api/docs/pricing",
+   "conferido": "2026-10-16"
+  }
+ ],
+ "registro": {
+  "tema": "agente do zero ep 1: mapa (Gemini + Make + WhatsApp)",
+  "chaves": [
+   "agente",
+   "whatsapp",
+   "gemini",
+   "make"
+  ]
+ },
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Um agente de IA que responde seus clientes no WhatsApp. Do zero e de graça.",
+     "legenda": "Um agente de IA que responde seus clientes no WhatsApp. Do zero e de graça."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Essa é a série Agente do zero: um passo por vídeo, até ele funcionar.",
+     "legenda": "Essa é a série Agente do zero: um passo por vídeo, até ele funcionar."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: o cérebro é o Gemini, do Google. Ele entende a mensagem e escreve a resposta.",
+     "legenda": "Um: o cérebro é o Gemini, do Google. Ele entende a mensagem e escreve a resposta."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: a boca é o WhatsApp, com o número de teste grátis da Meta.",
+     "legenda": "Dois: a boca é o WhatsApp, com o número de teste grátis da Meta."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: o Make liga tudo. Chegou mensagem, o Gemini responde e o WhatsApp envia.",
+     "legenda": "Três: o Make liga tudo. Chegou mensagem, o Gemini responde e o WhatsApp envia."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Custo pra começar: zero. As três peças têm plano grátis.",
+     "legenda": "Custo pra começar: zero. As três peças têm plano grátis."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segunda tem o episódio dois: a chave grátis do Gemini.",
+     "legenda": "Segunda tem o episódio 2: a chave grátis do Gemini."
+    }
+   ]
+  }
+ ],
+ "video": "videos/2026-10-16-19h-agente-do-zero-01-neon.mp4",
+ "fonte_html": "kit/2026-10-16-19h-agente-do-zero-01-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}
