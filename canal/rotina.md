@@ -7,11 +7,11 @@ Regras completas: /mnt/project-files/operacao/prompt-operacao-v2.md.
 
 | Dia | Horário | Série | O que é |
 |---|---|---|---|
-| Todos | 12h | Radar IA (a partir de 19/10) | Notícias de IA: lançamentos, comparação de modelos, notícias importantes e preços. Feito pela VIGIA (6h27) no próprio dia, com notícias das últimas 24 a 72 h. Até 18/10 era "Faça com IA". |
+| Todos | 12h | Radar IA (a partir de 17/10) | Notícias de IA: lançamentos, comparação de modelos, notícias importantes e preços. Feito pela VIGIA (6h27) no próprio dia, com notícias das últimas 24 a 72 h. Até 16/10 era "Faça com IA". |
 | Seg, Qua, Sex | 19h | Agente do zero (a partir de 19/10) | Série "Monte seu agente do zero": ep 1 em 19/10, ep 2 em 21/10, ep 3 em 23/10... |
-| Ter, Sáb | 19h | Automação do zero (a partir de 20/10) | Série com o mesmo Make grátis. Ep 1 (20/10): anexo do Gmail salvo sozinho no Drive; ep 2: formulário vira linha na planilha + e-mail de resposta; ep 3: lembrete no WhatsApp de evento da agenda. |
+| Ter, Sáb | 19h | Automação do zero (a partir de 17/10) | Série com o mesmo Make grátis. Ep 1 (17/10, feito no thread de retenção): anexo do Gmail salvo sozinho no Drive; ep 2: formulário vira linha na planilha + e-mail de resposta; ep 3: lembrete no WhatsApp de evento da agenda. |
 | Qui | 19h | Termo de IA (a partir de 22/10) | Um termo de negócio em 35 s: RAG, token, embedding, fine-tuning, alucinação, MCP, API, agente x chatbot. Termo explicado entra em canal/glossario.json pra não repetir. |
-| Dom | 19h | Modelos e parâmetros (a partir de 25/10) | Nomenclatura e comparação: mini/flash/pro, temperatura, janela de contexto, modelo com raciocínio, aberto x fechado. |
+| Dom | 19h | Modelos e parâmetros (a partir de 18/10) | Nomenclatura e comparação: mini/flash/pro, temperatura, janela de contexto, modelo com raciocínio, aberto x fechado. |
 | Sábado | 10h | Carrossel da Semana | Só no Instagram (escolha do Diego em 11/10). Resume o melhor tutorial da semana em 7 a 10 slides no traço Raio-X, com o prompt no último slide. Primeiro em 17/10, feito na produção de quarta. Teste em 11/10 15h (4 IAs grátis). Como fazer: HTML 1080x1350 em kit/carrossel-*.html (render(i) = slide i), `node kit/render.mjs pagina.html pasta stills 0,1,...`, JPGs em carrosseis/<data-slug>/, Buffer createPost com assets image e metadata.instagram.type post (testado, aceita 8 imagens). 17/10 (fórmula de planilha, 7 slides, kit/carrossel-2026-10-17-formula-planilha.html) foi pelo Metricool com publicação automática e sem música, porque o Buffer grátis estava com o Instagram cheio (10 de 10). |
 
 Fuso America/Sao_Paulo. Instagram e YouTube no mesmo dia e horário.
@@ -58,9 +58,13 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 9. Conferir na agenda real, atualizar este arquivo, a pauta, o registro e a memória. Commit e push.
 10. Mensagem curta: tabela Dia | Horário | Vídeo | Série, agendado até quando, comentários a fixar e problemas.
 
-## Grade nova de 19/10/2026 (Diego, 16/10 04h11, thread "Retenção: gancho e ritmo")
+## Grade nova de 19/10/2026 (Diego, 16/10 04h11, thread "Retenção: gancho e ritmo"), ANTECIPADA para 17/10 (Diego, 16/10 04h13)
 
-- Detalhes em /mnt/project-files/operacao/grade-2026-10-19.md (ler antes de produzir). Nomes de série no roteiro: "Radar IA", "Agente do zero", "Automação do zero", "Termo de IA", "Modelos e parâmetros" (o validar.py confere dia e horário de cada um e barra "Faça com IA" e "Agente na Prática" de 19/10 em diante).
+- Vale desde sáb 17/10. Os vídeos de 17/10 (12h Radar IA e 19h Automação do zero ep 1) são feitos pela sessão do thread de retenção (session_01KnRMZcWxFwradJVTTVCgGb); não mexer nos posts de 17/10 até ela mandar os MP4 aprovados. A Automação do zero do ep 2 em diante é da produção.
+- 18/10 (dom): 12h Radar IA feito pela vigia no dia; 19h Modelos e parâmetros. 19/10 (seg): 12h Radar IA; 19h Agente do zero ep 1. Os 18/10 neon antigos (currículo e delivery) saem da agenda quando o substituto estiver aprovado.
+- APROVAÇÃO (Diego, 16/10): vídeo novo só é agendado depois do ok do Diego. Pronto o MP4, copiar para /mnt/project-files/videos/ e mandar o caminho, o horário e o tema à sessão do thread de retenção, que mostra ao Diego; agendar (ou `--substituir`) só quando ela avisar o ok. Como o Radar IA sai no mesmo dia, a vigia manda o 12h assim que ficar pronto.
+
+- Detalhes em /mnt/project-files/operacao/grade-2026-10-19.md (ler antes de produzir). Nomes de série no roteiro: "Radar IA", "Agente do zero", "Automação do zero", "Termo de IA", "Modelos e parâmetros" (o validar.py confere dia e horário de cada um e barra "Faça com IA" e "Agente na Prática" de 17/10 em diante).
 - 12h Radar IA: a VIGIA diária produz o 12h do mesmo dia. A produção de dom/qua/sex não adianta mais o 12h, só o 19h. Se a vigia falhar, o 12h sai com o tema mais quente da semana, com fonte.
   - Estrutura 35 s: 0-3 a notícia mais forte com a data; 3-25 três notícias numeradas (o que é, o que muda pra você, preço ou acesso); 25-31 "qual testar hoje" (grátis ou pago com valor); 31-35 chamada + logo.
   - Fonte oficial (blog ou anúncio da empresa, página de preços, documentação); imprensa grande só de apoio; boato e vazamento não entram. Preço em US$ com a data conferida (R$ se houver oficial). Comparação só com número publicado e nome da fonte. Links das fontes na legenda.
