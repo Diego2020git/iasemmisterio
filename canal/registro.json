@@ -718,6 +718,31 @@
     "instagram": "6ad20f4825d13dd62ee42ef9"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-21-19h-agente-do-zero-03-neon.mp4"
+  },
+  {
+   "id": "2026-10-16-extra-tesla-roadster",
+   "data": "2026-10-16",
+   "horario": "15:30",
+   "serie": "Radar IA",
+   "titulo": "A Tesla mostrou um carro que \"voa\": o que é verdade",
+   "narracao": "A Tesla mostrou um carro que voa. Mas calma. Ontem, num campo da SpaceX no Texas, o novo Roadster subiu numa rampa, ficou de cabeça pra baixo e girou no ar. Um: o truque são dez bicos de ar em altíssima pressão, com tecnologia da SpaceX. Dois: a Tesla promete de zero a quase cem em menos de um segundo. Três: produção só em 2028, sem preço. A reserva custa cinquenta mil dólares. Prometido desde 2017. E o Musk admitiu: não é otimizado pra segurança. Você compraria? Comenta aí e segue o canal.",
+   "video": "videos/2026-10-16-15h-extra-tesla-roadster-neon.mp4",
+   "registro": {
+    "tema": "extra: Tesla Roadster que voa (revelado 15/10)",
+    "chaves": [
+     "tesla",
+     "roadster",
+     "spacex"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "media": null,
+   "buffer": {
+    "youtube": "6ad26732b54530c2c99c983c",
+    "instagram": "6ad2673e839da4fdc6131fc4"
+   },
+   "nota": "extra fora da grade, agendado pelo thread de retenção com ok do Diego (16/10 18:04Z); vídeo no ramo claude/project-thread-5yl5sn"
   }
  ]
 }
