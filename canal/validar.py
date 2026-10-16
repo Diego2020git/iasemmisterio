@@ -140,7 +140,10 @@ def validar(caminho, sem_mp4=False, trocar_slot=False):
         for termo, info in termos.items():
             if info.get("explicar") and termo_na_frase(termo, frase):
                 if not any(p in frase.lower() for p in info.get("pistas", [])):
-                    erros.append(f"'{termo}' sem explicação simples na frase: \"{frase}\"")
+                    if any(p in " ".join(falas).lower() for p in info.get("pistas", [])):
+                        avisos.append(f"'{termo}' explicado em outra frase do vídeo, não nesta: \"{frase}\"")
+                    else:
+                        erros.append(f"'{termo}' sem explicação simples na frase: \"{frase}\"")
         for s in g.get("suspeitos", []):
             if termo_na_frase(s, frase) and norm(s) not in conhecidos:
                 erros.append(f"termo técnico '{s}' fora do glossário (adicione com a explicação): \"{frase}\"")

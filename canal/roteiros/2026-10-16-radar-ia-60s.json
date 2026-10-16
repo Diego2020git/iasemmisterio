@@ -38,16 +38,16 @@
   {
    "frases": [
     {
-     "fala": "Dois: o Gemini quatro Argon, o mais forte do Google, abriu dia treze. É feito pra programação, mas não está no grátis nem no AI Pro. Na API, dois dólares por milhão de tokens até trinta de novembro. Em dezembro, dobra.",
-     "legenda": "Dois: o Gemini 4 Argon, o mais forte do Google, abriu dia 13. É feito pra programação, mas não está no grátis nem no AI Pro. Na API, 2 dólares por milhão de tokens até 30 de novembro. Em dezembro, dobra."
+     "fala": "Dois: o Gemini quatro Argon, o mais forte do Google, abriu dia treze. É feito pra programação, mas não está no grátis nem no AI Pro. Na API, o acesso pra programadores, dois dólares por milhão de tokens até trinta de novembro. Em dezembro, dobra.",
+     "legenda": "Dois: o Gemini 4 Argon, o mais forte do Google, abriu dia 13. É feito pra programação, mas não está no grátis nem no AI Pro. Na API, o acesso pra programadores, 2 dólares por milhão de tokens até 30 de novembro. Em dezembro, dobra."
     }
    ]
   },
   {
    "frases": [
     {
-     "fala": "Três: o Claude Haiku cinco ponto cinco custa dez centavos de dólar por milhão de tokens, noventa por cento menos que o anterior. Pra quem monta agentes, cada resposta sai quase de graça.",
-     "legenda": "Três: o Claude Haiku 5.5 custa 10 centavos de dólar por milhão de tokens, 90% menos que o anterior. Pra quem monta agentes, cada resposta sai quase de graça."
+     "fala": "Três: o Claude Haiku cinco ponto cinco custa dez centavos de dólar por milhão de tokens, os pedaços de texto que a IA lê. Noventa por cento menos que o anterior. Pra quem monta agentes, cada resposta sai quase de graça.",
+     "legenda": "Três: o Claude Haiku 5.5 custa 10 centavos de dólar por milhão de tokens, os pedaços de texto que a IA lê. 90% menos que o anterior. Pra quem monta agentes, cada resposta sai quase de graça."
     }
    ]
   },

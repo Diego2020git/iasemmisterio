@@ -78,6 +78,7 @@ const S = [
       const d = prog(t, wt('dobra', 3) - .2, wt('dobra', 3) + .2);
       txt('a partir de 01/12', cx0 - 340, 1280, ARC, 34, BR, { weight: 600, alpha: d }); txt('US$ 4 · US$ 20', cx0 + 340, 1280, ARC, 34, CI, { align: 'right', weight: 600, alpha: d });
       ctx.restore(); }
+    linhaTxt('API = acesso pra programadores', 1420, wt('acesso', 3), SC[4] - .2, t, 38, CI);
     fonte('Fonte: Google (blog e página de preços da API)', SC[3] + .4, SC[4] - .2, t);
   },
   // 4 · Claude Haiku 5.5: 90% mais barato por token
@@ -88,8 +89,9 @@ const S = [
     if (g > 0) { txt('Haiku 4.5', 150, 630, ARC, 36, BR, { weight: 600, alpha: g }); ctx.fillStyle = hex(IN, .8); rr(150, 660, 780 * g, 56, 12); ctx.fill(); txt('US$ 1,00', 150 + 780 * g - 20, 688, ARC, 32, '#fff', { align: 'right', weight: 600, alpha: g });
       txt('Haiku 5.5', 150, 780, ARC, 36, BR, { weight: 600, alpha: g }); ctx.fillStyle = CI; ctx.shadowColor = CI; ctx.shadowBlur = 20; rr(150, 810, 78 * g, 56, 12); ctx.fill(); ctx.shadowBlur = 0; txt('US$ 0,10', 250, 838, ARC, 32, CI, { weight: 600, alpha: g }); }
     linhaTxt('entrada, por 1 milhão de tokens', 920, c + .3, SC[5] - .2, t, 32, 'rgba(244,248,255,.7)');
-    frase('-90%', 1080, wt('90', 4) - .15, SC[5] - .2, 180, { t, hot: '-90%', cor: CI });
-    linhaTxt('agente respondendo quase de graça', 1260, wt('agentes', 4), SC[5] - .2, t, 46);
+    linhaTxt('token = pedaço de texto que a IA lê', 980, wt('pedaços', 4), SC[5] - .2, t, 38, CI);
+    frase('-90%', 1120, wt('90', 4) - .15, SC[5] - .2, 180, { t, hot: '-90%', cor: CI });
+    linhaTxt('agente respondendo quase de graça', 1300, wt('agentes', 4), SC[5] - .2, t, 46);
     fonte('Fonte: Anthropic, 07/10 (página de preços)', SC[4] + .4, SC[5] - .2, t);
   },
   // 5 · teste hoje: o pedido completo
