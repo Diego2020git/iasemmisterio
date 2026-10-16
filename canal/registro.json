@@ -543,6 +543,81 @@
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-19h-agente-delivery-neon.mp4",
    "retirado_em": "2026-10-16",
    "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
+  },
+  {
+   "id": "2026-10-16-radar-ia-60s",
+   "data": "2026-10-16",
+   "horario": "12:00",
+   "serie": "Radar IA",
+   "titulo": "Radar IA: GPT-6 de graça, Gemini 4 pago e Claude 90% mais barato",
+   "narracao": "GPT seis de graça, Gemini quatro pago e Claude noventa por cento mais barato. São as três notícias de IA da semana, no Radar IA. Um: o GPT seis chegou ao ChatGPT: versão Luna no grátis, Sol no pago. A novidade é a Interface Inteligente: a resposta vem com gráfico, mapa e botões. Dois: o Gemini quatro Argon, o mais forte do Google, abriu dia treze. É feito pra programação, mas não está no grátis nem no AI Pro. Na API, o acesso pra programadores, dois dólares por milhão de tokens até trinta de novembro. Em dezembro, dobra. Três: o Claude Haiku cinco ponto cinco custa dez centavos de dólar por milhão de tokens, os pedaços de texto que a IA lê. Noventa por cento menos que o anterior. Pra quem monta agentes, cada resposta sai quase de graça. Qual testar hoje? O GPT seis, de graça: peça um gráfico dos seus gastos. O pedido está na legenda. Segue pro Radar IA todo dia ao meio-dia.",
+   "video": "videos/2026-10-16-12h-radar-ia-60s-neon.mp4",
+   "registro": {
+    "tema": "radar IA 17/10: GPT-6 grátis, Gemini 4 Argon, Claude Haiku 5.5",
+    "chaves": [
+     "gpt-6",
+     "gemini 4",
+     "haiku 5.5",
+     "radar"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad1b604ee2c696029be8e3e",
+    "instagram": "6ad1b6049597cd16626a3d50"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-16-12h-radar-ia-60s-neon.mp4"
+  },
+  {
+   "id": "2026-10-16-agente-do-zero-01",
+   "data": "2026-10-16",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #1: o mapa do agente de IA no WhatsApp",
+   "narracao": "Um agente de IA que responde seus clientes no WhatsApp. Do zero e de graça. Essa é a série Agente do zero: um passo por vídeo, até ele funcionar. Um: o cérebro é o Gemini, do Google. Ele entende a mensagem e escreve a resposta. Dois: a boca é o WhatsApp, com o número de teste grátis da Meta. Três: o Make liga tudo. Chegou mensagem, o Gemini responde e o WhatsApp envia. Custo pra começar: zero. As três peças têm plano grátis. Segunda tem o episódio dois: a chave grátis do Gemini.",
+   "video": "videos/2026-10-16-19h-agente-do-zero-01-neon.mp4",
+   "registro": {
+    "tema": "agente do zero ep 1: mapa (Gemini + Make + WhatsApp)",
+    "chaves": [
+     "agente",
+     "whatsapp",
+     "gemini",
+     "make"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad1b6064ed7d375a447abb2",
+    "instagram": "6ad1b606fb64fffcf1b6e7a3"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-16-19h-agente-do-zero-01-neon.mp4"
+  },
+  {
+   "id": "2026-10-17-automacao-do-zero-01",
+   "data": "2026-10-17",
+   "horario": "19:00",
+   "serie": "Automação do zero",
+   "titulo": "Automação do zero #1: anexo do Gmail salvo sozinho no Drive",
+   "narracao": "Todo anexo do seu Gmail salvo sozinho no Google Drive. De graça. Automação do zero, episódio um. Nunca mais baixe arquivo um por um. Um: crie a conta grátis no Zapier e clique em Create, Zap. Dois: no gatilho, escolha o Gmail e o evento New Attachment. Entre com sua conta Google. Três: na ação, Google Drive, Upload File. Escolha a pasta e, no arquivo, o anexo. Publique. Pronto: todo anexo novo cai na pasta. Grátis até cem por mês. Salva pra fazer hoje. Terça tem o episódio dois.",
+   "video": "videos/2026-10-17-19h-automacao-zero-01-neon.mp4",
+   "registro": {
+    "tema": "automação: anexo do Gmail para o Google Drive com Zapier",
+    "chaves": [
+     "zapier",
+     "gmail",
+     "google drive",
+     "anexo"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad1b607ee2c696029be8ea4",
+    "instagram": "6ad1b6084ed7d375a447ac06"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-19h-automacao-zero-01-neon.mp4"
   }
  ]
 }
