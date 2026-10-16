@@ -42,3 +42,7 @@ function linhaTxt(str, y, t0, t1, t, size = 44, cor = BR) {
   const a = prog(t, t0, t0 + .3) * (1 - prog(t, t1, t1 + .3)); if (a <= 0) return;
   txt(str, cx0, y + 20 * (1 - ease(prog(t, t0, t0 + .3))), ARC, size, cor, { align: 'center', weight: 600, alpha: a });
 }
+Object.assign(P, {
+  chip() { ctx.beginPath(); rr(-70, -70, 140, 140, 22); ctx.moveTo(30, 0); ctx.arc(0, 0, 30, 0, 7);
+    for (let i = -1; i <= 1; i++) { const k = i * 40; ctx.moveTo(k, -70); ctx.lineTo(k, -100); ctx.moveTo(k, 70); ctx.lineTo(k, 100); ctx.moveTo(-70, k); ctx.lineTo(-100, k); ctx.moveTo(70, k); ctx.lineTo(100, k); } },
+});

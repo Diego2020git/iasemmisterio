@@ -7,12 +7,12 @@ html,body{margin:0;background:#000}canvas{display:block}
 </style></head><body>
 <img id="logo" src="marca/logo.png" style="display:none">
 <canvas id="c" width="1080" height="1920"></canvas>
-<script src="audio/2026-10-17-radar-ia.tempos.js"></script>
+<script src="audio/2026-10-16-radar-ia.tempos.js"></script>
 <script src="raiox-kit.js"></script>
 <script src="neon-kit.js"></script>
 <script src="neon-extra.js"></script>
 <script>
-// 17/10/2026 · 12h · Radar IA #1 (grade nova): GPT-6 grátis, Gemini 4 Argon pago, Claude Haiku 5.5 mais barato. Neon.
+// 16/10/2026 · 12h · Radar IA #1 (grade nova): GPT-6 grátis, Gemini 4 Argon pago, Claude Haiku 5.5 mais barato. Neon.
 const T0 = TEMPOS.cenas;
 const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
 const DURATION = SC[7], IMPACTO = SC[6] + .4;
@@ -27,7 +27,7 @@ function fonte(str, t0, t1, t) { linhaTxt(str, 1560, t0, t1, t, 28, 'rgba(244,24
 const S = [
   // 0 · gancho: as três manchetes; a primeira já está na tela no quadro 1
   (t, lt) => {
-    linhaTxt('RADAR IA · 17/10', 300, -1, SC[1] - .2, t, 34, CI);
+    linhaTxt('RADAR IA · 16/10', 300, -1, SC[1] - .2, t, 34, CI);
     frase('GPT-6 de graça', 620, -1, SC[1] - .2, 92, { t, hot: 'de graça', cor: CI });
     frase('Gemini 4 pago', 860, wt('gemini', 0) - .1, SC[1] - .2, 92, { t, hot: 'pago' });
     frase('Claude 90% mais barato', 1100, wt('claude', 0) - .1, SC[1] - .2, 76, { t, hot: '90%', cor: CI });
