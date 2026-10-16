@@ -1,5 +1,5 @@
 {
- "id": "2026-10-16-radar-ia",
+ "id": "2026-10-16-radar-ia-60s",
  "serie": "Radar IA",
  "data": "2026-10-16",
  "horario": "12:00",
@@ -9,7 +9,7 @@
  "voz": "pt-BR-Chirp3-HD-Fenrir",
  "ep": "r1",
  "estilo": "neon",
- "formato": "completo",
+ "formato": "radar-60",
  "cenas": [
   {
    "frases": [
@@ -22,40 +22,40 @@
   {
    "frases": [
     {
-     "fala": "Radar IA: três notícias da semana que mexem no seu bolso.",
-     "legenda": "Radar IA: três notícias da semana que mexem no seu bolso."
+     "fala": "São as três notícias de IA da semana, no Radar IA.",
+     "legenda": "São as três notícias de IA da semana, no Radar IA."
     }
    ]
   },
   {
    "frases": [
     {
-     "fala": "Um: o GPT seis chegou ao ChatGPT grátis, com respostas em gráfico e botões.",
-     "legenda": "Um: o GPT-6 chegou ao ChatGPT grátis, com respostas em gráfico e botões."
+     "fala": "Um: o GPT seis chegou ao ChatGPT: versão Luna no grátis, Sol no pago. A novidade é a Interface Inteligente: a resposta vem com gráfico, mapa e botões.",
+     "legenda": "Um: o GPT-6 chegou ao ChatGPT: versão Luna no grátis, Sol no pago. A novidade é a Interface Inteligente: a resposta vem com gráfico, mapa e botões."
     }
    ]
   },
   {
    "frases": [
     {
-     "fala": "Dois: o Gemini quatro Argon, o mais forte do Google, abriu. Só no plano pago.",
-     "legenda": "Dois: o Gemini 4 Argon, o mais forte do Google, abriu. Só no plano pago."
+     "fala": "Dois: o Gemini quatro Argon, o mais forte do Google, abriu dia treze. É feito pra programação, mas não está no grátis nem no AI Pro. Na API, dois dólares por milhão de tokens até trinta de novembro. Em dezembro, dobra.",
+     "legenda": "Dois: o Gemini 4 Argon, o mais forte do Google, abriu dia 13. É feito pra programação, mas não está no grátis nem no AI Pro. Na API, 2 dólares por milhão de tokens até 30 de novembro. Em dezembro, dobra."
     }
    ]
   },
   {
    "frases": [
     {
-     "fala": "Três: o Claude Haiku cinco ponto cinco ficou noventa por cento mais barato.",
-     "legenda": "Três: o Claude Haiku 5.5 ficou 90% mais barato."
+     "fala": "Três: o Claude Haiku cinco ponto cinco custa dez centavos de dólar por milhão de tokens, noventa por cento menos que o anterior. Pra quem monta agentes, cada resposta sai quase de graça.",
+     "legenda": "Três: o Claude Haiku 5.5 custa 10 centavos de dólar por milhão de tokens, 90% menos que o anterior. Pra quem monta agentes, cada resposta sai quase de graça."
     }
    ]
   },
   {
    "frases": [
     {
-     "fala": "Teste hoje, de graça: peça ao GPT seis um gráfico dos seus gastos.",
-     "legenda": "Teste hoje, de graça: peça ao GPT-6 um gráfico dos seus gastos."
+     "fala": "Qual testar hoje? O GPT seis, de graça: peça um gráfico dos seus gastos. O pedido está na legenda.",
+     "legenda": "Qual testar hoje? O GPT-6, de graça: peça um gráfico dos seus gastos. O pedido está na legenda."
     }
    ]
   },
@@ -99,8 +99,8 @@
    "radar"
   ]
  },
- "video": "videos/2026-10-16-12h-radar-ia-neon.mp4",
- "fonte_html": "kit/2026-10-16-12h-radar-ia-neon.html",
+ "video": "videos/2026-10-16-12h-radar-ia-60s-neon.mp4",
+ "fonte_html": "kit/2026-10-16-12h-radar-ia-60s-neon.html",
  "imagens": [
   {
    "id": "todas",

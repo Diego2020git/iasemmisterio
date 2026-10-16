@@ -26,7 +26,8 @@ SERIES_NOVAS = {"Radar IA", "Agente do zero", "Automação do zero", "Termo de I
 # "demo" (padrão até aqui): 35 a 45 s, quando a demonstração exige.
 # "completo" (Diego, 16/10/2026, thread "Retenção: gancho e ritmo"): 35 s com passo a passo, ferramenta, pedido na tela,
 # antes e depois e custo. Padrão a partir de 16/10; ver /mnt/project-files/operacao/roteiro-35s.md. "curto" fica só para vídeos antigos.
-DURACOES = {"curto": (15.0, 27.0), "completo": (31.0, 38.0), "demo": (35.0, 45.0)}
+# "radar-60": Radar IA com 3 notícias de ~15 s (Diego, card de 16/10 05h06); vale para todo Radar.
+DURACOES = {"curto": (15.0, 27.0), "completo": (31.0, 38.0), "demo": (35.0, 45.0), "radar-60": (55.0, 65.0)}
 CURTO_ATE = "2026-10-15"  # último dia com vídeos curtos já agendados
 TITULO_MAX = 70
 TRAVESSOES = "—–"
@@ -93,6 +94,10 @@ def validar(caminho, sem_mp4=False, trocar_slot=False):
         formato = "demo"
     if formato == "curto" and dia > CURTO_ATE:
         erros.append(f"formato 'curto' acabou em {CURTO_ATE} (Diego, 16/10): use \"formato\": \"completo\" (35 s)")
+    if r.get("serie") == "Radar IA" and formato != "radar-60":
+        erros.append("Radar IA usa \"formato\": \"radar-60\" (3 notícias, 55 a 65 s; Diego, 16/10)")
+    elif formato == "radar-60" and r.get("serie") != "Radar IA":
+        erros.append("formato 'radar-60' é só para a série Radar IA; as séries das 19h usam \"completo\" (35 s)")
     DUR_MIN, DUR_MAX = DURACOES[formato]
     falas = frases_da_narracao(r)
     caracteres = sum(len(f) for f in falas)
