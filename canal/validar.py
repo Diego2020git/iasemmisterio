@@ -75,7 +75,8 @@ def validar(caminho, sem_mp4=False, trocar_slot=False):
     else:
         if date.fromisoformat(dia).weekday() not in DIAS_DA_SERIE[serie]:
             erros.append(f"{serie} não sai em {dia}")
-        if hora != GRADE[serie]:
+        # fora_da_grade: só com o ok do Diego registrado (ex.: {"aprovado": "Diego, card 17/10 17:49Z"})
+        if hora != GRADE[serie] and not (r.get("fora_da_grade") or {}).get("aprovado"):
             erros.append(f"horário {hora} não é o slot de {serie} ({GRADE[serie]})")
         if serie in SERIES_ANTIGAS and dia >= GRADE_NOVA_DESDE:
             erros.append(f"'{serie}' saiu da grade em {GRADE_NOVA_DESDE} (Diego, 16/10): 12h é Radar IA e 19h segue o rodízio do dia")
