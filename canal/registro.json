@@ -743,6 +743,31 @@
     "instagram": "6ad2673e839da4fdc6131fc4"
    },
    "nota": "extra fora da grade, agendado pelo thread de retenção com ok do Diego (16/10 18:04Z); vídeo no ramo claude/project-thread-5yl5sn"
+  },
+  {
+   "id": "2026-10-17-radar-ia-60s",
+   "data": "2026-10-17",
+   "horario": "15:30",
+   "serie": "Radar IA",
+   "titulo": "Radar IA: voz brasileira no ChatGPT, Meta abre modelo e Slides pago",
+   "narracao": "O ChatGPT ganhou voz brasileira, a Meta liberou um modelo gigante e o ChatGPT faz slides. São as três notícias de IA de hoje, no Radar IA. Um: o modo de voz do ChatGPT ganhou o GPT Live um ponto um. Tem vozes novas, inclusive em português do Brasil, e sotaque mais natural. Desde o dia quinze, está chegando pra todos. Dois: a Meta liberou o Muse Spark Open, de pesos abertos: você baixa e roda na sua máquina. Mas são oitocentos e dezesseis bilhões de parâmetros, as peças que guardam o que aprendeu. Precisa de dois Mac Studio de quinhentos e doze gigas. Três: o ChatGPT agora faz slides: você pede e exporta pra PowerPoint, PDF ou Google Slides. Mas só nos planos pagos: Pro, Business e Enterprise. Qual testar hoje? A voz nova: no modo de voz, escolha uma voz em português e peça uma explicação. O pedido está na legenda. Segue pro Radar IA todo dia ao meio-dia.",
+   "video": "videos/2026-10-17-12h-radar-ia-60s-neon.mp4",
+   "registro": {
+    "tema": "radar IA 17/10: GPT-Live-1.1 voz pt-BR, Meta Muse Spark Open, ChatGPT Slides",
+    "chaves": [
+     "gpt-live",
+     "muse spark open",
+     "chatgpt slides",
+     "radar 17/10"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad3b5440a208cb323309696",
+    "instagram": "6ad3b545e272c4918f973a04"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-12h-radar-ia-60s-neon.mp4"
   }
  ]
 }
