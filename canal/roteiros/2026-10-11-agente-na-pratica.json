@@ -1,0 +1,127 @@
+{
+  "id": "2026-10-11-agente-na-pratica",
+  "serie": "Agente na Prática",
+  "data": "2026-10-11",
+  "horario": "19:00",
+  "titulo": "Agente de IA que responde seus e-mails (e pede sua aprovação)",
+  "descricao": "Como um agente de IA cuida do seu e-mail sem fazer besteira 📩\n1️⃣ Lê cada e-mail e separa: orçamento, dúvida ou reclamação\n2️⃣ Consulta sua tabela de preços e os horários livres da agenda\n3️⃣ Escreve o rascunho com o preço certo e duas opções de horário\n4️⃣ Não envia sozinho: você lê, ajusta e aprova\nReclamação ele não responde: te avisa na hora.\nSalva e me segue pra montar o seu.\n\nFonte: exemplo montado pelo canal, sem números de terceiros.\n\n#agentedeia #inteligenciaartificial #email #automacao #ia #produtividade",
+  "hashtags": [
+    "agentedeia",
+    "inteligenciaartificial",
+    "email",
+    "automacao",
+    "ia",
+    "produtividade"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "agente de ia para responder email": {
+        "demanda_views_top10": 100551,
+        "concorrencia_canais_100k": 3
+      },
+      "agente de ia gratis": {
+        "demanda_views_top10": 741037,
+        "concorrencia_canais_100k": 6
+      },
+      "agente de ia vs chatbot": {
+        "demanda_views_top10": 86681,
+        "concorrencia_canais_100k": 1
+      }
+    }
+  },
+  "dados_que_envelhecem": [],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "agente que responde e-mail com aprovação",
+    "chaves": [
+      "agente de ia",
+      "e-mail",
+      "rascunho",
+      "aprovação"
+    ]
+  },
+  "video": "videos/2026-10-11-19h-agente-email-raiox.mp4",
+  "fonte_html": "kit/2026-10-11-19h-agente-email-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Imagina abrir o e-mail e as respostas já estarem prontas, esperando você aprovar.",
+          "legenda": "Imagina abrir o e-mail e as respostas já estarem prontas, esperando você aprovar."
+        },
+        {
+          "fala": "Isso é um agente de inteligência artificial.",
+          "legenda": "Isso é um agente de IA."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Chega um pedido de orçamento.",
+          "legenda": "Chega um pedido de orçamento."
+        },
+        {
+          "fala": "O agente lê e separa: é orçamento, dúvida ou reclamação?",
+          "legenda": "O agente lê e separa: é orçamento, dúvida ou reclamação?"
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Se é orçamento, ele consulta a sua tabela de preços e a agenda.",
+          "legenda": "Se é orçamento, ele consulta a sua tabela de preços e a agenda."
+        },
+        {
+          "fala": "Sem a tabela, ele chutaria o valor. Por isso as suas regras vêm primeiro.",
+          "legenda": "Sem a tabela, ele chutaria o valor. Por isso as suas regras vêm primeiro."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Aí ele escreve o rascunho da resposta, com o preço certo e duas opções de horário.",
+          "legenda": "Aí ele escreve o rascunho da resposta, com o preço certo e 2 opções de horário."
+        },
+        {
+          "fala": "Mas não envia sozinho.",
+          "legenda": "Mas não envia sozinho."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Você lê, ajusta se quiser e aprova com um clique.",
+          "legenda": "Você lê, ajusta se quiser e aprova com um clique."
+        },
+        {
+          "fala": "Reclamação? Ele não responde. Te avisa na hora.",
+          "legenda": "Reclamação? Ele não responde. Te avisa na hora."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Ler, consultar, escrever e pedir aprovação. Isso é um agente.",
+          "legenda": "Ler, consultar, escrever e pedir aprovação. Isso é um agente."
+        },
+        {
+          "fala": "Salva e me segue pra montar o seu.",
+          "legenda": "Salva e me segue pra montar o seu."
+        }
+      ]
+    }
+  ]
+}

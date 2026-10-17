@@ -1,0 +1,90 @@
+{
+  "id": "2026-10-17-agente-na-pratica",
+  "serie": "Agente na Prática",
+  "data": "2026-10-17",
+  "horario": "19:00",
+  "titulo": "Paciente faltou de novo? Um agente confirma a consulta por você",
+  "descricao": "Agente de IA pra clínica: menos falta, agenda cheia 🩺\n1️⃣ Um dia antes, manda no WhatsApp: \"confirma amanhã às 10h?\"\n2️⃣ Se o paciente pede outro horário, mostra os livres e remarca\n3️⃣ Dúvida de saúde ele não responde: passa pra recepção\nVocê decide as regras e acompanha tudo na agenda.\nSalva e me segue pra montar o seu.\n\nFonte: exemplo montado pelo canal, sem números de terceiros.\n\n#agentedeia #clinica #consultorio #inteligenciaartificial #automacao #ia",
+  "hashtags": [
+    "agentedeia",
+    "clinica",
+    "consultorio",
+    "inteligenciaartificial",
+    "automacao",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 14/10/2026",
+    "termos": {
+      "agente de ia para clinica": {
+        "demanda_views_top10": 391545,
+        "concorrencia_canais_100k": 1
+      }
+    }
+  },
+  "dados_que_envelhecem": [],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ],
+  "registro": {
+    "tema": "agente de IA que confirma consultas em clínica",
+    "chaves": [
+      "clinica",
+      "consulta",
+      "confirmacao",
+      "remarcar"
+    ]
+  },
+  "video": "videos/2026-10-17-19h-agente-clinica-neon.mp4",
+  "fonte_html": "kit/2026-10-17-19h-agente-clinica-neon.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "25",
+  "estilo": "neon",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Paciente faltou de novo? Um agente confirma a consulta por você.",
+          "legenda": "Paciente faltou de novo? Um agente confirma a consulta por você."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um dia antes, ele manda no WhatsApp: confirma amanhã às dez?",
+          "legenda": "Um dia antes, ele manda no WhatsApp: confirma amanhã às 10h?"
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Se o paciente pede outro horário, ele mostra os livres e remarca.",
+          "legenda": "Se o paciente pede outro horário, ele mostra os livres e remarca."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dúvida de saúde ele não responde: passa pra recepção.",
+          "legenda": "Dúvida de saúde ele não responde: passa pra recepção."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Agenda cheia e sem buraco. Salva e me segue pra montar o seu.",
+          "legenda": "Agenda cheia e sem buraco. Salva e me segue pra montar o seu."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

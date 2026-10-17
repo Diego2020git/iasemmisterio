@@ -1,0 +1,75 @@
+{
+ "_como_usar": "Uma entrada por roteiro (id do roteiro) e por imagem (id usado em roteiro.imagens). A origem começa com uma destas: 'gerada por código', 'gerada por IA (<ferramenta>)', 'captura própria'.",
+ "2026-10-13-faca-com-ia": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-11-faca-com-ia": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-11-agente-na-pratica": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-12-faca-com-ia": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-12-agente-na-pratica": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-13-agente-na-pratica": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-14-faca-com-ia": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-14-agente-na-pratica": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-15-faca-com-ia": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-15-agente-na-pratica": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-16-faca-com-ia": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-16-agente-na-pratica": {
+  "todas": "gerada por código (kit Raio-X: traço em canvas, sem imagem externa)"
+ },
+ "2026-10-17-faca-com-ia": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-17-agente-na-pratica": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-18-faca-com-ia": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-18-agente-na-pratica": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-17-automacao-do-zero-01": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-16-agente-do-zero-01": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-16-radar-ia-60s": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-18-modelos-e-parametros-01": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-19-agente-do-zero-02": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-20-automacao-do-zero-02": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-21-agente-do-zero-03": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ },
+ "2026-10-17-radar-ia-60s": {
+  "todas": "gerada por código (kit neon: canvas, sem imagem externa; logo original do canal)"
+ }
+}

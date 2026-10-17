@@ -1,0 +1,88 @@
+{
+  "id": "2026-10-15-agente-na-pratica",
+  "serie": "Agente na Prática",
+  "data": "2026-10-15",
+  "horario": "19:00",
+  "titulo": "Boleto vencido nunca mais: um agente avisa e só paga com o seu sim",
+  "descricao": "Agente financeiro: ele cuida dos boletos e não paga nada sem você 👇\n1️⃣ Lê boletos e notas que chegam no e-mail e anota numa planilha\n2️⃣ Avisa 3 dias antes do vencimento, com valor e link\n3️⃣ Só agenda o pagamento depois do seu \"pode pagar\"\nNo fim do mês, manda o resumo: o que entrou, o que saiu e o que vence.\nSalva e me segue pra montar o seu.\n\nFonte: exemplo montado pelo canal, sem números de terceiros.\n\n#agentedeia #financas #inteligenciaartificial #automacao #ia",
+  "hashtags": [
+    "agentedeia",
+    "financas",
+    "inteligenciaartificial",
+    "automacao",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "agente de ia financeiro": {
+        "demanda_views_top10": 82660,
+        "concorrencia_canais_100k": 1
+      }
+    }
+  },
+  "dados_que_envelhecem": [],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "agente financeiro que cuida de boletos",
+    "chaves": [
+      "financeiro",
+      "boleto",
+      "vencimento",
+      "pagamento"
+    ]
+  },
+  "video": "videos/2026-10-15-19h-agente-financeiro-raiox.mp4",
+  "fonte_html": "kit/2026-10-15-19h-agente-financeiro-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "22",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Boleto vencido? Nunca mais. Um agente avisa e só paga com o seu sim.",
+          "legenda": "Boleto vencido? Nunca mais. Um agente avisa e só paga com o seu sim."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Ele lê os boletos do seu e-mail e anota tudo numa planilha.",
+          "legenda": "Ele lê os boletos do seu e-mail e anota tudo numa planilha."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três dias antes de vencer, te avisa com o valor e o link.",
+          "legenda": "3 dias antes de vencer, te avisa com o valor e o link."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Você responde: pode pagar. Só aí ele agenda o pagamento.",
+          "legenda": "Você responde: pode pagar. Só aí ele agenda o pagamento."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Sem a sua resposta, não mexe em nada. Salva e me segue pra montar o seu.",
+          "legenda": "Sem a sua resposta, não mexe em nada. Salva e me segue pra montar o seu."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

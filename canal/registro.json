@@ -1,0 +1,773 @@
+{
+ "_como_usar": "Tudo o que foi publicado ou agendado. validar.py compara título, narração (trigramas) e assunto. publicar.py acrescenta e atualiza.",
+ "videos": [
+  {
+   "id": "01",
+   "data": "2026-10-07",
+   "horario": "08:38",
+   "serie": "Agente na Prática",
+   "titulo": "Como criar um agente de IA que responde seu WhatsApp",
+   "narracao": "Seu WhatsApp pode responder cliente e marcar horário sozinho. Enquanto você dorme. Isso é um agente de IA. E pra criar o seu, você só precisa pensar em quatro coisas. Um: objetivo. O que ele precisa fazer? Aqui: atender o cliente e marcar horário. Dois: contexto. Seus preços, seus horários, suas regras. Sem isso, ele inventa. Três: ferramentas. O WhatsApp pra conversar e a agenda pra ver os horários livres. Quatro: ação. Ele responde, marca na agenda e te avisa. E você decide o que ele pode fazer sozinho. Na prática: o cliente pergunta \"tem horário amanhã?\". O agente entende, olha a agenda e responde: \"Tenho às 10h ou às 15h. Qual prefere?\" Objetivo, contexto, ferramentas, ação. Salva esse vídeo e me segue pra ver o passo a passo.",
+   "video": "videos/01-agente-de-ia-final.mp4",
+   "registro": {
+    "tema": "criar agente de ia",
+    "chaves": [
+     "agente de ia",
+     "whatsapp",
+     "objetivo contexto ferramentas acao"
+    ]
+   },
+   "status": "publicado",
+   "links": {
+    "instagram": "https://www.instagram.com/reel/DeMRSRJE2Jf/",
+    "youtube": "https://www.youtube.com/shorts/K9IDfvF6jRk"
+   },
+   "agendador": "Metricool"
+  },
+  {
+   "id": "02",
+   "data": "2026-10-07",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Passo a passo: agente de IA no WhatsApp com n8n",
+   "narracao": "Prometi o passo a passo. Bora montar o agente que responde seu WhatsApp. Passo um: crie uma conta no n8n e abra um fluxo novo. Passo dois: coloque o gatilho do WhatsApp. Toda mensagem que chegar começa o fluxo. Passo três: conecte o nó Agente de IA e escolha o modelo, ChatGPT ou Gemini. Passo quatro: no prompt, escreva o objetivo e o contexto. Seus serviços, preços e horários. Passo cinco: dê a ferramenta Google Agenda pra ele consultar e marcar horários. Passo seis: ligue o envio de mensagem do WhatsApp pra ele responder. Testa mandando \"tem horário amanhã?\". Respondeu certo? Ativa o fluxo. O prompt pronto tá no comentário fixado. Salva e me segue pra mais agentes.",
+   "video": "videos/02-passo-a-passo-n8n-final.mp4",
+   "registro": {
+    "tema": "agente no whatsapp com n8n",
+    "chaves": [
+     "n8n",
+     "whatsapp",
+     "agente de ia",
+     "passo a passo"
+    ]
+   },
+   "status": "publicado",
+   "links": {
+    "instagram": "https://www.instagram.com/reel/DeNYshxD7gc/",
+    "youtube": "https://www.youtube.com/shorts/CBZAwiwIVyw"
+   },
+   "agendador": "Metricool"
+  },
+  {
+   "id": "03",
+   "data": "2026-10-08",
+   "horario": "12:00",
+   "serie": "Agente na Prática",
+   "titulo": "O que um agente de IA faz? 3 exemplos reais",
+   "narracao": "Todo mundo fala de agente de IA. Mas o que ele faz de verdade? Três exemplos. Um: atendimento. O cliente manda mensagem às onze da noite, e o agente responde, tira a dúvida e marca o horário. Dois: e-mail. Chegou um pedido de orçamento? O agente lê, resume e deixa a resposta pronta pra você só aprovar. Três: vendas. Alguém pediu o preço e sumiu? No dia seguinte, o agente manda o lembrete sozinho. A diferença pro chatbot comum: o agente não só conversa. Ele usa ferramentas e executa a tarefa. Qual desses você quer primeiro? Comenta aqui.",
+   "video": "videos/03-o-que-um-agente-faz-final.mp4",
+   "registro": {
+    "tema": "o que um agente de ia faz",
+    "chaves": [
+     "agente de ia",
+     "exemplos",
+     "atendimento",
+     "vendas"
+    ]
+   },
+   "status": "publicado",
+   "links": {},
+   "agendador": "Metricool"
+  },
+  {
+   "id": "04",
+   "data": "2026-10-08",
+   "horario": "19:00",
+   "serie": "Faça com IA",
+   "titulo": "Como criar um avatar com IA (seu clone que grava vídeo)",
+   "narracao": "Dá pra criar um clone seu que grava vídeo por você. Olha como. Passo um: grave dois minutos de você falando, olhando pra câmera, com boa luz e sem barulho. Passo dois: suba esse vídeo numa ferramenta de avatar, como o HeyGen. Ela aprende o seu rosto e a sua voz. Passo três: cole o roteiro. Em alguns minutos, o seu avatar entrega o vídeo pronto. Um cuidado: use só o seu rosto, ou o de quem te deu autorização. Salva esse vídeo e testa hoje.",
+   "video": "videos/04-avatar-com-ia-final.mp4",
+   "registro": {
+    "tema": "avatar com ia",
+    "chaves": [
+     "heygen",
+     "avatar",
+     "clone digital"
+    ]
+   },
+   "status": "publicado",
+   "links": {},
+   "agendador": "Metricool"
+  },
+  {
+   "id": "05",
+   "data": "2026-10-09",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Como criar um e-book com IA numa tarde (passo a passo)",
+   "narracao": "Dá pra criar um e-book inteiro com IA numa tarde. Olha o passo a passo. Um: escolha um problema real do seu público. Por exemplo: como organizar as finanças em trinta dias. Dois: peça pro ChatGPT o sumário. Dez capítulos curtos e práticos. Três: escreva capítulo por capítulo com a IA, e revise com a sua experiência. É isso que deixa o e-book com a sua cara. Quatro: monte no Canva, com um modelo de e-book, e exporte em PDF. Pronto. Pra vender, crie uma conta grátis na Hotmart ou na Kiwify. Você só paga uma taxa quando vende. Salva e me segue pra mais.",
+   "video": "videos/05-ebook-com-ia-final.mp4",
+   "registro": {
+    "tema": "e-book com ia",
+    "chaves": [
+     "ebook",
+     "chatgpt",
+     "canva",
+     "hotmart"
+    ]
+   },
+   "status": "publicado",
+   "links": {},
+   "agendador": "Metricool"
+  },
+  {
+   "id": "06",
+   "data": "2026-10-09",
+   "horario": "19:00",
+   "serie": "Faça com IA",
+   "titulo": "Como criar carrossel para Instagram com IA (em 10 minutos)",
+   "narracao": "Dá pra criar um carrossel pro Instagram em dez minutos com IA. Olha como. Um: peça pro ChatGPT o texto. Sete slides, um gancho forte no primeiro, uma ideia por slide e uma chamada no último. O prompt pronto está no comentário. Dois: abra o Canva e escolha um modelo de carrossel no tamanho do Instagram. Três: cole um texto em cada slide. Frase curta, letra grande, e troque as cores pelas da sua marca. Quatro: baixe em PNG e poste os slides na ordem. O ChatGPT e o Canva funcionam no plano grátis. Salva esse vídeo e me segue pra mais.",
+   "video": "videos/06-carrossel-instagram-final.mp4",
+   "registro": {
+    "tema": "carrossel para instagram com ia",
+    "chaves": [
+     "carrossel",
+     "instagram",
+     "chatgpt",
+     "canva"
+    ]
+   },
+   "status": "publicado",
+   "links": {},
+   "agendador": "Metricool"
+  },
+  {
+   "id": "2026-10-13-faca-com-ia",
+   "data": "2026-10-13",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "IA que cria vídeo de graça todo dia (Google Flow)",
+   "narracao": "Vídeo com IA de graça, todo dia: é o Flow, do Google. Entra com a sua conta Google e ganha cinquenta créditos por dia. No Veo três ponto um Lite, cada vídeo gasta dez. Dá uns cinco por dia. Descreve em quatro partes: quem aparece, o que faz, a câmera e o estilo. O modelo de prompt, o texto pronto, está no comentário. Salva e me segue.",
+   "video": "videos/13-ia-video-gratis-raiox-final.mp4",
+   "registro": {
+    "tema": "gerar vídeo com IA de graça",
+    "chaves": [
+     "google flow",
+     "veo",
+     "video com ia",
+     "gratis"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acc34b38e8dd50ffc60b57b"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/13-ia-video-gratis-raiox-final.mp4",
+   "metricool": {
+    "instagram": "https://app.metricool.com/planner/calendar?blogId=7280938&openWithPostUuid=1198058211128921693"
+   }
+  },
+  {
+   "id": "2026-10-11-faca-com-ia",
+   "data": "2026-10-11",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Estude com IA de graça: NotebookLM vira seu professor",
+   "narracao": "Essa ferramenta do Google transforma o seu material de estudo num professor. Chama Notebook L M, e tem plano grátis. Um: entra com a sua conta Google e cria um caderno. Sobe o PDF da apostila, um link ou até um vídeo do YouTube. Dois: faz perguntas sobre o material. Ele responde só com o que você subiu, e mostra de onde tirou cada resposta. Três: pede o resumo em áudio. Vira uma conversa tipo podcast, pra você ouvir no ônibus. Por exemplo: sobe a lei do edital e pede dez perguntas de prova sobre ela. Você treina com o seu próprio material. Como ele usa só as suas fontes, fica bem mais difícil inventar resposta. Salva esse vídeo e me segue pra mais.",
+   "video": "videos/2026-10-11-12h-notebooklm-raiox.mp4",
+   "registro": {
+    "tema": "estudar com notebooklm",
+    "chaves": [
+     "notebooklm",
+     "estudar",
+     "concurso",
+     "resumo em audio"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acb0e83d9cab260a7e71f8a",
+    "instagram": "6acb0e83c4de2d2b124c25fb"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-11-12h-notebooklm-raiox.mp4"
+  },
+  {
+   "id": "2026-10-11-agente-na-pratica",
+   "data": "2026-10-11",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Agente de IA que responde seus e-mails (e pede sua aprovação)",
+   "narracao": "Imagina abrir o e-mail e as respostas já estarem prontas, esperando você aprovar. Isso é um agente de inteligência artificial. Chega um pedido de orçamento. O agente lê e separa: é orçamento, dúvida ou reclamação? Se é orçamento, ele consulta a sua tabela de preços e a agenda. Sem a tabela, ele chutaria o valor. Por isso as suas regras vêm primeiro. Aí ele escreve o rascunho da resposta, com o preço certo e duas opções de horário. Mas não envia sozinho. Você lê, ajusta se quiser e aprova com um clique. Reclamação? Ele não responde. Te avisa na hora. Ler, consultar, escrever e pedir aprovação. Isso é um agente. Salva e me segue pra montar o seu.",
+   "video": "videos/2026-10-11-19h-agente-email-raiox.mp4",
+   "registro": {
+    "tema": "agente que responde e-mail com aprovação",
+    "chaves": [
+     "agente de ia",
+     "e-mail",
+     "rascunho",
+     "aprovação"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acbc3d6a9411fbcc552680e",
+    "instagram": "6acbc3d7a9411fbcc552683b"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/5e8dd7da120af25484d13dfe358cd10ce16ca7aa/videos/2026-10-11-19h-agente-email-raiox.mp4"
+  },
+  {
+   "id": "2026-10-12-faca-com-ia",
+   "data": "2026-10-12",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Qual IA usar pra cada tarefa (todas com plano grátis)",
+   "narracao": "Não existe a melhor IA. Existe a certa pra cada tarefa. Texto e e-mail: ChatGPT. Imagem: Gemini, do Google. Estudar com o seu material: Notebook L M. Vídeo: o Flow, também do Google. As quatro têm plano grátis. Salva pra consultar depois e me segue pra mais.",
+   "video": "videos/2026-10-12-12h-qual-ia-usar-raiox.mp4",
+   "registro": {
+    "tema": "qual ia usar para cada tarefa",
+    "chaves": [
+     "melhor ia",
+     "comparativo",
+     "cada tarefa",
+     "ferramentas gratis"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acc342063ff33d8c9a088fc",
+    "instagram": "6acc3420ea568e911a4918cd"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-12-12h-qual-ia-usar-raiox.mp4"
+  },
+  {
+   "id": "2026-10-12-agente-na-pratica",
+   "data": "2026-10-12",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Agente de IA ou chatbot? A diferença em 20 segundos",
+   "narracao": "O chatbot conversa. O agente de IA resolve. Pede pro chatbot de conversa: marca uma reunião com o João na quinta. Ele só explica como. O agente abre a sua agenda e acha um horário livre na quinta. Confirma às três da tarde e manda o convite por e-mail. Ele tem ferramentas: agenda, e-mail e planilha. Salva e me segue pra ver agentes na prática.",
+   "video": "videos/2026-10-12-19h-agente-vs-chatbot-raiox.mp4",
+   "registro": {
+    "tema": "diferença entre agente e chatbot",
+    "chaves": [
+     "chatbot",
+     "diferença",
+     "agente de ia",
+     "reunião"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acc3422fa026cfb811f9f28",
+    "instagram": "6acc34227db619a291532b6f"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-12-19h-agente-vs-chatbot-raiox.mp4"
+  },
+  {
+   "id": "2026-10-13-agente-na-pratica",
+   "data": "2026-10-13",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Agente de atendimento que sabe a hora de chamar você",
+   "narracao": "Esse agente atende sozinho e sabe a hora de chamar você. Horário, preço, endereço? Ele responde na hora, até de madrugada. Cliente irritado ou pedido fora da regra? Ele passa a conversa pra você. Com um resumo: quem é, o que quer e o que já foi dito. Salva e me segue pra montar o seu.",
+   "video": "videos/2026-10-13-19h-agente-chama-humano-raiox.mp4",
+   "registro": {
+    "tema": "agente de atendimento que passa para humano",
+    "chaves": [
+     "atendimento",
+     "humano",
+     "transferência",
+     "resumo"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acc352fa9411fbcc565bc76",
+    "instagram": "6acc353063ff33d8c9a0b7ed"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-13-19h-agente-chama-humano-raiox.mp4"
+  },
+  {
+   "id": "2026-10-14-faca-com-ia",
+   "data": "2026-10-14",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Logo com IA de graça no Gemini (prompt na legenda)",
+   "narracao": "O logo do seu negócio com IA, de graça, no Gemini. Pede com quatro informações: nome, ramo, estilo e cores. Tipo: logo pra Doce Lar, confeitaria, minimalista, rosa e marrom. Não gostou? Pede só o símbolo ou outra cor. O pedido pronto, o prompt, está na legenda. Salva e me segue pra mais.",
+   "video": "videos/2026-10-14-12h-logo-gemini-raiox.mp4",
+   "registro": {
+    "tema": "criar logo com ia",
+    "chaves": [
+     "logo",
+     "gemini",
+     "imagem",
+     "marca"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acdfa8fe8e81feddfcef9be",
+    "instagram": "6acdfa90f79d2d8aed420c0d"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-14-12h-logo-gemini-raiox.mp4"
+  },
+  {
+   "id": "2026-10-14-agente-na-pratica",
+   "data": "2026-10-14",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Agente de IA que separa o cliente pronto pra comprar",
+   "narracao": "Esse agente separa quem quer comprar de quem só está olhando. Ele faz três perguntas: o que precisa, pra quando e quanto quer investir. E dá uma nota: quente, morno ou frio. Quente vai direto pra você. Morno ganha lembrete. Frio recebe conteúdo. Salva e me segue pra montar o seu.",
+   "video": "videos/2026-10-14-19h-agente-vendas-raiox.mp4",
+   "registro": {
+    "tema": "agente de vendas que qualifica contatos",
+    "chaves": [
+     "vendas",
+     "qualificar",
+     "quente morno frio",
+     "lead"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acc35ef8e8dd50ffc60f477",
+    "instagram": "6acc35ef7db619a291537338"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-14-19h-agente-vendas-raiox.mp4"
+  },
+  {
+   "id": "2026-10-15-faca-com-ia",
+   "data": "2026-10-15",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Fórmula de planilha com IA no ChatGPT (prompt na legenda)",
+   "narracao": "Fórmula de planilha sem decorar: o ChatGPT escreve. Explica as colunas: A, produto. B, preço. C, quantidade. Pede o total na coluna D. Ele devolve: igual, B dois, vezes C dois. Deu erro? Cola o erro e ele corrige. O pedido pronto, o prompt, está na legenda. Salva e me segue pra mais.",
+   "video": "videos/2026-10-15-12h-formula-planilha-raiox.mp4",
+   "registro": {
+    "tema": "fórmula de planilha com ia",
+    "chaves": [
+     "planilha",
+     "fórmula",
+     "excel",
+     "chatgpt"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acc366963ff33d8c9a0f0bd",
+    "instagram": "6acc366aea568e911a4985c8"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-15-12h-formula-planilha-raiox.mp4"
+  },
+  {
+   "id": "2026-10-15-agente-na-pratica",
+   "data": "2026-10-15",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Boleto vencido nunca mais: um agente avisa e só paga com o seu sim",
+   "narracao": "Boleto vencido? Nunca mais. Um agente avisa e só paga com o seu sim. Ele lê os boletos do seu e-mail e anota tudo numa planilha. Três dias antes de vencer, te avisa com o valor e o link. Você responde: pode pagar. Só aí ele agenda o pagamento. Sem a sua resposta, não mexe em nada. Salva e me segue pra montar o seu.",
+   "video": "videos/2026-10-15-19h-agente-financeiro-raiox.mp4",
+   "registro": {
+    "tema": "agente financeiro que cuida de boletos",
+    "chaves": [
+     "financeiro",
+     "boleto",
+     "vencimento",
+     "pagamento"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acc373c7db619a29153cd51",
+    "instagram": "6acc373c63ff33d8c9a10def"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-15-19h-agente-financeiro-raiox.mp4"
+  },
+  {
+   "id": "2026-10-16-faca-com-ia",
+   "data": "2026-10-16",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Carrossel pronto em 10 minutos com IA (e de graça)",
+   "narracao": "Carrossel pronto em dez minutos. E de graça. O ChatGPT escreve os sete slides. O pedido pronto, o prompt, está na legenda. No Canva você escolhe um modelo de carrossel e cola uma frase em cada slide. Troca pras cores da sua marca, baixa em PNG e posta. Os dois têm plano grátis. Salva esse vídeo e me segue pra mais.",
+   "video": "videos/2026-10-16-12h-carrossel-curto-raiox.mp4",
+   "registro": {
+    "tema": "carrossel para instagram com ia (versão curta, teste de retenção)",
+    "chaves": [
+     "carrossel",
+     "instagram",
+     "slides",
+     "canva"
+    ]
+   },
+   "status": "retirado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acc325afa026cfb811f47a0",
+    "instagram": "6acc325aea568e911a48c4f9"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/2026-10-16-12h-carrossel-curto-raiox.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
+  },
+  {
+   "id": "2026-10-16-agente-na-pratica",
+   "data": "2026-10-16",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Gemini de assistente pessoal: marca na agenda e acha e-mail, de graça",
+   "narracao": "Seu assistente pessoal de graça já está no celular: o Gemini. Nas configurações, abra Apps conectados e ligue o Gmail e a Agenda. Agora é só pedir: arroba Agenda, marca dentista sexta às dez. Ou: arroba Gmail, acha o e-mail do boleto da luz. Tudo no plano grátis, com conta pessoal. Salva e testa hoje.",
+   "video": "videos/2026-10-16-19h-gemini-assistente-raiox.mp4",
+   "registro": {
+    "tema": "Gemini como assistente pessoal com Gmail e Agenda",
+    "chaves": [
+     "gemini",
+     "assistente",
+     "agenda",
+     "gmail"
+    ]
+   },
+   "status": "retirado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acdfa6ee8e81feddfcef2d1",
+    "instagram": "6acdfa6ff79d2d8aed4204ed"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-16-19h-gemini-assistente-raiox.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
+  },
+  {
+   "id": "2026-10-17-faca-com-ia",
+   "data": "2026-10-17",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Legenda automática de graça e sem marca d'água no Clipchamp",
+   "narracao": "Legenda automática no seu vídeo, de graça e sem marca d'água. Abra o Clipchamp, da Microsoft, e suba o seu vídeo. Na aba Legendas, ative as legendas automáticas. Em segundos a fala vira texto. Corrija o que precisar. Exporta em mil e oitenta no plano grátis. Salva e testa hoje.",
+   "video": "videos/2026-10-17-12h-legenda-clipchamp-neon.mp4",
+   "registro": {
+    "tema": "legenda automática grátis no Clipchamp",
+    "chaves": [
+     "clipchamp",
+     "legenda",
+     "editar video"
+    ]
+   },
+   "status": "retirado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acf547cdd6faa9f508aa4c9",
+    "instagram": "6acf547c4c17f8453734a1a0"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-12h-legenda-clipchamp-neon.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
+  },
+  {
+   "id": "2026-10-17-agente-na-pratica",
+   "data": "2026-10-17",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Paciente faltou de novo? Um agente confirma a consulta por você",
+   "narracao": "Paciente faltou de novo? Um agente confirma a consulta por você. Um dia antes, ele manda no WhatsApp: confirma amanhã às dez? Se o paciente pede outro horário, ele mostra os livres e remarca. Dúvida de saúde ele não responde: passa pra recepção. Agenda cheia e sem buraco. Salva e me segue pra montar o seu.",
+   "video": "videos/2026-10-17-19h-agente-clinica-neon.mp4",
+   "registro": {
+    "tema": "agente de IA que confirma consultas em clínica",
+    "chaves": [
+     "clinica",
+     "consulta",
+     "confirmacao",
+     "remarcar"
+    ]
+   },
+   "status": "retirado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acf547ea7d5819cfeb0e036",
+    "instagram": "6acf547eb389ea654705b5fb"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-19h-agente-clinica-neon.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
+  },
+  {
+   "id": "2026-10-18-faca-com-ia",
+   "data": "2026-10-18",
+   "horario": "12:00",
+   "serie": "Faça com IA",
+   "titulo": "Currículo com IA de graça: o ChatGPT reescreve pra vaga certa",
+   "narracao": "Currículo que chama atenção, feito com IA e de graça. Abra o ChatGPT no plano grátis e cole o seu currículo. Peça pra reescrever com foco na vaga. O pedido pronto está na legenda. Ele troca tarefa por resultado. Só não deixe inventar nada. Confira cada dado e envie. Salva e testa hoje.",
+   "video": "videos/2026-10-18-12h-curriculo-chatgpt-neon.mp4",
+   "registro": {
+    "tema": "currículo reescrito pra vaga com ChatGPT grátis",
+    "chaves": [
+     "curriculo",
+     "emprego",
+     "chatgpt",
+     "vaga"
+    ]
+   },
+   "status": "retirado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acf587d635a3a53a6f16fc2",
+    "instagram": "6acf587e0901e7a6582720af"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-12h-curriculo-chatgpt-neon.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
+  },
+  {
+   "id": "2026-10-18-agente-na-pratica",
+   "data": "2026-10-18",
+   "horario": "19:00",
+   "serie": "Agente na Prática",
+   "titulo": "Delivery lotado? Um agente de IA anota o pedido no WhatsApp",
+   "narracao": "Delivery lotado? Um agente de IA anota os pedidos no WhatsApp. O cliente pede, e ele confirma o sabor, o endereço e o total. Confirmou? O pedido cai direto na cozinha. Reclamação ou pedido fora do cardápio, ele passa pra você. Ninguém fica sem resposta. Salva e segue pra montar o seu.",
+   "video": "videos/2026-10-18-19h-agente-delivery-neon.mp4",
+   "registro": {
+    "tema": "agente de IA que anota pedidos de delivery no WhatsApp",
+    "chaves": [
+     "delivery",
+     "restaurante",
+     "pedido",
+     "whatsapp"
+    ]
+   },
+   "status": "retirado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6acf587f4aaa0bb6abd45b5f",
+    "instagram": "6acf5880635a3a53a6f170ae"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-19h-agente-delivery-neon.mp4",
+   "retirado_em": "2026-10-16",
+   "motivo": "grade nova antecipada pelo Diego (16/10 04h47)"
+  },
+  {
+   "id": "2026-10-16-radar-ia-60s",
+   "data": "2026-10-16",
+   "horario": "12:00",
+   "serie": "Radar IA",
+   "titulo": "Radar IA: GPT-6 de graça, Gemini 4 pago e Claude 90% mais barato",
+   "narracao": "GPT seis de graça, Gemini quatro pago e Claude noventa por cento mais barato. São as três notícias de IA da semana, no Radar IA. Um: o GPT seis chegou ao ChatGPT: versão Luna no grátis, Sol no pago. A novidade é a Interface Inteligente: a resposta vem com gráfico, mapa e botões. Dois: o Gemini quatro Argon, o mais forte do Google, abriu dia treze. É feito pra programação, mas não está no grátis nem no AI Pro. Na API, o acesso pra programadores, dois dólares por milhão de tokens até trinta de novembro. Em dezembro, dobra. Três: o Claude Haiku cinco ponto cinco custa dez centavos de dólar por milhão de tokens, os pedaços de texto que a IA lê. Noventa por cento menos que o anterior. Pra quem monta agentes, cada resposta sai quase de graça. Qual testar hoje? O GPT seis, de graça: peça um gráfico dos seus gastos. O pedido está na legenda. Segue pro Radar IA todo dia ao meio-dia.",
+   "video": "videos/2026-10-16-12h-radar-ia-60s-neon.mp4",
+   "registro": {
+    "tema": "radar IA 17/10: GPT-6 grátis, Gemini 4 Argon, Claude Haiku 5.5",
+    "chaves": [
+     "gpt-6",
+     "gemini 4",
+     "haiku 5.5",
+     "radar"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad1b604ee2c696029be8e3e",
+    "instagram": "6ad1b6049597cd16626a3d50"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-16-12h-radar-ia-60s-neon.mp4"
+  },
+  {
+   "id": "2026-10-16-agente-do-zero-01",
+   "data": "2026-10-16",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #1: o mapa do agente de IA no WhatsApp",
+   "narracao": "Um agente de IA que responde seus clientes no WhatsApp. Do zero e de graça. Essa é a série Agente do zero: um passo por vídeo, até ele funcionar. Um: o cérebro é o Gemini, do Google. Ele entende a mensagem e escreve a resposta. Dois: a boca é o WhatsApp, com o número de teste grátis da Meta. Três: o Make liga tudo. Chegou mensagem, o Gemini responde e o WhatsApp envia. Custo pra começar: zero. As três peças têm plano grátis. Segunda tem o episódio dois: a chave grátis do Gemini.",
+   "video": "videos/2026-10-16-19h-agente-do-zero-01-neon.mp4",
+   "registro": {
+    "tema": "agente do zero ep 1: mapa (Gemini + Make + WhatsApp)",
+    "chaves": [
+     "agente",
+     "whatsapp",
+     "gemini",
+     "make"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad1b6064ed7d375a447abb2",
+    "instagram": "6ad1b606fb64fffcf1b6e7a3"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-16-19h-agente-do-zero-01-neon.mp4"
+  },
+  {
+   "id": "2026-10-17-automacao-do-zero-01",
+   "data": "2026-10-17",
+   "horario": "19:00",
+   "serie": "Automação do zero",
+   "titulo": "Automação do zero #1: anexo do Gmail salvo sozinho no Drive",
+   "narracao": "Todo anexo do seu Gmail salvo sozinho no Google Drive. De graça. Automação do zero, episódio um. Nunca mais baixe arquivo um por um. Um: crie a conta grátis no Zapier e clique em Create, Zap. Dois: no gatilho, escolha o Gmail e o evento New Attachment. Entre com sua conta Google. Três: na ação, Google Drive, Upload File. Escolha a pasta e, no arquivo, o anexo. Publique. Pronto: todo anexo novo cai na pasta. Grátis até cem por mês. Salva pra fazer hoje. Terça tem o episódio dois.",
+   "video": "videos/2026-10-17-19h-automacao-zero-01-neon.mp4",
+   "registro": {
+    "tema": "automação: anexo do Gmail para o Google Drive com Zapier",
+    "chaves": [
+     "zapier",
+     "gmail",
+     "google drive",
+     "anexo"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad1b607ee2c696029be8ea4",
+    "instagram": "6ad1b6084ed7d375a447ac06"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-19h-automacao-zero-01-neon.mp4"
+  },
+  {
+   "id": "2026-10-18-modelos-e-parametros-01",
+   "data": "2026-10-18",
+   "horario": "19:00",
+   "serie": "Modelos e parâmetros",
+   "titulo": "Modelos e parâmetros #1: mini, flash e pro, qual a diferença?",
+   "narracao": "Mini, flash, pro: o que esses nomes dizem? Modelos e parâmetros, episódio um. Nomes que aparecem ao escolher o modelo. Um: mini, flash, lite e haiku são os pequenos: rápidos e baratos. Dois: pro e opus são do time dos grandes. Pensam mais, mas custam mais. Três: no meio, o equilíbrio, como o Sonnet. Pra resumo, use o pequeno. Na Anthropic: Haiku, dez centavos de dólar por milhão de tokens, os pedaços de texto. Opus, quatro dólares. Salva. Domingo que vem: temperatura.",
+   "video": "videos/2026-10-18-19h-modelos-01-neon.mp4",
+   "registro": {
+    "tema": "nomenclatura de modelos: mini, flash, pro",
+    "chaves": [
+     "mini",
+     "flash",
+     "pro",
+     "tamanho de modelo"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad20f42b948bf9e9d91e056",
+    "instagram": "6ad20f43f24c5797a2397148"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-19h-modelos-01-neon.mp4"
+  },
+  {
+   "id": "2026-10-19-agente-do-zero-02",
+   "data": "2026-10-19",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #2: a chave grátis do Gemini",
+   "narracao": "A chave que liga o cérebro do seu agente. Grátis, em dois minutos. Agente do zero, episódio dois. Sem essa chave, o Make não conversa com o Gemini. Um: entre no Google AI Studio com a sua conta Google. Dois: no menu da esquerda, clique em Get API key, a chave de conexão. Depois, Create API key. Três: copie a chave e guarde num lugar seguro. Nunca poste nem mande pra ninguém. Pronto: chave criada. Grátis nos modelos Flash, com limite por dia. Quarta tem o episódio três: as instruções do agente.",
+   "video": "videos/2026-10-19-19h-agente-do-zero-02-neon.mp4",
+   "registro": {
+    "tema": "agente do zero ep 2: chave de API do Gemini no AI Studio",
+    "chaves": [
+     "chave de api",
+     "get api key",
+     "ai studio",
+     "create api key"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad20f4425d13dd62ee42e49",
+    "instagram": "6ad20f442fe657de6ea15c00"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-19-19h-agente-do-zero-02-neon.mp4"
+  },
+  {
+   "id": "2026-10-20-automacao-do-zero-02",
+   "data": "2026-10-20",
+   "horario": "19:00",
+   "serie": "Automação do zero",
+   "titulo": "Automação do zero #2: formulário vira planilha e e-mail sozinho",
+   "narracao": "Respondeu seu formulário? Vira linha na planilha e e-mail na hora. Automação do zero, episódio dois. Nada de copiar resposta à mão. Um: no Google Formulários, aba Respostas, ligue o formulário a uma planilha. Sem Zapier. Dois: no Zapier, crie um Zap. O gatilho, que dispara tudo: Google Forms, New Form Response. Três: ação: Gmail, Send Email, para o e-mail de quem respondeu. Publique. Pronto: planilha cheia e resposta automática. Grátis até cem tarefas por mês. Salva pra fazer hoje. Sábado tem o episódio três.",
+   "video": "videos/2026-10-20-19h-automacao-zero-02-neon.mp4",
+   "registro": {
+    "tema": "automação ep 2: Google Forms para planilha e e-mail de resposta (Zapier)",
+    "chaves": [
+     "google forms",
+     "formulário",
+     "send email",
+     "planilha"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad20f46b948bf9e9d91e11a",
+    "instagram": "6ad20f4625d13dd62ee42e9b"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-20-19h-automacao-zero-02-neon.mp4"
+  },
+  {
+   "id": "2026-10-21-agente-do-zero-03",
+   "data": "2026-10-21",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #3: as instruções do agente",
+   "narracao": "Seu agente já sabe quem ele é e do que pode falar. Agente do zero, episódio três. Sem instruções, a IA responde qualquer coisa. Um: no Google AI Studio, abra um chat novo e ache o campo System instructions. Dois: cole o pedido: você é o atendente da Padaria Sol. Responda curto e só sobre a padaria. Três: teste. Pergunte o horário e depois sobre futebol. Ele deve recusar. Pronto: o jeito do agente está definido. Grátis, ainda no AI Studio. Sexta tem o episódio quatro: dar conhecimento ao agente.",
+   "video": "videos/2026-10-21-19h-agente-do-zero-03-neon.mp4",
+   "registro": {
+    "tema": "agente do zero ep 3: instruções do agente (system instructions) no AI Studio",
+    "chaves": [
+     "system instructions",
+     "instruções",
+     "prompt de sistema",
+     "padaria"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad20f4863c879f958562ff7",
+    "instagram": "6ad20f4825d13dd62ee42ef9"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-21-19h-agente-do-zero-03-neon.mp4"
+  },
+  {
+   "id": "2026-10-16-extra-tesla-roadster",
+   "data": "2026-10-16",
+   "horario": "15:30",
+   "serie": "Radar IA",
+   "titulo": "A Tesla mostrou um carro que \"voa\": o que é verdade",
+   "narracao": "A Tesla mostrou um carro que voa. Mas calma. Ontem, num campo da SpaceX no Texas, o novo Roadster subiu numa rampa, ficou de cabeça pra baixo e girou no ar. Um: o truque são dez bicos de ar em altíssima pressão, com tecnologia da SpaceX. Dois: a Tesla promete de zero a quase cem em menos de um segundo. Três: produção só em 2028, sem preço. A reserva custa cinquenta mil dólares. Prometido desde 2017. E o Musk admitiu: não é otimizado pra segurança. Você compraria? Comenta aí e segue o canal.",
+   "video": "videos/2026-10-16-15h-extra-tesla-roadster-neon.mp4",
+   "registro": {
+    "tema": "extra: Tesla Roadster que voa (revelado 15/10)",
+    "chaves": [
+     "tesla",
+     "roadster",
+     "spacex"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "media": null,
+   "buffer": {
+    "youtube": "6ad26732b54530c2c99c983c",
+    "instagram": "6ad2673e839da4fdc6131fc4"
+   },
+   "nota": "extra fora da grade, agendado pelo thread de retenção com ok do Diego (16/10 18:04Z); vídeo no ramo claude/project-thread-5yl5sn"
+  },
+  {
+   "id": "2026-10-17-radar-ia-60s",
+   "data": "2026-10-17",
+   "horario": "15:30",
+   "serie": "Radar IA",
+   "titulo": "Radar IA: voz brasileira no ChatGPT, Meta abre modelo e Slides pago",
+   "narracao": "O ChatGPT ganhou voz brasileira, a Meta liberou um modelo gigante e o ChatGPT faz slides. São as três notícias de IA de hoje, no Radar IA. Um: o modo de voz do ChatGPT ganhou o GPT Live um ponto um. Tem vozes novas, inclusive em português do Brasil, e sotaque mais natural. Desde o dia quinze, está chegando pra todos. Dois: a Meta liberou o Muse Spark Open, de pesos abertos: você baixa e roda na sua máquina. Mas são oitocentos e dezesseis bilhões de parâmetros, as peças que guardam o que aprendeu. Precisa de dois Mac Studio de quinhentos e doze gigas. Três: o ChatGPT agora faz slides: você pede e exporta pra PowerPoint, PDF ou Google Slides. Mas só nos planos pagos: Pro, Business e Enterprise. Qual testar hoje? A voz nova: no modo de voz, escolha uma voz em português e peça uma explicação. O pedido está na legenda. Segue pro Radar IA todo dia ao meio-dia.",
+   "video": "videos/2026-10-17-12h-radar-ia-60s-neon.mp4",
+   "registro": {
+    "tema": "radar IA 17/10: GPT-Live-1.1 voz pt-BR, Meta Muse Spark Open, ChatGPT Slides",
+    "chaves": [
+     "gpt-live",
+     "muse spark open",
+     "chatgpt slides",
+     "radar 17/10"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad3b5440a208cb323309696",
+    "instagram": "6ad3b545e272c4918f973a04"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-12h-radar-ia-60s-neon.mp4"
+  }
+ ]
+}

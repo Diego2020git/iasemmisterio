@@ -1,0 +1,95 @@
+{
+ "id": "2026-10-20-automacao-do-zero-02",
+ "serie": "Automação do zero",
+ "data": "2026-10-20",
+ "horario": "19:00",
+ "titulo": "Automação do zero #2: formulário vira planilha e e-mail sozinho",
+ "descricao": "Automação do zero, episódio 2 📋\nCada resposta do formulário vira linha na planilha e a pessoa recebe um e-mail de confirmação, sozinho e de graça.\n1️⃣ No Google Formulários, aba Respostas, ligue o formulário a uma planilha (é do próprio Google, não gasta nada). Em Configurações, ative a coleta de e-mails.\n2️⃣ No zapier.com, + Create → Zap. Gatilho (Trigger): app Google Forms, evento New Form Response. Escolha o formulário.\n3️⃣ Ação (Action): app Gmail, evento Send Email. Em To, escolha o e-mail de quem respondeu; escreva o assunto e a mensagem. Teste e clique em Publish.\nPlano grátis do Zapier: 100 tarefas por mês e Zaps de 2 passos. Cada e-mail enviado = 1 tarefa. A planilha vem do próprio Google, por isso cabe no Zap de 2 passos.\nEpisódio anterior: #1, anexo do Gmail no Drive. Sábado: episódio 3.\n\nFonte: planos do Zapier (zapier.com/pricing), conferido em 16/10/2026.\n\n#automacao #zapier #googleforms #planilha #gmail #ia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "a2",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Respondeu seu formulário? Vira linha na planilha e e-mail na hora.",
+     "legenda": "Respondeu seu formulário? Vira linha na planilha e e-mail na hora."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Automação do zero, episódio dois. Nada de copiar resposta à mão.",
+     "legenda": "Automação do zero, episódio 2. Nada de copiar resposta à mão."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no Google Formulários, aba Respostas, ligue o formulário a uma planilha. Sem Zapier.",
+     "legenda": "Um: no Google Formulários, aba Respostas, ligue o formulário a uma planilha. Sem Zapier."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: no Zapier, crie um Zap. O gatilho, que dispara tudo: Google Forms, New Form Response.",
+     "legenda": "Dois: no Zapier, crie um Zap. O gatilho, que dispara tudo: Google Forms, New Form Response."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: ação: Gmail, Send Email, para o e-mail de quem respondeu. Publique.",
+     "legenda": "Três: ação: Gmail, Send Email, para o e-mail de quem respondeu. Publique."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Pronto: planilha cheia e resposta automática. Grátis até cem tarefas por mês.",
+     "legenda": "Pronto: planilha cheia e resposta automática. Grátis até 100 tarefas por mês."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Salva pra fazer hoje. Sábado tem o episódio três.",
+     "legenda": "Salva pra fazer hoje. Sábado tem o episódio 3."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Zapier grátis: 100 tarefas/mês, Zaps de 2 passos",
+   "fonte": "https://zapier.com/pricing",
+   "conferido": "2026-10-16"
+  }
+ ],
+ "registro": {
+  "tema": "automação ep 2: Google Forms para planilha e e-mail de resposta (Zapier)",
+  "chaves": [
+   "google forms",
+   "formulário",
+   "send email",
+   "planilha"
+  ]
+ },
+ "video": "videos/2026-10-20-19h-automacao-zero-02-neon.mp4",
+ "fonte_html": "kit/2026-10-20-19h-automacao-zero-02-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

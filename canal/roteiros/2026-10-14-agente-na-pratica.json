@@ -1,0 +1,92 @@
+{
+  "id": "2026-10-14-agente-na-pratica",
+  "serie": "Agente na Prática",
+  "data": "2026-10-14",
+  "horario": "19:00",
+  "titulo": "Agente de IA que separa o cliente pronto pra comprar",
+  "descricao": "Agente de vendas: ele conversa com todo mundo e te passa só quem está pronto 👇\n1️⃣ Faz 3 perguntas: o que precisa, para quando e quanto quer investir\n2️⃣ Dá uma nota pra cada contato: quente, morno ou frio\n3️⃣ Quente vai pra você com o resumo. Morno recebe um lembrete. Frio recebe conteúdo.\nVocê para de gastar tempo com quem só estava olhando.\nSalva e me segue pra montar o seu.\n\nFonte: exemplo montado pelo canal, sem números de terceiros.\n\n#agentedeia #vendas #inteligenciaartificial #automacao #ia",
+  "hashtags": [
+    "agentedeia",
+    "vendas",
+    "inteligenciaartificial",
+    "automacao",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "agente de ia para atendimento": {
+        "demanda_views_top10": 199918,
+        "concorrencia_canais_100k": 3
+      },
+      "agente de ia gratis": {
+        "demanda_views_top10": 741037,
+        "concorrencia_canais_100k": 6
+      }
+    }
+  },
+  "dados_que_envelhecem": [],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "agente de vendas que qualifica contatos",
+    "chaves": [
+      "vendas",
+      "qualificar",
+      "quente morno frio",
+      "lead"
+    ]
+  },
+  "video": "videos/2026-10-14-19h-agente-vendas-raiox.mp4",
+  "fonte_html": "kit/2026-10-14-19h-agente-vendas-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "20",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Esse agente separa quem quer comprar de quem só está olhando.",
+          "legenda": "Esse agente separa quem quer comprar de quem só está olhando."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Ele faz três perguntas: o que precisa, pra quando e quanto quer investir.",
+          "legenda": "Ele faz 3 perguntas: o que precisa, pra quando e quanto quer investir."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E dá uma nota: quente, morno ou frio.",
+          "legenda": "E dá uma nota: quente, morno ou frio."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Quente vai direto pra você. Morno ganha lembrete. Frio recebe conteúdo.",
+          "legenda": "Quente vai direto pra você. Morno ganha lembrete. Frio recebe conteúdo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e me segue pra montar o seu.",
+          "legenda": "Salva e me segue pra montar o seu."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}
