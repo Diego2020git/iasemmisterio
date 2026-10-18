@@ -768,6 +768,81 @@
     "instagram": "6ad3b545e272c4918f973a04"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-12h-radar-ia-60s-neon.mp4"
+  },
+  {
+   "id": "2026-10-18-radar-ia-60s",
+   "data": "2026-10-18",
+   "horario": "12:00",
+   "serie": "Radar IA",
+   "titulo": "Radar IA: skills grátis no Gemini, notebook com IA e voz por texto",
+   "narracao": "O Gemini ganhou skills de graça, a Envídia lançou notebook que roda IA e agora dá pra criar voz só com texto. São as três notícias de IA de hoje, no Radar IA. Um: o app do Gemini ganhou skills, instruções que você salva uma vez e reaproveita em qualquer conversa. Por exemplo, resumir e-mails sempre do mesmo jeito. Funciona sem assinatura e está chegando aos poucos até novembro. Dois: a Envídia lançou os notebooks erre tê xis Spark, que rodam IA no próprio aparelho, sem internet, com até cento e vinte e oito gigas de memória. Mas custam mais de dois mil dólares. Três: na API da OpenAI, o acesso pra programadores, você descreve uma voz em texto e ela é criada. Dá pra dar uma voz própria pro seu assistente. Criar é grátis; usar a voz é cobrado. Qual testar hoje? As skills, de graça: peça ao Gemini pra criar uma que vira lista de tarefas. O pedido está na legenda. Segue pro Radar IA todo dia ao meio-dia.",
+   "video": "videos/2026-10-18-12h-radar-ia-60s-neon.mp4",
+   "registro": {
+    "tema": "radar IA 18/10: skills no Gemini, NVIDIA RTX Spark, OpenAI prompt-to-voice",
+    "chaves": [
+     "gemini skills",
+     "rtx spark",
+     "prompt-to-voice",
+     "radar 18/10"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad4b2110b0d72757a1df2e1",
+    "instagram": "6ad4b211769b457934be5f98"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-18-12h-radar-ia-60s-neon.mp4"
+  },
+  {
+   "id": "2026-10-22-termo-de-ia-01",
+   "data": "2026-10-22",
+   "horario": "19:00",
+   "serie": "Termo de IA",
+   "titulo": "Termo de IA: RAG, quando a IA responde com os seus documentos",
+   "narracao": "A IA respondeu citando o seu próprio PDF. Isso tem nome: RAG. Termo de IA. RAG é a IA fazendo uma busca nos seus documentos antes de responder. Um: no NotebookLM, que é grátis, crie um caderno novo. Dois: adicione um PDF seu como fonte. Manual, contrato ou apostila. Três: pergunte quais prazos o documento cita. O pedido completo está na legenda. Antes, ela chutava. Agora responde com o trecho do seu arquivo. Plano grátis, com limite de fontes. Quinta que vem: token, os pedaços de texto que a IA lê.",
+   "video": "videos/2026-10-22-19h-termo-de-ia-01-neon.mp4",
+   "registro": {
+    "tema": "termo de IA #1: RAG (IA que consulta seus documentos) com NotebookLM",
+    "chaves": [
+     "rag",
+     "termo de ia",
+     "citação de fonte",
+     "documentos próprios"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad4b212a48c8f837196557d",
+    "instagram": "6ad4b2130b0d72757a1df350"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-22-19h-termo-de-ia-01-neon.mp4"
+  },
+  {
+   "id": "2026-10-23-agente-do-zero-04",
+   "data": "2026-10-23",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #4: dar conhecimento ao agente",
+   "narracao": "Agora o seu agente sabe o horário, o preço e a entrega da sua empresa. Agente do zero, episódio quatro. Sem essas informações, ele não sabe responder. Um: no Google AI Studio, abra o chat do episódio três, com as instruções da padaria. Dois: embaixo das instruções, cole horário, preços e entrega. O texto está na legenda. Três: teste o horário de domingo, o preço do bolo e se fazem bolo de casamento. Ele acerta as duas e, na última, chama a equipe. Custo: zero. Segunda tem o episódio cinco: o primeiro cenário no Make.",
+   "video": "videos/2026-10-23-19h-agente-do-zero-04-neon.mp4",
+   "registro": {
+    "tema": "agente do zero ep 4: dar conhecimento (horário, preços, entrega) nas instruções",
+    "chaves": [
+     "dar conhecimento",
+     "informações da empresa",
+     "perguntas frequentes",
+     "bolo de casamento"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad4b214938409f1d0cb52f4",
+    "instagram": "6ad4b2150a208cb32362c3c5"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-23-19h-agente-do-zero-04-neon.mp4"
   }
  ]
 }
