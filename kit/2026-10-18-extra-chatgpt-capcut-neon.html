@@ -1,0 +1,216 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-18-extra-capcut.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 18/10/2026 · extra (pedido do Diego) · ChatGPT conecta o CapCut: plugin CapCut × Codex, como usar. Neon.
+// Telas do ChatGPT e do CapCut são ILUSTRATIVAS (desenhadas em código, sem captura real e sem logo oficial).
+const T0 = TEMPOS.cenas;
+const SC = [...T0.slice(0, 9), T0[9] + .7];
+const DURATION = SC[9], IMPACTO = SC[8] + .4;
+const COR = [CI, AZ, IN, CI, AZ, IN, CI, AZ, CI];
+const HITS = [wt('edita', 0), wt('capcut', 0), wt('rascunho', 0), wt('oficial', 1), wt('codex', 1), wt('liberado', 1), wt('plugins', 2), wt('adicione', 2),
+  wt('tarefa', 3), wt('cria', 3), wt('corta', 4), wt('troca', 4), wt('muda', 4), wt('editor', 5), wt('exporte', 5), wt('gratis', 6, 1), wt('pagos', 6), wt('celular', 7), wt('oficial', 7)];
+const CLIQUES = [wt('adicione', 2) + .1, wt('autorize', 2) + .1, wt('cria', 3) - .2, wt('exporte', 5) + .1];
+const CK = [[0, 0, 0, 0, 0]];
+const VERM = '#ff4d6d', VERDE = '#3ddc84', AMB = '#ffc24b';
+
+// ---------- linha do tempo de edição (escura), 3 trilhas: vídeo, texto, música ----------
+// o.corte: 0..1 encolhe o clipe 2 · o.musica: 0..1 troca a música · o.texto: 0..1 move o texto · o.cheio: 0..1 os blocos entram
+function timeline(x, y, w, a, t, o = {}) {
+  if (a <= 0) return; const h = 330, cheio = o.cheio ?? 1;
+  ctx.save(); ctx.globalAlpha *= clamp(a * 1.5);
+  ctx.shadowColor = hex(AZ, .6); ctx.shadowBlur = 40; ctx.fillStyle = '#070b16'; rr(x, y, w, h, 20); ctx.fill(); ctx.shadowBlur = 0;
+  ctx.strokeStyle = hex(CI, .6); ctx.lineWidth = 2; rr(x, y, w, h, 20); ctx.stroke();
+  const lx = x + 90, lw = w - 110;
+  for (let i = 0; i <= 6; i++) { ctx.fillStyle = 'rgba(244,248,255,.35)'; ctx.fillRect(lx + i * lw / 6, y + 24, 2, 14); txt(i * 5 + 's', lx + i * lw / 6 + 6, y + 32, ARC, 18, 'rgba(244,248,255,.45)', { weight: 600 }); }
+  const rot = ['vídeo', 'texto', 'música'];
+  rot.forEach((r, k) => txt(r, x + 18, y + 98 + k * 80, ARC, 22, 'rgba(244,248,255,.7)', { weight: 600 }));
+  const bloco = (bx, by, bw, cor, k, rotulo) => { const e = clamp(cheio * 4 - k * .5); if (e <= 0) return; ctx.save(); ctx.globalAlpha *= e;
+    ctx.fillStyle = hex(cor, .35); rr(bx, by, bw * ease(e), 56, 10); ctx.fill(); ctx.strokeStyle = cor; ctx.lineWidth = 3; rr(bx, by, bw * ease(e), 56, 10); ctx.stroke();
+    if (rotulo && e > .8) txt(rotulo, bx + 14, by + 30, ARC, 20, BR, { weight: 600 }); ctx.restore(); };
+  // vídeo: 3 clipes; o 2º encolhe no corte e o 3º anda junto
+  const c1 = lw * .3, c2 = lw * .32 * (1 - .55 * ease(clamp(o.corte || 0))), c3 = lw * .3;
+  bloco(lx, y + 70, c1 - 6, AZ, 0, 'clipe 1'); bloco(lx + c1, y + 70, c2 - 6, AZ, 1, 'clipe 2'); bloco(lx + c1 + c2, y + 70, c3 - 6, AZ, 2, 'clipe 3');
+  const tx = lx + lw * (.08 + .3 * ease(clamp(o.texto || 0)));
+  bloco(tx, y + 150, lw * .34, CI, 3, 'legenda');
+  const mu = ease(clamp(o.musica || 0)), corM = mu > .5 ? VERDE : IN;
+  ctx.save(); ctx.globalAlpha *= 1 - .6 * Math.sin(mu * Math.PI); bloco(lx, y + 230, (c1 + c2 + c3) - 6, corM, 4, mu > .5 ? 'música animada' : 'música'); ctx.restore();
+  // onda da música
+  if (cheio > .9) { ctx.save(); ctx.strokeStyle = hex(corM, .8); ctx.lineWidth = 2; ctx.beginPath();
+    for (let i = 0; i < 60; i++) { const xx = lx + 180 + i * ((c1 + c2 + c3) - 200) / 60, aa = 14 * Math.abs(Math.sin(i * .9 + mu * 3)); ctx.moveTo(xx, y + 258 - aa); ctx.lineTo(xx, y + 258 + aa); } ctx.stroke(); ctx.restore(); }
+  // agulha
+  const ph = lx + ((t * .12) % 1) * (c1 + c2 + c3);
+  ctx.save(); ctx.strokeStyle = BR; ctx.shadowColor = CI; ctx.shadowBlur = 16; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(ph, y + 50); ctx.lineTo(ph, y + h - 14); ctx.stroke(); ctx.restore();
+  ctx.restore();
+}
+// tela escura de vídeo; conteudo() desenha dentro (recortado)
+function tela(x, y, w, h, a, titulo, conteudo, barra) {
+  if (a <= 0) return; const e = .9 + .1 * back(clamp(a));
+  ctx.save(); ctx.globalAlpha *= clamp(a * 1.5); ctx.translate(x + w / 2, y + h / 2); ctx.scale(e, e); ctx.translate(-x - w / 2, -y - h / 2);
+  ctx.shadowColor = hex(AZ, .7); ctx.shadowBlur = 50; ctx.fillStyle = '#070b16'; rr(x, y, w, h, 24); ctx.fill(); ctx.shadowBlur = 0;
+  ctx.strokeStyle = hex(CI, .8); ctx.lineWidth = 3; rr(x, y, w, h, 24); ctx.stroke();
+  txt(titulo, x + 30, y + 40, ARC, 26, 'rgba(244,248,255,.75)', { weight: 600 });
+  ctx.save(); rr(x, y + 64, w, h - 64 - (barra ? 90 : 0), 0); ctx.clip(); conteudo(); ctx.restore();
+  if (barra) barra(x + 30, y + h - 45, w - 60);
+  ctx.restore();
+}
+// cartão de marca (sem logo oficial): nome dentro de um quadrado com brilho
+function marca(nome, x, y, a, cor, sub = '') {
+  if (a <= 0) return; const e = back(clamp(a)), w = Math.max(300, measure(nome, ARC, 54, 600) + 80);
+  ctx.save(); ctx.translate(x, y); ctx.scale(e, e); ctx.globalAlpha *= clamp(a * 2);
+  ctx.shadowColor = cor; ctx.shadowBlur = 50; ctx.fillStyle = '#070b16'; rr(-w / 2, -90, w, 180, 34); ctx.fill(); ctx.shadowBlur = 0;
+  ctx.strokeStyle = cor; ctx.lineWidth = 5; rr(-w / 2, -90, w, 180, 34); ctx.stroke();
+  txt(nome, 0, sub ? -12 : 2, ARC, 54, BR, { align: 'center', weight: 600 });
+  if (sub) txt(sub, 0, 46, ARC, 26, cor, { align: 'center', weight: 600, ls: 2 });
+  ctx.restore();
+}
+// caixa de pedido com texto sendo digitado
+function pedido(x, y, w, str, p, a) {
+  if (a <= 0) return 0; const n = Math.floor(str.length * clamp(p)), lines = wrap(str.slice(0, n) + (p > 0 && p < 1 ? '|' : ''), w - 50, ARC, 32, 600);
+  const h = Math.max(110, lines.length * 42 + 40);
+  ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.fillStyle = '#ffffff'; rr(x, y, w, h, 22); ctx.fill(); ctx.strokeStyle = '#c5d0e6'; ctx.lineWidth = 2; rr(x, y, w, h, 22); ctx.stroke();
+  if (n === 0) txt('Peça uma tarefa ao Codex', x + 25, y + 55, ARC, 30, '#9fb0d0', { weight: 600 });
+  lines.forEach((l, i) => txt(l, x + 25, y + 45 + i * 42, ARC, 32, '#1b2440', { weight: 600 }));
+  ctx.restore(); return h;
+}
+function arquivo(x, y, nome, a) {
+  if (a <= 0) return; const w = measure(nome, ARC, 26, 600) + 70, e = back(clamp(a));
+  ctx.save(); ctx.translate(x + w / 2, y + 28); ctx.scale(e, e); ctx.globalAlpha *= clamp(a * 2);
+  ctx.fillStyle = '#dbe6ff'; rr(-w / 2, -28, w, 56, 14); ctx.fill(); ctx.fillStyle = AZ; rr(-w / 2 + 14, -12, 26, 24, 5); ctx.fill();
+  txt(nome, -w / 2 + 52, 2, ARC, 26, '#1b2440', { weight: 600 }); ctx.restore();
+}
+Object.assign(P, {
+  alerta() { ctx.beginPath(); ctx.moveTo(0, -96); ctx.lineTo(100, 80); ctx.lineTo(-100, 80); ctx.closePath(); ctx.moveTo(8, -30); ctx.lineTo(-8, -30); ctx.lineTo(-5, 30); ctx.lineTo(5, 30); ctx.closePath(); ctx.moveTo(10, 52); ctx.arc(0, 52, 10, 0, 7); },
+  monitor() { ctx.beginPath(); rr(-100, -78, 200, 126, 16); ctx.moveTo(-84, -62); ctx.lineTo(84, -62); ctx.lineTo(84, 32); ctx.lineTo(-84, 32); ctx.closePath(); ctx.moveTo(-14, 48); ctx.lineTo(-24, 84); ctx.lineTo(24, 84); ctx.lineTo(14, 48); ctx.closePath(); ctx.moveTo(-60, 84); ctx.lineTo(60, 84); ctx.lineTo(60, 96); ctx.lineTo(-60, 96); ctx.closePath(); },
+  celular() { ctx.beginPath(); rr(-56, -100, 112, 200, 22); ctx.moveTo(-42, -76); ctx.lineTo(42, -76); ctx.lineTo(42, 70); ctx.lineTo(-42, 70); ctx.closePath(); ctx.moveTo(10, 86); ctx.arc(0, 86, 10, 0, 7); },
+  plug() { ctx.beginPath(); rr(-60, -40, 120, 100, 20); ctx.moveTo(-36, -40); ctx.lineTo(-36, -96); ctx.lineTo(-16, -96); ctx.lineTo(-16, -40); ctx.moveTo(16, -40); ctx.lineTo(16, -96); ctx.lineTo(36, -96); ctx.lineTo(36, -40); ctx.moveTo(-14, 60); ctx.lineTo(-14, 100); ctx.lineTo(14, 100); ctx.lineTo(14, 60); },
+});
+const S = [
+  // 0 · gancho: ChatGPT + CapCut, pede no chat e sai o rascunho
+  (t, lt) => {
+    frase('O ChatGPT agora', 260, -1, SC[1] - .2, 72, { t, cor: CI });
+    frase('edita no CapCut', 370, wt('edita', 0) - .3, SC[1] - .2, 92, { t, hot: 'CapCut', cor: CI });
+    janela(470, 380, prog(lt, .05, .35), 'ChatGPT · Codex', (x, y, w) => {
+      msg(x, y, w, 'Monta um Reel de 30 s com meus clipes, legenda e música', true, prog(t, .3, .6), 1);
+      msg(x, y + 130, w, 'Rascunho pronto no CapCut ✓', false, prog(t, wt('rascunho', 0) - .2, wt('rascunho', 0) + .1), 1);
+    });
+    timeline(cx0 - 410, 900, 820, prog(t, wt('monta', 0) - .2, wt('monta', 0) + .2), t, { cheio: prog(t, wt('monta', 0), wt('rascunho', 0) + .4) });
+    exemplo(cx0, 1290, prog(lt, .3, .6));
+  },
+  // 1 · o que é: complemento oficial que liga CapCut ao Codex, app de computador
+  (t, lt) => {
+    frase('Plugin oficial', 280, SC[1], SC[2] - .2, 88, { t, hot: 'oficial', cor: CI });
+    linhaTxt('um complemento que liga os dois', 380, wt('complemento', 1) - .1, SC[2] - .2, t, 46);
+    const ka = prog(t, wt('liga', 1) - .2, wt('codex', 1) + .3);
+    marca('CapCut', cx0 - 210, 600, prog(t, wt('capcut', 1) - .3, wt('capcut', 1)), CI);
+    marca('Codex', cx0 + 210, 600, prog(t, wt('codex', 1) - .3, wt('codex', 1)), AZ, 'no ChatGPT');
+    if (ka > 0) { ctx.save(); ctx.strokeStyle = CI; ctx.shadowColor = CI; ctx.shadowBlur = 20; ctx.lineWidth = 6; ctx.setLineDash([16, 14]); ctx.lineDashOffset = -t * 60;
+      ctx.beginPath(); ctx.moveTo(cx0 - 60, 600); ctx.lineTo(cx0 - 60 + 120 * ease(ka), 600); ctx.stroke(); ctx.restore(); }
+    neon3d(P.monitor, cx0, 900, 120 * back(prog(t, wt('computador', 1) - .3, wt('computador', 1) + .2)), .35 * Math.sin(t * .9), .2, AZ, prog(t, wt('computador', 1) - .3, wt('computador', 1)));
+    linhaTxt('app do ChatGPT para computador', 1080, wt('app', 1), SC[2] - .2, t, 44, CI);
+    selo('liberado fora dos EUA', cx0, 1220, prog(t, wt('fora', 1), wt('fora', 1) + .3));
+  },
+  // 2 · passo 1: Codex > Plugins > CapCut > autorizar
+  (t, lt) => {
+    numero(1, 260, SC[2], SC[3] - .2, t);
+    frase('Codex · Plugins · CapCut', 430, wt('abra', 2) - .1, SC[3] - .2, 64, { t, hot: 'Plugins', cor: CI });
+    const ad = wt('adicione', 2), au = wt('autorize', 2);
+    janela(520, 720, prog(lt, .1, .4), 'ChatGPT · Codex', (x, y, w) => {
+      const pl = prog(t, wt('plugins', 2) - .2, wt('plugins', 2) + .1);
+      ['Nova tarefa', 'Plugins', 'Configurações'].forEach((s, i) => { const on = i === 1 && pl > 0;
+        ctx.fillStyle = on ? hex(AZ, .15 + .85 * pl) : '#e6ecfa'; rr(x, y + i * 80, 230, 64, 16); ctx.fill();
+        txt(s, x + 20, y + 33 + i * 80, ARC, 26, on && pl > .5 ? '#fff' : '#1b2440', { weight: 600 }); });
+      const cx = x + 260, cw = w - 260, ca = prog(t, wt('plugins', 2), wt('plugins', 2) + .3);
+      if (ca > 0) { ctx.save(); ctx.globalAlpha *= clamp(ca * 2);
+        ctx.fillStyle = '#ffffff'; rr(cx, y, cw, 300, 20); ctx.fill(); ctx.strokeStyle = '#c5d0e6'; ctx.lineWidth = 2; rr(cx, y, cw, 300, 20); ctx.stroke();
+        ctx.fillStyle = '#070b16'; rr(cx + 24, y + 24, 90, 90, 20); ctx.fill(); txt('CC', cx + 69, y + 70, EXP, 34, CI, { align: 'center' });
+        txt('CapCut', cx + 134, y + 56, ARC, 38, '#1b2440', { weight: 600 }); txt('editar vídeo pelo chat', cx + 134, y + 96, ARC, 24, '#5a6a8f', { weight: 600 });
+        const feito = prog(t, ad + .25, ad + .45);
+        botao(cx + 24, y + 170, feito > .5 ? 'adicionado ✓' : 'adicionar', 1, prog(t, ad, ad + .3), feito > .5 ? VERDE : AZ);
+        ctx.restore(); }
+      const az = prog(t, au - .3, au);
+      if (az > 0) { ctx.save(); ctx.globalAlpha *= clamp(az * 2); ctx.fillStyle = '#eef2fb'; rr(x, y + 340, w, 220, 20); ctx.fill();
+        txt('Conectar sua conta do CapCut', x + 30, y + 395, ARC, 30, '#1b2440', { weight: 600 });
+        botao(x + 30, y + 440, prog(t, au + .5, au + .7) > .5 ? 'autorizado ✓' : 'autorizar', 1, prog(t, au + .1, au + .4), prog(t, au + .5, au + .7) > .5 ? VERDE : AZ); ctx.restore(); }
+    });
+    exemplo(cx0, 1300, prog(lt, .4, .7));
+  },
+  // 3 · passo 2: tarefa nova, ideia ou clipes, primeiro rascunho
+  (t, lt) => {
+    numero(2, 260, SC[3], SC[4] - .2, t);
+    frase('Tarefa nova', 430, wt('comece', 3) - .1, SC[4] - .2, 80, { t, hot: 'nova', cor: CI });
+    const cr = wt('cria', 3), vira = prog(t, cr, cr + .4);
+    janela(520, 560, prog(lt, .1, .4) * (1 - vira), 'ChatGPT · Codex · nova tarefa', (x, y, w) => {
+      const h = pedido(x, y, w, 'Reel de 30 s da minha viagem, cortes rápidos, legenda grande e música animada', prog(t, wt('descreva', 3) - .2, wt('clipes', 3)), 1);
+      arquivo(x, y + h + 24, 'praia.mp4', prog(t, wt('suba', 3), wt('suba', 3) + .3));
+      arquivo(x + 250, y + h + 24, 'trilha.mp4', prog(t, wt('seus', 3), wt('seus', 3) + .3));
+      arquivo(x, y + h + 100, 'jantar.mp4', prog(t, wt('clipes', 3), wt('clipes', 3) + .3));
+      botao(x + w - 200, y + h + 100, 'enviar', prog(t, wt('clipes', 3), wt('clipes', 3) + .2), prog(t, cr - .2, cr + .1));
+    });
+    if (vira > 0) { linhaTxt('primeiro rascunho', 620, cr, SC[4] - .2, t, 56, CI);
+      timeline(cx0 - 410, 700, 820, vira, t, { cheio: prog(t, cr + .2, cr + 1.1) }); }
+    exemplo(cx0, 1300, prog(lt, .4, .7));
+  },
+  // 4 · passo 3: ajustes no chat mexem na linha do tempo
+  (t, lt) => {
+    numero(3, 260, SC[4], SC[5] - .2, t);
+    frase('Ajuste pelo chat', 430, wt('peca', 4) - .1, SC[5] - .2, 76, { t, hot: 'chat', cor: CI });
+    const co = wt('corta', 4), tr = wt('troca', 4), mu = wt('muda', 4);
+    const pedidos = [['Corta essa cena', co], ['Troca a música', tr], ['Muda o tempo do texto', mu]];
+    pedidos.forEach(([s, tt], i) => msg(cx0 - 380, 520 + i * 95, 760, s, true, prog(t, tt - .25, tt), 1.15));
+    timeline(cx0 - 410, 840, 820, prog(lt, .1, .4), t, { corte: prog(t, co + .3, co + .8), musica: prog(t, tr + .3, tr + .9), texto: prog(t, mu + .3, mu + .9) });
+    exemplo(cx0, 1230, prog(lt, .4, .7));
+  },
+  // 5 · passo 4: abre o editor do CapCut e exporta
+  (t, lt) => {
+    numero(4, 260, SC[5], SC[6] - .2, t);
+    frase('Abra o editor do CapCut', 430, wt('abra', 5) - .1, SC[6] - .2, 66, { t, hot: 'CapCut', cor: CI });
+    const ex = wt('exporte', 5);
+    tela(cx0 - 410, 510, 820, 820, prog(t, wt('editor', 5) - .3, wt('editor', 5)), 'CapCut · editor', () => {
+      // prévia vertical com a cena "praia"
+      const px = cx0 - 120, py = 600; ctx.fillStyle = '#0d1a33'; rr(px, py, 240, 330, 14); ctx.fill();
+      const g = ctx.createLinearGradient(0, py, 0, py + 330); g.addColorStop(0, hex(AZ, .7)); g.addColorStop(.6, hex(CI, .4)); g.addColorStop(1, hex(IN, .6)); ctx.fillStyle = g; rr(px + 8, py + 8, 224, 314, 10); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,.85)'; ctx.beginPath(); ctx.arc(px + 170, py + 80, 30, 0, 7); ctx.fill();
+      txt('MINHA VIAGEM', cx0, py + 250, EXP, 24, '#fff', { align: 'center' });
+      timeline(cx0 - 380, 960, 760, 1, t);
+    }, (x, y, w) => { botao(x + w - 230, y - 40, prog(t, ex + .4, ex + .6) > .5 ? 'exportado ✓' : 'exportar', 1, prog(t, ex, ex + .3), prog(t, ex + .4, ex + .6) > .5 ? VERDE : CI); });
+    exemplo(cx0, 1400, prog(lt, .4, .7));
+  },
+  // 6 · custo: grátis com limite, premium pago
+  (t, lt) => {
+    frase('Quanto custa?', 300, SC[6], SC[7] - .2, 84, { t, cor: CI });
+    selo('plugin: opção grátis', cx0, 500, prog(t, wt('opcao', 6), wt('opcao', 6) + .3));
+    selo('Codex no ChatGPT grátis', cx0, 620, prog(t, wt('codex', 6), wt('codex', 6) + .3));
+    linhaTxt('com uso limitado (Plus usa mais)', 720, wt('uso', 6), SC[7] - .2, t, 40, 'rgba(244,248,255,.85)');
+    const pg = prog(t, wt('recursos', 6) - .1, wt('recursos', 6) + .3);
+    neon3d(P.alerta, cx0, 930, 100 * back(pg), .3 * Math.sin(t), .2, AMB, pg);
+    linhaTxt('premium do CapCut pode ser pago', 1110, wt('recursos', 6), SC[7] - .2, t, 48, AMB);
+    linhaTxt('modelos, créditos de IA, exportação', 1190, wt('pagos', 6) - .3, SC[7] - .2, t, 36, 'rgba(244,248,255,.75)');
+  },
+  // 7 · onde funciona e cuidado na instalação
+  (t, lt) => {
+    frase('Só no computador', 300, SC[7], SC[8] - .2, 84, { t, hot: 'computador', cor: CI });
+    const ce = wt('celular', 7);
+    neon3d(P.monitor, cx0 - 190, 600, 110 * back(prog(lt, .05, .5)), .3 * Math.sin(t * .8), .2, CI, prog(lt, .05, .3));
+    neon3d(P.celular, cx0 + 190, 600, 105 * back(prog(t, ce - .4, ce)), .3 * Math.sin(t * .8 + 1), .2, VERM, prog(t, ce - .4, ce - .1));
+    const xr = prog(t, ce, ce + .3); if (xr > 0) { ctx.save(); ctx.strokeStyle = VERM; ctx.shadowColor = VERM; ctx.shadowBlur = 20; ctx.lineWidth = 12; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(cx0 + 100, 500); ctx.lineTo(cx0 + 100 + 180 * ease(xr), 500 + 200 * ease(xr)); ctx.stroke(); ctx.restore(); }
+    linhaTxt('nem no navegador, nem no celular', 800, ce - .3, SC[8] - .2, t, 42, VERM);
+    frase('Instale só pelo oficial', 1000, wt('instale', 7) - .1, SC[8] - .2, 66, { t, hot: 'oficial', cor: CI });
+    linhaTxt('capcut.com/tools/capcut-x-codex', 1100, wt('pagina', 7), SC[8] - .2, t, 40, CI);
+    linhaTxt('ou a aba Plugins do ChatGPT', 1170, wt('pagina', 7) + .2, SC[8] - .2, t, 36, 'rgba(244,248,255,.8)');
+  },
+  // 8 · logo + chamada
+  (t, lt) => fim(t, lt, 'Salva pra testar', 'segue o canal'),
+];
+</script></body></html>
