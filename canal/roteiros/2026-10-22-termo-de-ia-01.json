@@ -1,0 +1,95 @@
+{
+ "id": "2026-10-22-termo-de-ia-01",
+ "serie": "Termo de IA",
+ "data": "2026-10-22",
+ "horario": "19:00",
+ "titulo": "Termo de IA: RAG, quando a IA responde com os seus documentos",
+ "descricao": "Termo de IA #1: RAG 📚\nRAG é quando a IA consulta os seus documentos antes de responder, em vez de responder só de memória. Assim ela erra menos e mostra de onde tirou a resposta.\nTeste grátis no NotebookLM:\n1️⃣ Em notebooklm.google.com, crie um caderno novo\n2️⃣ Adicione um PDF seu como fonte (manual, contrato, apostila)\n3️⃣ Pergunte: \"Quais são os prazos citados neste documento? Mostre de onde tirou cada um.\"\nA resposta vem com a citação do trecho.\nCusto: NotebookLM tem plano grátis, com limite de cadernos e fontes.\nPróxima quinta: token.\n\nFonte: notebooklm.google.com, conferido em 18/10/2026.\n\n#ia #rag #notebooklm #inteligenciaartificial #termosdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "t1",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "A IA respondeu citando o seu próprio PDF. Isso tem nome: RAG.",
+     "legenda": "A IA respondeu citando o seu próprio PDF. Isso tem nome: RAG."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Termo de IA. RAG é a IA fazendo uma busca nos seus documentos antes de responder.",
+     "legenda": "Termo de IA. RAG é a IA fazendo uma busca nos seus documentos antes de responder."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no NotebookLM, que é grátis, crie um caderno novo.",
+     "legenda": "Um: no NotebookLM, que é grátis, crie um caderno novo."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: adicione um PDF seu como fonte. Manual, contrato ou apostila.",
+     "legenda": "Dois: adicione um PDF seu como fonte. Manual, contrato ou apostila."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: pergunte quais prazos o documento cita. O pedido completo está na legenda.",
+     "legenda": "Três: pergunte quais prazos o documento cita. O pedido completo está na legenda."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Antes, ela chutava. Agora responde com o trecho do seu arquivo. Plano grátis, com limite de fontes.",
+     "legenda": "Antes, ela chutava. Agora responde com o trecho do seu arquivo. Plano grátis, com limite de fontes."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Quinta que vem: token, os pedaços de texto que a IA lê.",
+     "legenda": "Quinta que vem: token, os pedaços de texto que a IA lê."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "NotebookLM com plano grátis (limite de cadernos e fontes) e respostas com citação das fontes",
+   "fonte": "https://notebooklm.google.com",
+   "conferido": "2026-10-18"
+  }
+ ],
+ "registro": {
+  "tema": "termo de IA #1: RAG (IA que consulta seus documentos) com NotebookLM",
+  "chaves": [
+   "rag",
+   "termo de ia",
+   "citação de fonte",
+   "documentos próprios"
+  ]
+ },
+ "video": "videos/2026-10-22-19h-termo-de-ia-01-neon.mp4",
+ "fonte_html": "kit/2026-10-22-19h-termo-de-ia-01-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}
