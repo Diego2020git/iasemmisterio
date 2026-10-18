@@ -792,6 +792,29 @@
     "instagram": "6ad41e880a208cb32345fa8c"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-yh5zjn/videos/2026-10-17-extra-trend-ozil-neon.mp4"
+  },
+  {
+   "id": "2026-10-18-extra-chatgpt-capcut",
+   "data": "2026-10-18",
+   "horario": "17:00",
+   "serie": "Extra",
+   "titulo": "ChatGPT agora edita vídeo no CapCut: como usar (IA)",
+   "narracao": "O ChatGPT agora edita vídeo no CapCut. Você pede no chat e ele monta o rascunho. É o plugin oficial, um complemento que liga o CapCut ao Codex, no app do ChatGPT para computador. Fora dos Estados Unidos, já está liberado. Um: no app do ChatGPT, abra o Codex, vá em Plugins e adicione o CapCut. Depois, autorize sua conta. Dois: comece uma tarefa nova. Descreva a ideia ou suba seus clipes, e ele cria o primeiro rascunho. Três: peça ajustes no chat. Corta essa cena, troca a música, muda o tempo do texto. Quatro: pra detalhe fino, abra o editor do CapCut direto da conversa e exporte. Esse complemento tem opção grátis, e o Codex vem até no ChatGPT grátis, com uso limitado. Recursos premium do CapCut podem ser pagos. Funciona só no app de computador, não no celular. E instale só pela página oficial do CapCut. Salva pra testar e segue o canal.",
+   "video": "videos/2026-10-18-extra-chatgpt-capcut-neon.mp4",
+   "registro": {
+    "tema": "extra: plugin CapCut no ChatGPT (CapCut × Codex) para editar vídeo pelo chat",
+    "chaves": [
+     "capcut codex",
+     "plugin capcut chatgpt"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad51a81769b457934d7997b",
+    "instagram": "6ad51a820b0d72757a3690bf"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-adprp4/videos/2026-10-18-extra-chatgpt-capcut-neon.mp4"
   }
  ]
 }
