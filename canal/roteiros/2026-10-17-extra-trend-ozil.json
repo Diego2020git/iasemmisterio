@@ -3,9 +3,11 @@
   "serie": "Automação do zero",
   "data": "2026-10-17",
   "horario": "22:30",
-  "fora_da_grade": {"aprovado": ""},
-  "titulo": "Como fazer a trend do gol do Özil com IA (sem CapCut)",
-  "descricao": "A trend do gol do Özil com qualquer personagem ⚽\nÉ o gol dele de 2016: a IA copia o movimento do lance e troca só quem faz a jogada. A maioria usa um modelo pronto do CapCut. Sem CapCut, dá pra fazer no Kling:\n1️⃣ Recorte só a jogada, de 5 a 10 segundos, sem cortes de câmera\n2️⃣ Escolha a foto do personagem: corpo inteiro e fundo limpo\n3️⃣ No Kling, abra Motion Control, suba o vídeo e a foto, escolha o modelo 2.6 no modo Standard e gere\nCusto: 5 créditos por segundo no 2.6 Standard. 8 segundos = 40 créditos, que cabem nos créditos grátis do dia (66 por dia, segundo guias de 2026; confira o seu saldo). No grátis sai com marca d'água e sem uso comercial.\n⚠️ Use personagem inventado ou foto com permissão. O lance é imagem de TV e pode tomar bloqueio por direito autoral.\nNo nosso vídeo o lance é uma simulação ilustrativa.\n\nFontes (conferido em 17/10/2026): kling.ai/quickstart/motion-control-user-guide · tabela de créditos do Motion Control (sume.com/blog/kling-motion-control-credits-per-second)\n\n#ia #kling #ozil #trend #futebol #inteligenciaartificial",
+  "fora_da_grade": {
+    "aprovado": ""
+  },
+  "titulo": "Gol do Özil viral: como fazer com qualquer personagem (IA)",
+  "descricao": "A trend do gol do Özil com qualquer personagem ⚽\nÉ o gol dele de 2016: a IA copia o movimento do lance e troca só quem faz a jogada. No CapCut é um modelo pronto: você só coloca a foto. Sem CapCut, dá pra fazer no Kling:\n1️⃣ Baixe o vídeo do gol e corte só a jogada, de 5 a 10 segundos, sem troca de câmera\n2️⃣ Escolha a foto do personagem: corpo inteiro, de frente e com fundo limpo\n3️⃣ Entre no site do Kling e abra Motion Control. Suba o vídeo do lance e a foto do personagem\n4️⃣ Escolha o modelo 2.6, no modo Standard, e clique em gerar. Depois é só baixar\nCusto: 5 créditos por segundo no 2.6 Standard. 8 segundos = 40 créditos, que cabem nos créditos grátis do dia (66 por dia, segundo guias de 2026; confira o seu saldo). No grátis sai com marca d'água e sem uso comercial.\n⚠️ Use personagem inventado ou foto com permissão. O lance é imagem de TV e pode tomar bloqueio por direito autoral.\nNo nosso vídeo o lance é uma simulação ilustrativa.\n\nFontes (conferido em 17/10/2026): kling.ai/quickstart/motion-control-user-guide · tabela de créditos do Motion Control (sume.com/blog/kling-motion-control-credits-per-second)\n\n#ia #kling #ozil #trend #futebol #inteligenciaartificial",
   "comentario_fixado": null,
   "voz": "pt-BR-Chirp3-HD-Fenrir",
   "ep": "extra-ozil",
@@ -13,20 +15,110 @@
   "formato": "demo",
   "imagens": [],
   "dados_que_envelhecem": [
-    {"dado": "Kling Motion Control 2.6 Standard: 5 créditos por segundo (3.0 Standard: 9)", "fonte": "https://www.sume.com/blog/kling-motion-control-credits-per-second", "conferido": "2026-10-17"},
-    {"dado": "Kling grátis: 66 créditos por dia, com marca d'água e sem uso comercial", "fonte": "https://aireiter.com/blog/kling-ai-free-tier-2026", "conferido": "2026-10-17"},
-    {"dado": "Motion Control: vídeo de referência com o movimento + imagem do personagem", "fonte": "https://kling.ai/quickstart/motion-control-user-guide", "conferido": "2026-10-17"}
+    {
+      "dado": "Kling Motion Control 2.6 Standard: 5 créditos por segundo (3.0 Standard: 9)",
+      "fonte": "https://www.sume.com/blog/kling-motion-control-credits-per-second",
+      "conferido": "2026-10-17"
+    },
+    {
+      "dado": "Kling grátis: 66 créditos por dia, com marca d'água e sem uso comercial",
+      "fonte": "https://aireiter.com/blog/kling-ai-free-tier-2026",
+      "conferido": "2026-10-17"
+    },
+    {
+      "dado": "Motion Control: vídeo de referência com o movimento + imagem do personagem",
+      "fonte": "https://kling.ai/quickstart/motion-control-user-guide",
+      "conferido": "2026-10-17"
+    }
   ],
-  "registro": {"tema": "extra: trend do gol do Özil, troca de personagem com Kling Motion Control", "chaves": ["ozil", "trend", "motion control"]},
+  "registro": {
+    "tema": "extra: trend do gol do Özil, troca de personagem com Kling Motion Control",
+    "chaves": [
+      "ozil",
+      "trend",
+      "motion control"
+    ]
+  },
   "cenas": [
-    {"frases": [{"fala": "Esse lance tá em todo lugar. E dá pra colocar qualquer personagem nele.", "legenda": "Esse lance tá em todo lugar. E dá pra colocar qualquer personagem nele."}]},
-    {"frases": [{"fala": "É o gol do Özil, de 2016. A inteligência artificial copia o movimento e troca só quem faz a jogada.", "legenda": "É o gol do Özil, de 2016. A inteligência artificial copia o movimento e troca só quem faz a jogada."}]},
-    {"frases": [{"fala": "Quase todo mundo usa um modelo pronto do CapCut. Sem ele, dá pra fazer no Kling.", "legenda": "Quase todo mundo usa um modelo pronto do CapCut. Sem ele, dá pra fazer no Kling."}]},
-    {"frases": [{"fala": "Um: recorte só a jogada, de cinco a dez segundos, sem cortes de câmera.", "legenda": "Um: recorte só a jogada, de 5 a 10 segundos, sem cortes de câmera."}]},
-    {"frases": [{"fala": "Dois: escolha a foto do personagem, de corpo inteiro e com fundo limpo.", "legenda": "Dois: escolha a foto do personagem, de corpo inteiro e com fundo limpo."}]},
-    {"frases": [{"fala": "Três: no Kling, abra Motion Control. Suba o vídeo e a foto, escolha o modelo dois ponto seis, no modo Standard, e gere.", "legenda": "Três: no Kling, abra Motion Control. Suba o vídeo e a foto, escolha o modelo 2.6, no modo Standard, e gere."}]},
-    {"frases": [{"fala": "São cinco créditos por segundo. Oito segundos dão quarenta créditos, e cabem no grátis do dia, com marca d'água.", "legenda": "São 5 créditos por segundo. 8 segundos dão 40 créditos, e cabem no grátis do dia, com marca d'água."}]},
-    {"frases": [{"fala": "Use personagem inventado ou foto com permissão. O lance é da TV e pode tomar bloqueio.", "legenda": "Use personagem inventado ou foto com permissão. O lance é da TV e pode tomar bloqueio."}]},
-    {"frases": [{"fala": "Salva pra fazer o seu e segue o canal.", "legenda": "Salva pra fazer o seu e segue o canal."}]}
+    {
+      "frases": [
+        {
+          "fala": "O gol do Özil, de 2016, viralizou de novo. Agora com qualquer personagem no lugar dele.",
+          "legenda": "O gol do Özil, de 2016, viralizou de novo. Agora com qualquer personagem no lugar dele."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "A inteligência artificial copia o movimento do lance e troca só quem faz a jogada.",
+          "legenda": "A inteligência artificial copia o movimento do lance e troca só quem faz a jogada."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "No CapCut é um modelo pronto: você só coloca a foto. Sem CapCut, dá pra fazer no Kling, de graça.",
+          "legenda": "No CapCut é um modelo pronto: você só coloca a foto. Sem CapCut, dá pra fazer no Kling, de graça."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: baixe o vídeo do gol e corte só a jogada, de cinco a dez segundos, sem troca de câmera.",
+          "legenda": "Um: baixe o vídeo do gol e corte só a jogada, de 5 a 10 segundos, sem troca de câmera."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: escolha a foto do personagem. Corpo inteiro, de frente e com fundo limpo.",
+          "legenda": "Dois: escolha a foto do personagem. Corpo inteiro, de frente e com fundo limpo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: entre no site do Kling e abra Motion Control. Suba o vídeo do lance e a foto do personagem.",
+          "legenda": "Três: entre no site do Kling e abra Motion Control. Suba o vídeo do lance e a foto do personagem."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Quatro: escolha o modelo dois ponto seis, no modo Standard, e clique em gerar. Depois é só baixar.",
+          "legenda": "Quatro: escolha o modelo 2.6, no modo Standard, e clique em gerar. Depois é só baixar."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "São cinco créditos por segundo. Oito segundos dão quarenta créditos, e cabem no grátis do dia, com marca d'água.",
+          "legenda": "São 5 créditos por segundo. 8 segundos dão 40 créditos, e cabem no grátis do dia, com marca d'água."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Use personagem inventado ou foto com permissão. O lance é da TV e pode tomar bloqueio.",
+          "legenda": "Use personagem inventado ou foto com permissão. O lance é da TV e pode tomar bloqueio."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva pra fazer o seu e segue o canal.",
+          "legenda": "Salva pra fazer o seu e segue o canal."
+        }
+      ]
+    }
   ]
 }

@@ -15,192 +15,262 @@ html,body{margin:0;background:#000}canvas{display:block}
 // 17/10/2026 · extra (pedido do Diego) · Como fazer a trend do gol do Özil com IA, sem CapCut (Kling Motion Control). Neon.
 // O lance é uma SIMULAÇÃO em traço neon (nada de imagem da transmissão, por direito autoral).
 const T0 = TEMPOS.cenas;
-const SC = [...T0.slice(0, 9), T0[9] + .7];
-const DURATION = SC[9], IMPACTO = SC[8] + .4;
-const COR = [CI, AZ, IN, CI, AZ, CI, IN, AZ, CI];
-const HITS = [wt('qualquer', 0), wt('ozil', 1), wt('copia', 1), wt('kling', 2), wt('recorte', 3), wt('foto', 4), wt('motion', 5), wt('gere', 5), wt('40', 6), wt('permissao', 7)];
-const CLIQUES = [wt('gere', 5) + .2];
+const SC = [...T0.slice(0, 10), T0[10] + .7];
+const DURATION = SC[10], IMPACTO = SC[9] + .4;
+const COR = [CI, AZ, IN, CI, AZ, CI, IN, AZ, IN, CI];
+const HITS = [wt('ozil', 0), wt('qualquer', 0), wt('copia', 1), wt('pronto', 2), wt('kling', 2), wt('corte', 3), wt('foto', 4), wt('motion', 5), wt('gerar', 6), wt('baixar', 6), wt('40', 7), wt('permissao', 8)];
+const CLIQUES = [wt('gerar', 6) + .1, wt('baixar', 6) + .1];
 const CK = [[0, 0, 0, 0, 0]];
 const VERM = '#ff4d6d';
 
-// ---------- boneco em traço neon (pés em 0,0; altura ~200) ----------
-// fase = ciclo da corrida; quem = 'jogador' | 'vova' | 'gato' | 'astro'; giro = inclinação do corpo
+// ---------- boneco em traço neon (pés em 0,0; altura ~210) ----------
 function boneco(x, y, s, fase, cor, quem = 'jogador', a = 1, o = {}) {
   if (a <= 0) return;
-  const corre = o.parado ? 0 : 1, sw = Math.sin(fase) * .75 * corre;
+  const corre = o.parado ? 0 : 1, sw = Math.sin(fase) * .8 * corre;
   ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(x, y); ctx.scale(s * (o.vira ? -1 : 1), s); ctx.rotate(o.giro || 0);
-  ctx.lineCap = ctx.lineJoin = 'round'; ctx.strokeStyle = cor; ctx.shadowColor = cor; ctx.shadowBlur = 24; ctx.lineWidth = 12;
-  const hip = [0, -92], sh = [0, -158], perna = (ang, k) => { const jx = hip[0] + Math.sin(ang) * 46, jy = hip[1] + Math.cos(ang) * 46;
-    const fx = jx + Math.sin(ang - .6 * k) * 46, fy = jy + Math.cos(ang - .6 * k) * 46; ctx.beginPath(); ctx.moveTo(...hip); ctx.lineTo(jx, jy); ctx.lineTo(fx, fy); ctx.stroke(); };
+  ctx.lineCap = ctx.lineJoin = 'round'; ctx.strokeStyle = cor; ctx.shadowColor = cor; ctx.shadowBlur = o.fantasma ? 0 : 24; ctx.lineWidth = 12;
+  if (o.fantasma) ctx.setLineDash([10, 12]);
+  const hip = [0, -92], sh = [6 * corre, -160];
+  const perna = (ang, k) => { const jx = Math.sin(ang) * 48, jy = hip[1] + Math.cos(ang) * 48, fx = jx + Math.sin(ang - .7 * k) * 48, fy = jy + Math.cos(ang - .7 * k) * 48;
+    ctx.beginPath(); ctx.moveTo(...hip); ctx.lineTo(jx, jy); ctx.lineTo(fx, fy); ctx.stroke(); };
   perna(sw, Math.max(0, Math.sin(fase))); perna(-sw, Math.max(0, -Math.sin(fase)));
-  ctx.beginPath(); ctx.moveTo(...hip); ctx.lineTo(sh[0] + 6 * corre, sh[1]); ctx.stroke(); // tronco
-  const braco = (ang) => { ctx.beginPath(); ctx.moveTo(sh[0] + 6 * corre, sh[1] + 6); ctx.lineTo(sh[0] + Math.sin(ang) * 40, sh[1] + 6 + Math.cos(ang) * 40);
-    ctx.lineTo(sh[0] + Math.sin(ang) * 40 + Math.sin(ang + 1.2) * 34, sh[1] + 6 + Math.cos(ang) * 40 + Math.cos(ang + 1.2) * 34 * .6); ctx.stroke(); };
-  if (o.comemora) { [[-1], [1]].forEach(([k]) => { ctx.beginPath(); ctx.moveTo(sh[0], sh[1] + 6); ctx.lineTo(k * 34, sh[1] - 34); ctx.lineTo(k * 44, sh[1] - 74); ctx.stroke(); }); }
-  else { braco(-sw * 1.1); braco(sw * 1.1); }
+  // camisa (tronco cheio)
+  ctx.beginPath(); ctx.moveTo(sh[0] - 22, sh[1]); ctx.lineTo(sh[0] + 22, sh[1]); ctx.lineTo(14, hip[1] - 4); ctx.lineTo(-14, hip[1] - 4); ctx.closePath();
+  ctx.fillStyle = hex(cor, o.fantasma ? .08 : .3); ctx.fill(); ctx.lineWidth = 8; ctx.stroke(); ctx.lineWidth = 11;
+  const braco = (ang, lado) => { const bx = sh[0] + lado * 18, by = sh[1] + 6; ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx + Math.sin(ang) * 40, by + Math.cos(ang) * 40);
+    ctx.lineTo(bx + Math.sin(ang) * 40 + Math.sin(ang + 1.1) * 34, by + Math.cos(ang) * 40 + Math.cos(ang + 1.1) * 22); ctx.stroke(); };
+  if (o.comemora) [-1, 1].forEach(k => { ctx.beginPath(); ctx.moveTo(sh[0] + k * 18, sh[1] + 4); ctx.lineTo(sh[0] + k * 44, sh[1] - 34); ctx.lineTo(sh[0] + k * 52, sh[1] - 78); ctx.stroke(); });
+  else if (o.bracos) [-1, 1].forEach(k => { ctx.beginPath(); ctx.moveTo(sh[0] + k * 18, sh[1] + 4); ctx.lineTo(sh[0] + k * 60, sh[1] - 10); ctx.lineTo(sh[0] + k * 92, sh[1] - 26); ctx.stroke(); });
+  else { braco(-sw * 1.2, -1); braco(sw * 1.2, 1); }
   // cabeça
-  const hx = sh[0] + 8 * corre, hy = sh[1] - 34;
-  ctx.fillStyle = 'rgba(3,4,8,.9)'; ctx.lineWidth = 9;
+  const hx = sh[0] + 4 * corre, hy = sh[1] - 36;
+  ctx.fillStyle = 'rgba(3,4,8,.92)'; ctx.lineWidth = 9;
   if (quem === 'astro') {
-    ctx.beginPath(); ctx.arc(hx, hy - 4, 36, 0, 7); ctx.fill(); ctx.stroke();
-    ctx.lineWidth = 6; ctx.strokeStyle = BR; ctx.shadowColor = BR; rr(hx - 6, hy - 22, 40, 26, 12); ctx.stroke();
+    ctx.beginPath(); ctx.arc(hx, hy - 4, 38, 0, 7); ctx.fill(); ctx.stroke();
+    ctx.lineWidth = 6; ctx.strokeStyle = BR; ctx.shadowColor = BR; rr(hx - 6, hy - 22, 42, 26, 12); ctx.stroke();
   } else {
-    ctx.beginPath(); ctx.arc(hx, hy, 26, 0, 7); ctx.fill(); ctx.stroke();
-    if (quem === 'jogador') { ctx.beginPath(); ctx.arc(hx, hy - 4, 27, Math.PI * 1.05, Math.PI * 1.95); ctx.lineWidth = 14; ctx.stroke(); }
-    if (quem === 'vova') { ctx.beginPath(); ctx.arc(hx - 8, hy - 34, 13, 0, 7); ctx.stroke(); ctx.lineWidth = 5; ctx.strokeStyle = BR; ctx.shadowColor = BR;
+    ctx.beginPath(); ctx.arc(hx, hy, 27, 0, 7); ctx.fill(); ctx.stroke();
+    if (quem === 'jogador') { ctx.beginPath(); ctx.arc(hx, hy - 4, 28, Math.PI * 1.05, Math.PI * 1.95); ctx.lineWidth = 15; ctx.stroke(); }
+    if (quem === 'vova') { ctx.beginPath(); ctx.arc(hx - 8, hy - 36, 14, 0, 7); ctx.stroke(); ctx.lineWidth = 5; ctx.strokeStyle = BR; ctx.shadowColor = BR;
       ctx.beginPath(); ctx.arc(hx + 8, hy - 2, 8, 0, 7); ctx.moveTo(hx + 30, hy - 2); ctx.arc(hx + 22, hy - 2, 8, 0, 7); ctx.stroke(); }
-    if (quem === 'gato') { ctx.beginPath(); ctx.moveTo(hx - 22, hy - 14); ctx.lineTo(hx - 18, hy - 46); ctx.lineTo(hx - 2, hy - 24); ctx.moveTo(hx + 4, hy - 25); ctx.lineTo(hx + 20, hy - 46); ctx.lineTo(hx + 23, hy - 13); ctx.stroke();
-      ctx.lineWidth = 4; ctx.beginPath(); [-1, 1].forEach(k => { ctx.moveTo(hx + 14, hy + 6 + k * 4); ctx.lineTo(hx + 40, hy + 4 + k * 10); }); ctx.stroke(); }
+    if (quem === 'gato') { ctx.beginPath(); ctx.moveTo(hx - 23, hy - 14); ctx.lineTo(hx - 19, hy - 48); ctx.lineTo(hx - 2, hy - 25); ctx.moveTo(hx + 4, hy - 26); ctx.lineTo(hx + 21, hy - 48); ctx.lineTo(hx + 24, hy - 13); ctx.stroke();
+      ctx.lineWidth = 4; ctx.beginPath(); [-1, 1].forEach(k => { ctx.moveTo(hx + 14, hy + 6 + k * 4); ctx.lineTo(hx + 42, hy + 4 + k * 10); }); ctx.stroke(); }
   }
   ctx.restore();
 }
 function bola(x, y, s, a = 1, giro = 0) {
   if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(x, y); ctx.scale(s, s); ctx.rotate(giro);
-  ctx.shadowColor = BR; ctx.shadowBlur = 30; ctx.fillStyle = '#f4f8ff'; ctx.beginPath(); ctx.arc(0, 0, 15, 0, 7); ctx.fill();
-  ctx.shadowBlur = 0; ctx.fillStyle = '#0a1d45'; ctx.beginPath(); for (let i = 0; i < 5; i++) { const an = i * 1.2566; ctx.lineTo(Math.cos(an) * 6, Math.sin(an) * 6); } ctx.fill(); ctx.restore();
+  ctx.shadowColor = BR; ctx.shadowBlur = 30; ctx.fillStyle = '#f4f8ff'; ctx.beginPath(); ctx.arc(0, 0, 16, 0, 7); ctx.fill();
+  ctx.shadowBlur = 0; ctx.fillStyle = '#0a1d45'; ctx.beginPath(); for (let i = 0; i < 5; i++) { const an = i * 1.2566; ctx.lineTo(Math.cos(an) * 6.5, Math.sin(an) * 6.5); } ctx.fill(); ctx.restore();
 }
-// ---------- o lance (simulação): chapéu no 1º marcador, drible no 2º e gol ----------
-// q de 0 a 1; ox,oy = centro do gramado (linha do chão); quem = personagem do atacante
+// ---------- o lance (simulação): chapéu, carrinho, drible no goleiro e gol ----------
+// q de 0 a 1 é a história; lento(u) dá câmera lenta no chapéu.
+const lento = u => { u = clamp(u); return u < .1 ? u * 1.2 : u < .5 ? .12 + (u - .1) / .4 * .24 : .36 + (u - .5) / .5 * .64; };
+const XA = q => q < .8 ? lerp(-330, 225, q / .8) : 225 + 20 * ease(clamp((q - .8) / .1));
+function bpos(q) {
+  const fase = q * 44, pe = x => [x + 32, -16 - 8 * Math.abs(Math.sin(fase))];
+  if (q < .12) return pe(XA(q));
+  if (q < .36) { const u = (q - .12) / .24, x0 = XA(.12) + 32, x1 = XA(.36) + 32; return [lerp(x0, x1, u), -16 - 320 * Math.sin(Math.PI * u)]; }
+  if (q < .73) return pe(XA(q));
+  if (q < .81) { const u = ease((q - .73) / .08), x0 = XA(.73) + 32; return [lerp(x0, 338, u), lerp(-16, -60, u)]; }
+  const d = clamp((q - .81) / .15); return [338 + 6 * d, -16 - 44 * Math.abs(Math.cos(d * 7)) * (1 - d)];
+}
 function lance(ox, oy, s, q, quem, a = 1, o = {}) {
   if (a <= 0) return; q = clamp(q);
-  ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(ox, oy); ctx.scale(s, s);
-  // gramado e gol
-  ctx.lineCap = 'round'; ctx.strokeStyle = hex(AZ, .7); ctx.lineWidth = 5; ctx.shadowColor = AZ; ctx.shadowBlur = 16;
-  ctx.beginPath(); ctx.moveTo(-350, 0); ctx.lineTo(350, 0); ctx.stroke();
-  for (let i = -3; i <= 3; i++) { ctx.globalAlpha = a * .25; ctx.beginPath(); ctx.moveTo(i * 100 - 30, 22); ctx.lineTo(i * 100 + 30, 22); ctx.stroke(); }
-  ctx.globalAlpha = clamp(a);
-  const gol = q > .8 ? Math.pow(1 - clamp((q - .8) / .2), 2) : 0;
-  ctx.strokeStyle = BR; ctx.shadowColor = CI; ctx.lineWidth = 7;
-  ctx.beginPath(); ctx.moveTo(295, 0); ctx.lineTo(295, -150); ctx.lineTo(345, -130); ctx.lineTo(345, 0); ctx.stroke();
-  ctx.lineWidth = 2; ctx.strokeStyle = hex(CI, .5 + .5 * gol); for (let k = 1; k < 5; k++) { ctx.beginPath(); ctx.moveTo(295 + k * 10 + 8 * gol * Math.sin(k), -150 + k * 4); ctx.lineTo(295 + k * 10 + 8 * gol * Math.sin(k), 0); ctx.stroke(); }
-  // atacante
-  const xa = q < .78 ? lerp(-320, 190, q / .78) : 190 + 25 * ease(clamp((q - .78) / .1));
-  const fase = q * 40, comemora = q > .86;
-  // marcadores
-  const sobe1 = q > .14 && q < .36 ? Math.sin(Math.PI * (q - .14) / .22) : 0;
-  boneco(-100, -70 * sobe1, 1, 0, AZ, 'jogador', 1, { parado: true, vira: true, giro: -.25 * sobe1 });
-  const k2 = clamp((q - .46) / .1), cai = clamp((q - .54) / .08);
-  boneco(90 - 60 * ease(k2), 0, 1, 0, AZ, 'jogador', 1, { parado: true, vira: true, giro: -1.1 * ease(cai) });
-  boneco(xa, 0, 1, fase, CI, quem, 1, { parado: comemora, comemora });
-  // bola
-  let bx, by;
-  const pe = x => [x + 30, -14 - 10 * Math.abs(Math.sin(fase))];
-  if (q < .15) [bx, by] = pe(xa);
-  else if (q < .33) { const u = (q - .15) / .18, x0 = lerp(-320, 190, .15 / .78) + 30, x1 = lerp(-320, 190, .33 / .78) + 30; bx = lerp(x0, x1, u); by = -14 - 290 * Math.sin(Math.PI * u); }
-  else if (q < .68) [bx, by] = pe(xa);
-  else if (q < .8) { const u = ease((q - .68) / .12), x0 = lerp(-320, 190, .68 / .78) + 30; bx = lerp(x0, 320, u); by = lerp(-14, -70, u); }
-  else { bx = 320; by = -14 - 30 * Math.abs(Math.sin((q - .8) * 30)) * (1 - clamp((q - .8) / .15)); }
-  bola(bx, by, 1.1, 1, q * 30);
+  ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(ox, oy);
+  // câmera: aproxima no chapéu, acompanhando a bola
+  const chap = q > .1 && q < .4 ? Math.sin(Math.PI * (q - .1) / .3) : 0, z = s * (1 + (o.cam ? .22 * chap : 0));
+  const fx = o.cam ? -XA(q) * .25 * chap : 0;
+  ctx.scale(z, z); ctx.translate(fx, 0);
+  // gramado em perspectiva (faixas e linha da área)
+  ctx.save(); ctx.lineCap = 'round';
+  for (let i = 0; i < 6; i++) { const y0 = -46 + i * 22, y1 = y0 + 22, k0 = 1 + y0 / 300, k1 = 1 + y1 / 300;
+    ctx.fillStyle = hex(i % 2 ? AZ : IN, .07 + .02 * i); ctx.beginPath(); ctx.moveTo(-400 * k0, y0); ctx.lineTo(400 * k0, y0); ctx.lineTo(400 * k1, y1); ctx.lineTo(-400 * k1, y1); ctx.closePath(); ctx.fill(); }
+  ctx.strokeStyle = hex(CI, .35); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(150 * (1 - 46 / 300), -46); ctx.lineTo(120 * (1 + 86 / 300), 86); ctx.stroke();
+  ctx.strokeStyle = hex(AZ, .8); ctx.lineWidth = 4; ctx.shadowColor = AZ; ctx.shadowBlur = 14; ctx.beginPath(); ctx.moveTo(-400 * (1 + 86 / 300), 86); ctx.lineTo(400 * (1 + 86 / 300), 86); ctx.stroke();
+  ctx.restore();
+  // gol com rede (trave de trás deslocada pra dar profundidade)
+  const gol = q > .81 ? Math.pow(1 - clamp((q - .81) / .2), 2) : 0;
+  ctx.save(); ctx.strokeStyle = BR; ctx.shadowColor = CI; ctx.shadowBlur = 18; ctx.lineWidth = 7; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(318, 10); ctx.lineTo(318, -160); ctx.lineTo(372, -186); ctx.lineTo(372, -30); ctx.stroke();
+  ctx.lineWidth = 2; ctx.strokeStyle = hex(CI, .45 + .5 * gol); ctx.shadowBlur = 0;
+  for (let k = 1; k < 6; k++) { const xx = 318 + k * 9 + 10 * gol * Math.sin(k * 1.7); ctx.beginPath(); ctx.moveTo(xx, -160 - k * 4.3); ctx.lineTo(xx + 4 * gol, 10 - k * 7); ctx.stroke(); }
+  for (let k = 1; k < 6; k++) { ctx.beginPath(); ctx.moveTo(318, -160 + k * 30); ctx.lineTo(372 + 6 * gol, -186 + k * 28); ctx.stroke(); }
+  ctx.restore();
+  const xa = XA(q), fase = q * 44, comemora = q > .86;
+  // sombra da bola
+  const [bx, by] = bpos(q), alt = clamp(-by / 320);
+  ctx.save(); ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.beginPath(); ctx.ellipse(bx, 6, 18 * (1 - .5 * alt), 5, 0, 0, 7); ctx.fill(); ctx.restore();
+  // marcador 1: pula e a bola passa por cima
+  const sobe1 = q > .17 && q < .33 ? Math.sin(Math.PI * (q - .17) / .16) : 0;
+  boneco(-150, -60 * sobe1, 1, 0, AZ, 'jogador', 1, { parado: true, vira: true, bracos: sobe1 > .1, giro: -.15 * sobe1 });
+  // marcador 2: carrinho
+  const k2 = ease(clamp((q - .48) / .1));
+  boneco(40 - 80 * k2, -4 * k2, 1, 0, AZ, 'jogador', 1, { parado: true, vira: true, giro: -1.35 * k2 });
+  // goleiro: sai e mergulha no lado errado
+  const k3 = ease(clamp((q - .62) / .1));
+  boneco(290 - 40 * k3, -20 * Math.sin(Math.PI * k3), 1, 0, IN, 'jogador', 1, { parado: true, vira: true, bracos: true, giro: -1.2 * k3 });
+  // fantasma (movimento original copiado)
+  if (o.fantasma) boneco(xa, 0, 1, fase, AZ, 'jogador', .55, { parado: comemora, comemora, fantasma: true });
+  // atacante, com hop no drible do goleiro e linhas de velocidade
+  const hop = q > .64 && q < .72 ? 30 * Math.sin(Math.PI * (q - .64) / .08) : 0;
+  if (!comemora) { ctx.save(); ctx.strokeStyle = hex(CI, .4); ctx.lineWidth = 4; ctx.lineCap = 'round';
+    for (let i = 0; i < 3; i++) { const yy = -60 - i * 45; ctx.beginPath(); ctx.moveTo(xa - 60 - i * 10, yy); ctx.lineTo(xa - 120 - i * 25, yy); ctx.stroke(); } ctx.restore(); }
+  boneco(xa, -hop, 1, fase, CI, quem, 1, { parado: comemora, comemora });
+  // rastro da bola quando ela voa
+  if ((q > .12 && q < .36) || (q > .73 && q < .82)) for (let i = 8; i >= 1; i--) { const [tx, ty] = bpos(q - i * .006);
+    ctx.save(); ctx.globalAlpha *= (1 - i / 9) * .45; ctx.fillStyle = CI; ctx.shadowColor = CI; ctx.shadowBlur = 16; ctx.beginPath(); ctx.arc(tx, ty, 12 * (1 - i / 12), 0, 7); ctx.fill(); ctx.restore(); }
+  bola(bx, by, 1.1, 1, q * 34);
   if (o.rotulos) {
-    const r1 = prog(q, .2, .26) * (1 - prog(q, .38, .44)), r2 = prog(q, .5, .56) * (1 - prog(q, .66, .7)), r3 = prog(q, .82, .86);
-    if (r1 > 0) txt('CHAPÉU!', -100, -400, EXP, 52, CI, { align: 'center', alpha: r1 });
-    if (r2 > 0) txt('DRIBLE!', 90, -330, EXP, 52, CI, { align: 'center', alpha: r2 });
-    if (r3 > 0) txt('GOL!', 240, -330, EXP, 64, CI, { align: 'center', alpha: r3 });
+    const r1 = prog(q, .2, .25) * (1 - prog(q, .38, .43)), r2 = prog(q, .5, .55) * (1 - prog(q, .62, .66)), r3 = prog(q, .82, .86);
+    if (r1 > 0) txt('CHAPÉU!', -150, -350, EXP, 56, CI, { align: 'center', alpha: r1 });
+    if (r2 > 0) txt('CARRINHO!', 0, -330, EXP, 50, CI, { align: 'center', alpha: r2 });
+    if (r3 > 0) txt('GOL!', 230, -340, EXP, 72, CI, { align: 'center', alpha: r3 });
   }
   ctx.restore();
 }
-// tela escura de vídeo com barra de tempo; conteudo() desenha dentro (recortado)
+// tela escura de vídeo; conteudo() desenha dentro (recortado)
 function tela(x, y, w, h, a, titulo, conteudo, barra) {
   if (a <= 0) return; const e = .9 + .1 * back(clamp(a));
   ctx.save(); ctx.globalAlpha *= clamp(a * 1.5); ctx.translate(x + w / 2, y + h / 2); ctx.scale(e, e); ctx.translate(-x - w / 2, -y - h / 2);
   ctx.shadowColor = hex(AZ, .7); ctx.shadowBlur = 50; ctx.fillStyle = '#070b16'; rr(x, y, w, h, 24); ctx.fill(); ctx.shadowBlur = 0;
   ctx.strokeStyle = hex(CI, .8); ctx.lineWidth = 3; rr(x, y, w, h, 24); ctx.stroke();
   txt(titulo, x + 30, y + 40, ARC, 26, 'rgba(244,248,255,.75)', { weight: 600 });
-  ctx.save(); rr(x, y + 64, w, h - 64 - (barra ? 70 : 0), 0); ctx.clip(); conteudo(); ctx.restore();
-  if (barra) barra(x + 30, y + h - 40, w - 60);
+  ctx.save(); rr(x, y + 64, w, h - 64 - (barra ? 90 : 0), 0); ctx.clip(); conteudo(); ctx.restore();
+  if (barra) barra(x + 30, y + h - 45, w - 60);
   ctx.restore();
+}
+// caixa de envio de arquivo (dentro da janela clara)
+function envio(x, y, w, h, rot, cheio, desenho) {
+  ctx.save(); ctx.strokeStyle = cheio > 0 ? AZ : '#9fb0d0'; ctx.lineWidth = cheio > 0 ? 4 : 3; if (cheio <= 0) ctx.setLineDash([12, 10]);
+  ctx.fillStyle = cheio > 0 ? '#070b16' : '#eef2fb'; rr(x, y, w, h, 18); ctx.fill(); rr(x, y, w, h, 18); ctx.stroke(); ctx.setLineDash([]);
+  if (cheio <= 0) { txt('+', x + w / 2, y + h / 2 - 20, ARC, 70, '#9fb0d0', { align: 'center', weight: 600 }); }
+  else { ctx.save(); ctx.globalAlpha *= clamp(cheio * 2); rr(x, y, w, h, 18); ctx.clip(); desenho(); ctx.restore(); }
+  txt(rot, x + w / 2, y + h + 34, ARC, 26, '#1b2440', { align: 'center', weight: 600 });
+  ctx.restore();
+}
+function cartaoFoto(x, y, e, quem, a, nome = 'personagem.png') {
+  if (a <= 0) return; ctx.save(); ctx.translate(x, y); ctx.scale(e, e); ctx.globalAlpha *= clamp(a * 2);
+  ctx.shadowColor = hex(CI, .7); ctx.shadowBlur = 50; ctx.fillStyle = '#f4f7ff'; rr(-210, -250, 420, 500, 20); ctx.fill(); ctx.shadowBlur = 0;
+  ctx.fillStyle = '#070b16'; rr(-185, -225, 370, 400, 10); ctx.fill(); ctx.restore();
+  boneco(x, y + 140 * e, 1.5 * e, 0, CI, quem, clamp(a * 2), { parado: true });
+  txt(nome, x, y + 212 * e, ARC, 28, '#1b2440', { align: 'center', weight: 600, alpha: clamp(a * 2) });
 }
 Object.assign(P, {
   alerta() { ctx.beginPath(); ctx.moveTo(0, -96); ctx.lineTo(100, 80); ctx.lineTo(-100, 80); ctx.closePath(); ctx.moveTo(8, -30); ctx.lineTo(-8, -30); ctx.lineTo(-5, 30); ctx.lineTo(5, 30); ctx.closePath(); ctx.moveTo(10, 52); ctx.arc(0, 52, 10, 0, 7); },
 });
 const QUEM = ['vova', 'gato', 'astro'];
 const S = [
-  // 0 · gancho: o lance acontecendo já no quadro 1, e o atacante vira outro personagem
+  // 0 · gancho: título no quadro 1 e o lance com câmera lenta no chapéu
   (t, lt) => {
-    frase('O lance que tá', 290, -1, SC[1] - .2, 92, { t, cor: CI }); frase('em todo lugar', 400, -1, SC[1] - .2, 92, { t, hot: 'todo lugar', cor: CI });
+    frase('Gol do Özil · 2016', 270, -1, SC[1] - .2, 96, { t, hot: 'Özil', cor: CI });
+    frase('VIRALIZOU DE NOVO', 385, -1, SC[1] - .2, 64, { t, hot: 'VIRALIZOU', cor: CI });
     const tq = wt('qualquer', 0), troca = t >= tq;
-    lance(cx0, 1010, 1.25, lt / 3.2, troca ? 'vova' : 'jogador', 1, { rotulos: true });
-    if (Math.abs(t - tq) < .25) { ctx.save(); ctx.globalCompositeOperation = 'lighter'; luz(cx0 + 200, 850, 500, 500, CI, .6 * (1 - Math.abs(t - tq) / .25)); ctx.restore(); }
-    frase('com QUALQUER personagem', 1250, tq - .1, SC[1] - .2, 60, { t, hot: 'QUALQUER', cor: CI });
-    exemplo(cx0, 1360, prog(lt, .3, .6));
+    lance(cx0, 1060, 1.15, lento(lt / 3.9), troca ? 'vova' : 'jogador', 1, { rotulos: true, cam: true });
+    if (Math.abs(t - tq) < .3) { ctx.save(); ctx.globalCompositeOperation = 'lighter'; luz(cx0 + 230, 860, 520, 520, CI, .7 * (1 - Math.abs(t - tq) / .3)); ctx.restore(); }
+    frase('com QUALQUER personagem', 1260, tq - .1, SC[1] - .2, 60, { t, hot: 'QUALQUER', cor: CI });
+    exemplo(cx0, 1370, prog(lt, .3, .6));
   },
-  // 1 · o que é: mesmo movimento, personagem trocado
+  // 1 · o que a IA faz: o fantasma é o movimento original, o personagem vai por cima
   (t, lt) => {
-    frase('Gol do Özil · 2016', 300, SC[1], SC[2] - .2, 76, { t, hot: 'Özil', cor: CI });
-    const per = 2.2, k = Math.floor(lt / per), q = (lt % per) / per;
-    lance(cx0, 980, 1.2, q * 1.1, QUEM[k % 3], 1);
-    selo('a IA copia o movimento', cx0, 1160, prog(t, wt('copia', 1), wt('copia', 1) + .3));
-    linhaTxt('e troca só quem faz a jogada', 1290, wt('troca', 1), SC[2] - .2, t, 46, CI);
-    exemplo(cx0, 1390, prog(lt, .3, .6));
+    frase('A IA copia o movimento', 300, SC[1], SC[2] - .2, 70, { t, hot: 'movimento', cor: CI });
+    const per = 2.4, k = Math.floor(lt / per), q = (lt % per) / per;
+    lance(cx0, 1000, 1.1, lento(q) * 1.05, QUEM[k % 3], 1, { fantasma: true });
+    linhaTxt('e troca só quem faz a jogada', 1240, wt('troca', 1), SC[2] - .2, t, 48, CI);
+    exemplo(cx0, 1340, prog(lt, .3, .6));
   },
-  // 2 · CapCut x Kling
+  // 2 · CapCut é modelo pronto; sem ele, Kling
   (t, lt) => {
-    neon3d(P.play, cx0, 600, 150 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .9), .3, IN, prog(lt, .05, .3));
-    frase('modelo pronto do CapCut', 880, wt('modelo', 2) - .1, SC[3] - .2, 64, { t, hot: 'CapCut', cor: CI });
-    linhaTxt('é o que quase todo mundo usa', 980, wt('quase', 2) + .2, SC[3] - .2, t, 40, 'rgba(244,248,255,.8)');
-    frase('Sem CapCut? Kling', 1180, wt('sem', 2) - .1, SC[3] - .2, 80, { t, hot: 'Kling', cor: CI });
+    const sem = wt('sem', 2), fora = prog(t, sem - .2, sem + .2);
+    frase('CapCut: modelo pronto', 300, wt('capcut', 2) - .1, sem - .1, 72, { t, hot: 'modelo pronto', cor: CI });
+    celular(cx0, 860, .8, .12 * Math.sin(t * .8), prog(lt, .05, .4) * (1 - fora), (x, y, w, s) => {
+      ctx.fillStyle = '#070b16'; rr(x, y, w, 360 * s, 20 * s); ctx.fill();
+      ctx.save(); rr(x, y, w, 360 * s, 20 * s); ctx.clip(); lance(x + w / 2, y + 290 * s, .42, (lt % 2.2) / 2.2 * 1.05, 'jogador', 1); ctx.restore();
+      txt('Modelo: gol do Özil', x, y + 410 * s, ARC, 32 * s, '#1b2440', { weight: 600 });
+      botao(x, y + 450 * s, '+ sua foto', prog(t, wt('coloca', 2) - .2, wt('coloca', 2) + .1), prog(t, wt('foto', 2), wt('foto', 2) + .3));
+    }, 'CapCut');
+    frase('Sem CapCut?', 680, sem - .1, SC[3] - .2, 84, { t, cor: CI });
+    frase('Kling, de graça', 840, wt('kling', 2) - .1, SC[3] - .2, 96, { t, hot: 'Kling', cor: CI });
+    neon3d(P.play, cx0, 1110, 110 * back(prog(t, wt('kling', 2), wt('kling', 2) + .4)), .4 * Math.sin(t), .3, CI, prog(t, wt('kling', 2), wt('kling', 2) + .2));
+    exemplo(cx0, 1320, prog(lt, .4, .7) * (1 - fora));
   },
-  // 3 · passo 1: recortar a jogada
+  // 3 · passo 1: cortar só a jogada
   (t, lt) => {
-    numero(1, 300, SC[3], SC[4] - .2, t);
-    frase('Recorte só a jogada', 470, wt('recorte', 3) - .1, SC[4] - .2, 72, { t, hot: 'jogada', cor: CI });
-    const sel = prog(t, wt('5', 3), wt('10', 3) + .3);
-    tela(cx0 - 400, 580, 800, 560, prog(lt, .1, .4), 'lance.mp4', () => lance(cx0, 1000, .95, (lt % 2.4) / 2.4 * 1.05, 'jogador', 1), (x, y, w) => {
-      ctx.fillStyle = 'rgba(244,248,255,.18)'; rr(x, y - 8, w, 16, 8); ctx.fill();
-      const s0 = x + w * .3, s1 = x + w * lerp(.3, .62, ease(sel));
-      ctx.fillStyle = CI; ctx.shadowColor = CI; ctx.shadowBlur = 20; rr(s0, y - 14, Math.max(8, s1 - s0), 28, 10); ctx.fill(); ctx.shadowBlur = 0;
-      if (sel > 0) txt(Math.round(lerp(0, 10, ease(sel))) + ' s', s1 + 20, y + 2, ARC, 30, BR, { weight: 600, alpha: sel });
+    numero(1, 290, SC[3], SC[4] - .2, t);
+    frase('Corte só a jogada', 460, wt('corte', 3) - .1, SC[4] - .2, 76, { t, hot: 'jogada', cor: CI });
+    const sel = ease(prog(t, wt('5', 3) - .1, wt('segundos', 3) + .2));
+    tela(cx0 - 410, 570, 820, 620, prog(lt, .1, .4), 'gol-ozil-2016.mp4', () => lance(cx0, 1010, .95, lento((lt % 3) / 3) * 1.05, 'jogador', 1), (x, y, w) => {
+      for (let i = 0; i < 12; i++) { ctx.fillStyle = hex(i % 2 ? AZ : IN, .55); ctx.fillRect(x + i * w / 12 + 2, y - 18, w / 12 - 4, 36); }
+      const s0 = x + w * lerp(0, .32, sel), s1 = x + w * lerp(1, .64, sel);
+      ctx.fillStyle = 'rgba(3,4,8,.75)'; ctx.fillRect(x, y - 22, s0 - x, 44); ctx.fillRect(s1, y - 22, x + w - s1, 44);
+      ctx.strokeStyle = CI; ctx.shadowColor = CI; ctx.shadowBlur = 20; ctx.lineWidth = 6; rr(s0, y - 24, s1 - s0, 48, 8); ctx.stroke(); ctx.shadowBlur = 0;
+      if (sel > .5) txt('8 s', (s0 + s1) / 2, y + 62, ARC, 30, CI, { align: 'center', weight: 600, alpha: prog(sel, .5, .8) });
     });
-    linhaTxt('5 a 10 s · sem cortes de câmera', 1250, wt('5', 3), SC[4] - .2, t, 46);
-    exemplo(cx0, 1350, prog(lt, .4, .7));
-  },
-  // 4 · passo 2: foto do personagem
-  (t, lt) => {
-    numero(2, 300, SC[4], SC[5] - .2, t);
-    frase('Foto do personagem', 470, wt('foto', 4) - .1, SC[5] - .2, 72, { t, hot: 'personagem', cor: CI });
-    const a = prog(lt, .1, .4); if (a > 0) {
-      const e = back(clamp(a)); ctx.save(); ctx.translate(cx0, 860); ctx.scale(e, e); ctx.globalAlpha *= clamp(a * 2);
-      ctx.shadowColor = hex(CI, .7); ctx.shadowBlur = 50; ctx.fillStyle = '#f4f7ff'; rr(-210, -250, 420, 500, 20); ctx.fill(); ctx.shadowBlur = 0;
-      ctx.fillStyle = '#070b16'; rr(-185, -225, 370, 400, 10); ctx.fill();
-      ctx.restore();
-      boneco(cx0, 860 + 140 * e, 1.5 * e, 0, CI, 'vova', clamp(a * 2), { parado: true });
-      txt('personagem.png', cx0, 860 + 212 * e, ARC, 28, '#1b2440', { align: 'center', weight: 600, alpha: clamp(a * 2) });
-    }
-    selo('corpo inteiro', cx0 - 190, 1230, prog(t, wt('corpo', 4), wt('corpo', 4) + .3));
-    selo('fundo limpo', cx0 + 200, 1230, prog(t, wt('fundo', 4), wt('fundo', 4) + .3));
-    exemplo(cx0, 1340, prog(lt, .4, .7));
-  },
-  // 5 · passo 3: Kling > Motion Control
-  (t, lt) => {
-    numero(3, 300, SC[5], SC[6] - .2, t);
-    frase('Kling · Motion Control', 470, wt('kling', 5) - .1, SC[6] - .2, 70, { t, hot: 'Motion Control', cor: CI });
-    const g = wt('gere', 5);
-    janela(560, 760, prog(lt, .1, .4), 'kling.ai · Motion Control', (x, y, w) => {
-      let yy = y;
-      yy += campo(x, yy, w, 'Vídeo do movimento', '✓ lance.mp4', prog(t, wt('video', 5) - .2, wt('video', 5) + .1), prog(t, wt('video', 5), wt('video', 5) + .2) * (1 - prog(t, wt('foto', 5), wt('foto', 5) + .1)));
-      yy += campo(x, yy, w, 'Imagem do personagem', '✓ personagem.png', prog(t, wt('foto', 5) - .2, wt('foto', 5) + .1), prog(t, wt('foto', 5), wt('foto', 5) + .2) * (1 - prog(t, wt('modelo', 5), wt('modelo', 5) + .1)));
-      yy += campo(x, yy, w, 'Modelo', '2.6 · Standard', prog(t, wt('modelo', 5) - .2, wt('modelo', 5) + .1), prog(t, wt('standard', 5), wt('standard', 5) + .2) * (1 - prog(t, g, g + .1)));
-      botao(x, yy + 10, 'gerar vídeo', prog(t, wt('escolha', 5), wt('escolha', 5) + .3), prog(t, g + .2, g + .5));
-    });
+    linhaTxt('5 a 10 s · sem troca de câmera', 1300, wt('sem', 3) - .1, SC[4] - .2, t, 46);
     exemplo(cx0, 1390, prog(lt, .4, .7));
   },
-  // 6 · custo e limite grátis
+  // 4 · passo 2: a foto certa
   (t, lt) => {
-    frase('5 créditos por segundo', 330, wt('5', 6) - .1, SC[7] - .2, 70, { t, hot: '5 créditos', cor: CI });
-    frase('8 s = 40 créditos', 480, wt('8', 6) - .1, SC[7] - .2, 80, { t, hot: '40 créditos', cor: CI });
-    lance(cx0, 980, 1.1, (lt % 2.6) / 2.6 * 1.05, 'astro', prog(lt, .1, .4)); selo('resultado: outro personagem, mesmo lance', cx0, 640, prog(lt, .1, .4), CI, 1 - prog(t, wt('8', 6) - .4, wt('8', 6) - .1));
-    selo('cabe no grátis do dia', cx0, 1150, prog(t, wt('cabem', 6), wt('cabem', 6) + .3));
-    linhaTxt("com marca d'água · Kling 2.6 Standard", 1270, wt('marca', 6), SC[7] - .2, t, 40, 'rgba(244,248,255,.85)');
+    numero(2, 290, SC[4], SC[5] - .2, t);
+    frase('Foto do personagem', 460, wt('foto', 4) - .1, SC[5] - .2, 72, { t, hot: 'personagem', cor: CI });
+    const a = prog(lt, .1, .4); cartaoFoto(cx0, 830, back(clamp(a)), 'vova', a);
+    selo('corpo inteiro', cx0, 1170, prog(t, wt('corpo', 4), wt('corpo', 4) + .3));
+    selo('de frente', cx0, 1265, prog(t, wt('frente', 4), wt('frente', 4) + .3));
+    selo('fundo limpo', cx0, 1360, prog(t, wt('fundo', 4), wt('fundo', 4) + .3));
   },
-  // 7 · cuidado
+  // 5 · passo 3: Kling > Motion Control > enviar vídeo e foto
+  (t, lt) => {
+    numero(3, 290, SC[5], SC[6] - .2, t);
+    frase('Kling · Motion Control', 460, wt('kling', 5) - .1, SC[6] - .2, 70, { t, hot: 'Motion Control', cor: CI });
+    janela(560, 700, prog(lt, .1, .4), 'kling.ai', (x, y, w) => {
+      const ab = prog(t, wt('motion', 5) - .1, wt('motion', 5) + .2);
+      ctx.fillStyle = ab > 0 ? AZ : '#dbe3f5'; rr(x, y - 10, 300, 60, 30); ctx.fill();
+      txt('Motion Control', x + 150, y + 21, ARC, 30, ab > 0 ? '#fff' : '#5a6a8f', { align: 'center', weight: 600 });
+      const bw = (w - 30) / 2, by = y + 90, bh = 330;
+      envio(x, by, bw, bh, 'vídeo do lance', prog(t, wt('video', 5), wt('video', 5) + .3), () => lance(x + bw / 2, by + 250, .4, lento((lt % 2.4) / 2.4) * 1.05, 'jogador', 1));
+      envio(x + bw + 30, by, bw, bh, 'foto do personagem', prog(t, wt('foto', 5), wt('foto', 5) + .3), () => boneco(x + bw * 1.5 + 30, by + 290, 1.1, 0, CI, 'vova', 1, { parado: true }));
+    });
+    exemplo(cx0, 1340, prog(lt, .4, .7));
+  },
+  // 6 · passo 4: modelo 2.6 Standard, gerar e baixar
+  (t, lt) => {
+    numero(4, 290, SC[6], SC[7] - .2, t);
+    frase('Gerar e baixar', 460, wt('escolha', 6) - .1, SC[7] - .2, 76, { t, hot: 'baixar', cor: CI });
+    const g = wt('gerar', 6), bx = wt('baixar', 6), pronto = prog(t, g + .3, g + .9);
+    janela(560, 700, prog(lt, .1, .4) * (1 - pronto), 'kling.ai · Motion Control', (x, y, w) => {
+      campo(x, y, w, 'Modelo', '2.6', prog(t, wt('modelo', 6) - .2, wt('modelo', 6) + .1), prog(t, wt('modelo', 6), wt('modelo', 6) + .2) * (1 - prog(t, wt('modo', 6), wt('modo', 6) + .1)));
+      txt('MODO', x, y + 150, ARC, 22, '#5a6a8f', { weight: 600, ls: 2 });
+      const st = prog(t, wt('standard', 6) - .1, wt('standard', 6) + .2);
+      ctx.fillStyle = '#e6ecfa'; rr(x, y + 170, w, 80, 40); ctx.fill();
+      ctx.fillStyle = hex(AZ, st); rr(x + 6, y + 176, w / 2 - 6, 68, 34); ctx.fill();
+      txt('Standard', x + w / 4, y + 211, ARC, 32, st > .5 ? '#fff' : '#1b2440', { align: 'center', weight: 600 });
+      txt('Professional', x + w * .75, y + 211, ARC, 32, '#5a6a8f', { align: 'center', weight: 600 });
+      botao(x, y + 290, 'gerar', prog(t, wt('clique', 6) - .3, wt('clique', 6)), prog(t, g, g + .3));
+      const pg = prog(t, g + .1, g + .3); if (pg > 0) { ctx.fillStyle = '#dbe3f5'; rr(x, y + 410, w, 18, 9); ctx.fill(); ctx.fillStyle = CI; rr(x, y + 410, w * pg, 18, 9); ctx.fill(); }
+    });
+    if (pronto > 0) {
+      tela(cx0 - 410, 560, 820, 640, pronto, 'resultado.mp4', () => lance(cx0, 1010, .95, lento(prog(t, g + .5, SC[7])) * 1.05, 'vova', 1));
+      botao(cx0 - 140, 1240, 'baixar vídeo', prog(t, bx - .3, bx), prog(t, bx, bx + .3), CI);
+    }
+    exemplo(cx0, 1380, prog(lt, .4, .7));
+  },
+  // 7 · custo e limite grátis
+  (t, lt) => {
+    frase('5 créditos por segundo', 330, wt('5', 7) - .1, SC[8] - .2, 70, { t, hot: '5 créditos', cor: CI });
+    frase('8 s = 40 créditos', 480, wt('8', 7) - .1, SC[8] - .2, 82, { t, hot: '40 créditos', cor: CI });
+    lance(cx0, 1000, 1.05, lento((lt % 3) / 3) * 1.05, 'astro', prog(lt, .1, .4));
+    selo('cabe no grátis do dia', cx0, 1180, prog(t, wt('cabem', 7), wt('cabem', 7) + .3));
+    linhaTxt("com marca d'água · Kling 2.6 Standard", 1290, wt('marca', 7), SC[8] - .2, t, 40, 'rgba(244,248,255,.85)');
+  },
+  // 8 · cuidado
   (t, lt) => {
     neon3d(P.alerta, cx0, 560, 140 * back(prog(lt, .05, .5)), .3 * Math.sin(t * .9), .2, VERM, prog(lt, .05, .3));
-    frase('Personagem inventado', 820, wt('personagem', 7) - .1, SC[8] - .2, 72, { t, hot: 'inventado', cor: CI });
-    linhaTxt('ou foto com permissão', 920, wt('ou', 7), SC[8] - .2, t, 50);
-    linhaTxt('lance da TV pode tomar bloqueio', 1100, wt('lance', 7), SC[8] - .2, t, 48, VERM);
-    linhaTxt('(no nosso vídeo, o lance é simulação)', 1180, wt('bloqueio', 7), SC[8] - .2, t, 34, 'rgba(244,248,255,.7)');
+    frase('Personagem inventado', 820, wt('personagem', 8) - .1, SC[9] - .2, 72, { t, hot: 'inventado', cor: CI });
+    linhaTxt('ou foto com permissão', 920, wt('ou', 8), SC[9] - .2, t, 50);
+    linhaTxt('lance da TV pode tomar bloqueio', 1100, wt('lance', 8), SC[9] - .2, t, 48, VERM);
+    linhaTxt('(no nosso vídeo, o lance é simulação)', 1180, wt('bloqueio', 8), SC[9] - .2, t, 34, 'rgba(244,248,255,.7)');
   },
-  // 8 · logo + chamada
+  // 9 · logo + chamada
   (t, lt) => fim(t, lt, 'Salva e faz o seu', 'segue o canal'),
 ];
 </script></body></html>
