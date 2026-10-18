@@ -4,7 +4,7 @@
   "data": "2026-10-17",
   "horario": "22:30",
   "fora_da_grade": {
-    "aprovado": ""
+    "aprovado": "Diego, thread do vídeo viral do Özil, 18/10 01:17Z (ok para 22h30 de 17/10)"
   },
   "titulo": "Gol do Özil viral: como fazer com qualquer personagem (IA)",
   "descricao": "A trend do gol do Özil com qualquer personagem ⚽\nÉ o gol dele de 2016: a IA copia o movimento do lance e troca só quem faz a jogada. No CapCut é um modelo pronto: você só coloca a foto. Sem CapCut, dá pra fazer no Kling:\n1️⃣ Baixe o vídeo do gol e corte só a jogada, de 5 a 10 segundos, sem troca de câmera\n2️⃣ Escolha a foto do personagem: corpo inteiro, de frente e com fundo limpo\n3️⃣ Entre no site do Kling e abra Motion Control. Suba o vídeo do lance e a foto do personagem\n4️⃣ Escolha o modelo 2.6, no modo Standard, e clique em gerar. Depois é só baixar\nCusto: 5 créditos por segundo no 2.6 Standard. 8 segundos = 40 créditos, que cabem nos créditos grátis do dia (66 por dia, segundo guias de 2026; confira o seu saldo). No grátis sai com marca d'água e sem uso comercial.\n⚠️ Use personagem inventado ou foto com permissão. O lance é imagem de TV e pode tomar bloqueio por direito autoral.\nNo nosso vídeo o lance é uma simulação ilustrativa.\n\nFontes (conferido em 17/10/2026): kling.ai/quickstart/motion-control-user-guide · tabela de créditos do Motion Control (sume.com/blog/kling-motion-control-credits-per-second)\n\n#ia #kling #ozil #trend #futebol #inteligenciaartificial",
@@ -12,8 +12,13 @@
   "voz": "pt-BR-Chirp3-HD-Fenrir",
   "ep": "extra-ozil",
   "estilo": "neon",
-  "formato": "demo",
-  "imagens": [],
+  "formato": "livre",
+  "imagens": [
+    {
+      "id": "cenas-neon",
+      "descricao": "lance simulado e telas em traço neon"
+    }
+  ],
   "dados_que_envelhecem": [
     {
       "dado": "Kling Motion Control 2.6 Standard: 5 créditos por segundo (3.0 Standard: 9)",
@@ -120,5 +125,6 @@
         }
       ]
     }
-  ]
+  ],
+  "video": "videos/2026-10-17-extra-trend-ozil-neon.mp4"
 }
