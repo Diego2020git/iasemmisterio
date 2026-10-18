@@ -768,6 +768,30 @@
     "instagram": "6ad3b545e272c4918f973a04"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-17-12h-radar-ia-60s-neon.mp4"
+  },
+  {
+   "id": "2026-10-17-extra-trend-ozil",
+   "data": "2026-10-17",
+   "horario": "22:45",
+   "serie": "Automação do zero",
+   "titulo": "Gol do Özil viral: como fazer com qualquer personagem (IA)",
+   "narracao": "O gol do Özil, de 2016, viralizou de novo. Agora com qualquer personagem no lugar dele. A inteligência artificial copia o movimento do lance e troca só quem faz a jogada. No CapCut é um modelo pronto: você só coloca a foto. Sem CapCut, dá pra fazer no Kling, de graça. Um: baixe o vídeo do gol e corte só a jogada, de cinco a dez segundos, sem troca de câmera. Dois: escolha a foto do personagem. Corpo inteiro, de frente e com fundo limpo. Três: entre no site do Kling e abra Motion Control. Suba o vídeo do lance e a foto do personagem. Quatro: escolha o modelo dois ponto seis, no modo Standard, e clique em gerar. Depois é só baixar. São cinco créditos por segundo. Oito segundos dão quarenta créditos, e cabem no grátis do dia, com marca d'água. Use personagem inventado ou foto com permissão. O lance é da TV e pode tomar bloqueio. Salva pra fazer o seu e segue o canal.",
+   "video": "videos/2026-10-17-extra-trend-ozil-neon.mp4",
+   "registro": {
+    "tema": "extra: trend do gol do Özil, troca de personagem com Kling Motion Control",
+    "chaves": [
+     "ozil",
+     "trend",
+     "motion control"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad41e880a208cb32345fa4b",
+    "instagram": "6ad41e880a208cb32345fa8c"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-yh5zjn/videos/2026-10-17-extra-trend-ozil-neon.mp4"
   }
  ]
 }
