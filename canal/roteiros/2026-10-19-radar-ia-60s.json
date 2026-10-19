@@ -2,7 +2,7 @@
  "id": "2026-10-19-radar-ia-60s",
  "serie": "Radar IA",
  "data": "2026-10-19",
- "horario": "12:00",
+ "horario": "15:30",
  "titulo": "Radar IA: DeepSeek cria projetos, GPT-6 Pro com agentes e Nemotron",
  "descricao": "Radar IA de hoje 📡\n1️⃣ DeepSeek V4.1 Flash 1017 (17/10): atualização que monta projetos inteiros, de joguinho a modelo 3D, mais rápido e com respostas mais curtas. Já está no site e no app do DeepSeek (chat grátis) e tem pesos abertos (licença MIT). Na API, o preço não mudou.\n2️⃣ GPT-6 Pro no ChatGPT (16/10): respostas mais rápidas e vários agentes trabalhando em partes da mesma tarefa ao mesmo tempo. Só nos planos pagos Pro (liberação gradual).\n3️⃣ NVIDIA Nemotron 3.5 Super VL (15/10): modelo aberto que lê imagem e texto, feito para agentes. Pesos grátis para baixar no Hugging Face; para rodar precisa de computador potente.\n\nTeste hoje (grátis): no chat do DeepSeek, peça \"Crie um jogo da cobrinha que rode no navegador, num arquivo HTML só.\"\n\nFontes oficiais (conferidas em 19/10/2026): api-docs.deepseek.com/news/news261017 · api-docs.deepseek.com/updates · deepseek.com/en/download · help.openai.com/en/articles/6825453-chatgpt-release-notes · blogs.nvidia.com/blog/nemotron-3-5-super-vl\n\n#ia #inteligenciaartificial #deepseek #chatgpt #nvidia #noticiasdeia",
  "comentario_fixado": null,
@@ -111,5 +111,8 @@
    "id": "todas",
    "origem": "gerada por código (kit neon)"
   }
- ]
+ ],
+ "fora_da_grade": {
+  "aprovado": "Diego, thread de retenção 19/10 18:07Z (relay do coordenador)"
+ }
 }
