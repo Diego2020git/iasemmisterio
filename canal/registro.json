@@ -843,6 +843,31 @@
     "instagram": "6ad4b2150a208cb32362c3c5"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-23-19h-agente-do-zero-04-neon.mp4"
+  },
+  {
+   "id": "2026-10-19-radar-ia-60s",
+   "data": "2026-10-19",
+   "horario": "15:30",
+   "serie": "Radar IA",
+   "titulo": "Radar IA: DeepSeek cria projetos, GPT-6 Pro com agentes e Nemotron",
+   "narracao": "O DeepSeek agora monta projeto inteiro, o GPT-6 Pro ganhou vários agentes juntos e a Envídia soltou um modelo aberto que lê imagem. São as três notícias de IA de hoje, no Radar IA. Um: o DeepSeek atualizou o modelo Flash. Agora ele cria projetos completos, de um joguinho a um modelo em 3D, mais rápido e com respostas mais curtas. Já está no site e no app, que são grátis. Dois: no ChatGPT, o GPT-6 Pro ficou mais rápido e divide uma tarefa entre vários agentes trabalhando ao mesmo tempo. Mas é só pra quem paga o plano Pro. Três: a Envídia lançou o Nemotron três ponto cinco, um modelo aberto que entende imagem e texto, feito pra agentes. Baixar é grátis, mas precisa de um computador potente. Qual testar hoje? O DeepSeek, de graça: peça pra ele criar um jogo da cobrinha que roda no navegador. O pedido está na legenda. Segue pro Radar IA todo dia ao meio-dia.",
+   "video": "videos/2026-10-19-12h-radar-ia-60s-neon.mp4",
+   "registro": {
+    "tema": "radar IA 19/10: DeepSeek V4.1 Flash 1017, GPT-6 Pro agentes paralelos, Nemotron 3.5 Super VL",
+    "chaves": [
+     "deepseek v4.1 flash 1017",
+     "gpt-6 pro agentes paralelos",
+     "nemotron 3.5",
+     "radar 19/10"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ad65cc44771e1910a96fb41",
+    "instagram": "6ad65cc44771e1910a96fb6c"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-19-12h-radar-ia-60s-neon.mp4"
   }
  ]
 }
