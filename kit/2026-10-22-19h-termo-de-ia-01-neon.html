@@ -12,12 +12,12 @@ html,body{margin:0;background:#000}canvas{display:block}
 <script src="neon-kit.js"></script>
 <script src="neon-extra.js"></script>
 <script>
-// 22/10/2026 · 19h · Termo de IA #1: RAG (a IA consulta seus documentos), teste no NotebookLM. Neon.
+// 22/10/2026 · 19h · Termo de IA #1: RAG (a IA consulta seus documentos), teste no Gemini Notebook (antigo NotebookLM). Neon.
 const T0 = TEMPOS.cenas;
 const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
 const DURATION = SC[7], IMPACTO = SC[6] + .4;
 const COR = [AZ, CI, AZ, CI, IN, CI, AZ];
-const HITS = [wt('pdf', 0), wt('rag', 0), wt('busca', 1), wt('notebooklm', 2), wt('pdf', 3), wt('prazos', 4), wt('agora', 5)];
+const HITS = [wt('pdf', 0), wt('rag', 0), wt('busca', 1), wt('notebook', 2), wt('pdf', 3), wt('prazos', 4), wt('agora', 5)];
 const CLIQUES = [];
 const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
 const PEDIDO = ['Quais são os prazos citados', 'neste documento? Mostre de', 'onde tirou cada um.'];
@@ -39,12 +39,13 @@ const S = [
     linhaTxt('a IA consulta seus documentos', 980, b, SC[2] - .2, t, 46, CI);
     linhaTxt('e só depois responde', 1060, wt('responder', 1) - .2, SC[2] - .2, t, 46);
   },
-  // 2 · passo 1: NotebookLM, caderno novo
+  // 2 · passo 1: Gemini Notebook, caderno novo
   (t, lt) => {
     numero(1, 300, SC[2], SC[3] - .2, t);
-    frase('NotebookLM', 470, wt('notebooklm', 2) - .1, SC[3] - .2, 84, { t, hot: 'LM', cor: CI });
-    selo('grátis', cx0, 590, prog(t, wt('gratis', 2) - .1, wt('gratis', 2) + .2));
-    janela(700, 380, prog(lt, .1, .4), 'NotebookLM', (x, y, w) => {
+    frase('Gemini Notebook', 470, wt('notebook', 2) - .1, SC[3] - .2, 76, { t, hot: 'Notebook', cor: CI });
+    linhaTxt('o antigo NotebookLM', 560, wt('antigo', 2) - .1, SC[3] - .2, t, 36, 'rgba(244,248,255,.75)');
+    selo('grátis', cx0, 640, prog(t, wt('gratis', 2) - .1, wt('gratis', 2) + .2));
+    janela(700, 380, prog(lt, .1, .4), 'Gemini Notebook', (x, y, w) => {
       const c = prog(t, wt('caderno', 2) - .2, wt('caderno', 2) + .3);
       neon3d(P.legenda, x + w / 2 - 40, y + 110, 70 * back(c), 0, .2, AZ, c);
       txt('caderno novo', x + w / 2 - 40, y + 220, ARC, 40, '#1b2440', { align: 'center', weight: 600, alpha: c });
@@ -65,7 +66,7 @@ const S = [
   (t, lt) => {
     numero(3, 300, SC[4], SC[5] - .2, t);
     frase('Pergunte', 470, wt('pergunte', 4) - .1, SC[5] - .2, 84, { t, hot: 'Pergunte', cor: CI });
-    janela(600, 640, prog(lt, .1, .4), 'NotebookLM', (x, y, w) => {
+    janela(600, 640, prog(lt, .1, .4), 'Gemini Notebook', (x, y, w) => {
       PEDIDO.forEach((l, k) => txt(l, x, y + 30 + k * 60, ARC, 36, '#1b2440', { weight: 600, alpha: prog(t, SC[4] + .4 + k * .4, SC[4] + .7 + k * .4) }));
       const r = prog(t, wt('legenda', 4) - .8, wt('legenda', 4) - .4);
       if (r > 0) { ctx.save(); ctx.globalAlpha *= r; ctx.fillStyle = '#dbe6ff'; rr(x, y + 230, w - 20, 210, 18); ctx.fill();
