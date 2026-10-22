@@ -1,0 +1,104 @@
+{
+  "id": "2026-10-16-faca-com-ia",
+  "serie": "Faça com IA",
+  "data": "2026-10-16",
+  "horario": "12:00",
+  "formato": "curto",
+  "refaz": "06",
+  "teste": "Teste controlado de retenção 1 (Diego, 11/10/2026): refaz o vídeo 06 mudando só o gancho (resultado pronto no quadro 1) e o ritmo (36 s para cerca de 20 s). Tema, identidade Raio-X, legenda e CTA iguais. Comparar com o 06 (IG: 40 views, 3,1 s de tempo médio, 24% passaram de 3 s).",
+  "titulo": "Carrossel pronto em 10 minutos com IA (e de graça)",
+  "descricao": "Carrossel pronto em 10 minutos, de graça 📲\n1️⃣ ChatGPT escreve os 7 slides (prompt abaixo)\n2️⃣ Canva: escolha um modelo de carrossel e cole uma frase por slide\n3️⃣ Troque pras cores da sua marca, baixe em PNG e poste\nChatGPT e Canva têm plano grátis (com limites de uso).\n\nPrompt (troque o que está entre colchetes):\nCrie o texto de um carrossel de 7 slides para o Instagram sobre [TEMA], para [PÚBLICO]. Slide 1: um gancho com no máximo 8 palavras. Slides 2 a 6: uma ideia prática por slide, com no máximo 20 palavras. Slide 7: uma chamada para salvar e seguir. Linguagem simples.\n\nQual tema você faria primeiro? Me conta aqui embaixo.\n\nFonte: chatgpt.com e canva.com (sites oficiais), plano grátis conferido em 07/10/2026 e 11/10/2026.\n\n#carrossel #instagram #inteligenciaartificial #chatgpt #canva #ia",
+  "hashtags": [
+    "carrossel",
+    "instagram",
+    "inteligenciaartificial",
+    "chatgpt",
+    "canva",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "vidIQ em 07/10/2026 (roteiro 06): 'como criar carrossel para instagram com ia', 15,3 mil buscas/mês, +240%, competição 17. Tema já validado; este vídeo é teste de formato."
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "ChatGPT tem plano grátis",
+      "fonte": "https://chatgpt.com",
+      "conferido": "2026-10-11"
+    },
+    {
+      "dado": "Canva tem plano grátis",
+      "fonte": "https://www.canva.com",
+      "conferido": "2026-10-07"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "carrossel para instagram com ia (versão curta, teste de retenção)",
+    "chaves": [
+      "carrossel",
+      "instagram",
+      "slides",
+      "canva"
+    ]
+  },
+  "video": "videos/2026-10-16-12h-carrossel-curto-raiox.mp4",
+  "fonte_html": "kit/2026-10-16-12h-carrossel-curto-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "06B",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Carrossel pronto em dez minutos. E de graça.",
+          "legenda": "Carrossel pronto em 10 minutos. E de graça."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O ChatGPT escreve os sete slides.",
+          "legenda": "O ChatGPT escreve os 7 slides."
+        },
+        {
+          "fala": "O pedido pronto, o prompt, está na legenda.",
+          "legenda": "O pedido pronto, o prompt, está na legenda."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "No Canva você escolhe um modelo de carrossel e cola uma frase em cada slide.",
+          "legenda": "No Canva você escolhe um modelo de carrossel e cola uma frase em cada slide."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Troca pras cores da sua marca, baixa em PNG e posta.",
+          "legenda": "Troca pras cores da sua marca, baixa em PNG e posta."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Os dois têm plano grátis.",
+          "legenda": "Os dois têm plano grátis."
+        },
+        {
+          "fala": "Salva esse vídeo e me segue pra mais.",
+          "legenda": "Salva esse vídeo e me segue pra mais."
+        }
+      ]
+    }
+  ]
+}

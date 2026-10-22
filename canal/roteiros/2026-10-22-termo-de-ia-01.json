@@ -1,0 +1,100 @@
+{
+ "id": "2026-10-22-termo-de-ia-01",
+ "serie": "Termo de IA",
+ "data": "2026-10-22",
+ "horario": "19:00",
+ "titulo": "Termo de IA: RAG, quando a IA responde com os seus documentos",
+ "descricao": "Termo de IA #1: RAG 📚\nRAG é quando a IA consulta os seus documentos antes de responder, em vez de responder só de memória. Assim ela erra menos e mostra de onde tirou a resposta.\nTeste grátis no Gemini Notebook (o antigo NotebookLM):\n1️⃣ Em notebooklm.google.com, crie um caderno novo\n2️⃣ Adicione um PDF seu como fonte (manual, contrato, apostila)\n3️⃣ Pergunte: \"Quais são os prazos citados neste documento? Mostre de onde tirou cada um.\"\nA resposta vem com a citação do trecho.\nCusto: o Gemini Notebook tem plano grátis, com limite de 100 cadernos, 50 fontes por caderno e 50 perguntas por dia.\nPróxima quinta: token.\n\nFontes: notebooklm.google.com e support.google.com/notebooklm/answer/16213268, conferidos em 21/10/2026.\n\n#ia #rag #gemininotebook #inteligenciaartificial #termosdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "t1",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "A IA respondeu citando o seu PDF. Isso tem nome: RAG.",
+     "legenda": "A IA respondeu citando o seu PDF. Isso tem nome: RAG."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Termo de IA. RAG é a IA fazendo uma busca nos seus documentos antes de responder.",
+     "legenda": "Termo de IA. RAG é a IA fazendo uma busca nos seus documentos antes de responder."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no Gemini Notebook, antigo NotebookLM, grátis, crie um caderno.",
+     "legenda": "Um: no Gemini Notebook, antigo NotebookLM, grátis, crie um caderno."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: adicione um PDF seu como fonte. Manual, contrato ou apostila.",
+     "legenda": "Dois: adicione um PDF seu como fonte. Manual, contrato ou apostila."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: pergunte quais prazos o documento cita. O pedido completo está na legenda.",
+     "legenda": "Três: pergunte quais prazos o documento cita. O pedido completo está na legenda."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Antes, ela chutava. Agora cita o seu arquivo. Plano grátis, com limite de fontes.",
+     "legenda": "Antes, ela chutava. Agora cita o seu arquivo. Plano grátis, com limite de fontes."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Quinta que vem: token, os pedaços de texto que a IA lê.",
+     "legenda": "Quinta que vem: token, os pedaços de texto que a IA lê."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "NotebookLM agora se chama Gemini Notebook (desde 16/07/2026); plano grátis: 100 cadernos, 50 fontes por caderno, 50 perguntas por dia; respostas com citação",
+   "fonte": "https://support.google.com/notebooklm/answer/16213268",
+   "conferido": "2026-10-21"
+  },
+  {
+   "dado": "Renomeação NotebookLM → Gemini Notebook",
+   "fonte": "https://workspaceupdates.googleblog.com/2026/07/notebooklm-now-gemini-notebook.html",
+   "conferido": "2026-10-21"
+  }
+ ],
+ "registro": {
+  "tema": "termo de IA #1: RAG (IA que consulta seus documentos) com Gemini Notebook",
+  "chaves": [
+   "rag",
+   "termo de ia",
+   "citação de fonte",
+   "documentos próprios"
+  ]
+ },
+ "video": "videos/2026-10-22-19h-termo-de-ia-01-neon-v2.mp4",
+ "fonte_html": "kit/2026-10-22-19h-termo-de-ia-01-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

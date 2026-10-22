@@ -1,0 +1,97 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-16-19h-gemini-assistente.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="raiox-motion.js"></script>
+<script>
+// 16/10/2026 · Agente na Prática · Gemini de assistente pessoal: Apps conectados, @Agenda e @Gmail. Formato curto. Tempos em TEMPOS (voz.py).
+const EP = '23';
+const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
+// chave liga/desliga em traço 2D
+function toggle(x, y, on, a) {
+  if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha *= clamp(a); ctx.lineWidth = 4; ctx.strokeStyle = on > .5 ? COL.cyan : COL.dim;
+  rr(x, y - 30, 110, 60, 30); ctx.stroke();
+  ctx.fillStyle = on > .5 ? COL.cyan : COL.dim; ctx.beginPath(); ctx.arc(x + 30 + 50 * easeInOut(clamp(on)), y, 20, 0, 7); ctx.fill();
+  ctx.restore();
+}
+// balão do pedido, com texto digitado
+function pedido(str, p, y) {
+  panel(M, y, W - 2 * M, 130, clamp(p * 3), 'você pede');
+  txt(typed(str, p), M + 40, y + 82, ARC, 42, COL.ink, { weight: 600 });
+}
+// agenda da semana em traço: 5 colunas, evento aparece em sex 10h
+function agenda(x, y, w, h, a, ev) {
+  if (a <= 0) return;
+  const dias = ['SEG', 'TER', 'QUA', 'QUI', 'SEX'], cw = w / 5;
+  ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.strokeStyle = COL.ink; ctx.lineWidth = 3;
+  draw(a, 2 * (w + h), () => ctx.strokeRect(x, y, w, h));
+  for (let i = 1; i < 5; i++) { ctx.beginPath(); ctx.moveTo(x + i * cw, y); ctx.lineTo(x + i * cw, y + h); ctx.stroke(); }
+  dias.forEach((d, i) => txt(d, x + i * cw + cw / 2, y + 50, ARC, 28, i === 4 ? COL.cyan : COL.dim, { align: 'center', weight: 600, ls: 2 }));
+  if (ev > 0) {
+    const e = easeInOut(clamp(ev)), bx = x + 4 * cw + 12, by = y + 110, bw = cw - 24, bh = 130 * e;
+    ctx.fillStyle = COL.cyan; ctx.fillRect(bx, by, bw, bh);
+    txt('10h', bx + bw / 2, by + 52, EXP, 34, COL.black, { align: 'center', alpha: prog(ev, .6, 1) });
+    txt('dentista', bx + bw / 2, by + 100, ARC, 24, COL.black, { align: 'center', weight: 600, alpha: prog(ev, .6, 1) });
+  }
+  ctx.restore();
+}
+
+// 0 · gancho: no quadro 1 o pedido já virou compromisso na agenda
+CAMS[0] = () => [[0, 0, 30, 1.05, 0], [cue('gemini') - .3, 0, 0, 1, 0]];
+function s0(t, lt) {
+  kinetic([{ w: 'Assistente', t: cue('assistente') }, { w: 'pessoal', t: cue('pessoal') }, { w: 'de graça', t: cue('graca') }], M, 230, lt, { size: 66, hl: [2], maxW: 900 });
+  pedido('@Agenda marca dentista sexta 10h', 1, 430);
+  agenda(M, 680, W - 2 * M, 420, 1, 1);
+  toolCard(W / 2, 1240, 'Gemini', 'app do Google · plano grátis', prog(lt, cue('gemini') - .2, cue('gemini') + .3), COL.blue);
+}
+// 1 · configurações: Apps conectados, liga Gmail e Agenda
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('agenda'), 0, 40, 1.04, 0]];
+function s1(t, lt) {
+  title(['Liga uma vez'], lt, .05, 200, 88, 0);
+  panel(M, 420, W - 2 * M, 460, prog(lt, 0, .4), 'configurações › apps conectados');
+  const rows = [['Gmail', 'gmail'], ['Agenda', 'agenda']];
+  rows.forEach(([n, w], i) => {
+    const y = 560 + i * 200, a = prog(lt, cue('apps') - .2 + i * .15, cue('conectados') + .2 + i * .15);
+    txt(n, M + 50, y + 14, EXP, 48, COL.ink, { alpha: a });
+    toggle(W - M - 170, y, prog(lt, cue(w) - .1, cue(w) + .3), a);
+    if (i === 0) { ctx.save(); ctx.strokeStyle = COL.major; ctx.lineWidth = 2; ctx.globalAlpha = a; ctx.beginPath(); ctx.moveTo(M + 40, y + 100); ctx.lineTo(W - M - 40, y + 100); ctx.stroke(); ctx.restore(); }
+  });
+  stamp(W / 2, 1000, 'pronto', prog(lt, cueEnd('agenda'), cueEnd('agenda') + .3), 36);
+}
+// 2 · @Agenda: o pedido vira evento na sexta
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('dentista'), 0, 40, 1.04, 0]];
+function s2(t, lt) {
+  title(['Peça com @'], lt, .05, 200, 92, 0);
+  pedido('@Agenda marca dentista sexta 10h', prog(lt, cue('agenda') - .2, cueEnd('10h') + .1), 400);
+  agenda(M, 660, W - 2 * M, 420, prog(lt, cue('marca') - .3, cue('marca') + .4), prog(lt, cue('sexta'), cueEnd('10h') + .3));
+}
+// 3 · @Gmail: acha o e-mail do boleto
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('boleto'), 0, 40, 1.04, 0]];
+function s3(t, lt) {
+  title(['Acha o e-mail'], lt, .05, 200, 88, 0);
+  pedido('@Gmail acha o boleto da luz', prog(lt, cue('gmail') - .2, cueEnd('luz') + .1), 400);
+  envelope(W / 2 - 140, 650, 280, 190, prog(lt, cue('acha') - .2, cue('e-mail') + .3));
+  panel(M, 930, W - 2 * M, 220, prog(lt, cue('boleto') - .2, cue('boleto') + .3), 'achei');
+  txt(typed('Conta de luz · vence 20/10', prog(lt, cue('luz') - .1, cue('luz') + .5)), M + 40, 1030, ARC, 42, COL.ink, { weight: 600 });
+  txt(typed('R$ 230 · boleto em anexo', prog(lt, cue('luz') + .2, cue('luz') + .7)), M + 40, 1100, ARC, 36, COL.cyan, { weight: 600 });
+}
+// 4 · plano grátis, conta pessoal; card final
+CAMS[4] = () => [[0, 0, 30, 1.04, 0], [cue('salva'), 0, 0, 1, 0]];
+function s4(t, lt) {
+  kinetic([{ w: 'Plano grátis', t: cue('plano') }], M, 260, lt, { size: 80, hl: [0], maxW: 1000 });
+  kinetic([{ w: 'conta pessoal', t: cue('conta') }], M, 370, lt, { size: 64, maxW: 1000 });
+  toolCard(W / 2, 640, 'Gemini', 'Gmail + Agenda conectados', prog(lt, .1, .5), COL.blue);
+  stamp(W / 2, 860, 'R$ 0', prog(lt, cue('gratis') - .1, cue('gratis') + .25), 44);
+  endCard(t, SC[4] + cue('salva') - .25);
+}
+const SCENES = [s0, s1, s2, s3, s4];
+window.DURATION = TEMPOS.duracao;
+</script>
+</body></html>

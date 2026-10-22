@@ -1,0 +1,122 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-16-12h-carrossel-curto.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="raiox-motion.js"></script>
+<script>
+// Teste de retenção 1: refaz o vídeo 06 (carrossel com IA). Muda só o gancho e o ritmo (36 s -> 22 s).
+// Gancho: o carrossel PRONTO já está na tela no quadro 1 e começa a deslizar; nada de planta vazia nem "olha como".
+const EP = '06B';
+const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
+const BRAND = '#ff5a3c';
+const SLIDES = [['VOCÊ ESTÁ', 'POSTANDO', 'ERRADO'], ['ERRO 1:', 'POST SEM', 'GANCHO'], ['ERRO 2:', 'TEXTO', 'DEMAIS'], ['ERRO 3:', 'SEM', 'CONSTÂNCIA']];
+
+// um slide pronto (4:5) com a cor da marca; i = qual slide
+function slideCard(x, y, w, h, i, a = 1) {
+  if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha *= a;
+  ctx.fillStyle = i === 0 ? BRAND : COL.paper; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = COL.ink; ctx.lineWidth = 4; ctx.strokeRect(x, y, w, h);
+  const fs = w * .1;
+  SLIDES[i].forEach((l, k) => txt(l, x + w * .08, y + h * .3 + k * fs * 1.25, EXP, fs, i === 0 ? '#ffffff' : (k === 2 ? COL.cyan : COL.ink)));
+  txt(i === 0 ? 'arrasta pro lado →' : `${i + 1}/7`, x + w * .08, y + h - w * .1, ARC, w * .055, i === 0 ? '#ffffff' : COL.dim, { weight: 600 });
+  ctx.restore();
+}
+
+// 0 · gancho: título inteiro + carrossel pronto no quadro 1, deslizando sozinho
+CAMS[0] = () => [[0, 0, 30, 1.04, 0], [cue('graça'), 0, 0, 1, 0]];
+function s0(t, lt) {
+  kinetic([{ w: 'Carrossel', t: cue('carrossel') }, { w: 'pronto', t: cue('pronto') }, { w: 'em 10 min', t: cue('10') }], M, 230, lt, { size: 84, hl: [2], maxW: 900 });
+  const x = 268, y = 495, w = 544, h = 680;
+  const sw = easeInOut(prog(lt, .6, .95)) + easeInOut(prog(lt, 1.3, 1.65)) + easeInOut(prog(lt, 1.95, 2.3)) - 3 * easeInOut(prog(lt, 2.4, 2.8)); // 3 arrastadas e volta pro slide 1 (capa)
+  ctx.save(); ctx.beginPath(); ctx.rect(x - 6, y - 6, w + 12, h + 12); ctx.clip();
+  for (let i = 0; i < 4; i++) slideCard(x + (i - sw) * (w + 40), y, w, h, i);
+  ctx.restore();
+  for (let i = 0; i < 7; i++) { ctx.fillStyle = Math.round(sw) === i ? COL.cyan : COL.dim; ctx.beginPath(); ctx.arc(W / 2 - 90 + i * 30, y + h + 45, i === Math.round(sw) ? 9 : 6, 0, 7); ctx.fill(); }
+  dimLine(x, x + w, y + h + 110, '7 slides · 10 min', prog(lt, cue('minutos') - .2, cue('minutos') + .2));
+  stamp(W / 2, 1360, 'de graça', prog(lt, cue('graça') - .1, cue('graça') + .25), 40);
+}
+// 1 · o ChatGPT escreve os 7 slides; prompt na legenda
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('pedido'), 0, 30, 1.03, 0]];
+function s1(t, lt) {
+  toolCard(W / 2, 300, 'ChatGPT', 'chatgpt.com · tem plano grátis', prog(lt, 0, .3), '#10a37f');
+  const rows = ['Você está postando errado', 'Erro 1: post sem gancho', 'Erro 2: texto demais', 'Erro 3: sem constância', 'Erro 4: ignorar comentários', 'Erro 5: não olhar os dados', 'Salva e me segue'];
+  const t0 = cue('escreve') - .1, t1 = cue('slides') + .3;
+  panel(M, 430, W - 2 * M, 560, prog(lt, 0, .4), 'resposta · 7 slides');
+  rows.forEach((r, i) => {
+    const p = prog(lt, t0 + i * (t1 - t0) / 7, t0 + (i + 1) * (t1 - t0) / 7); if (p <= 0) return;
+    const yy = 510 + i * 68;
+    txt(String(i + 1).padStart(2, '0'), M + 40, yy, EXP, 30, COL.cyan, { alpha: p });
+    txt(typed(r, p * 1.6), M + 120, yy, ARC, 36, i === 0 ? COL.cyan : COL.ink, { weight: 600 });
+  });
+  annot(M + 160 + measure(rows[0], ARC, 36, 600), 500, 940, 590, 'gancho', prog(lt, cue('slides'), cue('slides') + .3), 'L', COL.cyan);
+  odometer(Math.min(7, 7 * prog(lt, t0, t1)), 1, W - M - 90, 375, 70);
+  stamp(W / 2, 1110, 'prompt na legenda', prog(lt, cue('prompt') - .1, cue('prompt') + .25), 40);
+  annot(W / 2, 1160, W / 2, 1340, '', prog(lt, cue('legenda') - .1, cue('legenda') + .3), 'R', COL.cyan);
+}
+// 2 · Canva: modelo de carrossel e uma frase por slide, colada no ritmo da fala
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('cola'), 0, 30, 1.04, 0]];
+function s2(t, lt) {
+  toolCard(W / 2, 300, 'Canva', 'canva.com · tem plano grátis', prog(lt, 0, .3), '#00c4cc');
+  const x = 290, y = 450, w = 500, h = 625;
+  panel(x, y, w, h, prog(lt, cue('modelo') - .3, cue('modelo') + .3), 'modelo · carrossel');
+  const q = prog(lt, cue('modelo'), cue('modelo') + .4);
+  if (q > 0) {
+    ctx.save(); ctx.globalAlpha = q; ctx.strokeStyle = COL.dim; ctx.lineWidth = 3; ctx.setLineDash([12, 10]);
+    ctx.strokeRect(x + 40, y + 70, w - 80, 260); ctx.setLineDash([]);
+    txt('1/7', x + 40, y + h - 50, ARC, 28, COL.dim, { weight: 600 }); txt('→', x + w - 40, y + h - 50, EXP, 34, COL.cyan, { align: 'right' });
+    ctx.restore();
+  }
+  const f = prog(lt, cue('cola') - .05, cue('slide') + .2);
+  SLIDES[0].forEach((l, k) => { const p = prog(f, k / 3, (k + 1) / 3); txt(typed(l, p), x + 60, y + 150 + k * 72, EXP, 50, COL.ink); });
+  annot(x + w - 20, y + 200, 960, y + 470, 'uma frase', prog(lt, cue('frase') - .1, cue('frase') + .3), 'L', COL.cyan);
+  dimLine(x, x + w, y + h + 70, '1080 × 1350 · 4:5', prog(lt, cue('carrossel') - .1, cue('carrossel') + .3));
+}
+// 3 · cor da marca, PNG e postar: três mudanças visuais em 3,5 s
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('baixa'), 0, 30, 1.03, 0], [cue('posta'), 0, 0, 1, 0]];
+function s3(t, lt) {
+  const brand = prog(lt, cue('marca') - .2, cue('marca') + .2);
+  const sx = M, sy = 260, sw = 380, sh = 475;
+  if (brand > 0) { ctx.fillStyle = BRAND; ctx.globalAlpha = brand; ctx.fillRect(sx, sy, sw, sh); ctx.globalAlpha = 1; }
+  panel(sx, sy, sw, sh, prog(lt, 0, .3), 'slide 01');
+  SLIDES[0].forEach((l, k) => txt(l, sx + 30, sy + 150 + k * 52, EXP, 38, brand > .5 ? '#ffffff' : COL.ink));
+  const pal = ['#2f6bff', '#2ee6ff', BRAND, '#ffd23f', '#3ddc84'];
+  pal.forEach((c, i) => {
+    const a = prog(lt, cue('cores') - .3 + i * .06, cue('cores') + i * .06); if (a <= 0) return;
+    const px = 560 + (i % 3) * 140, py = 300 + Math.floor(i / 3) * 140;
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = c; ctx.fillRect(px, py, 100, 100);
+    if (i === 2 && brand > 0) { ctx.strokeStyle = COL.ink; ctx.lineWidth = 4; ctx.strokeRect(px - 10, py - 10, 120, 120); }
+    ctx.restore();
+  });
+  txt('PALETA DA SUA MARCA', 560, 610, ARC, 26, COL.dim, { weight: 600, ls: 4, alpha: prog(lt, cue('cores'), cue('cores') + .3) });
+  ruler(M, 850, W - 2 * M, easeInOut(prog(lt, cue('baixa') - .1, cue('png') + .3)), 'baixando PNG');
+  for (let i = 0; i < 7; i++) {
+    const p = prog(lt, cue('posta') - .3 + i * .07, cue('posta') + .1 + i * .07); if (p <= 0) continue;
+    const x = M + i * 131, y = 1000 - (1 - easeOut(p)) * 60;
+    ctx.save(); ctx.globalAlpha = p;
+    if (i === 0) { ctx.fillStyle = BRAND; ctx.fillRect(x, y, 112, 140); }
+    ctx.strokeStyle = COL.ink; ctx.lineWidth = 4; ctx.strokeRect(x, y, 112, 140);
+    txt(String(i + 1).padStart(2, '0'), x + 56, y + 180, EXP, 26, COL.cyan, { align: 'center' });
+    ctx.restore();
+  }
+  stamp(W / 2, 1300, 'postado', prog(lt, cue('posta') + .5, cue('posta') + .8), 40);
+}
+// 4 · plano grátis e card final
+CAMS[4] = () => [[0, 0, 20, 1.03, 0], [cue('salva'), 0, 0, 1, 0]];
+function s4(t, lt) {
+  kinetic([{ w: 'Plano', t: cue('plano') }, { w: 'grátis', t: cue('grátis') }], M, 260, lt, { size: 96, hl: [1], maxW: 900 });
+  toolCard(W / 2, 640, 'ChatGPT', 'chatgpt.com · plano grátis', prog(lt, 0, .3), '#10a37f');
+  toolCard(W / 2, 820, 'Canva', 'canva.com · plano grátis', prog(lt, cue('dois') - .1, cue('dois') + .2), '#00c4cc');
+  stamp(W / 2, 1020, 'os dois de graça', prog(lt, cue('grátis') - .1, cue('grátis') + .25), 40);
+  endCard(t, SC[4] + cue('salva') - .25);
+}
+const SCENES = [s0, s1, s2, s3, s4];
+window.DURATION = TEMPOS.duracao;
+</script>
+</body></html>

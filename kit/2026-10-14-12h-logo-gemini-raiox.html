@@ -1,0 +1,81 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-14-12h-logo-gemini.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="raiox-motion.js"></script>
+<script>
+// 14/10/2026 · Faça com IA · logo do seu negócio com o Gemini, de graça. Tempos em TEMPOS (voz.py).
+const EP = '19';
+const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
+// logo de exemplo em traço: casinha (Doce Lar) com um cupcake no lugar da porta; v = variação (0 completo, 1 só símbolo)
+function logoDraft(cx, cy, s, a, color = COL.ink, v = 0) {
+  if (a <= 0) return;
+  ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 5; ctx.lineJoin = 'round';
+  draw(a, 9 * s, () => {
+    ctx.beginPath(); ctx.moveTo(cx - s * .8, cy - s * .1); ctx.lineTo(cx, cy - s * .8); ctx.lineTo(cx + s * .8, cy - s * .1); ctx.stroke();
+    ctx.strokeRect(cx - s * .6, cy - s * .1, s * 1.2, s * .9);
+    ctx.beginPath(); ctx.arc(cx, cy + s * .25, s * .22, Math.PI, 0); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx - s * .22, cy + s * .25); ctx.lineTo(cx - s * .15, cy + s * .6); ctx.lineTo(cx + s * .15, cy + s * .6); ctx.lineTo(cx + s * .22, cy + s * .25); ctx.stroke();
+  });
+  ctx.restore();
+  if (!v) txt('DOCE LAR', cx, cy + s * 1.2, EXP, s * .38, color, { align: 'center', alpha: prog(a, .6, 1) });
+}
+
+// 0 · gancho (versão curta, 12/10): o logo pronto já está no quadro 1, com as cores escolhidas
+CAMS[0] = () => [[0, 0, 30, 1.04, 0], [cue('gemini'), 0, 0, 1, 0]];
+function s0(t, lt) {
+  kinetic([{ w: 'Seu logo', t: cue('logo') }, { w: 'com IA', t: cue('ia') }], M, 230, lt, { size: 100, hl: [1] });
+  panel(M + 120, 470, W - 2 * M - 240, 560, 1, 'logo pronto');
+  logoDraft(W / 2, 680, 200, 1, COL.cyan);
+  [['#e88aa8'], ['#8a5a3c']].forEach(([c], i) => { ctx.fillStyle = c; ctx.beginPath(); ctx.arc(W - M - 170, 560 + i * 90, 32 + 4 * Math.sin(lt * 4 + i), 0, 7); ctx.fill(); });
+  stamp(W / 2, 1110, 'de graça', prog(lt, cue('graça') - .1, cue('graça') + .25), 40);
+  toolCard(W / 2, 1270, 'Gemini', 'gemini.google.com · tem plano grátis', prog(lt, cue('gemini') - .1, cue('gemini') + .25), '#4285f4');
+}
+// 1 · as 4 informações: as 4 informações viram campos do pedido
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('cores'), 0, 30, 1.04, 0]];
+function s1(t, lt) {
+  title(['4 informações'], lt, 0, 200, 80, 0);
+  [['nome', 'NOME'], ['ramo', 'RAMO'], ['estilo', 'ESTILO'], ['cores', 'CORES']].forEach(([w, l], i) => {
+    const x = i % 2 ? W / 2 + 20 : M, y = i < 2 ? 470 : 800, a = prog(lt, cue(w) - .15, cue(w) + .4);
+    panel(x, y, W / 2 - M - 20, 260, prog(lt, i * .1, .4 + i * .1), 'campo ' + (i + 1));
+    txt(l, x + (W / 2 - M - 20) / 2, y + 140, EXP, 56, lt > cue(w) ? COL.cyan : COL.ink, { align: 'center', alpha: a });
+  });
+}
+// 2 · exemplo: o pedido é digitado e o logo aparece ao lado das cores
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('marrom'), 0, 30, 1.04, 0]];
+function s2(t, lt) {
+  title(['Exemplo'], lt, .05, 200, 92, 0);
+  fig('fig. 04 · o pedido', lt, .2, 320);
+  promptBox(M, 420, W - 2 * M, 'Cria um logo pra Doce Lar, uma confeitaria. Estilo minimalista, rosa e marrom.', prog(lt, 0, cue('marrom') + .4), t, 'você pede');
+  logoDraft(W / 2, 960, 170, prog(lt, cue('minimalista') - .1, cue('marrom') + .6), COL.ink);
+  [['rosa', '#e88aa8'], ['marrom', '#8a5a3c']].forEach(([w, c], i) => { const a = prog(lt, cue(w) - .1, cue(w) + .3); if (a > 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = c; ctx.beginPath(); ctx.arc(W - M - 60, 860 + i * 120, 40, 0, 7); ctx.fill(); ctx.restore(); } });
+}
+// 3 · ajuste: ajuste; o logo completo se transforma só no símbolo e troca de cor
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('símbolo'), 0, 30, 1.04, 0]];
+function s3(t, lt) {
+  title(['Ajusta'], lt, 0, 200, 92, 0);
+  const sym = prog(lt, cue('símbolo') - .1, cue('símbolo') + .4), cor = prog(lt, cue('cor') - .1, cue('cor') + .4);
+  logoDraft(W / 2, 760, 200 + 60 * easeInOut(sym), prog(lt, 0, .6), cor > .5 ? COL.cyan : COL.ink, sym > .5 ? 1 : 0);
+  [['símbolo', 'só o símbolo'], ['cor', 'outra cor']].forEach(([w, l], i) => {
+    const a = prog(lt, cue(w) - .1, cue(w) + .35);
+    txt('→ ' + l, M + 20, 1160 + i * 80, ARC, 40, lt > cue(w) ? COL.cyan : COL.ink, { weight: 600, alpha: a });
+  });
+}
+// 4 · fecha: prompt na legenda; card final
+CAMS[4] = () => [[0, 0, 30, 1.04, 0], [cue('legenda'), 0, 0, 1, 0]];
+function s4(t, lt) {
+  kinetic([{ w: 'Prompt', t: cue('prompt') }, { w: 'na legenda', t: cue('legenda') }], M, 230, lt, { size: 80, hl: [1], maxW: 1000 });
+  logoDraft(W / 2, 760, 200, prog(lt, 0, .5), COL.cyan);
+  stamp(W / 2, 1180, 'copia e cola', prog(lt, cue('legenda'), cue('legenda') + .3), 40);
+  endCard(t, SC[4] + cue('salva') - .25);
+}
+const SCENES = [s0, s1, s2, s3, s4];
+window.DURATION = TEMPOS.duracao;
+</script>
+</body></html>

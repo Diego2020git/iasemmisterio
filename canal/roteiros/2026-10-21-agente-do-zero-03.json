@@ -1,0 +1,95 @@
+{
+ "id": "2026-10-21-agente-do-zero-03",
+ "serie": "Agente do zero",
+ "data": "2026-10-21",
+ "horario": "19:00",
+ "titulo": "Agente do zero #3: as instruções do agente",
+ "descricao": "Agente do zero, episódio 3 📝\nAs instruções dizem quem o agente é, do que ele fala e do que não fala.\n1️⃣ Em aistudio.google.com, abra um chat novo e ache o campo System instructions\n2️⃣ Cole o pedido (troque pelo seu negócio):\n\"Você é o atendente da Padaria Sol, no WhatsApp. Responda em português, curto e com educação. Fale só sobre a padaria: produtos, horários, encomendas e entrega. Se perguntarem outra coisa, diga com gentileza que só pode ajudar com a padaria. Se não souber a resposta, diga que vai chamar alguém da equipe. Nunca invente preço nem horário.\"\n3️⃣ Teste no chat: pergunte o horário e depois pergunte de futebol. Ele deve recusar com educação.\nCusto: zero, é o mesmo AI Studio do episódio 2.\nEpisódio anterior: #2, a chave grátis do Gemini. Sexta: episódio 4, dar conhecimento ao agente.\n\nFonte: ai.google.dev/gemini-api/docs/pricing, conferido em 16/10/2026.\n\n#agentedeia #gemini #googleaistudio #prompt #whatsapp #ia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "z3",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Seu agente já sabe quem ele é e do que pode falar.",
+     "legenda": "Seu agente já sabe quem ele é e do que pode falar."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Agente do zero, episódio três. Sem instruções, a IA responde qualquer coisa.",
+     "legenda": "Agente do zero, episódio 3. Sem instruções, a IA responde qualquer coisa."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no Google AI Studio, abra um chat novo e ache o campo System instructions.",
+     "legenda": "Um: no Google AI Studio, abra um chat novo e ache o campo System instructions."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: cole o pedido: você é o atendente da Padaria Sol. Responda curto e só sobre a padaria.",
+     "legenda": "Dois: cole o pedido: você é o atendente da Padaria Sol. Responda curto e só sobre a padaria."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: teste. Pergunte o horário e depois sobre futebol. Ele deve recusar.",
+     "legenda": "Três: teste. Pergunte o horário e depois sobre futebol. Ele deve recusar."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Pronto: o jeito do agente está definido. Grátis, ainda no AI Studio.",
+     "legenda": "Pronto: o jeito do agente está definido. Grátis, ainda no AI Studio."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Sexta tem o episódio quatro: dar conhecimento ao agente.",
+     "legenda": "Sexta tem o episódio 4: dar conhecimento ao agente."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Google AI Studio grátis para testar modelos Flash",
+   "fonte": "https://ai.google.dev/gemini-api/docs/pricing",
+   "conferido": "2026-10-20"
+  }
+ ],
+ "registro": {
+  "tema": "agente do zero ep 3: instruções do agente (system instructions) no AI Studio",
+  "chaves": [
+   "system instructions",
+   "instruções",
+   "prompt de sistema",
+   "padaria"
+  ]
+ },
+ "video": "videos/2026-10-21-19h-agente-do-zero-03-neon.mp4",
+ "fonte_html": "kit/2026-10-21-19h-agente-do-zero-03-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

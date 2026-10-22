@@ -1,0 +1,97 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-17-radar-ia.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 17/10/2026 · 12h · Radar IA #1 (grade nova): GPT-6 grátis, Gemini 4 Argon pago, Claude Haiku 5.5 mais barato. Neon.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const COR = [AZ, CI, AZ, IN, CI, AZ, AZ];
+const HITS = [wt('graça', 0), wt('radar', 1), wt('gpt6', 2), wt('pago', 3), wt('90', 4), wt('gastos', 5)];
+const CLIQUES = [wt('peça', 5) + .1];
+const CPOS = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [900, 1340, 55, .2], [0, 0, 0, 0]];
+const CK = [[0, ...CPOS[0]]];
+CPOS.forEach((c, i) => { if (i) CK.push([SC[i] - .25, ...CPOS[i - 1]]); CK.push([SC[i] + .3, ...c]); });
+const PEDIDO = 'Monte um gráfico de pizza dos meus gastos do mês: aluguel 1500, mercado 800, transporte 300, lazer 200.';
+function fonte(str, t0, t1, t) { linhaTxt(str, 1560, t0, t1, t, 28, 'rgba(244,248,255,.6)'); }
+const S = [
+  // 0 · gancho: as três manchetes; a primeira já está na tela no quadro 1
+  (t, lt) => {
+    linhaTxt('RADAR IA · 17/10', 300, -1, SC[1] - .2, t, 34, CI);
+    frase('GPT-6 de graça', 620, -1, SC[1] - .2, 92, { t, hot: 'de graça', cor: CI });
+    frase('Gemini 4 pago', 860, wt('gemini', 0) - .1, SC[1] - .2, 92, { t, hot: 'pago' });
+    frase('Claude 90% mais barato', 1100, wt('claude', 0) - .1, SC[1] - .2, 76, { t, hot: '90%', cor: CI });
+  },
+  // 1 · o que é o radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, cy0 - 90, 220 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .3));
+    frase('Radar IA', cy0 + 230, wt('radar', 1) - .1, SC[2] - .2, 100, { t, hot: 'IA', cor: CI });
+    frase('3 notícias que mexem no seu bolso', cy0 + 350, wt('tres', 1) - .1, SC[2] - .2, 52, { t, hot: 'bolso' });
+  },
+  // 2 · GPT-6 no ChatGPT grátis, com gráfico e botões
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    frase('GPT-6 no ChatGPT grátis', 480, wt('gpt6', 2) - .1, SC[3] - .2, 66, { t, hot: 'grátis', cor: CI });
+    celular(cx0, 1030, .78, .15 * Math.sin(t * .6), prog(lt, .2, .5), (x, y, w, s) => {
+      let yy = y; yy += msg(x, yy, w, 'Gráfico dos meus gastos', true, prog(t, SC[2] + .5, SC[2] + .8), s);
+      const g = prog(t, wt('grafico', 2), wt('grafico', 2) + .8); if (g > 0) {
+        ctx.fillStyle = '#ffffff'; rr(x, yy, w * .8, 300 * s, 18 * s); ctx.fill();
+        [1500, 800, 300, 200].forEach((v, i) => { const bh = 220 * s * v / 1500 * ease(g); ctx.fillStyle = [AZ, CI, IN, '#0aa5c0'][i];
+          rr(x + 30 * s + i * 80 * s, yy + 260 * s - bh, 55 * s, bh, 8 * s); ctx.fill(); });
+        yy += 320 * s; }
+      const b = prog(t, wt('botoes', 2), wt('botoes', 2) + .4); if (b > 0) { ctx.globalAlpha *= b;
+        ['Ver por mês', 'Exportar'].forEach((l, i) => { ctx.fillStyle = '#dbe6ff'; rr(x + i * 190 * s, yy, 175 * s, 56 * s, 28 * s); ctx.fill();
+          txt(l, x + i * 190 * s + 87 * s, yy + 29 * s, ARC, 24 * s, AZ, { align: 'center', weight: 600 }); }); }
+    }, 'ChatGPT', AZ);
+    exemplo(cx0, 1440, prog(lt, .5, .8));
+    fonte('Fonte: OpenAI, 07/10 · grátis desde 08/10', SC[2] + .4, SC[3] - .2, t);
+  },
+  // 3 · Gemini 4 Argon, só no plano pago
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    frase('Gemini 4 Argon', 480, wt('gemini', 3) - .1, SC[4] - .2, 80, { t, hot: 'Argon', cor: CI });
+    neon3d(P.cadeado, cx0, 800, 170 * back(prog(t, wt('so', 3) - .4, wt('so', 3))), .4 * Math.sin(t * .8), .3, IN, prog(t, wt('so', 3) - .4, wt('so', 3) - .1));
+    selo('só no plano pago', cx0, 1040, prog(t, wt('so', 3), wt('so', 3) + .3), IN);
+    linhaTxt('API: US$ 2 entrada · US$ 10 saída', 1180, wt('pago', 3), SC[4] - .2, t, 44);
+    linhaTxt('por 1 milhão de tokens, até 30/11', 1250, wt('pago', 3) + .15, SC[4] - .2, t, 36, 'rgba(244,248,255,.75)');
+    fonte('Fonte: Google, aberto em 13/10', SC[3] + .4, SC[4] - .2, t);
+  },
+  // 4 · Claude Haiku 5.5, 90% mais barato
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    frase('Claude Haiku 5.5', 480, wt('claude', 4) - .1, SC[5] - .2, 80, { t, hot: '5.5', cor: CI });
+    frase('-90%', 820, wt('90', 4) - .15, SC[5] - .2, 210, { t, hot: '-90%', cor: CI });
+    linhaTxt('US$ 0,10 por 1 milhão de tokens', 1060, wt('90', 4) + .2, SC[5] - .2, t, 48);
+    linhaTxt('de entrada · antes: US$ 1', 1130, wt('90', 4) + .35, SC[5] - .2, t, 38, 'rgba(244,248,255,.75)');
+    fonte('Fonte: Anthropic, 07/10', SC[4] + .4, SC[5] - .2, t);
+  },
+  // 5 · teste hoje: o pedido completo
+  (t, lt) => {
+    frase('Teste hoje, de graça', 300, wt('teste', 5) - .1, SC[6] - .2, 80, { t, hot: 'de graça', cor: CI });
+    const a = prog(lt, .2, .5); if (a > 0) { ctx.save(); ctx.globalAlpha *= a;
+      const lines = wrap(PEDIDO, 700, ARC, 46, 600), h = lines.length * 64 + 120;
+      ctx.shadowColor = hex(CI, .5); ctx.shadowBlur = 40; ctx.fillStyle = 'rgba(10,30,60,.9)'; rr(cx0 - 400, 470, 800, h, 30); ctx.fill(); ctx.shadowBlur = 0;
+      ctx.strokeStyle = CI; ctx.lineWidth = 3; rr(cx0 - 400, 470, 800, h, 30); ctx.stroke();
+      txt('COPIE O PEDIDO (ESTÁ NA LEGENDA)', cx0 - 350, 520, ARC, 24, CI, { weight: 600, ls: 2 });
+      lines.forEach((l, i) => txt(l, cx0 - 350, 590 + i * 64, ARC, 46, BR, { weight: 600, alpha: prog(t, SC[5] + .3 + i * .25, SC[5] + .6 + i * .25) }));
+      ctx.restore();
+      // resposta: pizza
+      const g = prog(t, wt('grafico', 5), wt('grafico', 5) + .9), py = 470 + h + 230, vals = [1500, 800, 300, 200], tot = 2800; let a0 = -Math.PI / 2;
+      if (g > 0) { vals.forEach((v, i) => { const da = 2 * Math.PI * v / tot * ease(g); ctx.fillStyle = [AZ, CI, IN, '#0aa5c0'][i]; ctx.beginPath(); ctx.moveTo(cx0 - 160, py); ctx.arc(cx0 - 160, py, 170, a0, a0 + da); ctx.closePath(); ctx.fill(); a0 += da; });
+        ['aluguel', 'mercado', 'transporte', 'lazer'].forEach((l, i) => { ctx.fillStyle = [AZ, CI, IN, '#0aa5c0'][i]; ctx.fillRect(cx0 + 70, py - 105 + i * 70, 34, 34); txt(l, cx0 + 120, py - 88 + i * 70, ARC, 36, BR, { weight: 600, alpha: g }); }); }
+    }
+  },
+  // 6 · logo + chamada
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>

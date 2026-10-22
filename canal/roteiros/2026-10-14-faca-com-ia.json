@@ -1,0 +1,99 @@
+{
+  "id": "2026-10-14-faca-com-ia",
+  "serie": "Faça com IA",
+  "data": "2026-10-14",
+  "horario": "12:00",
+  "titulo": "Logo com IA de graça no Gemini (prompt na legenda)",
+  "descricao": "Logo com IA de graça no Gemini, do Google 🎨\n1️⃣ Entre em gemini.google.com com sua conta Google\n2️⃣ Peça o logo com 4 informações: nome, ramo, estilo e cores\n3️⃣ Gostou de um? Peça ajustes: \"mais simples\", \"fundo branco\", \"só o símbolo\"\nO Gemini tem plano grátis, com limite de uso para imagens.\n\nPrompt (troque o que está entre colchetes):\nCrie um logo para [nome], uma [ramo]. Estilo [minimalista / moderno / divertido], cores [cor 1 e cor 2], fundo branco, sem texto pequeno.\n\nSalva!\n\nFonte: gemini.google.com (site oficial). Plano grátis com geração de imagem conferido em 13/10/2026.\n\n#logo #gemini #logocomia #inteligenciaartificial #ia #empreendedorismo",
+  "hashtags": [
+    "logo",
+    "gemini",
+    "logocomia",
+    "inteligenciaartificial",
+    "ia",
+    "empreendedorismo"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "criar logo com ia gratis": {
+        "demanda_views_top10": 37024,
+        "concorrencia_canais_100k": 0
+      }
+    }
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "Gemini grátis gera imagens com limite de uso (o Google não publica um número fixo)",
+      "fonte": "https://www.datacamp.com/blog/best-free-ai-image-generators",
+      "conferido": "2026-10-13"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "criar logo com ia",
+    "chaves": [
+      "logo",
+      "gemini",
+      "imagem",
+      "marca"
+    ]
+  },
+  "video": "videos/2026-10-14-12h-logo-gemini-raiox.mp4",
+  "fonte_html": "kit/2026-10-14-12h-logo-gemini-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "19",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "O logo do seu negócio com IA, de graça, no Gemini.",
+          "legenda": "O logo do seu negócio com IA, de graça, no Gemini."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Pede com quatro informações: nome, ramo, estilo e cores.",
+          "legenda": "Pede com 4 informações: nome, ramo, estilo e cores."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Tipo: logo pra Doce Lar, confeitaria, minimalista, rosa e marrom.",
+          "legenda": "Tipo: logo pra Doce Lar, confeitaria, minimalista, rosa e marrom."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Não gostou? Pede só o símbolo ou outra cor.",
+          "legenda": "Não gostou? Pede só o símbolo ou outra cor."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O pedido pronto, o prompt, está na legenda.",
+          "legenda": "O pedido pronto, o prompt, está na legenda."
+        },
+        {
+          "fala": "Salva e me segue pra mais.",
+          "legenda": "Salva e me segue pra mais."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

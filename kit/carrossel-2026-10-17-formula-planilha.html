@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1350"></canvas>
+<script src="raiox-kit.js"></script>
+<script>
+// Carrossel da Semana 17/10/2026 · resume o tutorial de 15/10 (fórmula de planilha com o ChatGPT). render(i) desenha o slide i (1080x1350, 4:5).
+const CH = 1350, N = 7;
+function bg2(i) {
+  ctx.fillStyle = COL.paper; ctx.fillRect(0, 0, W, CH);
+  ctx.lineWidth = 1.5;
+  for (let x = 0; x <= W; x += 30) { ctx.strokeStyle = x % 150 ? COL.minor : COL.major; ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, CH); ctx.stroke(); }
+  for (let y = 0; y <= CH; y += 30) { ctx.strokeStyle = y % 150 ? COL.minor : COL.major; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  const vg = ctx.createRadialGradient(W / 2, CH / 2, 200, W / 2, CH / 2, CH * .8);
+  vg.addColorStop(0, 'rgba(6,20,51,0)'); vg.addColorStop(1, 'rgba(2,6,15,.7)'); ctx.fillStyle = vg; ctx.fillRect(0, 0, W, CH);
+  ctx.strokeStyle = COL.ink; ctx.lineWidth = 2; ctx.strokeRect(40, 40, W - 80, CH - 80);
+  txt('IA SEM MISTÉRIO · @IASEMMISTERIO.AI', 70, CH - 75, ARC, 22, COL.dim, { weight: 600, ls: 3 });
+  txt(`${i + 1}/${N}`, W - 70, CH - 75, ARC, 24, COL.cyan, { align: 'right', weight: 600, ls: 3 });
+}
+function head(str, y = 190, size = 84, color = COL.ink) { wrap(str.toUpperCase(), W - 2 * M, EXP, size).forEach((l, k) => txt(l, M, y + k * size * 1.12, EXP, size, color)); }
+function para(str, y, size = 40, color = COL.ink, maxW = W - 2 * M, x = M) { const ls = wrap(str, maxW, ARC, size, 600); ls.forEach((l, k) => txt(l, x, y + k * size * 1.35, ARC, size, color, { weight: 600 })); return y + ls.length * size * 1.35; }
+function arrow(x, y) { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(x - 90, y); ctx.lineTo(x, y); ctx.moveTo(x - 24, y - 24); ctx.lineTo(x, y); ctx.lineTo(x - 24, y + 24); ctx.stroke(); ctx.restore(); }
+function passo(k, titulo, texto, rot, ex, extra) {
+  txt(`PASSO ${k} DE 4`, M, 130, ARC, 26, COL.cyan, { weight: 600, ls: 4 });
+  head(titulo, 230, 84, COL.cyan);
+  const y = para(texto, 460, 44);
+  panel(M, y + 60, W - 2 * M, 260, 1, rot);
+  para(ex, y + 140, 42, COL.ink, W - 2 * M - 80, M + 40);
+  if (extra) extra(y + 380);
+}
+const SLIDES = [
+  i => { txt('CARROSSEL DA SEMANA', M, 150, ARC, 28, COL.cyan, { weight: 600, ls: 6 }); head('Fórmula de planilha', 270, 100); head('sem decorar nada', 520, 72, COL.cyan);
+    toolCard(W / 2, 760, 'ChatGPT', 'chatgpt.com · tem plano grátis', 1, '#10a37f');
+    para('Serve pro Excel e pro Google Planilhas.', 900, 40, COL.dim);
+    txt('arrasta', W - M - 120, 1160, ARC, 34, COL.cyan, { align: 'right', weight: 600 }); arrow(W - M, 1160); },
+  i => passo(1, 'Abra o ChatGPT', 'Entre em chatgpt.com. O plano grátis resolve.', 'o que você vai fazer', 'Contar o que tem na planilha e o resultado que quer. Ele devolve a fórmula pronta.'),
+  i => passo(2, 'Explique as colunas', 'Diga o que tem em cada coluna, com a letra dela.', 'exemplo', '"A coluna A tem produto, a B tem preço e a C tem quantidade."'),
+  i => passo(3, 'Diga o resultado', 'Fale o que quer calcular e em qual coluna.', 'exemplo', '"Quero o total de cada venda na coluna D."',
+    y => { panel(M, y, W - 2 * M, 150, 1, 'resposta'); txt('=B2*C2', M + 40, y + 82, EXP, 56, COL.cyan); txt('e arrasta pra baixo', W - M - 40, y + 82, ARC, 34, COL.ink, { align: 'right', weight: 600 }); }),
+  i => passo(4, 'Deu erro?', 'Cole a mensagem de erro e peça a correção.', 'exemplo', '"Deu #VALOR! na célula D5. O que eu corrijo?"'),
+  i => { txt('PEDIDO PRONTO', M, 130, ARC, 26, COL.cyan, { weight: 600, ls: 4 }); head('Copia e cola', 230, 96);
+    panel(M, 420, W - 2 * M, 560, 1, 'cola no chatgpt');
+    para('"Na minha planilha, a coluna [A] tem [produto], a [B] tem [preço] e a [C] tem [quantidade]. Quero [o total de cada venda] na coluna [D]. Me dá a fórmula e explica onde colar."', 500, 42, COL.ink, W - 2 * M - 80, M + 40);
+    para('Troque o que está entre colchetes.', 1060, 34, COL.dim); },
+  i => { lens(W / 2, 470, 150, 1); txt('IA SEM MISTÉRIO', W / 2, 730, EXP, 62, COL.ink, { align: 'center' });
+    txt('uma tarefa resolvida com IA por dia', W / 2, 810, ARC, 36, COL.dim, { align: 'center', weight: 600 });
+    stamp(W / 2, 960, 'salva pra consultar', 1, 44); txt('e segue pra não perder o próximo', W / 2, 1090, ARC, 38, COL.ink, { align: 'center', weight: 600 }); },
+];
+function render(i) { i = Math.round(i); ctx.save(); ctx.clearRect(0, 0, W, CH); bg2(i); SLIDES[i](i); ctx.restore(); }
+window.render = render;
+</script>
+</body></html>
