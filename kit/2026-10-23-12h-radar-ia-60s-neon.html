@@ -17,7 +17,7 @@ const T0 = TEMPOS.cenas;
 const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
 const DURATION = SC[7], IMPACTO = SC[6] + .4;
 const COR = [AZ, CI, AZ, IN, CI, AZ, AZ];
-const HITS = [wt('chatgpt', 0), wt('gemini', 0), wt('volkswagen', 0), wt('radar', 1), wt('tranca', 2), wt('pin', 2), wt('cuidado', 2), wt('negocios', 3), wt('cores', 3), wt('330', 4), wt('lock', 5)];
+const HITS = [wt('chatgpt', 0), wt('gemini', 0), wt('volkswagen', 0), wt('radar', 1), wt('tranca', 2), wt('senha', 2), wt('cuidado', 2), wt('negocios', 3), wt('cores', 3), wt('330', 4), wt('lock', 5)];
 const CLIQUES = [];
 const CK = [[0, 0, 0, 0, 0]];
 function fonte(str, t0, t1, t) { linhaTxt(str, 1560, t0, t1, t, 28, 'rgba(244,248,255,.6)'); }
@@ -51,18 +51,18 @@ const S = [
   (t, lt) => {
     numero(1, 300, SC[2], SC[3] - .2, t);
     frase('Conversa trancada', 470, wt('chatgpt', 2) - .1, SC[3] - .2, 76, { t, hot: 'trancada', cor: CI });
-    const f2 = 1 - prog(t, SC[3] - .45, SC[3] - .2), fj = 1 - prog(t, wt('pin', 2) - .5, wt('pin', 2) - .2);
+    const f2 = 1 - prog(t, SC[3] - .45, SC[3] - .2), fj = 1 - prog(t, wt('senha', 2) - .5, wt('senha', 2) - .2);
     const tr = prog(t, wt('historico', 2) - .3, wt('busca', 2) + .2);
     janela(600, 470, prog(t, wt('tranca', 2) - .4, wt('tranca', 2)) * f2 * fj, 'ChatGPT · histórico', (x, y, w) => {
       conversa(x, y, w, 'Receitas da semana', 0);
       conversa(x, y + 110, w, 'Dúvida do contrato', tr);
       conversa(x, y + 220, w, 'Ideias de presente', 0);
     });
-    neon3d(P.cadeado, cx0, 720, 120 * back(prog(t, wt('pin', 2) - .2, wt('pin', 2) + .3)), .4 * Math.sin(t * .9), .3, CI, prog(t, wt('pin', 2) - .2, wt('pin', 2)) * f2);
-    pinCaixas(880, prog(t, wt('pin', 2) - .1, wt('pin', 2) + .2) * f2, Math.floor(4 * prog(t, wt('pin', 2), wt('celular', 2))));
+    neon3d(P.cadeado, cx0, 720, 120 * back(prog(t, wt('senha', 2) - .2, wt('senha', 2) + .3)), .4 * Math.sin(t * .9), .3, CI, prog(t, wt('senha', 2) - .2, wt('senha', 2)) * f2);
+    pinCaixas(880, prog(t, wt('senha', 2) - .1, wt('senha', 2) + .2) * f2, Math.floor(4 * prog(t, wt('senha', 2), wt('celular', 2))));
     selo('ou o desbloqueio do celular', cx0, 1100, prog(t, wt('celular', 2) - .3, wt('celular', 2)), CI, f2);
     exemplo(cx0, 1180, prog(t, wt('tranca', 2), wt('tranca', 2) + .3) * f2);
-    selo('redefinir o PIN apaga as trancadas', cx0, 1300, prog(t, wt('redefinir', 2) - .2, wt('redefinir', 2) + .1), IN, f2);
+    selo('redefinir a senha apaga as trancadas', cx0, 1300, prog(t, wt('redefinir', 2) - .2, wt('redefinir', 2) + .1), IN, f2);
     fonte('Fonte: OpenAI (central de ajuda, 20/10)', SC[2] + .4, SC[3] - .2, t);
   },
   // 3 · Gemini pra pequenos negócios
@@ -103,8 +103,8 @@ const S = [
         else { ctx.fillStyle = '#d3dbee'; rr(x + 24, y + i * 70 + 12, 220 - i * 25, 22, 11); ctx.fill(); } });
     });
     exemplo(cx0, 940, prog(t, wt('menu', 5), wt('menu', 5) + .3));
-    pinCaixas(1020, prog(t, wt('pin', 5) - .2, wt('pin', 5) + .1), Math.floor(4 * prog(t, wt('pin', 5), wt('guarde', 5))));
-    selo('crie o PIN e guarde bem', cx0, 1250, prog(t, wt('guarde', 5) - .3, wt('guarde', 5)), CI);
+    pinCaixas(1020, prog(t, wt('senha', 5) - .2, wt('senha', 5) + .1), Math.floor(4 * prog(t, wt('senha', 5), wt('guarde', 5))));
+    selo('crie a senha e guarde bem', cx0, 1250, prog(t, wt('guarde', 5) - .3, wt('guarde', 5)), CI);
   },
   // 6 · logo + chamada
   (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),

@@ -4,7 +4,7 @@
  "data": "2026-10-23",
  "horario": "12:00",
  "titulo": "Radar IA: ChatGPT tranca conversas, Gemini pra negócios e VW",
- "descricao": "Radar IA de hoje 📡\n1️⃣ Conversas trancadas no ChatGPT (20/10): você esconde uma conversa do histórico e da busca, e ela só abre com um PIN de 4 dígitos ou com o desbloqueio do celular. Liberação gradual. Atenção: se você redefinir o PIN, as conversas trancadas são apagadas pra sempre.\n2️⃣ Gemini pra pequenos negócios: uma página nova no app guarda a identidade da sua marca (site, fontes e cores) pra criar artes no mesmo estilo, e conecta apps como Canva e Shopify. Liberação pra todos os usuários do app no mundo nos próximos dias.\n3️⃣ Volkswagen (21/10): mais de 330 mil funcionários do grupo já usam o Microsoft Copilot no trabalho, segundo a Microsoft.\n\nTeste hoje: no ChatGPT, abra o menu de opções de uma conversa e veja se já aparece \"Lock chat\". Se aparecer, crie o PIN e anote num lugar seguro.\n\nFontes oficiais (conferidas em 23/10/2026): help.openai.com (Using locked chats in ChatGPT; ChatGPT release notes) · blog.google (New Gemini business landing page and tools launched) · news.microsoft.com (Volkswagen Group Copilot, 21/10)\n\n#ia #inteligenciaartificial #chatgpt #gemini #copilot #noticiasdeia",
+ "descricao": "Radar IA de hoje 📡\n1️⃣ Conversas trancadas no ChatGPT (20/10): você esconde uma conversa do histórico e da busca, e ela só abre com uma senha (PIN) de 4 dígitos ou com o desbloqueio do celular. Liberação gradual. Atenção: se você redefinir essa senha, as conversas trancadas são apagadas pra sempre.\n2️⃣ Gemini pra pequenos negócios: uma página nova no app guarda a identidade da sua marca (site, fontes e cores) pra criar artes no mesmo estilo, e conecta apps como Canva e Shopify. Liberação pra todos os usuários do app no mundo nos próximos dias.\n3️⃣ Volkswagen (21/10): mais de 330 mil funcionários do grupo já usam o Microsoft Copilot no trabalho, segundo a Microsoft.\n\nTeste hoje: no ChatGPT, abra o menu de opções de uma conversa e veja se já aparece \"Lock chat\". Se aparecer, crie a senha e anote num lugar seguro.\n\nFontes oficiais (conferidas em 23/10/2026): help.openai.com (Using locked chats in ChatGPT; ChatGPT release notes) · blog.google (New Gemini business landing page and tools launched) · news.microsoft.com (Volkswagen Group Copilot, 21/10)\n\n#ia #inteligenciaartificial #chatgpt #gemini #copilot #noticiasdeia",
  "comentario_fixado": null,
  "voz": "pt-BR-Chirp3-HD-Fenrir",
  "ep": "r8",
@@ -30,8 +30,8 @@
   {
    "frases": [
     {
-     "fala": "Um: o ChatGPT agora tranca conversas. Elas somem do histórico e da busca e só abrem com um PIN de quatro dígitos ou com o desbloqueio do celular. Cuidado: se você redefinir o PIN, as conversas trancadas são apagadas.",
-     "legenda": "Um: o ChatGPT agora tranca conversas. Elas somem do histórico e da busca e só abrem com um PIN de 4 dígitos ou com o desbloqueio do celular. Cuidado: se você redefinir o PIN, as conversas trancadas são apagadas."
+     "fala": "Um: o ChatGPT agora tranca conversas. Elas somem do histórico e da busca e só abrem com uma senha de quatro dígitos ou com o desbloqueio do celular. Cuidado: se você redefinir essa senha, as conversas trancadas são apagadas.",
+     "legenda": "Um: o ChatGPT agora tranca conversas. Elas somem do histórico e da busca e só abrem com uma senha de 4 dígitos ou com o desbloqueio do celular. Cuidado: se você redefinir essa senha, as conversas trancadas são apagadas."
     }
    ]
   },
@@ -54,8 +54,8 @@
   {
    "frases": [
     {
-     "fala": "Qual testar hoje? Abra o menu de uma conversa no ChatGPT e veja se já aparece Lock chat. Se aparecer, crie o PIN e guarde bem.",
-     "legenda": "Qual testar hoje? Abra o menu de uma conversa no ChatGPT e veja se já aparece Lock chat. Se aparecer, crie o PIN e guarde bem."
+     "fala": "Qual testar hoje? Abra o menu de uma conversa no ChatGPT e veja se já aparece Lock chat. Se aparecer, crie a senha e guarde bem.",
+     "legenda": "Qual testar hoje? Abra o menu de uma conversa no ChatGPT e veja se já aparece Lock chat. Se aparecer, crie a senha e guarde bem."
     }
    ]
   },
