@@ -1,0 +1,95 @@
+{
+ "id": "2026-10-28-agente-do-zero-06",
+ "serie": "Agente do zero",
+ "data": "2026-10-28",
+ "horario": "19:00",
+ "titulo": "Agente do zero #6: número de teste do WhatsApp grátis",
+ "descricao": "Agente do zero, episódio 6 📱\nHoje seu agente ganha um número de WhatsApp pra testar, sem chip novo e sem cartão.\n1️⃣ Em developers.facebook.com, crie um app e adicione o WhatsApp.\n2️⃣ Clique em Start using the API. Na tela API Setup já aparece um número de teste.\n3️⃣ Gere o token de acesso (Generate access token), coloque o seu WhatsApp como destino e mande a mensagem de teste. Ela chega no seu celular.\nO token dessa tela expira rápido: serve só pra testar.\nNúmero de teste não pede forma de pagamento. Episódio anterior: #5, primeiro cenário no Make. Sexta: episódio 7, ligar o WhatsApp no Make.\n\nFonte: Meta for Developers, WhatsApp Cloud API Get Started (developers.facebook.com), conferido em 23/10/2026.\n\n#whatsapp #agentedeia #ia #automacao #gemini",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "6",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Seu agente vai falar no WhatsApp. Hoje você pega um número de teste grátis.",
+     "legenda": "Seu agente vai falar no WhatsApp. Hoje você pega um número de teste grátis."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Agente do zero, episódio seis. Sem chip novo e sem cartão.",
+     "legenda": "Agente do zero, episódio 6. Sem chip novo e sem cartão."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no site da Meta pra desenvolvedores, crie um app e adicione o WhatsApp.",
+     "legenda": "Um: no site da Meta pra desenvolvedores, crie um app e adicione o WhatsApp."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: clique em Start using the API, a conexão do WhatsApp. Na tela API Setup já aparece um número de teste.",
+     "legenda": "Dois: clique em Start using the API, a conexão do WhatsApp. Na tela API Setup já aparece um número de teste."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: coloque seu WhatsApp como destino e mande a mensagem de teste. Ela chega no seu celular.",
+     "legenda": "Três: coloque seu WhatsApp como destino e mande a mensagem de teste. Ela chega no seu celular."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Esse número é só pra testar. No próximo episódio, a gente liga ele no Make.",
+     "legenda": "Esse número é só pra testar. No próximo episódio, a gente liga ele no Make."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Salva e segue. Sexta tem o episódio sete.",
+     "legenda": "Salva e segue. Sexta tem o episódio 7."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "WhatsApp Cloud API: número de teste e conta de teste criados automaticamente; Start using the API leva à tela API Setup; token temporário via Generate access token; teste não exige forma de pagamento",
+   "fonte": "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+   "conferido": "2026-10-23"
+  }
+ ],
+ "registro": {
+  "tema": "agente do zero ep 6: número de teste grátis do WhatsApp Cloud API (Meta for Developers)",
+  "chaves": [
+   "numero de teste whatsapp",
+   "api setup",
+   "start using the api",
+   "agente ep 6"
+  ]
+ },
+ "video": "videos/2026-10-28-19h-agente-do-zero-06-neon.mp4",
+ "fonte_html": "kit/2026-10-28-19h-agente-do-zero-06-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

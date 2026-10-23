@@ -1,0 +1,100 @@
+{
+ "id": "2026-10-27-automacao-do-zero-04",
+ "serie": "Automação do zero",
+ "data": "2026-10-27",
+ "horario": "19:00",
+ "titulo": "Automação do zero #4: e-mail com estrela vira tarefa",
+ "descricao": "Automação do zero, episódio 4 ⭐\nMarcou estrela num e-mail? Ele vira tarefa sozinho no Google Tasks.\n1️⃣ No zapier.com, + Create → Zap. Gatilho (Trigger): app Gmail, evento New Starred Email.\n2️⃣ Ação (Action): app Google Tasks, evento Create Task. Escolha a lista e ligue o Assunto (Subject) ao Título (Title).\n3️⃣ Teste com um e-mail de verdade e clique em Publish.\nNo plano grátis o Zapier confere a cada 15 minutos. São 100 tarefas por mês e Zaps de 2 passos. Cada tarefa criada = 1 tarefa do plano.\nEpisódio anterior: #3, planilha vira evento na agenda. Sábado: episódio 5.\n\nFonte: plano grátis do Zapier (help.zapier.com) e integração Gmail + Google Tasks (zapier.com/apps/gmail/integrations/google-tasks), conferidos em 23/10/2026.\n\n#automacao #zapier #gmail #googletasks #ia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "a4",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Marcou estrela no e-mail? Ele vira tarefa sozinho na sua lista.",
+     "legenda": "Marcou estrela no e-mail? Ele vira tarefa sozinho na sua lista."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Automação do zero, episódio quatro. Nenhum pedido esquecido na caixa de entrada.",
+     "legenda": "Automação do zero, episódio 4. Nenhum pedido esquecido na caixa de entrada."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no Zapier, crie um Zap. Gatilho, o que dispara tudo: Gmail, New Starred Email.",
+     "legenda": "Um: no Zapier, crie um Zap. Gatilho, o que dispara tudo: Gmail, New Starred Email."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: ação: Google Tasks, Create Task. Escolha a lista e ligue o assunto ao título.",
+     "legenda": "Dois: ação: Google Tasks, Create Task. Escolha a lista e ligue o assunto ao título."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: teste com um e-mail de verdade e clique em Publish.",
+     "legenda": "Três: teste com um e-mail de verdade e clique em Publish."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Pronto: o Zapier confere a cada quinze minutos. Grátis até cem tarefas por mês.",
+     "legenda": "Pronto: o Zapier confere a cada 15 minutos. Grátis até 100 tarefas por mês."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Salva pra fazer hoje. Sábado tem o episódio cinco.",
+     "legenda": "Salva pra fazer hoje. Sábado tem o episódio 5."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Zapier grátis: 100 tarefas/mês, Zaps de 2 passos, checagem a cada 15 min",
+   "fonte": "https://help.zapier.com/hc/en-us/articles/32337438839565-What-s-included-in-Zapier-s-Free-plan",
+   "conferido": "2026-10-23"
+  },
+  {
+   "dado": "Gmail New Starred Email (gatilho, estrela em até 2 dias do recebimento) e Google Tasks Create Task (ação) no Zapier",
+   "fonte": "https://zapier.com/apps/gmail/integrations/google-tasks/60830/star-gmail-emails-to-create-google-tasks",
+   "conferido": "2026-10-23"
+  }
+ ],
+ "registro": {
+  "tema": "automação ep 4: e-mail com estrela no Gmail vira tarefa no Google Tasks (Zapier)",
+  "chaves": [
+   "estrela vira tarefa",
+   "new starred email",
+   "google tasks create task",
+   "automacao ep 4"
+  ]
+ },
+ "video": "videos/2026-10-27-19h-automacao-do-zero-04-neon.mp4",
+ "fonte_html": "kit/2026-10-27-19h-automacao-do-zero-04-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}
