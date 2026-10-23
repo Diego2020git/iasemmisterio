@@ -1,0 +1,112 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-23-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 23/10/2026 · 12h · Radar IA #8 (60 s): ChatGPT tranca conversas, Gemini pra pequenos negócios, Volkswagen com Copilot. Neon.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const COR = [AZ, CI, AZ, IN, CI, AZ, AZ];
+const HITS = [wt('chatgpt', 0), wt('gemini', 0), wt('volkswagen', 0), wt('radar', 1), wt('tranca', 2), wt('pin', 2), wt('cuidado', 2), wt('negocios', 3), wt('cores', 3), wt('330', 4), wt('lock', 5)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0]];
+function fonte(str, t0, t1, t) { linhaTxt(str, 1560, t0, t1, t, 28, 'rgba(244,248,255,.6)'); }
+// linha da lista de conversas (ilustração); tr = quanto já foi trancada
+function conversa(x, y, w, nome, tr) { ctx.save(); ctx.globalAlpha *= 1 - .75 * clamp(tr);
+  ctx.fillStyle = tr > 0 ? '#e7ecfb' : '#ffffff'; rr(x, y, w, 90, 16); ctx.fill();
+  txt(nome, x + 28, y + 46, ARC, 36, '#1b2440', { weight: 600 });
+  if (tr > 0) { ctx.globalAlpha = clamp(tr * 3); txt('🔒', x + w - 60, y + 46, ARC, 40, '#1b2440', {}); }
+  ctx.restore(); }
+function pinCaixas(y, a, n) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+  for (let i = 0; i < 4; i++) { const x = cx0 - 260 + i * 140; ctx.fillStyle = 'rgba(10,30,60,.95)'; rr(x, y, 110, 130, 22); ctx.fill();
+    ctx.strokeStyle = i < n ? CI : 'rgba(244,248,255,.3)'; ctx.lineWidth = 4; ctx.shadowColor = CI; ctx.shadowBlur = i < n ? 20 : 0; rr(x, y, 110, 130, 22); ctx.stroke(); ctx.shadowBlur = 0;
+    if (i < n) { ctx.fillStyle = BR; ctx.beginPath(); ctx.arc(x + 55, y + 65, 16, 0, 7); ctx.fill(); } }
+  ctx.restore(); }
+function amostra(x, y, cor, a) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = cor; ctx.beginPath(); ctx.arc(x, y, 34 * back(clamp(a)), 0, 7); ctx.fill(); ctx.restore(); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 23/10', 300, -1, SC[1] - .2, t, 34, CI);
+    frase('ChatGPT tranca conversas', 620, -1, SC[1] - .2, 62, { t, hot: 'tranca', cor: CI });
+    frase('Gemini pra pequenos negócios', 860, wt('gemini', 0) - .1, SC[1] - .2, 58, { t, hot: 'negócios' });
+    frase('330 mil na Volkswagen com IA', 1100, wt('volkswagen', 0) - .1, SC[1] - .2, 58, { t, hot: '330 mil', cor: CI });
+  },
+  // 1 · o que é o radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, cy0 - 90, 220 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .3));
+    frase('Radar IA', cy0 + 230, wt('radar', 1) - .1, SC[2] - .2, 100, { t, hot: 'IA', cor: CI });
+    frase('as 3 notícias de hoje', cy0 + 350, wt('tres', 1) - .1, SC[2] - .2, 56, { t, hot: '3 notícias' });
+  },
+  // 2 · ChatGPT conversas trancadas
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    frase('Conversa trancada', 470, wt('chatgpt', 2) - .1, SC[3] - .2, 76, { t, hot: 'trancada', cor: CI });
+    const f2 = 1 - prog(t, SC[3] - .45, SC[3] - .2), fj = 1 - prog(t, wt('pin', 2) - .5, wt('pin', 2) - .2);
+    const tr = prog(t, wt('historico', 2) - .3, wt('busca', 2) + .2);
+    janela(600, 470, prog(t, wt('tranca', 2) - .4, wt('tranca', 2)) * f2 * fj, 'ChatGPT · histórico', (x, y, w) => {
+      conversa(x, y, w, 'Receitas da semana', 0);
+      conversa(x, y + 110, w, 'Dúvida do contrato', tr);
+      conversa(x, y + 220, w, 'Ideias de presente', 0);
+    });
+    neon3d(P.cadeado, cx0, 720, 120 * back(prog(t, wt('pin', 2) - .2, wt('pin', 2) + .3)), .4 * Math.sin(t * .9), .3, CI, prog(t, wt('pin', 2) - .2, wt('pin', 2)) * f2);
+    pinCaixas(880, prog(t, wt('pin', 2) - .1, wt('pin', 2) + .2) * f2, Math.floor(4 * prog(t, wt('pin', 2), wt('celular', 2))));
+    selo('ou o desbloqueio do celular', cx0, 1100, prog(t, wt('celular', 2) - .3, wt('celular', 2)), CI, f2);
+    exemplo(cx0, 1180, prog(t, wt('tranca', 2), wt('tranca', 2) + .3) * f2);
+    selo('redefinir o PIN apaga as trancadas', cx0, 1300, prog(t, wt('redefinir', 2) - .2, wt('redefinir', 2) + .1), IN, f2);
+    fonte('Fonte: OpenAI (central de ajuda, 20/10)', SC[2] + .4, SC[3] - .2, t);
+  },
+  // 3 · Gemini pra pequenos negócios
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    frase('Gemini pra negócios', 470, wt('gemini', 3) - .1, SC[4] - .2, 76, { t, hot: 'negócios', cor: CI });
+    const f3 = 1 - prog(t, SC[4] - .45, SC[4] - .2);
+    janela(600, 560, prog(t, wt('pagina', 3) - .3, wt('pagina', 3) + .2) * f3, 'Gemini · Meu negócio', (x, y, w) => {
+      campo(x, y, w, 'Site', 'padariasol.com.br', prog(t, wt('site', 3) - .1, wt('site', 3) + .3), 1);
+      campo(x, y + 130, w, 'Fontes', 'Archivo, Lora', prog(t, wt('fontes', 3) - .1, wt('fontes', 3) + .3), 1);
+      const a = prog(t, wt('cores', 3) - .1, wt('cores', 3) + .3); if (a > 0) { txt('CORES', x, y + 260, ARC, 22, '#5a6a8f', { weight: 600, ls: 2, alpha: a });
+        ['#e8a33d', '#7a3e1d', '#f6efe4', '#2e6b4f'].forEach((c, i) => amostra(x + 50 + i * 100, y + 325, c, prog(t, wt('cores', 3) + i * .1, wt('cores', 3) + .3 + i * .1))); }
+    });
+    exemplo(cx0, 1200, prog(t, wt('site', 3), wt('site', 3) + .3) * f3);
+    selo('artes no mesmo estilo', cx0, 1290, prog(t, wt('artes', 3) - .2, wt('artes', 3) + .1), CI, f3);
+    selo('pra todos nos próximos dias', cx0, 1390, prog(t, wt('chega', 3) - .2, wt('chega', 3) + .1), IN, f3);
+    fonte('Fonte: Google (blog oficial)', SC[3] + .4, SC[4] - .2, t);
+  },
+  // 4 · Volkswagen com Copilot
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    frase('Volkswagen com Copilot', 470, wt('volkswagen', 4) - .1, SC[5] - .2, 70, { t, hot: 'Copilot', cor: CI });
+    linhaTxt('o Copilot é a IA da Microsoft', 580, wt('microsoft', 4) - .3, SC[5] - .2, t, 40);
+    const f4 = 1 - prog(t, SC[5] - .45, SC[5] - .2);
+    neon3d(P.pessoa, cx0, 830, 170 * back(prog(t, wt('trabalho', 4) - .3, wt('trabalho', 4) + .2)), .4 * Math.sin(t * .9), .3, CI, prog(t, wt('trabalho', 4) - .3, wt('trabalho', 4)) * f4);
+    frase('330 mil', 1090, wt('330', 4) - .1, SC[5] - .2, 140, { t, hot: '330 mil', cor: CI });
+    linhaTxt('funcionários usando no trabalho', 1210, wt('funcionarios', 4) - .2, SC[5] - .2, t, 42);
+    selo('empresa grande já usa IA', cx0, 1340, prog(t, wt('empresa', 4) - .2, wt('empresa', 4) + .1), CI, f4);
+    fonte('Fonte: Microsoft (21/10)', SC[4] + .4, SC[5] - .2, t);
+  },
+  // 5 · teste hoje
+  (t, lt) => {
+    frase('Teste hoje', 300, wt('qual', 5) - .1, SC[6] - .2, 80, { t, hot: 'hoje', cor: CI });
+    janela(470, 420, prog(t, wt('menu', 5) - .3, wt('menu', 5) + .2), 'ChatGPT · opções da conversa', (x, y, w) => {
+      ['Share', 'Rename', 'Lock chat', 'Archive'].forEach((o, i) => { const hot = o === 'Lock chat' ? prog(t, wt('lock', 5) - .1, wt('lock', 5) + .2) : 0;
+        ctx.fillStyle = hot > 0 ? 'rgba(46,107,255,' + (.25 * hot) + ')' : 'rgba(0,0,0,0)'; rr(x, y + i * 70 - 8, w, 62, 12); ctx.fill();
+        if (o === 'Lock chat') txt(o, x + 24, y + i * 70 + 23, ARC, 34, '#1b2440', { weight: 600 });
+        else { ctx.fillStyle = '#d3dbee'; rr(x + 24, y + i * 70 + 12, 220 - i * 25, 22, 11); ctx.fill(); } });
+    });
+    exemplo(cx0, 940, prog(t, wt('menu', 5), wt('menu', 5) + .3));
+    pinCaixas(1020, prog(t, wt('pin', 5) - .2, wt('pin', 5) + .1), Math.floor(4 * prog(t, wt('pin', 5), wt('guarde', 5))));
+    selo('crie o PIN e guarde bem', cx0, 1250, prog(t, wt('guarde', 5) - .3, wt('guarde', 5)), CI);
+  },
+  // 6 · logo + chamada
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>
