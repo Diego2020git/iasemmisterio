@@ -2,7 +2,7 @@
  "id": "2026-10-24-radar-ia-60s",
  "serie": "Radar IA",
  "data": "2026-10-24",
- "horario": "12:00",
+ "horario": "17:00",
  "titulo": "Radar IA: Gemini Notebook, Docs por voz e Claude caça falhas",
  "descricao": "Radar IA de hoje 📡\n1️⃣ Gemini Notebook (antigo NotebookLM): antes de gerar os slides ou o vídeo, agora dá pra revisar o roteiro e pedir mudanças. Ligue \"Review outline notes\" (slides) ou \"Review producer notes\" (vídeo) no painel Studio.\n2️⃣ Docs Live no celular (21/10): no app do Google Docs pra Android e iPhone, você monta um documento organizado só falando. Vale pra Google AI Pro e Ultra e alguns planos do Workspace, ou seja, é pago.\n3️⃣ Anthropic: o Claude provou a segurança de mais de 100 bibliotecas de código aberto e, no caminho, achou falhas que ninguém tinha visto em anos de testes. Resultado divulgado pela própria Anthropic.\n\nTeste hoje: no Gemini Notebook, abra um caderno com seus arquivos, ligue \"Review outline notes\" e gere um Slide Deck. Leia o roteiro e peça uma mudança antes de criar.\n\nFontes oficiais (conferidas em 24/10/2026): blog.google (How to shape your slides and videos with Gemini Notebook) · support.google.com/gemininotebook · workspaceupdates.googleblog.com (Docs Live in Google Docs on mobile) · anthropic.com/research/formal-verification\n\n#ia #inteligenciaartificial #gemini #googledocs #claude #noticiasdeia",
  "comentario_fixado": null,
@@ -106,5 +106,8 @@
    "id": "todas",
    "origem": "gerada por código (kit neon)"
   }
- ]
+ ],
+ "fora_da_grade": {
+  "aprovado": "Diego, thread de retenção 24/10 18:44Z (Ok à página de aprovação; 12h já tinha passado)"
+ }
 }
