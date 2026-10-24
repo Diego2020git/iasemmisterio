@@ -815,6 +815,29 @@
     "instagram": "6ad51a820b0d72757a3690bf"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-adprp4/videos/2026-10-18-extra-chatgpt-capcut-neon.mp4"
+  },
+  {
+   "id": "2026-10-24-extra-php2shell",
+   "data": "2026-10-24",
+   "horario": "16:00",
+   "serie": "Extra",
+   "titulo": "Falha de 10 anos no PHP, achada com IA: como funciona e o que fazer",
+   "narracao": "Dez anos de versões do PHP, a linguagem por trás do WordPress, tinham uma falha que deixa invadir o site. E uma IA ajudou a achar. Funciona assim: o atacante manda um pedido pesado e faz o PHP ficar sem memória bem no meio da preparação. O PHP para, mas deixa dados pela metade. Na hora da limpeza, ele confia nesses dados quebrados e usa uma memória que já foi liberada. O atacante coloca o código dele nesse espaço, e o PHP executa. Sem login e, no pior caso, antes até do código do site rodar. Vale pra quase todo jeito de rodar PHP em site. Em teste, a Wiz invadiu WordPress, Drupal, Joomla e até uma página de uma linha só. E a IA? A Wiz Research conta que o Gemini ajudou a achar a falha, montar o ataque de prova, detectar ataques e conferir a correção. Calif e OpenAI também participaram. Dia vinte, o PHP avisou que vinha uma correção urgente. Dia vinte e um, ela saiu. E empresas de segurança já viram tentativas de ataque. O que fazer. Um: veja a versão do PHP no painel da hospedagem. Dois: atualize pra versão corrigida de vinte e um de outubro. Três: no oito ponto um ou mais antiga não sai mais correção oficial. Migre, ou confirme com a hospedagem se ela corrigiu. E não confie só em remendo: segundo o PHP, atualizar é o único jeito seguro. Manda pra quem cuida do seu site.",
+   "video": "videos/2026-10-24-extra-php2shell-neon.mp4",
+   "registro": {
+    "tema": "extra: falhas críticas PHP2Shell no PHP achadas com ajuda de IA",
+    "chaves": [
+     "php2shell",
+     "falha php"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6adcfbae6887a2efc1ceb206",
+    "instagram": "6adcfbafbd33ce99c339a57b"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-thpb2r/videos/2026-10-24-extra-php2shell-neon.mp4"
   }
  ]
 }

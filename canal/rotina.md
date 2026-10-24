@@ -121,3 +121,9 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 | Mês | Caracteres de voz (Google) | Unidades YouTube API |
 |---|---|---|
 | 10/2026 | ~14.600 até 16/10 (948 de teste + 20 vídeos e regravações), de 1 milhão grátis | ~3.600 até 16/10 (cota grátis de 10 mil por dia) |
+
+## Padrão de entrega (Diego, 24/10/2026): vale para TODO vídeo
+- Régua mínima = extra PHP2Shell aprovado em 24/10 (kit/2026-10-24-extra-php2shell-neon.html). Regras completas em /mnt/project-files/operacao/padrao-de-entrega.md.
+- Conteúdo com profundidade: como funciona, quem é afetado, papel da IA com fonte, datas, passos com nomes reais e o que não resolve. Resumo raso foi rejeitado duas vezes.
+- Visual: cada cena anima o mecanismo; legenda grande palavra por palavra; elementos grandes no centro; chão em perspectiva e partículas; folha de quadros antes do render.
+- Duração: a que o conteúdo pedir, sem enrolar (extras de notícia 60 a 90 s, "formato":"livre").
