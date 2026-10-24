@@ -1,0 +1,167 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-24-extra-php2shell.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 24/10/2026 · extra (pedido do Diego) · PHP2Shell: duas falhas críticas no PHP, achadas com ajuda de IA. Neon.
+// Fontes: php.net/archive/2026.php (aviso de 21/10), wiz.io/blog/php2shell-php-rce. Painel e terminal são ILUSTRATIVOS.
+const T0 = TEMPOS.cenas;
+const SC = [...T0.slice(0, 9), T0[9] + .7];
+const DURATION = SC[9], IMPACTO = SC[8] + .4;
+const VERM = '#ff4d6d', VERDE = '#3ddc84', AMB = '#ffc24b';
+const COR = [VERM, VERM, AZ, CI, IN, AZ, CI, AZ, CI];
+const HITS = [wt('php', 0), wt('falhas', 0), wt('inteligencia', 0), wt('php2shell', 1), wt('comandos', 1), wt('login', 1), wt('dez', 2), wt('wordpress', 2), wt('drupal', 2), wt('joomla', 2),
+  wt('gemini', 3), wt('achar', 3), wt('testar', 3), wt('conferir', 3), wt('proteger', 4), wt('atacar', 4), wt('tentativas', 4), wt('versao', 5), wt('painel', 5), wt('21', 6), wt('unico', 6), wt('81', 7), wt('82', 7)];
+const CLIQUES = [wt('atualize', 6) + .5];
+const CK = [[0, 0, 0, 0, 0]];
+
+Object.assign(P, {
+  servidor() { ctx.beginPath(); for (let k = 0; k < 3; k++) { const y = -96 + k * 66; rr(-90, y, 180, 56, 12); ctx.moveTo(-50, y + 28); ctx.arc(-60, y + 28, 10, 0, 7); ctx.moveTo(10, y + 22); ctx.lineTo(70, y + 22); ctx.lineTo(70, y + 34); ctx.lineTo(10, y + 34); ctx.closePath(); } },
+  escudo() { ctx.beginPath(); ctx.moveTo(0, -100); ctx.lineTo(85, -65); ctx.quadraticCurveTo(85, 50, 0, 100); ctx.quadraticCurveTo(-85, 50, -85, -65); ctx.closePath(); ctx.moveTo(-40, 0); ctx.lineTo(-10, 32); ctx.lineTo(45, -28); ctx.lineTo(33, -40); ctx.lineTo(-10, 8); ctx.lineTo(-28, -12); ctx.closePath(); },
+});
+// janela escura de código / terminal; linhas entram uma a uma
+function codigo(x, y, w, linhas, p, a, titulo, cor = CI) {
+  if (a <= 0) return; const h = 90 + linhas.length * 58, e = .9 + .1 * back(clamp(a));
+  ctx.save(); ctx.globalAlpha *= clamp(a * 1.5); ctx.translate(x + w / 2, y + h / 2); ctx.scale(e, e); ctx.translate(-x - w / 2, -y - h / 2);
+  ctx.shadowColor = hex(cor, .6); ctx.shadowBlur = 50; ctx.fillStyle = '#070b16'; rr(x, y, w, h, 22); ctx.fill(); ctx.shadowBlur = 0;
+  ctx.strokeStyle = hex(cor, .8); ctx.lineWidth = 3; rr(x, y, w, h, 22); ctx.stroke();
+  txt(titulo, x + 28, y + 38, ARC, 24, 'rgba(244,248,255,.6)', { weight: 600 });
+  const n = linhas.length * clamp(p);
+  linhas.forEach(([s, c], i) => { const k = clamp(n - i); if (k <= 0) return; const m = Math.floor(s.length * k);
+    txt(s.slice(0, m) + (k < 1 ? '▌' : ''), x + 28, y + 96 + i * 58, ARC, 34, c || BR, { weight: 600 }); });
+  ctx.restore();
+}
+// cartão com nome (sem logo oficial)
+function cartao(nome, x, y, a, cor, sub = '') {
+  if (a <= 0) return; const e = back(clamp(a)), w = 270;
+  ctx.save(); ctx.translate(x, y); ctx.scale(e, e); ctx.globalAlpha *= clamp(a * 2);
+  ctx.shadowColor = cor; ctx.shadowBlur = 40; ctx.fillStyle = '#070b16'; rr(-w / 2, -80, w, 160, 28); ctx.fill(); ctx.shadowBlur = 0;
+  ctx.strokeStyle = cor; ctx.lineWidth = 4; rr(-w / 2, -80, w, 160, 28); ctx.stroke();
+  txt(nome, 0, sub ? -14 : 2, ARC, 40, BR, { align: 'center', weight: 600 });
+  if (sub) txt(sub, 0, 40, ARC, 24, cor, { align: 'center', weight: 600, ls: 1 });
+  ctx.restore();
+}
+// pílula de versão; risco = 0..1 risca em vermelho
+function versao(str, x, y, a, cor, risco = 0) {
+  if (a <= 0) return; const e = back(clamp(a)), w = measure(str, EXP, 40) + 60;
+  ctx.save(); ctx.translate(x, y); ctx.scale(e, e); ctx.globalAlpha *= clamp(a * 2);
+  ctx.shadowColor = cor; ctx.shadowBlur = 25; ctx.fillStyle = 'rgba(10,20,40,.9)'; rr(-w / 2, -40, w, 80, 40); ctx.fill(); ctx.shadowBlur = 0;
+  ctx.strokeStyle = cor; ctx.lineWidth = 3; rr(-w / 2, -40, w, 80, 40); ctx.stroke();
+  txt(str, 0, 2, EXP, 40, BR, { align: 'center' });
+  if (risco > 0) { ctx.strokeStyle = VERM; ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(-w / 2 + 14, 0); ctx.lineTo(-w / 2 + 14 + (w - 28) * ease(risco), 0); ctx.stroke(); }
+  ctx.restore();
+}
+function seta(x0, x1, y, a, cor = CI) {
+  if (a <= 0) return; const x = lerp(x0, x1, ease(clamp(a)));
+  ctx.save(); ctx.strokeStyle = cor; ctx.fillStyle = cor; ctx.shadowColor = cor; ctx.shadowBlur = 20; ctx.lineWidth = 7; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x, y); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x + 6, y); ctx.lineTo(x - 22, y - 18); ctx.lineTo(x - 22, y + 18); ctx.closePath(); ctx.fill(); ctx.restore();
+}
+const S = [
+  // 0 · gancho: falha grave no PHP, e a IA ajudou a achar
+  (t, lt) => {
+    frase('Falha grave no PHP', 250, -1, SC[1] - .2, 84, { t, hot: 'PHP', cor: VERM });
+    linhaTxt('a linguagem de boa parte dos sites', 350, wt('linguagem', 0) - .2, SC[1] - .2, t, 42);
+    const fa = wt('falhas', 0);
+    codigo(cx0 - 380, 450, 760, [['<?php', CI], ['echo "Olá, mundo";', BR], ['// falha 1  ✕  crítica', VERM], ['// falha 2  ✕  crítica', VERM]],
+      prog(t, .1, fa + .5), prog(lt, 0, .3), 'index.php', VERM);
+    const ia = wt('inteligencia', 0);
+    neon3d(P.chip, cx0, 1010, 95 * back(prog(t, ia - .3, ia + .2)), 0, .15, CI, prog(t, ia - .3, ia));
+    linhaTxt('a IA ajudou a encontrar', 1190, wt('ajudou', 0) - .2, SC[1] - .2, t, 54, CI);
+  },
+  // 1 · PHP2Shell: comandos no servidor, sem login, 9,2 de 10
+  (t, lt) => {
+    frase('PHP2Shell', 260, SC[1], SC[2] - .2, 96, { t, hot: 'Shell', cor: VERM });
+    const sv = wt('servidor', 1);
+    neon3d(P.servidor, cx0 - 220, 560, 120 * back(prog(t, sv - .5, sv)), 0, .15, VERM, prog(t, sv - .5, sv - .2));
+    codigo(cx0 - 40, 440, 420, [['$ comando', VERM], ['$ comando', VERM], ['$ comando', VERM]], prog(t, wt('comandos', 1) - .2, sv + .5), prog(t, wt('comandos', 1) - .3, wt('comandos', 1)), 'invasor', VERM);
+    linhaTxt('o servidor: o computador que guarda o site', 820, wt('computador', 1) - .2, SC[2] - .2, t, 38);
+    const sl = wt('sem', 1);
+    neon3d(P.cadeado, cx0, 1010, 80 * back(prog(t, sl - .3, sl)), 0, .1, VERM, prog(t, sl - .3, sl));
+    linhaTxt('sem login', 1150, sl, SC[2] - .2, t, 64, VERM);
+    linhaTxt('gravidade 9,2 de 10', 1240, sl + .2, SC[2] - .2, t, 40, AMB);
+  },
+  // 2 · alcance: 10 anos de versões, ataque testado em WordPress, Drupal e Joomla
+  (t, lt) => {
+    frase('10 anos de versões', 260, SC[2], SC[3] - .2, 80, { t, hot: '10 anos', cor: AZ });
+    const d = wt('dez', 2), bx = cx0 - 380, bw = 760, p = prog(t, d - .2, wt('versoes', 2) + .4);
+    if (p > 0) { ctx.save(); ctx.fillStyle = 'rgba(244,248,255,.12)'; rr(bx, 430, bw, 24, 12); ctx.fill();
+      const g = ctx.createLinearGradient(bx, 0, bx + bw, 0); g.addColorStop(0, AMB); g.addColorStop(1, VERM); ctx.fillStyle = g; ctx.shadowColor = VERM; ctx.shadowBlur = 20; rr(bx, 430, bw * ease(p), 24, 12); ctx.fill(); ctx.restore();
+      ['5.4', '7.0', '7.4', '8.0', '8.5'].forEach((v, i) => { const x = bx + i * bw / 4, k = clamp(p * 5 - i); if (k <= 0) return; txt(v, x, 500, EXP, 30, BR, { align: 'center', alpha: k }); }); }
+    linhaTxt('a Wiz invadiu em teste', 640, wt('wiz', 2) - .1, SC[3] - .2, t, 46, CI);
+    [['WordPress', 'wordpress'], ['Drupal', 'drupal'], ['Joomla', 'joomla']].forEach(([n, w], i) => {
+      const tw = wt(w, 2); cartao(n, cx0 + (i - 1) * 290, 820, prog(t, tw - .3, tw), VERM, prog(t, tw + .2, tw + .4) > .5 ? 'invadido em teste' : ''); });
+    exemplo(cx0, 1000, prog(t, wt('wordpress', 2), wt('wordpress', 2) + .3));
+  },
+  // 3 · a ligação com IA: Gemini achou, testou o ataque, conferiu a correção
+  (t, lt) => {
+    frase('E a IA?', 250, SC[3], SC[4] - .2, 100, { t, hot: 'IA', cor: CI });
+    const gm = wt('gemini', 3);
+    neon3d(P.chip, cx0, 470, 90 * back(prog(t, gm - .4, gm)), 0, .15, CI, prog(t, gm - .4, gm));
+    linhaTxt('Gemini, segundo a Wiz Research', 620, gm - .2, SC[4] - .2, t, 42, CI);
+    [['achar a falha', 'achar'], ['testar o ataque', 'testar'], ['conferir a correção', 'conferir']].forEach(([s, w], i) =>
+      selo(s, cx0, 760 + i * 110, prog(t, wt(w, 3) - .1, wt(w, 3) + .3)));
+    linhaTxt('Calif e OpenAI também ajudaram', 1130, wt('correcao', 3) - .1, SC[4] - .2, t, 36, 'rgba(244,248,255,.8)');
+  },
+  // 4 · IA dos dois lados: proteger x atacar; já há tentativas de ataque
+  (t, lt) => {
+    frase('IA dos dois lados', 260, SC[4], SC[5] - .2, 80, { t, cor: IN });
+    const pr = wt('proteger', 4), at = wt('atacar', 4);
+    neon3d(P.escudo, cx0 - 200, 560, 115 * back(prog(t, pr - .4, pr)), 0, .15, CI, prog(t, pr - .4, pr));
+    neon3d(P.raio, cx0 + 200, 560, 115 * back(prog(t, at - .4, at)), 0, .15, VERM, prog(t, at - .4, at));
+    linhaTxt('proteger', 760, pr, SC[5] - .2, t, 44, CI); 
+    if (t >= at) txt('atacar', cx0 + 200, 760 + 20 * (1 - ease(prog(t, at, at + .3))), ARC, 44, VERM, { align: 'center', weight: 600, alpha: prog(t, at, at + .3) * (1 - prog(t, SC[5] - .2, SC[5] + .1)) });
+    const ten = wt('tentativas', 4);
+    linhaTxt('já viram tentativas de ataque', 980, ten - .3, SC[5] - .2, t, 50, AMB);
+    linhaTxt('sem invasão confirmada até agora', 1060, ten + .3, SC[5] - .2, t, 34, 'rgba(244,248,255,.75)');
+  },
+  // 5 · passo 1: ver a versão no painel da hospedagem
+  (t, lt) => {
+    numero(1, 260, SC[5], SC[6] - .2, t);
+    frase('Veja a versão do PHP', 430, wt('veja', 5) - .1, SC[6] - .2, 70, { t, hot: 'versão', cor: CI });
+    const pn = wt('painel', 5);
+    janela(520, 470, prog(t, pn - .5, pn), 'Painel da hospedagem', (x, y, w) => {
+      campo(x, y, w, 'Versão do PHP', '8.3.30', prog(t, pn - .2, pn + .2), prog(t, pn + .3, pn + .5));
+      const v = prog(t, pn + .4, pn + .7); if (v > 0) txt('✕ versão sem a correção', x, y + 160, ARC, 34, VERM, { weight: 600, alpha: v });
+    });
+    exemplo(cx0, 1080, prog(t, pn, pn + .3));
+  },
+  // 6 · passo 2: atualizar pra versão corrigida de 21/10
+  (t, lt) => {
+    numero(2, 260, SC[6], SC[7] - .2, t);
+    frase('Atualize hoje', 430, wt('atualize', 6) - .1, SC[7] - .2, 80, { t, hot: 'hoje', cor: CI });
+    const at = wt('atualize', 6), ok = at + .9;
+    janela(520, 470, prog(lt, .05, .35), 'Painel da hospedagem', (x, y, w) => {
+      campo(x, y, w, 'Versão do PHP', prog(t, ok, ok + .1) > .5 ? '8.3.36' : '8.3.30', 1, 1);
+      botao(x, y + 150, prog(t, ok, ok + .1) > .5 ? 'atualizado ✓' : 'atualizar', 1, prog(t, at + .4, at + .8), prog(t, ok, ok + .1) > .5 ? VERDE : AZ);
+    });
+    const vs = wt('versao', 6);
+    ['8.5.12', '8.4.27', '8.3.36', '8.2.35'].forEach((v, i) => versao(v, cx0 + (i % 2 ? 190 : -190), 1110 + Math.floor(i / 2) * 105, prog(t, vs + i * .15, vs + i * .15 + .3), VERDE));
+    linhaTxt('corrigidas em 21/10/2026', 1320, wt('21', 6) - .2, SC[7] - .2, t, 38, CI);
+    linhaTxt('segundo o PHP, o único jeito seguro', 1390, wt('segundo', 6) - .1, SC[7] - .2, t, 36, 'rgba(244,248,255,.8)');
+  },
+  // 7 · passo 3: 8.1 ou anterior sem correção; subir pro 8.2+
+  (t, lt) => {
+    numero(3, 260, SC[7], SC[8] - .2, t);
+    frase('8.1 ou anterior?', 430, wt('81', 7) - .2, SC[8] - .2, 76, { t, hot: '8.1', cor: VERM });
+    const nm = wt('nao', 7);
+    ['8.1', '8.0', '7.4'].forEach((v, i) => versao(v, cx0 - 250, 600 + i * 110, prog(t, wt('81', 7) + i * .15, wt('81', 7) + i * .15 + .3), VERM, prog(t, nm + i * .1, nm + .4 + i * .1)));
+    linhaTxt('sem correção do PHP', 950, wt('sai', 7) - .1, SC[8] - .2, t, 40, VERM);
+    const sb = wt('suba', 7);
+    seta(cx0 - 110, cx0 + 60, 710, prog(t, sb - .2, sb + .3));
+    versao('8.2+', cx0 + 220, 710, prog(t, wt('82', 7) - .2, wt('82', 7) + .1), VERDE);
+    linhaTxt('ou mais nova', 1060, wt('82', 7), SC[8] - .2, t, 40, CI);
+  },
+  // 8 · logo + chamada
+  (t, lt) => fim(t, lt, 'Manda pra quem cuida do site', 'e segue o canal'),
+];
+</script></body></html>

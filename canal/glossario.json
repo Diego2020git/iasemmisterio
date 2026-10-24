@@ -149,6 +149,20 @@
     },
     "link": {
       "explicar": false
+    },
+    "php": {
+      "explicar": true,
+      "pistas": [
+        "linguagem"
+      ],
+      "nota": "extra 24/10: linguagem que roda boa parte dos sites"
+    },
+    "servidor": {
+      "explicar": true,
+      "pistas": [
+        "computador que",
+        "onde o site"
+      ]
     }
   },
   "suspeitos": [

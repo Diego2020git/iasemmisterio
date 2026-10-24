@@ -77,5 +77,8 @@
   },
   "2026-10-18-extra-chatgpt-capcut": {
     "cenas-neon": "gerada por código (kit/neon-kit.js, telas ilustrativas do ChatGPT e do CapCut, sem captura de tela real)"
+  },
+  "2026-10-24-extra-php2shell": {
+    "cenas-neon": "gerada por código (kit/neon-kit.js, servidor e painel ilustrativos, sem captura real)"
   }
 }
