@@ -72,12 +72,12 @@
   {
    "dado": "Gemini 3.8 Flash: limite de entrada 1.048.576 tokens",
    "fonte": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
-   "conferido": "2026-10-21"
+   "conferido": "2026-10-24"
   },
   {
    "dado": "AI Studio grátis (sem chave paga)",
    "fonte": "https://ai.google.dev/gemini-api/docs/billing",
-   "conferido": "2026-10-21"
+   "conferido": "2026-10-24"
   }
  ],
  "registro": {
