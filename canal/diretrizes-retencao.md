@@ -1,5 +1,8 @@
 # Diretrizes de retenção (Diego, 11/10/2026)
 
+> **24/10/2026: régua nova.** O Diego aprovou o extra do PHP (v3) e pediu que tudo saia "com esse nível de entrega ou superior". Vale por cima deste arquivo: /mnt/project-files/operacao/padrao-de-entrega.md e a seção "Padrão de entrega" do canal/rotina.md (profundidade: como funciona, quem é afetado, contexto, linha do tempo, passos; visual com mecanismo animado, chão de grade, partículas, elementos grandes; legenda grande palavra por palavra via kit/neon-entrega.js). O gancho em 2 s e a mudança visual a cada 1,5 a 3 s continuam.
+
+
 Valem para toda produção nova do IA Sem Mistério a partir de 12/10/2026. A identidade não muda: Raio-X (planta em traço, Archivo Expanded + Archivo, azul-marinho/preto/azul elétrico/ciano, lente com "IA"), voz Fenrir, kit `raiox-kit.js` + `raiox-motion.js`, legenda com a palavra acesa, card final. O que muda é o roteiro, o gancho e o ritmo.
 
 Nenhuma regra aqui garante viralização. Ela organiza testes; os Insights decidem o que fica.

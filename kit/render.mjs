@@ -5,9 +5,14 @@
 // Cada quadro chama render(i/30) na página e copia o canvas; nada depende do relógio real.
 import { spawn } from 'node:child_process';
 import { resolve } from 'node:path';
+import * as fs from 'node:fs';
 import { writeFileSync, mkdirSync } from 'node:fs';
 
-const CHROME = process.env.CHROME || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+// Chrome: CHROME do ambiente, senão o primeiro que existir em /opt/pw-browsers (a versão muda entre ambientes).
+const CHROME = process.env.CHROME || (() => { const base = '/opt/pw-browsers';
+  const cands = ['/opt/pw-browsers/chromium-1194/chrome-linux/chrome'];
+  try { for (const d of fs.readdirSync(base).filter(d => /^chromium-\d+$/.test(d)).sort().reverse()) cands.push(`${base}/${d}/chrome-linux64/chrome`, `${base}/${d}/chrome-linux/chrome`); } catch {}
+  return cands.find(c => fs.existsSync(c)) || cands[0]; })();
 const [html, out, a3, a4] = process.argv.slice(2);
 const FPS = 30, PORT = 9300 + Math.floor(Math.random() * 500);
 

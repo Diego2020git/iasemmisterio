@@ -3,6 +3,28 @@
 Fonte da verdade da operação IA Sem Mistério. Toda rotina começa com `git pull` e relendo este arquivo.
 Regras completas: /mnt/project-files/operacao/prompt-operacao-v2.md.
 
+## Padrão de entrega (Diego, 24/10/2026): vale para TODO vídeo e carrossel a partir de agora
+
+O Diego recusou duas versões do extra do PHP ("muito ruim", "visual e conteúdo muito raso") e aprovou a v3 com "Ficou bom, pode postar, atualize o sistema para criar com esse nível de entrega ou superior" (24/10, 18h40Z). A v3 é a régua mínima de Radar, séries, extras e carrossel. Referência: branch claude/project-thread-thpb2r, kit/2026-10-24-extra-php2shell-neon.html (não apagar o branch). Régua completa: /mnt/project-files/operacao/padrao-de-entrega.md.
+
+Conteúdo (profundidade, não resumo):
+- Explicar COMO funciona, não só o que aconteceu: o mecanismo em 2 ou 3 passos simples.
+- Sempre responder: o que é, como funciona, quem é afetado ou quem pode usar (nomes reais de produto, versão, plano, país), o contexto e o papel da IA (com precisão e fonte), a linha do tempo (datas) e o que fazer (passos numerados com nomes reais de menu, botão e versão).
+- Nome técnico sempre com a tradução simples na mesma frase.
+- Dizer também o limite: o que não resolve, o que é pago, onde ainda não chegou.
+- Nada inventado: cada número na tela tem fonte em dados_que_envelhecem; afirmação que não bate com a fonte primária sai ou vem com "segundo X".
+- Duração: extras e notícias avulsas, a que o conteúdo pedir ("formato": "livre", 35 a 90 s). Radar segue "radar-60" (card do Diego de 16/10) até ele dizer outra coisa, mas com a mesma profundidade por segundo: menos frase de efeito, mais mecanismo. Séries seguem 35 s ("completo") com o mecanismo mostrado em cada passo.
+
+Visual (cena que mostra o mecanismo):
+- Toda página nova carrega kit/neon-entrega.js depois de neon-extra.js. Ele liga sozinho o chão de grade em perspectiva com partículas e a legenda grande palavra por palavra (Archivo Expanded 66, caixa alta, palavra atual em ciano, y≈1480). Peças prontas: titulo() (caixa alta, palavra-chave em destaque, largura máx. 840), versao() (etiqueta grande, risco vermelho), pilula(), setaH(), fio() (conexão com pulso), linhaDoTempo(), P.escudo, P.servidor, flut().
+- Cada cena é uma animação do conceito, não texto na tela: dados que viajam, medidor que enche, linha do tempo que se desenha, painel com o botão sendo clicado, versões riscadas, feixe de IA varrendo.
+- Elementos grandes entre y 400 e 1300; nada pequeno solto, nada cortado. A faixa y 1400 a 1560 é da legenda: nada de selo, exemplo() ou fonte ali (a fonte vai na legenda do post).
+- Cores: vermelho (VERM) só para perigo, verde (VERDE) para solução, âmbar (AMB) para atenção, ciano e azul para o resto.
+- Folha de quadros a cada 1,5 s conferida antes do render: nada sobreposto, nada vazio por mais de 1 s, nenhum texto cortado.
+
+Entrega: página com o vídeo embutido (thread de retenção) e agendamento só com o ok do Diego.
+Render: se kit/render.mjs não achar o Chrome, ele tenta sozinho os caminhos de /opt/pw-browsers; dá pra forçar com CHROME=<caminho>.
+
 ## Grade fixa (2 vídeos por dia, revisada em 11/10 após a escolha Buffer + Metricool)
 
 | Dia | Horário | Série | O que é |
@@ -50,7 +72,7 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 3. Roteiro em canal/roteiros/AAAA-MM-DD-serie.json.
 4. Voz: Google Cloud TTS, voz escolhida pelo Diego, velocidade 1,06, WAV 24 kHz mono, loudnorm -14 LUFS, por cena. Anotar caracteres gastos no mês.
 4b. `python3 kit/voz.py canal/roteiros/X.json kit/audio/NN-slug` (gera .wav e .tempos.js).
-5. Montagem com o kit Raio-X de kit/ (raiox-kit.js + raiox-motion.js, cue() sincroniza com a fala): `node kit/render.mjs kit/NN-slug-raiox.html videos/NN-slug-raiox-final.mp4 kit/audio/NN-slug.wav`.
+5. Montagem: desde 24/10 no kit neon + kit/neon-entrega.js (ver "Padrão de entrega" acima). Texto antigo, só para referência: kit Raio-X de kit/ (raiox-kit.js + raiox-motion.js, cue() sincroniza com a fala): `node kit/render.mjs kit/NN-slug-raiox.html videos/NN-slug-raiox-final.mp4 kit/audio/NN-slug.wav`.
    - Regras de forma (Diego, 11/10): nada torto nem sobreposto. Câmera não gira, objeto 3D fica em vista fixa (sem rodar), selo reto, troca de forma por encolher e crescer (sem deformar), transição por varredura. Objeto achatado (celular, papel) vai em traço 2D, não em 3D. Antes de renderizar, conferir a folha de quadros a cada 1,5 s: nada cortado na borda, nenhum texto em cima de forma. O título da abertura aparece inteiro no quadro 1 (kinetic faz isso sozinho na cena 0). Depois do render, `python3 canal/capa.py canal/roteiros/X.json` gera a capa (último quadro da abertura); o publicar.py usa o mesmo instante como capa do Instagram.
 6. `python3 canal/validar.py canal/roteiros/X.json` (antes da voz, use `--sem-mp4`). Se barrar, corrigir e rodar de novo.
 7. MP4 em videos/ do repositório, commit e push.

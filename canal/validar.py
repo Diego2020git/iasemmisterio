@@ -20,6 +20,8 @@ DIAS_DA_SERIE = {"Faça com IA": range(7), "Agente na Prática": range(7), "Carr
 GRADE_NOVA_DESDE = "2026-10-16"  # antecipada pelo Diego em 16/10 (04h13 para 17/10, 04h47 para hoje)
 GRADE.update({"Radar IA": "12:00", "Agente do zero": "19:00", "Automação do zero": "19:00", "Termo de IA": "19:00", "Modelos e parâmetros": "19:00"})
 DIAS_DA_SERIE.update({"Radar IA": range(7), "Agente do zero": [0, 2, 4], "Automação do zero": [1, 5], "Termo de IA": [3], "Modelos e parâmetros": [6]})
+# "Extra": vídeo pedido pelo Diego fora da grade (ex.: novidade do dia). Não tem slot: sempre exige fora_da_grade aprovado.
+GRADE["Extra"] = "extra"; DIAS_DA_SERIE["Extra"] = range(7)
 SERIES_ANTIGAS = {"Faça com IA", "Agente na Prática"}  # só até 18/10
 SERIES_NOVAS = {"Radar IA", "Agente do zero", "Automação do zero", "Termo de IA", "Modelos e parâmetros"}
 # formato "curto" (diretrizes de retenção do Diego, 11/10/2026): 15 a 25 s de fala, card final pode passar um pouco.
@@ -27,7 +29,8 @@ SERIES_NOVAS = {"Radar IA", "Agente do zero", "Automação do zero", "Termo de I
 # "completo" (Diego, 16/10/2026, thread "Retenção: gancho e ritmo"): 35 s com passo a passo, ferramenta, pedido na tela,
 # antes e depois e custo. Padrão a partir de 16/10; ver /mnt/project-files/operacao/roteiro-35s.md. "curto" fica só para vídeos antigos.
 # "radar-60": Radar IA com 3 notícias de ~15 s (Diego, card de 16/10 05h06); vale para todo Radar.
-DURACOES = {"curto": (15.0, 27.0), "completo": (31.0, 38.0), "demo": (35.0, 45.0), "radar-60": (55.0, 65.0)}
+# "livre": extra ou notícia avulsa com duração guiada pelo conteúdo (Diego, 18/10 e 24/10/2026; padrão de entrega de 24/10), até 90 s.
+DURACOES = {"curto": (15.0, 27.0), "completo": (31.0, 38.0), "demo": (35.0, 45.0), "radar-60": (55.0, 65.0), "livre": (35.0, 90.0)}
 CURTO_ATE = "2026-10-15"  # último dia com vídeos curtos já agendados
 TITULO_MAX = 70
 TRAVESSOES = "—–"
