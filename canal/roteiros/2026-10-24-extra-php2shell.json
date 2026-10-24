@@ -6,7 +6,7 @@
   "fora_da_grade": {
     "aprovado": ""
   },
-  "titulo": "PHP2Shell: IA achou falha grave no PHP. Atualize seu site",
+  "titulo": "Falha grave no PHP, achada com ajuda de IA: atualize seu site",
   "descricao": "Falha grave no PHP, e a IA ajudou a achar 🔓\nO PHP roda boa parte dos sites (WordPress, Drupal, Joomla). Em 21/10/2026 saíram correções para duas falhas críticas, apelidadas de PHP2Shell (CVE-2026-109618 e CVE-2026-109619, nota 9,2 de 10): um invasor pode rodar comandos no servidor, sem login.\n🤖 Ligação com IA: a Wiz Research diz que o Gemini ajudou a achar a falha, montar o ataque de teste e conferir a correção; Calif e OpenAI também participaram.\n✅ O que fazer:\n1️⃣ Veja a versão do PHP no painel da hospedagem\n2️⃣ Atualize para 8.5.12, 8.4.27, 8.3.36 ou 8.2.35\n3️⃣ No 8.1 ou mais antigo o PHP não solta mais correção: suba para 8.2 ou mais nova, ou confirme com a hospedagem se ela aplicou a correção\nSegundo o PHP, não há paliativo completo: atualizar é o único caminho seguro.\nNo nosso vídeo as telas são ilustrativas.\n\nFontes (conferido em 24/10/2026): php.net/archive/2026.php · php.net/releases/8_5_12.php · wiz.io/blog/php2shell-php-rce · cert.europa.eu/publications/security-advisories/2026-018\n\n#ia #php #segurança #wordpress #cibersegurança #inteligenciaartificial",
   "comentario_fixado": null,
   "voz": "pt-BR-Chirp3-HD-Fenrir",
@@ -48,72 +48,64 @@
     {
       "frases": [
         {
-          "fala": "O PHP, a linguagem por trás de boa parte dos sites, teve duas falhas críticas. E a inteligência artificial ajudou a encontrar.",
-          "legenda": "O PHP, a linguagem por trás de boa parte dos sites, teve duas falhas críticas. E a inteligência artificial ajudou a encontrar."
+          "fala": "Se o seu site usa PHP, atualize hoje. Saíram duas falhas graves, e a IA ajudou a encontrar.",
+          "legenda": "Se o seu site usa PHP, atualize hoje. Saíram duas falhas graves, e a IA ajudou a encontrar."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "O apelido é PHP tu Shell: deixa um invasor rodar comandos no servidor, o computador que guarda o site. Sem login.",
-          "legenda": "O apelido é PHP2Shell: deixa um invasor rodar comandos no servidor, o computador que guarda o site. Sem login."
+          "fala": "O PHP é a linguagem por trás do WordPress e de muitos sites. Com a falha, um invasor roda comandos no servidor, onde o site fica, sem senha.",
+          "legenda": "O PHP é a linguagem por trás do WordPress e de muitos sites. Com a falha, um invasor roda comandos no servidor, onde o site fica, sem senha."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Vale pra dez anos de versões, e a Wiz invadiu, em teste, WordPress, Drupal e Joomla.",
-          "legenda": "Vale pra dez anos de versões, e a Wiz invadiu, em teste, WordPress, Drupal e Joomla."
+          "fala": "A Wiz Research diz que o Gemini ajudou a achar a falha, testar o ataque e conferir a correção.",
+          "legenda": "A Wiz Research diz que o Gemini ajudou a achar a falha, testar o ataque e conferir a correção."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "E a IA? A Wiz Research diz que o Gemini ajudou a achar a falha, testar o ataque e conferir a correção.",
-          "legenda": "E a IA? A Wiz Research diz que o Gemini ajudou a achar a falha, testar o ataque e conferir a correção."
+          "fala": "E empresas de segurança já viram tentativas de ataque.",
+          "legenda": "E empresas de segurança já viram tentativas de ataque."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Ou seja, a IA que acha falha pra proteger também acha pra atacar. Empresas de segurança já viram tentativas de ataque.",
-          "legenda": "Ou seja, a IA que acha falha pra proteger também acha pra atacar. Empresas de segurança já viram tentativas de ataque."
+          "fala": "Um: veja a versão do PHP no painel da hospedagem.",
+          "legenda": "Um: veja a versão do PHP no painel da hospedagem."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Tem site? Um: veja a versão do PHP no painel da hospedagem.",
-          "legenda": "Tem site? Um: veja a versão do PHP no painel da hospedagem."
+          "fala": "Dois: atualize pra versão corrigida de vinte e um de outubro.",
+          "legenda": "Dois: atualize pra versão corrigida de 21 de outubro."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Dois: atualize pra versão corrigida de vinte e um de outubro. Segundo o PHP, é o único jeito seguro.",
-          "legenda": "Dois: atualize pra versão corrigida de 21 de outubro. Segundo o PHP, é o único jeito seguro."
+          "fala": "Três: se for oito ponto um ou mais antiga, suba pro oito ponto dois ou mais nova.",
+          "legenda": "Três: se for 8.1 ou mais antiga, suba pro 8.2 ou mais nova."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Três: no oito ponto um ou anterior não sai mais correção. Suba pro oito ponto dois ou mais nova.",
-          "legenda": "Três: no 8.1 ou anterior não sai mais correção. Suba pro 8.2 ou mais nova."
-        }
-      ]
-    },
-    {
-      "frases": [
-        {
-          "fala": "Manda pra quem cuida do seu site e segue o canal.",
-          "legenda": "Manda pra quem cuida do seu site e segue o canal."
+          "fala": "Manda pra quem cuida do seu site.",
+          "legenda": "Manda pra quem cuida do seu site."
         }
       ]
     }
