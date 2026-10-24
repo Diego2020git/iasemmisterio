@@ -868,6 +868,192 @@
     "instagram": "6ad65cc44771e1910a96fb6c"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-19-12h-radar-ia-60s-neon.mp4"
+  },
+  {
+   "id": "2026-10-24-radar-ia-60s",
+   "data": "2026-10-24",
+   "horario": "17:00",
+   "serie": "Radar IA",
+   "titulo": "Radar IA: Gemini Notebook, Docs por voz e Claude caça falhas",
+   "narracao": "O Gemini Notebook agora mostra o roteiro antes de criar seus slides, o Google Docs escreve por voz no celular e o Claude achou falhas escondidas há anos. São as três notícias de IA de hoje, no Radar IA. Um: no Gemini Notebook, o antigo NotebookLM, antes de gerar os slides ou o vídeo, você revisa o roteiro e pede mudanças. Assim não perde tempo com uma apresentação que sai errada. Dois: o Docs Live chegou ao Google Docs no celular. Você monta um documento organizado só falando. Mas é pago: vale pro Google AI Pro, Ultra e alguns planos de empresa. Três: a Anthropic contou que o Claude conferiu a segurança de mais de cem pedaços de programa livres, que qualquer um pode usar, e achou falhas que passaram anos sem ninguém ver. Qual testar hoje? No Gemini Notebook, ligue Review outline notes e gere seus slides. Leia o roteiro e peça uma mudança. Segue pro Radar IA todo dia ao meio-dia.",
+   "video": "videos/2026-10-24-12h-radar-ia-60s-neon.mp4",
+   "registro": {
+    "tema": "radar IA 24/10: Gemini Notebook revisa roteiro de slides e vídeo, Docs Live no celular, Claude verifica segurança de 100+ bibliotecas",
+    "chaves": [
+     "gemini notebook review",
+     "docs live celular",
+     "claude verificacao formal",
+     "radar 24/10"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6adcfd82e4be8a4d8672fd4e",
+    "instagram": "6adcfd823d5b27036b9b5825"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-24-12h-radar-ia-60s-neon.mp4"
+  },
+  {
+   "id": "2026-10-24-automacao-do-zero-03",
+   "data": "2026-10-24",
+   "horario": "19:00",
+   "serie": "Automação do zero",
+   "titulo": "Automação do zero #3: linha na planilha vira evento na agenda",
+   "narracao": "Escreveu na planilha? O compromisso aparece sozinho na sua agenda. Automação do zero, episódio três. Nada de copiar data por data. Um: no Google Planilhas, crie as colunas título, data, início e fim. Dois: no Zapier, crie um Zap. Gatilho: Google Sheets, New Spreadsheet Row. Três: ação: Google Calendar, Create Detailed Event. Ligue as colunas e publique. Pronto: cada linha nova vira evento. Grátis até cem tarefas por mês. Salva pra fazer hoje. Terça tem o episódio quatro.",
+   "video": "videos/2026-10-24-19h-automacao-do-zero-03-neon.mp4",
+   "registro": {
+    "tema": "automação ep 3: linha nova no Google Planilhas vira evento na Google Agenda (Zapier)",
+    "chaves": [
+     "planilha para agenda",
+     "new spreadsheet row",
+     "create detailed event",
+     "automacao ep 3"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6adcfddfbd33ce99c33a15d4",
+    "instagram": "6adcfde0bd33ce99c33a1607"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-24-19h-automacao-do-zero-03-neon.mp4"
+  },
+  {
+   "id": "2026-10-25-modelos-e-parametros-02",
+   "data": "2026-10-25",
+   "horario": "19:00",
+   "serie": "Modelos e parâmetros",
+   "titulo": "Modelos e parâmetros #2: janela de contexto, quanto a IA lê de uma vez",
+   "narracao": "Jogou um arquivo enorme na IA e ela esqueceu o começo? É a janela de contexto. Modelos e parâmetros, episódio dois. Janela é quanto texto ela lê de uma vez. Um: no Google AI Studio, que é grátis, escolha um modelo Flash. Dois: anexe um PDF grande seu, como uma apostila ou um manual. Três: veja no contador quantos tokens, os pedaços de texto, o arquivo ocupou. O Flash lê até um milhão desses pedaços, os tokens. Passou disso, abra um chat novo. Domingo que vem: modelo com raciocínio.",
+   "video": "videos/2026-10-25-19h-modelos-e-parametros-02-neon.mp4",
+   "registro": {
+    "tema": "modelos ep 2: janela de contexto (quanto a IA lê de uma vez), teste com PDF no AI Studio",
+    "chaves": [
+     "janela de contexto",
+     "limite de tokens",
+     "contador de tokens",
+     "modelos ep 2"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6adcfde63d5b27036b9b692c",
+    "instagram": "6adcfde66887a2efc1cf27b3"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-25-19h-modelos-e-parametros-02-neon.mp4"
+  },
+  {
+   "id": "2026-10-26-agente-do-zero-05",
+   "data": "2026-10-26",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #5: o primeiro cenário no Make",
+   "narracao": "Seu agente saiu do AI Studio: agora ele roda dentro do Make. Agente do zero, episódio cinco. O Make é o que liga o cérebro ao WhatsApp. Um: crie a conta grátis no Make e clique em Create a new scenario. Dois: adicione Google Gemini AI, Create a Completion, com a chave do episódio dois. Três: escreva abre domingo? e clique em Run once. A resposta aparece. Funcionou. Grátis: mil créditos por mês, um por módulo que roda. Quarta tem o episódio seis: o número de teste do WhatsApp.",
+   "video": "videos/2026-10-26-19h-agente-do-zero-05-neon.mp4",
+   "registro": {
+    "tema": "agente do zero ep 5: primeiro cenário no Make com o módulo Google Gemini AI",
+    "chaves": [
+     "make cenario",
+     "create a completion",
+     "run once",
+     "agente ep 5"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6adcfdea3d5b27036b9b6a08",
+    "instagram": "6adcfdea3d5b27036b9b6a3a"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-26-19h-agente-do-zero-05-neon.mp4"
+  },
+  {
+   "id": "2026-10-27-automacao-do-zero-04",
+   "data": "2026-10-27",
+   "horario": "19:00",
+   "serie": "Automação do zero",
+   "titulo": "Automação do zero #4: e-mail com estrela vira tarefa",
+   "narracao": "Marcou estrela no e-mail? Ele vira tarefa sozinho na sua lista. Automação do zero, episódio quatro. Nenhum pedido esquecido na caixa de entrada. Um: no Zapier, crie um Zap. Gatilho, o que dispara tudo: Gmail, New Starred Email. Dois: ação: Google Tasks, Create Task. Escolha a lista e ligue o assunto ao título. Três: teste com um e-mail de verdade e clique em Publish. Pronto: o Zapier confere a cada quinze minutos. Grátis até cem tarefas por mês. Salva pra fazer hoje. Sábado tem o episódio cinco.",
+   "video": "videos/2026-10-27-19h-automacao-do-zero-04-neon.mp4",
+   "registro": {
+    "tema": "automação ep 4: e-mail com estrela no Gmail vira tarefa no Google Tasks (Zapier)",
+    "chaves": [
+     "estrela vira tarefa",
+     "new starred email",
+     "google tasks create task",
+     "automacao ep 4"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6adcfdf00b5343d0709a56ad",
+    "instagram": "6adcfdf18b3d437ddcd397a3"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-27-19h-automacao-do-zero-04-neon.mp4"
+  },
+  {
+   "id": "2026-10-28-agente-do-zero-06",
+   "data": "2026-10-28",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #6: número de teste do WhatsApp grátis",
+   "narracao": "Seu agente vai falar no WhatsApp. Hoje você pega um número de teste grátis. Agente do zero, episódio seis. Sem chip novo e sem cartão. Um: no site da Meta pra desenvolvedores, crie um app e adicione o WhatsApp. Dois: clique em Start using the API, a conexão do WhatsApp. Na tela API Setup já aparece um número de teste. Três: coloque seu WhatsApp como destino e mande a mensagem de teste. Ela chega no seu celular. Esse número é só pra testar. No próximo episódio, a gente liga ele no Make. Salva e segue. Sexta tem o episódio sete.",
+   "video": "videos/2026-10-28-19h-agente-do-zero-06-neon.mp4",
+   "registro": {
+    "tema": "agente do zero ep 6: número de teste grátis do WhatsApp Cloud API (Meta for Developers)",
+    "chaves": [
+     "numero de teste whatsapp",
+     "api setup",
+     "start using the api",
+     "agente ep 6"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6adcfdf43d5b27036b9b6d16",
+    "instagram": "6adcfdf48b3d437ddcd39939"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-28-19h-agente-do-zero-06-neon.mp4"
+  },
+  {
+   "id": "2026-10-20-radar-ia-60s",
+   "data": "2026-10-24",
+   "horario": "20:30",
+   "serie": "Radar IA",
+   "titulo": "Radar IA: Mercury 3 escreve de uma vez, MiniMax e Gemini no iPhone",
+   "narracao": "Uma IA que escreve o texto inteiro de uma vez, um modelo chinês setenta por cento mais barato e o Gemini nas planilhas do iPhone. São as três notícias de IA de hoje, no Radar IA. Um: a Inception lançou o Mercury três. Em vez de escrever palavra por palavra, ele monta vários pedaços do texto ao mesmo tempo. A empresa diz que passa de mil tokens por segundo, e token é cada pedacinho de texto. Dois: a chinesa MiniMax lançou o M três ponto um Flash, feito pra agentes e programação. Segundo a empresa, é quase três vezes mais rápido e custa setenta por cento menos. Três: o Gemini chegou ao Planilhas Google no iPhone. Você pergunta sobre os dados e ele cria gráficos. Mas é só nos planos pagos e está chegando aos poucos. Qual testar hoje? O Mercury três: abra o chat no site da Inception, peça um texto longo e veja a velocidade. O pedido está na legenda. Segue pro Radar IA todo dia ao meio-dia.",
+   "video": "videos/2026-10-20-12h-radar-ia-60s-neon.mp4",
+   "registro": {
+    "tema": "radar IA 20/10: Mercury 3 difusão, MiniMax M3.1 Flash, Gemini no Planilhas iPhone",
+    "chaves": [
+     "mercury 3",
+     "minimax m3.1 flash",
+     "gemini planilhas ios",
+     "radar 20/10"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6adcfe0d6887a2efc1cf384e",
+    "instagram": "6adcfe0d3d5b27036b9b78dc"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-20-12h-radar-ia-60s-neon.mp4"
+  },
+  {
+   "id": "2026-10-24-carrossel-formulario-planilha-email",
+   "serie": "Carrossel da Semana",
+   "data": "2026-10-24",
+   "horario": "18:00",
+   "status": "agendado",
+   "rede": "instagram (Metricool)",
+   "metricool_id": 405194546,
+   "slides": "carrosseis/2026-10-24-formulario-planilha-email",
+   "aprovado": "Diego, thread de retenção 24/10 18:44Z (10h já tinha passado; 18h fora da grade)"
   }
  ]
 }
