@@ -81,6 +81,9 @@ function linhaDoTempo(y, itens, t, a = 1) {
     txt(rot, x, y - 60, EXP, 40, c, { align: 'center', alpha: q }); txt(str, x, y + 64, ARC, 30, BR, { align: 'center', weight: 600, alpha: q }); });
   ctx.restore();
 }
+// ---------- legenda de cores (quadradinho + texto) ----------
+function chipLegenda(items, y, a) { if (a <= 0) return; const ws = items.map(([s]) => measure(s, ARC, 34, 600) + 76), tot = ws.reduce((p, c) => p + c, 0) + 28 * (items.length - 1); let x = cx0 - tot / 2;
+  items.forEach(([s, c], i) => { ctx.save(); ctx.globalAlpha *= clamp(a * 2 - i * .3); ctx.fillStyle = c; rr(x, y - 16, 32, 32, 8); ctx.fill(); txt(s, x + 44, y, ARC, 34, BR, { weight: 600 }); ctx.restore(); x += ws[i] + 28; }); }
 // ---------- formas extras ----------
 Object.assign(P, {
   escudo() { ctx.beginPath(); ctx.moveTo(0, -100); ctx.lineTo(85, -65); ctx.quadraticCurveTo(85, 50, 0, 100); ctx.quadraticCurveTo(-85, 50, -85, -65); ctx.closePath(); },
