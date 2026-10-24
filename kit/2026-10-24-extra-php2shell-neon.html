@@ -12,25 +12,27 @@ html,body{margin:0;background:#000}canvas{display:block}
 <script src="neon-kit.js"></script>
 <script src="neon-extra.js"></script>
 <script>
-// 24/10/2026 · extra (pedido do Diego) · v2: PHP2Shell, falhas críticas no PHP achadas com ajuda de IA. Neon.
-// v2 (Diego achou a v1 "muito ruim"): elementos grandes no centro, legenda grande palavra por palavra, cores do canal
-// (vermelho só no perigo), gancho "atualize hoje", 42 s.
+// 24/10/2026 · extra (pedido do Diego) · v3: PHP2Shell, falhas críticas no PHP achadas com ajuda de IA. Neon.
+// v2 (Diego achou a v1 "muito ruim"): elementos grandes, legenda grande palavra por palavra, cores do canal.
+// v3 (Diego achou a v2 "visual e conteúdo muito raso"): explica o mecanismo (memória pela metade + memória liberada),
+// quem é afetado, o papel da IA, a linha do tempo e o passo a passo; chão de grade em perspectiva, partículas e cenas animadas. 86 s.
 // Fontes: php.net/archive/2026.php (aviso de 21/10), wiz.io/blog/php2shell-php-rce. Site, terminal e painel são ILUSTRATIVOS.
 const T0 = TEMPOS.cenas;
-const SC = [...T0.slice(0, 8), T0[8] + .7];
-const DURATION = SC[8], IMPACTO = SC[7] + .4;
+const SC = [...T0.slice(0, 12), T0[12] + .7];
+const DURATION = SC[12], IMPACTO = SC[11] + .4;
 const VERM = '#ff4d6d', VERDE = '#3ddc84', AMB = '#ffc24b';
-const COR = [AZ, IN, CI, AZ, CI, AZ, IN, CI];
-const HITS = [wt('atualize', 0), wt('hoje', 0), wt('falhas', 0), wt('ia', 0), wt('wordpress', 1), wt('comandos', 1), wt('senha', 1), wt('gemini', 2), wt('achar', 2), wt('testar', 2), wt('conferir', 2),
-  wt('tentativas', 3), wt('painel', 4), wt('21', 5), wt('81', 6), wt('82', 6)];
-const CLIQUES = [wt('atualize', 5) + .45];
+const COR = [AZ, IN, IN, AZ, CI, CI, AZ, CI, AZ, IN, AZ, CI];
+const HITS = [.1, wt('wordpress', 0), wt('invadir', 0), wt('ia', 0), wt('pedido', 1), wt('memoria', 1), wt('metade', 2), wt('limpeza', 2), wt('liberada', 2),
+  wt('codigo', 3), wt('executa', 3), wt('login', 3), wt('wordpress', 4), wt('drupal', 4), wt('joomla', 4), wt('linha', 4), wt('gemini', 5), wt('achar', 5), wt('montar', 5), wt('detectar', 5), wt('conferir', 5),
+  wt('20', 6), wt('21', 6), wt('tentativas', 6), wt('painel', 7), wt('21', 8), wt('81', 9), wt('migre', 9), wt('remendo', 10), wt('unico', 10)];
+const CLIQUES = [wt('atualize', 8) + .45];
 const CK = [[0, 0, 0, 0, 0]];
 const flut = (t, k = 0) => 10 * Math.sin(t * 1.6 + k); // flutuação leve
 
 // ---------- legenda grande, palavra por palavra (blocos de até 3 palavras) ----------
 const BLOCOS = []; { let cur = []; for (const p of PAL) { if (cur.length && (cur[0].cena !== p.cena || cur.length === 3 || /[.,:?!]$/.test(cur[cur.length - 1].w))) { BLOCOS.push(cur); cur = []; } cur.push(p); } if (cur.length) BLOCOS.push(cur); }
 function legenda(t) {
-  if (t >= SC[7] - .05 && t > PAL[PAL.length - 1].t1 + .1) return;
+  if (t > PAL[PAL.length - 1].t1 + .3) return;
   const b = BLOCOS.find((b, i) => t >= b[0].t0 - .05 && (i === BLOCOS.length - 1 || t < BLOCOS[i + 1][0].t0 - .05)); if (!b || t > b[b.length - 1].t1 + .6) return;
   const words = b.map(p => p.w.replace(/[.,:?!]+$/, '').toUpperCase()), size = 66, gap = 22;
   const ws = words.map(w => measure(w, EXP, size)), tot = ws.reduce((a, c) => a + c, 0) + gap * (words.length - 1);
@@ -89,87 +91,199 @@ function titulo(str, y, t0, t1, t, size = 96, cor = BR, hot = '', hotCor = CI) {
   if (hot) { const hx = -w / 2 + measure(str.slice(0, str.indexOf(hot)), EXP, size); txt(hot, hx, 0, EXP, size, hotCor); }
   ctx.restore();
 }
-// janela clara grande (painel da hospedagem)
+// ---------- fundo v3: chão de grade em perspectiva + partículas subindo ----------
+const fundoBase = fundo;
+fundo = function (t, i, p) {
+  fundoBase(t, i, p);
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  const hz = 1240, cor = COR[i];
+  for (let k = 0; k < 14; k++) { const z = ((k + (t * .6) % 1) / 14), y = hz + Math.pow(z, 2.2) * (H - hz);
+    ctx.strokeStyle = hex(cor, .05 + .22 * z); ctx.lineWidth = 1 + 2 * z; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  for (let k = -12; k <= 12; k++) { ctx.strokeStyle = hex(cor, .12); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(cx0 + k * 30, hz); ctx.lineTo(cx0 + k * 260, H); ctx.stroke(); }
+  for (let k = 0; k < 40; k++) { const s = (k * 9301 + 49297) % 233280 / 233280, s2 = (k * 7919) % 1000 / 1000;
+    const y = H - ((t * (30 + 50 * s) + s2 * H) % H), x = s * W + 30 * Math.sin(t * .7 + k);
+    ctx.fillStyle = hex(k % 3 ? CI : AZ, .25 + .3 * s2); ctx.beginPath(); ctx.arc(x, y, 1.5 + 2.5 * s, 0, 7); ctx.fill(); }
+  ctx.restore();
+};
+// ---------- peças v3 ----------
 function painel(top, a, conteudo) { janela(top, 560, a, 'seusite.com.br · painel da hospedagem', conteudo, 940); }
+// bloco de memória: estado 'vazio' | 'cheio' | 'metade' | 'livre' | 'ataque'
+function bloco(x, y, w, h, est, a, t, k = 1) {
+  if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a * 2); const e = .85 + .15 * back(clamp(a)); ctx.translate(x + w / 2, y + h / 2); ctx.scale(e, e); ctx.translate(-x - w / 2, -y - h / 2);
+  const C = { vazio: 'rgba(244,248,255,.25)', cheio: AZ, metade: AMB, livre: 'rgba(244,248,255,.55)', ataque: VERM }[est];
+  if (est === 'livre') ctx.setLineDash([12, 10]);
+  ctx.fillStyle = est === 'cheio' ? hex(AZ, .55) : est === 'ataque' ? hex(VERM, .45 + .15 * Math.sin(t * 8)) : 'rgba(8,14,30,.85)';
+  rr(x, y, w, h, 14); ctx.fill();
+  if (est === 'metade') { ctx.fillStyle = hex(AMB, .5); rr(x, y, w * .5 * k, h, 14); ctx.fill();
+    ctx.save(); rr(x, y, w, h, 14); ctx.clip(); ctx.strokeStyle = hex(AMB, .35); ctx.lineWidth = 4; for (let d = -h; d < w; d += 22) { ctx.beginPath(); ctx.moveTo(x + d, y + h); ctx.lineTo(x + d + h, y); ctx.stroke(); } ctx.restore(); }
+  ctx.strokeStyle = C; ctx.lineWidth = est === 'vazio' ? 2 : 4; if (est !== 'vazio') { ctx.shadowColor = C; ctx.shadowBlur = 18; } rr(x, y, w, h, 14); ctx.stroke(); ctx.setLineDash([]);
+  ctx.restore();
+}
+function grade(x0, y0, cols, rows, cw, ch, estado, a, t) { for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const i = r * cols + c, s = estado(i);
+  bloco(x0 + c * (cw + 14), y0 + r * (ch + 14), cw, ch, s.e, a * clamp((s.a ?? 1)), t, s.k ?? 1); } }
+function chipLegenda(items, y, a) { if (a <= 0) return; const ws = items.map(([s]) => measure(s, ARC, 30, 600) + 70), tot = ws.reduce((p, c) => p + c, 0) + 24 * (items.length - 1); let x = cx0 - tot / 2;
+  items.forEach(([s, c], i) => { ctx.save(); ctx.globalAlpha *= clamp(a * 2 - i * .3); ctx.fillStyle = c; rr(x, y - 14, 28, 28, 7); ctx.fill(); txt(s, x + 40, y, ARC, 30, BR, { weight: 600 }); ctx.restore(); x += ws[i] + 24; }); }
+function pilula(str, x, y, w, a, cor, sub = '', on = 1, size = 40) {
+  if (a <= 0) return; const e = back(clamp(a)), h = sub ? 120 : 96;
+  ctx.save(); ctx.translate(x, y); ctx.scale(e, e); ctx.globalAlpha *= clamp(a * 2);
+  ctx.shadowColor = cor; ctx.shadowBlur = 30 * on; ctx.fillStyle = 'rgba(8,16,34,.92)'; rr(-w / 2, -h / 2, w, h, 24); ctx.fill(); ctx.shadowBlur = 0;
+  ctx.strokeStyle = on ? cor : 'rgba(244,248,255,.25)'; ctx.lineWidth = 4; rr(-w / 2, -h / 2, w, h, 24); ctx.stroke();
+  txt(str, 0, sub ? -18 : 2, ARC, size, BR, { align: 'center', weight: 600 });
+  if (sub) txt(sub, 0, 30, ARC, 26, cor, { align: 'center', weight: 600, ls: 1 });
+  ctx.restore();
+}
+function linha(x0, y0, x1, y1, p, cor, t, pulso = true) {
+  if (p <= 0) return; ctx.save(); ctx.strokeStyle = hex(cor, .8); ctx.shadowColor = cor; ctx.shadowBlur = 16; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(lerp(x0, x1, ease(p)), lerp(y0, y1, ease(p))); ctx.stroke();
+  if (pulso && p >= 1) { const q = (t * 1.2) % 1; ctx.fillStyle = BR; ctx.beginPath(); ctx.arc(lerp(x0, x1, q), lerp(y0, y1, q), 7, 0, 7); ctx.fill(); }
+  ctx.restore();
+}
+const VERS = ['5.4', '5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5'];
 const S = [
-  // 0 · gancho: ATUALIZE HOJE + código com 2 falhas + feixe da IA achando
+  // 0 · gancho: 10 anos de versões com a falha; a IA varre e acha
   (t, lt) => {
-    titulo('SEU SITE USA PHP?', 250, -1, wt('atualize', 0) - .1, t, 84, BR, 'PHP');
-    titulo('ATUALIZE HOJE', 250, wt('atualize', 0) - .05, SC[1] - .2, t, 104, BR, 'HOJE', CI);
-    const fa = wt('falhas', 0), ia = wt('ia', 0);
-    codigo(cx0 - 450, 420 + flut(t), 900, [['<?php', CI], ['$user = $_POST["nome"];', BR], ['memória cheia… ✕', VERM], ['estado quebrado… ✕', VERM], ['echo "Olá, $user";', BR]],
-      prog(t, 0, fa + .4), 1, 'index.php', { cor: ia <= t ? CI : AZ, scan: prog(t, ia - .2, ia + 1.1), marca: 2, alerta: prog(t, fa, fa + .3), t });
-    if (t > fa) { // segunda linha marcada
-      const k = prog(t, fa + .2, fa + .5); ctx.save(); ctx.globalAlpha = k * (1 - prog(t, SC[1] - .2, SC[1] + .1)); ctx.strokeStyle = VERM; ctx.lineWidth = 5; ctx.shadowColor = VERM; ctx.shadowBlur = 20; rr(cx0 - 434, 420 + flut(t) + 112 + 3 * 74 - 34, 868, 68, 14); ctx.stroke(); ctx.restore(); }
-    const ai = prog(t, ia - .2, ia + .3);
-    neon3d(P.chip, cx0, 1150, 120 * back(ai), 0, .15, CI, ai);
-    if (ai > 0) txt('IA', cx0, 1150 + 6, EXP, 40, '#03121a', { align: 'center', alpha: prog(t, ia + .2, ia + .4) });
+    const fa = wt('falha', 0), ia = wt('ia', 0), d0 = wt('dez', 0);
+    titulo('10 ANOS DE PHP', 250, -1, fa - .1, t, 100, BR, '10 ANOS');
+    titulo('UMA FALHA ESCONDIDA', 250, fa - .05, SC[1] - .2, t, 84, BR, 'ESCONDIDA', VERM);
+    VERS.forEach((v, i) => { const c = i % 4, r = Math.floor(i / 4), x = i === 12 ? cx0 : cx0 - 330 + c * 220, y = 450 + r * 115 + flut(t, i) * .5;
+      const ai = prog(t, d0 + i * .1 - .5, d0 + i * .1 - .2), achado = prog(t, ia + .2 + i * .04, ia + .4 + i * .04);
+      versao(v, x, y, ai, prog(t, fa, fa + .4) > .5 ? (achado > .5 ? CI : VERM) : AZ, 0, 38); });
+    if (t > fa) { const k = prog(t, fa, fa + .5); ctx.save(); ctx.strokeStyle = VERM; ctx.shadowColor = VERM; ctx.shadowBlur = 30; ctx.lineWidth = 7; ctx.beginPath();
+      const pts = [[60, 520], [260, 600], [400, 540], [560, 660], [700, 590], [860, 720], [1020, 650]]; const n = Math.max(2, Math.ceil(pts.length * k));
+      pts.slice(0, n).forEach(([x, y], j) => j ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.globalAlpha = 1 - prog(t, ia, ia + .5); ctx.stroke(); ctx.restore(); }
+    const anos = prog(t, d0, d0 + 1.6); if (anos > 0) txt(`${2014 + Math.round(12 * anos)}`, cx0, 1010, EXP, 110, hex(BR, .9), { align: 'center', alpha: clamp(anos * 3) * (1 - prog(t, ia - .3, ia)) });
+    if (anos > 0) txt('PHP 5.4  →  PHP 8.5', cx0, 1100, ARC, 38, 'rgba(244,248,255,.6)', { align: 'center', weight: 600, alpha: clamp(anos * 3) * (1 - prog(t, ia - .3, ia)) });
+    const sc = prog(t, ia - .1, ia + 1); if (sc > 0 && sc < 1) { const y = 380 + 500 * sc; ctx.save(); ctx.globalCompositeOperation = 'lighter';
+      const g = ctx.createLinearGradient(0, y - 90, 0, y); g.addColorStop(0, hex(CI, 0)); g.addColorStop(1, hex(CI, .5)); ctx.fillStyle = g; ctx.fillRect(40, y - 90, W - 80, 90); ctx.fillStyle = CI; ctx.fillRect(40, y, W - 80, 4); ctx.restore(); }
+    const ai = prog(t, ia - .2, ia + .3); neon3d(P.chip, cx0, 1080, 120 * back(ai), 0, .15, CI, ai);
+    if (ai > 0) txt('IA', cx0, 1086, EXP, 40, '#03121a', { align: 'center', alpha: prog(t, ia + .1, ia + .3) });
   },
-  // 1 · o que é: linguagem do WordPress; invasor roda comandos no servidor, sem senha
+  // 1 · como funciona (1): pedido pesado → PHP sem memória no meio da preparação
   (t, lt) => {
-    const wp = wt('wordpress', 1), co = wt('comandos', 1), se = wt('sem', 1);
-    titulo('PHP = BASE DO WORDPRESS', 260, SC[1], wt('falha', 1) - .1, t, 70, BR, 'WORDPRESS');
-    titulo('INVASOR SEM SENHA', 260, wt('falha', 1), SC[2] - .2, t, 84, BR, 'SEM SENHA', VERM);
-    // site de pé
-    const sa = prog(t, wp - .4, wp) * (1 - prog(t, wt('falha', 1) - .1, wt('falha', 1) + .3));
-    janela(440 + flut(t), 620, sa, 'seusite.com.br', (x, y, w) => {
-      ctx.fillStyle = hex(AZ, .85); rr(x, y, w, 120, 18); ctx.fill(); txt('Padaria Sol', x + 34, y + 60, EXP, 44, '#fff');
-      [0, 1, 2].forEach(i => { ctx.fillStyle = '#dbe4f7'; rr(x + i * (w / 3), y + 150, w / 3 - 20, 200, 18); ctx.fill(); });
-      txt('feito em WordPress (PHP)', x, y + 410, ARC, 38, '#3a4a70', { weight: 600 }); }, 900);
-    // ataque: terminal
-    codigo(cx0 - 450, 430 + flut(t, 1), 900, [['$ whoami', VERM], ['www-data', BR], ['$ ler senhas do banco', VERM], ['$ trocar a página inicial', VERM]],
-      prog(t, wt('falha', 1) + .2, se + .3), prog(t, wt('falha', 1) - .1, wt('falha', 1) + .3), 'invasor → servidor', { cor: VERM });
-    const sv = wt('servidor', 1);
-    neon3d(P.servidor, cx0 - 250, 1130, 110 * back(prog(t, sv - .3, sv)), 0, .12, CI, prog(t, sv - .3, sv));
-    neon3d(P.cadeado, cx0 + 250, 1130, 100 * back(prog(t, se - .3, se)), 0, .12, VERM, prog(t, se - .3, se));
-    if (t > se) { const xr = prog(t, se + .1, se + .4); ctx.save(); ctx.strokeStyle = VERM; ctx.lineWidth = 12; ctx.lineCap = 'round'; ctx.shadowColor = VERM; ctx.shadowBlur = 20;
-      ctx.beginPath(); ctx.moveTo(cx0 + 160, 1040); ctx.lineTo(cx0 + 160 + 180 * ease(xr), 1040 + 180 * ease(xr)); ctx.stroke(); ctx.restore(); }
+    titulo('COMO A FALHA FUNCIONA', 250, SC[1], SC[2] - .2, t, 76, BR, 'FUNCIONA');
+    const at = wt('atacante', 1), pe = wt('pedido', 1), me = wt('memoria', 1), pr = wt('preparacao', 1);
+    neon3d(P.pessoa, cx0 - 340, 540, 95 * back(prog(t, at - .3, at)), 0, .1, VERM, prog(t, at - .3, at));
+    linhaTxt('atacante', 680, at, SC[2] - .2, t, 32, VERM);
+    ctx.save(); ctx.translate(-340, 0); ctx.restore();
+    neon3d(P.servidor, cx0 + 340, 540, 95 * back(prog(lt, .1, .5)), 0, .1, CI, prog(lt, .1, .4));
+    if (t > at) txt('site em PHP', cx0 + 340, 680, ARC, 32, CI, { align: 'center', weight: 600, alpha: prog(lt, .3, .6) });
+    const v = prog(t, pe - .2, pe + 1.1); if (v > 0 && v < 1) { const x = lerp(cx0 - 230, cx0 + 230, ease(v)), s = 1 + .6 * prog(t, wt('pesado', 1) - .1, wt('pesado', 1) + .3);
+      ctx.save(); ctx.translate(x, 540); ctx.scale(s, s); ctx.shadowColor = AMB; ctx.shadowBlur = 30; ctx.fillStyle = hex(AMB, .9); rr(-70, -45, 140, 90, 14); ctx.fill(); ctx.shadowBlur = 0;
+      txt('pedido', 0, 2, EXP, 22, '#2a1a00', { align: 'center' }); ctx.restore(); }
+    // medidor de memória
+    const ma = prog(t, wt('faz', 1) - .3, wt('faz', 1)), cheio = clamp(.35 + .65 * prog(t, wt('faz', 1), me + .5)), cor = cheio > .95 ? VERM : cheio > .75 ? AMB : AZ;
+    if (ma > 0) { ctx.save(); ctx.globalAlpha = ma; const x = cx0 - 420, y = 820, w = 840;
+      txt('MEMÓRIA DO PHP', x, y - 40, ARC, 30, 'rgba(244,248,255,.7)', { weight: 600, ls: 3 }); txt(Math.round(cheio * 100) + '%', x + w, y - 40, EXP, 40, cor, { align: 'right' });
+      ctx.fillStyle = 'rgba(244,248,255,.1)'; rr(x, y, w, 56, 28); ctx.fill(); ctx.shadowColor = cor; ctx.shadowBlur = 30; ctx.fillStyle = cor; rr(x, y, w * cheio, 56, 28); ctx.fill(); ctx.restore(); }
+    const st = prog(t, me + .3, me + .6); if (st > 0) { ctx.save(); ctx.translate(cx0, 960); ctx.rotate(-.05); const e = back(st); ctx.scale(e, e); ctx.globalAlpha = clamp(st * 2);
+      ctx.strokeStyle = VERM; ctx.lineWidth = 6; ctx.shadowColor = VERM; ctx.shadowBlur = 20; rr(-250, -50, 500, 100, 16); ctx.stroke(); txt('SEM MEMÓRIA', 0, 3, EXP, 52, VERM, { align: 'center' }); ctx.restore(); }
+    // etapas da preparação
+    [['ler o pedido', 1], ['preparar dados', .5], ['rodar o site', 0]].forEach(([s, f], i) => { const a = prog(t, wt('meio', 1) - .4 + i * .15, wt('meio', 1) + i * .15);
+      const quebrou = i === 1 && t > pr; pilula(s, cx0 + (i - 1) * 320, 1170, 290, a, i === 0 ? CI : quebrou ? VERM : 'rgba(244,248,255,.5)', i === 0 ? 'feito' : i === 1 ? (quebrou ? 'parou aqui' : '...') : 'nem chegou', i < 2 ? 1 : 0); });
   },
-  // 2 · a ligação com IA: Gemini achou, testou, conferiu
+  // 2 · como funciona (2): dados pela metade; na limpeza usa memória já liberada
   (t, lt) => {
-    titulo('ONDE ENTRA A IA', 260, SC[2], SC[3] - .2, t, 84, BR, 'IA');
-    const gm = wt('gemini', 2), ga = prog(t, gm - .4, gm);
-    neon3d(P.chip, cx0, 560 + flut(t), 170 * back(ga), 0, .15, CI, ga);
-    if (ga > 0) txt('GEMINI', cx0, 560 + flut(t) + 6, EXP, 30, '#03121a', { align: 'center', alpha: prog(t, gm, gm + .2) });
-    linhaTxt('segundo a Wiz Research', 790, wt('wiz', 2) - .1, SC[3] - .2, t, 40, 'rgba(244,248,255,.75)');
-    [['achou a falha', 'achar'], ['testou o ataque', 'testar'], ['conferiu a correção', 'conferir']].forEach(([s, w], i) => {
-      const tw = wt(w, 2), a = prog(t, tw - .15, tw + .25); if (a <= 0) return; const e = back(a), y = 930 + i * 135;
-      ctx.save(); ctx.translate(cx0, y); ctx.scale(e, e); ctx.globalAlpha = clamp(a * 2) * (1 - prog(t, SC[3] - .2, SC[3] + .1));
-      ctx.shadowColor = CI; ctx.shadowBlur = 30; ctx.fillStyle = 'rgba(8,24,48,.92)'; rr(-400, -54, 800, 108, 54); ctx.fill(); ctx.shadowBlur = 0;
-      ctx.strokeStyle = CI; ctx.lineWidth = 4; rr(-400, -54, 800, 108, 54); ctx.stroke();
-      ctx.fillStyle = CI; ctx.beginPath(); ctx.arc(-330, 0, 34, 0, 7); ctx.fill(); txt('✓', -330, 3, EXP, 38, '#03121a', { align: 'center' });
-      txt(s, -270, 3, ARC, 50, BR, { weight: 600 }); ctx.restore(); });
+    const mt = wt('metade', 2), li = wt('limpeza', 2), co = wt('confia', 2), lb = wt('liberada', 2);
+    titulo('DADOS PELA METADE', 250, SC[2], li - .1, t, 84, BR, 'METADE', AMB);
+    titulo('LIMPEZA COM ERRO', 250, li - .05, SC[3] - .2, t, 84, BR, 'ERRO', VERM);
+    const cw = 150, ch = 100, x0 = cx0 - (5 * cw + 4 * 14) / 2, y0 = 430;
+    grade(x0, y0, 5, 3, cw, ch, i => {
+      const ent = prog(lt, .1 + i * .06, .3 + i * .06);
+      if (i < 6) return { e: 'cheio', a: ent };
+      if (i === 6 || i === 7) return { e: t > lb - .4 ? 'livre' : 'metade', a: ent, k: prog(t, mt - .6, mt) };
+      return { e: 'vazio', a: ent };
+    }, 1, t);
+    // varredura da limpeza
+    const lp = prog(t, li, co + .2); if (lp > 0 && lp < 1) { const x = x0 + (5 * cw + 56) * lp; ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.fillStyle = hex(CI, .25); ctx.fillRect(x - 30, y0 - 20, 60, 3 * ch + 68); ctx.fillStyle = CI; ctx.fillRect(x, y0 - 20, 4, 3 * ch + 68); ctx.restore(); }
+    // seta "usa mesmo assim" na célula 7
+    const us = prog(t, wt('usa', 2) - .2, wt('usa', 2) + .3); if (us > 0) { const cx = x0 + 2 * (cw + 14) + cw / 2, cy = y0 + (ch + 14) + ch;
+      ctx.save(); ctx.globalAlpha = us; ctx.strokeStyle = VERM; ctx.fillStyle = VERM; ctx.lineWidth = 7; ctx.shadowColor = VERM; ctx.shadowBlur = 20;
+      ctx.beginPath(); ctx.moveTo(cx, cy + 260); ctx.lineTo(cx, cy + 40 + 20 * (1 - ease(us))); ctx.stroke(); ctx.beginPath(); ctx.moveTo(cx, cy + 20); ctx.lineTo(cx - 22, cy + 56); ctx.lineTo(cx + 22, cy + 56); ctx.closePath(); ctx.fill(); ctx.restore();
+      pilula('o PHP usa mesmo assim', cx0, y0 + 3 * (ch + 14) + 300, 620, us, VERM); }
+    chipLegenda([['pronto', AZ], ['pela metade', AMB], ['liberada', 'rgba(244,248,255,.6)']], y0 + 3 * (ch + 14) + 40, prog(t, mt, mt + .5) * (1 - prog(t, wt('usa', 2) - .3, wt('usa', 2))));
+    linhaTxt('nome técnico: use-after-free (uso depois de liberar)', 1300, lb, SC[3] - .2, t, 32, 'rgba(244,248,255,.7)');
   },
-  // 3 · já há tentativas de ataque: radar com alvos
+  // 3 · o atacante põe o código dele no espaço liberado e o PHP executa
   (t, lt) => {
-    titulo('JÁ ESTÃO TENTANDO', 260, SC[3], SC[4] - .2, t, 84, BR, 'TENTANDO', AMB);
-    const r0 = prog(lt, 0, .5), cx = cx0, cy = 820, R = 330 * ease(r0);
-    if (r0 > 0) { ctx.save(); ctx.globalAlpha = r0; ctx.strokeStyle = hex(CI, .5); ctx.lineWidth = 3;
-      [1, .66, .33].forEach(k => { ctx.beginPath(); ctx.arc(cx, cy, R * k, 0, 7); ctx.stroke(); });
-      ctx.beginPath(); ctx.moveTo(cx - R, cy); ctx.lineTo(cx + R, cy); ctx.moveTo(cx, cy - R); ctx.lineTo(cx, cy + R); ctx.stroke();
+    titulo('O ATACANTE ASSUME', 250, SC[3], SC[4] - .2, t, 84, BR, 'ASSUME', VERM);
+    const cl = wt('coloca', 3), ex = wt('executa', 3), lg = wt('login', 3), pc = wt('pior', 3);
+    const cw = 150, ch = 72, x0 = cx0 - (5 * cw + 4 * 14) / 2, y0 = 400;
+    grade(x0, y0, 5, 2, cw, ch, i => ({ e: i < 6 ? 'cheio' : i === 6 || i === 7 ? (t > cl + .3 + (i - 6) * .2 ? 'ataque' : 'livre') : 'vazio', a: prog(lt, .05, .3) }), 1, t);
+    if (t > cl + .3) txt('código do atacante', x0 + 2 * (cw + 14) + cw + 7, y0 + (ch + 14) + ch + 40, ARC, 30, VERM, { align: 'center', weight: 600, alpha: prog(t, cl + .3, cl + .6) });
+    codigo(cx0 - 440, 690, 880, [['$ whoami', VERM], ['www-data', BR], ['$ copiar o banco de dados', VERM], ['$ instalar porta dos fundos', VERM]], prog(t, ex - .2, lg + .8), prog(t, ex - .5, ex - .1), 'o PHP executa', { cor: VERM });
+    pilula('sem login', cx0 - 230, 1220, 380, prog(t, lg - .2, lg + .1), VERM);
+    pilula('antes do site rodar', cx0 + 210, 1220, 460, prog(t, wt('antes', 3) - .2, wt('antes', 3) + .1), AMB, 'pior caso: Apache + mod_php');
+  },
+  // 4 · quem está em risco
+  (t, lt) => {
+    titulo('QUEM ESTÁ EM RISCO', 250, SC[4], SC[5] - .2, t, 84, BR, 'RISCO', AMB);
+    const q = wt('quase', 4);
+    [['Apache + mod_php', 'risco maior', VERM], ['PHP-FPM', '', AZ], ['php-cgi', '', AZ], ['FrankenPHP', '', AZ], ['LiteSpeed', '', AZ]].forEach(([n, s, c], i) => {
+      const x = i < 2 ? cx0 + (i ? 230 : -230) : cx0 + (i - 3) * 300, y = i < 2 ? 440 : 590; pilula(n, x, y + flut(t, i) * .4, i < 2 ? 430 : 280, prog(t, q - .2 + i * .18, q + .1 + i * .18), c, s, 1, 36); });
+    linhaTxt('jeitos de rodar PHP em site (php.net)', 690, q + 1, SC[5] - .2, t, 30, 'rgba(244,248,255,.6)');
+    const iv = wt('invadiu', 4);
+    linhaTxt('Em teste, a Wiz invadiu:', 790, iv - .3, SC[5] - .2, t, 40, CI);
+    [['WordPress', 'wordpress'], ['Drupal', 'drupal'], ['Joomla', 'joomla'], ['página de 1 linha', 'linha']].forEach(([n, w], i) => {
+      const tw = wt(w, 4), a = prog(t, tw - .3, tw), x = cx0 + (i % 2 ? 230 : -230), y = 900 + Math.floor(i / 2) * 170;
+      if (a <= 0) return; const e = back(a); ctx.save(); ctx.translate(x, y); ctx.scale(e, e); ctx.globalAlpha = clamp(a * 2);
+      ctx.fillStyle = '#eef3ff'; rr(-210, -65, 420, 130, 18); ctx.fill(); ctx.fillStyle = '#d7e0f5'; rr(-210, -65, 420, 34, 18); ctx.fill(); ctx.fillRect(-210, -45, 420, 14);
+      ['#ff6b6b', '#ffc24b', '#3ddc84'].forEach((c, k) => { ctx.fillStyle = c; ctx.beginPath(); ctx.arc(-185 + k * 20, -48, 6, 0, 7); ctx.fill(); });
+      txt(n, 0, 22, ARC, 38, '#1b2440', { align: 'center', weight: 600 });
+      const st = prog(t, tw + .2, tw + .45); if (st > 0) { ctx.translate(120, -48); ctx.rotate(-.12); ctx.globalAlpha = clamp(st * 2); ctx.fillStyle = VERM; rr(-95, -24, 190, 48, 10); ctx.fill(); txt('INVADIDO', 0, 2, EXP, 24, '#fff', { align: 'center' }); }
+      ctx.restore(); });
+  },
+  // 5 · o papel da IA: Gemini em 4 frentes, segundo a Wiz Research
+  (t, lt) => {
+    titulo('ONDE ENTRA A IA', 250, SC[5], SC[6] - .2, t, 84, BR, 'IA');
+    const gm = wt('gemini', 5), ga = prog(t, gm - .4, gm), chx = cx0 - 300, chy = 760;
+    linhaTxt('segundo a Wiz Research, que divulgou a falha', 380, wt('wiz', 5) - .1, SC[6] - .2, t, 32, 'rgba(244,248,255,.7)');
+    neon3d(P.chip, chx, chy + flut(t), 130 * back(ga), 0, .15, CI, ga);
+    if (ga > 0) txt('GEMINI', chx, chy + flut(t) + 5, EXP, 26, '#03121a', { align: 'center', alpha: prog(t, gm, gm + .2) });
+    [['achar a falha', 'achar'], ['montar o ataque de prova', 'montar'], ['detectar ataques', 'detectar'], ['conferir a correção', 'conferir']].forEach(([s, w], i) => {
+      const tw = wt(w, 5), y = 510 + i * 165, x = cx0 + 160;
+      linha(chx + 90, chy, x - 270, y, prog(t, tw - .3, tw), CI, t + i * .3);
+      pilula(s, x, y, 540, prog(t, tw - .2, tw + .1), CI);
+      const ok = prog(t, tw + .2, tw + .4); if (ok > 0) { ctx.save(); ctx.globalAlpha = ok; ctx.fillStyle = CI; ctx.beginPath(); ctx.arc(x + 270, y - 48, 24, 0, 7); ctx.fill(); txt('✓', x + 270, y - 45, EXP, 26, '#03121a', { align: 'center' }); ctx.restore(); }
+    });
+    const cf = wt('calif', 5); linhaTxt('Calif e OpenAI também participaram', 1230, cf - .1, SC[6] - .2, t, 40, CI);
+  },
+  // 6 · linha do tempo
+  (t, lt) => {
+    titulo('O QUE JÁ ACONTECEU', 250, SC[6], SC[7] - .2, t, 84, BR, 'ACONTECEU');
+    const d20 = wt('20', 6), d21 = wt('21', 6), tn = wt('tentativas', 6), y = 560, xs = [240, 540, 840];
+    const p = prog(t, d20 - .3, tn + .2); if (p > 0) { ctx.save(); ctx.strokeStyle = 'rgba(244,248,255,.18)'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(110, y); ctx.lineTo(970, y); ctx.stroke();
+      ctx.strokeStyle = CI; ctx.shadowColor = CI; ctx.shadowBlur = 20; ctx.beginPath(); ctx.moveTo(110, y); ctx.lineTo(110 + 860 * ease(p), y); ctx.stroke(); ctx.restore(); }
+    [['20/10', ['aviso de', 'correção urgente'], d20, CI], ['21/10', ['correção', 'lançada'], d21, VERDE], ['agora', ['tentativas', 'de ataque'], tn, VERM]].forEach(([dt, ls, tt, c], i) => {
+      const a = prog(t, tt - .3, tt); if (a <= 0) return; const e = back(a);
+      ctx.save(); ctx.globalAlpha = clamp(a * 2); ctx.fillStyle = c; ctx.shadowColor = c; ctx.shadowBlur = 30; ctx.beginPath(); ctx.arc(xs[i], y, 20 * e, 0, 7); ctx.fill(); ctx.restore();
+      txt(dt, xs[i], y - 70, EXP, 44, c, { align: 'center', alpha: a }); ls.forEach((l, k) => txt(l, xs[i], y + 70 + k * 42, ARC, 30, BR, { align: 'center', weight: 600, alpha: a })); });
+    const ra = prog(t, tn - .3, tn + .2), cx = cx0, cy = 1000, R = 170 * ease(ra);
+    if (ra > 0) { ctx.save(); ctx.globalAlpha = ra; ctx.strokeStyle = hex(CI, .5); ctx.lineWidth = 3; [1, .6].forEach(k => { ctx.beginPath(); ctx.arc(cx, cy, R * k, 0, 7); ctx.stroke(); });
       const an = t * 2.4; ctx.globalCompositeOperation = 'lighter'; ctx.fillStyle = hex(CI, .25); ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R, an - .6, an); ctx.closePath(); ctx.fill(); ctx.restore();
-      [[.5, -.8, .1], [-.6, -.3, .5], [.2, .7, .9], [-.3, .5, 1.3], [.75, .25, 1.6]].forEach(([dx, dy, d]) => { const k = prog(t, wt('tentativas', 3) - .6 + d * .5, wt('tentativas', 3) - .3 + d * .5); if (k <= 0) return;
-        ctx.save(); ctx.fillStyle = VERM; ctx.shadowColor = VERM; ctx.shadowBlur = 30; ctx.globalAlpha = k; ctx.beginPath(); ctx.arc(cx + dx * R, cy + dy * R, 16 + 8 * Math.sin(t * 6 + d), 0, 7); ctx.fill(); ctx.restore(); }); }
-    linhaTxt('sem invasão confirmada até agora', 1250, wt('ataque', 3) - .2, SC[4] - .2, t, 38, 'rgba(244,248,255,.8)');
+      [[.5, -.6, .2], [-.6, -.2, .5], [.2, .65, .8], [-.35, .5, 1.1]].forEach(([dx, dy, d]) => { const k = prog(t, tn + d * .5, tn + .3 + d * .5); if (k <= 0) return;
+        ctx.save(); ctx.fillStyle = VERM; ctx.shadowColor = VERM; ctx.shadowBlur = 25; ctx.globalAlpha = k; ctx.beginPath(); ctx.arc(cx + dx * R, cy + dy * R, 12 + 5 * Math.sin(t * 6 + d), 0, 7); ctx.fill(); ctx.restore(); }); }
+    linhaTxt('sem invasão confirmada até agora', 1250, tn + .4, SC[7] - .2, t, 34, 'rgba(244,248,255,.75)');
   },
-  // 4 · passo 1: ver a versão no painel
+  // 7 · passo 1: ver a versão
   (t, lt) => {
-    numero(1, 250, SC[4], SC[5] - .2, t);
-    const pn = wt('painel', 4);
-    painel(420 + flut(t) * .5, prog(lt, .05, .35), (x, y, w) => {
+    titulo('O QUE FAZER', 250, SC[7], wt('um', 7) - .1, t, 92, BR, 'FAZER', CI);
+    numero(1, 250, wt('um', 7), SC[8] - .2, t);
+    const pn = wt('painel', 7);
+    painel(420 + flut(t) * .5, prog(t, wt('veja', 7) - .3, wt('veja', 7)), (x, y, w) => {
       txt('Versão do PHP', x, y + 20, ARC, 40, '#5a6a8f', { weight: 600 });
-      const at = prog(t, wt('versao', 4) - .1, wt('versao', 4) + .2); ctx.fillStyle = at > .5 ? '#dbe6ff' : '#fff'; rr(x, y + 60, w, 120, 20); ctx.fill();
+      const at = prog(t, wt('versao', 7) - .1, wt('versao', 7) + .2); ctx.fillStyle = at > .5 ? '#dbe6ff' : '#fff'; rr(x, y + 60, w, 120, 20); ctx.fill();
       ctx.strokeStyle = at > .5 ? AZ : '#c5d0e6'; ctx.lineWidth = at > .5 ? 6 : 2; rr(x, y + 60, w, 120, 20); ctx.stroke();
       txt('8.3.30', x + 36, y + 122, EXP, 60, '#1b2440');
       const v = prog(t, pn + .1, pn + .4); if (v > 0) { ctx.save(); ctx.globalAlpha *= v; ctx.fillStyle = hex(VERM, .14); rr(x, y + 230, w, 110, 20); ctx.fill();
         txt('✕ ainda sem a correção', x + 36, y + 287, ARC, 46, '#d6304f', { weight: 600 }); ctx.restore(); }
     });
-    exemplo(cx0, 1060, prog(lt, .4, .7));
+    linhaTxt('ou no terminal:  php -v', 1080, pn + .3, SC[8] - .2, t, 40, CI);
+    exemplo(cx0, 1150, prog(t, pn, pn + .3));
   },
-  // 5 · passo 2: atualizar pra versão de 21/10
+  // 8 · passo 2: atualizar
   (t, lt) => {
-    numero(2, 250, SC[5], SC[6] - .2, t);
-    const at = wt('atualize', 5), ok = at + .9, feito = prog(t, ok, ok + .1) > .5;
+    numero(2, 250, SC[8], SC[9] - .2, t);
+    const at = wt('atualize', 8), ok = at + .9, feito = prog(t, ok, ok + .1) > .5;
     painel(420 + flut(t) * .5, prog(lt, .05, .35), (x, y, w) => {
       txt('Versão do PHP', x, y + 20, ARC, 40, '#5a6a8f', { weight: 600 });
       ctx.fillStyle = feito ? '#ddf7e8' : '#fff'; rr(x, y + 60, w, 120, 20); ctx.fill(); ctx.strokeStyle = feito ? VERDE : '#c5d0e6'; ctx.lineWidth = feito ? 6 : 2; rr(x, y + 60, w, 120, 20); ctx.stroke();
@@ -178,19 +292,30 @@ const S = [
       ctx.save(); ctx.translate(x + w2 / 2, y + 300); ctx.scale(s, s); ctx.fillStyle = feito ? VERDE : AZ; ctx.shadowColor = feito ? VERDE : AZ; ctx.shadowBlur = 30; rr(-w2 / 2, -60, w2, 120, 60); ctx.fill(); ctx.shadowBlur = 0;
       txt(feito ? 'Atualizado ✓' : 'Atualizar', 0, 3, EXP, 46, '#fff', { align: 'center' }); ctx.restore();
     });
-    const vs = wt('corrigida', 5);
+    const vs = wt('corrigida', 8);
     ['8.5.12', '8.4.27', '8.3.36', '8.2.35'].forEach((v, i) => versao(v, cx0 + (i % 2 ? 230 : -230), 1100 + Math.floor(i / 2) * 130, prog(t, vs - .3 + i * .12, vs + i * .12), VERDE, 0, 46));
   },
-  // 6 · passo 3: 8.1 ou anterior → subir pro 8.2+
+  // 9 · passo 3: 8.1 ou anterior
   (t, lt) => {
-    numero(3, 250, SC[6], SC[7] - .2, t);
-    const v1 = wt('81', 6), sb = wt('suba', 6);
-    ['8.1', '8.0', '7.4'].forEach((v, i) => versao(v, cx0 - 260, 560 + i * 170 + flut(t, i), prog(t, v1 - .2 + i * .12, v1 + .1 + i * .12), VERM, prog(t, v1 + .6 + i * .1, v1 + 1 + i * .1), 58));
-    linhaTxt('sem correção do PHP', 1080, v1 + .7, SC[7] - .2, t, 44, VERM);
-    seta(cx0 - 80, cx0 + 90, 730, prog(t, sb - .2, sb + .3));
-    versao('8.2+', cx0 + 270, 730 + flut(t, 4), prog(t, wt('82', 6) - .2, wt('82', 6) + .1), VERDE, 0, 70);
+    numero(3, 250, SC[9], SC[10] - .2, t);
+    const v1 = wt('81', 9), mg = wt('migre', 9), cf = wt('confirme', 9);
+    ['8.1', '8.0', '7.4'].forEach((v, i) => versao(v, cx0 - 260, 520 + i * 160 + flut(t, i), prog(t, v1 - .2 + i * .12, v1 + .1 + i * .12), VERM, prog(t, wt('nao', 9) + i * .1, wt('nao', 9) + .4 + i * .1), 54));
+    linhaTxt('sem correção oficial', 1000, wt('sai', 9) - .1, SC[10] - .2, t, 42, VERM);
+    seta(cx0 - 90, cx0 + 80, 680, prog(t, mg - .2, mg + .3));
+    versao('8.2+', cx0 + 270, 680 + flut(t, 4), prog(t, mg - .1, mg + .2), VERDE, 0, 66);
+    pilula('ou confirme com a hospedagem', cx0, 1150, 760, prog(t, cf - .2, cf + .1), CI, 'algumas aplicam a correção nas versões antigas');
   },
-  // 7 · logo + chamada
+  // 10 · remendo não basta
+  (t, lt) => {
+    titulo('REMENDO NÃO BASTA', 250, SC[10], SC[11] - .2, t, 84, BR, 'NÃO BASTA', AMB);
+    codigo(cx0 - 440, 400, 880, [['; paliativos citados pelo PHP', 'rgba(244,248,255,.5)'], ['post_max_size = (menor)', AMB], ['session.upload_progress', AMB], ['  .enabled = 0', AMB]], prog(lt, .1, 1.2), prog(lt, 0, .3), 'php.ini', { cor: AMB });
+    linhaTxt('ajudam, mas não resolvem', 840, wt('remendo', 10), SC[11] - .2, t, 46, AMB);
+    const at = wt('atualizar', 10), a = prog(t, at - .2, at + .2);
+    neon3d(P.escudo, cx0, 1050 + flut(t), 110 * back(a), 0, .12, VERDE, a);
+    if (a > 0) txt('✓', cx0, 1056 + flut(t), EXP, 70, '#05200f', { align: 'center', alpha: a });
+    linhaTxt('atualizar: o único jeito seguro', 1250, at + .2, SC[11] - .2, t, 46, VERDE);
+  },
+  // 11 · logo + chamada
   (t, lt) => fim(t, lt, 'Manda pra quem cuida do site', 'e segue o canal'),
 ];
 // legenda por cima de tudo, fora do zoom das cenas

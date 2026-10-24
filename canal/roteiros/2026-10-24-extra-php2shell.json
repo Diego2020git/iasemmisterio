@@ -6,8 +6,8 @@
   "fora_da_grade": {
     "aprovado": ""
   },
-  "titulo": "Falha grave no PHP, achada com ajuda de IA: atualize seu site",
-  "descricao": "Falha grave no PHP, e a IA ajudou a achar 🔓\nO PHP roda boa parte dos sites (WordPress, Drupal, Joomla). Em 21/10/2026 saíram correções para duas falhas críticas, apelidadas de PHP2Shell (CVE-2026-109618 e CVE-2026-109619, nota 9,2 de 10): um invasor pode rodar comandos no servidor, sem login.\n🤖 Ligação com IA: a Wiz Research diz que o Gemini ajudou a achar a falha, montar o ataque de teste e conferir a correção; Calif e OpenAI também participaram.\n✅ O que fazer:\n1️⃣ Veja a versão do PHP no painel da hospedagem\n2️⃣ Atualize para 8.5.12, 8.4.27, 8.3.36 ou 8.2.35\n3️⃣ No 8.1 ou mais antigo o PHP não solta mais correção: suba para 8.2 ou mais nova, ou confirme com a hospedagem se ela aplicou a correção\nSegundo o PHP, não há paliativo completo: atualizar é o único caminho seguro.\nNo nosso vídeo as telas são ilustrativas.\n\nFontes (conferido em 24/10/2026): php.net/archive/2026.php · php.net/releases/8_5_12.php · wiz.io/blog/php2shell-php-rce · cert.europa.eu/publications/security-advisories/2026-018\n\n#ia #php #segurança #wordpress #cibersegurança #inteligenciaartificial",
+  "titulo": "Falha de 10 anos no PHP, achada com IA: como funciona e o que fazer",
+  "descricao": "Falha de 10 anos no PHP, e a IA ajudou a achar 🔓\nO PHP roda boa parte dos sites (WordPress, Drupal, Joomla). Em 21/10/2026 saíram correções para duas falhas críticas, apelidadas de PHP2Shell (CVE-2026-109618 e CVE-2026-109619, nota 9,2 de 10).\n🧠 Como funciona: um pedido pesado faz o PHP ficar sem memória no meio da preparação. Ele para com dados pela metade e, na limpeza, usa memória que já foi liberada. O atacante põe o código dele ali e o PHP executa, sem login.\n🌐 Quem é afetado: versões do 5.4 ao 8.5, em quase todo jeito de rodar PHP na web (PHP-FPM, Apache com mod_php, php-cgi, FrankenPHP, LiteSpeed). Segundo o PHP, o risco é maior no mod_php.\n🤖 Ligação com IA: a Wiz Research diz que o Gemini ajudou a achar a falha, montar o ataque de prova, detectar ataques e validar a correção; Calif e OpenAI também participaram.\n✅ O que fazer:\n1️⃣ Veja a versão do PHP no painel da hospedagem\n2️⃣ Atualize para 8.5.12, 8.4.27, 8.3.36 ou 8.2.35\n3️⃣ No 8.1 ou mais antigo o PHP não solta mais correção: migre, ou confirme com a hospedagem se ela aplicou a correção\nSegundo o PHP, não há paliativo completo: diminuir o post_max_size e desligar session.upload_progress ajudam, mas só atualizar resolve.\nNo nosso vídeo as telas são ilustrativas.\n\nFontes (conferido em 24/10/2026): php.net/archive/2026.php · php.net/releases/8_5_12.php · wiz.io/blog/php2shell-php-rce · cert.europa.eu/publications/security-advisories/2026-018\n\n#ia #php #segurança #wordpress #cibersegurança #inteligenciaartificial",
   "comentario_fixado": null,
   "voz": "pt-BR-Chirp3-HD-Fenrir",
   "ep": "extra-php2shell",
@@ -35,6 +35,11 @@
       "dado": "watchTowr observou tentativas ativas de exploração (sem invasão confirmada)",
       "fonte": "https://thehackernews.com/2026/10/php-issues-emergency-patches-for-two.html",
       "conferido": "2026-10-24"
+    },
+    {
+      "dado": "Afeta PHP-FPM, mod_php, php-cgi, FrankenPHP e LiteSpeed; risco maior no mod_php (exploit roda antes do código da aplicação); paliativos parciais: post_max_size menor, session.upload_progress.enabled=0",
+      "fonte": "https://www.php.net/archive/2026.php",
+      "conferido": "2026-10-24"
     }
   ],
   "registro": {
@@ -48,40 +53,64 @@
     {
       "frases": [
         {
-          "fala": "Se o seu site usa PHP, atualize hoje. Saíram duas falhas graves, e a IA ajudou a encontrar.",
-          "legenda": "Se o seu site usa PHP, atualize hoje. Saíram duas falhas graves, e a IA ajudou a encontrar."
+          "fala": "Dez anos de versões do PHP, a linguagem por trás do WordPress, tinham uma falha que deixa invadir o site. E uma IA ajudou a achar.",
+          "legenda": "Dez anos de versões do PHP, a linguagem por trás do WordPress, tinham uma falha que deixa invadir o site. E uma IA ajudou a achar."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "O PHP é a linguagem por trás do WordPress e de muitos sites. Com a falha, um invasor roda comandos no servidor, onde o site fica, sem senha.",
-          "legenda": "O PHP é a linguagem por trás do WordPress e de muitos sites. Com a falha, um invasor roda comandos no servidor, onde o site fica, sem senha."
+          "fala": "Funciona assim: o atacante manda um pedido pesado e faz o PHP ficar sem memória bem no meio da preparação.",
+          "legenda": "Funciona assim: o atacante manda um pedido pesado e faz o PHP ficar sem memória bem no meio da preparação."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "A Wiz Research diz que o Gemini ajudou a achar a falha, testar o ataque e conferir a correção.",
-          "legenda": "A Wiz Research diz que o Gemini ajudou a achar a falha, testar o ataque e conferir a correção."
+          "fala": "O PHP para, mas deixa dados pela metade. Na hora da limpeza, ele confia nesses dados quebrados e usa uma memória que já foi liberada.",
+          "legenda": "O PHP para, mas deixa dados pela metade. Na hora da limpeza, ele confia nesses dados quebrados e usa uma memória que já foi liberada."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "E empresas de segurança já viram tentativas de ataque.",
-          "legenda": "E empresas de segurança já viram tentativas de ataque."
+          "fala": "O atacante coloca o código dele nesse espaço, e o PHP executa. Sem login e, no pior caso, antes até do código do site rodar.",
+          "legenda": "O atacante coloca o código dele nesse espaço, e o PHP executa. Sem login e, no pior caso, antes até do código do site rodar."
         }
       ]
     },
     {
       "frases": [
         {
-          "fala": "Um: veja a versão do PHP no painel da hospedagem.",
-          "legenda": "Um: veja a versão do PHP no painel da hospedagem."
+          "fala": "Vale pra quase todo jeito de rodar PHP em site. Em teste, a Wiz invadiu WordPress, Drupal, Joomla e até uma página de uma linha só.",
+          "legenda": "Vale pra quase todo jeito de rodar PHP em site. Em teste, a Wiz invadiu WordPress, Drupal, Joomla e até uma página de uma linha só."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E a IA? A Wiz Research conta que o Gemini ajudou a achar a falha, montar o ataque de prova, detectar ataques e conferir a correção. Calif e OpenAI também participaram.",
+          "legenda": "E a IA? A Wiz Research conta que o Gemini ajudou a achar a falha, montar o ataque de prova, detectar ataques e conferir a correção. Calif e OpenAI também participaram."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dia vinte, o PHP avisou que vinha uma correção urgente. Dia vinte e um, ela saiu. E empresas de segurança já viram tentativas de ataque.",
+          "legenda": "Dia 20, o PHP avisou que vinha uma correção urgente. Dia 21, ela saiu. E empresas de segurança já viram tentativas de ataque."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O que fazer. Um: veja a versão do PHP no painel da hospedagem.",
+          "legenda": "O que fazer. Um: veja a versão do PHP no painel da hospedagem."
         }
       ]
     },
@@ -96,8 +125,16 @@
     {
       "frases": [
         {
-          "fala": "Três: se for oito ponto um ou mais antiga, suba pro oito ponto dois ou mais nova.",
-          "legenda": "Três: se for 8.1 ou mais antiga, suba pro 8.2 ou mais nova."
+          "fala": "Três: no oito ponto um ou mais antiga não sai mais correção oficial. Migre, ou confirme com a hospedagem se ela corrigiu.",
+          "legenda": "Três: no 8.1 ou mais antiga não sai mais correção oficial. Migre, ou confirme com a hospedagem se ela corrigiu."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E não confie só em remendo: segundo o PHP, atualizar é o único jeito seguro.",
+          "legenda": "E não confie só em remendo: segundo o PHP, atualizar é o único jeito seguro."
         }
       ]
     },

@@ -30,7 +30,8 @@ SERIES_NOVAS = {"Radar IA", "Agente do zero", "Automação do zero", "Termo de I
 # antes e depois e custo. Padrão a partir de 16/10; ver /mnt/project-files/operacao/roteiro-35s.md. "curto" fica só para vídeos antigos.
 # "radar-60": Radar IA com 3 notícias de ~15 s (Diego, card de 16/10 05h06); vale para todo Radar.
 # "livre": extra pedido pelo Diego com tamanho livre ("não precisa se apegar ao tamanho", 18/10/2026), até 65 s.
-DURACOES = {"curto": (15.0, 27.0), "completo": (31.0, 38.0), "demo": (35.0, 45.0), "radar-60": (55.0, 65.0), "livre": (35.0, 65.0)}
+# 24/10/2026: Diego pediu o extra do PHP mais aprofundado ("não preciso ficar preso aos segundos"): livre vai até 90 s.
+DURACOES = {"curto": (15.0, 27.0), "completo": (31.0, 38.0), "demo": (35.0, 45.0), "radar-60": (55.0, 65.0), "livre": (35.0, 90.0)}
 CURTO_ATE = "2026-10-15"  # último dia com vídeos curtos já agendados
 TITULO_MAX = 70
 TRAVESSOES = "—–"
