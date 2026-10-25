@@ -1,0 +1,134 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-25-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 25/10/2026 · 12h · Radar IA #10 (60 s): Meet traduz fala em 63 idiomas, OpenAI desliga modelos antigos na API, Anthropic doa Agent Skills. Neon + neon-entrega.js.
+// Fontes: workspaceupdates.googleblog.com (Meet 63 idiomas), developers.openai.com/api/docs/deprecations, anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8], T0[9], T0[10] + .7];
+const DURATION = SC[10], IMPACTO = SC[9] + .4;
+const COR = [AZ, CI, AZ, AMB, VERM, AZ, CI, IN, AZ, AZ];
+const HITS = [wt('63', 0), wt('desligou', 0), wt('skills', 0), wt('radar', 1), wt('idioma', 2), wt('ouve', 2), wt('pago', 3), wt('90', 3), wt('desligou', 4), wt('o1', 4), wt('erro', 5), wt('troque', 5), wt('doou', 6), wt('linux', 6), wt('pasta', 7), wt('70', 7), wt('confira', 8)];
+const CLIQUES = [wt('troque', 5) + .2, wt('confira', 8) + .2];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// pessoa com balão de fala
+function falante(x, y, a, cor, fala, t, k = 0) { if (a <= 0) return;
+  neon3d(P.pessoa, x, y + flut(t, k) * .5, 90 * back(clamp(a)), .25 * Math.sin(t + k), .1, cor, a);
+  if (fala) { ctx.save(); ctx.globalAlpha *= clamp(a); const w = measure(fala, EXP, 40) + 50;
+    ctx.fillStyle = 'rgba(8,16,34,.92)'; ctx.strokeStyle = cor; ctx.lineWidth = 4; ctx.shadowColor = cor; ctx.shadowBlur = 24; rr(x - w / 2, y - 210, w, 84, 22); ctx.fill(); ctx.stroke(); ctx.shadowBlur = 0;
+    txt(fala, x, y - 166, EXP, 40, BR, { align: 'center' }); ctx.restore(); } }
+// medidor horizontal que enche
+function medidor(y, p, a, cor, rot, val) { if (a <= 0) return; const x = cx0 - 400, w = 800;
+  ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = 'rgba(244,248,255,.12)'; rr(x, y, w, 56, 28); ctx.fill();
+  ctx.shadowColor = cor; ctx.shadowBlur = 30; ctx.fillStyle = cor; rr(x, y, Math.max(56, w * ease(clamp(p))), 56, 28); ctx.fill(); ctx.shadowBlur = 0;
+  txt(rot, x, y - 40, ARC, 36, BR, { weight: 600 }); txt(val, x + w, y - 40, EXP, 40, cor, { align: 'right' }); ctx.restore(); }
+// arquivo de texto com linhas que se escrevem
+function arquivo(x, y, a, t, t0, nome) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const e = back(clamp(a)); ctx.translate(x, y); ctx.scale(e, e);
+  ctx.shadowColor = CI; ctx.shadowBlur = 40; ctx.fillStyle = '#f4f7ff'; rr(-200, -150, 400, 300, 22); ctx.fill(); ctx.shadowBlur = 0;
+  txt(nome, -170, -105, EXP, 34, '#1b2440', {});
+  [.85, .6, .75, .5].forEach((l, i) => { const q = prog(t, t0 + i * .35, t0 + i * .35 + .3); ctx.fillStyle = i ? '#9aa6bf' : '#2e6bff'; rr(-170, -50 + i * 48, 340 * l * q, 22, 11); ctx.fill(); });
+  ctx.restore(); }
+const IDI = [['Hello', CI, 'inglês'], ['Hola', AZ, 'espanhol'], ['Bonjour', IN, 'francês']];
+const S = [
+  // 0 · gancho: as 3 manchetes
+  (t, lt) => {
+    linhaTxt('RADAR IA · 25/10', 330, -1, SC[1] - .2, t, 40, CI);
+    versao('MEET EM 63 IDIOMAS', cx0, 560, prog(t, -1, .1), CI, 0, 54);
+    versao('MODELOS DESLIGADOS', cx0, 820, prog(t, wt('openai', 0) - .2, wt('openai', 0) + .2), VERM, prog(t, wt('desligou', 0), wt('desligou', 0) + .5), 54);
+    versao('SKILLS EM CASA NEUTRA', cx0, 1080, prog(t, wt('skills', 0) - .2, wt('skills', 0) + .2), VERDE, 0, 50);
+  },
+  // 1 · radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, 700, 230 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .3));
+    titulo('RADAR IA', 1050, SC[1], SC[2] - .2, t, 110, BR, 'IA', CI);
+  },
+  // 2 · Meet: mecanismo da tradução
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('MEET TRADUZ A FALA', 450, wt('meet', 2) - .1, SC[3] - .2, t, 76, BR, 'TRADUZ', CI);
+    const fa = wt('fala', 2), ou = wt('ouve', 2);
+    falante(250, 820, prog(t, wt('meet', 2), wt('meet', 2) + .4), AZ, 'Olá!', t, 0);
+    neon3d(P.chip, cx0, 800, 100 * back(prog(t, wt('gemini', 2) - .2, wt('gemini', 2) + .3)), .4 * Math.sin(t * 1.3), .2, CI, prog(t, wt('gemini', 2) - .2, wt('gemini', 2) + .1));
+    pilula('detecta: português', cx0, 980, 470, prog(t, wt('percebe', 2) - .1, wt('percebe', 2) + .3), CI, 'GEMINI', 1, 36);
+    fio(340, 800, cx0 - 110, 800, prog(t, wt('idioma', 2) - .3, wt('idioma', 2) + .2), AZ, t);
+    IDI.forEach(([s, c, l], i) => { const q = prog(t, ou - .2 + i * .25, ou + .2 + i * .25), y = 620 + i * 230;
+      fio(cx0 + 110, 800, 780, y, q, c, t); if (q > 0) versao(s, 900, y, q, c, 0, 40); });
+    pilula('cada um ouve na sua língua', cx0, 1250, 760, prog(t, wt('lingua', 2) - .2, wt('lingua', 2) + .2), VERDE, 'quase na hora', 1, 40);
+  },
+  // 3 · Meet: o limite
+  (t, lt) => {
+    titulo('MAS É PAGO', 330, SC[3], SC[4] - .2, t, 90, BR, 'PAGO', AMB);
+    ['Google AI Pro', 'Google AI Ultra', 'planos de empresa'].forEach((s, i) => pilula(s, cx0, 520 + i * 130, 600, prog(t, wt('pago', 3) + .2 + i * .35, wt('pago', 3) + .5 + i * .35), AMB, '', 1, 42));
+    medidor(1000, prog(t, wt('90', 3) - .2, wt('reuniao', 3) + .3), prog(t, wt('no', 3) - .2, wt('no', 3) + .1), CI, 'no Pro, por reunião', 'até 90 min');
+    linhaTxt('não vale em gravação nem transmissão ao vivo', 1170, wt('minutos', 3), SC[4] - .2, t, 36, 'rgba(244,248,255,.8)');
+  },
+  // 4 · OpenAI desliga modelos antigos
+  (t, lt) => {
+    numero(2, 300, SC[4], SC[5] - .2, t);
+    titulo('OPENAI DESLIGOU', 450, wt('openai', 4) - .1, SC[5] - .2, t, 80, BR, 'DESLIGOU', VERM);
+    linhaTxt('23/10 · na API, a conexão dos programadores', 560, wt('api', 4) - .2, SC[5] - .2, t, 38, CI);
+    const d0 = wt('23', 4);
+    [['GPT-3.5 Turbo', 'gpt35'], ['GPT-4 antigo', 'gpt4'], ['o1', 'o1']].forEach(([s, w], i) => { const w0 = wt(w, 4);
+      versao(s, cx0, 730 + i * 190, prog(t, d0 + i * .35, d0 + .3 + i * .35), CI, prog(t, w0 - .1, w0 + .4), 56); });
+    neon3d(P.servidor, cx0 + 360, 1230, 70, .3 * Math.sin(t), .1, VERM, prog(t, wt('o1', 4), wt('o1', 4) + .3) * .8);
+  },
+  // 5 · o que quebra e como arrumar
+  (t, lt) => {
+    titulo('SUA AUTOMAÇÃO QUEBRA?', 330, SC[5], SC[6] - .2, t, 74, BR, 'QUEBRA?', VERM);
+    const er = wt('erro', 5), tr = wt('troque', 5), ok = prog(t, tr, tr + .4);
+    janela(480, 420, prog(lt, 0, .3), 'Módulo OpenAI', (x, y, w) => {
+      campo(x, y, w, 'Modelo', ok > .5 ? 'modelo atual da lista' : 'gpt-3.5-turbo', 1, 1);
+      if (prog(t, er - .1, er + .2) > 0 && ok < .5) { txt('✕ ERRO: modelo desligado', x, y + 170, EXP, 38, VERM, { alpha: prog(t, er - .1, er + .2) }); }
+      if (ok > .5) txt('✓ voltou a rodar', x, y + 170, EXP, 40, '#1f9d55', { alpha: ok });
+    });
+    pilula('troque o nome do modelo no módulo', cx0, 1060, 860, prog(t, tr - .2, tr + .2), VERDE, '', 1, 40);
+    linhaTxt('GPT-4o e GPT-4.1 saem da API em 14/01/2027', 1220, wt('modulo', 5) - .2, SC[6] - .2, t, 36, AMB);
+  },
+  // 6 · Agent Skills ganham casa neutra
+  (t, lt) => {
+    numero(3, 300, SC[6], SC[7] - .2, t);
+    titulo('SKILLS VIRAM PADRÃO ABERTO', 450, wt('anthropic', 6) - .1, SC[7] - .2, t, 70, BR, 'ABERTO', VERDE);
+    const d = wt('doou', 6), ag = wt('agentic', 6), li = wt('linux', 6);
+    pilula('Anthropic', cx0, 640, 460, prog(t, wt('anthropic', 6) - .2, wt('anthropic', 6) + .2), CI, 'criou em 2025', 1, 46);
+    fio(cx0, 710, cx0, 830, prog(t, d, d + .4), CI, t);
+    pilula('Agentic AI Foundation', cx0, 900, 720, prog(t, ag - .3, ag + .1), VERDE, 'FUNDAÇÃO NEUTRA', 1, 46);
+    fio(cx0, 970, cx0, 1090, prog(t, li - .4, li), VERDE, t);
+    pilula('Linux Foundation', cx0, 1160, 560, prog(t, li - .2, li + .2), AZ, 'ONDE ELA FICA', 1, 42);
+  },
+  // 7 · o que é uma skill
+  (t, lt) => {
+    titulo('O QUE É UMA SKILL', 330, SC[7], SC[8] - .2, t, 80, BR, 'SKILL', CI);
+    const pa = wt('pasta', 7), en = wt('ensina', 7), se = wt('70', 7);
+    neon3d(P.pasta, 270, 640, 110 * back(prog(t, pa - .3, pa + .2)), .3 * Math.sin(t), .1, AMB, prog(t, pa - .3, pa) * (1 - prog(t, se - .5, se - .2)));
+    arquivo(620, 640, prog(t, wt('instrucoes', 7) - .3, wt('instrucoes', 7) + .1) * (1 - prog(t, se - .5, se - .2)), t, wt('instrucoes', 7), 'SKILL.md');
+    linhaTxt('ensina uma tarefa ao agente', 860, en - .2, se - .3, t, 44, CI);
+    const f = prog(t, se - .3, se + .1);
+    versao('70+ PLATAFORMAS', cx0, 620, f, CI, 0, 60);
+    ['ChatGPT', 'Cursor', 'GitHub Copilot', 'VS Code'].forEach((s, i) => pilula(s, cx0 + (i % 2 ? 220 : -220), 860 + Math.floor(i / 2) * 140, 400, prog(t, se + .2 + i * .25, se + .5 + i * .25), i ? AZ : CI, '', 1, 40));
+    linhaTxt('segundo a Anthropic', 1180, se + .5, SC[8] - .2, t, 34, 'rgba(244,248,255,.75)');
+  },
+  // 8 · teste hoje
+  (t, lt) => {
+    titulo('TESTE HOJE', 330, SC[8], SC[9] - .2, t, 90, BR, 'HOJE', CI);
+    janela(480, 400, prog(t, wt('abra', 8) - .3, wt('abra', 8) + .1), 'Sua automação · módulo OpenAI', (x, y, w) => {
+      const c = prog(t, wt('confira', 8), wt('confira', 8) + .3);
+      campo(x, y, w, 'Modelo', 'confira este nome', 1, c > .5 ? 1 : 0);
+      txt(c > .5 ? '✓ está na lista atual?' : '', x, y + 170, EXP, 38, '#1f9d55', { alpha: c });
+    });
+    exemplo(cx0, 1000, prog(t, wt('abra', 8), wt('abra', 8) + .3));
+  },
+  // 9 · logo + chamada
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>
