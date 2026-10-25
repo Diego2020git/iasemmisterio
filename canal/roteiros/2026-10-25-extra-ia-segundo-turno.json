@@ -1,0 +1,151 @@
+{
+  "id": "2026-10-25-extra-ia-segundo-turno",
+  "serie": "Extra",
+  "data": "2026-10-25",
+  "horario": "21:30",
+  "fora_da_grade": {
+    "pedido": "Diego, thread 25/10 22:58Z (\"Fazer para agora, neutro sem puxar nenhum partido\"); agendar só com o ok dele na página"
+  },
+  "titulo": "Criaram IA pra prever o 2º turno. Ela acertou?",
+  "descricao": "Criaram IA pra prever o 2º turno. Ela acertou? 🗳️🤖\nAntes da votação de 25/10/2026, apareceram previsões abertas feitas com IA e estatística. Aqui não tem torcida: só o que cada uma calculou e o limite de cada método.\n🧮 Projeto 1 (GitHub): o Claude, IA da Anthropic, fez as contas com pesos definidos antes por uma pessoa (pesquisas 60%, histórico 2002 a 2022 25%, 1º turno 15%). Deu Flávio Bolsonaro 50,8% x Lula 49,2% dos votos válidos. Nas eleições passadas o método errou em média 1,7 ponto, mais que essa diferença.\n🎲 Projeto 2 (GitHub): 30 mil simulações com 3 métodos. Média: 82% de chance pro Flávio e 18% pro Lula, mas cada método dava de 0,3% a 41% pro Lula.\n💸 Mercados de previsão (Polymarket, Kalshi): passavam de 80% pro Flávio na véspera. É preço de aposta, não pesquisa.\n🧠 IA fingindo ser eleitor: estudos mostram que acerta a média, mas exagera padrões e erra por grupo.\n⚠️ Nenhuma dessas previsões é pesquisa eleitoral, e nenhuma diz em quem votar. Resultado oficial: resultados.tse.jus.br.\nNo nosso vídeo as telas são ilustrativas.\n\nFontes (conferido em 25/10/2026): github.com/Gabriel-Alexandre/previsao-segundo-turno-2026 · github.com/berndof/eleicao-2026 · timesbrasil.com.br (Polymarket e Kalshi na véspera) · arxiv.org/abs/2412.15291\n\n#ia #inteligenciaartificial #eleicoes2026 #segundoturno #dados",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "extra-ia-segundo-turno",
+  "estilo": "neon",
+  "formato": "livre",
+  "imagens": [
+    {
+      "id": "cenas-neon",
+      "descricao": "gráficos de pesquisa, simulações e mercado em traço neon",
+      "origem": "gerada por código"
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Projeção feita pelo Claude (Anthropic) com método e pesos de Gabriel Alexandre: pesquisas 60%, histórico 2002-2022 25%, 1º turno 15%; Flávio 50,8% x Lula 49,2% dos válidos; faixa de 1 ponto escolhida pelo autor; backtest 2014/2018/2022 com erro médio de 1,7 ponto; 'não é pesquisa'",
+      "fonte": "https://github.com/Gabriel-Alexandre/previsao-segundo-turno-2026",
+      "conferido": "2026-10-25"
+    },
+    {
+      "dado": "Ensemble de 3 métodos (pesos 50/30/20), 30.000 simulações: Lula 18% de chance; entre métodos 0,3% a 41%; intervalos 'provavelmente estreitos demais'; não é pesquisa eleitoral",
+      "fonte": "https://github.com/berndof/eleicao-2026",
+      "conferido": "2026-10-25"
+    },
+    {
+      "dado": "Polymarket e Kalshi acima de 80% para Flávio na véspera do 2º turno",
+      "fonte": "https://timesbrasil.com.br/brasil/decisao-2026-a-quase-24-horas-da-eleicao-polymarket-e-kalshi-apontam-mais-de-80-de-chance-de-vitoria-de-flavio-bolsonaro/",
+      "conferido": "2026-10-25"
+    },
+    {
+      "dado": "LLMs simulando eleitores: viés e padrões demográficos exagerados",
+      "fonte": "https://arxiv.org/abs/2412.15291",
+      "conferido": "2026-10-25"
+    }
+  ],
+  "registro": {
+    "tema": "extra: modelos e IA que tentaram prever o 2º turno de 2026",
+    "chaves": [
+      "previsao eleicao",
+      "segundo turno ia"
+    ]
+  },
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Criaram uma IA pra prever quem ganha o segundo turno. Será que ela acertou?",
+          "legenda": "Criaram uma IA pra prever quem ganha o segundo turno. Será que ela acertou?"
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Num projeto aberto no GitHub, o Claude, IA da Anthropic, fez as contas com um método que uma pessoa definiu antes.",
+          "legenda": "Num projeto aberto no GitHub, o Claude, IA da Anthropic, fez as contas com um método que uma pessoa definiu antes."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Sessenta por cento vem das pesquisas, vinte e cinco do histórico de dois mil e dois a dois mil e vinte e dois, e quinze do primeiro turno.",
+          "legenda": "60% vem das pesquisas, 25% do histórico de 2002 a 2022, e 15% do primeiro turno."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Deu Flávio Bolsonaro com cinquenta vírgula oito e Lula com quarenta e nove vírgula dois por cento dos votos válidos.",
+          "legenda": "Deu Flávio Bolsonaro com 50,8% e Lula com 49,2% dos votos válidos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Testado em eleições passadas, o método errou em média um vírgula sete ponto. Um erro maior que a diferença entre os dois.",
+          "legenda": "Testado em eleições passadas, o método errou em média 1,7 ponto. Um erro maior que a diferença entre os dois."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Outro projeto rodou trinta mil simulações com três métodos. Na média, oitenta e dois por cento de chance pro Flávio e dezoito pro Lula.",
+          "legenda": "Outro projeto rodou 30 mil simulações com três métodos. Na média, 82% de chance pro Flávio e 18% pro Lula."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Só que cada método dizia uma coisa: a chance do Lula ia de zero vírgula três a quarenta e um por cento. E o autor avisa: a margem ficou estreita demais.",
+          "legenda": "Só que cada método dizia uma coisa: a chance do Lula ia de 0,3% a 41%. E o autor avisa: a margem ficou estreita demais."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "No mercado de previsão, como o Polymarket, as pessoas apostam dinheiro. Na véspera, passava de oitenta por cento pro Flávio. É aposta, não pesquisa.",
+          "legenda": "No mercado de previsão, como o Polymarket, as pessoas apostam dinheiro. Na véspera, passava de 80% pro Flávio. É aposta, não pesquisa."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E pedir pro ChatGPT fingir ser eleitor? Estudos testaram: a IA até acerta a média, mas exagera padrões e erra nos grupos.",
+          "legenda": "E pedir pro ChatGPT fingir ser eleitor? Estudos testaram: a IA até acerta a média, mas exagera padrões e erra nos grupos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Tudo depende das pesquisas: se elas erram, a IA erra junto. E oitenta por cento não é certeza: uma vez em cada cinco, o favorito perde.",
+          "legenda": "Tudo depende das pesquisas: se elas erram, a IA erra junto. E 80% não é certeza: uma vez em cada cinco, o favorito perde."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O resultado oficial sai no tribunal eleitoral. Compare com cada previsão.",
+          "legenda": "O resultado oficial sai no tribunal eleitoral. Compare com cada previsão."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E você, confiaria numa previsão feita por IA? Comenta aí.",
+          "legenda": "E você, confiaria numa previsão feita por IA? Comenta aí."
+        }
+      ]
+    }
+  ],
+  "video": "videos/2026-10-25-extra-ia-segundo-turno-neon.mp4"
+}

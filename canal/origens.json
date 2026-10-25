@@ -80,5 +80,8 @@
   },
   "2026-10-24-extra-php2shell": {
     "cenas-neon": "gerada por código (kit/neon-kit.js, servidor e painel ilustrativos, sem captura real)"
+  },
+  "2026-10-25-extra-ia-segundo-turno": {
+    "cenas-neon": "gerada por código (kit/neon-kit.js, gráficos e telas ilustrativos, sem captura real)"
   }
 }
