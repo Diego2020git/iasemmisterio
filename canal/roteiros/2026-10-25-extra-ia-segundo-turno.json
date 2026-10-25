@@ -4,7 +4,7 @@
   "data": "2026-10-25",
   "horario": "21:30",
   "fora_da_grade": {
-    "pedido": "Diego, thread 25/10 22:58Z (\"Fazer para agora, neutro sem puxar nenhum partido\"); agendar só com o ok dele na página"
+    "aprovado": "Diego, chat do projeto 25/10 23:45Z (\"Pode postar\"), 88 s; horário 21:30 escolhido depois do Radar das 21h"
   },
   "titulo": "Criaram IA pra prever o 2º turno. Ela acertou?",
   "descricao": "Criaram IA pra prever o 2º turno. Ela acertou? 🗳️🤖\nAntes da votação de 25/10/2026, apareceram previsões abertas feitas com IA e estatística. Aqui não tem torcida: só o que cada uma calculou e o limite de cada método.\n🧮 Projeto 1 (GitHub): o Claude, IA da Anthropic, fez as contas com pesos definidos antes por uma pessoa (pesquisas 60%, histórico 2002 a 2022 25%, 1º turno 15%). Deu Flávio Bolsonaro 50,8% x Lula 49,2% dos votos válidos. Nas eleições passadas o método errou em média 1,7 ponto, mais que essa diferença.\n🎲 Projeto 2 (GitHub): 30 mil simulações com 3 métodos. Média: 82% de chance pro Flávio e 18% pro Lula, mas cada método dava de 0,3% a 41% pro Lula.\n💸 Mercados de previsão (Polymarket, Kalshi): passavam de 80% pro Flávio na véspera. É preço de aposta, não pesquisa.\n🧠 IA fingindo ser eleitor: estudos mostram que acerta a média, mas exagera padrões e erra por grupo.\n⚠️ Nenhuma dessas previsões é pesquisa eleitoral, e nenhuma diz em quem votar. Resultado oficial: resultados.tse.jus.br.\nNo nosso vídeo as telas são ilustrativas.\n\nFontes (conferido em 25/10/2026): github.com/Gabriel-Alexandre/previsao-segundo-turno-2026 · github.com/berndof/eleicao-2026 · timesbrasil.com.br (Polymarket e Kalshi na véspera) · arxiv.org/abs/2412.15291\n\n#ia #inteligenciaartificial #eleicoes2026 #segundoturno #dados",
