@@ -838,6 +838,29 @@
     "instagram": "6adcfbafbd33ce99c339a57b"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-thpb2r/videos/2026-10-24-extra-php2shell-neon.mp4"
+  },
+  {
+   "id": "2026-10-25-extra-ia-segundo-turno",
+   "data": "2026-10-25",
+   "horario": "21:30",
+   "serie": "Extra",
+   "titulo": "Criaram IA pra prever o 2º turno. Ela acertou?",
+   "narracao": "Criaram uma IA pra prever quem ganha o segundo turno. Será que ela acertou? Num projeto aberto no GitHub, o Claude, IA da Anthropic, fez as contas com um método que uma pessoa definiu antes. Sessenta por cento vem das pesquisas, vinte e cinco do histórico de dois mil e dois a dois mil e vinte e dois, e quinze do primeiro turno. Deu Flávio Bolsonaro com cinquenta vírgula oito e Lula com quarenta e nove vírgula dois por cento dos votos válidos. Testado em eleições passadas, o método errou em média um vírgula sete ponto. Um erro maior que a diferença entre os dois. Outro projeto rodou trinta mil simulações com três métodos. Na média, oitenta e dois por cento de chance pro Flávio e dezoito pro Lula. Só que cada método dizia uma coisa: a chance do Lula ia de zero vírgula três a quarenta e um por cento. E o autor avisa: a margem ficou estreita demais. No mercado de previsão, como o Polymarket, as pessoas apostam dinheiro. Na véspera, passava de oitenta por cento pro Flávio. É aposta, não pesquisa. E pedir pro ChatGPT fingir ser eleitor? Estudos testaram: a IA até acerta a média, mas exagera padrões e erra nos grupos. Tudo depende das pesquisas: se elas erram, a IA erra junto. E oitenta por cento não é certeza: uma vez em cada cinco, o favorito perde. O resultado oficial sai no tribunal eleitoral. Compare com cada previsão. E você, confiaria numa previsão feita por IA? Comenta aí.",
+   "video": "videos/2026-10-25-extra-ia-segundo-turno-neon.mp4",
+   "registro": {
+    "tema": "extra: modelos e IA que tentaram prever o 2º turno de 2026",
+    "chaves": [
+     "previsao eleicao",
+     "segundo turno ia"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ade94e78b3d437ddc34a892",
+    "instagram": "6ade94e70b5343d070fb163e"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-a153tl/videos/2026-10-25-extra-ia-segundo-turno-neon.mp4"
   }
  ]
 }
