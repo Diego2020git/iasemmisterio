@@ -1055,6 +1055,106 @@
    "slides": "carrosseis/2026-10-24-formulario-planilha-email",
    "aprovado": "Diego, thread de retenção 24/10 18:44Z (10h já tinha passado; 18h fora da grade)",
    "titulo": "Carrossel da Semana: formulário que vira planilha e e-mail"
+  },
+  {
+   "id": "2026-10-25-radar-ia-60s",
+   "data": "2026-10-25",
+   "horario": "21:00",
+   "serie": "Radar IA",
+   "titulo": "Radar IA: Meet traduz 63 idiomas, OpenAI desliga modelos e Skills",
+   "narracao": "O Meet agora traduz 63 idiomas, a OpenAI desligou modelos antigos e as skills de agentes ganharam uma casa neutra. Radar IA de hoje. Um: no Meet, o Gemini percebe qual idioma cada um fala e cada pessoa ouve a reunião na sua língua, quase na hora. É pago: Google AI Pro, Ultra e planos de empresa. No Pro, até 90 minutos por reunião. Dois: em 23 de outubro, a OpenAI desligou na API, a conexão dos programadores, o GPT-3.5 Turbo, o GPT-4 antigo e o modelo o1. Automação que chamava esses nomes agora dá erro: troque o modelo no módulo. Três: a Anthropic doou o padrão Agent Skills pra Agentic AI Foundation, ligada à Linux Foundation. Uma skill é uma pasta com instruções que ensina uma tarefa ao agente. Mais de 70 plataformas já usam, como o ChatGPT. Teste hoje: abra sua automação que usa OpenAI e confira o nome do modelo. Segue pro Radar IA todo dia ao meio-dia.",
+   "video": "videos/2026-10-25-12h-radar-ia-60s-neon.mp4",
+   "registro": {
+    "tema": "radar IA 25/10: Meet traduz fala em 63 idiomas, OpenAI desliga modelos antigos na API, Anthropic doa Agent Skills à fundação",
+    "chaves": [
+     "meet traducao 63 idiomas",
+     "openai desliga modelos antigos",
+     "agent skills fundacao",
+     "radar 25/10"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ade88b3e4be8a4d86ce2b9a",
+    "instagram": "6ade88b48b3d437ddc2f9b32"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-25-12h-radar-ia-60s-neon.mp4"
+  },
+  {
+   "id": "2026-10-29-termo-de-ia-02",
+   "data": "2026-10-29",
+   "horario": "19:00",
+   "serie": "Termo de IA",
+   "titulo": "Termo de IA: token, os pedaços de texto que a IA lê",
+   "narracao": "A IA não lê palavras. Ela lê tokens, pedaços de texto. Termo de IA: token. Esse pedaço de texto decide o limite e o preço. Um: a IA corta o texto em pedaços. No Gemini, cada token tem uns quatro caracteres. Dois: cada pedaço vira um número. É com números que a IA monta a resposta. Três: o que você manda e o que ela responde, tudo conta. O limite e o preço da API, a conexão dos programadores, saem nesses pedaços. Essa conta é do inglês. Em português, é só estimativa. Salva e segue. Quinta que vem tem mais.",
+   "video": "videos/2026-10-29-19h-termo-de-ia-02-neon.mp4",
+   "registro": {
+    "tema": "termo de IA #2: token, pedaços de texto que a IA lê, limite e preço",
+    "chaves": [
+     "token",
+     "termo de ia",
+     "pedacos de texto",
+     "termo 2"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ade88b76887a2efc12ac750",
+    "instagram": "6ade88b76887a2efc12ac77c"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-29-19h-termo-de-ia-02-neon.mp4"
+  },
+  {
+   "id": "2026-10-30-agente-do-zero-07",
+   "data": "2026-10-30",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #7: o Make passa a ouvir o seu WhatsApp",
+   "narracao": "Hoje o Make passa a ouvir o seu WhatsApp de teste. Agente do zero, episódio sete. Um: no Make, adicione WhatsApp Business Cloud, Watch Events. Clique em Create a webhook, o aviso de mensagem nova. Dois: em Create a connection, escolha legacy e cole a chave e o número da conta que a Meta mostra. Três: escolha Messages. Na Meta, em Configuration, cole o endereço do webhook, que avisa o Make. Mande um oi do celular e veja o cenário rodar. A chave de teste vence em um dia. Segunda, episódio oito: o primeiro oi respondido.",
+   "video": "videos/2026-10-30-19h-agente-do-zero-07-neon.mp4",
+   "registro": {
+    "tema": "agente do zero ep 7: Make ouve o WhatsApp (Watch Events, conexão legacy com chave e conta da tela API Setup, webhook na Meta)",
+    "chaves": [
+     "whatsapp no make",
+     "watch events",
+     "conexao legacy",
+     "agente ep 7"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ade88bb6887a2efc12ac7ed",
+    "instagram": "6ade88bb8b3d437ddc2f9c8e"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-30-19h-agente-do-zero-07-neon.mp4"
+  },
+  {
+   "id": "2026-10-31-automacao-do-zero-05",
+   "data": "2026-10-31",
+   "horario": "19:00",
+   "serie": "Automação do zero",
+   "titulo": "Automação do zero #5: e-mail de compra vira linha na planilha",
+   "narracao": "Todo e-mail de compra vira uma linha na sua planilha de gastos. Automação do zero, episódio cinco. Sem copiar nada à mão. Um: crie uma planilha com Data, Loja e Assunto na primeira linha. Dois: no Zapier, gatilho, o que dispara tudo: Gmail, New Email Matching Search, buscando subject dois pontos pedido. Três: ação: Google Sheets, Create Spreadsheet Row. Ligue data, remetente e assunto às colunas. Teste e clique em Publish. O Zapier confere a cada quinze minutos. Grátis até cem tarefas por mês. Salva pra fazer hoje. Terça tem mais.",
+   "video": "videos/2026-10-31-19h-automacao-do-zero-05-neon.mp4",
+   "registro": {
+    "tema": "automação ep 5: e-mail de compra no Gmail vira linha na planilha de gastos (Zapier, New Email Matching Search → Create Spreadsheet Row)",
+    "chaves": [
+     "email de compra planilha",
+     "new email matching search",
+     "create spreadsheet row",
+     "automacao ep 5"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6ade88bf3d5b27036bf6e7f2",
+    "instagram": "6ade88bf8b3d437ddc2f9d1e"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-31-19h-automacao-do-zero-05-neon.mp4"
   }
  ]
 }

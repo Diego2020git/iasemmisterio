@@ -2,7 +2,7 @@
  "id": "2026-10-25-radar-ia-60s",
  "serie": "Radar IA",
  "data": "2026-10-25",
- "horario": "12:00",
+ "horario": "21:00",
  "titulo": "Radar IA: Meet traduz 63 idiomas, OpenAI desliga modelos e Skills",
  "descricao": "Radar IA de hoje 📡\n1️⃣ Google Meet: a tradução de fala com Gemini 3.5 Live Translate agora tem 63 idiomas e descobre sozinha qual língua cada um fala. Cada participante liga a tradução pra si. É pago (Business Standard e Plus, Enterprise, Google AI Pro e Ultra); no Pro e nos planos básicos, até 90 minutos por reunião. Não vale em gravação, transmissão ao vivo nem ligação por telefone. Chega desde 22/10 (lançamento rápido) e a partir de 02/11 (programado).\n2️⃣ OpenAI desligou na API em 23/10 modelos antigos como GPT-3.5 Turbo, versões antigas do GPT-4, o1, o1-pro e o3-mini. Quem chama esses nomes recebe erro: troque o modelo no seu módulo (Make, Zapier ou código). GPT-4o, GPT-4o mini, GPT-4.1 e GPT-4.1 mini saem da API em 14/01/2027.\n3️⃣ Anthropic doou o padrão Agent Skills (22/10) à Agentic AI Foundation, que fica na Linux Foundation. Uma skill é uma pasta com um arquivo SKILL.md de instruções, e pode ter scripts e material de consulta. Segundo a Anthropic, mais de 70 plataformas já usam, como ChatGPT, Cursor, GitHub Copilot e VS Code.\n\nTeste hoje: abra sua automação que usa OpenAI e confira o nome do modelo em cada módulo.\n\nFontes oficiais (conferidas em 25/10/2026): workspaceupdates.googleblog.com (Real-time speech translation in Google Meet expands to 63 languages) · support.google.com/meet/answer/16221730 · developers.openai.com/api/docs/deprecations · anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation\n\n#ia #inteligenciaartificial #googlemeet #openai #claude #noticiasdeia",
  "comentario_fixado": null,
@@ -130,5 +130,8 @@
    "id": "todas",
    "origem": "gerada por código (kit neon)"
   }
- ]
+ ],
+ "fora_da_grade": {
+  "aprovado": "Diego, \"Ok\" no chat do projeto 25/10 22:52Z (cmsg_01L1NVBKWgPhLZPw6PVck3zhFmmxLHYWCkFFEGWuFw5svH) à página de aprovação; 12h já tinha passado"
+ }
 }
