@@ -106,7 +106,8 @@ def validar(caminho, sem_mp4=False, trocar_slot=False):
     falas = frases_da_narracao(r)
     caracteres = sum(len(f) for f in falas)
     estimada = caracteres / 17 + 4.5
-    if not DUR_MIN <= estimada <= DUR_MAX + 3:
+    tem_mp4 = not sem_mp4 and r.get("video") and (RAIZ / r["video"]).is_file()
+    if not tem_mp4 and not DUR_MIN <= estimada <= DUR_MAX + 3:  # com o MP4 pronto vale a duração real
         erros.append(f"duração estimada {estimada:.1f} s fora de {DUR_MIN:.0f} a {DUR_MAX:.0f} s ({caracteres} caracteres, formato {formato})")
     if not sem_mp4:
         mp4 = RAIZ / (r.get("video") or "")
