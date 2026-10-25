@@ -1,0 +1,100 @@
+{
+ "id": "2026-10-31-automacao-do-zero-05",
+ "serie": "Automação do zero",
+ "data": "2026-10-31",
+ "horario": "19:00",
+ "titulo": "Automação do zero #5: e-mail de compra vira linha na planilha",
+ "descricao": "Automação do zero, episódio 5 🧾\nTodo e-mail de compra que chega no Gmail vira uma linha na sua planilha de gastos, sozinho.\n1️⃣ No Google Planilhas, crie uma planilha com Data, Loja e Assunto na primeira linha.\n2️⃣ No zapier.com, + Create → Zap. Gatilho (Trigger): app Gmail, evento New Email Matching Search. Na busca, escreva subject:pedido (troque pela palavra que aparece nos seus e-mails de compra).\n3️⃣ Ação (Action): app Google Sheets, evento Create Spreadsheet Row. Escolha a planilha e a aba, e ligue a data, o remetente (From) e o assunto (Subject) às colunas. Teste e clique em Publish.\nNo plano grátis o Zapier confere a cada 15 minutos. São 100 tarefas por mês e Zaps de 2 passos. Cada linha criada = 1 tarefa.\nLimite: só entra o que bate com a busca; e-mail de compra com outro assunto fica de fora.\nEpisódio anterior: #4, estrela vira tarefa. Terça: episódio 6.\n\nFonte: plano grátis do Zapier (zapier.com/pricing) e integração Gmail + Google Sheets (zapier.com/apps/gmail/integrations/google-sheets), conferido em 25/10/2026.\n\n#automacao #zapier #gmail #planilha #financas #ia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "a5",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Todo e-mail de compra vira uma linha na sua planilha de gastos.",
+     "legenda": "Todo e-mail de compra vira uma linha na sua planilha de gastos."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Automação do zero, episódio cinco. Sem copiar nada à mão.",
+     "legenda": "Automação do zero, episódio cinco. Sem copiar nada à mão."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: crie uma planilha com Data, Loja e Assunto na primeira linha.",
+     "legenda": "Um: crie uma planilha com Data, Loja e Assunto na primeira linha."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: no Zapier, gatilho, o que dispara tudo: Gmail, New Email Matching Search, buscando subject dois pontos pedido.",
+     "legenda": "Dois: no Zapier, gatilho, o que dispara tudo: Gmail, New Email Matching Search, buscando subject dois pontos pedido."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: ação: Google Sheets, Create Spreadsheet Row. Ligue data, remetente e assunto às colunas. Teste e clique em Publish.",
+     "legenda": "Três: ação: Google Sheets, Create Spreadsheet Row. Ligue data, remetente e assunto às colunas. Teste e clique em Publish."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "O Zapier confere a cada quinze minutos. Grátis até cem tarefas por mês.",
+     "legenda": "O Zapier confere a cada quinze minutos. Grátis até cem tarefas por mês."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Salva pra fazer hoje. Terça tem mais.",
+     "legenda": "Salva pra fazer hoje. Terça tem mais."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Zapier: Gmail New Email Matching Search; Google Sheets Create Spreadsheet Row; grátis confere a cada 15 min",
+   "fonte": "https://zapier.com/apps/gmail/integrations/google-sheets",
+   "conferido": "2026-10-25"
+  },
+  {
+   "dado": "Zapier grátis: 100 tarefas/mês, Zaps de 2 passos",
+   "fonte": "https://zapier.com/pricing",
+   "conferido": "2026-10-25"
+  }
+ ],
+ "registro": {
+  "tema": "automação ep 5: e-mail de compra no Gmail vira linha na planilha de gastos (Zapier, New Email Matching Search → Create Spreadsheet Row)",
+  "chaves": [
+   "email de compra planilha",
+   "new email matching search",
+   "create spreadsheet row",
+   "automacao ep 5"
+  ]
+ },
+ "video": "videos/2026-10-31-19h-automacao-do-zero-05-neon.mp4",
+ "fonte_html": "kit/2026-10-31-19h-automacao-do-zero-05-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

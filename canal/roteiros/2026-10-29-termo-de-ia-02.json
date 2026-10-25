@@ -1,0 +1,95 @@
+{
+ "id": "2026-10-29-termo-de-ia-02",
+ "serie": "Termo de IA",
+ "data": "2026-10-29",
+ "horario": "19:00",
+ "titulo": "Termo de IA: token, os pedaços de texto que a IA lê",
+ "descricao": "Termo de IA #2: token 🧩\nA IA não lê palavras inteiras: ela corta o texto em pedaços, os tokens, e transforma cada pedaço num número antes de calcular a resposta.\nComo funciona:\n1️⃣ O texto é cortado em pedaços. Nos modelos Gemini, um token tem cerca de 4 caracteres, e 100 tokens dão de 60 a 80 palavras em inglês (segundo o Google).\n2️⃣ Cada pedaço vira um número.\n3️⃣ Tudo conta: o que você manda e o que a IA responde. O limite da janela de contexto, o limite de resposta e o preço da API (cobrado por milhão de tokens) são medidos em tokens.\nLimite: essa conta é uma média para o inglês. Em português, use só como estimativa.\nEpisódio anterior: #1, RAG. Quinta que vem: outro termo.\n\nFonte: Google AI for Developers, Understand and count tokens (ai.google.dev/gemini-api/docs/tokens), conferido em 25/10/2026.\n\n#ia #inteligenciaartificial #token #gemini #chatgpt #termodeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "t2",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "A IA não lê palavras. Ela lê tokens, pedaços de texto.",
+     "legenda": "A IA não lê palavras. Ela lê tokens, pedaços de texto."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Termo de IA: token. Esse pedaço de texto decide o limite e o preço.",
+     "legenda": "Termo de IA: token. Esse pedaço de texto decide o limite e o preço."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: a IA corta o texto em pedaços. No Gemini, cada token tem uns quatro caracteres.",
+     "legenda": "Um: a IA corta o texto em pedaços. No Gemini, cada token tem uns quatro caracteres."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: cada pedaço vira um número. É com números que a IA monta a resposta.",
+     "legenda": "Dois: cada pedaço vira um número. É com números que a IA monta a resposta."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: o que você manda e o que ela responde, tudo conta. O limite e o preço da API, a conexão dos programadores, saem nesses pedaços.",
+     "legenda": "Três: o que você manda e o que ela responde, tudo conta. O limite e o preço da API, a conexão dos programadores, saem nesses pedaços."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Essa conta é do inglês. Em português, é só estimativa.",
+     "legenda": "Essa conta é do inglês. Em português, é só estimativa."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Salva e segue. Quinta que vem tem mais.",
+     "legenda": "Salva e segue. Quinta que vem tem mais."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Gemini: 1 token ≈ 4 caracteres; 100 tokens ≈ 60 a 80 palavras em inglês",
+   "fonte": "https://ai.google.dev/gemini-api/docs/tokens",
+   "conferido": "2026-10-25"
+  }
+ ],
+ "registro": {
+  "tema": "termo de IA #2: token, pedaços de texto que a IA lê, limite e preço",
+  "chaves": [
+   "token",
+   "termo de ia",
+   "pedacos de texto",
+   "termo 2"
+  ]
+ },
+ "video": "videos/2026-10-29-19h-termo-de-ia-02-neon.mp4",
+ "fonte_html": "kit/2026-10-29-19h-termo-de-ia-02-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

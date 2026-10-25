@@ -1,0 +1,105 @@
+{
+ "id": "2026-10-30-agente-do-zero-07",
+ "serie": "Agente do zero",
+ "data": "2026-10-30",
+ "horario": "19:00",
+ "titulo": "Agente do zero #7: o Make passa a ouvir o seu WhatsApp",
+ "descricao": "Agente do zero, episódio 7 👂\nHoje o Make passa a ouvir o número de teste do WhatsApp do episódio 6: chegou mensagem, o cenário roda na hora.\n1️⃣ No Make, no seu cenário, adicione o app WhatsApp Business Cloud, módulo Watch Events (gatilho instantâneo). Clique em Create a webhook.\n2️⃣ Em Create a connection, escolha o tipo legacy, que usa a chave (token) e o WhatsApp Business Account ID. Os dois aparecem na tela API Setup da Meta (developers.facebook.com).\n3️⃣ Escolha o evento Messages e salve. Na Meta, em WhatsApp → Configuration → Webhook, cole o endereço que o Make gerou e assine o campo messages.\nTeste: mande \"oi\" do seu celular para o número de teste e veja o cenário rodar.\nLimites: a chave temporária da Meta vale 24 horas (pra uso contínuo, a Meta indica a chave permanente de um usuário do sistema). No Make grátis são 1.000 créditos por mês e 2 cenários ativos. Segundo o Make, a conexão legacy fica disponível até abril de 2027; a nova pede um número de verdade.\nEpisódio anterior: #6, número de teste. Segunda: episódio 8, o primeiro oi respondido.\n\nFontes: apps.make.com/whatsapp-business-cloud, help.make.com e developers.facebook.com (WhatsApp Cloud API Get Started e Using Authorization Tokens), conferido em 25/10/2026.\n\n#agentedeia #whatsapp #make #automacao #ia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "7",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Hoje o Make passa a ouvir o seu WhatsApp de teste.",
+     "legenda": "Hoje o Make passa a ouvir o seu WhatsApp de teste."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Agente do zero, episódio sete.",
+     "legenda": "Agente do zero, episódio sete."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no Make, adicione WhatsApp Business Cloud, Watch Events. Clique em Create a webhook, o aviso de mensagem nova.",
+     "legenda": "Um: no Make, adicione WhatsApp Business Cloud, Watch Events. Clique em Create a webhook, o aviso de mensagem nova."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: em Create a connection, escolha legacy e cole a chave e o número da conta que a Meta mostra.",
+     "legenda": "Dois: em Create a connection, escolha legacy e cole a chave e o número da conta que a Meta mostra."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: escolha Messages. Na Meta, em Configuration, cole o endereço do webhook, que avisa o Make.",
+     "legenda": "Três: escolha Messages. Na Meta, em Configuration, cole o endereço do webhook, que avisa o Make."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Mande um oi do celular e veja o cenário rodar. A chave de teste vence em um dia.",
+     "legenda": "Mande um oi do celular e veja o cenário rodar. A chave de teste vence em um dia."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segunda, episódio oito: o primeiro oi respondido.",
+     "legenda": "Segunda, episódio oito: o primeiro oi respondido."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Make WhatsApp Business Cloud: Watch Events instantâneo; Create a webhook, Create a connection; legacy usa Permanent Token e WhatsApp Business Account ID; legacy até abril de 2027",
+   "fonte": "https://apps.make.com/whatsapp-business-cloud",
+   "conferido": "2026-10-25"
+  },
+  {
+   "dado": "Meta: token temporário vale 24 horas; token permanente via usuário do sistema",
+   "fonte": "https://developers.facebook.com/blog/post/2022/12/05/auth-tokens/",
+   "conferido": "2026-10-25"
+  },
+  {
+   "dado": "Make grátis: 1.000 créditos/mês, 2 cenários ativos",
+   "fonte": "https://www.make.com/en/pricing",
+   "conferido": "2026-10-25"
+  }
+ ],
+ "registro": {
+  "tema": "agente do zero ep 7: Make ouve o WhatsApp (Watch Events, conexão legacy com chave e conta da tela API Setup, webhook na Meta)",
+  "chaves": [
+   "whatsapp no make",
+   "watch events",
+   "conexao legacy",
+   "agente ep 7"
+  ]
+ },
+ "video": "videos/2026-10-30-19h-agente-do-zero-07-neon.mp4",
+ "fonte_html": "kit/2026-10-30-19h-agente-do-zero-07-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}
