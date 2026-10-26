@@ -1,0 +1,101 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-26-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 26/10/2026 · 12h · Radar IA #11 (57 s): @Gemini Notebook no chat do Gemini, app do Gemini vira site (Export → Google Sites), Claude junta chat e Cowork. Neon + neon-entrega.js.
+// Fontes: workspaceupdates.googleblog.com (23/10 e 19/10), support.google.com/gemini/answer/16972047, claude.com/resources/articles/unified-claude-enterprise.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8], T0[9] + .7];
+const DURATION = SC[9], IMPACTO = SC[8] + .4;
+const COR = [AZ, CI, AZ, AMB, CI, IN, AMB, AZ, AZ];
+const HITS = [wt('notebook', 0), wt('site', 0), wt('claude', 0), wt('radar', 1), wt('arroba', 2), wt('caderno', 2), wt('arquivos', 2), wt('pessoal', 3), wt('export', 4), wt('sites', 4), wt('privado', 4), wt('cowork', 5), wt('nuvem', 5), wt('pago', 6), wt('arroba', 7)];
+const CLIQUES = [wt('export', 4) + .2, wt('sites', 4) + .2];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// chat do Gemini com o texto sendo digitado
+function chat(x, y, w, t, t0, str, resp, tr) { const n = Math.floor(clamp((t - t0) * 1.4) * str.length);
+  ctx.fillStyle = '#e9efff'; rr(x, y, w, 80, 40); ctx.fill(); txt(str.slice(0, n) + (n < str.length && (t * 3 % 1) < .5 ? '|' : ''), x + 30, y + 42, ARC, 32, '#1b2440', { weight: 600 });
+  if (n > 0) { ctx.fillStyle = '#2e6bff'; rr(x + 24, y + 22, Math.min(measure('@Gemini Notebook', ARC, 32, 600), measure(str.slice(0, n), ARC, 32, 600)) + 12, 38, 8); ctx.globalAlpha *= .18; ctx.fill(); ctx.globalAlpha /= .18; }
+  resp.forEach((r, i) => { const q = prog(t, tr + i * .5, tr + i * .5 + .3); if (q <= 0) return; ctx.save(); ctx.globalAlpha *= q; ctx.fillStyle = '#ffffff'; rr(x, y + 110 + i * 78, w, 64, 14); ctx.fill();
+    txt(r, x + 24, y + 144 + i * 78, ARC, 30, '#1b2440', { weight: 600 }); ctx.restore(); }); }
+// card de app → site
+function appCard(x, y, a, t, site) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const e = back(clamp(a)); ctx.translate(x, y); ctx.scale(e, e);
+  ctx.shadowColor = site ? VERDE : CI; ctx.shadowBlur = 40; ctx.fillStyle = '#f4f7ff'; rr(-170, -150, 340, 300, 24); ctx.fill(); ctx.shadowBlur = 0;
+  if (site) { ctx.fillStyle = '#e1e8f8'; rr(-170, -150, 340, 56, 24); ctx.fill(); ctx.fillRect(-170, -114, 340, 20); txt('Google Sites · rascunho', 0, -122, ARC, 22, '#5a6a8f', { align: 'center', weight: 600 }); }
+  for (let i = 0; i < 4; i++) { const h = 30 + 50 * Math.abs(Math.sin(t * 2 + i)); ctx.fillStyle = i % 2 ? '#2e6bff' : '#2ee6ff'; rr(-120 + i * 62, 110 - h, 44, h, 8); ctx.fill(); }
+  txt(site ? 'meu-app' : 'App no Gemini', 0, site ? -60 : -110, EXP, 30, '#1b2440', { align: 'center' }); ctx.restore(); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 26/10', 330, -1, SC[1] - .2, t, 40, CI);
+    versao('@GEMINI NOTEBOOK NO CHAT', cx0, 560, prog(t, -1, .1), CI, 0, 46);
+    versao('APP DO GEMINI VIRA SITE', cx0, 820, prog(t, wt('transforma', 0) - .2, wt('transforma', 0) + .2), VERDE, 0, 48);
+    versao('CLAUDE: CHAT + COWORK', cx0, 1080, prog(t, wt('claude', 0) - .2, wt('claude', 0) + .2), IN, 0, 50);
+  },
+  // 1 · radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, 700, 230 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .25));
+    titulo('RADAR IA', 1050, SC[1], SC[2] - .2, t, 110, BR, 'IA', CI);
+  },
+  // 2 · @Gemini Notebook no chat
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('CADERNO DENTRO DO CHAT', 450, wt('gemini', 2) - .2, SC[3] - .2, t, 70, BR, 'CHAT', CI);
+    janela(560, 520, prog(t, wt('app', 2) - .3, wt('app', 2) + .1), 'Gemini', (x, y, w) => chat(x, y, w, t, wt('escreva', 2), '@Gemini Notebook crie um caderno', ['✓ Caderno criado', '✓ Fonte adicionada', '✓ Resposta com base nos seus arquivos'], wt('cria', 2)));
+    pilula('sem trocar de app', cx0, 1200, 560, prog(t, wt('trocar', 2) - .2, wt('trocar', 2) + .2), VERDE, '', 1, 42);
+  },
+  // 3 · quem pode
+  (t, lt) => {
+    titulo('QUEM JÁ TEM', 380, SC[3], SC[4] - .2, t, 86, BR, 'TEM', AMB);
+    neon3d(P.pessoa, cx0, 680 + flut(t), 110 * back(prog(lt, .05, .4)), .3 * Math.sin(t), .1, CI, prog(lt, .05, .3));
+    pilula('conta pessoal do Google', cx0, 900, 660, prog(t, wt('pessoal', 3) - .2, wt('pessoal', 3) + .2), CI, 'WEB E APP DO CELULAR', 1, 44);
+    pilula('chegando aos poucos', cx0, 1060, 560, prog(t, wt('chegando', 3) - .2, wt('chegando', 3) + .2), AMB, '', 1, 42);
+  },
+  // 4 · app do Gemini vira site
+  (t, lt) => {
+    numero(2, 300, SC[4], SC[5] - .2, t);
+    titulo('SEU APP VIRA SITE', 450, wt('fez', 4) - .2, SC[5] - .2, t, 80, BR, 'SITE', VERDE);
+    const ex = wt('export', 4), si = wt('sites', 4), ra = wt('rascunho', 4);
+    appCard(cx0 - 230, 780, prog(t, wt('interativo', 4) - .3, wt('interativo', 4) + .2), t, false);
+    botao(cx0 + 40, 640, 'Export', prog(t, ex - .2, ex + .1), prog(t, ex + .2, ex + .6), AZ);
+    pilula('Google Sites', cx0 + 230, 780, 360, prog(t, si - .2, si + .2), VERDE, '', 1, 40);
+    setaH(cx0 - 40, cx0 + 60, 780, prog(t, si - .3, si), CI);
+    appCard(cx0 + 230, 1060, prog(t, ra - .3, ra + .2), t, true);
+    pilula('privado até publicar', cx0 - 200, 1060, 400, prog(t, wt('privado', 4) - .2, wt('privado', 4) + .2), AMB, '', 1, 32);
+  },
+  // 5 · Claude: chat e Cowork juntos
+  (t, lt) => {
+    numero(3, 300, SC[5], SC[6] - .2, t);
+    titulo('CLAUDE: TUDO NUMA CONVERSA', 450, wt('claude', 5) - .2, SC[6] - .2, t, 66, BR, 'CONVERSA', CI);
+    const vi = wt('viraram', 5), co = wt('comeca', 5), me = wt('mexer', 5), nu = wt('nuvem', 5), de = wt('devolve', 5);
+    const jun = prog(t, vi - .2, vi + .5);
+    pilula('Chat', lerp(cx0 - 220, cx0 - 120, jun), 620, 260, prog(t, wt('conversa', 5) - .2, wt('conversa', 5) + .2) * (1 - prog(t, co - .3, co)), CI, '', 1, 44);
+    pilula('Cowork', lerp(cx0 + 220, cx0 + 120, jun), 620, 260, prog(t, wt('cowork', 5) - .2, wt('cowork', 5) + .2) * (1 - prog(t, co - .3, co)), IN, '', 1, 44);
+    [['começa como chat', co, CI], ['precisa mexer em arquivos', me, AMB], ['continua num computador isolado na nuvem', nu, IN], ['devolve pronto', de, VERDE]].forEach(([s2, t0, c], i) => {
+      pilula(s2, cx0, 760 + i * 130, 780, prog(t, t0 - .2, t0 + .2), c, '', 1, 38); if (i) txt('↓', cx0, 700 + i * 130, ARC, 40, c, { align: 'center', weight: 800, alpha: prog(t, t0 - .2, t0) }); });
+  },
+  // 6 · é pago
+  (t, lt) => {
+    titulo('É PAGO', 380, SC[6], SC[7] - .2, t, 100, BR, 'PAGO', AMB);
+    [['setembro · Pro e Max', wt('setembro', 6), CI], ['23/10 · empresas', wt('empresas', 6), IN], ['16/11 · liga sozinho nas empresas', wt('outubro', 6) + .3, AMB]].forEach(([s2, t0, c], i) => pilula(s2, cx0, 640 + i * 170, 760, prog(t, t0 - .3, t0 + .1), c, '', 1, 44));
+  },
+  // 7 · teste hoje
+  (t, lt) => {
+    titulo('TESTE HOJE', 330, SC[7], SC[8] - .2, t, 90, BR, 'HOJE', CI);
+    janela(470, 420, prog(t, wt('gemini', 7) - .3, wt('gemini', 7) + .1), 'Gemini', (x, y, w) => chat(x, y, w, t, wt('escreva', 7), '@Gemini Notebook caderno novo + link', ['✓ Caderno novo com o seu link'], wt('link', 7)));
+    exemplo(cx0, 980, prog(t, wt('escreva', 7), wt('escreva', 7) + .3));
+  },
+  // 8 · fim
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>
