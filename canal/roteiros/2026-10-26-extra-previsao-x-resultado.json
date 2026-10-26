@@ -2,9 +2,9 @@
   "id": "2026-10-26-extra-previsao-x-resultado",
   "serie": "Extra",
   "data": "2026-10-26",
-  "horario": "12:00",
+  "horario": "15:00",
   "fora_da_grade": {
-    "pedido": "Diego, thread 26/10 01:11Z (\"Gere os quatro vídeos para aprovação, escolho 1 e você posta\")"
+    "aprovado": "Diego, thread 26/10 02:13Z (\"Poste o vídeo 2 agora, e o 3 e 4 amanhã\")"
   },
   "titulo": "A IA previu o 2º turno. Acertou? Veja o resultado",
   "descricao": "A IA previu o 2º turno. Acertou? 🤖🗳️\nAntes da votação de 25/10/2026, projetos abertos fizeram previsões com IA e estatística. Agora dá pra comparar com o resultado, sem torcida:\n🧮 Projeção feita pelo Claude (Anthropic) com método definido antes por uma pessoa: Flávio Bolsonaro 50,8% x Lula 49,2%.\n🎲 30 mil simulações: 18% de chance para Lula.\n💸 Mercados de previsão: acima de 80% para Flávio na véspera.\n📊 Resultado com 99,9% das seções totalizadas (TSE): Lula 51,8% x Flávio 48,2%.\nA projeção errou 2,6 pontos, mais que o erro médio de 1,7 do método em eleições passadas. Quase todas as pesquisas usadas apontavam Flávio à frente. Lição: previsão é chance, não certeza.\nResultado oficial: resultados.tse.jus.br. No nosso vídeo as telas são ilustrativas.\n\nFontes (conferido em 26/10/2026): github.com/Gabriel-Alexandre/previsao-segundo-turno-2026 · github.com/berndof/eleicao-2026 · timesbrasil.com.br (mercados na véspera) · dgabc.com.br e conexaomt.com (resultado com 99,9% das seções)\n\n#ia #inteligenciaartificial #eleicoes2026 #segundoturno #dados",

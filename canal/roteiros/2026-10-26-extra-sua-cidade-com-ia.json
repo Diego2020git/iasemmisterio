@@ -2,9 +2,9 @@
   "id": "2026-10-26-extra-sua-cidade-com-ia",
   "serie": "Extra",
   "data": "2026-10-26",
-  "horario": "12:00",
+  "horario": "21:00",
   "fora_da_grade": {
-    "pedido": "Diego, thread 26/10 01:11Z (\"Gere os quatro vídeos para aprovação, escolho 1 e você posta\")"
+    "aprovado": "Diego, thread 26/10 02:13Z (\"Poste o vídeo 2 agora, e o 3 e 4 amanhã\")"
   },
   "titulo": "Como sua cidade votou? Analise com IA grátis",
   "descricao": "Como sua cidade votou? Analise com IA grátis 🏙️📊\n3 passos:\n1️⃣ Abra resultados.tse.jus.br, escolha estado, cidade e turno.\n2️⃣ Copie votos e % de cada candidato no 1º e no 2º turno.\n3️⃣ Cole no Gemini ou no ChatGPT (os dois têm versão grátis) com o pedido:\n\"Monte uma tabela comparando o 1º e o 2º turno desta cidade e diga quem ganhou e quem perdeu votos, em número e em porcentagem: [cole os dados]\"\n⚠️ IA pode errar conta: confira cada número no site antes de postar.\n📂 Detalhe por zona eleitoral: dadosabertos.tse.jus.br (\"Votação nominal por município e zona\", CSV).\nNo vídeo, a cidade e os candidatos são de exemplo.\n\nFontes (conferido em 26/10/2026): resultados.tse.jus.br · dadosabertos.tse.jus.br (conjunto \"Votação nominal por município e zona\")\n\n#ia #gemini #chatgpt #eleicoes2026 #dados",
