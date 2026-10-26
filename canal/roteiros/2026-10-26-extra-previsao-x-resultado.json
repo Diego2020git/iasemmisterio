@@ -1,0 +1,127 @@
+{
+  "id": "2026-10-26-extra-previsao-x-resultado",
+  "serie": "Extra",
+  "data": "2026-10-26",
+  "horario": "12:00",
+  "fora_da_grade": {
+    "pedido": "Diego, thread 26/10 01:11Z (\"Gere os quatro vídeos para aprovação, escolho 1 e você posta\")"
+  },
+  "titulo": "A IA previu o 2º turno. Acertou? Veja o resultado",
+  "descricao": "A IA previu o 2º turno. Acertou? 🤖🗳️\nAntes da votação de 25/10/2026, projetos abertos fizeram previsões com IA e estatística. Agora dá pra comparar com o resultado, sem torcida:\n🧮 Projeção feita pelo Claude (Anthropic) com método definido antes por uma pessoa: Flávio Bolsonaro 50,8% x Lula 49,2%.\n🎲 30 mil simulações: 18% de chance para Lula.\n💸 Mercados de previsão: acima de 80% para Flávio na véspera.\n📊 Resultado com 99,9% das seções totalizadas (TSE): Lula 51,8% x Flávio 48,2%.\nA projeção errou 2,6 pontos, mais que o erro médio de 1,7 do método em eleições passadas. Quase todas as pesquisas usadas apontavam Flávio à frente. Lição: previsão é chance, não certeza.\nResultado oficial: resultados.tse.jus.br. No nosso vídeo as telas são ilustrativas.\n\nFontes (conferido em 26/10/2026): github.com/Gabriel-Alexandre/previsao-segundo-turno-2026 · github.com/berndof/eleicao-2026 · timesbrasil.com.br (mercados na véspera) · dgabc.com.br e conexaomt.com (resultado com 99,9% das seções)\n\n#ia #inteligenciaartificial #eleicoes2026 #segundoturno #dados",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "extra-previsao-x-resultado",
+  "estilo": "neon",
+  "formato": "livre",
+  "imagens": [
+    {
+      "id": "cenas-neon",
+      "descricao": "gráficos de previsão e resultado em traço neon",
+      "origem": "gerada por código"
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Projeção do Claude: Flávio 50,8% x Lula 49,2%; erro médio do método em 2014/2018/2022: 1,7 ponto; só Vox Brasil mostrava Lula à frente entre as pesquisas usadas",
+      "fonte": "https://github.com/Gabriel-Alexandre/previsao-segundo-turno-2026",
+      "conferido": "2026-10-26"
+    },
+    {
+      "dado": "30.000 simulações: Lula 18% de chance",
+      "fonte": "https://github.com/berndof/eleicao-2026",
+      "conferido": "2026-10-26"
+    },
+    {
+      "dado": "Polymarket e Kalshi acima de 80% para Flávio na véspera",
+      "fonte": "https://timesbrasil.com.br/brasil/decisao-2026-a-quase-24-horas-da-eleicao-polymarket-e-kalshi-apontam-mais-de-80-de-chance-de-vitoria-de-flavio-bolsonaro/",
+      "conferido": "2026-10-26"
+    },
+    {
+      "dado": "Resultado com 99,9% das seções: Lula 51,77% a 51,78%, Flávio 48,22% a 48,23% dos válidos",
+      "fonte": "https://conexaomt.com/politica-nacional/lula-reeleito-segundo-turno-2026-resultado/",
+      "conferido": "2026-10-26"
+    }
+  ],
+  "registro": {
+    "tema": "extra: previsões de IA do 2º turno comparadas com o resultado",
+    "chaves": [
+      "previsao x resultado",
+      "ia errou eleicao"
+    ]
+  },
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Antes da eleição, uma IA fez as contas do segundo turno. Agora dá pra conferir se ela acertou.",
+          "legenda": "Antes da eleição, uma IA fez as contas do segundo turno. Agora dá pra conferir se ela acertou."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Num projeto aberto no GitHub, o Claude, IA da Anthropic, fez as contas com um método que uma pessoa definiu antes.",
+          "legenda": "Num projeto aberto no GitHub, o Claude, IA da Anthropic, fez as contas com um método que uma pessoa definiu antes."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Deu Flávio Bolsonaro com cinquenta vírgula oito e Lula com quarenta e nove vírgula dois por cento dos votos válidos.",
+          "legenda": "Deu Flávio Bolsonaro com 50,8% e Lula com 49,2% dos votos válidos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Outro projeto rodou trinta mil simulações e deu dezoito por cento de chance pro Lula. E o mercado de apostas passava de oitenta por cento pro Flávio.",
+          "legenda": "Outro projeto rodou 30 mil simulações e deu 18% de chance pro Lula. E o mercado de apostas passava de 80% pro Flávio."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O resultado, com quase todas as urnas apuradas: Lula com cinquenta e um vírgula oito, Flávio com quarenta e oito vírgula dois.",
+          "legenda": "O resultado, com quase todas as urnas apuradas: Lula com 51,8%, Flávio com 48,2%."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "A conta do Claude errou por dois vírgula seis pontos. Mais que o erro médio de um vírgula sete que o método tinha nas eleições passadas.",
+          "legenda": "A conta do Claude errou por 2,6 pontos. Mais que o erro médio de 1,7 que o método tinha nas eleições passadas."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E o favorito de oitenta por cento perdeu. É aquela vez em cada cinco: chance alta não é certeza.",
+          "legenda": "E o favorito de 80% perdeu. É aquela vez em cada cinco: chance alta não é certeza."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Por que errou? Quase todas as pesquisas usadas mostravam o Flávio na frente. Se a pesquisa erra, a IA erra junto.",
+          "legenda": "Por que errou? Quase todas as pesquisas usadas mostravam o Flávio na frente. Se a pesquisa erra, a IA erra junto."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Você confiaria numa IA pra prever eleição? Comenta aí.",
+          "legenda": "Você confiaria numa IA pra prever eleição? Comenta aí."
+        }
+      ]
+    }
+  ],
+  "video": "videos/2026-10-26-extra-previsao-x-resultado-neon.mp4"
+}

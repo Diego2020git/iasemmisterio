@@ -1,0 +1,117 @@
+{
+  "id": "2026-10-26-extra-como-o-tse-conta",
+  "serie": "Extra",
+  "data": "2026-10-26",
+  "horario": "12:00",
+  "fora_da_grade": {
+    "pedido": "Diego, thread 26/10 01:11Z (\"Gere os quatro vídeos para aprovação, escolho 1 e você posta\")"
+  },
+  "titulo": "Como o TSE conta milhões de votos em poucas horas",
+  "descricao": "Como o TSE conta milhões de votos em poucas horas 🗳️⚡\nA conta não acontece num lugar só: cada urna apura a própria seção, sem internet.\n1️⃣ Fim da votação: a urna imprime o Boletim de Urna (BU), 5 vias, uma na porta da seção.\n2️⃣ Uma cópia digital com assinatura digital (o \"lacre\" que denuncia alteração) vai na mídia de resultado.\n3️⃣ Transmissão por rede exclusiva da Justiça Eleitoral; em locais isolados, por satélite.\n4️⃣ O sistema confere a assinatura. Assinatura inválida ou inconsistência (como mais votos que eleitores) descarta o boletim.\n5️⃣ Totalização: soma de todos os boletins do país e do exterior.\n✅ Confira você mesmo: o app Boletim na Mão lê o QR Code do boletim impresso. Os BUs ficam no site do TSE em até 3 dias após a totalização.\nNo nosso vídeo as telas são ilustrativas.\n\nFontes (conferido em 26/10/2026): tse.jus.br \"Entenda a diferença entre apuração e totalização de votos\" (out/2026) · tse.jus.br \"Faltam 7 dias: veja qual é o caminho do voto\" (set/2026) · tse.jus.br \"Você já ouviu falar do Boletim de Urna?\"\n\n#eleicoes2026 #tse #urnaeletronica #tecnologia #ia",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "extra-como-o-tse-conta",
+  "estilo": "neon",
+  "formato": "livre",
+  "imagens": [
+    {
+      "id": "cenas-neon",
+      "descricao": "urna, boletim, pendrive, rede e painel de soma em traço neon",
+      "origem": "gerada por código"
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Cada urna apura a própria seção; BU impresso em 5 vias, uma afixada na porta; cópia digital assinada na mídia de resultado; rede exclusiva, satélite em locais isolados; assinatura conferida, BU inconsistente descartado; totalização soma tudo; Boletim na Mão lê o QR Code; BU online em até 3 dias",
+      "fonte": "https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/entenda-a-diferenca-entre-apuracao-e-totalizacao-de-votos",
+      "conferido": "2026-10-26"
+    },
+    {
+      "dado": "Mais de 124 milhões de votos válidos no 2º turno de 2026",
+      "fonte": "https://eleicoes2026brasil.com/",
+      "conferido": "2026-10-26"
+    }
+  ],
+  "registro": {
+    "tema": "extra: como funciona a apuração e a totalização do TSE",
+    "chaves": [
+      "apuracao tse",
+      "boletim de urna"
+    ]
+  },
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Mais de cem milhões de votos, e o resultado sai na mesma noite. Como o tribunal eleitoral conta tão rápido?",
+          "legenda": "Mais de cem milhões de votos, e o resultado sai na mesma noite. Como o tribunal eleitoral conta tão rápido?"
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O segredo: a conta não é feita num lugar só. Cada urna soma os votos da própria seção, sozinha e sem internet.",
+          "legenda": "O segredo: a conta não é feita num lugar só. Cada urna soma os votos da própria seção, sozinha e sem internet."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Quando a votação acaba, a urna imprime o boletim de urna, o resultado daquela seção. São cinco vias, e uma fica colada na porta.",
+          "legenda": "Quando a votação acaba, a urna imprime o boletim de urna, o resultado daquela seção. São cinco vias, e uma fica colada na porta."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Ela também grava uma cópia com assinatura digital, uma espécie de lacre eletrônico que denuncia qualquer alteração.",
+          "legenda": "Ela também grava uma cópia com assinatura digital, uma espécie de lacre eletrônico que denuncia qualquer alteração."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Essa cópia vai num pendrive, a mídia de resultado, e segue por uma rede exclusiva da Justiça Eleitoral. Em lugar isolado, por satélite.",
+          "legenda": "Essa cópia vai num pendrive, a mídia de resultado, e segue por uma rede exclusiva da Justiça Eleitoral. Em lugar isolado, por satélite."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "No tribunal, o sistema confere o lacre. Se a assinatura não bate, ou se tem mais voto que eleitor, o boletim é descartado.",
+          "legenda": "No tribunal, o sistema confere o lacre. Se a assinatura não bate, ou se tem mais voto que eleitor, o boletim é descartado."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Aí vem a totalização: o sistema só soma os boletins de todas as seções do país e do exterior. Por isso é tão rápido.",
+          "legenda": "Aí vem a totalização: o sistema só soma os boletins de todas as seções do país e do exterior. Por isso é tão rápido."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E qualquer pessoa confere: o app Boletim na Mão lê o código impresso no boletim e mostra se ele saiu de uma urna verdadeira.",
+          "legenda": "E qualquer pessoa confere: o app Boletim na Mão lê o código impresso no boletim e mostra se ele saiu de uma urna verdadeira."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva pra explicar pra alguém da família.",
+          "legenda": "Salva pra explicar pra alguém da família."
+        }
+      ]
+    }
+  ],
+  "video": "videos/2026-10-26-extra-como-o-tse-conta-neon.mp4"
+}

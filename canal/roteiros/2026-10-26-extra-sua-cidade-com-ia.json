@@ -1,0 +1,109 @@
+{
+  "id": "2026-10-26-extra-sua-cidade-com-ia",
+  "serie": "Extra",
+  "data": "2026-10-26",
+  "horario": "12:00",
+  "fora_da_grade": {
+    "pedido": "Diego, thread 26/10 01:11Z (\"Gere os quatro vídeos para aprovação, escolho 1 e você posta\")"
+  },
+  "titulo": "Como sua cidade votou? Analise com IA grátis",
+  "descricao": "Como sua cidade votou? Analise com IA grátis 🏙️📊\n3 passos:\n1️⃣ Abra resultados.tse.jus.br, escolha estado, cidade e turno.\n2️⃣ Copie votos e % de cada candidato no 1º e no 2º turno.\n3️⃣ Cole no Gemini ou no ChatGPT (os dois têm versão grátis) com o pedido:\n\"Monte uma tabela comparando o 1º e o 2º turno desta cidade e diga quem ganhou e quem perdeu votos, em número e em porcentagem: [cole os dados]\"\n⚠️ IA pode errar conta: confira cada número no site antes de postar.\n📂 Detalhe por zona eleitoral: dadosabertos.tse.jus.br (\"Votação nominal por município e zona\", CSV).\nNo vídeo, a cidade e os candidatos são de exemplo.\n\nFontes (conferido em 26/10/2026): resultados.tse.jus.br · dadosabertos.tse.jus.br (conjunto \"Votação nominal por município e zona\")\n\n#ia #gemini #chatgpt #eleicoes2026 #dados",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "extra-sua-cidade-com-ia",
+  "estilo": "neon",
+  "formato": "livre",
+  "imagens": [
+    {
+      "id": "cenas-neon",
+      "descricao": "site de resultados, tabela e chat de IA com dados de exemplo em traço neon",
+      "origem": "gerada por código"
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Dados abertos do TSE publicam 'Votação nominal por município e zona' em CSV por eleição",
+      "fonte": "https://dadosabertos.tse.jus.br/no/dataset/resultados-2024/resource/c5e1bff9-98f1-4d3b-b944-37cd22c84112",
+      "conferido": "2026-10-26"
+    },
+    {
+      "dado": "Gemini e ChatGPT têm versão grátis que aceita texto colado",
+      "fonte": "https://gemini.google.com",
+      "conferido": "2026-10-26"
+    }
+  ],
+  "registro": {
+    "tema": "extra: analisar o resultado da sua cidade com IA",
+    "chaves": [
+      "resultado da cidade",
+      "analise eleicao ia"
+    ]
+  },
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Quer saber como a sua cidade votou e o que mudou do primeiro pro segundo turno? Dá pra fazer com IA, grátis, em três passos.",
+          "legenda": "Quer saber como a sua cidade votou e o que mudou do primeiro pro segundo turno? Dá pra fazer com IA, grátis, em três passos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: abra o site de resultados do tribunal eleitoral, escolha o seu estado, a sua cidade e o turno.",
+          "legenda": "Um: abra o site de resultados do tribunal eleitoral, escolha o seu estado, a sua cidade e o turno."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: copie os votos e a porcentagem de cada candidato, no primeiro e no segundo turno.",
+          "legenda": "Dois: copie os votos e a porcentagem de cada candidato, no primeiro e no segundo turno."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: cole no Gemini ou no ChatGPT, os dois têm versão grátis, com o pedido: monte uma tabela comparando os dois turnos e diga quem ganhou e quem perdeu votos.",
+          "legenda": "Três: cole no Gemini ou no ChatGPT, os dois têm versão grátis, com o pedido: monte uma tabela comparando os dois turnos e diga quem ganhou e quem perdeu votos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Em segundos, ela organiza tudo e aponta as maiores mudanças. Dá pra pedir um gráfico também.",
+          "legenda": "Em segundos, ela organiza tudo e aponta as maiores mudanças. Dá pra pedir um gráfico também."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Mas atenção: IA pode errar conta. Confira cada número com o site antes de postar.",
+          "legenda": "Mas atenção: IA pode errar conta. Confira cada número com o site antes de postar."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Quer o detalhe por zona eleitoral? O tribunal publica os arquivos completos no portal de dados abertos.",
+          "legenda": "Quer o detalhe por zona eleitoral? O tribunal publica os arquivos completos no portal de dados abertos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e faz com a sua cidade.",
+          "legenda": "Salva e faz com a sua cidade."
+        }
+      ]
+    }
+  ],
+  "video": "videos/2026-10-26-extra-sua-cidade-com-ia-neon.mp4"
+}

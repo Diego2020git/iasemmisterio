@@ -1,0 +1,109 @@
+{
+  "id": "2026-10-26-extra-deepfake-4-passos",
+  "serie": "Extra",
+  "data": "2026-10-26",
+  "horario": "12:00",
+  "fora_da_grade": {
+    "pedido": "Diego, thread 26/10 01:11Z (\"Gere os quatro vídeos para aprovação, escolho 1 e você posta\")"
+  },
+  "titulo": "Vídeo falso de político? 4 passos pra descobrir",
+  "descricao": "Vídeo falso de político? 4 passos pra descobrir 🕵️\nDeepfake é vídeo ou áudio falso feito com IA, copiando rosto e voz. Os bons nem sempre têm defeito visível, então vale olhar o conjunto:\n1️⃣ Fonte: quem postou primeiro? Perfil oficial ou grande veículo mostram o mesmo vídeo?\n2️⃣ Vídeo inteiro: print de uma cena + busca no Google Lens costuma achar o original e o contexto.\n3️⃣ Olhe e ouça: boca fora do ritmo da voz, voz sem respiração, piscada estranha, dentes e mãos borrados.\n4️⃣ Checagem: Lupa, Aos Fatos e Fato ou Fake (g1).\n⚖️ Regra do TSE para 2026: deepfake de candidato é proibido mesmo com autorização, e propaganda feita ou alterada com IA precisa avisar de forma destacada.\nNa dúvida, não compartilhe. Nenhum vídeo aqui fala de candidato: as telas são ilustrativas.\n\nFontes (conferido em 26/10/2026): somostera.com/blog/deepfake-eleicoes-2026 · gazetasp.com.br (TSE define linha contra deepfake) · investnews.com.br/economia/deepfakes-eleicoes-2026-como-identificar\n\n#ia #deepfake #eleicoes2026 #fakenews #inteligenciaartificial",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "extra-deepfake-4-passos",
+  "estilo": "neon",
+  "formato": "livre",
+  "imagens": [
+    {
+      "id": "cenas-neon",
+      "descricao": "celular com vídeo, lupa, ondas de voz e selos em traço neon (sem pessoa real)",
+      "origem": "gerada por código"
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "TSE proíbe deepfake para favorecer ou prejudicar candidaturas, mesmo com autorização; propaganda feita ou alterada por IA precisa de aviso explícito e destacado",
+      "fonte": "https://somostera.com/blog/deepfake-eleicoes-2026",
+      "conferido": "2026-10-26"
+    },
+    {
+      "dado": "Não há indício único: avaliar origem, contexto, qualidade, voz, boca e registros completos; fakes atuais podem não ter distorções visuais",
+      "fonte": "https://investnews.com.br/economia/deepfakes-eleicoes-2026-como-identificar/",
+      "conferido": "2026-10-26"
+    }
+  ],
+  "registro": {
+    "tema": "extra: como identificar deepfake de político em 4 passos",
+    "chaves": [
+      "deepfake",
+      "video falso"
+    ]
+  },
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Viu um vídeo de político dizendo algo absurdo? Pode ser deepfake, um vídeo falso feito com IA. Quatro passos pra descobrir.",
+          "legenda": "Viu um vídeo de político dizendo algo absurdo? Pode ser deepfake, um vídeo falso feito com IA. Quatro passos pra descobrir."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Por que importa: a IA já copia rosto e voz, e um vídeo falso bem feito nem sempre tem defeito visível.",
+          "legenda": "Por que importa: a IA já copia rosto e voz, e um vídeo falso bem feito nem sempre tem defeito visível."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: procure a fonte. Quem postou primeiro? Se nenhum perfil oficial nem grande veículo mostra o mesmo vídeo, desconfie.",
+          "legenda": "Um: procure a fonte. Quem postou primeiro? Se nenhum perfil oficial nem grande veículo mostra o mesmo vídeo, desconfie."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: ache o vídeo inteiro. Tire um print de uma cena e pesquise no Google Lens. Muitas vezes aparece o original, com outro contexto.",
+          "legenda": "Dois: ache o vídeo inteiro. Tire um print de uma cena e pesquise no Google Lens. Muitas vezes aparece o original, com outro contexto."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: olhe e ouça com calma. Boca fora do ritmo da voz, voz sem respiração, piscada estranha, dentes e mãos borrados.",
+          "legenda": "Três: olhe e ouça com calma. Boca fora do ritmo da voz, voz sem respiração, piscada estranha, dentes e mãos borrados."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Quatro: confira nas agências de checagem, como Lupa, Aos Fatos e Fato ou Fake. Muito vídeo viral já foi analisado lá.",
+          "legenda": "Quatro: confira nas agências de checagem, como Lupa, Aos Fatos e Fato ou Fake. Muito vídeo viral já foi analisado lá."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E a regra: o tribunal eleitoral proíbe deepfake de candidato, mesmo com autorização, e propaganda feita com IA tem que avisar.",
+          "legenda": "E a regra: o tribunal eleitoral proíbe deepfake de candidato, mesmo com autorização, e propaganda feita com IA tem que avisar."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Na dúvida, não compartilhe. Manda pra quem repassa tudo no grupo da família.",
+          "legenda": "Na dúvida, não compartilhe. Manda pra quem repassa tudo no grupo da família."
+        }
+      ]
+    }
+  ],
+  "video": "videos/2026-10-26-extra-deepfake-4-passos-neon.mp4"
+}

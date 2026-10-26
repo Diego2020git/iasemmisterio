@@ -1,0 +1,129 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-26-extra-como-o-tse-conta.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="eleicoes-kit.js"></script>
+<script>
+const T0 = TEMPOS.cenas, NC = T0.length - 1;
+const SC = [...T0.slice(0, NC), T0[NC] + .7];
+const DURATION = SC[NC], IMPACTO = SC[NC - 1] + .4;
+const CLIQUES = [], CK = [[0, 0, 0, 0, 0]];
+const CF = AZ, CL = CI; // candidatos com cores neutras do canal
+// 26/10/2026 · extra eleições 2/4: como o TSE conta milhões de votos em poucas horas. Fontes: notícias do TSE (out/2026, set/2026). Telas ilustrativas.
+const COR = [AZ, IN, CI, AZ, IN, CI, AZ, CI, AZ];
+const HITS = [.1, wt('milhoes', 0), wt('noite', 0), wt('rapido', 0), wt('so', 1), wt('urna', 1), wt('internet', 1), wt('imprime', 2), wt('cinco', 2), wt('porta', 2), wt('assinatura', 3), wt('lacre', 3), wt('alteracao', 3),
+  wt('pendrive', 4), wt('rede', 4), wt('satelite', 4), wt('confere', 5), wt('bate', 5), wt('eleitor', 5), wt('descartado', 5), wt('totalizacao', 6), wt('soma', 6), wt('exterior', 6), wt('boletim', 7), wt('codigo', 7), wt('verdadeira', 7)];
+
+Object.assign(P, {
+  pendrive() { ctx.beginPath(); rr(-60, -30, 150, 60, 14); ctx.moveTo(-60, -18); ctx.lineTo(-100, -18); ctx.lineTo(-100, 18); ctx.lineTo(-60, 18); },
+  satelite() { ctx.beginPath(); rr(-30, -30, 60, 60, 8); rr(-110, -20, 70, 40, 4); rr(40, -20, 70, 40, 4); ctx.moveTo(0, 30); ctx.lineTo(0, 60); ctx.moveTo(-20, 70); ctx.arc(0, 70, 20, Math.PI, 0); },
+  predio() { ctx.beginPath(); ctx.moveTo(-110, -40); ctx.lineTo(0, -100); ctx.lineTo(110, -40); ctx.closePath(); rr(-100, -30, 200, 120, 4); for (let k = -2; k <= 2; k++) { ctx.moveTo(k * 40 - 8, -20); ctx.lineTo(k * 40 - 8, 80); ctx.lineTo(k * 40 + 8, 80); ctx.lineTo(k * 40 + 8, -20); } },
+});
+const BU = ['BOLETIM DE URNA', 'Seção 0123 · exemplo', 'Candidato A ....... 187', 'Candidato B ....... 164', 'Brancos ............... 6'];
+const S = [
+  // 0 · gancho: contador de votos + relógio
+  (t, lt) => {
+    const co = wt('como', 0);
+    titulo('+100 MILHÕES DE VOTOS', 250, -1, co - .1, t, 80, BR, '+100 MILHÕES');
+    titulo('COMO É TÃO RÁPIDO?', 250, co - .05, SC[1] - .2, t, 84, BR, 'RÁPIDO');
+    const n = Math.round(124060673 * ease(prog(t, 0, 2.6))); txt(n.toLocaleString('pt-BR'), cx0, 620, EXP, 92, CI, { align: 'center' });
+    txt('votos válidos no 2º turno de 2026', cx0, 720, ARC, 34, 'rgba(244,248,255,.7)', { align: 'center', weight: 600 });
+    neon3d(P.relogio, cx0, 1000, 120, 0, .1, AZ, 1);
+    ctx.save(); ctx.translate(cx0, 1000); ctx.strokeStyle = BR; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.shadowColor = CI; ctx.shadowBlur = 20;
+    const an = t * 4; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(70 * Math.sin(an), -70 * Math.cos(an)); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(45 * Math.sin(an / 12), -45 * Math.cos(an / 12)); ctx.stroke(); ctx.restore();
+    pilula('resultado na mesma noite', cx0, 1250, 620, prog(t, wt('noite', 0) - .3, wt('noite', 0)), CI, '', 1, 40);
+  },
+  // 1 · cada urna soma a sua seção, sem internet
+  (t, lt) => {
+    titulo('CADA URNA CONTA A SUA', 250, SC[1], SC[2] - .2, t, 80, BR, 'CADA URNA');
+    const ur = wt('urna', 1), it = wt('internet', 1);
+    for (let k = 0; k < 9; k++) { const c = k % 3, r = Math.floor(k / 3), x = cx0 + (c - 1) * 280, y = 520 + r * 230, a = prog(lt, .1 + k * .12, .4 + k * .12);
+      neon3d(P.urna, x, y, 62 * back(a), 0, .1, AZ, a); if (a > 0) txt(String(Math.floor(60 * prog(t, ur - 1, it) * (2 + k % 4))), x, y + 18, EXP, 30, CI, { align: 'center', alpha: a }); }
+    const wa = prog(t, it - .3, it); if (wa > 0) { ctx.save(); ctx.globalAlpha = wa; ctx.translate(cx0, 1250); ctx.strokeStyle = VERM; ctx.lineWidth = 7; ctx.shadowColor = VERM; ctx.shadowBlur = 20; ctx.lineCap = 'round';
+      [30, 55, 80].forEach(r => { ctx.beginPath(); ctx.arc(0, 30, r, -Math.PI * .75, -Math.PI * .25); ctx.stroke(); }); ctx.beginPath(); ctx.moveTo(-70, -40); ctx.lineTo(70, 40); ctx.stroke(); ctx.restore();
+      txt('sem internet', cx0 + 230, 1262, EXP, 40, VERM, { align: 'center', alpha: wa }); }
+  },
+  // 2 · boletim de urna impresso, 5 vias, uma na porta
+  (t, lt) => {
+    titulo('BOLETIM DE URNA', 250, SC[2], SC[3] - .2, t, 90, BR, 'BOLETIM');
+    const im = wt('imprime', 2), ci = wt('cinco', 2), po = wt('porta', 2);
+    neon3d(P.urna, cx0, 480, 90, 0, .1, AZ, prog(lt, .05, .3));
+    const sai = prog(t, im - .1, im + 1.2);
+    for (let k = 4; k >= 0; k--) { const fan = prog(t, ci - .2, ci + .6), dx = (k - 2) * 60 * ease(fan) - 120, rot = (k - 2) * .07 * ease(fan), voa = k === 4 ? prog(t, po - .6, po + .2) : 0;
+      papel(cx0 + dx + 260 * ease(voa), 560 + 380 * ease(sai) - 40 * ease(voa), 340 - 120 * ease(voa), 240 - 80 * ease(voa), sai, BU, { rot, size: 24, qr: true }); }
+    linhaTxt('5 vias', 1150, ci, SC[3] - .2, t, 50, CI);
+    const pa = prog(t, po - .8, po - .4); if (pa > 0) { ctx.save(); ctx.globalAlpha = pa; ctx.strokeStyle = BR; ctx.lineWidth = 5; rr(cx0 + 130, 640, 260, 520, 10); ctx.stroke(); ctx.beginPath(); ctx.arc(cx0 + 360, 900, 12, 0, 7); ctx.stroke(); ctx.restore();
+      txt('porta da seção', cx0 + 260, 1210, ARC, 32, BR, { align: 'center', weight: 600, alpha: pa }); }
+    exemplo(cx0, 1300, prog(lt, .5, .8));
+  },
+  // 3 · assinatura digital = lacre
+  (t, lt) => {
+    titulo('ASSINATURA DIGITAL', 250, SC[3], SC[4] - .2, t, 84, BR, 'DIGITAL');
+    const as = wt('assinatura', 3), la = wt('lacre', 3), al = wt('alteracao', 3), mexe = t > al - .2;
+    codigo(cx0 - 380, 400, 760, [['Seção 0123', BR], ['Candidato A: ' + (mexe ? '987' : '187'), mexe ? VERM : BR], ['Candidato B: 164', BR], ['assinatura: 9f3a…c71e', CI]], prog(lt, .1, 1), prog(lt, 0, .3), 'cópia digital do boletim', { cor: mexe ? VERM : CI, marca: 1, alerta: prog(t, al - .2, al + .2), t });
+    const ca = prog(t, la - .4, la); neon3d(P.cadeado, cx0, 1000, 100 * back(ca), 0, .1, mexe ? VERM : CI, ca);
+    if (ca > 0) txt(mexe ? 'lacre rompido' : 'lacre eletrônico', cx0, 1160, EXP, 40, mexe ? VERM : CI, { align: 'center', alpha: ca });
+    carimbo('ALTERADO!', cx0 + 220, 1000, prog(t, al, al + .3), VERM, .08, 44);
+  },
+  // 4 · pendrive + rede exclusiva + satélite
+  (t, lt) => {
+    titulo('O CAMINHO DO BOLETIM', 250, SC[4], SC[5] - .2, t, 80, BR, 'CAMINHO');
+    const pd = wt('pendrive', 4), re = wt('rede', 4), sa = wt('satelite', 4), ju = wt('justica', 4);
+    const pa = prog(t, pd - .3, pd); neon3d(P.pendrive, 210, 700, 110 * back(pa), 0, .1, CI, pa); if (pa > 0) txt('mídia de resultado', 200, 800, ARC, 28, CI, { align: 'center', weight: 600, alpha: pa });
+    const ta = prog(t, ju - .3, ju); neon3d(P.predio, 870, 700, 110 * back(ta), 0, .1, AZ, ta); if (ta > 0) txt('Justiça Eleitoral', 880, 820, ARC, 28, AZ, { align: 'center', weight: 600, alpha: ta });
+    linha(290, 700, 780, 700, prog(t, re - .3, re + .6), CI, t);
+    if (t > re) txt('rede exclusiva', cx0, 650, EXP, 34, CI, { align: 'center', alpha: prog(t, re, re + .3) });
+    const sp = prog(t, sa - .6, sa - .2); neon3d(P.radar, cx0, 1000, 100 * back(sp), 0, .1, AMB, sp);
+    if (sp > 0) { linha(200, 790, cx0 - 80, 980, prog(t, sa - .3, sa + .2), AMB, t); linha(cx0 + 80, 980, 880, 790, prog(t, sa, sa + .5), AMB, t); txt('lugar isolado: satélite', cx0, 1170, ARC, 34, AMB, { align: 'center', weight: 600, alpha: sp }); }
+  },
+  // 5 · conferência: assinatura e consistência
+  (t, lt) => {
+    titulo('O SISTEMA CONFERE', 250, SC[5], SC[6] - .2, t, 84, BR, 'CONFERE');
+    const cf = wt('confere', 5), bt = wt('bate', 5), el = wt('eleitor', 5), ds = wt('descartado', 5);
+    ctx.save(); ctx.globalAlpha = prog(lt, .1, .4); ctx.strokeStyle = CI; ctx.lineWidth = 5; ctx.shadowColor = CI; ctx.shadowBlur = 20; rr(cx0 - 90, 420, 180, 560, 20); ctx.stroke(); ctx.restore();
+    txt('verificação', cx0, 1020, ARC, 30, CI, { align: 'center', weight: 600, alpha: prog(lt, .1, .4) });
+    [[0, true, ''], [1, false, 'assinatura não bate'], [2, true, ''], [3, false, 'mais voto que eleitor']].forEach(([k, ok, motivo]) => {
+      const t0 = cf - .3 + k * 1.1, p = prog(t, t0, t0 + 1), x = lerp(170, ok ? 900 : cx0, ease(p)), y = 520 + (k % 2) * 300 + (ok ? 0 : 80 * ease(prog(t, t0 + .6, t0 + 1)));
+      if (p <= 0 || (!ok && t > ds + .8)) return; papel(x, y, 180, 120, 1, ['BU'], { size: 30, cor: ok ? VERDE : VERM });
+      if (p > .9) { txt(ok ? '✓' : '✕', x + 70, y - 40, EXP, 40, ok ? VERDE : VERM, { align: 'center' }); if (!ok) pilula(motivo, cx0, 1140 + (k === 3 ? 110 : 0), 560, prog(t, t0 + .9, t0 + 1.2), VERM, '', 1, 34); } });
+    carimbo('DESCARTADO', cx0, 860, prog(t, ds - .2, ds + .2), VERM);
+  },
+  // 6 · totalização
+  (t, lt) => {
+    titulo('TOTALIZAÇÃO', 250, SC[6], SC[7] - .2, t, 96, BR, 'TOTAL');
+    const so = wt('soma', 6), ex = wt('exterior', 6);
+    for (let k = 0; k < 18; k++) { const t0 = so - .4 + k * .18, p = prog(t, t0, t0 + .7); if (p <= 0 || p >= 1) continue; const sx = (k % 6) * 170 + 115, sy = 430 + Math.floor(k / 6) * 90;
+      papel(lerp(sx, cx0, ease(p)), lerp(sy, 900, ease(p)), 110, 70, 1 - p * .5, ['BU'], { size: 22, cor: CI }); }
+    const tot = prog(t, so, ex + 1.2); txt(Math.round(124060673 * ease(tot)).toLocaleString('pt-BR'), cx0, 960, EXP, 80, CI, { align: 'center', alpha: prog(t, so - .3, so) });
+    txt('votos válidos somados', cx0, 1040, ARC, 32, 'rgba(244,248,255,.7)', { align: 'center', weight: 600, alpha: prog(t, so - .3, so) });
+    pilula('todas as seções do país e do exterior', cx0, 1190, 860, prog(t, ex - .5, ex), AZ, '', 1, 38);
+    linhaTxt('só uma soma: por isso é rápido', 1310, wt('rapido', 6) - .3, SC[7] - .2, t, 38, CI);
+  },
+  // 7 · Boletim na Mão
+  (t, lt) => {
+    titulo('CONFIRA VOCÊ MESMO', 250, SC[7], SC[8] - .2, t, 84, BR, 'VOCÊ');
+    const ap = wt('app', 7), cd = wt('codigo', 7), vd = wt('verdadeira', 7);
+    papel(cx0 + 220, 720, 380, 300, prog(lt, .1, .4), BU, { size: 24, qr: true });
+    aparelho(cx0 - 420, 470, 320, 600, prog(t, ap - .3, ap), AZ, (x, y, w, h) => { ctx.fillStyle = '#0b1530'; ctx.fillRect(x, y, w, h);
+      txt('Boletim na Mão', x + w / 2, y + 60, ARC, 30, BR, { align: 'center', weight: 600 });
+      ctx.strokeStyle = CI; ctx.lineWidth = 4; rr(x + 50, y + 130, w - 100, w - 100, 16); ctx.stroke();
+      const sc = prog(t, cd - .2, cd + 1); if (sc > 0 && sc < 1) { ctx.fillStyle = CI; ctx.fillRect(x + 50, y + 130 + (w - 100) * sc, w - 100, 4); }
+      const ok = prog(t, vd - .4, vd); if (ok > 0) { ctx.save(); ctx.globalAlpha = ok; ctx.fillStyle = VERDE; rr(x + 30, y + 420, w - 60, 90, 20); ctx.fill(); txt('✓ urna verdadeira', x + w / 2, y + 467, ARC, 30, '#05200f', { align: 'center', weight: 600 }); ctx.restore(); } });
+    linha(cx0 - 90, 760, cx0 + 140, 800, prog(t, cd - .2, cd + .3), CI, t);
+    linhaTxt('lê o QR Code impresso no boletim', 1180, cd, SC[8] - .2, t, 36, CI);
+  },
+  (t, lt) => fim(t, lt, 'Salva pra explicar', 'e segue o canal'),
+];
+
+const renderBase = render;
+window.render = render = function (t) { renderBase(t); legenda(t); };
+</script></body></html>

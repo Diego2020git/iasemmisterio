@@ -1,0 +1,135 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-26-extra-deepfake-4-passos.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="eleicoes-kit.js"></script>
+<script>
+const T0 = TEMPOS.cenas, NC = T0.length - 1;
+const SC = [...T0.slice(0, NC), T0[NC] + .7];
+const DURATION = SC[NC], IMPACTO = SC[NC - 1] + .4;
+const CLIQUES = [], CK = [[0, 0, 0, 0, 0]];
+const CF = AZ, CL = CI; // candidatos com cores neutras do canal
+// 26/10/2026 · extra eleições 1/4: como descobrir deepfake em 4 passos. Sem pessoa real, sem candidato. Fontes no roteiro.
+const COR = [IN, AZ, CI, AZ, IN, CI, AZ, CI];
+const HITS = [.1, wt('absurdo', 0), wt('deepfake', 0), wt('quatro', 0), wt('copia', 1), wt('visivel', 1), wt('fonte', 2), wt('desconfie', 2), wt('print', 3), wt('lens', 3), wt('original', 3),
+  wt('boca', 4), wt('respiracao', 4), wt('piscada', 4), wt('dentes', 4), wt('lupa', 5), wt('fatos', 5), wt('fake', 5), wt('analisado', 5), wt('proibe', 6), wt('autorizacao', 6), wt('avisar', 6)];
+
+// rosto genérico em traço (não é ninguém): boca abre conforme 'fala', olhos piscam
+function rosto(x, y, s, t, cor, o = {}) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.strokeStyle = cor; ctx.shadowColor = cor; ctx.shadowBlur = 20; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.ellipse(0, 0, 120, 150, 0, 0, 7); ctx.stroke();
+  const pis = o.pisca ? (Math.sin(t * 9) > .6 ? .1 : 1) : (t % 3 < .12 ? .1 : 1);
+  [-45, 45].forEach(dx => { ctx.beginPath(); ctx.ellipse(dx, -30, 18, 12 * pis, 0, 0, 7); ctx.stroke(); });
+  const m = o.boca ?? (.3 + .7 * Math.abs(Math.sin(t * 8)));
+  ctx.beginPath(); ctx.ellipse(0, 70, 40, 6 + 22 * m, 0, 0, 7); ctx.stroke();
+  ctx.restore();
+}
+function glitch(x, y, w, h, k, t) { if (k <= 0) return; ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  for (let i = 0; i < 6; i++) { const yy = y + ((i * 97 + Math.floor(t * 12) * 53) % h), dx = (Math.sin(t * 40 + i) * 30) * k; ctx.fillStyle = hex(i % 2 ? VERM : CI, .35 * k); ctx.fillRect(x + dx, yy, w, 10 + (i * 7) % 30); }
+  ctx.restore(); }
+const S = [
+  // 0 · gancho: vídeo de "político" no celular, glitch, deepfake
+  (t, lt) => {
+    const df = wt('deepfake', 0), q = wt('quatro', 0);
+    titulo('VÍDEO DE POLÍTICO?', 250, -1, df - .1, t, 84, BR, 'POLÍTICO', AMB);
+    titulo('PODE SER DEEPFAKE', 250, df - .05, SC[1] - .2, t, 84, BR, 'DEEPFAKE', VERM);
+    aparelho(cx0 - 230, 360, 460, 820, 1, df < t ? VERM : AZ, (x, y, w, h) => {
+      ctx.fillStyle = '#0b1530'; ctx.fillRect(x, y, w, h);
+      rosto(x + w / 2, y + 300, 1, t, BR);
+      ctx.fillStyle = 'rgba(244,248,255,.12)'; rr(x + 30, y + 520, w - 60, 90, 20); ctx.fill();
+      txt('"Declaração bombástica!"', x + w / 2, y + 566, ARC, 30, BR, { align: 'center', weight: 600 });
+      ctx.fillStyle = VERM; rr(x + 30, y + 30, 120, 44, 10); ctx.fill(); txt('VIRAL', x + 90, y + 54, EXP, 22, '#fff', { align: 'center' });
+      txt('▶ 2,3 mi de visualizações', x + 30, y + 680, ARC, 28, 'rgba(244,248,255,.7)', { weight: 600 });
+      glitch(x, y, w, h, prog(t, df - .2, df + .2) * (.6 + .4 * Math.sin(t * 5)), t);
+    });
+    exemplo(cx0, 1230, 1);
+    pilula('4 passos pra descobrir', cx0, 1320, 600, prog(t, q - .2, q + .1), CI, '', 1, 40);
+  },
+  // 1 · por que importa: a IA copia rosto e voz
+  (t, lt) => {
+    titulo('POR QUE IMPORTA', 250, SC[1], SC[2] - .2, t, 90, BR, 'IMPORTA');
+    const cp = wt('copia', 1), vz = wt('voz', 1), vs = wt('visivel', 1);
+    rosto(cx0 - 250, 620, .9, t, AZ); txt('original', cx0 - 250, 820, ARC, 32, AZ, { align: 'center', weight: 600 });
+    seta(cx0 - 90, cx0 + 80, 620, prog(t, cp - .2, cp + .4));
+    const ca = prog(t, cp, cp + .4); if (ca > 0) { ctx.save(); ctx.globalAlpha = ca; rosto(cx0 + 250, 620, .9, t, CI); ctx.restore(); txt('cópia feita com IA', cx0 + 250, 820, ARC, 32, CI, { align: 'center', weight: 600, alpha: ca }); }
+    onda(cx0 - 380, 960, 260, 90, t, AZ, prog(t, vz - .3, vz)); onda(cx0 + 120, 960, 260, 90, t, CI, prog(t, vz, vz + .3), .3);
+    linhaTxt('voz', 1060, vz - .2, SC[2] - .2, t, 32, 'rgba(244,248,255,.7)');
+    pilula('nem sempre tem defeito visível', cx0, 1220, 760, prog(t, vs - .4, vs), AMB, '', 1, 40);
+  },
+  // 2 · passo 1: fonte
+  (t, lt) => {
+    passo(1, 'PROCURE A FONTE', SC[2], SC[3] - .2, t, 'FONTE');
+    const pp = wt('primeiro', 2), ne = wt('nenhum', 2), de = wt('desconfie', 2);
+    const cx = cx0, cy = 760; neon3d(P.balao, cx, cy, 70 * back(prog(lt, .2, .5)), 0, .1, CI, prog(lt, .2, .5));
+    txt('o vídeo', cx, cy + 120, ARC, 30, CI, { align: 'center', weight: 600, alpha: prog(lt, .3, .6) });
+    [['perfil oficial', -250, 580, 0], ['grande veículo', 250, 580, 1], ['conta anônima', 0, 1080, 2]].forEach(([s, dx, y, i]) => {
+      const a = prog(t, pp + i * .2, pp + .3 + i * .2), off = i < 2 && t > ne + .2, anon = i === 2 && t > ne + .2;
+      linha(cx + dx * .3, y < cy ? cy - 70 : cy + 90, cx + dx * .8, y < cy ? y + 50 : y - 60, a, off ? 'rgba(244,248,255,.25)' : anon ? VERM : CI, t, !off);
+      pilula(s, cx + dx, y, 420, a, off ? 'rgba(244,248,255,.4)' : anon ? VERM : CI, off ? 'não mostra' : anon ? 'postou primeiro' : '', off ? 0 : 1, 34); });
+    carimbo('DESCONFIE', cx0, 1260, prog(t, de - .2, de + .2), VERM);
+  },
+  // 3 · passo 2: vídeo inteiro com Google Lens
+  (t, lt) => {
+    passo(2, 'ACHE O VÍDEO INTEIRO', SC[3], SC[4] - .2, t, 'INTEIRO');
+    const pr = wt('print', 3), ln = wt('lens', 3), og = wt('original', 3), ct = wt('contexto', 3);
+    const fl = prog(t, pr, pr + .15) * (1 - prog(t, pr + .15, pr + .4));
+    aparelho(70, 560, 260, 440, prog(lt, .1, .4), AZ, (x, y, w, h) => { ctx.fillStyle = '#0b1530'; ctx.fillRect(x, y, w, h); rosto(x + w / 2, y + 180, .55, t, BR); ctx.fillStyle = hex(BR, fl); ctx.fillRect(x, y, w, h); });
+    ctx.save(); ctx.translate(150, 0);
+    janela(530, 470, prog(t, ln - .4, ln), 'Google Lens', (x, y, w) => {
+      const r = prog(t, og - .4, og);
+      txt('Resultados', x, y + 10, ARC, 34, '#5a6a8f', { weight: 600 });
+      [['Vídeo original · 8 min', r], ['Mesma cena · outro dia', prog(t, ct - .3, ct)]].forEach(([s, a], i) => { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a;
+        ctx.fillStyle = i ? '#fff3d6' : '#dbe6ff'; rr(x, y + 60 + i * 140, w, 110, 16); ctx.fill(); txt(s, x + 24, y + 118 + i * 140, ARC, 30, '#1b2440', { weight: 600 }); ctx.restore(); });
+    }, 560);
+    ctx.restore();
+    const v = prog(t, pr + .2, ln); if (v > 0 && v < 1) { const x = lerp(200, 560, ease(v)), y = lerp(760, 700, ease(v)); ctx.save(); ctx.strokeStyle = CI; ctx.lineWidth = 4; ctx.shadowColor = CI; ctx.shadowBlur = 20; rr(x - 60, y - 80, 120, 160, 12); ctx.stroke(); ctx.restore(); }
+    // linha do tempo: o trecho viral é só um pedaço
+    const ta = prog(t, og - .2, og + .3); if (ta > 0) { ctx.save(); ctx.globalAlpha = ta; const x = cx0 - 420, w = 840, y = 1180; ctx.fillStyle = 'rgba(244,248,255,.15)'; rr(x, y, w, 40, 20); ctx.fill();
+      ctx.fillStyle = VERM; rr(x + w * .62, y, w * .08, 40, 20); ctx.fill(); ctx.restore();
+      txt('trecho viral', x + w * .66, y - 30, ARC, 30, VERM, { align: 'center', weight: 600, alpha: ta }); txt('vídeo inteiro', x, y + 80, ARC, 30, 'rgba(244,248,255,.7)', { weight: 600, alpha: ta }); }
+  },
+  // 4 · passo 3: olhe e ouça
+  (t, lt) => {
+    passo(3, 'OLHE E OUÇA', SC[4], SC[5] - .2, t, 'OUÇA');
+    const bo = wt('boca', 4), rs = wt('respiracao', 4), pi = wt('piscada', 4), dn = wt('dentes', 4);
+    rosto(cx0 - 200, 720, 1, t, t > bo ? AMB : BR, { boca: t > bo ? .5 + .5 * Math.sin(t * 3.1) : undefined, pisca: t > pi });
+    onda(cx0 + 60, 720, 300, 120, t, t > rs ? AMB : CI, prog(lt, .2, .5), 0, t > rs ? 1 : 0);
+    if (t > rs) txt('sem pausa pra respirar', cx0 + 210, 830, ARC, 28, AMB, { align: 'center', weight: 600, alpha: prog(t, rs, rs + .3) });
+    [['boca fora do ritmo', bo], ['voz sem respiração', rs], ['piscada estranha', pi], ['dentes e mãos borrados', dn]].forEach(([s, w], i) =>
+      pilula(s, cx0 + (i % 2 ? 225 : -225), 1010 + Math.floor(i / 2) * 130, 430, prog(t, w - .2, w + .1), AMB, '', 1, 32));
+    linhaTxt('um sinal sozinho não prova nada: olhe o conjunto', 1290, dn + .3, SC[5] - .2, t, 30, 'rgba(244,248,255,.7)');
+  },
+  // 5 · passo 4: checagem
+  (t, lt) => {
+    passo(4, 'CONFIRA NA CHECAGEM', SC[5], SC[6] - .2, t, 'CHECAGEM', VERDE);
+    const lu = wt('lupa', 5), af = wt('fatos', 5), ff = wt('fake', 5), an = wt('analisado', 5);
+    [['Lupa', lu], ['Aos Fatos', af], ['Fato ou Fake', ff]].forEach(([s, w], i) => pilula(s, cx0, 560 + i * 130, 520, prog(t, wt('agencias', 5) + i * .3, wt('agencias', 5) + .3 + i * .3), CI, '', 1, 44));
+    aparelho(cx0 - 230, 950, 460, 330, prog(t, an - 1, an - .6), AZ, (x, y, w, h) => { ctx.fillStyle = '#0b1530'; ctx.fillRect(x, y, w, h); rosto(x + w / 2, y + h / 2, .7, t, BR, { boca: .3 }); });
+    carimbo('CHECADO: FALSO', cx0, 1115, prog(t, an - .2, an + .2), VERM, -.08, 48);
+  },
+  // 6 · a regra do tribunal eleitoral
+  (t, lt) => {
+    titulo('A REGRA DE 2026', 250, SC[6], SC[7] - .2, t, 90, BR, '2026');
+    const pb = wt('proibe', 6), au = wt('autorizacao', 6), av = wt('avisar', 6);
+    neon3d(P.escudo, cx0, 540, 90 * back(prog(lt, .1, .4)), 0, .12, CI, prog(lt, .1, .4));
+    pilula('deepfake de candidato: proibido', cx0, 760, 820, prog(t, pb - .2, pb + .1), VERM, '', 1, 40);
+    pilula('mesmo com autorização', cx0, 890, 600, prog(t, au - .3, au), AMB, '', 1, 40);
+    pilula('propaganda com IA tem que avisar', cx0, 1020, 820, prog(t, av - .5, av - .2), CI, '', 1, 40);
+    const ba = prog(t, av, av + .3); if (ba > 0) { ctx.save(); ctx.globalAlpha = ba; ctx.fillStyle = CI; rr(cx0 - 260, 1150, 520, 70, 12); ctx.fill(); txt('CONTEÚDO FEITO COM IA', cx0, 1187, EXP, 30, '#03121a', { align: 'center' }); ctx.restore(); }
+    linhaTxt('regra do TSE para as eleições de 2026', 1290, av, SC[7] - .2, t, 30, 'rgba(244,248,255,.7)');
+  },
+  (t, lt) => fim(t, lt, 'Na dúvida, não compartilhe', 'manda pro grupo da família'),
+];
+
+const renderBase = render;
+window.render = render = function (t) { renderBase(t); legenda(t); };
+</script></body></html>

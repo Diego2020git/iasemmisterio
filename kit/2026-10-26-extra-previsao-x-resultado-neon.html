@@ -1,0 +1,127 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-26-extra-previsao-x-resultado.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="eleicoes-kit.js"></script>
+<script>
+const T0 = TEMPOS.cenas, NC = T0.length - 1;
+const SC = [...T0.slice(0, NC), T0[NC] + .7];
+const DURATION = SC[NC], IMPACTO = SC[NC - 1] + .4;
+const CLIQUES = [], CK = [[0, 0, 0, 0, 0]];
+const CF = AZ, CL = CI; // candidatos com cores neutras do canal
+// 26/10/2026 · extra eleições 3/4: previsões do 2º turno (feitas antes da votação) x resultado com 99,9% das seções. Neutro: cores do canal para os dois.
+const COR = [AZ, IN, AZ, CI, AZ, IN, AZ, IN, AZ];
+const HITS = [.1, wt('ia', 0), wt('acertou', 0), wt('github', 1), wt('claude', 1), wt('pessoa', 1), wt('508', 2), wt('492', 2), wt('30', 3), wt('18', 3), wt('80', 3),
+  wt('resultado', 4), wt('518', 4), wt('482', 4), wt('26', 5), wt('17', 5), wt('perdeu', 6), wt('certeza', 6), wt('frente', 7), wt('junto', 7)];
+
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    const ag = wt('agora', 0), ia = wt('ia', 0);
+    titulo('A IA PREVIU O 2º TURNO', 250, -1, ag - .1, t, 80, BR, 'IA');
+    titulo('ELA ACERTOU?', 250, ag - .05, SC[1] - .2, t, 110, BR, 'ACERTOU');
+    neon3d(P.urna, cx0, 520 + flut(t), 120, 0, .12, AZ, 1);
+    [[-170, CF], [170, CL]].forEach(([dx, c], i) => { const h = 260 + 90 * Math.sin(t * 3.2 + i * 2.6), y0 = 1060;
+      ctx.save(); ctx.shadowColor = c; ctx.shadowBlur = 30; ctx.fillStyle = hex(c, .85); rr(cx0 + dx - 80, y0 - h, 160, h, 20); ctx.fill(); ctx.restore();
+      txt('?%', cx0 + dx, y0 - h - 50, EXP, 60, c, { align: 'center' }); });
+    const sc = prog(t, ia, ia + 1.4); if (sc > 0 && sc < 1) { const y = 400 + 700 * sc; ctx.save(); ctx.globalCompositeOperation = 'lighter';
+      const g = ctx.createLinearGradient(0, y - 90, 0, y); g.addColorStop(0, hex(CI, 0)); g.addColorStop(1, hex(CI, .5)); ctx.fillStyle = g; ctx.fillRect(60, y - 90, W - 120, 90); ctx.fillStyle = CI; ctx.fillRect(60, y, W - 120, 4); ctx.restore(); }
+    const ai = prog(t, ia - .2, ia + .3); neon3d(P.chip, cx0, 1220, 85 * back(ai), 0, .15, CI, ai);
+    if (ai > 0) txt('IA', cx0, 1226, EXP, 34, '#03121a', { align: 'center', alpha: prog(t, ia + .1, ia + .3) });
+  },
+  // 1 · o projeto
+  (t, lt) => {
+    titulo('UMA IA FEZ A CONTA', 250, SC[1], SC[2] - .2, t, 90, BR, 'IA');
+    const gh = wt('github', 1), cl = wt('claude', 1), pe = wt('pessoa', 1), de = wt('definiu', 1);
+    codigo(cx0 - 440, 380, 880, [['pesquisas = registradas_no_tse()', CI], ['historico = eleicoes(2002, 2022)', BR], ['primeiro_turno = resultado_tse()', BR], ['projecao = calcular(pesos)', CI]],
+      prog(t, gh - .2, wt('contas', 1) + .6), prog(t, gh - .6, gh - .1), 'github.com · previsao-segundo-turno-2026');
+    const ca = prog(t, cl - .3, cl + .1); neon3d(P.chip, cx0 - 250, 1010 + flut(t), 100 * back(ca), 0, .15, CI, ca);
+    if (ca > 0) txt('CLAUDE', cx0 - 250, 1016 + flut(t), EXP, 26, '#03121a', { align: 'center', alpha: prog(t, cl, cl + .2) });
+    if (ca > 0) txt('IA da Anthropic', cx0 - 250, 1160, ARC, 32, CI, { align: 'center', weight: 600, alpha: ca });
+    const pa = prog(t, pe - .3, pe + .1); neon3d(P.pessoa, cx0 + 250, 1010 + flut(t, 2), 90 * back(pa), 0, .1, BR, pa);
+    linha(cx0 + 150, 1010, cx0 - 150, 1010, prog(t, de - .2, de + .3), CI, t);
+    pilula('método escrito antes da eleição', cx0 + 120, 1250, 680, prog(t, de - .1, de + .2), AMB, '', 1, 34);
+  },
+  // 2 · a previsão
+  (t, lt) => {
+    titulo('A PREVISÃO DA IA', 250, SC[2], SC[3] - .2, t, 90, BR, 'PREVISÃO');
+    const f = wt('flavio', 2), l = wt('lula', 2);
+    barra('Flávio Bolsonaro', 50.8, 55, 560, prog(t, f - .2, wt('508', 2) + .4), CF);
+    barra('Lula', 49.2, 55, 780, prog(t, l - .2, wt('492', 2) + .4), CL);
+    linhaTxt('dos votos válidos, feita antes da votação', 920, wt('votos', 2) - .2, SC[3] - .2, t, 38, BR);
+  },
+  // 3 · outras previsões
+  (t, lt) => {
+    titulo('OUTRAS PREVISÕES', 250, SC[3], SC[4] - .2, t, 90, BR, 'OUTRAS');
+    const ro = wt('rodou', 3), v18 = wt('18', 3), me = wt('mercado', 3), v80 = wt('80', 3);
+    const x0 = cx0 - 420, y0 = 440; for (let d = 0; d < 100; d++) { const c = d % 10, r = Math.floor(d / 10), a = prog(t, ro + POS[d * 4] / 400 * 1.5, ro + POS[d * 4] / 400 * 1.5 + .2); if (a <= 0) continue;
+      const cor = t > v18 - .2 ? (d >= 82 ? CL : CF) : 'rgba(244,248,255,.4)'; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = cor; ctx.beginPath(); ctx.arc(x0 + 20 + c * 38, y0 + r * 38, 13, 0, 7); ctx.fill(); ctx.restore(); }
+    pilula('30 mil simulações', cx0 - 240, 870, 400, prog(t, ro - .2, ro + .1), CI, '', 1, 34);
+    pilula('Lula: 18% de chance', cx0 - 240, 990, 400, prog(t, v18 - .2, v18 + .1), CL, '', 1, 34);
+    const ma = prog(t, me - .3, me), nv = .8 * ease(prog(t, v80 - .5, v80 + .3)), x = cx0 + 250, y1 = 1000, h = 520;
+    if (ma > 0) { ctx.save(); ctx.globalAlpha = ma; ctx.fillStyle = 'rgba(244,248,255,.1)'; rr(x - 60, y1 - h, 120, h, 30); ctx.fill();
+      ctx.shadowColor = CF; ctx.shadowBlur = 30; ctx.fillStyle = CF; rr(x - 60, y1 - h * nv, 120, h * nv, 30); ctx.fill(); ctx.restore();
+      txt('80%+', x, y1 - h * nv - 50, EXP, 52, CF, { align: 'center', alpha: prog(t, v80, v80 + .2) }); txt('mercado de apostas', x, y1 + 50, ARC, 30, BR, { align: 'center', weight: 600, alpha: ma });
+      txt('Flávio, na véspera', x, y1 + 95, ARC, 30, CF, { align: 'center', weight: 600, alpha: prog(t, v80, v80 + .3) }); }
+    linhaTxt('todas apontavam o Flávio como favorito', 1250, v80 + .3, SC[4] - .2, t, 36, AMB);
+  },
+  // 4 · o resultado
+  (t, lt) => {
+    titulo('O RESULTADO', 250, SC[4], SC[5] - .2, t, 100, BR, 'RESULTADO', VERDE);
+    const l = wt('lula', 4), f = wt('flavio', 4), ur = wt('urnas', 4);
+    barra('Lula', 51.8, 55, 560, prog(t, l - .2, wt('518', 4) + .4), CL);
+    barra('Flávio Bolsonaro', 48.2, 55, 780, prog(t, f - .2, wt('482', 4) + .4), CF);
+    pilula('99,9% das seções totalizadas', cx0, 960, 700, prog(t, ur - .4, ur), VERDE, 'votos válidos, dados do TSE', 1, 38);
+  },
+  // 5 · o tamanho do erro
+  (t, lt) => {
+    titulo('O TAMANHO DO ERRO', 250, SC[5], SC[6] - .2, t, 84, BR, 'ERRO', AMB);
+    const X = v => 140 + (v - 46) / 7 * 800, y = 720, er = wt('26', 5), md = wt('17', 5);
+    eixo(X(46), X(53), y, 46, 53, [46, 53], prog(lt, .1, .6));
+    const bw = (X(52.5) - X(49.1)) * ease(prog(t, md - .2, md + .5)); if (bw > 0) { ctx.save(); ctx.globalAlpha = .35; ctx.fillStyle = AMB; rr(X(50.8) - bw / 2, y - 80, bw, 56, 28); ctx.fill(); ctx.restore();
+      txt('faixa do erro médio (±1,7)', X(50.8), y - 130, ARC, 30, AMB, { align: 'center', weight: 600, alpha: prog(t, md, md + .3) }); }
+    marco(X(50.8), y, prog(lt, .2, .5), CF, ''); txt('previsto 50,8', X(50.8), y + 110, ARC, 32, CF, { align: 'center', weight: 600, alpha: prog(lt, .2, .5) });
+    marco(X(48.2), y, prog(lt, .6, .9), VERDE, ''); txt('real 48,2', X(48.2), y + 110, ARC, 32, VERDE, { align: 'center', weight: 600, alpha: prog(lt, .6, .9) });
+    const ar = prog(t, er - .4, er + .2); if (ar > 0) { seta(X(50.8), X(48.2) + 20, y + 180, ar, VERM); }
+    pilula('errou por 2,6 pontos', cx0, 1060, 600, prog(t, er - .2, er + .1), VERM, 'Flávio: previsto 50,8%, real 48,2%', 1, 42);
+    linhaTxt('fora da faixa de erro do próprio método', 1210, md + .3, SC[6] - .2, t, 36, AMB);
+  },
+  // 6 · 80% não é certeza
+  (t, lt) => {
+    titulo('80% NÃO É CERTEZA', 250, SC[6], SC[7] - .2, t, 90, BR, 'NÃO É', AMB);
+    const pd = wt('perdeu', 6), ci = wt('cinco', 6);
+    for (let k = 0; k < 5; k++) { const a = prog(lt, .1 + k * .12, .4 + k * .12), x = cx0 + (k - 2) * 170, y = 640, ruim = k === 4, c = ruim ? VERM : CF;
+      if (a <= 0) continue; const e = back(a) * (ruim && t > pd ? 1.15 + .08 * Math.sin(t * 10) : 1);
+      ctx.save(); ctx.translate(x, y); ctx.scale(e, e); ctx.globalAlpha = clamp(a * 2) * (ruim || t < pd ? 1 : .35); ctx.fillStyle = 'rgba(8,16,34,.92)'; ctx.strokeStyle = c; ctx.lineWidth = 6; ctx.shadowColor = c; ctx.shadowBlur = 25;
+      rr(-65, -65, 130, 130, 26); ctx.fill(); ctx.stroke(); txt(ruim ? '✕' : '✓', 0, 4, EXP, 60, c, { align: 'center' }); ctx.restore(); }
+    linhaTxt('o favorito ganha 4 vezes em 5', 820, SC[6] + .6, SC[7] - .2, t, 40, CF);
+    pilula('desta vez, saiu a 1 em 5', cx0, 980, 640, prog(t, ci - .3, ci), VERM, '', 1, 44);
+    linhaTxt('chance alta não é certeza', 1150, wt('certeza', 6) - .5, SC[7] - .2, t, 44, AMB);
+  },
+  // 7 · por que errou: as pesquisas
+  (t, lt) => {
+    titulo('POR QUE ERROU?', 250, SC[7], SC[8] - .2, t, 96, BR, 'ERROU', AMB);
+    const qp = wt('pesquisas', 7), fr = wt('frente', 7), er = wt('erra', 7), ju = wt('junto', 7);
+    for (let k = 0; k < 6; k++) { const a = prog(t, qp - .3 + k * .12, qp + k * .12), um = k === 5, x = cx0 + ((k % 3) - 1) * 300, y = 470 + Math.floor(k / 3) * 140;
+      pilula(um ? 'Lula à frente' : 'Flávio à frente', x, y, 280, a, um ? CL : CF, 'pesquisa', 1, 30); }
+    linhaTxt('só uma das pesquisas usadas mostrava o Lula na frente', 780, fr, SC[8] - .2, t, 30, 'rgba(244,248,255,.75)');
+    pilula('pesquisas', cx0 - 260, 960, 360, prog(t, er - .6, er - .3), t > er ? VERM : CI, '', 1, 44);
+    seta(cx0 - 60, cx0 + 50, 960, prog(t, er - .3, er + .2), t > ju ? VERM : CI);
+    pilula('previsão da IA', cx0 + 270, 960, 380, prog(t, er - .1, er + .2), t > ju ? VERM : CI, t > ju ? 'erra junto' : '', 1, 44);
+    linhaTxt('fonte: projeto no GitHub (Gabriel Alexandre)', 1150, ju, SC[8] - .2, t, 28, 'rgba(244,248,255,.6)');
+  },
+  (t, lt) => fim(t, lt, 'Você confiaria? Comenta', 'e segue o canal'),
+];
+
+const renderBase = render;
+window.render = render = function (t) { renderBase(t); legenda(t); };
+</script></body></html>
