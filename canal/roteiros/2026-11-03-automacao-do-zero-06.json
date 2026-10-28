@@ -1,0 +1,99 @@
+{
+ "id": "2026-11-03-automacao-do-zero-06",
+ "serie": "Automação do zero",
+ "data": "2026-11-03",
+ "horario": "19:00",
+ "titulo": "Automação do zero #6: lembrete por e-mail antes de cada compromisso",
+ "descricao": "Automação do zero, episódio 6 ⏰\nUma hora antes de cada compromisso da sua agenda, chega um e-mail te lembrando, com horário e local.\n1️⃣ No zapier.com, + Create → Zap. Gatilho (Trigger): app Google Calendar, evento Event Start. Escolha a sua agenda e quanto tempo antes (ex.: 1 hora).\n2️⃣ Ação (Action): app Gmail, evento Send Email. Em To, coloque o seu e-mail. No assunto (Subject), ligue o título do evento.\n3️⃣ No corpo (Body), ligue o horário de início e o local. Teste e clique em Publish.\nLimite: no plano grátis o Zapier confere a cada 15 minutos, então o lembrete pode chegar até uns 15 minutos depois da hora marcada. Grátis até 100 tarefas por mês (cada e-mail enviado conta 1). Evento criado em cima da hora dispara na hora.\nSábado tem mais.\n\nFontes (conferidas em 28/10/2026): zapier.com/apps/gmail/integrations/google-calendar · zapier.com/pricing\n\n#ia #automacao #zapier #googleagenda #gmail #produtividade",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "a6",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Uma hora antes de cada compromisso, chega um e-mail te lembrando.",
+     "legenda": "Uma hora antes de cada compromisso, chega um e-mail te lembrando."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Automação do zero, episódio seis. A agenda avisa sozinha.",
+     "legenda": "Automação do zero, episódio seis. A agenda avisa sozinha."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no Zapier, gatilho, o que dispara tudo: Google Calendar, Event Start. Escolha a agenda e uma hora antes.",
+     "legenda": "Um: no Zapier, gatilho, o que dispara tudo: Google Calendar, Event Start. Escolha a agenda e uma hora antes."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: ação: Gmail, Send Email. Em To, seu e-mail. No assunto, o título do evento.",
+     "legenda": "Dois: ação: Gmail, Send Email. Em To, seu e-mail. No assunto, o título do evento."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: no corpo, ligue o horário e o local. Teste e clique em Publish.",
+     "legenda": "Três: no corpo, ligue o horário e o local. Teste e clique em Publish."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "O grátis confere a cada quinze minutos e faz até cem tarefas por mês.",
+     "legenda": "O grátis confere a cada quinze minutos e faz até cem tarefas por mês."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Salva pra fazer hoje. Sábado tem mais.",
+     "legenda": "Salva pra fazer hoje. Sábado tem mais."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Zapier Google Calendar Event Start dispara um tempo antes do evento (polling); Gmail Send Email; evento criado em cima da hora dispara na hora",
+   "fonte": "https://zapier.com/apps/gmail/integrations/google-calendar",
+   "conferido": "2026-10-28"
+  },
+  {
+   "dado": "Zapier grátis: 100 tarefas/mês, Zaps de 2 passos, checagem a cada 15 min",
+   "fonte": "https://zapier.com/pricing",
+   "conferido": "2026-10-28"
+  }
+ ],
+ "registro": {
+  "tema": "automação do zero 6: Google Calendar Event Start → Gmail Send Email, lembrete 1 hora antes",
+  "chaves": [
+   "lembrete agenda email",
+   "event start zapier",
+   "automacao do zero 6"
+  ]
+ },
+ "video": "videos/2026-11-03-19h-automacao-do-zero-06-neon.mp4",
+ "fonte_html": "kit/2026-11-03-19h-automacao-do-zero-06-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

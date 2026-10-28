@@ -1,0 +1,104 @@
+{
+ "id": "2026-11-01-modelos-e-parametros-03",
+ "serie": "Modelos e parâmetros",
+ "data": "2026-11-01",
+ "horario": "19:00",
+ "titulo": "Modelos e parâmetros #3: modelo com raciocínio, a IA pensa antes",
+ "descricao": "Modelos e parâmetros, episódio 3 🧠\nModelo com raciocínio (thinking) pensa em etapas antes de responder: quebra o problema, confere as contas e só depois escreve a resposta. Acerta mais em conta, lógica e tarefa com várias etapas, mas demora mais e gasta mais.\nTeste grátis no Google AI Studio:\n1️⃣ Abra aistudio.google.com e escolha um modelo Flash\n2️⃣ Nas configurações da direita, em Thinking level, troque de low para high e mande: \"Comprei 3 camisetas de R$ 49,90 com 15% de desconto na segunda e na terceira. Quanto paguei?\"\n3️⃣ Abra o raciocínio que aparece acima da resposta e veja as etapas\nRegra prática: pergunta simples vai de low (mais rápido); conta, plano ou análise vai de high.\nNúmeros oficiais: no Gemini 3.8 Flash os níveis são low, medium e high, e o padrão é medium.\nDomingo que vem: modelo aberto x fechado.\n\nFonte (conferida em 28/10/2026): ai.google.dev/gemini-api/docs/thinking · ai.google.dev/gemini-api/docs/whats-new-gemini-3.8\n\n#ia #inteligenciaartificial #gemini #googleaistudio #raciocinio #modelosdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "m3",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Por que às vezes a IA demora antes de responder? É o modelo pensando.",
+     "legenda": "Por que às vezes a IA demora antes de responder? É o modelo pensando."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Modelos e parâmetros, episódio três. Modelo com raciocínio pensa em etapas antes de responder.",
+     "legenda": "Modelos e parâmetros, episódio três. Modelo com raciocínio pensa em etapas antes de responder."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no Google AI Studio, que é grátis, escolha um modelo Flash.",
+     "legenda": "Um: no Google AI Studio, que é grátis, escolha um modelo Flash."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: em Thinking level, troque de low pra high e mande uma conta com várias etapas.",
+     "legenda": "Dois: em Thinking level, troque de low pra high e mande uma conta com várias etapas."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: abra o raciocínio acima da resposta e veja os passos que ele seguiu.",
+     "legenda": "Três: abra o raciocínio acima da resposta e veja os passos que ele seguiu."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Pensar mais acerta mais em conta e lógica, mas demora e gasta mais. Pergunta simples vai de low.",
+     "legenda": "Pensar mais acerta mais em conta e lógica, mas demora e gasta mais. Pergunta simples vai de low."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Domingo que vem: modelo aberto e fechado.",
+     "legenda": "Domingo que vem: modelo aberto e fechado."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Gemini 3.8 Flash: thinking_level low, medium, high (minimal não suportado); padrão medium",
+   "fonte": "https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.8",
+   "conferido": "2026-10-28"
+  },
+  {
+   "dado": "Resumo do raciocínio (thought summaries) separado da resposta",
+   "fonte": "https://ai.google.dev/gemini-api/docs/thinking",
+   "conferido": "2026-10-28"
+  },
+  {
+   "dado": "AI Studio grátis (sem chave paga)",
+   "fonte": "https://ai.google.dev/gemini-api/docs/billing",
+   "conferido": "2026-10-28"
+  }
+ ],
+ "registro": {
+  "tema": "modelo com raciocínio: Thinking level low/high no AI Studio, quando vale pensar mais",
+  "chaves": [
+   "modelo com raciocinio",
+   "thinking level",
+   "modelos e parametros 3"
+  ]
+ },
+ "video": "videos/2026-11-01-19h-modelos-e-parametros-03-neon.mp4",
+ "fonte_html": "kit/2026-11-01-19h-modelos-e-parametros-03-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}
