@@ -72,17 +72,17 @@
   {
    "dado": "Make WhatsApp Business Cloud: Watch Events instantâneo; Create a webhook, Create a connection; legacy usa Permanent Token e WhatsApp Business Account ID; legacy até abril de 2027",
    "fonte": "https://apps.make.com/whatsapp-business-cloud",
-   "conferido": "2026-10-25"
+   "conferido": "2026-10-29"
   },
   {
    "dado": "Meta: token temporário vale 24 horas; token permanente via usuário do sistema",
    "fonte": "https://developers.facebook.com/blog/post/2022/12/05/auth-tokens/",
-   "conferido": "2026-10-25"
+   "conferido": "2026-10-29"
   },
   {
    "dado": "Make grátis: 1.000 créditos/mês, 2 cenários ativos",
    "fonte": "https://www.make.com/en/pricing",
-   "conferido": "2026-10-25"
+   "conferido": "2026-10-29"
   }
  ],
  "registro": {
