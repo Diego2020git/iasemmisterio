@@ -149,6 +149,20 @@
   },
   "link": {
    "explicar": false
+  },
+  "embedding": {
+   "explicar": true,
+   "pistas": [
+    "lista de números",
+    "números"
+   ]
+  },
+  "embeddings": {
+   "explicar": true,
+   "pistas": [
+    "lista de números",
+    "números"
+   ]
   }
  },
  "suspeitos": [
