@@ -1,0 +1,95 @@
+{
+ "id": "2026-10-23-agente-do-zero-04",
+ "serie": "Agente do zero",
+ "data": "2026-10-23",
+ "horario": "19:00",
+ "titulo": "Agente do zero #4: dar conhecimento ao agente",
+ "descricao": "Agente do zero, episódio 4 📋\nAgora o agente sabe horário, preço e entrega da sua empresa.\n1️⃣ No Google AI Studio, abra o chat do episódio 3, com as System instructions da Padaria Sol\n2️⃣ Embaixo das instruções, cole as informações (troque pelas suas):\n\"Informações da Padaria Sol:\nHorário: segunda a sábado, das 6h às 20h. Domingo, das 7h às 12h.\nPão francês: R$ 1,00 a unidade. Bolo de cenoura: R$ 25,00.\nEntrega: só no bairro Centro, taxa de R$ 5,00, pedidos até as 18h.\nEncomendas: com 1 dia de antecedência.\"\n3️⃣ Teste 3 perguntas: o horário de domingo, o preço do bolo e se fazem bolo de casamento. Na última ele deve dizer que vai chamar a equipe, porque não está na lista.\nCusto: zero, ainda no AI Studio.\nEpisódio anterior: #3, as instruções. Segunda: episódio 5, o primeiro cenário no Make.\n\nFonte: ai.google.dev/gemini-api/docs/pricing, conferido em 18/10/2026. Preços da padaria são exemplo.\n\n#agentedeia #gemini #googleaistudio #whatsapp #ia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "z4",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Agora o seu agente sabe o horário, o preço e a entrega da sua empresa.",
+     "legenda": "Agora o seu agente sabe o horário, o preço e a entrega da sua empresa."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Agente do zero, episódio quatro. Sem essas informações, ele não sabe responder.",
+     "legenda": "Agente do zero, episódio 4. Sem essas informações, ele não sabe responder."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no Google AI Studio, abra o chat do episódio três, com as instruções da padaria.",
+     "legenda": "Um: no Google AI Studio, abra o chat do episódio 3, com as instruções da padaria."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: embaixo das instruções, cole horário, preços e entrega. O texto está na legenda.",
+     "legenda": "Dois: embaixo das instruções, cole horário, preços e entrega. O texto está na legenda."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: teste o horário de domingo, o preço do bolo e se fazem bolo de casamento.",
+     "legenda": "Três: teste o horário de domingo, o preço do bolo e se fazem bolo de casamento."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Ele acerta as duas e, na última, chama a equipe. Custo: zero.",
+     "legenda": "Ele acerta as duas e, na última, chama a equipe. Custo: zero."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segunda tem o episódio cinco: o primeiro cenário no Make.",
+     "legenda": "Segunda tem o episódio 5: o primeiro cenário no Make."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Google AI Studio grátis para testar modelos Flash",
+   "fonte": "https://ai.google.dev/gemini-api/docs/pricing",
+   "conferido": "2026-10-22"
+  }
+ ],
+ "registro": {
+  "tema": "agente do zero ep 4: dar conhecimento (horário, preços, entrega) nas instruções",
+  "chaves": [
+   "dar conhecimento",
+   "informações da empresa",
+   "perguntas frequentes",
+   "bolo de casamento"
+  ]
+ },
+ "video": "videos/2026-10-23-19h-agente-do-zero-04-neon.mp4",
+ "fonte_html": "kit/2026-10-23-19h-agente-do-zero-04-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

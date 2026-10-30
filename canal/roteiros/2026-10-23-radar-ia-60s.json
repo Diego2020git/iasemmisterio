@@ -1,0 +1,105 @@
+{
+ "id": "2026-10-23-radar-ia-60s",
+ "serie": "Radar IA",
+ "data": "2026-10-23",
+ "horario": "12:00",
+ "titulo": "Radar IA: ChatGPT tranca conversas, Gemini pra negócios e VW",
+ "descricao": "Radar IA de hoje 📡\n1️⃣ Conversas trancadas no ChatGPT (20/10): você esconde uma conversa do histórico e da busca, e ela só abre com uma senha (PIN) de 4 dígitos ou com o desbloqueio do celular. Liberação gradual. Atenção: se você redefinir essa senha, as conversas trancadas são apagadas pra sempre.\n2️⃣ Gemini pra pequenos negócios: uma página nova no app guarda a identidade da sua marca (site, fontes e cores) pra criar artes no mesmo estilo, e conecta apps como Canva e Shopify. Liberação pra todos os usuários do app no mundo nos próximos dias.\n3️⃣ Volkswagen (21/10): mais de 330 mil funcionários do grupo já usam o Microsoft Copilot no trabalho, segundo a Microsoft.\n\nTeste hoje: no ChatGPT, abra o menu de opções de uma conversa e veja se já aparece \"Lock chat\". Se aparecer, crie a senha e anote num lugar seguro.\n\nFontes oficiais (conferidas em 23/10/2026): help.openai.com (Using locked chats in ChatGPT; ChatGPT release notes) · blog.google (New Gemini business landing page and tools launched) · news.microsoft.com (Volkswagen Group Copilot, 21/10)\n\n#ia #inteligenciaartificial #chatgpt #gemini #copilot #noticiasdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "r8",
+ "estilo": "neon",
+ "formato": "radar-60",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Agora dá pra trancar conversas no ChatGPT, o Gemini ganhou uma área pra pequenos negócios e a Volkswagen colocou IA na mão de trezentos e trinta mil funcionários.",
+     "legenda": "Agora dá pra trancar conversas no ChatGPT, o Gemini ganhou uma área pra pequenos negócios e a Volkswagen colocou IA na mão de 330 mil funcionários."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "São as três notícias de IA de hoje, no Radar IA.",
+     "legenda": "São as três notícias de IA de hoje, no Radar IA."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: o ChatGPT agora tranca conversas. Elas somem do histórico e da busca e só abrem com uma senha de quatro dígitos ou com o desbloqueio do celular. Cuidado: se você redefinir essa senha, as conversas trancadas são apagadas.",
+     "legenda": "Um: o ChatGPT agora tranca conversas. Elas somem do histórico e da busca e só abrem com uma senha de 4 dígitos ou com o desbloqueio do celular. Cuidado: se você redefinir essa senha, as conversas trancadas são apagadas."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: o Gemini ganhou uma página pra pequenos negócios. Você manda o site, as fontes e as cores da marca uma vez, e ele cria as artes no mesmo estilo. Chega pra todo mundo nos próximos dias.",
+     "legenda": "Dois: o Gemini ganhou uma página pra pequenos negócios. Você manda o site, as fontes e as cores da marca uma vez, e ele cria as artes no mesmo estilo. Chega pra todo mundo nos próximos dias."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: a Volkswagen já colocou o Copilot, a IA da Microsoft, no trabalho de mais de trezentos e trinta mil funcionários. Empresa grande já usa IA no dia a dia.",
+     "legenda": "Três: a Volkswagen já colocou o Copilot, a IA da Microsoft, no trabalho de mais de 330 mil funcionários. Empresa grande já usa IA no dia a dia."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Qual testar hoje? Abra o menu de uma conversa no ChatGPT e veja se já aparece Lock chat. Se aparecer, crie a senha e guarde bem.",
+     "legenda": "Qual testar hoje? Abra o menu de uma conversa no ChatGPT e veja se já aparece Lock chat. Se aparecer, crie a senha e guarde bem."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segue pro Radar IA todo dia ao meio-dia.",
+     "legenda": "Segue pro Radar IA todo dia ao meio-dia."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "ChatGPT locked chats (20/10): PIN de 4 dígitos ou Face ID/Touch ID/desbloqueio do aparelho; liberação gradual; redefinir o PIN apaga as conversas trancadas",
+   "fonte": "https://help.openai.com/en/articles/20001411-using-locked-chats-in-chatgpt",
+   "conferido": "2026-10-23"
+  },
+  {
+   "dado": "Gemini: página de negócios, estilo da marca (site, kit, fontes, cores), apps Canva/Shopify/Wix/Xero; liberação global nos próximos dias",
+   "fonte": "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
+   "conferido": "2026-10-23"
+  },
+  {
+   "dado": "Volkswagen Group: mais de 330 mil funcionários com Microsoft Copilot (21/10)",
+   "fonte": "https://news.microsoft.com/source/2026/10/21/microsoft-empowers-more-than-330000-volkswagen-group-employees-with-copilot/",
+   "conferido": "2026-10-23"
+  }
+ ],
+ "registro": {
+  "tema": "radar IA 23/10: ChatGPT conversas trancadas, Gemini pra pequenos negócios, Volkswagen com Copilot",
+  "chaves": [
+   "chatgpt lock chat",
+   "gemini negocios",
+   "volkswagen copilot",
+   "radar 23/10"
+  ]
+ },
+ "video": "videos/2026-10-23-12h-radar-ia-60s-neon.mp4",
+ "fonte_html": "kit/2026-10-23-12h-radar-ia-60s-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

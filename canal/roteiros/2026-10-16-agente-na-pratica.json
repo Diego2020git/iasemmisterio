@@ -1,0 +1,100 @@
+{
+  "id": "2026-10-16-agente-na-pratica",
+  "serie": "Agente na Prática",
+  "data": "2026-10-16",
+  "horario": "19:00",
+  "titulo": "Gemini de assistente pessoal: marca na agenda e acha e-mail, de graça",
+  "descricao": "Seu assistente pessoal de graça: o Gemini, do Google 📅\n1️⃣ No app do Gemini, abra Configurações e depois Apps conectados\n2️⃣ Ligue o Google Workspace (Gmail e Agenda)\n3️⃣ Peça com @: \"@Agenda marca dentista sexta às 10h\" ou \"@Gmail acha o e-mail do boleto da luz\"\nFunciona no plano grátis, com conta Google pessoal e maior de 18 anos. A Atividade nos apps do Gemini precisa estar ligada.\nSalva e testa hoje.\n\nFonte: Ajuda do Apps do Gemini, \"Conectar o app Google Workspace aos apps do Gemini\" (support.google.com/gemini/answer/15229592) e página do Gemini no Brasil (gemini.google/br/about), conferido em 13/10/2026.\n\n#gemini #google #assistentepessoal #agentedeia #inteligenciaartificial #ia",
+  "hashtags": [
+    "gemini",
+    "google",
+    "assistentepessoal",
+    "agentedeia",
+    "inteligenciaartificial",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 13/10/2026",
+    "termos": {
+      "gemini assistente pessoal": {
+        "demanda_views_top10": 5922584,
+        "concorrencia_canais_100k": 2
+      }
+    }
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "Gemini grátis conecta Gmail e Agenda (Apps conectados / Google Workspace)",
+      "fonte": "https://support.google.com/gemini/answer/15229592?hl=pt-BR",
+      "conferido": "2026-10-13"
+    },
+    {
+      "dado": "Plano grátis do Gemini a R$ 0 com conta Google, maiores de 18",
+      "fonte": "https://gemini.google/br/about/?hl=pt-BR",
+      "conferido": "2026-10-13"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "Gemini como assistente pessoal com Gmail e Agenda",
+    "chaves": [
+      "gemini",
+      "assistente",
+      "agenda",
+      "gmail"
+    ]
+  },
+  "video": "videos/2026-10-16-19h-gemini-assistente-raiox.mp4",
+  "fonte_html": "kit/2026-10-16-19h-gemini-assistente-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "23",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Seu assistente pessoal de graça já está no celular: o Gemini.",
+          "legenda": "Seu assistente pessoal de graça já está no celular: o Gemini."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Nas configurações, abra Apps conectados e ligue o Gmail e a Agenda.",
+          "legenda": "Nas configurações, abra Apps conectados e ligue o Gmail e a Agenda."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Agora é só pedir: arroba Agenda, marca dentista sexta às dez.",
+          "legenda": "Agora é só pedir: @Agenda, marca dentista sexta às 10h."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Ou: arroba Gmail, acha o e-mail do boleto da luz.",
+          "legenda": "Ou: @Gmail, acha o e-mail do boleto da luz."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Tudo no plano grátis, com conta pessoal. Salva e testa hoje.",
+          "legenda": "Tudo no plano grátis, com conta pessoal. Salva e testa hoje."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

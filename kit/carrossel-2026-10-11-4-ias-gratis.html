@@ -1,0 +1,60 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1350"></canvas>
+<script src="raiox-kit.js"></script>
+<script>
+// Carrossel de teste 11/10/2026 · 4 IAs grátis e pra que serve cada uma. render(i) desenha o slide i (1080x1350, 4:5).
+const CH = 1350, N = 8;
+function bg2(i) {
+  ctx.fillStyle = COL.paper; ctx.fillRect(0, 0, W, CH);
+  ctx.lineWidth = 1.5;
+  for (let x = 0; x <= W; x += 30) { ctx.strokeStyle = x % 150 ? COL.minor : COL.major; ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, CH); ctx.stroke(); }
+  for (let y = 0; y <= CH; y += 30) { ctx.strokeStyle = y % 150 ? COL.minor : COL.major; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  const vg = ctx.createRadialGradient(W / 2, CH / 2, 200, W / 2, CH / 2, CH * .8);
+  vg.addColorStop(0, 'rgba(6,20,51,0)'); vg.addColorStop(1, 'rgba(2,6,15,.7)'); ctx.fillStyle = vg; ctx.fillRect(0, 0, W, CH);
+  ctx.strokeStyle = COL.ink; ctx.lineWidth = 2; ctx.strokeRect(40, 40, W - 80, CH - 80);
+  txt('IA SEM MISTÉRIO · @IASEMMISTERIO.AI', 70, CH - 75, ARC, 22, COL.dim, { weight: 600, ls: 3 });
+  txt(`${i + 1}/${N}`, W - 70, CH - 75, ARC, 24, COL.cyan, { align: 'right', weight: 600, ls: 3 });
+}
+function head(str, y = 190, size = 84, color = COL.ink) { wrap(str.toUpperCase(), W - 2 * M, EXP, size).forEach((l, k) => txt(l, M, y + k * size * 1.12, EXP, size, color)); }
+function para(str, y, size = 40, color = COL.ink, maxW = W - 2 * M, x = M) { const ls = wrap(str, maxW, ARC, size, 600); ls.forEach((l, k) => txt(l, x, y + k * size * 1.35, ARC, size, color, { weight: 600 })); return y + ls.length * size * 1.35; }
+function arrow(x, y) { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(x - 90, y); ctx.lineTo(x, y); ctx.moveTo(x - 24, y - 24); ctx.lineTo(x, y); ctx.lineTo(x - 24, y + 24); ctx.stroke(); ctx.restore(); }
+const TOOLS = [
+  ['ChatGPT', 'chatgpt.com', '#10a37f', 'TEXTO', 'Pra escrever: post, legenda, e-mail, resumo e fórmula de planilha.', 'Escreve uma legenda curta pra promoção de sábado da minha loja.'],
+  ['Gemini', 'gemini.google.com', '#4285f4', 'IMAGEM', 'Pra criar imagem: logo, arte de post e ilustração. O grátis tem limite de imagens por dia.', 'Cria um logo minimalista pra Doce Lar, confeitaria, rosa e marrom.'],
+  ['NotebookLM', 'notebooklm.google', '#4285f4', 'ESTUDO', 'Pra estudar o seu material: sobe PDF ou apostila e ele responde só com base nele, mostrando de onde tirou.', 'Faz 10 perguntas de prova sobre este material, com as respostas.'],
+  ['Flow', 'labs.google/flow', '#4285f4', 'VÍDEO', 'Pra fazer vídeo a partir de texto. Quem não assina ganha créditos grátis todo dia.', 'Gato astronauta flutuando numa estação espacial, câmera se aproximando devagar.'],
+];
+function toolSlide(i, k) {
+  const [name, site, accent, task, what, ex] = TOOLS[k];
+  txt(`TAREFA ${k + 1} DE 4`, M, 130, ARC, 26, COL.cyan, { weight: 600, ls: 4 });
+  head(task, 230, 120, COL.cyan);
+  toolCard(W / 2, 430, name, site + ' · tem plano grátis', 1, accent);
+  const y = para(what, 600, 44);
+  panel(M, y + 70, W - 2 * M, 240, 1, 'exemplo de pedido');
+  para('"' + ex + '"', y + 150, 40, COL.ink, W - 2 * M - 80, M + 40);
+}
+const SLIDES = [
+  i => { txt('GUIA RÁPIDO', M, 150, ARC, 28, COL.cyan, { weight: 600, ls: 6 }); head('4 IAs grátis', 270, 120); head('e pra que serve cada uma', 540, 64, COL.cyan);
+    ['TEXTO', 'IMAGEM', 'ESTUDO', 'VÍDEO'].forEach((l, k) => { const x = M + (k % 2) * 460, y = 760 + Math.floor(k / 2) * 170; panel(x, y, 420, 130, 1); txt(l, x + 210, y + 68, EXP, 44, COL.ink, { align: 'center' }); });
+    txt('arrasta', W - M - 120, 1160, ARC, 34, COL.cyan, { align: 'right', weight: 600 }); arrow(W - M, 1160); },
+  i => toolSlide(i, 0), i => toolSlide(i, 1), i => toolSlide(i, 2), i => toolSlide(i, 3),
+  i => { txt('RESUMO', M, 130, ARC, 26, COL.cyan, { weight: 600, ls: 4 }); head('Qual IA usar?', 230, 96);
+    TOOLS.forEach(([name, , , task], k) => { const y = 420 + k * 170; panel(M, y, W - 2 * M, 130, 1); txt(task, M + 40, y + 68, EXP, 46, COL.cyan); arrow(M + 470, y + 66); txt(name, M + 500, y + 68, EXP, 42, COL.ink); }); },
+  i => { txt('PROMPT CORINGA', M, 130, ARC, 26, COL.cyan, { weight: 600, ls: 4 }); head('Não sabe por onde começar?', 230, 76);
+    panel(M, 520, W - 2 * M, 400, 1, 'cola no chatgpt');
+    para('"Quero [sua tarefa]. Me diga qual destas IAs grátis usar: ChatGPT, Gemini, NotebookLM ou Flow. E escreva o pedido pronto pra eu colar nela."', 600, 42, COL.ink, W - 2 * M - 80, M + 40);
+    para('Troque o que está entre colchetes.', 1000, 34, COL.dim); },
+  i => { lens(W / 2, 470, 150, 1); txt('IA SEM MISTÉRIO', W / 2, 730, EXP, 62, COL.ink, { align: 'center' });
+    txt('uma tarefa resolvida com IA por dia', W / 2, 810, ARC, 36, COL.dim, { align: 'center', weight: 600 });
+    stamp(W / 2, 960, 'salva pra consultar', 1, 44); txt('e segue pra não perder o próximo', W / 2, 1090, ARC, 38, COL.ink, { align: 'center', weight: 600 }); },
+];
+function render(i) { i = Math.round(i); ctx.save(); ctx.clearRect(0, 0, W, CH); bg2(i); SLIDES[i](i); ctx.restore(); }
+window.render = render;
+</script>
+</body></html>

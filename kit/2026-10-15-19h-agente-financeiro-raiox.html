@@ -1,0 +1,88 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-15-19h-agente-financeiro.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="raiox-motion.js"></script>
+<script>
+// 15/10/2026 · Agente na Prática · agente financeiro: lê boletos, avisa e só paga com o seu sim. Tempos em TEMPOS (voz.py).
+const EP = '22';
+const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
+// boleto em traço: retângulo com código de barras
+function boleto(x, y, w, h, a, color = COL.ink, label = '') {
+  if (a <= 0) return;
+  ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 4;
+  draw(a, 2 * (w + h), () => ctx.strokeRect(x, y, w, h));
+  ctx.globalAlpha = prog(a, .4, 1);
+  for (let i = 0; i < 22; i++) { ctx.lineWidth = i % 3 ? 2 : 5; ctx.beginPath(); ctx.moveTo(x + 30 + i * (w - 60) / 22, y + h - 70); ctx.lineTo(x + 30 + i * (w - 60) / 22, y + h - 25); ctx.stroke(); }
+  if (label) txt(label, x + 30, y + 55, ARC, 32, color, { weight: 600 });
+  ctx.restore();
+}
+
+// 0 · gancho (versão curta, 12/10): no quadro 1 o boleto já está anotado, o aviso chegou e o "pode pagar" está na tela
+CAMS[0] = () => [[0, 0, 30, 1.05, 0], [cue('sim') - .3, 0, 0, 1, 0]];
+function s0(t, lt) {
+  kinetic([{ w: 'Boleto vencido?', t: cue('boleto') }, { w: 'Nunca mais', t: cue('nunca') }], M, 230, lt, { size: 72, hl: [1], maxW: 1000 });
+  boleto(M + 60, 440, W - 2 * M - 120, 280, 1, COL.ink, 'Conta de luz · R$ 230');
+  stamp(W / 2 + 180, 560, 'vence 20/10', 1, 30);
+  panel(M, 800, W - 2 * M, 150, 1, 'aviso do agente');
+  txt(typed('Luz vence em 3 dias: R$ 230. Pago?', clamp(.35 + lt / 1.5)), M + 40, 895, ARC, 40, COL.ink, { weight: 600 });
+  panel(W - M - 460, 1000, 460, 130, 1, 'você');
+  txt('Pode pagar.', W - M - 430, 1085, ARC, 44, COL.cyan, { weight: 600, alpha: .4 + .6 * prog(lt, cue('paga') - .2, cue('paga') + .2) });
+  stamp(W / 2, 1270, 'só com o seu sim', prog(lt, cue('sim') - .15, cue('sim') + .2), 40);
+}
+// 1 · o e-mail chega, o boleto sai do envelope e vira linha da planilha
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('planilha'), 0, 40, 1.04, .4]];
+function s1(t, lt) {
+  title(['Lê e anota'], lt, .05, 200, 88, 0);
+  envelope(W / 2 - 120, 380, 240, 160, prog(lt, 0, cue('e-mail') + .2));
+  boleto(M + 160, 600, W - 2 * M - 320, 200, prog(lt, cue('boletos') - .2, cue('e-mail') + .3), COL.ink, 'Luz · R$ 230');
+  panel(M, 880, W - 2 * M, 300, prog(lt, cue('anota') - .3, cue('anota') + .2), 'planilha de contas');
+  [['VALOR', 'R$ 230'], ['VENCE', '20/10'], ['FORNECEDOR', 'Luz']].forEach(([l, v], i) => {
+    const a = prog(lt, cue('anota') + i * .35, cue('anota') + .5 + i * .35), x = M + 40 + i * 320;
+    txt(l, x, 980, ARC, 26, COL.cyan, { weight: 600, ls: 3, alpha: a });
+    txt(typed(v, a), x, 1070, EXP, 52, COL.ink);
+  });
+}
+// 2 · aviso 3 dias antes: contagem e mensagem com valor e link
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('link'), 0, 40, 1.04, -.4]];
+function s2(t, lt) {
+  title(['Avisa antes'], lt, .05, 200, 88, 0);
+  const c = prog(lt, 0, cue('vencer') + .4);
+  odometer(3 * easeInOut(c), 1, W / 2 - 60, 560, 220);
+  txt('dias antes', W / 2, 680, ARC, 40, COL.dim, { align: 'center', weight: 600, alpha: c });
+  panel(M, 820, W - 2 * M, 280, prog(lt, cue('avisa') - .3, cue('avisa') + .2), 'aviso');
+  txt(typed('Luz vence 20/10: R$ 230', prog(lt, cue('valor') - .3, cue('valor') + .4)), M + 40, 930, ARC, 42, COL.ink, { weight: 600 });
+  txt(typed('Link do boleto →', prog(lt, cue('link') - .2, cue('link') + .3)), M + 40, 1020, ARC, 38, COL.cyan, { weight: 600 });
+}
+// 3 · "pode pagar": a trava abre só com a resposta
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('agenda'), 0, 40, 1.04, .4]];
+function s3(t, lt) {
+  title(['Seu sim'], lt, .05, 200, 92, 0);
+  panel(W - M - 520, 400, 520, 130, prog(lt, 0, .3), 'você');
+  txt('Pode pagar.', W - M - 490, 485, ARC, 44, COL.cyan, { weight: 600, alpha: prog(lt, cue('pode') - .1, cue('pagar') + .2) });
+  const op = easeInOut(prog(lt, cue('agenda') - .1, cue('agenda') + .5));
+  ctx.save(); ctx.strokeStyle = op > .5 ? COL.cyan : COL.ink; ctx.lineWidth = 6; ctx.globalAlpha = prog(lt, .1, .4);
+  ctx.strokeRect(W / 2 - 110, 780, 220, 180);
+  ctx.beginPath(); ctx.arc(W / 2, 780, 75, Math.PI, Math.PI * 2 - op * .9); ctx.stroke(); ctx.restore();
+  stamp(W / 2, 1110, 'pagamento agendado', prog(lt, cue('pagamento'), cue('pagamento') + .35), 32);
+}
+// 4 · sem resposta, nada; card final
+CAMS[4] = () => [[0, 0, 30, 1.04, 0], [cue('salva'), 0, 0, 1, 0]];
+function s4(t, lt) {
+  kinetic([{ w: 'Sem resposta,', t: cue('sem') }], M, 230, lt, { size: 72, maxW: 1000 });
+  kinetic([{ w: 'nada acontece', t: cue('nada') }], M, 330, lt, { size: 72, hl: [0], maxW: 1000 });
+  ctx.save(); ctx.strokeStyle = COL.ink; ctx.lineWidth = 6; ctx.globalAlpha = prog(lt, 0, .3);
+  ctx.strokeRect(W / 2 - 110, 620, 220, 180); ctx.beginPath(); ctx.arc(W / 2, 620, 75, Math.PI, Math.PI * 2); ctx.stroke(); ctx.restore();
+  stamp(W / 2, 950, 'trancado', prog(lt, cue('mexe') - .1, cue('mexe') + .25), 40);
+  endCard(t, SC[4] + cue('salva') - .25);
+}
+const SCENES = [s0, s1, s2, s3, s4];
+window.DURATION = TEMPOS.duracao;
+</script>
+</body></html>

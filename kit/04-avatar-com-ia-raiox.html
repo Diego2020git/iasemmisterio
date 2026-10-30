@@ -1,0 +1,115 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="raiox-kit.js"></script>
+<script>
+// Vídeo 04 (avatar com IA) refeito na identidade Raio-X, com a narração original.
+const EP = '04';
+const SC = [0, 4.32, 10.8, 18.1, 23.98, 28.46, 31.37];
+const CAPS = [[0.0, 1.73, "Dá pra criar um clone seu"], [1.73, 3.58, "que grava vídeo por você."], [3.58, 4.44, "Olha como."], [4.44, 6.54, "Passo um: grave dois minutos"], [6.54, 8.73, "de você falando, olhando pra câmera,"], [8.73, 10.92, "com boa luz e sem barulho."], [10.92, 12.88, "Passo dois: suba esse vídeo"], [12.88, 14.46, "numa ferramenta de avatar,"], [14.46, 15.72, "como o HeyGen."], [15.72, 18.22, "Ela aprende o seu rosto e a sua voz."], [18.22, 20.47, "Passo três: cole o roteiro."], [20.47, 21.71, "Em alguns minutos,"], [21.71, 24.1, "o seu avatar entrega o vídeo pronto."], [24.1, 26.64, "Um cuidado: use só o seu rosto,"], [26.64, 28.58, "ou o de quem te deu autorização."], [28.58, 31.37, "Salva esse vídeo e testa hoje."]];
+
+// pessoa em traço (cabeça + ombros); mesh = malha de rosto em ciano, como o avatar "aprendido"
+function person(cx, cy, s, p, mesh = false) {
+  if (p <= 0) return;
+  const r = 90 * s;
+  ctx.save(); ctx.strokeStyle = mesh ? COL.cyan : COL.ink; ctx.lineWidth = 5 * Math.max(s, .6); ctx.lineCap = 'round';
+  draw(p, 2 * Math.PI * r, () => { ctx.beginPath(); ctx.arc(cx, cy - r * 1.4, r, -Math.PI / 2, Math.PI * 1.5); ctx.stroke(); });
+  draw(prog(p, .3, 1), 700 * s, () => { ctx.beginPath(); ctx.moveTo(cx - r * 2, cy + r * 1.6); ctx.quadraticCurveTo(cx - r * 2, cy - r * .1, cx, cy - r * .1); ctx.quadraticCurveTo(cx + r * 2, cy - r * .1, cx + r * 2, cy + r * 1.6); ctx.stroke(); });
+  if (mesh) {
+    ctx.globalAlpha = prog(p, .5, 1); ctx.lineWidth = 2;
+    ctx.save(); ctx.beginPath(); ctx.arc(cx, cy - r * 1.4, r, 0, 7); ctx.clip();
+    for (let k = -3; k <= 3; k++) { ctx.beginPath(); ctx.ellipse(cx, cy - r * 1.4, Math.abs(k) * r / 3.2 + 1, r, 0, 0, 7); ctx.stroke(); }
+    for (let k = -2; k <= 2; k++) { ctx.beginPath(); ctx.moveTo(cx - r, cy - r * 1.4 + k * r / 3); ctx.lineTo(cx + r, cy - r * 1.4 + k * r / 3); ctx.stroke(); }
+    ctx.restore();
+  }
+  ctx.restore();
+}
+function check(x, y, label, a, ok = true) {
+  if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha = clamp(a * 2);
+  ctx.strokeStyle = ok ? COL.cyan : COL.red; ctx.lineWidth = 7; ctx.lineCap = 'round';
+  if (ok) draw(a, 90, () => { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 16, y + 18); ctx.lineTo(x + 46, y - 20); ctx.stroke(); });
+  else draw(a, 120, () => { ctx.beginPath(); ctx.moveTo(x + 4, y - 18); ctx.lineTo(x + 40, y + 18); ctx.moveTo(x + 40, y - 18); ctx.lineTo(x + 4, y + 18); ctx.stroke(); });
+  txt(label, x + 76, y, ARC, 40, ok ? COL.ink : COL.dim, { weight: 600, alpha: prog(a, .4, 1) });
+  ctx.restore();
+  if (!ok) strike(x + 66, y, measure(label, ARC, 40, 600) + 20, prog(a, .7, 1));
+}
+
+function s0(t, lt) {
+  title(['Seu clone', 'digital'], lt, 0, 200, 92, 1);
+  fig('fig. 01 — você e o seu avatar', lt, .3, 430);
+  person(310, 900, 1.25, easeInOut(prog(lt, .1, 1.0)));
+  const w = easeInOut(prog(lt, .8, 2.2));
+  ctx.save(); ctx.beginPath(); ctx.rect(560, 520, 460, 700 * w); ctx.clip(); person(770, 900, 1.25, 1, true); ctx.restore();
+  if (w > 0 && w < 1) { ctx.fillStyle = 'rgba(46,230,255,.18)'; ctx.fillRect(560, 520 + 700 * w - 50, 460, 50); ctx.fillStyle = COL.cyan; ctx.fillRect(560, 520 + 700 * w - 3, 460, 6); }
+  annot(250, 660, 150, 560, 'você', prog(lt, 1.0, 1.4));
+  annot(830, 660, 930, 560, 'seu avatar', prog(lt, 2.2, 2.6), 'L', COL.cyan);
+  dimLine(M, W - M, 1300, 'mesmo rosto · mesma voz', prog(lt, 2.8, 3.2));
+}
+function s1(t, lt) {
+  stepTag(1, 3, lt, 430);
+  title(['Grave', '2 minutos'], lt, .05, 200, 92, 1);
+  fig('fig. 02 — gravação', lt, .3, 430);
+  panel(M, 520, W - 2 * M, 540, prog(lt, 0, .5), 'visor da câmera');
+  person(W / 2, 900, 1.0, prog(lt, .3, 1.1));
+  if (lt > .5) {
+    if (Math.floor(t * 2) % 2 === 0) { ctx.fillStyle = COL.red; ctx.beginPath(); ctx.arc(M + 50, 575, 13, 0, 7); ctx.fill(); }
+    txt('REC', M + 75, 577, ARC, 30, COL.ink, { weight: 600 });
+    const secs = Math.floor(120 * prog(lt, .6, 5.5));
+    txt(`0${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`, W - M - 30, 577, EXP, 32, secs >= 120 ? COL.cyan : COL.ink, { align: 'right' });
+  }
+  ['boa luz', 'olhando pra câmera', 'sem barulho'].forEach((s, i) => check(M + 20, 1140 + i * 82, s, prog(lt, 2.4 + i * .6, 2.9 + i * .6)));
+}
+function s2(t, lt) {
+  stepTag(2, 3, lt, 430);
+  title(['Suba na', 'ferramenta'], lt, .05, 200, 92, 1);
+  fig('fig. 03 — o que ela aprende', lt, .3, 430);
+  toolCard(W / 2, 570, 'HeyGen', 'heygen.com', prog(lt, .1, .5), '#7b5cff');
+  ruler(M, 720, W - 2 * M, easeInOut(prog(lt, .6, 2.2)), prog(lt, .6, 2.2) < 1 ? 'enviando vídeo' : 'vídeo enviado');
+  person(320, 1060, .8, prog(lt, 2.4, 3.2), true);
+  annot(360, 880, 470, 830, 'rosto', prog(lt, 3.2, 3.6));
+  const v = prog(lt, 3.8, 4.4);
+  if (v > 0) {
+    ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 5; ctx.lineJoin = 'round';
+    draw(v, 1400, () => { ctx.beginPath(); for (let i = 0; i <= 60; i++) { const x = 600 + i * 6, y = 1010 + Math.sin(i * .5 + t * 8) * (20 + 60 * Math.abs(Math.sin(i * .21))); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); });
+    ctx.restore();
+    annot(780, 950, 860, 880, 'voz', prog(lt, 4.4, 4.8), 'L');
+  }
+  stamp(W / 2, 1300, 'tem plano grátis pra testar', prog(lt, 5.4, 5.8), 30);
+}
+function s3(t, lt) {
+  stepTag(3, 3, lt, 430);
+  title(['Cole o', 'roteiro'], lt, .05, 200, 92, 1);
+  fig('fig. 04 — do texto ao vídeo', lt, .3, 430);
+  promptBox(M, 520, W - 2 * M, 'Oi! Hoje eu vou te mostrar 3 ferramentas de IA que economizam horas.', prog(lt, .2, 1.6), t, 'seu roteiro');
+  stamp(W / 2, 760, 'gerar vídeo', prog(lt, 1.7, 2.0), 34);
+  const g = prog(lt, 2.2, 3.4);
+  if (g > 0) {
+    const x = W / 2 - 150, y = 860;
+    panel(x, y, 300, 470, g, '9:16 pronto');
+    ctx.save(); ctx.beginPath(); ctx.rect(x, y, 300, 470); ctx.clip(); person(W / 2, 1150, .8, prog(g, .3, 1), true); ctx.restore();
+    if (g >= 1) { ctx.fillStyle = COL.ink; ctx.beginPath(); ctx.moveTo(W / 2 - 22, 1240); ctx.lineTo(W / 2 - 22, 1290); ctx.lineTo(W / 2 + 24, 1265); ctx.closePath(); ctx.fill(); }
+    annot(x + 300, 1000, 900, 940, 'em minutos', prog(lt, 3.6, 4.0), 'L');
+  }
+}
+function s4(t, lt) {
+  title(['Só com', 'autorização'], lt, .05, 200, 88, 1);
+  fig('fig. 05 — regra de uso', lt, .3, 430);
+  panel(M, 540, W - 2 * M, 460, prog(lt, 0, .5), 'quem pode virar avatar');
+  check(M + 50, 650, 'o seu rosto', prog(lt, .6, 1.1));
+  check(M + 50, 770, 'quem te autorizou', prog(lt, 2.5, 3.0));
+  check(M + 50, 890, 'famoso sem permissão', prog(lt, 3.3, 3.8), false);
+}
+function s5(t, lt) {
+  title(['Testa', 'hoje'], lt, .05, 200, 92, 1);
+  endCard(t, SC[5] + .1, 'salva e testa hoje');
+}
+const SCENES = [s0, s1, s2, s3, s4, s5];
+window.DURATION = SC[SC.length - 1];
+</script>
+</body></html>

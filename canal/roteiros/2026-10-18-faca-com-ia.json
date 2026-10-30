@@ -1,0 +1,96 @@
+{
+  "id": "2026-10-18-faca-com-ia",
+  "serie": "Faça com IA",
+  "data": "2026-10-18",
+  "horario": "12:00",
+  "titulo": "Currículo com IA de graça: o ChatGPT reescreve pra vaga certa",
+  "descricao": "Currículo com IA, de graça 📄\n1️⃣ Abra o ChatGPT (tem plano grátis) e tire CPF, endereço e telefone do texto\n2️⃣ Cole o currículo e a descrição da vaga\n3️⃣ Use o pedido pronto abaixo\n4️⃣ Confira cada dado antes de enviar\n\nPedido pronto: Reescreva meu currículo para a vaga abaixo. Destaque resultados, use verbos de ação e não invente nada que não esteja no meu texto. Vaga: [cole aqui]. Currículo: [cole aqui]\n\nSalva e testa hoje.\n\nFonte: página de planos do ChatGPT (chatgpt.com/pricing), plano Free, conferido em 14/10/2026.\n\n#curriculo #chatgpt #emprego #vagas #inteligenciaartificial #ia",
+  "hashtags": [
+    "curriculo",
+    "chatgpt",
+    "emprego",
+    "vagas",
+    "inteligenciaartificial",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 14/10/2026",
+    "termos": {
+      "curriculo com ia": {
+        "demanda_views_top10": 74238,
+        "concorrencia_canais_100k": 2
+      }
+    }
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "ChatGPT tem plano grátis (Free)",
+      "fonte": "https://chatgpt.com/pricing",
+      "conferido": "2026-10-14"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ],
+  "registro": {
+    "tema": "currículo reescrito pra vaga com ChatGPT grátis",
+    "chaves": [
+      "curriculo",
+      "emprego",
+      "chatgpt",
+      "vaga"
+    ]
+  },
+  "video": "videos/2026-10-18-12h-curriculo-chatgpt-neon.mp4",
+  "fonte_html": "kit/2026-10-18-12h-curriculo-chatgpt-neon.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "26",
+  "estilo": "neon",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Currículo que chama atenção, feito com IA e de graça.",
+          "legenda": "Currículo que chama atenção, feito com IA e de graça."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Abra o ChatGPT no plano grátis e cole o seu currículo.",
+          "legenda": "Abra o ChatGPT no plano grátis e cole o seu currículo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Peça pra reescrever com foco na vaga. O pedido pronto está na legenda.",
+          "legenda": "Peça pra reescrever com foco na vaga. O pedido pronto está na legenda."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Ele troca tarefa por resultado. Só não deixe inventar nada.",
+          "legenda": "Ele troca tarefa por resultado. Só não deixe inventar nada."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Confira cada dado e envie. Salva e testa hoje.",
+          "legenda": "Confira cada dado e envie. Salva e testa hoje."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

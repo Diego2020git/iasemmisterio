@@ -1,0 +1,88 @@
+{
+  "id": "2026-10-13-agente-na-pratica",
+  "serie": "Agente na Prática",
+  "data": "2026-10-13",
+  "horario": "19:00",
+  "titulo": "Agente de atendimento que sabe a hora de chamar você",
+  "descricao": "O agente de atendimento bom não responde tudo 👇\n1️⃣ Pergunta simples (horário, preço, endereço): ele responde na hora\n2️⃣ Cliente irritado ou pedido fora da regra: ele passa pra você, com o resumo da conversa\n3️⃣ Você entra já sabendo o que aconteceu, sem o cliente repetir tudo\nA regra de quando chamar um humano é você que escreve.\nSalva e me segue pra montar o seu.\n\nFonte: exemplo montado pelo canal, sem números de terceiros.\n\n#agentedeia #atendimento #inteligenciaartificial #whatsapp #ia",
+  "hashtags": [
+    "agentedeia",
+    "atendimento",
+    "inteligenciaartificial",
+    "whatsapp",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "agente de ia para atendimento": {
+        "demanda_views_top10": 199918,
+        "concorrencia_canais_100k": 3
+      }
+    }
+  },
+  "dados_que_envelhecem": [],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "agente de atendimento que passa para humano",
+    "chaves": [
+      "atendimento",
+      "humano",
+      "transferência",
+      "resumo"
+    ]
+  },
+  "video": "videos/2026-10-13-19h-agente-chama-humano-raiox.mp4",
+  "fonte_html": "kit/2026-10-13-19h-agente-chama-humano-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "18",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Esse agente atende sozinho e sabe a hora de chamar você.",
+          "legenda": "Esse agente atende sozinho e sabe a hora de chamar você."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Horário, preço, endereço? Ele responde na hora, até de madrugada.",
+          "legenda": "Horário, preço, endereço? Ele responde na hora, até de madrugada."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Cliente irritado ou pedido fora da regra? Ele passa a conversa pra você.",
+          "legenda": "Cliente irritado ou pedido fora da regra? Ele passa a conversa pra você."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Com um resumo: quem é, o que quer e o que já foi dito.",
+          "legenda": "Com um resumo: quem é, o que quer e o que já foi dito."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e me segue pra montar o seu.",
+          "legenda": "Salva e me segue pra montar o seu."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

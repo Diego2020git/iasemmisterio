@@ -1,0 +1,105 @@
+{
+ "id": "2026-10-25-modelos-e-parametros-02-v2",
+ "serie": "Modelos e parâmetros",
+ "data": "2026-10-25",
+ "horario": "19:00",
+ "titulo": "Modelos e parâmetros #2: por que a IA esquece o começo da conversa",
+ "descricao": "Modelos e parâmetros, episódio 2 🪟\nJanela de contexto é quanto a IA consegue ler de uma vez. Todo texto vira tokens (pedaços de palavra), e o que você manda MAIS o que ela responde ocupam a mesma janela. Passou do limite, o resto não cabe.\nNúmero oficial: o Gemini 3.8 Flash aceita até 1.048.576 tokens de entrada. Segundo o Google, 1 milhão de tokens equivale a uns 8 romances ou 50 mil linhas de código.\nTeste grátis no Google AI Studio:\n1️⃣ Abra aistudio.google.com e escolha um modelo Flash\n2️⃣ Anexe um PDF grande seu (apostila, manual)\n3️⃣ Veja no contador de tokens quanto o arquivo ocupou e pergunte: \"Resuma este arquivo em 5 tópicos e diga a página de cada um.\"\nLimite: conversa muito longa pesa e o começo pode ficar de fora. Abra um chat novo e cole um resumo do que importa.\nEpisódio anterior: #1, mini, flash ou pro. Domingo que vem: modelo com raciocínio.\n\nFontes: ai.google.dev/gemini-api/docs/models/gemini-3.8-flash e ai.google.dev/gemini-api/docs/long-context, conferidos em 24/10/2026.\n\n#ia #gemini #googleaistudio #tokens #inteligenciaartificial",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "m2",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Por que a IA esquece o começo da conversa? Ela lê tudo por uma janela, e a janela tem tamanho.",
+     "legenda": "Por que a IA esquece o começo da conversa? Ela lê tudo por uma janela, e a janela tem tamanho."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Modelos e parâmetros, episódio dois: janela de contexto.",
+     "legenda": "Modelos e parâmetros, episódio 2: janela de contexto."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Funciona assim: o texto vira tokens, pedaços de palavra. O que você manda e o que ela responde ocupam a mesma janela.",
+     "legenda": "Funciona assim: o texto vira tokens, pedaços de palavra. O que você manda e o que ela responde ocupam a mesma janela."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Passou do limite, o resto não cabe. No Gemini Flash, a janela tem um milhão de tokens, uns oito romances.",
+     "legenda": "Passou do limite, o resto não cabe. No Gemini Flash, a janela tem 1 milhão de tokens, uns 8 romances."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Teste grátis no Google AI Studio: anexe um PDF e veja no contador quantos tokens ele ocupa.",
+     "legenda": "Teste grátis no Google AI Studio: anexe um PDF e veja no contador quantos tokens ele ocupa."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Conversa longa demais? Abra um chat novo e cole um resumo.",
+     "legenda": "Conversa longa demais? Abra um chat novo e cole um resumo."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Domingo que vem: modelo com raciocínio.",
+     "legenda": "Domingo que vem: modelo com raciocínio."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Gemini 3.8 Flash: limite de entrada 1.048.576 tokens",
+   "fonte": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+   "conferido": "2026-10-24"
+  },
+  {
+   "dado": "AI Studio grátis (sem chave paga)",
+   "fonte": "https://ai.google.dev/gemini-api/docs/billing",
+   "conferido": "2026-10-24"
+  },
+  {
+   "dado": "1 milhão de tokens ≈ 8 romances de tamanho médio ou 50 mil linhas de código",
+   "fonte": "https://ai.google.dev/gemini-api/docs/long-context",
+   "conferido": "2026-10-24"
+  }
+ ],
+ "registro": {
+  "tema": "modelos ep 2: janela de contexto (quanto a IA lê de uma vez), teste com PDF no AI Studio",
+  "chaves": [
+   "janela de contexto v2",
+   "limite de tokens v2",
+   "contador de tokens v2",
+   "modelos ep 2 v2"
+  ]
+ },
+ "video": "videos/2026-10-25-19h-modelos-e-parametros-02-v2-neon.mp4",
+ "fonte_html": "kit/2026-10-25-19h-modelos-e-parametros-02-v2-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

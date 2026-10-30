@@ -1,0 +1,99 @@
+{
+  "id": "2026-10-15-faca-com-ia",
+  "serie": "Faça com IA",
+  "data": "2026-10-15",
+  "horario": "12:00",
+  "titulo": "Fórmula de planilha com IA no ChatGPT (prompt na legenda)",
+  "descricao": "Fórmula de planilha sem decorar nada, com o ChatGPT 📊\n1️⃣ Abra o chatgpt.com: o plano grátis resolve\n2️⃣ Explique o que tem em cada coluna e o resultado que você quer\n3️⃣ Deu erro? Cole a mensagem de erro e peça a correção\nServe pro Excel e pro Google Planilhas.\n\nPrompt (troque o que está entre colchetes):\nNa minha planilha, a coluna [A] tem [produto], a [B] tem [preço] e a [C] tem [quantidade]. Quero [o total de cada venda] na coluna [D]. Me dá a fórmula e explica onde colar.\n\nSalva!\n\nFonte: chatgpt.com (site oficial), plano grátis conferido em 11/10/2026.\n\n#planilha #excel #chatgpt #inteligenciaartificial #ia #produtividade",
+  "hashtags": [
+    "planilha",
+    "excel",
+    "chatgpt",
+    "inteligenciaartificial",
+    "ia",
+    "produtividade"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "planilha com ia": {
+        "demanda_views_top10": 65305,
+        "concorrencia_canais_100k": 4
+      }
+    }
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "ChatGPT tem plano grátis",
+      "fonte": "https://chatgpt.com",
+      "conferido": "2026-10-14"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "fórmula de planilha com ia",
+    "chaves": [
+      "planilha",
+      "fórmula",
+      "excel",
+      "chatgpt"
+    ]
+  },
+  "video": "videos/2026-10-15-12h-formula-planilha-raiox.mp4",
+  "fonte_html": "kit/2026-10-15-12h-formula-planilha-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "21",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Fórmula de planilha sem decorar: o ChatGPT escreve.",
+          "legenda": "Fórmula de planilha sem decorar: o ChatGPT escreve."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Explica as colunas: A, produto. B, preço. C, quantidade.",
+          "legenda": "Explica as colunas: A, produto. B, preço. C, quantidade."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Pede o total na coluna D. Ele devolve: igual, B dois, vezes C dois.",
+          "legenda": "Pede o total na coluna D. Ele devolve: =B2*C2."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Deu erro? Cola o erro e ele corrige.",
+          "legenda": "Deu erro? Cola o erro e ele corrige."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O pedido pronto, o prompt, está na legenda.",
+          "legenda": "O pedido pronto, o prompt, está na legenda."
+        },
+        {
+          "fala": "Salva e me segue pra mais.",
+          "legenda": "Salva e me segue pra mais."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

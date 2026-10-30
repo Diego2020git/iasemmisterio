@@ -1,0 +1,67 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1350"></canvas>
+<script src="raiox-kit.js"></script>
+<script>
+// Carrossel da Semana 31/10/2026 · NEON (Diego, card 17/10) · resume o Automação do zero #4 (27/10): e-mail com estrela vira tarefa no Google Tasks. render(i) desenha o slide i (1080x1350).
+const CH = 1350, N = 8;
+const AZ = '#2f6bff', CI = '#2ee6ff', IN = '#4f5bff', BR = '#f4f8ff', DIM = 'rgba(244,248,255,.7)';
+const hex = (h, a) => { const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; };
+const LOGO = document.getElementById('logo');
+function luz(x, y, rx, ry, color, a) { ctx.save(); ctx.translate(x, y); ctx.scale(1, ry / rx);
+  const g = ctx.createRadialGradient(0, 0, 0, 0, 0, rx); g.addColorStop(0, hex(color, a)); g.addColorStop(.5, hex(color, a * .35)); g.addColorStop(1, hex(color, 0));
+  ctx.fillStyle = g; ctx.fillRect(-rx, -rx, 2 * rx, 2 * rx); ctx.restore(); }
+function bg(i) { ctx.fillStyle = '#030408'; ctx.fillRect(0, 0, W, CH);
+  ctx.save(); ctx.globalCompositeOperation = 'lighter'; luz(780, -100, 900, 600, '#8a94a8', .18); luz(i % 2 ? 760 : 320, 1420, 900, 700, i % 2 ? CI : AZ, .45); luz(950, 1000, 500, 600, IN, .12); ctx.restore();
+  txt('IA SEM MISTÉRIO · CARROSSEL DA SEMANA', 70, CH - 60, ARC, 22, DIM, { weight: 600, ls: 3 });
+  txt(`${i + 1}/${N}`, W - 70, CH - 60, ARC, 24, CI, { align: 'right', weight: 600, ls: 3 }); }
+function glowTxt(str, x, y, size, color, o = {}) { ctx.save(); ctx.shadowColor = color; ctx.shadowBlur = 24; txt(str, x, y, o.f || EXP, size, color, o); ctx.restore(); }
+function head(str, y, size = 80, color = BR) { const ls = wrap(str, W - 2 * M, EXP, size); ls.forEach((l, k) => glowTxt(l, M, y + k * size * 1.15, size, color)); return y + ls.length * size * 1.15; }
+function para(str, y, size = 40, color = BR, maxW = W - 2 * M, x = M) { const ls = wrap(str, maxW, ARC, size, 600); ls.forEach((l, k) => txt(l, x, y + k * size * 1.35, ARC, size, color, { weight: 600 })); return y + ls.length * size * 1.35; }
+function card(x, y, w, h, cor = CI) { ctx.save(); ctx.fillStyle = 'rgba(10,30,60,.9)'; rr(x, y, w, h, 28); ctx.fill(); ctx.strokeStyle = cor; ctx.lineWidth = 3; ctx.shadowColor = cor; ctx.shadowBlur = 26; rr(x, y, w, h, 28); ctx.stroke(); ctx.restore(); }
+function etiqueta(str, y) { txt(str, M, y, ARC, 26, CI, { weight: 600, ls: 4 }); }
+function campo(x, y, w, rot, val, cor = CI) { card(x, y, w, 150, cor); txt(rot, x + 34, y + 48, ARC, 26, cor, { weight: 600, ls: 2 }); txt(val, x + 34, y + 110, EXP, 40, BR); }
+function passo(k, titulo, texto, campos) { etiqueta(`PASSO ${k} DE 3`, 140); let y = head(titulo, 250, 76, CI); y = para(texto, y + 40, 42); y += 50;
+  campos.forEach(c => { campo(M, y, W - 2 * M, c[0], c[1], c[2] || CI); y += 190; }); }
+function fluxo(y) { const it = [['Estrela', 'no Gmail'], ['Zapier', 'confere'], ['Tarefa', 'no Tasks']];
+  it.forEach((t, k) => { const x = M + k * 310; card(x, y, 280, 220, k === 1 ? CI : AZ); glowTxt(t[0], x + 140, y + 95, 40, BR, { align: 'center' }); txt(t[1], x + 140, y + 155, ARC, 30, DIM, { align: 'center', weight: 600 });
+    if (k < 2) glowTxt('→', x + 295, y + 125, 40, CI, { align: 'center', f: ARC }); }); }
+const SLIDES = [
+  i => { etiqueta('CARROSSEL DA SEMANA', 160); let y = head('Estrela no e-mail vira tarefa', 290, 92);
+    head('Gmail + Google Tasks, grátis', y + 30, 60, CI); fluxo(860);
+    glowTxt('arrasta →', W - M, 1180, 36, CI, { align: 'right', f: ARC }); },
+  i => { etiqueta('O QUE VOCÊ VAI TER', 140); head('Nenhum e-mail importante esquecido', 250, 72);
+    para('Marcou estrela num e-mail, ele aparece sozinho como tarefa na sua lista do Google Tasks, com o assunto como título.', 600, 44);
+    fluxo(900); },
+  i => passo(1, 'Crie o Zap', 'No zapier.com, clique em + Create e escolha Zap. O gatilho é o que dispara tudo.',
+    [['GATILHO (TRIGGER)', 'Gmail'], ['EVENTO', 'New Starred Email']]),
+  i => passo(2, 'Vire tarefa', 'Na ação, escolha o Google Tasks e a lista. Ligue o assunto do e-mail ao título da tarefa.',
+    [['AÇÃO (ACTION)', 'Google Tasks'], ['EVENTO', 'Create Task'], ['LIGUE', 'Subject → Title']]),
+  i => passo(3, 'Teste e publique', 'Marque estrela num e-mail de verdade pra testar. Apareceu a tarefa? Clique em Publish.',
+    [['BOTÃO', 'Publish', IN]]),
+  i => { etiqueta('BOM SABER', 140); head('Os limites', 250, 80, CI);
+    card(M, 420, W - 2 * M, 560, CI);
+    para('Vale pra estrela marcada em até 2 dias depois que o e-mail chegou.', 500, 42, BR, W - 2 * M - 80, M + 40);
+    para('No grátis o Zapier confere a cada 15 minutos: a tarefa pode demorar um pouco.', 680, 42, BR, W - 2 * M - 80, M + 40);
+    para('Conferido em zapier.com em 26/10/2026.', 1080, 30, DIM); },
+  i => { etiqueta('QUANTO CUSTA', 140); head('Grátis, com limite', 250, 80, CI);
+    card(M, 420, W - 2 * M, 480, CI);
+    para('Zapier grátis: 100 tarefas por mês e Zaps de 2 passos.', 500, 44, BR, W - 2 * M - 80, M + 40);
+    para('Cada tarefa criada gasta 1 tarefa do plano.', 690, 44, BR, W - 2 * M - 80, M + 40);
+    para('Gmail e Google Tasks são grátis.', 1000, 40, DIM); },
+  i => { etiqueta('PROMPT PRONTO', 140); head('Título melhor com IA', 250, 76, CI);
+    card(M, 400, W - 2 * M, 560, CI);
+    para('Cole no Gemini ou no ChatGPT junto com o e-mail: "Transforme este e-mail numa tarefa de até 8 palavras, começando com um verbo, e diga o prazo se tiver."', 480, 42, BR, W - 2 * M - 80, M + 40);
+    if (LOGO.complete) { ctx.drawImage(LOGO, W / 2 - 70, 1010, 140, 140); }
+    txt('salva e segue pro próximo', W / 2, 1210, ARC, 36, BR, { align: 'center', weight: 600 }); },
+];
+function render(i) { i = Math.round(i); ctx.save(); ctx.clearRect(0, 0, W, CH); bg(i); SLIDES[i](i); ctx.restore(); }
+window.render = render;
+</script>
+</body></html>

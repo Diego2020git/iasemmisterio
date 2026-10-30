@@ -1,0 +1,92 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-03-automacao-do-zero-06.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 03/11/2026 · 19h · Automação do zero #6: lembrete por e-mail uma hora antes de cada compromisso (Zapier, 2 passos). Padrão de entrega de 24/10. Neon + neon-entrega.js.
+// Mecanismo: Zapier olha a agenda a cada 15 min → evento começa em 1 h → Gmail manda o lembrete com título, horário e local. Fontes: zapier.com/apps/gmail/integrations/google-calendar, zapier.com/pricing.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [wt('publish', 4) + .1];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, CI, VERDE, AZ, AMB, AZ];
+const HITS = [wt('hora', 0), wt('email', 0), wt('seis', 1), wt('gatilho', 2), wt('start', 2), wt('antes', 2), wt('send', 3), wt('assunto', 3), wt('local', 4), wt('publish', 4), wt('quinze', 5), wt('cem', 5)];
+// agenda do dia com o compromisso
+function agenda(x, y, w, a, t, hl) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#ffffff'; rr(x, y, w, 420, 18); ctx.fill();
+  ctx.fillStyle = '#e8eefc'; rr(x, y, w, 70, 18); ctx.fill(); ctx.fillRect(x, y + 50, w, 20); txt('Google Agenda · terça', x + 24, y + 38, ARC, 28, '#1b2440', { weight: 700 });
+  ['13:00', '14:00', '15:00', '16:00'].forEach((h, i) => { const yy = y + 100 + i * 80; txt(h, x + 24, yy + 20, ARC, 26, '#5a6a8f', { weight: 600 }); ctx.strokeStyle = '#dde4f3'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x + 120, yy); ctx.lineTo(x + w - 20, yy); ctx.stroke(); });
+  ctx.fillStyle = hl > 0 ? '#2e6bff' : '#6f8fe6'; rr(x + 130, y + 262, w - 160, 72, 12); ctx.fill(); txt('Dentista · Rua das Flores, 120', x + 150, y + 298, ARC, 28, '#ffffff', { weight: 700 });
+  if (hl > 0) { ctx.strokeStyle = hex(AMB, clamp(hl)); ctx.lineWidth = 5; ctx.shadowColor = AMB; ctx.shadowBlur = 20; rr(x + 126, y + 258, w - 152, 80, 14); ctx.stroke(); }
+  ctx.restore(); }
+// e-mail de lembrete
+function lembrete(x, y, w, a, corpo) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const e = .92 + .08 * back(clamp(a)); ctx.translate(x + w / 2, y); ctx.scale(e, e); ctx.translate(-x - w / 2, -y);
+  ctx.fillStyle = '#ffffff'; rr(x, y, w, corpo ? 250 : 130, 18); ctx.fill(); ctx.fillStyle = '#ea4335'; ctx.beginPath(); ctx.arc(x + 50, y + 64, 26, 0, 7); ctx.fill(); txt('M', x + 50, y + 66, ARC, 30, '#fff', { align: 'center', weight: 800 });
+  txt('Lembrete: Dentista', x + 100, y + 50, ARC, 32, '#1b2440', { weight: 700 }); txt('para: voce@gmail.com', x + 100, y + 90, ARC, 26, '#5a6a8f', { weight: 600 });
+  if (corpo) { txt('Começa às 15:00', x + 40, y + 160, ARC, 30, '#1b2440', { weight: 600, alpha: clamp(corpo) }); txt('Local: Rua das Flores, 120', x + 40, y + 206, ARC, 30, '#1b2440', { weight: 600, alpha: clamp(corpo * 2 - 1) }); }
+  ctx.restore(); }
+function passo(x, y, w, rot, app, ev, a, cor) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const e = .9 + .1 * back(clamp(a)); ctx.translate(x, y + 85); ctx.scale(e, e); ctx.translate(-x, -y - 85);
+  ctx.fillStyle = 'rgba(10,30,60,.95)'; rr(x - w / 2, y, w, 170, 24); ctx.fill(); ctx.strokeStyle = cor; ctx.lineWidth = 4; ctx.shadowColor = cor; ctx.shadowBlur = 24; rr(x - w / 2, y, w, 170, 24); ctx.stroke(); ctx.shadowBlur = 0;
+  txt(rot, x - w / 2 + 30, y + 42, ARC, 26, cor, { weight: 600, ls: 2 }); txt(app, x - w / 2 + 30, y + 95, ARC, 42, BR, { weight: 800 }); txt(ev, x - w / 2 + 30, y + 142, ARC, 34, 'rgba(244,248,255,.85)', { weight: 600 }); ctx.restore(); }
+const S = [
+  // 0 · gancho: agenda → e-mail uma hora antes
+  (t, lt) => {
+    titulo('A AGENDA TE AVISA', 360, -1, SC[1] - .2, t, 82, BR, 'AVISA', AMB);
+    agenda(cx0 - 410, 470, 820, prog(lt, 0, .2), t, prog(t, wt('compromisso', 0) - .2, wt('compromisso', 0) + .2));
+    lembrete(cx0 - 410, 960, 820, prog(t, wt('chega', 0) - .2, wt('chega', 0) + .3), 0);
+    pilula('1 hora antes', cx0, 1180, 360, prog(t, wt('hora', 0) - .2, wt('hora', 0) + .2), AMB, '', 1, 40);
+  },
+  // 1 · episódio
+  (t, lt) => {
+    titulo('AUTOMAÇÃO DO ZERO', 500, SC[1], SC[2] - .2, t, 76, BR, 'ZERO', CI);
+    versao('EPISÓDIO 6', cx0, 700, prog(t, wt('episodio', 1) - .1, wt('episodio', 1) + .3), CI, 0, 60);
+    neon3d(P.calendario, cx0, 980 + flut(t), 120 * back(prog(t, wt('agenda', 1) - .3, wt('agenda', 1) + .2)), .3 * Math.sin(t), .1, AMB, prog(t, wt('agenda', 1) - .3, wt('agenda', 1)));
+  },
+  // 2 · passo 1: gatilho Google Calendar Event Start
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('GATILHO: AGENDA', 450, wt('zapier', 2) - .1, SC[3] - .2, t, 80, BR, 'AGENDA', CI);
+    linhaTxt('gatilho = o que dispara tudo', 550, wt('gatilho', 2) - .2, SC[3] - .2, t, 38, CI);
+    passo(cx0, 620, 820, 'GATILHO (TRIGGER)', 'Google Calendar', 'Event Start', prog(t, wt('google', 2) - .2, wt('google', 2) + .3), CI);
+    pilula('sua agenda', cx0 - 210, 860, 360, prog(t, wt('agenda', 2) - .2, wt('agenda', 2) + .2), CI, '', 1, 38);
+    pilula('1 hora antes', cx0 + 210, 860, 360, prog(t, wt('antes', 2) - .3, wt('antes', 2) + .1), AMB, '', 1, 38);
+    agenda(cx0 - 410, 920, 820, prog(t, wt('agenda', 2) - .2, wt('agenda', 2) + .3), t, prog(t, wt('antes', 2) - .2, wt('antes', 2) + .2));
+  },
+  // 3 · passo 2: ação Gmail Send Email
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('AÇÃO: GMAIL', 450, wt('acao', 3) - .1, SC[4] - .2, t, 84, BR, 'GMAIL', VERDE);
+    passo(cx0, 560, 820, 'AÇÃO (ACTION)', 'Gmail', 'Send Email', prog(t, wt('gmail', 3) - .2, wt('gmail', 3) + .3), VERDE);
+    janela(800, 330, prog(t, wt('to', 3) - .3, wt('to', 3)), 'Send Email', (x, y, w) => {
+      campo(x + 20, y + 20, w - 40, 'To', 'voce@gmail.com', prog(t, wt('to', 3) - .1, wt('email', 3, 2) + .2), prog(t, wt('email', 3, 2), wt('email', 3, 2) + .3));
+      campo(x + 20, y + 160, w - 40, 'Subject', 'Lembrete: (título do evento)', prog(t, wt('assunto', 3) - .2, wt('evento', 3) + .2), prog(t, wt('evento', 3), wt('evento', 3) + .3)); });
+  },
+  // 4 · passo 3: corpo com horário e local + Publish
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('HORÁRIO E LOCAL', 450, wt('corpo', 4) - .1, SC[5] - .2, t, 80, BR, 'LOCAL', AZ);
+    lembrete(cx0 - 410, 600, 820, prog(t, wt('corpo', 4) - .3, wt('corpo', 4)), prog(t, wt('horario', 4) - .2, wt('local', 4) + .3));
+    pilula('Teste', cx0 - 200, 1000, 280, prog(t, wt('teste', 4) - .2, wt('teste', 4) + .2), CI, '', 1, 40);
+    botao(cx0 + 160, 1000, 'Publish', prog(t, wt('clique', 4) - .1, wt('clique', 4) + .2), prog(t, wt('publish', 4), wt('publish', 4) + .4), AZ);
+  },
+  // 5 · ritmo e limite
+  (t, lt) => {
+    titulo('A CADA 15 MINUTOS', 380, SC[5], SC[6] - .2, t, 80, BR, '15 MINUTOS', AMB);
+    neon3d(P.relogio, cx0, 680 + flut(t), 120 * back(prog(lt, .05, .4)), t * .5, .1, AMB, prog(lt, .05, .3));
+    pilula('pode chegar até 15 min depois', cx0, 920, 760, prog(t, wt('confere', 5) - .2, wt('minutos', 5) + .2), AMB, 'NO PLANO GRÁTIS', 1, 40);
+    pilula('grátis: 100 tarefas por mês', cx0, 1100, 720, prog(t, wt('cem', 5) - .2, wt('cem', 5) + .2), VERDE, 'cada e-mail enviado = 1 tarefa', 1, 42);
+  },
+  // 6 · fim
+  (t, lt) => fim(t, lt, 'Salva e segue', 'sábado: episódio 7'),
+];
+</script></body></html>

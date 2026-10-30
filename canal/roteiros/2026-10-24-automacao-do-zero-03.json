@@ -1,0 +1,100 @@
+{
+ "id": "2026-10-24-automacao-do-zero-03",
+ "serie": "Automação do zero",
+ "data": "2026-10-24",
+ "horario": "19:00",
+ "titulo": "Automação do zero #3: linha na planilha vira evento na agenda",
+ "descricao": "Automação do zero, episódio 3 📅\nEscreveu uma linha na planilha, o compromisso aparece sozinho na sua Google Agenda.\n1️⃣ No Google Planilhas, crie as colunas: Título, Data, Início, Fim.\n2️⃣ No zapier.com, + Create → Zap. Gatilho (Trigger): app Google Sheets, evento New Spreadsheet Row. Escolha a planilha e a aba.\n3️⃣ Ação (Action): app Google Calendar, evento Create Detailed Event. Ligue Summary ao Título, Start ao Início e End ao Fim. Teste e clique em Publish.\nPlano grátis do Zapier: 100 tarefas por mês e Zaps de 2 passos. Cada evento criado = 1 tarefa.\nEpisódio anterior: #2, formulário vira planilha e e-mail. Terça: episódio 4.\n\nFonte: planos do Zapier (zapier.com/pricing) e integração Google Sheets + Google Calendar (zapier.com/apps/google-calendar/integrations/google-sheets), conferidos em 21/10/2026.\n\n#automacao #zapier #googlesheets #googleagenda #ia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "a3",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Escreveu na planilha? O compromisso aparece sozinho na sua agenda.",
+     "legenda": "Escreveu na planilha? O compromisso aparece sozinho na sua agenda."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Automação do zero, episódio três. Nada de copiar data por data.",
+     "legenda": "Automação do zero, episódio 3. Nada de copiar data por data."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no Google Planilhas, crie as colunas título, data, início e fim.",
+     "legenda": "Um: no Google Planilhas, crie as colunas título, data, início e fim."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: no Zapier, crie um Zap. Gatilho: Google Sheets, New Spreadsheet Row.",
+     "legenda": "Dois: no Zapier, crie um Zap. Gatilho: Google Sheets, New Spreadsheet Row."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: ação: Google Calendar, Create Detailed Event. Ligue as colunas e publique.",
+     "legenda": "Três: ação: Google Calendar, Create Detailed Event. Ligue as colunas e publique."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Pronto: cada linha nova vira evento. Grátis até cem tarefas por mês.",
+     "legenda": "Pronto: cada linha nova vira evento. Grátis até 100 tarefas por mês."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Salva pra fazer hoje. Terça tem o episódio quatro.",
+     "legenda": "Salva pra fazer hoje. Terça tem o episódio 4."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Zapier grátis: 100 tarefas/mês, Zaps de 2 passos",
+   "fonte": "https://help.zapier.com/hc/en-us/articles/32337438839565-What-s-included-in-Zapier-s-Free-plan",
+   "conferido": "2026-10-23"
+  },
+  {
+   "dado": "Google Sheets New Spreadsheet Row (gatilho) e Google Calendar Create Detailed Event (ação) no Zapier",
+   "fonte": "https://zapier.com/apps/google-calendar/integrations/google-sheets",
+   "conferido": "2026-10-21"
+  }
+ ],
+ "registro": {
+  "tema": "automação ep 3: linha nova no Google Planilhas vira evento na Google Agenda (Zapier)",
+  "chaves": [
+   "planilha para agenda",
+   "new spreadsheet row",
+   "create detailed event",
+   "automacao ep 3"
+  ]
+ },
+ "video": "videos/2026-10-24-19h-automacao-do-zero-03-neon.mp4",
+ "fonte_html": "kit/2026-10-24-19h-automacao-do-zero-03-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}
