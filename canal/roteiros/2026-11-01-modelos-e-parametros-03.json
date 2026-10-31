@@ -72,17 +72,17 @@
   {
    "dado": "Gemini 3.8 Flash: thinking_level low, medium, high (minimal não suportado); padrão medium",
    "fonte": "https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.8",
-   "conferido": "2026-10-28"
+   "conferido": "2026-10-31"
   },
   {
    "dado": "Resumo do raciocínio (thought summaries) separado da resposta",
    "fonte": "https://ai.google.dev/gemini-api/docs/thinking",
-   "conferido": "2026-10-28"
+   "conferido": "2026-10-31"
   },
   {
    "dado": "AI Studio grátis (sem chave paga)",
    "fonte": "https://ai.google.dev/gemini-api/docs/billing",
-   "conferido": "2026-10-28"
+   "conferido": "2026-10-31"
   }
  ],
  "registro": {

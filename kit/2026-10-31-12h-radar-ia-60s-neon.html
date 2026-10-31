@@ -1,0 +1,100 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-31-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 31/10/2026 · 12h · Radar IA #16 (57 s): Gemini 4 Carbon (só defensores), Mistral Large 4 com pesos abertos, Gemini edita apresentação inteira no Slides. Neon + neon-entrega.js.
+// Fontes: blog.google (Gemini 4 Carbon, 28/10), mistral.ai/news (Large 4 open weight, 29/10), workspaceupdates.googleblog.com (Slides, 29/10).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8], T0[9] + .7];
+const DURATION = SC[9], IMPACTO = SC[8] + .4;
+const COR = [AZ, CI, AZ, AMB, VERDE, AMB, CI, AZ, AZ];
+const HITS = [wt('carbon', 0), wt('baixar', 0), wt('inteira', 0), wt('radar', 1), wt('forte', 2), wt('digital', 2), wt('equipes', 3), wt('data', 3), wt('arquivo', 4), wt('pago', 4), wt('licenca', 4), wt('gigante', 5), wt('inteira', 6), wt('ingles', 6), wt('cheia', 7)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// slides em grade que mudam de estilo (m 0..1)
+function slides(x, y, n, m, a, t) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const w = 250, h = 150;
+  for (let i = 0; i < n; i++) { const xx = x + (i % 3) * (w + 30), yy = y + Math.floor(i / 3) * (h + 30), q = clamp(m * 1.6 - i * .12);
+    ctx.fillStyle = q > .5 ? '#0b1e4a' : '#ffffff'; rr(xx, yy, w, h, 12); ctx.fill(); ctx.strokeStyle = q > .5 ? CI : '#c9d3ea'; ctx.lineWidth = 3; rr(xx, yy, w, h, 12); ctx.stroke();
+    ctx.fillStyle = q > .5 ? CI : '#1b2440'; rr(xx + 20, yy + 26, w * .6, 18, 9); ctx.fill(); ctx.fillStyle = q > .5 ? 'rgba(120,200,255,.5)' : '#c9d3ea';
+    rr(xx + 20, yy + 64, w * .75, 12, 6); ctx.fill(); rr(xx + 20, yy + 88, w * .5, 12, 6); ctx.fill(); }
+  ctx.restore(); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 31/10', 330, -1, SC[1] - .2, t, 40, CI);
+    versao('GEMINI 4 CARBON ANUNCIADO', cx0, 560, prog(t, -1, .1), AZ, 0, 38);
+    versao('MISTRAL LIBERA O MODELO', cx0, 820, prog(t, wt('mistral', 0) - .2, wt('mistral', 0) + .2), VERDE, 0, 38);
+    versao('SLIDES INTEIRO COM IA', cx0, 1080, prog(t, wt('edita', 0) - .2, wt('edita', 0) + .2), CI, 0, 38);
+  },
+  // 1 · radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, 700, 230 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .25));
+    titulo('RADAR IA', 1050, SC[1], SC[2] - .2, t, 110, BR, 'IA', CI);
+  },
+  // 2 · Gemini 4 Carbon
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('GEMINI 4 CARBON', 450, wt('gemini', 2) - .2, SC[3] - .2, t, 84, BR, 'CARBON', AZ);
+    neon3d(P.escudo, cx0, 760 + flut(t), 150 * back(prog(t, wt('forte', 2) - .4, wt('forte', 2))), .5 * Math.sin(t * .8), .2, AZ, prog(t, wt('forte', 2) - .4, wt('forte', 2)));
+    pilula('o mais forte do Google', cx0, 1010, 620, prog(t, wt('forte', 2) - .2, wt('google', 2) + .2), AZ, 'SEGUNDO A EMPRESA', 1, 42);
+    pilula('destaque: segurança digital', cx0, 1170, 700, prog(t, wt('seguranca', 2) - .2, wt('digital', 2) + .2), CI, '', 1, 40);
+  },
+  // 3 · quem pode usar
+  (t, lt) => {
+    titulo('AINDA NÃO DÁ PRA USAR', 380, SC[3], SC[4] - .2, t, 70, BR, 'NÃO', AMB);
+    pilula('1º: equipes de segurança', cx0, 620, 720, prog(t, wt('equipes', 3) - .2, wt('ataques', 3) + .2), VERDE, 'QUE DEFENDEM SISTEMAS', 1, 40);
+    pilula('depois: empresas e devs', cx0, 820, 700, prog(t, wt('ataques', 3), wt('ataques', 3) + .3), AMB, '', 1, 40);
+    pilula('público: sem data', cx0, 1000, 560, prog(t, wt('publico', 3) - .2, wt('data', 3) + .2), VERM, '', 1, 44);
+  },
+  // 4 · Mistral Large 4 aberto
+  (t, lt) => {
+    numero(2, 300, SC[4], SC[5] - .2, t);
+    titulo('MODELO PRA BAIXAR', 450, wt('mistral', 4) - .2, SC[5] - .2, t, 76, BR, 'BAIXAR', VERDE);
+    const d = prog(t, wt('arquivo', 4) - .2, wt('baixar', 4) + .3);
+    neon3d(P.pasta, cx0, 650 + 80 * ease(d), 110 * back(prog(t, wt('arquivo', 4) - .4, wt('arquivo', 4))), .3 * Math.sin(t), .1, VERDE, prog(t, wt('arquivo', 4) - .4, wt('arquivo', 4)));
+    pilula('Mistral Large 4', cx0, 880, 660, prog(t, wt('large', 4) - .2, wt('large', 4) + .2), VERDE, 'PESOS ABERTOS NO HUGGING FACE', 1, 42);
+    pilula('uso em produto pago: ok', cx0, 1060, 640, prog(t, wt('pago', 4) - .2, wt('pago', 4) + .2), VERDE, '', 1, 38);
+    pilula('vender como serviço: licença', cx0, 1200, 720, prog(t, wt('vende', 4) - .2, wt('licenca', 4) + .2), AMB, '', 1, 38);
+  },
+  // 5 · gigante
+  (t, lt) => {
+    titulo('É GIGANTE', 380, SC[5], SC[6] - .2, t, 100, BR, 'GIGANTE', AMB);
+    neon3d(P.servidor, cx0, 720 + flut(t), 170 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .7), .2, AMB, prog(lt, .05, .3));
+    pilula('máquina profissional', cx0, 980, 560, prog(t, wt('maquina', 5) - .2, wt('profissional', 5) + .2), AMB, '', 1, 42);
+    pilula('no seu computador: não roda', cx0, 1140, 720, prog(t, wt('roda', 5) - .3, wt('computador', 5) + .2), VERM, '', 1, 38);
+  },
+  // 6 · Slides inteiro
+  (t, lt) => {
+    numero(3, 300, SC[6], SC[7] - .2, t);
+    titulo('A APRESENTAÇÃO INTEIRA', 450, wt('google', 6) - .2, SC[7] - .2, t, 64, BR, 'INTEIRA', CI);
+    pilula('“deixe todos no mesmo estilo”', cx0, 600, 760, prog(t, wt('pedido', 6) - .2, wt('pedido', 6) + .2), CI, '', 1, 36);
+    slides(cx0 - 405, 700, 6, prog(t, wt('muda', 6), wt('inteira', 6) + .4), prog(t, wt('apresentacoes', 6) - .3, wt('apresentacoes', 6)), t);
+    exemplo(cx0, 1090, prog(t, wt('pedido', 6), wt('pedido', 6) + .3));
+    pilula('só inglês', cx0 - 200, 1210, 320, prog(t, wt('ingles', 6) - .2, wt('ingles', 6) + .2), AMB, '', 1, 36);
+    pilula('contas pagas', cx0 + 200, 1210, 340, prog(t, wt('pagas', 6) - .2, wt('pagas', 6) + .2), AMB, '', 1, 36);
+  },
+  // 7 · teste hoje
+  (t, lt) => {
+    titulo('TESTE HOJE', 330, SC[7], SC[8] - .2, t, 90, BR, 'HOJE', CI);
+    janela(470, 560, prog(t, wt('peca', 7) - .3, wt('peca', 7) + .1), 'gemini.google.com', (x, y, w) => {
+      const q = prog(t, wt('apresentacao', 7) - .2, wt('apresentacao', 7) + .2); ctx.save(); ctx.globalAlpha *= q; ctx.fillStyle = '#dfe8ff'; rr(x + w - 620, y + 20, 600, 70, 18); ctx.fill();
+      txt('Crie uma apresentação de 3 slides', x + w - 600, y + 56, ARC, 28, '#1b2440', { weight: 600 }); ctx.restore();
+      ctx.save(); ctx.globalAlpha *= prog(t, wt('slides', 7) - .2, wt('slides', 7) + .3); for (let i = 0; i < 3; i++) { ctx.fillStyle = '#f2f5fc'; rr(x + 30 + i * 250, y + 140, 220, 140, 12); ctx.fill();
+        ctx.fillStyle = '#2e6bff'; rr(x + 50 + i * 250, y + 165, 120, 16, 8); ctx.fill(); ctx.fillStyle = '#c9d3ea'; rr(x + 50 + i * 250, y + 200, 160, 10, 5); ctx.fill(); } ctx.restore(); });
+    exemplo(cx0, 1120, prog(t, wt('abra', 7), wt('abra', 7) + .3));
+  },
+  // 8 · fim
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>
