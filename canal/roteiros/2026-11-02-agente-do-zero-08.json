@@ -4,7 +4,7 @@
  "data": "2026-11-02",
  "horario": "19:00",
  "titulo": "Agente do zero #8: o primeiro oi respondido no WhatsApp",
- "descricao": "Agente do zero, episódio 8 💬\nHoje o cenário do Make fecha o ciclo: chegou mensagem no WhatsApp de teste, o Gemini escreve a resposta e o Make manda de volta.\n1️⃣ No cenário do episódio 7, depois do WhatsApp Business Cloud Watch Events, adicione Google Gemini AI → Create a Completion (o mesmo do episódio 5) e ligue o texto da mensagem recebida (Text → Body) ao pedido. Cole as instruções do episódio 3 antes.\n2️⃣ Adicione WhatsApp Business Cloud → Send a Message. Sender ID: o número de teste. Receiver: ligue o número de quem mandou (WhatsApp ID do contato, que vem do Watch Events).\n3️⃣ Em Message Type escolha Text e ligue a resposta do Gemini. Salve e ligue o cenário.\nTeste: mande \"oi\" do celular que você cadastrou no episódio 6.\nLimites: mensagem livre só vale até 24 horas depois da última mensagem do cliente (para puxar conversa, só com modelo aprovado, o Send a Template). Com número de teste, só respondem os números cadastrados. Se aparecer sucesso no Make mas nada chegar, confira essas duas regras. Make grátis: 1.000 créditos por mês.\nQuarta, episódio 9: memória da conversa.\n\nFontes (conferidas em 28/10/2026): apps.make.com/whatsapp-business-cloud-modules · make.com/how-to-guides/how-to-create-whatsapp-business-chatbot · developers.facebook.com (WhatsApp Cloud API Get Started)\n\n#ia #agentedeia #whatsapp #make #gemini #automacao",
+ "descricao": "Agente do zero, episódio 8 💬\nHoje o cenário do Make fecha o ciclo: chegou mensagem no WhatsApp de teste, o Gemini escreve a resposta e o Make manda de volta.\n1️⃣ No cenário do episódio 7, depois do WhatsApp Business Cloud Watch Events, adicione Google Gemini AI → Create a Completion (o mesmo do episódio 5) e ligue o texto da mensagem recebida (Text → Body) ao pedido. Cole as instruções do episódio 3 antes.\n2️⃣ Adicione WhatsApp Business Cloud → Send a Message. Sender ID: o número de teste. Receiver: ligue o número de quem mandou (WhatsApp ID do contato, que vem do Watch Events).\n3️⃣ Em Message Type escolha Text e ligue a resposta do Gemini. Salve e ligue o cenário.\nTeste: mande \"oi\" do celular que você cadastrou no episódio 6.\nLimites: mensagem livre só vale até 24 horas depois da última mensagem do cliente (para puxar conversa, só com modelo aprovado, o Send a Template). Com número de teste, só respondem os números cadastrados. Se aparecer sucesso no Make mas nada chegar, confira essas duas regras. Make grátis: 1.000 créditos por mês. Na Meta, desde 01/10/2026 cada resposta dentro das 24 h conta: são 1.000 grátis por mês por número; sem forma de pagamento cadastrada, as que passarem disso não são entregues.\nQuarta, episódio 9: memória da conversa.\n\nFontes (conferidas em 28/10/2026): apps.make.com/whatsapp-business-cloud-modules · make.com/how-to-guides/how-to-create-whatsapp-business-chatbot · developers.facebook.com (WhatsApp Cloud API Get Started)\n\n#ia #agentedeia #whatsapp #make #gemini #automacao",
  "comentario_fixado": null,
  "voz": "pt-BR-Chirp3-HD-Fenrir",
  "ep": 8,
@@ -70,19 +70,24 @@
  ],
  "dados_que_envelhecem": [
   {
-   "dado": "Make Send a Message: Sender ID, Receiver (sem +), Message Type; mensagem livre só nas 24 h após o cliente escrever ou após resposta a template; número de teste exige destinatário cadastrado; sucesso no Make não garante entrega",
+   "dado": "Make Send a Message: Sender ID, Receiver (WhatsApp ID ou número com código do país), Message Type; mensagem livre só nas 24 h após o cliente escrever ou após resposta a template; número de teste exige destinatário cadastrado; sucesso no Make não garante entrega",
    "fonte": "https://apps.make.com/whatsapp-business-cloud-modules",
-   "conferido": "2026-10-28"
+   "conferido": "2026-11-01"
   },
   {
    "dado": "Tutorial Make: mapear Contacts WhatsApp ID do Watch Events no Receiver; Text.Body é o texto recebido",
    "fonte": "https://www.make.com/how-to-guides/how-to-create-whatsapp-business-chatbot",
-   "conferido": "2026-10-28"
+   "conferido": "2026-11-01"
   },
   {
    "dado": "Make grátis: 1.000 créditos/mês, 2 cenários ativos",
    "fonte": "https://www.make.com/en/pricing",
-   "conferido": "2026-10-25"
+   "conferido": "2026-11-01"
+  },
+  {
+   "dado": "Meta cobra mensagens de atendimento desde 01/10/2026: 1.000 grátis por mês por número; sem forma de pagamento, entrega só dentro da faixa grátis",
+   "fonte": "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/non-template-messages",
+   "conferido": "2026-11-01"
   }
  ],
  "registro": {
