@@ -143,4 +143,4 @@ Cada tema é revalidado na YouTube Data API antes de virar roteiro.
 | Mês | Caracteres de voz (Google) | Unidades YouTube API |
 |---|---|---|
 | 10/2026 | ~50.100 no mês (948 de teste + 51 vídeos e regravações), de 1 milhão grátis | ~3.600 até 18/10 (cota grátis de 10 mil por dia; sem uso novo) |
-| 11/2026 | ~900 até 01/11 (Radar #17), de 1 milhão grátis | sem uso |
+| 11/2026 | ~1.400 até 01/11 (Radar #17 e Agente #10), de 1 milhão grátis | sem uso |
