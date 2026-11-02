@@ -1,0 +1,103 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-02-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 02/11/2026 · 12h · Radar IA #18 (58 s): Gems viram skills em 17/11, Chrome preenche com dados do Gmail (EUA), OpenAI e o sinal de treino no robots.txt. Neon + neon-entrega.js.
+// Fontes: support.google.com (transition from Gems to skills), blog.google (Chrome enhanced autofill Gmail), openai.com (AI training preferences, 30/10).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8], T0[9] + .7];
+const DURATION = SC[9], IMPACTO = SC[8] + .4;
+const COR = [AZ, CI, AZ, AZ, VERDE, VERDE, AMB, CI, AZ];
+const HITS = [wt('gems', 0), wt('gmail', 0), wt('treino', 0), wt('radar', 1), wt('skills', 2), wt('leitura', 2), wt('sozinho', 2), wt('dezembro', 3), wt('gmail', 4), wt('voo', 4), wt('unidos', 4), wt('link', 5), wt('desligar', 5), wt('robotstxt', 6), wt('treino', 6), wt('meses', 6), wt('baixe', 7)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 02/11', 330, -1, SC[1] - .2, t, 40, CI);
+    versao('GEMS PARAM DIA 17', cx0, 560, prog(t, -1, .1), AZ, 0, 40);
+    versao('CHROME PREENCHE COM O GMAIL', cx0, 820, prog(t, wt('chrome', 0) - .2, wt('chrome', 0) + .2), VERDE, 0, 36);
+    versao('SITE PODE DIZER NÃO AO TREINO', cx0, 1080, prog(t, wt('sites', 0) - .2, wt('sites', 0) + .2), AMB, 0, 36);
+  },
+  // 1 · radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, 700, 230 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .25));
+    titulo('RADAR IA', 1050, SC[1], SC[2] - .2, t, 110, BR, 'IA', CI);
+  },
+  // 2 · gems viram skills
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('GEMS VIRAM SKILLS', 450, wt('gemini', 2) - .2, SC[3] - .2, t, 76, BR, 'SKILLS', AZ);
+    const a = prog(t, wt('gems', 2) - .3, wt('gems', 2) + .1), b = prog(t, wt('skills', 2) - .3, wt('skills', 2) + .1);
+    pilula('Gems', cx0 - 250, 660, 300, a, CI, 'CONTA PESSOAL', 1, 44);
+    setaH(cx0 - 80, cx0 + 80, 660, b, AZ);
+    pilula('skills', cx0 + 250, 660, 300, b, AZ, 'NO GEMINI', 1, 44);
+    neon3d(P.calendario, cx0, 880 + flut(t), 100 * back(prog(t, wt('dezessete', 2) - .4, wt('dezessete', 2))), .4 * Math.sin(t * .8), .1, AZ, prog(t, wt('dezessete', 2) - .4, wt('dezessete', 2)));
+    pilula('17/11: só leitura', cx0, 1080, 560, prog(t, wt('leitura', 2) - .4, wt('leitura', 2) + .2), AMB, 'NÃO DÁ MAIS PRA USAR NEM EDITAR', 1, 42);
+    pilula('o Google converte sozinho', cx0, 1240, 640, prog(t, wt('converte', 2) - .2, wt('sozinho', 2) + .2), VERDE, '', 1, 38);
+  },
+  // 3 · baixe os arquivos
+  (t, lt) => {
+    titulo('BAIXE SEUS ARQUIVOS', 380, SC[3], SC[4] - .2, t, 70, BR, 'ARQUIVOS', AZ);
+    neon3d(P.pasta, cx0, 720 + flut(t), 150 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .7), .1, AZ, prog(lt, .05, .3));
+    pilula('alguns não passam', cx0, 960, 520, prog(t, wt('arquivos', 3) - .2, wt('passam', 3) + .2), VERM, '', 1, 40);
+    pilula('até 17/12', cx0, 1130, 420, prog(t, wt('baixe', 3) - .2, wt('dezembro', 3) + .2), AMB, 'DEPOIS SOMEM', 1, 48);
+  },
+  // 4 · chrome + gmail
+  (t, lt) => {
+    numero(2, 300, SC[4], SC[5] - .2, t);
+    titulo('CHROME USA O GMAIL', 450, wt('preenchimento', 4) - .2, SC[5] - .2, t, 72, BR, 'GMAIL', VERDE);
+    janela(560, 560, prog(t, wt('chrome', 4) - .3, wt('chrome', 4)), 'Formulário', (x, y, w) => {
+      let yy = y + 10;
+      yy += campo(x + 20, yy, w - 40, 'Número do pedido', '#4821-77', prog(t, wt('pedido', 4) - .2, wt('pedido', 4) + .2), prog(t, wt('pedido', 4), wt('pedido', 4) + .3));
+      yy += campo(x + 20, yy, w - 40, 'Rastreio', 'BR 0937 552', prog(t, wt('rastreio', 4) - .2, wt('rastreio', 4) + .2), prog(t, wt('rastreio', 4), wt('rastreio', 4) + .3));
+      campo(x + 20, yy, w - 40, 'Voo', 'reserva do email', prog(t, wt('voo', 4) - .2, wt('voo', 4) + .2), prog(t, wt('voo', 4), wt('voo', 4) + .3)); });
+    exemplo(cx0, 1160, prog(t, wt('pedido', 4), wt('pedido', 4) + .3));
+    pilula('só nos EUA, por enquanto', cx0, 1260, 620, prog(t, wt('enquanto', 4) - .2, wt('unidos', 4) + .2), AMB, '', 1, 38);
+  },
+  // 5 · link e desligar
+  (t, lt) => {
+    titulo('VOCÊ CONTROLA', 380, SC[5], SC[6] - .2, t, 90, BR, 'CONTROLA', VERDE);
+    neon3d(P.envelope, cx0, 680 + flut(t), 120 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .8), .1, VERDE, prog(lt, .05, .3));
+    pilula('link pro email de origem', cx0, 920, 640, prog(t, wt('link', 5) - .2, wt('veio', 5) + .2), VERDE, 'EM CADA SUGESTÃO', 1, 40);
+    pilula('dá pra desligar', cx0, 1100, 520, prog(t, wt('desligar', 5) - .2, wt('configuracoes', 5) + .2), CI, 'NAS CONFIGURAÇÕES', 1, 40);
+  },
+  // 6 · robots.txt
+  (t, lt) => {
+    numero(3, 300, SC[6], SC[7] - .2, t);
+    titulo('AVISO ÚNICO CONTRA TREINO', 450, wt('openai', 6) - .2, SC[7] - .2, t, 62, BR, 'TREINO', AMB);
+    janela(560, 300, prog(t, wt('robotstxt', 6) - .4, wt('robotstxt', 6)), 'robots.txt', (x, y, w) => {
+      txt('# o que robô pode ler', x + 30, y + 60, ARC, 30, '#6b7896', { weight: 600 });
+      const q = prog(t, wt('treino', 6) - .3, wt('treino', 6) + .2);
+      ctx.fillStyle = q > .5 ? '#ffe9c2' : '#ffffff'; rr(x + 20, y + 100, w - 40, 70, 14); ctx.fill();
+      txt('treino de IA: não', x + 40, y + 146, ARC, 34, '#1b2440', { weight: 700, alpha: clamp(q * 2) }); });
+    exemplo(cx0, 900, prog(t, wt('arquivo', 6), wt('arquivo', 6) + .3));
+    pilula('um aviso só, pra todo mundo', cx0, 1020, 680, prog(t, wt('unico', 6), wt('unico', 6) + .4), AMB, 'A OPENAI VAI RESPEITAR', 1, 38);
+    pilula('nos próximos meses', cx0, 1200, 520, prog(t, wt('comeca', 6) - .2, wt('meses', 6) + .2), CI, '', 1, 40);
+  },
+  // 7 · teste hoje
+  (t, lt) => {
+    titulo('TESTE HOJE', 330, SC[7], SC[8] - .2, t, 90, BR, 'HOJE', CI);
+    celular(cx0, 880, .78, .1 * Math.sin(t * .6), prog(t, wt('abra', 7) - .3, wt('abra', 7) + .1), (x, y, w, s) => {
+      txt('Gems', x + 10 * s, y + 50 * s, EXP, 36 * s, '#1b2440');
+      for (let i = 0; i < 4; i++) { const q = prog(t, wt('baixe', 7) - .2 + i * .15, wt('baixe', 7) + .1 + i * .15);
+        ctx.fillStyle = '#ffffff'; rr(x, y + 100 * s + i * 100 * s, w, 84 * s, 14 * s); ctx.fill();
+        ctx.fillStyle = '#c9d3ea'; rr(x + 24 * s, y + 132 * s + i * 100 * s, w * (.4 + .1 * (i % 3)), 20 * s, 10 * s); ctx.fill();
+        txt(q > .5 ? '✓' : '↓', x + w - 44 * s, y + 152 * s + i * 100 * s, ARC, 34 * s, q > .5 ? '#1e7e45' : '#4a5a80', { weight: 800 }); } }, 'Gemini', CI);
+    exemplo(cx0, 1320, prog(t, wt('arquivos', 7), wt('arquivos', 7) + .3));
+  },
+  // 8 · fim
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>
