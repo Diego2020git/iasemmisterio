@@ -1155,6 +1155,126 @@
     "instagram": "6ade88bf8b3d437ddc2f9d1e"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-10-31-19h-automacao-do-zero-05-neon.mp4"
+  },
+  {
+   "id": "2026-11-03-radar-ia-60s",
+   "data": "2026-11-03",
+   "horario": "20:30",
+   "serie": "Radar IA",
+   "titulo": "Radar IA: anúncio no Modo IA, US$ 30 mil por falha e o teste LifeVal",
+   "narracao": "O Google vai pôr anúncio nas respostas de IA no Brasil, a OpenAI paga até trinta mil dólares por falha e criou um teste de tarefas do dia a dia. Radar IA de hoje. Um: o Google anunciou que os anúncios no Modo IA da busca chegam ao Brasil, ao México e ao Reino Unido ainda este ano. Eles aparecem dentro ou abaixo da resposta, marcados como patrocinado. Dois: a OpenAI aumentou o prêmio pra quem acha falha de segurança. Uma falha crítica no ChatGPT ou no Codex agora vale até trinta mil dólares. Caso excepcional chega a cento e setenta e dois mil, com bônus. Três: a OpenAI lançou o LifeVal, um teste que mede se a IA resolve tarefas do dia a dia, como cuidar das contas, achar creche ou lidar com papelada do governo. Segundo ela, os modelos novos vão muito bem em várias. Teste hoje: peça pra IA montar o passo a passo de um serviço do governo que você precisa. Segue pro Radar IA todo dia ao meio-dia.",
+   "video": "videos/2026-11-03-12h-radar-ia-60s-neon.mp4",
+   "registro": {
+    "tema": "radar IA 03/11: anúncios no Modo IA chegam ao Brasil no 4º tri, OpenAI aumenta bug bounty, LifeVal tarefas do dia a dia",
+    "chaves": [
+     "anuncios modo ia brasil",
+     "openai bug bounty 30 mil",
+     "openai lifeval",
+     "radar 03/11"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6aea67c1f93f03bf7d9c06f5",
+    "instagram": "6aea67c28204b43ff372c4ea"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-03-12h-radar-ia-60s-neon.mp4"
+  },
+  {
+   "id": "2026-11-03-automacao-do-zero-06",
+   "data": "2026-11-03",
+   "horario": "21:30",
+   "serie": "Automação do zero",
+   "titulo": "Automação do zero #6: lembrete por e-mail antes de cada compromisso",
+   "narracao": "Uma hora antes de cada compromisso, chega um e-mail te lembrando. Automação do zero, episódio seis. A agenda avisa sozinha. Um: no Zapier, gatilho, o que dispara tudo: Google Calendar, Event Start. Escolha a agenda e uma hora antes. Dois: ação: Gmail, Send Email. Em To, seu e-mail. No assunto, o título do evento. Três: no corpo, ligue o horário e o local. Teste e clique em Publish. O grátis confere a cada quinze minutos e faz até cem tarefas por mês. Salva pra fazer hoje. Sábado tem mais.",
+   "video": "videos/2026-11-03-19h-automacao-do-zero-06-neon.mp4",
+   "registro": {
+    "tema": "automação do zero 6: Google Calendar Event Start → Gmail Send Email, lembrete 1 hora antes",
+    "chaves": [
+     "lembrete agenda email",
+     "event start zapier",
+     "automacao do zero 6"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6aea67c4f93f03bf7d9c07d2",
+    "instagram": "6aea67c58204b43ff372c60b"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-03-19h-automacao-do-zero-06-neon.mp4"
+  },
+  {
+   "id": "2026-11-04-agente-do-zero-09",
+   "data": "2026-11-04",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #9: o agente lembra o que o cliente disse",
+   "narracao": "Hoje o seu agente passa a lembrar o que o cliente disse. Agente do zero, episódio nove. Um: crie um data store, uma tabelinha guardada no Make, com o campo histórico. A chave é o número de quem mandou. Dois: antes do Gemini, adicione Data store, Get a record, com esse número, e cole o histórico no pedido. Três: depois da resposta, adicione Add replace a record e guarde a mensagem e a resposta. No grátis o espaço é de um mega, então guarde só a última troca. Sexta, episódio dez: quando chamar um humano.",
+   "video": "videos/2026-11-04-19h-agente-do-zero-09-neon.mp4",
+   "registro": {
+    "tema": "agente do zero 9: memória da conversa com data store do Make (Get a record antes do Gemini, Add/replace a record depois, chave = número)",
+    "chaves": [
+     "memoria da conversa data store",
+     "get a record add replace",
+     "agente do zero 9"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6aea67c610b188665aebc86a",
+    "instagram": "6aea67c77d619ce3a644c61e"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-04-19h-agente-do-zero-09-neon.mp4"
+  },
+  {
+   "id": "2026-11-05-termo-de-ia-03",
+   "data": "2026-11-05",
+   "horario": "19:00",
+   "serie": "Termo de IA",
+   "titulo": "Termo de IA: embedding, o texto que vira lista de números",
+   "narracao": "Embedding é o seu texto virando uma lista de números que guarda o sentido. Termo de IA: embedding. Ele está por trás da busca que entende o que você quis dizer. Um: o modelo lê o texto e devolve uma lista de números. No Google, são mais de três mil por padrão. Dois: frases de sentido parecido ganham números parecidos. Troca e devolução ficam perto, sem palavra em comum. Três: sua pergunta também vira números, e a busca traz os trechos mais perto dela. Use pra buscar nos seus arquivos. Ele não responde sozinho: só mede o sentido. Salva e segue. Quinta que vem tem mais.",
+   "video": "videos/2026-11-05-19h-termo-de-ia-03-neon.mp4",
+   "registro": {
+    "tema": "termo de IA 3: embedding, texto vira lista de números que guarda o sentido, base da busca semântica e do RAG",
+    "chaves": [
+     "embedding lista de numeros",
+     "termo de ia 3"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6aea67c98204b43ff372c7cf",
+    "instagram": "6aea67c97d619ce3a644c7c9"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-05-19h-termo-de-ia-03-neon.mp4"
+  },
+  {
+   "id": "2026-11-06-agente-do-zero-10",
+   "data": "2026-11-06",
+   "horario": "19:00",
+   "serie": "Agente do zero",
+   "titulo": "Agente do zero #10: quando chamar você e quanto custa",
+   "narracao": "Hoje o agente sabe a hora de chamar você, e quanto ele custa. Agente do zero, episódio dez. Um: nas instruções, escreva: se pedirem uma pessoa, responda só: vou chamar uma pessoa da equipe. Dois: no Make, depois do Gemini, crie um filtro: a resposta contém pessoa da equipe. Três: nesse caminho, Gmail, Send an Email, pra você, com o número do cliente. Custo: uns cinco créditos por mensagem. O Make grátis dá umas duzentas por mês. Segunda, episódio onze: marcar na agenda.",
+   "video": "videos/2026-11-06-19h-agente-do-zero-10-neon.mp4",
+   "registro": {
+    "tema": "agente do zero 10: regra no prompt pra chamar humano, filtro no Make (contém pessoa da equipe) e Gmail Send an Email; custo ~5 créditos por mensagem, ~200 mensagens no Make grátis, Meta 1.000 respostas grátis",
+    "chaves": [
+     "chamar humano filtro gmail",
+     "custo creditos make meta",
+     "agente do zero 10"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6aea67cb2fbe315a4d656391",
+    "instagram": "6aea67cb10b188665aebcc25"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-06-19h-agente-do-zero-10-neon.mp4"
   }
  ]
 }
