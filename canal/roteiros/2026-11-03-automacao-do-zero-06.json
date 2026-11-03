@@ -2,7 +2,7 @@
  "id": "2026-11-03-automacao-do-zero-06",
  "serie": "Automação do zero",
  "data": "2026-11-03",
- "horario": "19:00",
+ "horario": "21:30",
  "titulo": "Automação do zero #6: lembrete por e-mail antes de cada compromisso",
  "descricao": "Automação do zero, episódio 6 ⏰\nUma hora antes de cada compromisso da sua agenda, chega um e-mail te lembrando, com horário e local.\n1️⃣ No zapier.com, + Create → Zap. Gatilho (Trigger): app Google Calendar, evento Event Start. Escolha a sua agenda e quanto tempo antes (ex.: 1 hora).\n2️⃣ Ação (Action): app Gmail, evento Send Email. Em To, coloque o seu e-mail. No assunto (Subject), ligue o título do evento.\n3️⃣ No corpo (Body), ligue o horário de início e o local. Teste e clique em Publish.\nLimite: no plano grátis o Zapier confere a cada 15 minutos, então o lembrete pode chegar até uns 15 minutos depois da hora marcada. Grátis até 100 tarefas por mês (cada e-mail enviado conta 1). Evento criado em cima da hora dispara na hora.\nSábado tem mais.\n\nFontes (conferidas em 28/10/2026): zapier.com/apps/gmail/integrations/google-calendar · zapier.com/pricing\n\n#ia #automacao #zapier #googleagenda #gmail #produtividade",
  "comentario_fixado": null,
@@ -95,5 +95,8 @@
    "id": "todas",
    "origem": "gerada por código (kit neon)"
   }
- ]
+ ],
+ "fora_da_grade": {
+  "aprovado": "Diego, thread de retenção 03/11 22:59Z ('ok' à página de aprovação)"
+ }
 }

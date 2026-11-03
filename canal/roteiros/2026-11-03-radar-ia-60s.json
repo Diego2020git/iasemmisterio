@@ -2,7 +2,7 @@
  "id": "2026-11-03-radar-ia-60s",
  "serie": "Radar IA",
  "data": "2026-11-03",
- "horario": "12:00",
+ "horario": "20:30",
  "titulo": "Radar IA: anúncio no Modo IA, US$ 30 mil por falha e o teste LifeVal",
  "descricao": "Radar IA de hoje 📡\n1️⃣ Anúncio no Modo IA: o Google está levando os anúncios do Modo IA da busca a 10 novos países e planeja chegar ao Brasil, ao México e ao Reino Unido no 4º trimestre de 2026. Eles aparecem abaixo ou dentro da resposta, quando fazem sentido, marcados como patrocinado. Nos EUA, também começam a aparecer nas perguntas de continuação.\n2️⃣ Prêmio maior por falha (02/11): a OpenAI mais que quadruplicou, em média, o meio das faixas de recompensa do Bug Bounty. Falha crítica em ChatGPT, Codex ou plataforma da API (a porta pra outros programas usarem a IA) vale até US$ 30 mil; casos excepcionais até US$ 100 mil, ou US$ 172 mil com bônus.\n3️⃣ LifeVal (02/11): a OpenAI publicou um teste que mede se a IA resolve tarefas do dia a dia, como finanças pessoais, cuidado com filhos, saúde e serviços do governo, montado a partir de pesquisas de uso do tempo. Segundo a OpenAI, os modelos mais novos vão muito bem em várias tarefas (o número é dela).\n\nTeste hoje: peça pra IA montar o passo a passo de um serviço do governo que você precisa.\n\nFontes oficiais (conferidas em 03/11/2026): blog.google (Ads in AI Mode expand to 10 new countries) · openai.com (Rewarding defenders with bigger bug bounties; LifeVal)\n\n#ia #inteligenciaartificial #google #openai #noticiasdeia",
  "comentario_fixado": null,
@@ -117,5 +117,8 @@
    "id": "todas",
    "origem": "gerada por código (kit neon)"
   }
- ]
+ ],
+ "fora_da_grade": {
+  "aprovado": "Diego, thread de retenção 03/11 22:59Z ('ok' à página de aprovação)"
+ }
 }
