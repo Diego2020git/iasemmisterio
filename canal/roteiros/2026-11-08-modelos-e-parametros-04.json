@@ -1,0 +1,99 @@
+{
+ "id": "2026-11-08-modelos-e-parametros-04",
+ "serie": "Modelos e parâmetros",
+ "data": "2026-11-08",
+ "horario": "19:00",
+ "titulo": "Modelos e parâmetros #4: modelo aberto ou fechado, qual a diferença",
+ "descricao": "Modelos e parâmetros, episódio 4 🔓\nModelo aberto x fechado: a diferença é onde a IA roda e quem controla.\n1️⃣ Fechado (Gemini, ChatGPT, Claude): você usa pelo site, pelo app ou por uma chave de API (a senha pra outros programas usarem a IA). O modelo fica nos computadores da empresa.\n2️⃣ Aberto (como o Gemma, do Google): os pesos, os números que formam o modelo, são liberados pra baixar. Dá pra rodar no seu computador, até sem internet.\n3️⃣ Pra testar: instale o LM Studio, procure \"Gemma\" e baixe a versão que ele sugere pro seu computador. Também dá pelo Ollama.\nLimites: precisa de computador com memória. O Gemma 4 12B roda com uns 16 GB de memória de vídeo ou memória unificada. Modelos menores rodam em máquinas mais simples. Grátis, e a conversa não sai da sua máquina.\nDomingo que vem tem mais.\n\nFontes (conferidas em 04/11/2026): blog.google (Introducing Gemma 4 12B) · ai.google.dev (Run Gemma with LM Studio; Run Gemma with Ollama; Gemma 4 model overview)\n\n#ia #inteligenciaartificial #gemma #llm #modelosdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "m4",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Tem IA que você baixa e roda no seu computador, até sem internet.",
+     "legenda": "Tem IA que você baixa e roda no seu computador, até sem internet."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Modelos e parâmetros, episódio quatro: aberto ou fechado.",
+     "legenda": "Modelos e parâmetros, episódio quatro: aberto ou fechado."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: o fechado, como Gemini e ChatGPT, só roda pelo site, pelo app ou pela chave da empresa.",
+     "legenda": "Um: o fechado, como Gemini e ChatGPT, só roda pelo site, pelo app ou pela chave da empresa."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: no aberto, como o Gemma do Google, os pesos, os números do modelo, são liberados. Você baixa e roda em casa.",
+     "legenda": "Dois: no aberto, como o Gemma do Google, os pesos, os números do modelo, são liberados. Você baixa e roda em casa."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: instale o LM Studio, procure Gemma e baixe a versão que ele sugere pro seu computador.",
+     "legenda": "Três: instale o LM Studio, procure Gemma e baixe a versão que ele sugere pro seu computador."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "É grátis e a conversa fica na sua máquina. Mas pede memória: uns dezesseis gigas no Gemma de doze bilhões.",
+     "legenda": "É grátis e a conversa fica na sua máquina. Mas pede memória: uns dezesseis gigas no Gemma de doze bilhões."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Domingo que vem tem mais.",
+     "legenda": "Domingo que vem tem mais."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Gemma 4 12B: modelo aberto do Google DeepMind, licença Apache 2.0, roda local com ~16 GB de VRAM ou memória unificada",
+   "fonte": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/",
+   "conferido": "2026-11-04"
+  },
+  {
+   "dado": "LM Studio: buscar 'Gemma' e escolher a variante sugerida pro hardware; Ollama: ollama pull gemma4",
+   "fonte": "https://ai.google.dev/gemma/docs/integrations/lmstudio",
+   "conferido": "2026-11-04"
+  }
+ ],
+ "registro": {
+  "tema": "modelos e parâmetros 4: modelo aberto x fechado, Gemma no LM Studio, pesos, roda local",
+  "chaves": [
+   "modelo aberto fechado",
+   "gemma lm studio",
+   "modelos e parametros 4"
+  ]
+ },
+ "video": "videos/2026-11-08-19h-modelos-e-parametros-04-neon.mp4",
+ "fonte_html": "kit/2026-11-08-19h-modelos-e-parametros-04-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}
