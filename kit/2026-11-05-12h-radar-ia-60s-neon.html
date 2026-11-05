@@ -1,0 +1,94 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-05-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 05/11/2026 · 12h · Radar IA #21 (56 s): ChatGPT Images 2.6 (GIF + referência salva), OpenAI compra a Pierre (Git no Codex), Google e a avaliação de IA de saúde. Neon + neon-entrega.js.
+// Fontes: help.openai.com (Images in ChatGPT; release notes 04/11), openai.com (OpenAI to acquire Pierre), blog.google (evaluating health AI at scale).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8] + .7];
+const DURATION = SC[8], IMPACTO = SC[7] + .4;
+const COR = [AZ, CI, VERDE, VERDE, AZ, AMB, CI, AZ];
+const HITS = [wt('gif', 0), wt('codigo', 0), wt('saude', 0), wt('radar', 1), wt('images', 2), wt('rapido', 2), wt('gif', 2), wt('nome', 3), wt('pepper', 3, 2), wt('pierre', 4), wt('git', 4), wt('agentes', 4), wt('saude', 5), wt('certa', 5), wt('segura', 5), wt('verdade', 5), wt('referencia', 6)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// quadro de GIF: bolinha quicando em 4 quadros
+function gif(x, y, w, a, t) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#ffffff'; rr(x - w / 2, y, w, w * .7, 20); ctx.fill();
+  const f = Math.floor(t * 6) % 4, hy = [0, .35, .55, .35][f]; ctx.fillStyle = '#ffd6a5'; rr(x - w / 2 + 20, y + 20, w - 40, w * .7 - 40, 14); ctx.fill();
+  ctx.fillStyle = '#ff7a59'; ctx.beginPath(); ctx.arc(x, y + w * .12 + hy * w * .4, w * .09, 0, 7); ctx.fill();
+  txt('GIF', x + w / 2 - 30, y + w * .7 - 30, EXP, 34, '#1b2440', { align: 'right' }); ctx.restore(); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 05/11', 330, -1, SC[1] - .2, t, 40, CI);
+    versao('CHATGPT FAZ GIF', cx0, 560, prog(t, -1, .1), VERDE, 0, 42);
+    versao('OPENAI COMPRA EMPRESA DE CÓDIGO', cx0, 820, prog(t, wt('openai', 0) - .2, wt('openai', 0) + .2), AZ, 0, 29);
+    versao('COMO O GOOGLE TESTA IA DE SAÚDE', cx0, 1080, prog(t, wt('google', 0) - .2, wt('google', 0) + .2), AMB, 0, 29);
+  },
+  // 1 · radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, 700, 230 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .25));
+    titulo('RADAR IA', 1050, SC[1], SC[2] - .2, t, 110, BR, 'IA', CI);
+  },
+  // 2 · Images 2.6
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('IMAGES 2.6', 450, wt('chegou', 2) - .2, SC[3] - .2, t, 90, BR, '2.6', VERDE);
+    pilula('mais rápido', cx0, 620, 420, prog(t, wt('rapido', 2) - .3, wt('rapido', 2) + .1), VERDE, 'NO CHATGPT', 1, 42);
+    gif(cx0, 760, 520, prog(t, wt('gif', 2) - .3, wt('gif', 2) + .1), t);
+    pilula('anima uma foto sua', cx0, 1240, 520, prog(t, wt('foto', 2) - .2, wt('sua', 2) + .2), CI, 'CHEGANDO AOS POUCOS', 1, 40);
+  },
+  // 3 · referência salva
+  (t, lt) => {
+    titulo('FOTO SALVA COM NOME', 380, SC[3], SC[4] - .2, t, 70, BR, 'NOME', VERDE);
+    celular(cx0, 880, .78, .1 * Math.sin(t * .6), prog(lt, .05, .35), (x, y, w, s) => {
+      ctx.fillStyle = '#c6a37a'; rr(x + w * .3, y + 30 * s, w * .7, 200 * s, 18 * s); ctx.fill(); txt('🐶', x + w * .65, y + 150 * s, ARC, 90 * s, '#000', { align: 'center' });
+      const q = prog(t, wt('nome', 3) - .2, wt('nome', 3) + .2); ctx.save(); ctx.globalAlpha *= clamp(q); ctx.fillStyle = '#d9fdd3'; rr(x + w * .3, y + 250 * s, w * .7, 70 * s, 16 * s); ctx.fill();
+      txt('salvo como Pepper', x + w * .3 + 20 * s, y + 294 * s, ARC, 26 * s, '#1e7e45', { weight: 800 }); ctx.restore();
+      const r = prog(t, wt('retrato', 3) - .2, wt('pepper', 3, 2) + .1); ctx.save(); ctx.globalAlpha *= clamp(r); ctx.fillStyle = '#e4ebff'; rr(x, y + 360 * s, w * .9, 100 * s, 16 * s); ctx.fill();
+      txt('retrato em aquarela', x + 20 * s, y + 400 * s, ARC, 24 * s, '#1b2440', { weight: 700 }); txt('de @Pepper', x + 20 * s, y + 438 * s, ARC, 24 * s, '#2e6bff', { weight: 800 }); ctx.restore(); }, 'ChatGPT', VERDE);
+    exemplo(cx0, 1320, prog(lt, .3, .6));
+  },
+  // 4 · Pierre
+  (t, lt) => {
+    numero(2, 300, SC[4], SC[5] - .2, t);
+    titulo('OPENAI COMPRA A PIERRE', 450, wt('openai', 4) - .2, SC[5] - .2, t, 66, BR, 'PIERRE', AZ);
+    pilula('já faz partes do Codex', cx0, 620, 600, prog(t, wt('codex', 4) - .4, wt('codex', 4) + .1), AZ, '', 1, 40);
+    const q = prog(t, wt('git', 4) - .3, wt('versoes', 4) + .2);
+    if (q > 0) { ctx.save(); ctx.globalAlpha *= clamp(q); ['v1', 'v2', 'v3'].forEach((v, i) => { const xx = cx0 - 280 + i * 280;
+      ctx.fillStyle = hex(AZ, .9); ctx.shadowColor = AZ; ctx.shadowBlur = 24; ctx.beginPath(); ctx.arc(xx, 820, 50, 0, 7); ctx.fill(); ctx.shadowBlur = 0; txt(v, xx, 822, EXP, 34, BR, { align: 'center' });
+      if (i) fio(xx - 230, 820, xx - 54, 820, 1, CI, t, true); }); ctx.restore(); }
+    pilula('Git = guarda as versões do código', cx0, 1000, 780, q, CI, '', 1, 38);
+    pilula('pra quem programa com agentes', cx0, 1170, 720, prog(t, wt('programa', 4) - .2, wt('agentes', 4) + .2), AMB, 'AINDA DEPENDE DE APROVAÇÃO', 1, 38);
+  },
+  // 5 · IA de saúde
+  (t, lt) => {
+    numero(3, 300, SC[5], SC[6] - .2, t);
+    titulo('NOTA PRA IA DE SAÚDE', 450, wt('google', 5) - .2, SC[6] - .2, t, 70, BR, 'SAÚDE', AMB);
+    neon3d(P.coracao, cx0, 680 + flut(t), 100 * back(prog(t, wt('saude', 5) - .4, wt('saude', 5))), .4 * Math.sin(t * .8), .1, AMB, prog(t, wt('saude', 5) - .4, wt('saude', 5)));
+    [['está certa', 'certa'], ['é segura', 'segura'], ['ajuda de verdade', 'verdade']].forEach(([n, k], i) =>
+      pilula(n, cx0, 880 + i * 150, 520, prog(t, wt(k, 5) - .3, wt(k, 5) + .1), [VERDE, CI, AMB][i], '', 1, 42));
+  },
+  // 6 · teste hoje
+  (t, lt) => {
+    titulo('TESTE HOJE', 330, SC[6], SC[7] - .2, t, 90, BR, 'HOJE', CI);
+    celular(cx0, 880, .78, .1 * Math.sin(t * .6), prog(t, wt('mande', 6) - .3, wt('mande', 6) + .1), (x, y, w, s) => {
+      ctx.fillStyle = '#9fb8e8'; rr(x + w * .3, y + 30 * s, w * .7, 180 * s, 18 * s); ctx.fill();
+      const q = prog(t, wt('salvar', 6) - .3, wt('salvar', 6) + .1); ctx.save(); ctx.globalAlpha *= clamp(q); ctx.fillStyle = '#e4ebff'; rr(x + w * .15, y + 240 * s, w * .85, 100 * s, 16 * s); ctx.fill();
+      txt('salve essa foto como', x + w * .15 + 20 * s, y + 280 * s, ARC, 24 * s, '#1b2440', { weight: 700 }); txt('referência: Bolota', x + w * .15 + 20 * s, y + 318 * s, ARC, 24 * s, '#1b2440', { weight: 700 }); ctx.restore(); }, 'ChatGPT', CI);
+    exemplo(cx0, 1320, prog(t, wt('mande', 6), wt('mande', 6) + .3));
+  },
+  // 7 · fim
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>
