@@ -30,6 +30,8 @@ SERIES_NOVAS = {"Radar IA", "Agente do zero", "Automação do zero", "Termo de I
 ENGAJAMENTO_DESDE = "2026-11-07"
 GRADE["Em alta com IA"] = "12:00"; DIAS_DA_SERIE["Em alta com IA"] = range(7)
 SERIES_NOVAS.add("Em alta com IA")
+# 2ª temporada do Agente do zero pausada: seg/qua/sex aceitam Automação ou Termo com produto famoso (Diego, 06/11).
+DIAS_DA_SERIE["Automação do zero"] = [0, 1, 2, 4, 5]; DIAS_DA_SERIE["Termo de IA"] = [0, 2, 3, 4]
 GANCHO_PROIBIDO = ("episodio", "radar ia de hoje", "temporada")
 # formato "curto" (diretrizes de retenção do Diego, 11/10/2026): 15 a 25 s de fala, card final pode passar um pouco.
 # "demo" (padrão até aqui): 35 a 45 s, quando a demonstração exige.
