@@ -1,0 +1,99 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-01-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 01/11/2026 · 12h · Radar IA #17 (58 s): Gemini com 1 bilhão de usuários, duas contas no ChatGPT no celular, proteção de adolescentes na OpenAI. Neon + neon-entrega.js.
+// Fontes: blog.google (Q3 2026 earnings, CEO), help.openai.com (multiple accounts; release notes), openai.com (community safety report, 30/10).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8], T0[9] + .7];
+const DURATION = SC[9], IMPACTO = SC[8] + .4;
+const COR = [AZ, CI, AZ, AZ, VERDE, VERDE, AMB, CI, AZ];
+const HITS = [wt('bilhao', 0), wt('celular', 0), wt('adolescentes', 0), wt('radar', 1), wt('bilhao', 2), wt('milhoes', 2), wt('rapido', 3), wt('contas', 4), wt('celular', 4), wt('assinatura', 5), wt('dezoito', 6), wt('armas', 6), wt('meses', 6), wt('switch', 7)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+function contas(x, y, w, s, t, tr) { const L = [['Conta pessoal', VERDE], ['Conta do trabalho', CI]];
+  L.forEach(([n, c], i) => { const on = (tr > .5) === (i === 1); ctx.fillStyle = on ? hex(c, .25) : '#ffffff'; rr(x, y + 30 * s + i * 120 * s, w, 100 * s, 18 * s); ctx.fill();
+    ctx.fillStyle = c; ctx.beginPath(); ctx.arc(x + 50 * s, y + 80 * s + i * 120 * s, 26 * s, 0, 7); ctx.fill();
+    txt(n, x + 95 * s, y + 82 * s + i * 120 * s, ARC, 30 * s, '#1b2440', { weight: 700 }); if (on) txt('✓', x + w - 40 * s, y + 82 * s + i * 120 * s, ARC, 34 * s, '#1e7e45', { weight: 800 }); }); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 01/11', 330, -1, SC[1] - .2, t, 40, CI);
+    versao('GEMINI PASSA DE 1 BILHÃO', cx0, 560, prog(t, -1, .1), AZ, 0, 38);
+    versao('CHATGPT: 2 CONTAS NO CELULAR', cx0, 820, prog(t, wt('chatgpt', 0) - .2, wt('chatgpt', 0) + .2), VERDE, 0, 36);
+    versao('REGRA NOVA PRA ADOLESCENTE', cx0, 1080, prog(t, wt('rigido', 0) - .2, wt('rigido', 0) + .2), AMB, 0, 36);
+  },
+  // 1 · radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, 700, 230 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .25));
+    titulo('RADAR IA', 1050, SC[1], SC[2] - .2, t, 110, BR, 'IA', CI);
+  },
+  // 2 · 1 bilhão
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('1 BILHÃO NO GEMINI', 450, wt('balanco', 2) - .2, SC[3] - .2, t, 76, BR, '1 BILHÃO', AZ);
+    neon3d(P.pessoa, cx0, 700 + flut(t), 130 * back(prog(t, wt('app', 2) - .4, wt('app', 2))), .4 * Math.sin(t * .8), .1, AZ, prog(t, wt('app', 2) - .4, wt('app', 2)));
+    const a = prog(t, wt('tres', 2) - .2, wt('tres', 2) + .2), b = prog(t, wt('bilhao', 2) - .3, wt('bilhao', 2) + .2);
+    const bar = (yy, f, c, rot, val, al) => { if (al <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(al); ctx.fillStyle = 'rgba(244,248,255,.12)'; rr(cx0 - 400, yy, 800, 56, 28); ctx.fill();
+      ctx.shadowColor = c; ctx.shadowBlur = 24; ctx.fillStyle = c; rr(cx0 - 400, yy, 800 * f, 56, 28); ctx.fill(); ctx.shadowBlur = 0;
+      txt(rot, cx0 - 400, yy - 34, ARC, 32, BR, { weight: 600 }); txt(val, cx0 + 400, yy - 34, EXP, 36, c, { align: 'right' }); ctx.restore(); };
+    bar(960, .95 * ease(a), CI, 'trimestre anterior', '950 milhões', a);
+    bar(1130, ease(b), AZ, 'agora', '1 bilhão', b);
+  },
+  // 3 · cresceu mais rápido
+  (t, lt) => {
+    titulo('O QUE MAIS RÁPIDO CRESCEU', 380, SC[3], SC[4] - .2, t, 62, BR, 'CRESCEU', AZ);
+    neon3d(P.raio, cx0, 720 + flut(t), 150 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .7), .1, AZ, prog(lt, .05, .3));
+    pilula('na história do Google', cx0, 980, 600, prog(t, wt('historia', 3) - .2, wt('historia', 3) + .2), AZ, 'SEGUNDO O CHEFE DA EMPRESA', 1, 42);
+  },
+  // 4 · duas contas
+  (t, lt) => {
+    numero(2, 300, SC[4], SC[5] - .2, t);
+    titulo('DUAS CONTAS, UM APP', 450, wt('chatgpt', 4) - .2, SC[5] - .2, t, 76, BR, 'DUAS', VERDE);
+    celular(cx0 - 220, 900, .7, .12 * Math.sin(t * .6), prog(t, wt('logado', 4) - .4, wt('logado', 4)), (x, y, w, s) => contas(x, y, w, s, t, prog(t, wt('trocar', 4), wt('sair', 4))), 'ChatGPT', VERDE);
+    exemplo(cx0 - 220, 1300, prog(t, wt('trocar', 4), wt('trocar', 4) + .3));
+    pilula('até 2 logadas', cx0 + 250, 760, 340, prog(t, wt('duas', 4) - .2, wt('contas', 4) + .2), VERDE, '', 1, 34);
+    pilula('celular: aos poucos', cx0 + 250, 920, 360, prog(t, wt('celular', 4) - .2, wt('poucos', 4) + .2), AMB, '', 1, 32);
+  },
+  // 5 · cada conta separada
+  (t, lt) => {
+    titulo('TUDO SEPARADO', 380, SC[5], SC[6] - .2, t, 90, BR, 'SEPARADO', VERDE);
+    [['conversas', 'conversas'], ['memória', 'memoria'], ['assinatura', 'assinatura']].forEach(([s, k], i) => {
+      pilula(s, cx0 - 220, 640 + i * 170, 340, prog(t, wt(k, 5) - .2, wt(k, 5) + .2), VERDE, 'CONTA 1', 1, 38);
+      pilula(s, cx0 + 220, 640 + i * 170, 340, prog(t, wt(k, 5) - .1, wt(k, 5) + .3), CI, 'CONTA 2', 1, 38); });
+  },
+  // 6 · adolescentes
+  (t, lt) => {
+    numero(3, 300, SC[6], SC[7] - .2, t);
+    titulo('MAIS RÍGIDO COM MENORES', 450, wt('quando', 6) - .2, SC[7] - .2, t, 64, BR, 'MENORES', AMB);
+    neon3d(P.escudo, cx0, 680 + flut(t), 120 * back(prog(t, wt('estima', 6) - .4, wt('estima', 6))), .4 * Math.sin(t * .8), .1, AMB, prog(t, wt('estima', 6) - .4, wt('estima', 6)));
+    pilula('menos de 18 anos', cx0, 900, 520, prog(t, wt('dezoito', 6) - .3, wt('anos', 6) + .2), AMB, 'ESTIMADO PELO CHATGPT', 1, 42);
+    pilula('menos informação sobre armas', cx0, 1060, 740, prog(t, wt('armas', 6) - .3, wt('inocente', 6) + .2), VERM, 'MESMO EM PERGUNTA INOCENTE', 1, 38);
+    pilula('relatório a cada 6 meses', cx0, 1220, 640, prog(t, wt('relatorio', 6) - .2, wt('meses', 6) + .2), CI, '1º NO COMEÇO DE 2027', 1, 38);
+  },
+  // 7 · teste hoje
+  (t, lt) => {
+    titulo('TESTE HOJE', 330, SC[7], SC[8] - .2, t, 90, BR, 'HOJE', CI);
+    celular(cx0, 880, .78, .1 * Math.sin(t * .6), prog(t, wt('app', 7) - .3, wt('app', 7) + .1), (x, y, w, s) => {
+      txt('Settings', x + 10 * s, y + 50 * s, EXP, 36 * s, '#1b2440');
+      for (let i = 0; i < 5; i++) { const sw = i === 3, q = prog(t, wt('switch', 7) - .2, wt('switch', 7) + .2);
+        ctx.fillStyle = sw && q > .5 ? '#d9fdd3' : '#ffffff'; rr(x, y + 100 * s + i * 90 * s, w, 74 * s, 14 * s); ctx.fill();
+        if (sw) txt('Switch account', x + 24 * s, y + 140 * s + i * 90 * s, ARC, 30 * s, '#1b2440', { weight: 700 });
+        else { ctx.fillStyle = '#c9d3ea'; rr(x + 24 * s, y + 128 * s + i * 90 * s, w * (.35 + .1 * (i % 3)), 20 * s, 10 * s); ctx.fill(); } } }, 'ChatGPT', CI);
+    exemplo(cx0, 1320, prog(t, wt('procure', 7), wt('procure', 7) + .3));
+  },
+  // 8 · fim
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>

@@ -1,0 +1,104 @@
+{
+ "id": "2026-11-04-agente-do-zero-09",
+ "serie": "Agente do zero",
+ "data": "2026-11-04",
+ "horario": "19:00",
+ "titulo": "Agente do zero #9: o agente lembra o que o cliente disse",
+ "descricao": "Agente do zero, episódio 9 🧠\nAté aqui o agente esquece tudo a cada mensagem. Hoje ele passa a lembrar da conversa, guardando a última troca de cada número num data store do Make (uma tabelinha que fica guardada no próprio Make).\n1️⃣ Crie um data store com um campo de texto chamado historico. A chave de cada registro é o número de quem mandou (o WhatsApp ID do contato, que vem do Watch Events).\n2️⃣ No cenário do episódio 8, antes do Google Gemini AI, adicione Data store → Get a record com essa chave. Nas configurações avançadas, marque a opção de continuar mesmo sem resultado (a primeira mensagem de um número novo ainda não tem registro). No pedido ao Gemini, cole o historico antes da mensagem nova.\n3️⃣ Depois do Gemini, adicione Data store → Add/replace a record com a mesma chave e, em historico, a mensagem do cliente mais a resposta do agente. Como ele substitui o registro, fica guardada só a última troca.\nTeste: mande \"meu nome é Ana\" e depois \"qual é meu nome?\".\nLimites: no Make grátis o espaço de data store é de 1 MB (um data store), e cada módulo a mais gasta crédito dos 1.000 do mês. Guardar só a última troca mantém o registro pequeno.\nSexta, episódio 10: quando chamar um humano.\n\nFontes (conferidas em 30/10/2026): make.com/en/integrations/datastore (Get a record, Add/replace a record) · make.com/pricing (Free: 1.000 créditos, 1 MB de data store) · community.make.com (Get a record sem resultado não é erro)\n\n#ia #agentedeia #whatsapp #make #gemini #automacao",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": 9,
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Hoje o seu agente passa a lembrar o que o cliente disse.",
+     "legenda": "Hoje o seu agente passa a lembrar o que o cliente disse."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Agente do zero, episódio nove.",
+     "legenda": "Agente do zero, episódio nove."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: crie um data store, uma tabelinha guardada no Make, com o campo histórico. A chave é o número de quem mandou.",
+     "legenda": "Um: crie um data store, uma tabelinha guardada no Make, com o campo histórico. A chave é o número de quem mandou."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: antes do Gemini, adicione Data store, Get a record, com esse número, e cole o histórico no pedido.",
+     "legenda": "Dois: antes do Gemini, adicione Data store, Get a record, com esse número, e cole o histórico no pedido."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: depois da resposta, adicione Add replace a record e guarde a mensagem e a resposta.",
+     "legenda": "Três: depois da resposta, adicione Add/replace a record e guarde a mensagem e a resposta."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "No grátis o espaço é de um mega, então guarde só a última troca.",
+     "legenda": "No grátis o espaço é de um mega, então guarde só a última troca."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Sexta, episódio dez: quando chamar um humano.",
+     "legenda": "Sexta, episódio dez: quando chamar um humano."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Make Data store: módulos Get a record e Add/replace a record (substitui o registro existente)",
+   "fonte": "https://www.make.com/en/integrations/datastore",
+   "conferido": "2026-10-30"
+  },
+  {
+   "dado": "Make grátis: 1.000 créditos/mês, 1 MB de data store (1 data store), 2 cenários ativos",
+   "fonte": "https://www.make.com/en/pricing",
+   "conferido": "2026-10-30"
+  },
+  {
+   "dado": "Get a record sem registro não dá erro; opção avançada para continuar a rota sem resultado",
+   "fonte": "https://community.make.com/t/error-handling-on-data-store/67411",
+   "conferido": "2026-10-30"
+  }
+ ],
+ "registro": {
+  "tema": "agente do zero 9: memória da conversa com data store do Make (Get a record antes do Gemini, Add/replace a record depois, chave = número)",
+  "chaves": [
+   "memoria da conversa data store",
+   "get a record add replace",
+   "agente do zero 9"
+  ]
+ },
+ "video": "videos/2026-11-04-19h-agente-do-zero-09-neon.mp4",
+ "fonte_html": "kit/2026-11-04-19h-agente-do-zero-09-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

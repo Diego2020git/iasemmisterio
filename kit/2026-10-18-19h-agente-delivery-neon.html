@@ -1,0 +1,72 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-18-19h-agente-delivery.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script>
+// 18/10/2026 · Agente na Prática · agente que anota pedidos de delivery no WhatsApp. Estilo neon (teste 2). Exemplo montado pelo canal.
+const T0 = TEMPOS.cenas, FIMV = T0[5], TS = wt('salva', 4) - .1;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], TS, FIMV + 1.6];
+const DURATION = SC[6], IMPACTO = TS + .4;
+const COR = [AZ, CI, AZ, CI, IN, AZ];
+const HITS = [wt('anota', 0), wt('confirma', 1), wt('cozinha', 2), wt('voce', 3), wt('resposta', 4)];
+const CLIQUES = [wt('cai', 2)];
+// sacola de entrega (ícone novo, quadrado de -100 a 100)
+P.sacola = () => { ctx.beginPath(); ctx.moveTo(-80, -40); ctx.lineTo(80, -40); ctx.lineTo(66, 96); ctx.lineTo(-66, 96); ctx.closePath();
+  ctx.moveTo(-36, -40); ctx.lineTo(-36, -62); ctx.quadraticCurveTo(-36, -100, 0, -100); ctx.quadraticCurveTo(36, -100, 36, -62); ctx.lineTo(36, -40); };
+// cursor parado ao lado do elemento principal de cada cena; só se move nas trocas de cena; some nas cenas sem clique
+const CPOS = [[830, 930, 58, .3], [830, 1000, 0, -.2], [800, 900, 56, 0], [800, 900, 0, .3], [800, 900, 0, -.2], [800, 900, 0, -.2]];
+const CK = [[0, ...CPOS[0]]];
+CPOS.forEach((c, i) => { if (i) CK.push([SC[i] - .25, ...CPOS[i - 1]]); CK.push([SC[i] + .3, ...c]); });
+const S = [
+  // 0 · gancho: título inteiro no quadro 1; a sacola acende quando o agente anota
+  (t, lt) => {
+    frase('Delivery lotado?', 320, -1, SC[1] - .2, 92, { t, hot: 'lotado?' });
+    const k = prog(t, wt('anota', 0) - .1, wt('anota', 0) + .3);
+    neon3d(P.sacola, cx0, cy0 - 20, 230, .35 * Math.sin(t * .8), .3, k > .5 ? CI : AZ, 1, .2 + .2 * k);
+    frase('O agente anota', 1300, wt('agente', 0) - .1, SC[1] - .2, 64, { t, hot: 'anota', cor: CI });
+  },
+  // 1 · cliente pede; agente confirma sabor, endereço e total
+  (t, lt) => {
+    exemplo(cx0, 300, prog(lt, 0, .3));
+    celular(cx0, cy0 + 20, .9, -.2 + .15 * sm(lt / 3), prog(lt, 0, .3), (x, y, w, s) => {
+      let yy = y; yy += msg(x, yy, w, 'Uma pizza grande de calabresa', true, prog(t, wt('pede', 1), wt('pede', 1) + .3), s);
+      yy += msg(x, yy, w, 'Calabresa grande, Rua das Flores, 120. Total R$ 59,90. Confirma?', false, prog(t, wt('confirma', 1), wt('confirma', 1) + .3), s);
+      msg(x, yy, w, 'Confirmo ✅', true, prog(t, wt('total', 1) + .2, wt('total', 1) + .5), s);
+    }, 'Pizzaria Bella', CI);
+    frase('sabor, endereço e total', 1400, wt('sabor', 1) - .1, SC[2] - .2, 56, { t, hot: 'total' });
+  },
+  // 2 · confirmou: o pedido cai na cozinha
+  (t, lt) => {
+    frase('Confirmou?', 340, SC[2] + .1, SC[3] - .2, 80, { t, hot: 'Confirmou?' });
+    const k = prog(t, CLIQUES[0], CLIQUES[0] + .3);
+    neon3d(P.sino, cx0, cy0 - 60, 200 * back(prog(lt, .05, .5)), .3 * Math.sin(t * .8) + .2 * Math.sin(t * 20) * (1 - k) * (k > 0), .3, k > .5 ? CI : AZ, prog(lt, .05, .3), .2 + .3 * k);
+    frase('direto na cozinha', cy0 + 200, wt('direto', 2) - .1, SC[3] - .2, 72, { t, hot: 'cozinha', cor: CI });
+    selo('pedido na cozinha', cx0, cy0 + 330, prog(t, wt('cozinha', 2), wt('cozinha', 2) + .3));
+  },
+  // 3 · reclamação ou fora do cardápio vai pra você
+  (t, lt) => {
+    frase('Fora do cardápio?', 340, wt('reclamacao', 3) - .1, SC[4] - .2, 80, { t, hot: 'cardápio?' });
+    neon3d(P.balao, cx0 - 190, cy0 - 20, 130 * back(prog(lt, .05, .4)), .3 * Math.sin(t), .3, AZ, prog(lt, .05, .3));
+    neon3d(P.pessoa, cx0 + 190, cy0 - 20, 150 * back(prog(t, wt('voce', 3) - .4, wt('voce', 3))), -.3 * Math.sin(t), .3, CI, prog(t, wt('voce', 3) - .4, wt('voce', 3) - .1));
+    const k = ease(prog(t, wt('passa', 3) - .1, wt('voce', 3)));
+    if (k > 0) { ctx.save(); ctx.strokeStyle = CI; ctx.lineWidth = 6; ctx.shadowColor = CI; ctx.shadowBlur = 20; ctx.setLineDash([18, 14]); ctx.beginPath(); ctx.moveTo(cx0 - 80, cy0 - 20); ctx.lineTo(cx0 - 80 + 160 * k, cy0 - 20); ctx.stroke(); ctx.restore(); }
+    frase('passa pra você', cy0 + 230, wt('passa', 3) - .1, SC[4] - .2, 64, { t, hot: 'você', cor: CI });
+  },
+  // 4 · ninguém sem resposta
+  (t, lt) => {
+    neon3d(P.balao, cx0, cy0 - 80, 200 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .8), .3, CI, prog(lt, .05, .3), .4);
+    neon3d(P.check, cx0, cy0 - 90, 70 * back(prog(lt, .4, .8)), 0, 0, BR, prog(lt, .4, .6), .5);
+    frase('Ninguém sem resposta', cy0 + 230, wt('ninguem', 4) - .1, SC[5] + .1, 76, { t, hot: 'resposta' });
+  },
+  // 5 · logo + chamada
+  (t, lt) => fim(t, lt, 'Salva e segue', 'pra montar o seu'),
+];
+</script></body></html>

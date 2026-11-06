@@ -1,0 +1,125 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-28-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 28/10/2026 · 12h · Radar IA #13 (61 s): Genie 4 cria mundos interativos, Claude em descoberta de remédios, iMac com M6 e Siri no Spotlight. Neon + neon-entrega.js.
+// Fontes: deepmind.google/blog (Genie 4, 27/10), anthropic.com/research/early-progress-drug-development (27/10), apple.com/newsroom (iMac com M6).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8], T0[9] + .7];
+const DURATION = SC[9], IMPACTO = SC[8] + .4;
+const COR = [AZ, CI, VERDE, AMB, IN, AMB, CI, AZ, AZ];
+const HITS = [wt('mundo', 0), wt('remedios', 0), wt('siri', 0), wt('radar', 1), wt('real', 2), wt('camera', 2), wt('personagens', 2), wt('clima', 2), wt('ultra', 3), wt('seis', 4), wt('vinte', 4), wt('tres', 4), wt('trinta', 5), wt('pessoas', 5), wt('spotlight', 6), wt('genie', 7)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// mundo gerado: chão em perspectiva, sol/chuva, personagem andando
+function mundo3(x, y, w, h, t, a, cam, pers, chuva) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+  ctx.beginPath(); rr(x, y, w, h, 24); ctx.clip();
+  const g = ctx.createLinearGradient(0, y, 0, y + h); g.addColorStop(0, chuva > .5 ? '#2a3550' : '#0b2a5a'); g.addColorStop(1, '#03101f'); ctx.fillStyle = g; ctx.fillRect(x, y, w, h);
+  const hz = y + h * .45, vx = x + w / 2 + Math.sin(cam * 2) * 120;
+  ctx.strokeStyle = VERDE; ctx.lineWidth = 2; ctx.globalAlpha *= .8;
+  for (let i = -8; i <= 8; i++) { ctx.beginPath(); ctx.moveTo(vx, hz); ctx.lineTo(vx + i * 160, y + h); ctx.stroke(); }
+  for (let k = 0; k < 8; k++) { const f = ((k + t * .8) % 8) / 8, yy = hz + (y + h - hz) * f * f; ctx.beginPath(); ctx.moveTo(x, yy); ctx.lineTo(x + w, yy); ctx.stroke(); }
+  ctx.globalAlpha /= .8;
+  // montanhas
+  ctx.fillStyle = '#123a6a'; ctx.beginPath(); ctx.moveTo(x, hz); for (let i = 0; i <= 10; i++) ctx.lineTo(x + i * w / 10, hz - 60 - 50 * Math.abs(Math.sin(i * 1.3 + cam))); ctx.lineTo(x + w, hz); ctx.fill();
+  // sol
+  if (chuva < 1) { ctx.save(); ctx.globalAlpha *= 1 - chuva; ctx.fillStyle = AMB; ctx.shadowColor = AMB; ctx.shadowBlur = 40; ctx.beginPath(); ctx.arc(x + w * .78, y + 90, 46, 0, 7); ctx.fill(); ctx.restore(); }
+  // chuva
+  if (chuva > 0) { ctx.save(); ctx.globalAlpha *= chuva; ctx.strokeStyle = CI; ctx.lineWidth = 3; for (let i = 0; i < 60; i++) { const px = x + (i * 97 % w), py = y + ((i * 53 + t * 900) % h); ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px - 8, py + 26); ctx.stroke(); } ctx.restore(); }
+  // personagem
+  if (pers > 0) { ctx.save(); ctx.globalAlpha *= pers; const px = x + w * .35 + Math.sin(t) * 40, py = y + h * .8; ctx.fillStyle = IN; ctx.shadowColor = IN; ctx.shadowBlur = 20;
+    ctx.beginPath(); ctx.arc(px, py - 90, 22, 0, 7); ctx.fill(); rr(px - 18, py - 64, 36, 64, 12); ctx.fill(); ctx.restore(); }
+  ctx.restore(); ctx.save(); ctx.globalAlpha *= clamp(a); ctx.strokeStyle = VERDE; ctx.lineWidth = 3; rr(x, y, w, h, 24); ctx.stroke(); ctx.restore(); }
+// pilha de páginas sendo revisadas
+function paginas(x, y, a, t, n) { if (a <= 0) return; for (let i = 0; i < 6; i++) { ctx.save(); ctx.globalAlpha *= clamp(a * 6 - i); ctx.fillStyle = '#eef3ff'; rr(x - 120 + i * 10, y - i * 12, 240, 300, 10); ctx.fill();
+  for (let l = 0; l < 7; l++) { ctx.fillStyle = (l + i) % 4 === 0 && n > l / 7 ? '#ff7a59' : '#b8c6e6'; rr(x - 96 + i * 10, y + 30 + l * 36 - i * 12, 190 - (l % 3) * 30, 12, 6); ctx.fill(); } ctx.restore(); } }
+// grade de anticorpos (Y) acendendo
+function anticorpos(x, y, a, t) { if (a <= 0) return; ctx.save(); ctx.strokeStyle = CI; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  for (let i = 0; i < 40; i++) { const on = clamp(a * 40 - i); if (on <= 0) continue; const gx = x - 405 + (i % 10) * 90, gy = y + Math.floor(i / 10) * 100;
+    ctx.globalAlpha = on * (.6 + .4 * Math.sin(t * 3 + i)); ctx.strokeStyle = i % 7 === 3 ? VERDE : CI;
+    ctx.beginPath(); ctx.moveTo(gx, gy + 40); ctx.lineTo(gx, gy + 10); ctx.lineTo(gx - 18, gy - 14); ctx.moveTo(gx, gy + 10); ctx.lineTo(gx + 18, gy - 14); ctx.stroke(); } ctx.restore(); }
+// iMac com busca Spotlight
+function imac(x, y, t, a, tq) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#c9d6f2'; rr(x - 380, y, 760, 470, 26); ctx.fill();
+  ctx.fillStyle = '#0d1a33'; rr(x - 356, y + 22, 712, 400, 12); ctx.fill(); ctx.fillStyle = '#c9d6f2'; ctx.fillRect(x - 60, y + 470, 120, 90); rr(x - 160, y + 550, 320, 22, 10); ctx.fill();
+  ctx.fillStyle = 'rgba(240,245,255,.95)'; rr(x - 300, y + 90, 600, 76, 18); ctx.fill(); txt('🔍', x - 270, y + 130, ARC, 32, '#1b2440');
+  const s = 'Quanto dura a bateria do meu fone?', n = Math.floor(clamp((t - tq) * 1.3) * s.length); txt(s.slice(0, n), x - 226, y + 130, ARC, 28, '#1b2440', { weight: 600 });
+  const q = prog(t, tq + 1, tq + 1.4); if (q > 0) { ctx.globalAlpha *= q; ctx.fillStyle = '#2e6bff'; rr(x - 300, y + 186, 600, 70, 14); ctx.fill(); txt('Ask Siri', x - 260, y + 222, ARC, 30, '#fff', { weight: 700 });
+    ctx.fillStyle = 'rgba(240,245,255,.9)'; rr(x - 300, y + 272, 600, 110, 14); ctx.fill(); txt('Resposta da Siri com IA', x - 270, y + 312, ARC, 26, '#1b2440', { weight: 600 }); txt('+ perguntas de continuação', x - 270, y + 350, ARC, 24, '#5a6a8f', { weight: 600 }); }
+  ctx.restore(); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 28/10', 330, -1, SC[1] - .2, t, 40, CI);
+    versao('GENIE 4 CRIA MUNDOS', cx0, 560, prog(t, -1, .1), VERDE, 0, 52);
+    versao('CLAUDE EM REMÉDIOS', cx0, 820, prog(t, wt('claude', 0) - .2, wt('claude', 0) + .2), IN, 0, 52);
+    versao('SIRI NO IMAC', cx0, 1080, prog(t, wt('siri', 0) - .2, wt('siri', 0) + .2), CI, 0, 54);
+  },
+  // 1 · radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, 700, 230 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .25));
+    titulo('RADAR IA', 1050, SC[1], SC[2] - .2, t, 110, BR, 'IA', CI);
+  },
+  // 2 · Genie 4 em ação
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('GENIE 4', 450, wt('genie', 2) - .2, SC[3] - .2, t, 96, BR, '4', VERDE);
+    const ca = wt('camera', 2), pe = wt('personagens', 2), cl = wt('clima', 2);
+    mundo3(cx0 - 420, 560, 840, 560, t, prog(t, wt('ambiente', 2) - .3, wt('ambiente', 2) + .2), (t - SC[2]) * .2 + prog(t, ca, ca + 1.2) * 1.5, prog(t, pe - .2, pe + .3), prog(t, cl - .2, cl + .6));
+    [['câmera', ca, CI], ['personagens', pe, IN], ['clima', cl, AMB]].forEach(([s2, t0, c], i) => pilula(s2, cx0 - 280 + i * 280, 1210, 250, prog(t, t0 - .2, t0 + .2), c, '', 1, 36));
+  },
+  // 3 · quem pode usar
+  (t, lt) => {
+    titulo('QUEM JÁ USA', 380, SC[3], SC[4] - .2, t, 88, BR, 'USA', AMB);
+    pilula('testadores convidados', cx0, 640, 680, prog(t, wt('testadores', 3) - .2, wt('testadores', 3) + .2), CI, 'PRÉVIA DE PESQUISA', 1, 44);
+    txt('↓', cx0, 760, ARC, 50, AMB, { align: 'center', weight: 800, alpha: prog(t, wt('depois', 3) - .2, wt('depois', 3)) });
+    pilula('plano pago Ultra', cx0, 860, 560, prog(t, wt('ultra', 3) - .2, wt('ultra', 3) + .2), AMB, 'PROJECT GENIE', 1, 44);
+    pilula('lista de espera', cx0, 1040, 460, prog(t, wt('espera', 3) - .2, wt('espera', 3) + .2), VERDE, '', 1, 42);
+  },
+  // 4 · Claude revisa documentos
+  (t, lt) => {
+    numero(2, 300, SC[4], SC[5] - .2, t);
+    titulo('CLAUDE EM REMÉDIOS', 450, wt('anthropic', 4) - .2, SC[5] - .2, t, 72, BR, 'REMÉDIOS', IN);
+    pilula('6 empresas', cx0, 590, 360, prog(t, wt('seis', 4) - .2, wt('seis', 4) + .2), IN, '', 1, 40);
+    paginas(cx0 - 220, 760, prog(t, wt('revisou', 4) - .3, wt('paginas', 4) + .2), t, prog(t, wt('paginas', 4), wt('conferencia', 4)));
+    pilula('+ de 1.000 páginas', cx0 - 220, 1140, 400, prog(t, wt('paginas', 4) - .2, wt('paginas', 4) + .2), CI, '', 1, 34);
+    versao('25 h', cx0 + 230, 780, prog(t, wt('vinte', 4) - .2, wt('vinte', 4) + .2), BR, prog(t, wt('menos', 4) - .2, wt('menos', 4) + .2), 64);
+    versao('< 3 h', cx0 + 230, 980, prog(t, wt('tres', 4) - .2, wt('tres', 4) + .2), VERDE, 0, 72);
+  },
+  // 5 · anticorpos e limite
+  (t, lt) => {
+    titulo('35 MIL ANTICORPOS', 380, SC[5], SC[6] - .2, t, 76, BR, '35 MIL', CI);
+    anticorpos(cx0, 560, prog(t, wt('desenhou', 5) - .2, wt('mes', 5) + .2), t);
+    pilula('em 1 mês', cx0, 1000, 340, prog(t, wt('mes', 5) - .2, wt('mes', 5) + .2), CI, '', 1, 42);
+    pilula('fase de laboratório', cx0, 1160, 560, prog(t, wt('laboratorio', 5) - .2, wt('laboratorio', 5) + .2), AMB, 'NADA TESTADO EM PESSOAS', 1, 42);
+  },
+  // 6 · iMac com Siri no Spotlight
+  (t, lt) => {
+    numero(3, 300, SC[6], SC[7] - .2, t);
+    titulo('SIRI NA BUSCA DO MAC', 450, wt('imac', 6) - .2, SC[7] - .2, t, 70, BR, 'BUSCA', CI);
+    imac(cx0, 560, t, prog(t, wt('imac', 6) - .2, wt('imac', 6) + .3), wt('spotlight', 6) - .3);
+    pilula('pré-venda hoje', cx0 - 210, 1230, 380, prog(t, wt('hoje', 6) - .2, wt('hoje', 6) + .2), CI, '', 1, 34);
+    pilula('entrega 6/11', cx0 + 210, 1230, 340, prog(t, wt('entrega', 6) - .2, wt('entrega', 6) + .2), VERDE, '', 1, 34);
+  },
+  // 7 · teste hoje
+  (t, lt) => {
+    titulo('TESTE HOJE', 330, SC[7], SC[8] - .2, t, 90, BR, 'HOJE', CI);
+    janela(470, 420, prog(t, wt('lista', 7) - .3, wt('lista', 7) + .1), 'Project Genie', (x, y, w) => {
+      txt('Genie 4', x + 30, y + 50, EXP, 36, '#1b2440');
+      pilula('entrar na lista de espera', x + w / 2, y + 160, w - 80, prog(t, wt('espera', 7) - .2, wt('espera', 7) + .3), VERDE, '', 1, 36); });
+    exemplo(cx0, 980, prog(t, wt('entre', 7), wt('entre', 7) + .3));
+  },
+  // 8 · fim
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>

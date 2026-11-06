@@ -1,0 +1,167 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-11-12h-notebooklm.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="raiox-motion.js"></script>
+<script>
+// 11/10/2026 · Faça com IA · NotebookLM transforma o material de estudo num professor. Tempos da fala em TEMPOS (voz.py).
+const EP = '14';
+const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
+const GBLUE = '#4285f4';
+
+// livro em traço 3D (capa, miolo e lombada)
+function book(o, p, color = COL.ink) {
+  wire(Mesh.box(.8, 1, .16), o, p, color, 3);
+  wire(Mesh.box(.74, .94, .001), { ...o, rx: o.rx, ry: o.ry }, prog(p, .5, 1), COL.dim, 2);
+}
+// fonte: folha com etiqueta do tipo (PDF, LINK, VÍDEO)
+function source(x, y, label, a, hot = false) {
+  if (a <= 0) return;
+  const e = easeOut(clamp(a));
+  ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.translate(x, y + (1 - e) * 120);
+  page(-80, -100, 160, 200, clamp(a));
+  ctx.fillStyle = hot ? COL.cyan : COL.blue; ctx.fillRect(-80, 60, 160, 40);
+  txt(label, 0, 81, ARC, 26, hot ? COL.black : COL.ink, { align: 'center', weight: 600, ls: 3 });
+  ctx.restore();
+}
+
+// 0 · gancho: livro 3D vira lente com "IA" (o material vira professor)
+CAMS[0] = () => [[0, 0, 40, 1.08, -1.2], [1, 0, 0, 1, 0], [cue('professor') - .2, 0, 0, 1, 0], [cue('notebooklm') + .3, 0, 90, 1.04, .6]];
+function s0(t, lt) {
+  kinetic([{ w: 'Seu material', t: cue('material') }, { w: 'vira', t: cue('estudo') }, { w: 'professor', t: cue('professor') }], M, 230, lt, { size: 100, hl: [2] });
+  const o = { x: W / 2, y: 900, s: 470, rx: -.18 + .05 * Math.sin(lt * 1.2), ry: .6 * Math.sin(lt * .6) + .3, d: 4 };
+  const morphP = prog(lt, cue('professor') - .1, cue('professor') + .5);
+  book(o, prog(lt, .1, 1.2) * (1 - morphP));
+  if (morphP > 0) lens(W / 2, 900, 170, morphP);
+  const top = proj3([.4, -.5, 0], o);
+  annot(top[0], top[1], 880, 640, 'apostila', prog(lt, cue('material'), cue('material') + .5) * (1 - morphP), 'L');
+  toolCard(W / 2, 1250, 'NotebookLM', 'notebooklm.google · tem plano grátis', prog(lt, cue('notebooklm') - .1, cue('notebooklm') + .3), GBLUE);
+  if (lt > cue('grátis')) dimLine(M + 60, W - M - 60, 1375, 'ferramenta do google', prog(lt, cue('grátis'), cue('grátis') + .3));
+}
+
+// 1 · cria o caderno e sobe as fontes: cada fonte cai dentro do caderno quando é falada
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('sobe') - .2, 0, 0, 1, 0], [cue('youtube') + .4, 0, 60, 1.04, .4]];
+function s1(t, lt) {
+  stepTag(1, 3, lt, 320);
+  title(['Crie'], lt, .05, 200, 92);
+  fig('fig. 02 · caderno + fontes', lt, .2, 320);
+  const nb = prog(lt, cue('caderno') - .2, cue('caderno') + .5);
+  panel(M, 1000, W - 2 * M, 300, nb, 'caderno · notebooklm');
+  const conta = prog(lt, cue('conta') - .2, cue('conta') + .3);
+  if (conta > 0) {
+    const sh = morphSeq([[0, shape('circle', W / 2, 640, 90)], [cue('caderno'), shape('rect', W / 2, 640, 0, { w: 220, h: 160 })]], lt, .5);
+    strokeShape(sh, { color: lt > cue('caderno') ? COL.cyan : COL.ink, lw: 5, p: conta });
+    txt(lt > cue('caderno') ? 'CADERNO' : 'CONTA GOOGLE', W / 2, 770, ARC, 28, COL.dim, { align: 'center', weight: 600, ls: 4, alpha: conta });
+  }
+  const srcs = [['pdf', 'PDF', 230], ['link', 'LINK', W / 2], ['youtube', 'VÍDEO', W - 230]];
+  srcs.forEach(([w, label, x], i) => {
+    const t0 = cue(w), a = prog(lt, t0 - .15, t0 + .35); if (a <= 0) return;
+    const drop = easeInOut(prog(lt, t0 + .6, t0 + 1.1));
+    source(x, lerp(560, 1150, drop), label, a, lt > t0 && lt < t0 + .9);
+  });
+  if (lt > cue('youtube') + 1) stamp(W / 2, 1390, '3 fontes dentro', prog(lt, cue('youtube') + 1, cue('youtube') + 1.4), 34);
+}
+
+// 2 · pergunta e resposta com citações: linhas ligam cada trecho da resposta à fonte de onde saiu
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('mostra') - .2, 0, 0, 1, 0], [cue('tirou') + .4, 0, 70, 1.05, -.5]];
+function s2(t, lt) {
+  stepTag(2, 3, lt, 320);
+  title(['Pergunte'], lt, .05, 200, 92);
+  fig('fig. 03 · resposta com origem', lt, .2, 320);
+  promptBox(M, 400, W - 2 * M, 'Quais são os prazos do recurso?', prog(lt, cue('perguntas') - .2, cue('perguntas') + .9), t, 'sua pergunta');
+  const ans = prog(lt, cue('responde') - .1, cue('responde') + .4);
+  panel(M, 640, W - 2 * M, 330, ans, 'resposta');
+  const lines = ['Prazo de 10 dias', 'contados da publicação'];
+  lines.forEach((s, i) => {
+    const p = prog(lt, cue('responde') + .2 + i * .3, cue('responde') + .6 + i * .3); if (p <= 0) return;
+    txt(typed(s, p), M + 40, 730 + i * 90, ARC, 44, COL.ink, { weight: 600 });
+    const m = prog(lt, cue('mostra') + i * .25, cue('mostra') + .35 + i * .25);
+    if (m > 0) {
+      const bx = W - M - 120, by = 730 + i * 90;
+      strokeShape(morph(shape('circle', bx, by, 26), shape('square', bx, by, 24), m), { color: COL.cyan, lw: 4 });
+      txt(String(i + 1), bx, by + 2, EXP, 30, COL.cyan, { align: 'center', alpha: m });
+      const sx = 260 + i * 560, sy = 1200;
+      draw(m, 600, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 3; ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(bx, by + 30); ctx.bezierCurveTo(bx, by + 200, sx, sy - 260, sx, sy - 110); ctx.stroke(); ctx.restore(); });
+      source(sx, sy, i ? 'PÁG. 4' : 'PÁG. 12', m, true);
+    }
+  });
+  dimLine(M, W - M, 1370, 'só o que você subiu', prog(lt, cue('subiu'), cue('subiu') + .3));
+}
+
+// 3 · resumo em áudio: duas vozes (esferas em traço) conversam, ondas no ritmo, e o fone vai pro ônibus
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('conversa') - .2, 0, 0, 1, 0], [cue('ônibus'), 0, 80, 1.06, .5]];
+function s3(t, lt) {
+  stepTag(3, 3, lt, 320);
+  title(['Ouça'], lt, .05, 200, 92);
+  fig('fig. 04 · resumo em áudio', lt, .2, 320);
+  const a = prog(lt, cue('resumo') - .2, cue('resumo') + .6);
+  [[300, -1], [780, 1]].forEach(([x, s], i) => {
+    const o = { x, y: 700, s: 260, rx: .25, ry: lt * .7 * s, d: 4 };
+    const talking = Math.floor(lt * 1.6) % 2 === i && lt > cue('conversa');
+    wire(Mesh.sphere(.5, 7, 12), o, a, talking ? COL.cyan : COL.ink, 2.5);
+    txt(i ? 'VOZ 2' : 'VOZ 1', x, 880, ARC, 26, COL.dim, { align: 'center', weight: 600, ls: 4, alpha: a });
+  });
+  // onda sonora entre as duas vozes
+  const wv = prog(lt, cue('áudio') - .1, cue('áudio') + .4);
+  if (wv > 0) {
+    const n = 26, x0 = M + 40, x1 = W - M - 40;
+    for (let k = 0; k < n; k++) {
+      const x = lerp(x0, x1, k / (n - 1)), h = (30 + 110 * Math.abs(Math.sin(k * .7 + lt * 6) * Math.sin(k * .23 + lt * 2.1))) * wv;
+      ctx.fillStyle = k / n < prog(lt, cue('conversa'), cue('ônibus') + .5) ? COL.cyan : COL.dim; ctx.fillRect(x - 7, 1060 - h / 2, 14, h);
+    }
+  }
+  kinetic([{ w: 'tipo', t: cue('tipo') }, { w: 'podcast', t: cue('podcast') }], M, 1250, lt, { size: 84, hl: [1] });
+  stamp(W - 250, 1360, 'no ônibus', prog(lt, cue('ônibus'), cue('ônibus') + .35), 34);
+}
+
+// 4 · exemplo: a lei do edital vira 10 perguntas de prova, contadas no odômetro
+CAMS[4] = () => [[0, 0, 0, 1, 0], [cue('10') - .2, 0, 0, 1, 0], [cue('treina') + .3, 0, 60, 1.04, 0]];
+function s4(t, lt) {
+  title(['Exemplo'], lt, .05, 200, 92);
+  fig('fig. 05 · lei → prova', lt, .2, 320);
+  const lei = prog(lt, cue('lei') - .1, cue('lei') + .4);
+  if (lei > 0) {
+    ctx.save(); ctx.translate(250, 600); page(-120, -170, 240, 340, lei); ctx.restore();
+    txt('LEI DO EDITAL', 250, 810, ARC, 28, COL.dim, { align: 'center', weight: 600, ls: 4, alpha: prog(lt, cue('edital'), cue('edital') + .3) });
+  }
+  const arrow = prog(lt, cue('pede') - .1, cue('pede') + .4);
+  if (arrow > 0) draw(arrow, 260, () => { ctx.save(); ctx.strokeStyle = COL.cyan; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(400, 600); ctx.lineTo(620, 600); ctx.moveTo(595, 575); ctx.lineTo(620, 600); ctx.lineTo(595, 625); ctx.stroke(); ctx.restore(); });
+  for (let k = 0; k < 10; k++) {
+    const col = k % 2, row = Math.floor(k / 2), x = 680 + col * 150, y = 430 + row * 90;
+    const p = prog(lt, cue('10') + k * .07, cue('10') + .3 + k * .07); if (p <= 0) continue;
+    strokeShape(morph(shape('circle', x + 55, y, 30), shape('rect', x + 55, y, 0, { w: 120, h: 64 }), p), { color: COL.ink, lw: 3 });
+    txt(String(k + 1), x + 55, y + 2, EXP, 30, k === 9 ? COL.cyan : COL.ink, { align: 'center', alpha: p });
+  }
+  if (lt > cue('10') - .1) {
+    odometer(10 * easeInOut(prog(lt, cue('10'), cue('prova') + .3)), 2, M, 1060, 170);
+    kinetic([{ w: 'perguntas', t: cue('perguntas') }, { w: 'de prova', t: cue('prova') }], M + 300, 1030, lt, { size: 58, maxW: 600, lh: 70 });
+  }
+  dimLine(M, W - M, 1300, 'treine com o seu material', prog(lt, cue('treina'), cue('treina') + .3));
+}
+
+// 5 · fecha: as fontes cercam a resposta e "inventar" é riscado; card final
+CAMS[5] = () => [[0, 0, 30, 1.05, 0], [cue('fontes'), 0, 0, 1, 0]];
+function s5(t, lt) {
+  kinetic([{ w: 'Só as', t: cue('usa') }, { w: 'suas fontes', t: cue('fontes') }], M, 230, lt, { size: 100, hl: [1] });
+  const cx = W / 2, cy = 720;
+  const ring = prog(lt, cue('fontes') - .1, cue('fontes') + .6);
+  for (let k = 0; k < 5; k++) {
+    const a = -Math.PI / 2 + k * 2 * Math.PI / 5 + lt * .25, x = cx + Math.cos(a) * 260, y = cy + Math.sin(a) * 200;
+    source(x, y, ['PDF', 'LINK', 'VÍDEO', 'PDF', 'LINK'][k], prog(ring, k * .12, k * .12 + .4));
+  }
+  const w = measure('INVENTAR', EXP, 70) ;
+  txt('INVENTAR', cx, cy, EXP, 70, COL.ink, { align: 'center', alpha: prog(lt, cue('difícil') - .2, cue('difícil') + .2) });
+  strike(cx - w / 2 - 10, cy, w + 20, prog(lt, cue('inventar'), cue('inventar') + .35));
+  endCard(t, SC[5] + cue('salva') - .25);
+}
+
+const SCENES = [s0, s1, s2, s3, s4, s5];
+window.DURATION = TEMPOS.duracao;
+</script>
+</body></html>

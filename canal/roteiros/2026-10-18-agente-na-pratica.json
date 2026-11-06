@@ -1,0 +1,90 @@
+{
+  "id": "2026-10-18-agente-na-pratica",
+  "serie": "Agente na Prática",
+  "data": "2026-10-18",
+  "horario": "19:00",
+  "titulo": "Delivery lotado? Um agente de IA anota o pedido no WhatsApp",
+  "descricao": "Agente de IA pro delivery: pedido anotado sem erro 🛵\n1️⃣ O cliente pede no WhatsApp\n2️⃣ O agente confirma sabor, endereço e total\n3️⃣ Confirmado, o pedido vai pra cozinha\n4️⃣ Reclamação ou pedido fora do cardápio, ele passa pra você\nVocê define o cardápio e as regras.\nSalva e me segue pra montar o seu.\n\nFonte: exemplo montado pelo canal, sem números de terceiros.\n\n#agentedeia #delivery #restaurante #whatsapp #automacao #ia",
+  "hashtags": [
+    "agentedeia",
+    "delivery",
+    "restaurante",
+    "whatsapp",
+    "automacao",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 14/10/2026",
+    "termos": {
+      "agente de ia para whatsapp delivery": {
+        "demanda_views_top10": 37898,
+        "concorrencia_canais_100k": 1
+      }
+    }
+  },
+  "dados_que_envelhecem": [],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ],
+  "registro": {
+    "tema": "agente de IA que anota pedidos de delivery no WhatsApp",
+    "chaves": [
+      "delivery",
+      "restaurante",
+      "pedido",
+      "whatsapp"
+    ]
+  },
+  "video": "videos/2026-10-18-19h-agente-delivery-neon.mp4",
+  "fonte_html": "kit/2026-10-18-19h-agente-delivery-neon.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "27",
+  "estilo": "neon",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Delivery lotado? Um agente de IA anota os pedidos no WhatsApp.",
+          "legenda": "Delivery lotado? Um agente de IA anota os pedidos no WhatsApp."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O cliente pede, e ele confirma o sabor, o endereço e o total.",
+          "legenda": "O cliente pede, e ele confirma o sabor, o endereço e o total."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Confirmou? O pedido cai direto na cozinha.",
+          "legenda": "Confirmou? O pedido cai direto na cozinha."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Reclamação ou pedido fora do cardápio, ele passa pra você.",
+          "legenda": "Reclamação ou pedido fora do cardápio, ele passa pra você."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Ninguém fica sem resposta. Salva e segue pra montar o seu.",
+          "legenda": "Ninguém fica sem resposta. Salva e segue pra montar o seu."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

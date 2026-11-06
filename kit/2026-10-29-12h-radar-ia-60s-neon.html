@@ -1,0 +1,103 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-29-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 29/10/2026 · 12h · Radar IA #14 (58 s): explorações imersivas no Gemini (pt-BR), Fill with Gemini com fonte por célula, dot do ChatGPT por mensagem. Neon + neon-entrega.js.
+// Fontes: workspaceupdates.googleblog.com (28/10), blog.google (immersive explorations), help.openai.com (release notes 28/10; Getting started with your dot).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8], T0[9] + .7];
+const DURATION = SC[9], IMPACTO = SC[8] + .4;
+const COR = [AZ, CI, VERDE, VERDE, AZ, AMB, IN, AZ, AZ];
+const HITS = [wt('portugues', 0), wt('fonte', 0), wt('mensagem', 0), wt('radar', 1), wt('camadas', 2), wt('galaxias', 2), wt('brasil', 2), wt('gratis', 3), wt('fonte', 4), wt('mil', 4), wt('pago', 5), wt('mensagem', 6), wt('pro', 6), wt('criptografia', 6), wt('tema', 7)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// camadas que se abrem: célula → planeta → galáxia
+function camadas(x, y, t, n) { const L = [['célula', VERDE, 70], ['planeta', CI, 120], ['galáxia', IN, 170]];
+  L.forEach(([s, c, r], i) => { const q = clamp(n - i); if (q <= 0) return; ctx.save(); ctx.globalAlpha *= q; ctx.strokeStyle = c; ctx.lineWidth = 6; ctx.shadowColor = c; ctx.shadowBlur = 24;
+    ctx.beginPath(); ctx.ellipse(x, y, r * 1.6 * back(q), r * .7 * back(q), .2 * Math.sin(t * .5 + i), 0, 7); ctx.stroke(); ctx.shadowBlur = 0;
+    ctx.restore(); pilula(s, x + 400, y - 120 + i * 120, 240, q, c, '', 1, 34); });
+  ctx.save(); ctx.fillStyle = VERDE; ctx.shadowColor = VERDE; ctx.shadowBlur = 30; ctx.beginPath(); ctx.arc(x, y, 26, 0, 7); ctx.fill(); ctx.restore(); }
+// planilha com fonte por célula
+function celulas(x, y, w, t, n, fonte) { ctx.fillStyle = '#ffffff'; rr(x, y, w, 360, 14); ctx.fill(); const cw = [260, w - 260];
+  ['Empresa', 'Setor (Gemini)'].forEach((h, j) => { ctx.fillStyle = '#e6f4ea'; ctx.fillRect(x + (j ? cw[0] : 0) + 2, y + 2, cw[j] - 4, 66); txt(h, x + (j ? cw[0] : 0) + 18, y + 36, ARC, 28, '#1e7e45', { weight: 800 }); });
+  [['Padaria Sol', 'Alimentação'], ['Auto Peças Lima', 'Automotivo'], ['Clínica Viva', 'Saúde'], ['Loja Azul', 'Varejo']].forEach((l, i) => { const yy = y + 70 + i * 72, q = clamp(n - i);
+    txt(l[0], x + 18, yy + 38, ARC, 28, '#1b2440', { weight: 600 }); if (q > 0) { txt(l[1], x + cw[0] + 18, yy + 38, ARC, 28, '#1b2440', { weight: 600, alpha: q });
+      const f = clamp(fonte - i * .3); if (f > 0) { ctx.save(); ctx.globalAlpha *= f; ctx.fillStyle = '#2e6bff'; rr(x + w - 120, yy + 18, 96, 40, 20); ctx.fill(); txt('fonte', x + w - 72, yy + 39, ARC, 24, '#fff', { align: 'center', weight: 700 }); ctx.restore(); } }
+    ctx.strokeStyle = '#d5dcea'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, yy); ctx.lineTo(x + w, yy); ctx.stroke(); }); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 29/10', 330, -1, SC[1] - .2, t, 40, CI);
+    versao('GEMINI ENSINA EM PORTUGUÊS', cx0, 560, prog(t, -1, .1), VERDE, 0, 38);
+    versao('PLANILHAS MOSTRA A FONTE', cx0, 820, prog(t, wt('planilhas', 0) - .2, wt('planilhas', 0) + .2), CI, 0, 38);
+    versao('CHATGPT TE MANDA MENSAGEM', cx0, 1080, prog(t, wt('chatgpt', 0) - .2, wt('chatgpt', 0) + .2), IN, 0, 38);
+  },
+  // 1 · radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, 700, 230 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .25));
+    titulo('RADAR IA', 1050, SC[1], SC[2] - .2, t, 110, BR, 'IA', CI);
+  },
+  // 2 · explorações imersivas
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('AULAS EM CAMADAS', 450, wt('gemini', 2) - .2, SC[3] - .2, t, 80, BR, 'CAMADAS', VERDE);
+    camadas(cx0 - 120, 800, t, 3 * prog(t, wt('abrindo', 2) - .2, wt('galaxias', 2) + .3));
+    pilula('em português do Brasil', cx0, 1160, 640, prog(t, wt('portugues', 2) - .2, wt('brasil', 2) + .2), VERDE, '', 1, 42);
+  },
+  // 3 · grátis
+  (t, lt) => {
+    titulo('QUEM PODE USAR', 380, SC[3], SC[4] - .2, t, 86, BR, 'USAR', VERDE);
+    pilula('grátis', cx0, 620, 300, prog(t, wt('gratis', 3) - .2, wt('gratis', 3) + .2), VERDE, '', 1, 52);
+    pilula('conta pessoal do Google', cx0, 790, 680, prog(t, wt('pessoal', 3) - .2, wt('pessoal', 3) + .2), CI, '', 1, 44);
+    pilula('narração em áudio: em breve', cx0, 960, 700, prog(t, wt('narracao', 3) - .2, wt('narracao', 3) + .2), AMB, '', 1, 40);
+  },
+  // 4 · Planilhas com fonte por célula
+  (t, lt) => {
+    numero(2, 300, SC[4], SC[5] - .2, t);
+    titulo('FONTE EM CADA CÉLULA', 450, wt('planilhas', 4) - .2, SC[5] - .2, t, 68, BR, 'CÉLULA', CI);
+    celulas(cx0 - 420, 580, 840, t, 4 * prog(t, wt('preenche', 4) - .2, wt('celulas', 4) + .6), 4 * prog(t, wt('fonte', 4) - .3, wt('conferir', 4)));
+    pilula('até 3.000 células por pedido', cx0, 1080, 720, prog(t, wt('mil', 4) - .3, wt('mil', 4) + .2), CI, '', 1, 40);
+  },
+  // 5 · pago
+  (t, lt) => {
+    titulo('É PAGO', 380, SC[5], SC[6] - .2, t, 100, BR, 'PAGO', AMB);
+    pilula('Gemini no Planilhas', cx0, 700, 600, prog(t, wt('gemini', 5) - .2, wt('gemini', 5) + .2), AMB, 'GOOGLE AI PRO, ULTRA OU WORKSPACE', 1, 44);
+  },
+  // 6 · dot do ChatGPT por mensagem
+  (t, lt) => {
+    numero(3, 300, SC[6], SC[7] - .2, t);
+    titulo('CHATGPT POR MENSAGEM', 450, wt('agente', 6) - .2, SC[7] - .2, t, 66, BR, 'MENSAGEM', IN);
+    celular(cx0 - 230, 860, .62, .12 * Math.sin(t * .6), prog(t, wt('celular', 6) - .4, wt('celular', 6)), (x, y, w, s) => {
+      const b = (str, mine, yy, a) => { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const bw = Math.min(w * .92, measure(str, ARC, 28 * s, 600) + 44 * s);
+        ctx.fillStyle = mine ? '#dfe8ff' : '#ffffff'; rr(mine ? x + w - bw : x, yy, bw, 64 * s, 16 * s); ctx.fill(); txt(str, (mine ? x + w - bw : x) + 22 * s, yy + 34 * s, ARC, 28 * s, '#1b2440', { weight: 600 }); ctx.restore(); };
+      b('Seu voo atrasou 40 min.', 0, y + 20 * s, prog(t, wt('mensagem', 6), wt('mensagem', 6) + .3));
+      b('Avisa o hotel?', 1, y + 110 * s, prog(t, wt('texto', 6), wt('texto', 6) + .3));
+      b('Feito! ✓', 0, y + 200 * s, prog(t, wt('audio', 6), wt('audio', 6) + .3)); }, 'ChatGPT', IN);
+    exemplo(cx0 - 230, 1240, prog(t, wt('mensagem', 6), wt('mensagem', 6) + .3));
+    pilula('só Pro nos EUA', cx0 + 210, 760, 360, prog(t, wt('pro', 6) - .2, wt('unidos', 6) + .2), AMB, 'BETA', 1, 36);
+    pilula('sem criptografia', cx0 + 210, 920, 360, prog(t, wt('criptografia', 6) - .3, wt('criptografia', 6) + .1), VERM, 'DE PONTA A PONTA', 1, 36);
+  },
+  // 7 · teste hoje
+  (t, lt) => {
+    titulo('TESTE HOJE', 330, SC[7], SC[8] - .2, t, 90, BR, 'HOJE', CI);
+    janela(470, 520, prog(t, wt('abra', 7) - .3, wt('abra', 7) + .1), 'gemini.google.com/immersive-explorations', (x, y, w) => {
+      txt('Explorações imersivas', x + 20, y + 40, EXP, 34, '#1b2440');
+      ['Corpo humano', 'Sistema solar', 'Vulcões'].forEach((s2, i) => { const q = prog(t, wt('escolha', 7) + i * .25 - .2, wt('escolha', 7) + i * .25); ctx.save(); ctx.globalAlpha *= q;
+        ctx.fillStyle = i === 1 ? '#2e6bff' : '#e6ecfa'; rr(x + 20, y + 100 + i * 100, w - 40, 80, 16); ctx.fill(); txt(s2, x + 50, y + 142 + i * 100, ARC, 32, i === 1 ? '#fff' : '#1b2440', { weight: 700 }); ctx.restore(); }); });
+    exemplo(cx0, 1080, prog(t, wt('escolha', 7), wt('escolha', 7) + .3));
+  },
+  // 8 · fim
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/marca-apresentacao.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script>
+// Apresentação do canal, versão "neon" (Diego, 14/10/2026): mesmo roteiro, voz e trilha da versão Raio-X,
+// no estilo do vídeo de referência dele: fundo escuro com luz colorida vindo de baixo, um elemento por vez no centro,
+// ícones 3D com brilho, celular, roda de cartões e um cursor 3D que acompanha o vídeo todo. Cores do canal (azul/ciano).
+const DURATION = 25, SC = TEMPOS.cenas, PAL = TEMPOS.palavras, BEAT = .5;
+const LOGO = document.getElementById('logo');
+const ease = easeInOut, sm = x => { x = clamp(x); return x * x * (3 - 2 * x); };
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+function wt(word, cena, n = 1) { let k = 0; for (const p of PAL) if (p.cena === cena && norm(p.w) === norm(word) && ++k === n) return p.t0; throw new Error('wt ' + word); }
+const AZ = '#2f6bff', CI = '#2ee6ff', IN = '#4f5bff', BR = '#f4f8ff';
+const hex = (h, a) => { const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; };
+const cx0 = W / 2, cy0 = 860; // centro do palco (acima da área da descrição do Reels)
+
+// ---------- fundo ----------
+const grain = document.createElement('canvas'); grain.width = grain.height = 256;
+{ const g = grain.getContext('2d'), d = g.createImageData(256, 256); let s = 11;
+  for (let i = 0; i < d.data.length; i += 4) { s = (s * 16807) % 2147483647; const v = s % 255; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } g.putImageData(d, 0, 0); }
+function luz(x, y, rx, ry, color, a) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(1, ry / rx);
+  const g = ctx.createRadialGradient(0, 0, 0, 0, 0, rx); g.addColorStop(0, hex(color, a)); g.addColorStop(.5, hex(color, a * .35)); g.addColorStop(1, hex(color, 0));
+  ctx.fillStyle = g; ctx.fillRect(-rx, -rx, 2 * rx, 2 * rx); ctx.restore();
+}
+const COR = [AZ, CI, AZ, CI, IN, CI]; // cor da luz de cada cena
+function fundo(t, i, p) {
+  ctx.fillStyle = '#030408'; ctx.fillRect(0, 0, W, H);
+  const b = Math.pow(1 - (t % BEAT) / BEAT, 3) * (t > 3 ? 1 : .4);
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  luz(780, -100, 900, 700, '#8a94a8', .22); // névoa cinza de cima, como na referência
+  const cA = COR[Math.max(0, i - 1)], cB = COR[i], k = i > 0 ? p : 1;
+  luz(300 + 80 * Math.sin(t * .4), 1950, 900, 900, cA, .55 * (1 - k) * (1 + .15 * b));
+  luz(300 + 80 * Math.sin(t * .4), 1950, 900, 900, cB, .55 * k * (1 + .15 * b));
+  luz(950, 1500 + 80 * Math.cos(t * .3), 500, 700, AZ, .12);
+  ctx.restore();
+}
+function acabamento(t) {
+  ctx.save(); ctx.globalAlpha = .07; ctx.globalCompositeOperation = 'overlay';
+  const f = Math.floor(t * 30); ctx.translate(-(f * 73) % 256, -(f * 151) % 256);
+  ctx.fillStyle = ctx.createPattern(grain, 'repeat'); ctx.fillRect(0, 0, W + 256, H + 256); ctx.restore();
+  const vg = ctx.createRadialGradient(W / 2, H * .45, 350, W / 2, H * .45, H * .85);
+  vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.65)'); ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+}
+
+// ---------- texto limpo no centro, com rastro de luz ----------
+// revela da esquerda pra direita; um risco de luz azul acompanha a borda da revelação
+function frase(str, y, t0, t1, size = 82, o = {}) {
+  const t = o.t; if (t < t0 - .05 || t > t1 + .35) return;
+  const fade = 1 - prog(t, t1, t1 + .3), w = measure(str, ARC, size, 600), x = W / 2 - w / 2;
+  const p = ease(prog(t, t0, t0 + Math.max(.35, Math.min(.8, str.length * .045))));
+  ctx.save(); ctx.globalAlpha = fade;
+  ctx.save(); ctx.beginPath(); ctx.rect(x - 20, y - size, (w + 40) * p, size * 2); ctx.clip();
+  ctx.shadowColor = hex(o.cor || AZ, .7); ctx.shadowBlur = 30;
+  txt(str, W / 2, y, ARC, size, BR, { align: 'center', weight: 600 });
+  if (o.hot) { const hw = measure(o.hot, ARC, size, 600), hx = W / 2 - w / 2 + measure(str.slice(0, str.indexOf(o.hot)), ARC, size, 600);
+    ctx.shadowColor = CI; ctx.shadowBlur = 40; txt(o.hot, hx, y, ARC, size, CI, { weight: 600 }); }
+  ctx.restore();
+  if (p > 0 && p < 1) { // rastro de luz
+    const ex = x - 20 + (w + 40) * p; ctx.save(); ctx.globalCompositeOperation = 'lighter';
+    const g = ctx.createLinearGradient(ex - 160, 0, ex + 20, 0); g.addColorStop(0, hex(AZ, 0)); g.addColorStop(1, hex(CI, .9));
+    ctx.fillStyle = g; rr(ex - 160, y + size * .1, 180, size * .16, size * .08); ctx.fill(); ctx.restore();
+  }
+  ctx.restore();
+}
+
+// ---------- 3D: forma extrudada com brilho ----------
+// path(): desenha o caminho num quadrado de -100..100. ry = giro em Y, rx = giro em X (inclinação)
+function neon3d(path, x, y, s, ry, rx, cor, a = 1, cheio = .25) {
+  if (a <= 0) return;
+  const cy = Math.cos(ry), sy = Math.sin(ry), D = 26;
+  ctx.save(); ctx.globalAlpha *= clamp(a); ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  for (let k = D; k >= 1; k -= 2) { // camadas de profundidade
+    ctx.save(); ctx.translate(x - sy * k * s / 100 * 1.4, y + Math.sin(rx) * k * s / 100); ctx.scale(cy * s / 100, Math.cos(rx) * s / 100);
+    path(); ctx.fillStyle = hex(cor, .05 + .1 * (1 - k / D)); ctx.fill();
+    ctx.lineWidth = 6 * 100 / s; ctx.strokeStyle = hex(cor, .25 * (1 - k / D) + .05); ctx.stroke(); ctx.restore();
+  }
+  ctx.save(); ctx.translate(x, y); ctx.scale(cy * s / 100, Math.cos(rx) * s / 100); path();
+  const g = ctx.createLinearGradient(-100, -100, 100, 100); g.addColorStop(0, hex(cor, cheio + .15)); g.addColorStop(1, hex(cor, cheio * .3));
+  ctx.fillStyle = g; ctx.fill();
+  ctx.shadowColor = cor; ctx.shadowBlur = 50; ctx.lineWidth = 9 * 100 / s; ctx.strokeStyle = cor; ctx.stroke();
+  ctx.shadowBlur = 12; ctx.lineWidth = 3.5 * 100 / s; ctx.strokeStyle = '#eaffff'; ctx.stroke();
+  ctx.restore();
+  ctx.save(); ctx.globalCompositeOperation = 'lighter'; luz(x, y, s * 1.8, s * 1.8, cor, .22 * a); ctx.restore();
+  ctx.restore();
+}
+// caminhos (quadrado -100..100)
+const P = {
+  engrenagem() { ctx.beginPath(); const n = 8; for (let i = 0; i < n * 2; i++) { const a0 = i * Math.PI / n, r = i % 2 ? 72 : 98, da = Math.PI / n * .38;
+      ctx.lineTo(Math.cos(a0 - da) * r, Math.sin(a0 - da) * r); ctx.lineTo(Math.cos(a0 + da) * r, Math.sin(a0 + da) * r); } ctx.closePath();
+    ctx.moveTo(36, 0); ctx.arc(0, 0, 36, 0, Math.PI * 2, true); },
+  relogio() { ctx.beginPath(); ctx.arc(0, 0, 96, 0, 7); ctx.moveTo(78, 0); ctx.arc(0, 0, 78, 0, Math.PI * 2, true); },
+  coracao() { ctx.beginPath(); ctx.moveTo(0, 85); ctx.bezierCurveTo(-140, -10, -70, -125, 0, -50); ctx.bezierCurveTo(70, -125, 140, -10, 0, 85); ctx.closePath(); },
+  balao() { ctx.beginPath(); rr(-100, -75, 200, 130, 40); ctx.moveTo(-40, 55); ctx.lineTo(-70, 100); ctx.lineTo(0, 55); },
+  seta() { ctx.beginPath(); ctx.moveTo(-60, -95); ctx.lineTo(70, 30); ctx.lineTo(8, 34); ctx.lineTo(45, 100); ctx.lineTo(15, 112); ctx.lineTo(-20, 46); ctx.lineTo(-62, 88); ctx.closePath(); },
+  check() { ctx.beginPath(); ctx.arc(0, 0, 96, 0, 7); ctx.moveTo(-48, 2); ctx.lineTo(-12, 40); ctx.lineTo(52, -38); ctx.lineTo(40, -50); ctx.lineTo(-12, 14); ctx.lineTo(-36, -10); ctx.closePath(); },
+};
+
+// ---------- celular ----------
+function celular(x, y, s, ry, a, conteudo) {
+  if (a <= 0) return; const w = 430 * s, h = 880 * s;
+  ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.transform(Math.cos(ry), Math.sin(ry) * .22, 0, 1, 0, 0);
+  for (let k = 14; k >= 1; k -= 2) { ctx.fillStyle = `rgba(150,170,210,${.06 + .02 * (14 - k) / 14})`; rr(-w / 2 - Math.sin(ry) * k * 2, -h / 2 + k * .4, w, h, 64 * s); ctx.fill(); }
+  ctx.shadowColor = hex(AZ, .6); ctx.shadowBlur = 60; ctx.fillStyle = '#1b1f2a'; rr(-w / 2, -h / 2, w, h, 64 * s); ctx.fill(); ctx.shadowBlur = 0;
+  ctx.strokeStyle = '#9aa6bf'; ctx.lineWidth = 4; rr(-w / 2, -h / 2, w, h, 64 * s); ctx.stroke();
+  const g = ctx.createLinearGradient(0, -h / 2, 0, h / 2); g.addColorStop(0, '#f4f7ff'); g.addColorStop(1, '#dfe7fb');
+  ctx.fillStyle = g; rr(-w / 2 + 14 * s, -h / 2 + 14 * s, w - 28 * s, h - 28 * s, 52 * s); ctx.fill();
+  ctx.fillStyle = '#0b0d12'; rr(-60 * s, -h / 2 + 30 * s, 120 * s, 34 * s, 17 * s); ctx.fill();
+  ctx.fillStyle = '#e6ecfa'; ctx.fillRect(-w / 2 + 14 * s, -h / 2 + 80 * s, w - 28 * s, 90 * s); // topo do app
+  ctx.fillStyle = AZ; ctx.beginPath(); ctx.arc(-w / 2 + 70 * s, -h / 2 + 125 * s, 26 * s, 0, 7); ctx.fill();
+  txt('Atendimento', -w / 2 + 112 * s, -h / 2 + 125 * s, ARC, 28 * s, '#1b2440', { weight: 600 });
+  ctx.save(); rr(-w / 2 + 14 * s, -h / 2 + 170 * s, w - 28 * s, h - 200 * s, 0); ctx.clip(); conteudo(-w / 2 + 34 * s, -h / 2 + 200 * s, w - 68 * s, s); ctx.restore();
+  // reflexo
+  ctx.globalCompositeOperation = 'lighter'; const r = ctx.createLinearGradient(-w / 2, -h / 2, w / 2, h / 2);
+  r.addColorStop(0, 'rgba(255,255,255,0)'); r.addColorStop(.45, 'rgba(255,255,255,.08)'); r.addColorStop(.5, 'rgba(255,255,255,0)'); ctx.fillStyle = r; rr(-w / 2, -h / 2, w, h, 64 * s); ctx.fill();
+  ctx.restore();
+}
+function msg(x, y, w, str, eu, a, s) {
+  if (a <= 0) return 0; const size = 33 * s, lines = wrap(str, w * .78 - 30 * s, ARC, size, 600), bw = Math.max(...lines.map(l => measure(l, ARC, size, 600))) + 34 * s, bh = lines.length * size * 1.3 + 22 * s;
+  const bx = eu ? x + w - bw : x, e = back(clamp(a));
+  ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.translate(bx + bw / 2, y + bh / 2); ctx.scale(e, e); ctx.translate(-bx - bw / 2, -y - bh / 2);
+  ctx.fillStyle = eu ? '#cfe0ff' : '#ffffff'; ctx.shadowColor = 'rgba(0,0,0,.12)'; ctx.shadowBlur = 8; rr(bx, y, bw, bh, 18 * s); ctx.fill(); ctx.shadowBlur = 0;
+  lines.forEach((l, i) => txt(l, bx + 17 * s, y + 11 * s + size * .65 + i * size * 1.3, ARC, size, '#1b2440', { weight: 600 }));
+  ctx.restore(); return bh + 14 * s;
+}
+
+// ---------- roda de cartões (como os logos em círculo da referência) ----------
+const IC = [
+  (c) => { ctx.strokeStyle = c; ctx.lineWidth = 7; rr(-34, -28, 68, 46, 12); ctx.stroke(); ctx.beginPath(); ctx.moveTo(-14, 18); ctx.lineTo(-24, 34); ctx.lineTo(2, 18); ctx.stroke(); }, // chat
+  (c) => { ctx.strokeStyle = c; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(-28, 22); ctx.lineTo(0, -20); ctx.lineTo(28, 22); ctx.stroke(); [[-28, 22], [0, -20], [28, 22]].forEach(p => { ctx.fillStyle = c; ctx.fillRect(p[0] - 10, p[1] - 10, 20, 20); }); }, // fluxo
+  (c) => { ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(-36, -18); ctx.lineTo(16, -18); ctx.lineTo(36, 0); ctx.lineTo(16, 18); ctx.lineTo(-36, 18); ctx.closePath(); ctx.fill(); txt('R$0', -10, 1, EXP, 17, '#fff', { align: 'center' }); }, // grátis
+  (c) => { ctx.strokeStyle = c; ctx.lineWidth = 6; rr(-30, -26, 60, 54, 8); ctx.stroke(); ctx.fillStyle = c; ctx.fillRect(-30, -26, 60, 14); txt('19', 0, 12, EXP, 22, c, { align: 'center' }); }, // agenda
+  (c) => { ctx.strokeStyle = c; ctx.lineWidth = 6; ctx.strokeRect(-34, -22, 68, 46); ctx.beginPath(); ctx.moveTo(-34, -22); ctx.lineTo(0, 6); ctx.lineTo(34, -22); ctx.stroke(); }, // e-mail
+  (c) => { ctx.strokeStyle = c; ctx.lineWidth = 5; ctx.strokeRect(-32, -28, 64, 56); for (let i = 1; i < 3; i++) { ctx.beginPath(); ctx.moveTo(-32, -28 + i * 19); ctx.lineTo(32, -28 + i * 19); ctx.stroke(); } ctx.beginPath(); ctx.moveTo(-6, -28); ctx.lineTo(-6, 28); ctx.stroke(); }, // planilha
+  (c) => { ctx.fillStyle = c; rr(-36, -26, 72, 52, 14); ctx.fill(); ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.moveTo(-10, -14); ctx.lineTo(16, 0); ctx.lineTo(-10, 14); ctx.closePath(); ctx.fill(); }, // vídeo
+  (c) => { ctx.strokeStyle = c; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(0, 0, 30, 0, 7); ctx.stroke(); txt('IA', 0, 2, EXP, 24, c, { align: 'center' }); }, // ia
+];
+function roda(t, t0, rot, a) {
+  if (a <= 0) return; const n = IC.length, R = 330 * (.6 + .4 * ease(a));
+  const itens = IC.map((f, i) => { const an = i * 2 * Math.PI / n + rot - Math.PI / 2; return { f, i, an, z: Math.sin(an) }; }).sort((p, q) => p.z - q.z);
+  itens.forEach(({ f, i, an, z }) => {
+    const ai = clamp((a * n - i * .5) / 2); if (ai <= 0) return;
+    const x = cx0 + Math.cos(an) * R, y = cy0 + Math.sin(an) * R * .92, s = 1 + .08 * z, e = back(ai);
+    ctx.save(); ctx.translate(x, y); ctx.rotate(.35 * Math.cos(an * 1.3 + t * .5)); ctx.transform(1, 0, .18 * Math.sin(an + t), 1, 0, 0); ctx.scale(s * e, s * e); ctx.globalAlpha = clamp(ai * 2);
+    ctx.fillStyle = 'rgba(120,140,190,.35)'; rr(-62, -52, 136, 136, 22); ctx.fill(); // espessura
+    ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = 30; ctx.fillStyle = '#f6f8ff'; rr(-68, -68, 136, 136, 22); ctx.fill(); ctx.shadowBlur = 0;
+    IC[i]([AZ, '#1d4ed8', CI === '#2ee6ff' ? '#0aa5c0' : CI, AZ, '#1d4ed8', '#0aa5c0', AZ, '#1d4ed8'][i]);
+    ctx.restore();
+  });
+}
+
+// ---------- cursor 3D que acompanha o vídeo ----------
+// [t, x, y, escala, giro]
+const CK = [[0, 760, 1300, 70, .3], [.9, 640, 1180, 70, -.2], [1.2, 650, 1195, 62, -.2], [1.5, 900, 520, 60, .4], [3.1, 900, 520, 60, .4], [4.0, 760, 700, 55, -.3],
+  [6.3, 780, 680, 55, .3], [7.2, 850, 1010, 50, .5], [9.0, 860, 1000, 50, .5], [9.6, 640, 1010, 48, 0], [13.4, 640, 1010, 48, 0], [14.6, 900, 640, 50, -.4],
+  [17.0, 900, 640, 52, .2], [19.4, 900, 640, 52, .2], [20.0, 480, 880, 56, -.3], [22.1, 480, 880, 56, -.3], [22.7, 760, 1400, 0, .5]];
+function cursor(t) {
+  let i = 0; while (i < CK.length - 1 && t >= CK[i + 1][0]) i++;
+  const A = CK[i], B = CK[Math.min(i + 1, CK.length - 1)], q = B[0] > A[0] ? ease(prog(t, A[0], B[0])) : 1;
+  const v = A.map((a, k) => lerp(a, B[k], q)); if (v[3] < 2) return;
+  const clique = Math.max(0, 1 - Math.abs(t - 1.2) / .15) + Math.max(0, 1 - Math.abs(t - wt('curte', 4) - .05) / .15);
+  neon3d(P.seta, v[1], v[2] + 10 * Math.sin(t * 2.4), v[3] * (1 - .15 * clique), v[4] + .25 * Math.sin(t * 1.3), .3, AZ, 1, .55);
+}
+
+// ---------- cenas ----------
+const S = [
+  // 0 · gancho: celular com a pergunta no 1º quadro; depois a palavra sozinha no centro
+  (t, lt) => {
+    const sai = prog(t, 1.45, 1.75);
+    celular(cx0 + 60 * sai, cy0 + 40 + 400 * ease(sai), 1.0 - .3 * sai, -.35 + .2 * sm(lt / 1.5), 1 - sai, (x, y, w, s) => {
+      let yy = y; yy += msg(x, yy, w, 'o que é IA?', true, 1, s);
+      yy += msg(x, yy, w, 'IA é um programa que responde perguntas.', false, prog(t, .55, .8), s);
+      msg(x, yy, w, 'só isso?', true, prog(t, 1.15, 1.35), s);
+    });
+    frase('Só pra fazer pergunta?', cy0, 1.55, 2.95, 82, { t, hot: 'pergunta?' });
+  },
+  // 1 · virada: engrenagem 3D girando = a IA trabalhando; confirmações surgindo
+  (t, lt) => {
+    neon3d(P.engrenagem, cx0, cy0 - 40, 200 * back(prog(lt, .1, .6)), lt * 1.2, .35, CI, prog(lt, .1, .4));
+    frase('Ela trabalha por você', cy0 + 330, wt('trabalhar', 1) - .25, 6.4, 72, { t, hot: 'trabalha', cor: CI });
+    [['Respondido', 4.8, -300, -330], ['Agendado', 5.3, 300, -250], ['Vendido', 5.8, -280, 120]].forEach(([s, t0, dx, dy]) => {
+      const a = prog(t, t0, t0 + .25); if (a <= 0) return; const e = back(a), w = measure('✓ ' + s, ARC, 36, 600) + 50;
+      ctx.save(); ctx.translate(cx0 + dx, cy0 + dy); ctx.scale(e, e); ctx.globalAlpha = clamp(a * 2) * (1 - prog(t, 6.3, 6.6));
+      ctx.shadowColor = CI; ctx.shadowBlur = 25; ctx.fillStyle = 'rgba(10,30,60,.85)'; rr(-w / 2, -36, w, 72, 36); ctx.fill();
+      ctx.strokeStyle = CI; ctx.lineWidth = 3; rr(-w / 2, -36, w, 72, 36); ctx.stroke(); ctx.shadowBlur = 0;
+      txt('✓ ' + s, 0, 2, ARC, 36, BR, { align: 'center', weight: 600 }); ctx.restore();
+    });
+  },
+  // 2 · marca + roda de cartões com o tema no centro
+  (t, lt) => {
+    frase('Aqui no IA Sem Mistério', cy0, 6.7, 8.95, 70, { t, hot: 'IA Sem Mistério' });
+    frase('você aprende', cy0 + 110, 8.15, 8.95, 52, { t });
+    const ar = prog(t, 9.0, 9.9); roda(t, 9, t * .45, ar);
+    const T = [wt('agentes', 2), wt('automatizar', 2), wt('gratis', 2)];
+    frase('Agentes', cy0, T[0] - .1, T[1] - .2, 64, { t, hot: 'Agentes' });
+    frase('Automação', cy0, T[1] - .1, T[2] - .25, 64, { t, hot: 'Automação' });
+    frase('Ferramentas', cy0 - 40, T[2] - .3, 13.6, 52, { t });
+    frase('grátis', cy0 + 35, T[2] + .3, 13.6, 64, { t, hot: 'grátis' });
+  },
+  // 3 · passo a passo, sem enrolação; relógio 3D marca 12h e 19h
+  (t, lt) => {
+    frase('Passo a passo', cy0 - 60, 14.1, 15.25, 82, { t, hot: 'Passo a passo' });
+    frase('sem enrolação', cy0 + 50, wt('sem', 3) - .05, 15.9, 64, { t });
+    const a = prog(t, 16.3, 16.8), t12 = wt('meiodia', 3), t19 = wt('sete', 3);
+    if (a > 0) {
+      const y = cy0 - 60, s = 210 * back(a); neon3d(P.relogio, cx0, y, s, .5 * Math.sin(t * .9), .25, CI, a);
+      const horas = lerp(lerp(9, 12, ease(prog(t, t12 - .6, t12 + .1))), 19, ease(prog(t, t19 - .5, t19 + .2)));
+      const ah = (horas % 12) / 12 * 2 * Math.PI, am = horas * 2 * Math.PI, sx = Math.cos(.5 * Math.sin(t * .9));
+      ctx.save(); ctx.globalAlpha = a; ctx.translate(cx0, y); ctx.scale(sx * back(a), back(a)); ctx.lineCap = 'round'; ctx.shadowColor = CI; ctx.shadowBlur = 30;
+      ctx.strokeStyle = BR; ctx.lineWidth = 16; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.sin(ah) * 95, -Math.cos(ah) * 95); ctx.stroke();
+      ctx.strokeStyle = CI; ctx.lineWidth = 10; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.sin(am) * 140, -Math.cos(am) * 140); ctx.stroke(); ctx.restore();
+      frase('todo dia', cy0 + 260, wt('todo', 3) - .1, 19.4, 54, { t });
+      [['12h', -140, t12], ['19h', 140, t19]].forEach(([s, dx, t0]) => { const q = prog(t, t0 - .05, t0 + .25); if (q <= 0) return; const on = s === '12h' ? t < t19 : true, e = back(q);
+        ctx.save(); ctx.translate(cx0 + dx, cy0 + 390); ctx.scale(e, e); ctx.globalAlpha = clamp(q * 2); ctx.shadowColor = on ? CI : AZ; ctx.shadowBlur = on ? 40 : 15;
+        txt(s, 0, 0, ARC, 92, on ? CI : BR, { align: 'center', weight: 600, alpha: on ? 1 : .7 }); ctx.restore(); });
+    }
+  },
+  // 4 · curte e comenta
+  (t, lt) => {
+    const tc = wt('curte', 4), tm = wt('comenta', 4), cheio = ease(prog(t, tc, tc + .3));
+    neon3d(P.coracao, cx0 - 150, cy0 - 70, 170 * back(prog(t, tc - .3, tc + .1)) * (1 + .1 * Math.max(0, 1 - Math.abs(t - tc - .1) / .2)), .4 * Math.sin(t * 1.5), .3, AZ, prog(t, tc - .3, tc), .2 + .5 * cheio);
+    neon3d(P.balao, cx0 + 190, cy0 - 90, 140 * back(prog(t, tm - .2, tm + .2)), -.4 * Math.sin(t * 1.4), .3, CI, prog(t, tm - .2, tm + .1));
+    frase('Curte e comenta', cy0 + 260, tc - .1, 22.3, 82, { t, hot: 'comenta' });
+    frase('pra receber mais', cy0 + 370, wt('receber', 4) - .15, 22.3, 54, { t });
+  },
+  // 5 · logo original + chamada (2,5 s)
+  (t, lt) => {
+    const e = back(prog(lt, .05, .6)), s = 520;
+    ctx.save(); ctx.globalCompositeOperation = 'lighter'; luz(cx0, cy0 - 60, 560, 560, AZ, .35 * prog(lt, 0, .5)); ctx.restore();
+    ctx.save(); ctx.translate(cx0, cy0 - 60); const z = .7 + .3 * e + .02 * lt; ctx.scale(z, z); ctx.globalAlpha = prog(lt, 0, .3);
+    ctx.shadowColor = CI; ctx.shadowBlur = 60; ctx.fillStyle = '#0a1d45'; rr(-s / 2, -s / 2, s, s, 64); ctx.fill(); ctx.shadowBlur = 0;
+    ctx.save(); rr(-s / 2, -s / 2, s, s, 64); ctx.clip(); ctx.drawImage(LOGO, -s / 2, -s / 2, s, s);
+    const sx = lerp(-s, s, prog(lt, .5, 1.3)), g = ctx.createLinearGradient(sx - 120, 0, sx + 120, 0);
+    g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(.5, 'rgba(255,255,255,.3)'); g.addColorStop(1, 'rgba(255,255,255,0)'); ctx.fillStyle = g; ctx.fillRect(-s / 2, -s / 2, s, s); ctx.restore();
+    ctx.restore();
+    frase('IA Sem Mistério', cy0 + 320, 22.85, 99, 70, { t });
+    const a = prog(lt, .6, .95); if (a > 0) { const w = measure('Curte e comenta', ARC, 52, 600) + 90, eb = back(a);
+      ctx.save(); ctx.translate(cx0, cy0 + 450); ctx.scale(eb, eb); ctx.shadowColor = CI; ctx.shadowBlur = 40; ctx.fillStyle = CI; rr(-w / 2, -48, w, 96, 48); ctx.fill(); ctx.shadowBlur = 0;
+      txt('Curte e comenta', 0, 2, ARC, 52, '#03121a', { align: 'center', weight: 600 }); ctx.restore(); }
+    txt('pra receber mais conteúdo', cx0, cy0 + 560, ARC, 38, BR, { align: 'center', weight: 600, alpha: prog(lt, .85, 1.15) });
+  },
+];
+
+// ---------- montagem ----------
+const TR = .5;
+function cena(i, t, alpha, zoom, blur = 0) {
+  if (alpha <= 0) return; const lt = t - SC[i];
+  ctx.save(); ctx.globalAlpha = alpha; if (blur > .5) ctx.filter = `blur(${blur}px)`;
+  const z = zoom * (1 + .02 * lt); ctx.translate(cx0, cy0); ctx.scale(z, z); ctx.translate(-cx0, -cy0);
+  S[i](t, lt); ctx.restore();
+}
+function render(t) {
+  ctx.save(); ctx.clearRect(0, 0, W, H);
+  let i = S.length - 1; for (let k = 0; k < S.length; k++) if (t < SC[k + 1]) { i = k; break; }
+  const lt = t - SC[i], p = i > 0 ? ease(clamp(lt / TR)) : 1;
+  fundo(t, i, p);
+  if (i > 0 && lt < TR) { // zoom + desfoque + clarão de luz entre as cenas
+    cena(i - 1, t, 1 - p, 1 + .25 * p, 18 * p);
+    cena(i, t, p, .85 + .15 * p, 18 * (1 - p));
+    ctx.save(); ctx.globalCompositeOperation = 'lighter'; luz(cx0, cy0, 900, 700, COR[i], .35 * Math.sin(p * Math.PI)); ctx.restore();
+  } else cena(i, t, 1, 1);
+  cursor(t);
+  acabamento(t);
+  ctx.restore();
+}
+window.render = render;
+</script></body></html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-03-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 03/11/2026 · 12h · Radar IA #19 (59 s): anúncios no Modo IA chegam ao Brasil no 4º tri, OpenAI aumenta o bug bounty, LifeVal. Neon + neon-entrega.js.
+// Fontes: blog.google (Ads in AI Mode expand to 10 new countries), openai.com (Rewarding defenders with bigger bug bounties; LifeVal, 02/11).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8], T0[9] + .7];
+const DURATION = SC[9], IMPACTO = SC[8] + .4;
+const COR = [AZ, CI, AZ, AZ, VERM, VERM, VERDE, CI, AZ];
+const HITS = [wt('anuncio', 0), wt('trinta', 0), wt('teste', 0), wt('radar', 1), wt('brasil', 2), wt('ano', 2), wt('patrocinado', 3), wt('premio', 4), wt('critica', 4), wt('trinta', 4), wt('bonus', 5), wt('lifeval', 6), wt('governo', 6), wt('varias', 6), wt('governo', 7)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 03/11', 330, -1, SC[1] - .2, t, 40, CI);
+    versao('ANÚNCIO NA RESPOSTA DE IA', cx0, 560, prog(t, -1, .1), AZ, 0, 38);
+    versao('US$ 30 MIL POR FALHA', cx0, 820, prog(t, wt('openai', 0) - .2, wt('openai', 0) + .2), VERM, 0, 38);
+    versao('IA TESTADA NO DIA A DIA', cx0, 1080, prog(t, wt('criou', 0) - .2, wt('criou', 0) + .2), VERDE, 0, 38);
+  },
+  // 1 · radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, 700, 230 * back(prog(lt, .05, .4)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .25));
+    titulo('RADAR IA', 1050, SC[1], SC[2] - .2, t, 110, BR, 'IA', CI);
+  },
+  // 2 · anúncios no Modo IA
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('ANÚNCIO NO MODO IA', 450, wt('google', 2) - .2, SC[3] - .2, t, 72, BR, 'MODO IA', AZ);
+    neon3d(P.balao, cx0, 700 + flut(t), 120 * back(prog(t, wt('anuncios', 2) - .4, wt('anuncios', 2))), .4 * Math.sin(t * .8), .1, AZ, prog(t, wt('anuncios', 2) - .4, wt('anuncios', 2)));
+    [['Brasil', 'brasil'], ['México', 'mexico'], ['Reino Unido', 'reino']].forEach(([n, k], i) =>
+      pilula(n, cx0 - 280 + i * 280, 940, 250, prog(t, wt(k, 2) - .2, wt(k, 2) + .2), i === 0 ? VERDE : AZ, '', 1, 36));
+    pilula('ainda este ano', cx0, 1120, 460, prog(t, wt('ainda', 2) - .2, wt('ano', 2) + .2), AMB, 'PLANO DO GOOGLE · 4º TRI', 1, 42);
+  },
+  // 3 · patrocinado
+  (t, lt) => {
+    titulo('MARCADO COMO PATROCINADO', 380, SC[3], SC[4] - .2, t, 58, BR, 'PATROCINADO', AZ);
+    janela(560, 520, prog(lt, .05, .35), 'Modo IA', (x, y, w) => {
+      ctx.fillStyle = '#c9d3ea'; for (let i = 0; i < 4; i++) { rr(x + 30, y + 40 + i * 48, (w - 60) * (.95 - .12 * (i % 3)), 22, 11); ctx.fill(); }
+      const q = prog(t, wt('patrocinado', 3) - .3, wt('patrocinado', 3) + .1);
+      ctx.save(); ctx.globalAlpha *= clamp(prog(t, wt('dentro', 3) - .2, wt('abaixo', 3) + .2));
+      ctx.fillStyle = q > .5 ? '#fff4d6' : '#f4f6fb'; rr(x + 20, y + 250, w - 40, 170, 18); ctx.fill();
+      txt('Patrocinado', x + 44, y + 296, ARC, 28, '#8a6a10', { weight: 800, alpha: clamp(q * 2) });
+      txt('Loja de exemplo', x + 44, y + 346, ARC, 34, '#1b2440', { weight: 700 });
+      ctx.fillStyle = '#c9d3ea'; rr(x + 44, y + 372, w * .5, 18, 9); ctx.fill(); ctx.restore(); });
+    exemplo(cx0, 1130, prog(t, wt('dentro', 3), wt('dentro', 3) + .3));
+  },
+  // 4 · bug bounty
+  (t, lt) => {
+    numero(2, 300, SC[4], SC[5] - .2, t);
+    titulo('PRÊMIO POR FALHA', 450, wt('openai', 4) - .2, SC[5] - .2, t, 76, BR, 'FALHA', VERM);
+    neon3d(P.cadeado, cx0, 700 + flut(t), 120 * back(prog(t, wt('premio', 4) - .4, wt('premio', 4))), .4 * Math.sin(t * .8), .1, VERM, prog(t, wt('premio', 4) - .4, wt('premio', 4)));
+    pilula('falha crítica', cx0, 940, 460, prog(t, wt('critica', 4) - .2, wt('critica', 4) + .2), VERM, 'CHATGPT OU CODEX', 1, 42);
+    pilula('até US$ 30 mil', cx0, 1120, 520, prog(t, wt('trinta', 4) - .2, wt('dolares', 4) + .2), AMB, '', 1, 50);
+  },
+  // 5 · bônus
+  (t, lt) => {
+    titulo('CASO EXCEPCIONAL', 380, SC[5], SC[6] - .2, t, 76, BR, 'EXCEPCIONAL', VERM);
+    const a = prog(t, wt('excepcional', 5) - .2, wt('excepcional', 5) + .3), b = prog(t, wt('cento', 5) - .3, wt('bonus', 5) + .2);
+    const bar = (yy, f, c, rot, val, al) => { if (al <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(al); ctx.fillStyle = 'rgba(244,248,255,.12)'; rr(cx0 - 400, yy, 800, 56, 28); ctx.fill();
+      ctx.shadowColor = c; ctx.shadowBlur = 24; ctx.fillStyle = c; rr(cx0 - 400, yy, 800 * f, 56, 28); ctx.fill(); ctx.shadowBlur = 0;
+      txt(rot, cx0 - 400, yy - 34, ARC, 32, BR, { weight: 600 }); txt(val, cx0 + 400, yy - 34, EXP, 36, c, { align: 'right' }); ctx.restore(); };
+    bar(640, .174 * ease(a), AMB, 'falha crítica', 'US$ 30 mil', a);
+    bar(820, .58 * ease(a), VERM, 'excepcional', 'US$ 100 mil', a);
+    bar(1000, ease(b), VERM, 'com bônus', 'US$ 172 mil', b);
+  },
+  // 6 · LifeVal
+  (t, lt) => {
+    numero(3, 300, SC[6], SC[7] - .2, t);
+    titulo('LIFEVAL', 450, wt('lancou', 6) - .2, SC[7] - .2, t, 90, BR, 'LIFEVAL', VERDE);
+    pilula('a IA resolve o dia a dia?', cx0, 620, 640, prog(t, wt('mede', 6) - .2, wt('dia', 6, 2) + .2), VERDE, 'TESTE DA OPENAI', 1, 40);
+    [['contas', 'contas', P.raio], ['creche', 'creche', P.pessoa], ['governo', 'governo', P.pasta]].forEach(([n, k, sh], i) => {
+      const q = prog(t, wt(k, 6) - .3, wt(k, 6) + .1);
+      neon3d(sh, cx0 - 280 + i * 280, 860 + flut(t + i), 70 * back(q), .4 * Math.sin(t * .8 + i), .1, VERDE, q);
+      pilula(n, cx0 - 280 + i * 280, 1000, 230, q, VERDE, '', 1, 34); });
+    pilula('modelos novos vão bem', cx0, 1200, 580, prog(t, wt('segundo', 6) - .2, wt('varias', 6) + .2), CI, 'SEGUNDO A OPENAI', 1, 38);
+  },
+  // 7 · teste hoje
+  (t, lt) => {
+    titulo('TESTE HOJE', 330, SC[7], SC[8] - .2, t, 90, BR, 'HOJE', CI);
+    celular(cx0, 880, .78, .1 * Math.sin(t * .6), prog(t, wt('peca', 7) - .3, wt('peca', 7) + .1), (x, y, w, s) => {
+      const q = prog(t, wt('montar', 7) - .2, wt('montar', 7) + .2);
+      ctx.fillStyle = '#d9fdd3'; rr(x + w * .2, y + 40 * s, w * .8, 130 * s, 18 * s); ctx.fill();
+      txt('Monte o passo a passo', x + w * .2 + 20 * s, y + 90 * s, ARC, 24 * s, '#1b2440', { weight: 700 });
+      txt('pra tirar a 2ª via do RG', x + w * .2 + 20 * s, y + 130 * s, ARC, 24 * s, '#1b2440', { weight: 600 });
+      for (let i = 0; i < 4; i++) { const r = prog(t, wt('servico', 7) + i * .25, wt('servico', 7) + .2 + i * .25); if (r <= 0) continue;
+        ctx.save(); ctx.globalAlpha *= clamp(r); ctx.fillStyle = '#ffffff'; rr(x, y + 210 * s + i * 90 * s, w * .85, 72 * s, 14 * s); ctx.fill();
+        txt((i + 1) + '.', x + 20 * s, y + 256 * s + i * 90 * s, EXP, 28 * s, '#1e7e45');
+        ctx.fillStyle = '#c9d3ea'; rr(x + 70 * s, y + 238 * s + i * 90 * s, w * (.4 + .1 * (i % 3)), 20 * s, 10 * s); ctx.fill(); ctx.restore(); } }, 'Chat de IA', CI);
+    exemplo(cx0, 1320, prog(t, wt('peca', 7), wt('peca', 7) + .3));
+  },
+  // 8 · fim
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>

@@ -1,0 +1,121 @@
+{
+ "id": "2026-10-29-radar-ia-60s",
+ "serie": "Radar IA",
+ "data": "2026-10-29",
+ "horario": "12:00",
+ "titulo": "Radar IA: aulas do Gemini em português, fonte no Planilhas e ChatGPT",
+ "descricao": "Radar IA de hoje 📡\n1️⃣ Explorações imersivas no Gemini (28/10): uma biblioteca de aulas interativas e visuais, de células a galáxias, que você vai abrindo em camadas. Tem em português do Brasil. Para conta pessoal do Google, abra gemini.google.com/immersive-explorations; estudantes também acham no student hub. Narração em áudio ainda vai chegar.\n2️⃣ Fill with Gemini no Google Planilhas: agora cada célula preenchida pela IA mostra a fonte da web usada, pra você conferir uma por uma, e cada pedido vai até 3.000 células. Chega aos poucos desde 20/10 (até uns 15 dias) para quem já tem Gemini no Planilhas, que é recurso pago (Google AI Pro/Ultra ou Workspace).\n3️⃣ ChatGPT por mensagem (28/10): o \"dot\", o agente que fica sempre ligado no ChatGPT, agora conversa com você por iMessage ou RCS (o SMS moderno do Android), com texto, foto e áudio. É beta só para parte dos assinantes Pro nos EUA. As mensagens passam pela Linq, uma empresa parceira, e não têm criptografia de ponta a ponta.\n\nTeste hoje: abra gemini.google.com/immersive-explorations e escolha um tema.\n\nFontes oficiais (conferidas em 29/10/2026): workspaceupdates.googleblog.com (Immersive explorations now available in the Gemini app; Fill with Gemini cell-level citations) · blog.google (Immersive explorations in Gemini app for students and learners) · help.openai.com (ChatGPT release notes; Getting started with your dot)\n\n#ia #inteligenciaartificial #gemini #googleplanilhas #chatgpt #noticiasdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "r14",
+ "estilo": "neon",
+ "formato": "radar-60",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "O Gemini ganhou aulas interativas em português, o Planilhas mostra a fonte de cada célula e o ChatGPT agora te manda mensagem.",
+     "legenda": "O Gemini ganhou aulas interativas em português, o Planilhas mostra a fonte de cada célula e o ChatGPT agora te manda mensagem."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Radar IA de hoje.",
+     "legenda": "Radar IA de hoje."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: o Gemini lançou as explorações imersivas. São aulas visuais que você vai abrindo em camadas, de células a galáxias, e tem em português do Brasil.",
+     "legenda": "Um: o Gemini lançou as explorações imersivas. São aulas visuais que você vai abrindo em camadas, de células a galáxias, e tem em português do Brasil."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "É grátis na conta pessoal do Google. A narração em áudio ainda vai chegar.",
+     "legenda": "É grátis na conta pessoal do Google. A narração em áudio ainda vai chegar."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: no Google Planilhas, quando a IA preenche as células, cada uma mostra a fonte da web que usou. Dá pra conferir uma por uma, até três mil células por pedido.",
+     "legenda": "Dois: no Google Planilhas, quando a IA preenche as células, cada uma mostra a fonte da web que usou. Dá pra conferir uma por uma, até três mil células por pedido."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Mas o Gemini no Planilhas é pago.",
+     "legenda": "Mas o Gemini no Planilhas é pago."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: o agente sempre ligado do ChatGPT agora conversa por mensagem no celular, com texto, foto e áudio. Só pra parte dos assinantes Pro nos Estados Unidos, e sem criptografia de ponta a ponta.",
+     "legenda": "Três: o agente sempre ligado do ChatGPT agora conversa por mensagem no celular, com texto, foto e áudio. Só pra parte dos assinantes Pro nos Estados Unidos, e sem criptografia de ponta a ponta."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Teste hoje: abra as explorações imersivas no Gemini e escolha um tema.",
+     "legenda": "Teste hoje: abra as explorações imersivas no Gemini e escolha um tema."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segue pro Radar IA todo dia ao meio-dia.",
+     "legenda": "Segue pro Radar IA todo dia ao meio-dia."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Explorações imersivas no Gemini (28/10/2026): biblioteca interativa; student hub (Education) e página gemini.google.com/immersive-explorations para contas pessoais e Workspace; pt-BR suportado; narração em breve",
+   "fonte": "https://workspaceupdates.googleblog.com/2026/10/immersive-explorations-now-available-in-the-Gemini-app.html",
+   "conferido": "2026-10-29"
+  },
+  {
+   "dado": "Fill with Gemini: citações de fonte web por célula, até 3.000 células por pedido; rollout desde 20/10/2026 em até 15 dias; para quem tem Gemini no Sheets",
+   "fonte": "https://workspaceupdates.googleblog.com/2026/10/",
+   "conferido": "2026-10-29"
+  },
+  {
+   "dado": "Texting your dot (28/10/2026): beta para parte dos Pro nos EUA, iMessage ou RCS via Linq, sem criptografia de ponta a ponta; texto, foto e áudio",
+   "fonte": "https://help.openai.com/en/articles/20001530-getting-started-with-your-dot",
+   "conferido": "2026-10-29"
+  }
+ ],
+ "registro": {
+  "tema": "radar IA 29/10: explorações imersivas no Gemini em pt-BR, Fill with Gemini com fonte por célula, ChatGPT dot por iMessage/RCS",
+  "chaves": [
+   "exploracoes imersivas gemini",
+   "fill with gemini fonte",
+   "chatgpt dot mensagem",
+   "radar 29/10"
+  ]
+ },
+ "video": "videos/2026-10-29-12h-radar-ia-60s-neon.mp4",
+ "fonte_html": "kit/2026-10-29-12h-radar-ia-60s-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

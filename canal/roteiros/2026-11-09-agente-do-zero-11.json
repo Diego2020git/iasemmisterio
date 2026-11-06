@@ -1,0 +1,99 @@
+{
+  "id": "2026-11-09-agente-do-zero-11",
+  "serie": "Agente do zero",
+  "data": "2026-11-09",
+  "horario": "19:00",
+  "titulo": "Cliente marca no WhatsApp e cai na sua Google Agenda",
+  "descricao": "Agente do zero, episódio 11 📅\nO cliente escolhe o horário no WhatsApp e o agente põe direto na sua Google Agenda.\n1️⃣ Nas instruções do agente (episódio 3), acrescente: \"Quando o cliente escolher um horário, responda só: AGENDAR dd/mm/aaaa hh:mm\".\n2️⃣ No cenário do Make, depois do Google Gemini AI, crie um filtro: a resposta contém \"AGENDAR\". Nesse caminho, adicione Google Calendar → Create an Event.\n3️⃣ Em Start Date, ligue a data e a hora que vieram na resposta (use parseDate com o formato DD/MM/YYYY HH:mm e o fuso America/Sao_Paulo), e coloque uma hora de duração. Teste marcando um horário seu antes de liberar.\nLimites: o Make grátis tem 1.000 créditos por mês e 2 cenários ativos; o módulo da agenda gasta 1 crédito por horário marcado. Confira se o horário está livre antes de confirmar pro cliente.\nComenta o que você quer ver depois!\n\nFontes (conferidas em 04/11/2026): make.com/integrations/google-calendar · community.make.com (Create Google Calendar event: start + end ou duração; formato da data) · make.com/pricing\n\n#ia #agentedeia #whatsapp #make #googleagenda #automacao",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": 11,
+  "estilo": "neon",
+  "formato": "completo",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Seu cliente marca horário no WhatsApp e ele cai sozinho na sua Google Agenda.",
+          "legenda": "Seu cliente marca horário no WhatsApp e ele cai sozinho na sua Google Agenda."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Com Gemini e Make, no plano grátis, em três passos.",
+          "legenda": "Com Gemini e Make, no plano grátis, em três passos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: nas instruções, escreva: quando o cliente escolher um horário, responda só: agendar, a data e a hora.",
+          "legenda": "Um: nas instruções, escreva: quando o cliente escolher um horário, responda só: agendar, a data e a hora."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: no Make, depois do Gemini, um filtro: contém agendar. Nesse caminho, Google Calendar, Create an Event.",
+          "legenda": "Dois: no Make, depois do Gemini, um filtro: contém agendar. Nesse caminho, Google Calendar, Create an Event."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: em Start Date, ligue a data e a hora, com uma hora de duração. Teste com um horário seu.",
+          "legenda": "Três: em Start Date, ligue a data e a hora, com uma hora de duração. Teste com um horário seu."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "No Make grátis, é só um crédito a mais por horário marcado.",
+          "legenda": "No Make grátis, é só um crédito a mais por horário marcado."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e comenta o que você quer ver depois.",
+          "legenda": "Salva e comenta o que você quer ver depois."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Make Google Calendar módulo Create an Event; aceita início + fim ou início + duração; data deve ser parseada com formato e fuso",
+      "fonte": "https://www.make.com/integrations/google-calendar",
+      "conferido": "2026-11-04"
+    },
+    {
+      "dado": "Make grátis: 1.000 créditos/mês, 2 cenários ativos; 1 operação = 1 crédito",
+      "fonte": "https://www.make.com/en/pricing",
+      "conferido": "2026-11-04"
+    }
+  ],
+  "registro": {
+    "tema": "agente do zero 11: cliente marca horário no WhatsApp, filtro AGENDAR e Google Calendar Create an Event no Make",
+    "chaves": [
+      "agendar google calendar make",
+      "create an event",
+      "agente do zero 11"
+    ]
+  },
+  "video": "videos/2026-11-09-19h-agente-do-zero-11-neon.mp4",
+  "fonte_html": "kit/2026-11-09-19h-agente-do-zero-11-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ]
+}

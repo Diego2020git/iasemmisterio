@@ -1,0 +1,81 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-16-agente-do-zero-01.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 16/10/2026 · 19h · Agente do zero #1: o mapa (Gemini + WhatsApp + Make). Neon.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const COR = [AZ, CI, AZ, CI, IN, CI, AZ];
+const HITS = [wt('graça', 0), wt('zero', 1), wt('gemini', 2), wt('whatsapp', 3), wt('make', 4), wt('zero', 5)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0]];
+const VERDE = '#25d366';
+const S = [
+  // 0 · gancho: o agente respondendo no WhatsApp; título inteiro no quadro 1
+  (t, lt) => {
+    frase('Agente no WhatsApp', 290, -1, SC[1] - .2, 84, { t, hot: 'WhatsApp', cor: CI });
+    celular(cx0, 900, .72, -.2 + .15 * sm(lt / 3), 1, (x, y, w, s) => {
+      let yy = y; yy += msg(x, yy, w, 'Vocês abrem sábado?', false, 1, s);
+      yy += msg(x, yy, w, 'Abrimos sim, das 9h às 13h. Quer que eu reserve um horário?', true, prog(t, wt('responde', 0), wt('responde', 0) + .3), s);
+    }, 'Atendimento', VERDE);
+    exemplo(cx0, 1270, prog(t, .3, .6));
+    frase('do zero e de graça', 1400, wt('do', 0) - .1, SC[1] - .2, 70, { t, hot: 'de graça', cor: CI });
+  },
+  // 1 · a série
+  (t, lt) => {
+    neon3d(P.balao, cx0, cy0 - 110, 200 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .3));
+    frase('Agente do zero', cy0 + 200, wt('agente', 1) - .1, SC[2] - .2, 92, { t, hot: 'zero', cor: CI });
+    selo('episódio 1', cx0, cy0 + 340, prog(t, wt('serie', 1), wt('serie', 1) + .3));
+    linhaTxt('um passo por vídeo, até funcionar', cy0 + 460, wt('um', 1), SC[2] - .2, t, 44);
+  },
+  // 2 · peça 1: cérebro = Gemini
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    frase('Cérebro: Gemini', 480, wt('cerebro', 2) - .1, SC[3] - .2, 80, { t, hot: 'Gemini', cor: CI });
+    neon3d(P.chip, cx0, 820, 170 * back(prog(lt, .1, .55)), .4 * Math.sin(t * .8), .3, AZ, prog(lt, .1, .4));
+    linhaTxt('entende a mensagem', 1080, wt('entende', 2), SC[3] - .2, t, 48);
+    linhaTxt('e escreve a resposta', 1150, wt('escreve', 2), SC[3] - .2, t, 48, CI);
+  },
+  // 3 · peça 2: boca = WhatsApp
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    frase('Boca: WhatsApp', 480, wt('boca', 3) - .1, SC[4] - .2, 80, { t, hot: 'WhatsApp', cor: CI });
+    neon3d(P.balao, cx0, 820, 170 * back(prog(lt, .1, .55)), .4 * Math.sin(t * .8), .3, CI, prog(lt, .1, .4));
+    selo('número de teste grátis da Meta', cx0, 1100, prog(t, wt('numero', 3), wt('numero', 3) + .3));
+  },
+  // 4 · peça 3: Make liga tudo (fluxo)
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    frase('Ligações: Make', 480, wt('make', 4) - .1, SC[5] - .2, 80, { t, hot: 'Make', cor: CI });
+    const N = [[230, P.balao, CI, 'WhatsApp', 'chegou'], [540, P.engrenagem, IN, 'Make', 'liga'], [850, P.chip, AZ, 'Gemini', 'responde']];
+    const ap = [wt('chegou', 4), wt('make', 4), wt('gemini', 4)];
+    N.forEach(([x, p, c, n, v], i) => { const a = prog(t, Math.min(ap[i], SC[4] + .3 + i * .2) - .2, Math.min(ap[i], SC[4] + .3 + i * .2) + .2);
+      neon3d(p, x, 820, 95 * back(a), .3 * Math.sin(t + i), .3, c, a);
+      txt(n, x, 960, ARC, 38, BR, { align: 'center', weight: 600, alpha: a }); txt(v, x, 1010, ARC, 30, c, { align: 'center', weight: 600, alpha: a }); });
+    const f = prog(t, wt('chegou', 4), SC[5] - .3); if (f > 0) for (let k = 0; k < 5; k++) { const q = (t * .7 + k / 5) % 1, x = lerp(300, 780, q);
+      ctx.save(); ctx.globalAlpha = Math.sin(q * Math.PI) * f; ctx.fillStyle = CI; ctx.shadowColor = CI; ctx.shadowBlur = 15; ctx.beginPath(); ctx.arc(x, 820, 9, 0, 7); ctx.fill(); ctx.restore(); }
+    linhaTxt('e o WhatsApp envia', 1150, wt('envia', 4) - .3, SC[5] - .2, t, 46, CI);
+  },
+  // 5 · custo
+  (t, lt) => {
+    frase('Custo pra começar', 380, wt('custo', 5) - .1, SC[6] - .2, 76, { t });
+    frase('R$ 0', 600, wt('zero', 5) - .1, SC[6] - .2, 190, { t, hot: 'R$ 0', cor: CI });
+    selo('Gemini: grátis com limite diário', cx0, 860, prog(t, wt('tres', 5), wt('tres', 5) + .3));
+    selo('Make: 1.000 operações por mês', cx0, 980, prog(t, wt('tres', 5) + .25, wt('tres', 5) + .55));
+    selo('WhatsApp: número de teste', cx0, 1100, prog(t, wt('tres', 5) + .5, wt('tres', 5) + .8));
+  },
+  // 6 · logo + chamada
+  (t, lt) => fim(t, lt, 'Segue a série', 'segunda: episódio 2'),
+];
+</script></body></html>

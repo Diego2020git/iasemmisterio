@@ -1,0 +1,100 @@
+{
+ "id": "2026-10-25-modelos-e-parametros-02",
+ "serie": "Modelos e parâmetros",
+ "data": "2026-10-25",
+ "horario": "19:00",
+ "titulo": "Modelos e parâmetros #2: janela de contexto, quanto a IA lê de uma vez",
+ "descricao": "Modelos e parâmetros, episódio 2 🪟\nJanela de contexto é quanto texto a IA consegue ler de uma vez na mesma conversa, contando em tokens, os pedaços de texto. Passou do limite, ela não lê o resto.\nNúmero oficial: o Gemini 3.8 Flash aceita até 1.048.576 tokens de entrada (cerca de 1 milhão).\nTeste grátis no Google AI Studio:\n1️⃣ Abra aistudio.google.com e escolha um modelo Flash\n2️⃣ Anexe um PDF grande seu (apostila, manual)\n3️⃣ Veja no contador quantos tokens o arquivo ocupou e pergunte: \"Resuma este arquivo em 5 tópicos e diga a página de cada um.\"\nDica: conversa longa demais começa a esquecer o começo; abra um chat novo.\nEpisódio anterior: #1, mini, flash ou pro. Domingo que vem: modelo com raciocínio.\n\nFonte: ai.google.dev/gemini-api/docs/models/gemini-3.8-flash, conferido em 21/10/2026.\n\n#ia #gemini #googleaistudio #tokens #inteligenciaartificial",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "m2",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Jogou um arquivo enorme na IA e ela esqueceu o começo? É a janela de contexto.",
+     "legenda": "Jogou um arquivo enorme na IA e ela esqueceu o começo? É a janela de contexto."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Modelos e parâmetros, episódio dois. Janela é quanto texto ela lê de uma vez.",
+     "legenda": "Modelos e parâmetros, episódio 2. Janela é quanto texto ela lê de uma vez."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: no Google AI Studio, que é grátis, escolha um modelo Flash.",
+     "legenda": "Um: no Google AI Studio, que é grátis, escolha um modelo Flash."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: anexe um PDF grande seu, como uma apostila ou um manual.",
+     "legenda": "Dois: anexe um PDF grande seu, como uma apostila ou um manual."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: veja no contador quantos tokens, os pedaços de texto, o arquivo ocupou.",
+     "legenda": "Três: veja no contador quantos tokens, os pedaços de texto, o arquivo ocupou."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "O Flash lê até um milhão desses pedaços, os tokens. Passou disso, abra um chat novo.",
+     "legenda": "O Flash lê até 1 milhão desses pedaços, os tokens. Passou disso, abra um chat novo."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Domingo que vem: modelo com raciocínio.",
+     "legenda": "Domingo que vem: modelo com raciocínio."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Gemini 3.8 Flash: limite de entrada 1.048.576 tokens",
+   "fonte": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+   "conferido": "2026-10-24"
+  },
+  {
+   "dado": "AI Studio grátis (sem chave paga)",
+   "fonte": "https://ai.google.dev/gemini-api/docs/billing",
+   "conferido": "2026-10-24"
+  }
+ ],
+ "registro": {
+  "tema": "modelos ep 2: janela de contexto (quanto a IA lê de uma vez), teste com PDF no AI Studio",
+  "chaves": [
+   "janela de contexto",
+   "limite de tokens",
+   "contador de tokens",
+   "modelos ep 2"
+  ]
+ },
+ "video": "videos/2026-10-25-19h-modelos-e-parametros-02-neon.mp4",
+ "fonte_html": "kit/2026-10-25-19h-modelos-e-parametros-02-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

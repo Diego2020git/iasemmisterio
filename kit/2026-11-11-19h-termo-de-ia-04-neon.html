@@ -1,0 +1,97 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-11-termo-de-ia-04.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 11/11/2026 · 19h · Por que o ChatGPT inventa resposta: alucinação (Termo de IA #4). Grade de engajamento de 06/11.
+// Mecanismo: o modelo gera a próxima palavra mais provável, não consulta fatos; sem informação, chuta, porque treino e testes premiam o chute (OpenAI, "Why language models hallucinate", 2025). Reduz: busca na web, documento, pedir fonte.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, AMB, CI, VERM, VERDE, AMB, AZ];
+const HITS = [wt('inventa', 0), wt('certeza', 0), wt('alucinacao', 1), wt('todas', 1), wt('fatos', 2), wt('provavel', 2), wt('chuta', 3), wt('chute', 3), wt('busca', 4), wt('documento', 4), wt('fonte', 4), wt('nome', 5), wt('data', 5)];
+// conversa: pergunta e resposta inventada (carimbo)
+function chat(x, y, w, a, resp, carimbo) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#ffffff'; rr(x, y, w, 470, 22); ctx.fill();
+  ctx.fillStyle = '#e8eefc'; rr(x, y, w, 70, 22); ctx.fill(); ctx.fillRect(x, y + 50, w, 20); txt('Chat com IA', x + 24, y + 42, ARC, 28, '#1b2440', { weight: 700 });
+  ctx.fillStyle = '#dbe6ff'; rr(x + w - 520, y + 100, 490, 90, 20); ctx.fill(); txt('Qual o telefone da Padaria Sol?', x + w - 500, y + 155, ARC, 28, '#1b2440', { weight: 600 });
+  if (resp > 0) { ctx.save(); ctx.globalAlpha *= clamp(resp); ctx.fillStyle = '#f1f3f8'; rr(x + 30, y + 220, w - 160, 150, 20); ctx.fill();
+    txt('Claro! O telefone é', x + 56, y + 278, ARC, 30, '#1b2440', { weight: 600 }); txt('(11) 3456-7890', x + 56, y + 334, ARC, 38, '#1b2440', { weight: 800 }); ctx.restore(); }
+  if (carimbo > 0) { ctx.save(); const e = 1.6 - .6 * back(clamp(carimbo)); ctx.globalAlpha *= clamp(carimbo); ctx.translate(x + w - 170, y + 380); ctx.rotate(-.18); ctx.scale(e, e);
+    ctx.strokeStyle = VERM; ctx.lineWidth = 6; rr(-150, -42, 300, 84, 12); ctx.stroke(); txt('INVENTADO', 0, 14, EXP, 40, VERM, { align: 'center' }); ctx.restore(); }
+  ctx.restore(); }
+// próxima palavra com probabilidade
+function proxima(x, y, a, t, g) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+  txt('"O telefone é ..."', x, y, EXP, 46, BR, { align: 'center' });
+  [['(11)', .62, CI], ['(21)', .21, AZ], ['(31)', .09, AZ]].forEach(([p, v, c], i) => { const q = clamp(g * 3 - i * .5); if (q <= 0) return; const yy = y + 110 + i * 120;
+    txt(p, x - 330, yy + 14, EXP, 44, BR, { alpha: q }); ctx.fillStyle = hex(c, .25); rr(x - 160, yy - 30, 480, 60, 14); ctx.fill(); ctx.fillStyle = c; rr(x - 160, yy - 30, 480 * v * q, 60, 14); ctx.fill();
+    txt(Math.round(v * 100) + '%', x + 360, yy + 14, EXP, 40, c, { alpha: q, align: 'left' }); });
+  ctx.restore(); }
+const S = [
+  // 0 · gancho: resposta inventada
+  (t, lt) => {
+    titulo('A IA INVENTOU', 360, -1, SC[1] - .2, t, 84, BR, 'INVENTOU', VERM);
+    chat(cx0 - 430, 470, 860, prog(lt, 0, .2), prog(lt, .3, .6), prog(t, wt('inventa', 0) - .1, wt('inventa', 0) + .3));
+    exemplo(cx0, 1010, prog(lt, .3, .6));
+    linhaTxt('com toda a certeza', 1110, wt('certeza', 0) - .3, SC[1] - .2, t, 44, AMB);
+  },
+  // 1 · o nome
+  (t, lt) => {
+    titulo('ALUCINAÇÃO', 500, SC[1], SC[2] - .2, t, 96, BR, 'ALUCINAÇÃO', AMB);
+    pilula('ChatGPT', cx0 - 270, 760, 280, prog(lt, .2, .5), CI, '', 1, 42);
+    pilula('Gemini', cx0 + 50, 760, 260, prog(t, wt('gemini', 1) - .2, wt('gemini', 1) + .2), AZ, '', 1, 42);
+    pilula('Claude', cx0 + 330, 760, 240, prog(t, wt('claude', 1) - .2, wt('claude', 1) + .2), AMB, '', 1, 42);
+    linhaTxt('acontece em todas', 920, wt('todas', 1) - .2, SC[2] - .2, t, 48, BR);
+    neon3d(P.balao, cx0, 1150 + flut(t), 90 * back(prog(lt, .3, .7)), .3 * Math.sin(t), .1, AMB, prog(lt, .3, .6));
+  },
+  // 2 · palavra mais provável
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('NÃO É UMA LISTA DE FATOS', 450, SC[2], SC[3] - .2, t, 58, BR, 'FATOS', VERM);
+    proxima(cx0, 680, prog(t, wt('escreve', 2) - .3, wt('escreve', 2)), t, prog(t, wt('palavra', 2) - .2, wt('provavel', 2) + .4));
+    linhaTxt('ela escolhe a mais provável', 1110, wt('provavel', 2) - .2, SC[3] - .2, t, 44, CI);
+    exemplo(cx0, 1200, prog(t, wt('palavra', 2), wt('palavra', 2) + .3));
+  },
+  // 3 · chuta em vez de dizer não sei
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('ELA CHUTA', 450, SC[3], SC[4] - .2, t, 90, BR, 'CHUTA', VERM);
+    pilula('"não sei" = 0 ponto', cx0, 680, 620, prog(t, wt('sei', 3) - .3, wt('sei', 3) + .1), VERM, 'NO TESTE', 1, 44);
+    pilula('chute = às vezes acerta', cx0, 860, 680, prog(t, wt('testes', 3) - .2, wt('premiam', 3) + .1), VERDE, 'GANHA PONTO', 1, 44);
+    linhaTxt('os testes premiam o chute', 1030, wt('premiam', 3) - .2, SC[4] - .2, t, 46, AMB);
+    linhaTxt('segundo a OpenAI, 2025', 1120, wt('chute', 3) - .2, SC[4] - .2, t, 34, CI);
+  },
+  // 4 · como reduzir
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('COMO REDUZIR', 450, SC[4], SC[5] - .2, t, 84, BR, 'REDUZIR', VERDE);
+    pilula('ligue a busca na web', cx0, 650, 640, prog(t, wt('busca', 4) - .2, wt('web', 4) + .2), VERDE, '', 1, 44);
+    pilula('mande o documento', cx0, 810, 600, prog(t, wt('documento', 4) - .3, wt('documento', 4) + .1), CI, '', 1, 44);
+    pilula('peça a fonte', cx0, 970, 440, prog(t, wt('peca', 4) - .2, wt('fonte', 4) + .2), AMB, '', 1, 44);
+    neon3d(P.check, cx0, 1170 + flut(t), 70 * back(prog(t, wt('fonte', 4) - .2, wt('fonte', 4) + .2)), .3 * Math.sin(t), .1, VERDE, prog(t, wt('fonte', 4) - .2, wt('fonte', 4) + .2));
+  },
+  // 5 · confira
+  (t, lt) => {
+    titulo('CONFIRA SEMPRE', 400, SC[5], SC[6] - .2, t, 84, BR, 'SEMPRE', AMB);
+    pilula('nome', cx0 - 280, 640, 240, prog(t, wt('nome', 5) - .2, wt('nome', 5) + .2), AMB, '', 1, 46);
+    pilula('número', cx0, 640, 260, prog(t, wt('numero', 5) - .2, wt('numero', 5) + .2), AMB, '', 1, 46);
+    pilula('data', cx0 + 280, 640, 220, prog(t, wt('data', 5) - .2, wt('data', 5) + .2), AMB, '', 1, 46);
+    linhaTxt('na fonte original', 820, wt('fonte', 5) - .2, SC[6] - .2, t, 50, BR);
+    neon3d(P.relogio, cx0, 1060 + flut(t), 80 * back(prog(t, wt('minuto', 5) - .3, wt('minuto', 5))), t * .5, .1, CI, prog(t, wt('minuto', 5) - .3, wt('minuto', 5)));
+    linhaTxt('leva um minuto', 1230, wt('minuto', 5) - .2, SC[6] - .2, t, 40, CI);
+  },
+  // 6 · fim
+  (t, lt) => fim(t, lt, 'Salva e manda', 'pra quem confia em tudo'),
+];
+</script></body></html>

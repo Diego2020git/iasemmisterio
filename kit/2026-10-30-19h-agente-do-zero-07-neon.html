@@ -1,0 +1,93 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-30-agente-do-zero-07.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 30/10/2026 · 19h · Agente do zero #7: o Make passa a ouvir o WhatsApp de teste (padrão de entrega de 24/10). Neon + neon-entrega.js.
+// Mecanismo: mensagem no WhatsApp → Meta chama o webhook → Make acorda (Watch Events, instantâneo). Fontes: apps.make.com/whatsapp-business-cloud, developers.facebook.com.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [wt('create', 2) + .3, wt('legacy', 3) + .2];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, AZ, IN, CI, VERDE, AZ];
+const HITS = [wt('ouvir', 0), wt('whatsapp', 0), wt('sete', 1), wt('watch', 2), wt('webhook', 2), wt('legacy', 3), wt('chave', 3), wt('messages', 4), wt('configuration', 4), wt('oi', 5), wt('rodar', 5), wt('dia', 5)];
+// caminho da mensagem: celular → Meta → Make, com pacote correndo
+function caminho(y, p, t, a, pulso = true) { if (a <= 0) return; const xs = [200, cx0, 880];
+  ctx.save(); ctx.globalAlpha *= clamp(a);
+  celular(xs[0], y, .35, .2 * Math.sin(t), 1, (cx, cy, w) => {}, 'WhatsApp', VERDE);
+  neon3d(P.servidor, xs[1], y, 70, .3 * Math.sin(t * .8), .1, IN, 1);
+  neon3d(P.engrenagem, xs[2], y, 80, t * .6 * clamp(p * 2 - 1), .1, CI, 1);
+  fio(xs[0] + 90, y, xs[1] - 90, y, clamp(p * 2), VERDE, t, pulso); fio(xs[1] + 90, y, xs[2] - 90, y, clamp(p * 2 - 1), CI, t, pulso);
+  txt('celular', xs[0], y + 205, ARC, 32, BR, { align: 'center', weight: 600 }); txt('Meta', xs[1], y + 205, ARC, 32, BR, { align: 'center', weight: 600 }); txt('Make', xs[2], y + 205, ARC, 32, BR, { align: 'center', weight: 600 });
+  ctx.restore(); }
+function modulo(x, y, a, on, sub = 'Watch Events') { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const e = back(clamp(a)); ctx.translate(x, y); ctx.scale(e, e);
+  ctx.shadowColor = VERDE; ctx.shadowBlur = on ? 50 : 20; ctx.fillStyle = hex(VERDE, .85); ctx.beginPath(); ctx.arc(0, 0, 110, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+  neon3d(P.balao, 0, -6, 52, 0, 0, BR, 1, .1);
+  txt('WhatsApp Business Cloud', 0, 165, ARC, 36, BR, { align: 'center', weight: 600 }); txt(sub, 0, 212, ARC, 32, CI, { align: 'center', weight: 600 });
+  if (on) { ctx.strokeStyle = hex(CI, .7 * (1 - (t2 % 1))); ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(0, 0, 110 + 60 * (t2 % 1), 0, 7); ctx.stroke(); }
+  ctx.restore(); }
+let t2 = 0;
+const S = [
+  // 0 · gancho: mensagem chega e o Make acorda
+  (t, lt) => { t2 = t;
+    titulo('O MAKE VAI OUVIR', 380, -1, SC[1] - .2, t, 86, BR, 'OUVIR', CI);
+    caminho(760, prog(t, .2, wt('whatsapp', 0) + .3), t, prog(lt, 0, .2));
+    pilula('seu WhatsApp de teste', cx0, 1080, 640, prog(t, wt('whatsapp', 0) - .2, wt('whatsapp', 0) + .2), VERDE, 'DO EPISÓDIO 6', 1, 40);
+  },
+  // 1 · episódio
+  (t, lt) => { t2 = t;
+    titulo('AGENTE DO ZERO', 520, SC[1], SC[2] - .2, t, 84, BR, 'ZERO', CI);
+    versao('EPISÓDIO 7', cx0, 720, prog(t, wt('episodio', 1) - .1, wt('episodio', 1) + .3), CI, 0, 60);
+    neon3d(P.pessoa, cx0, 1000 + flut(t), 110 * back(prog(lt, .1, .5)), .3 * Math.sin(t), .1, AZ, prog(lt, .1, .4));
+  },
+  // 2 · passo 1: módulo + webhook
+  (t, lt) => { t2 = t;
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('NO MAKE', 450, wt('make', 2) - .1, SC[3] - .2, t, 84, BR, 'MAKE', CI);
+    modulo(cx0, 700, prog(t, wt('whatsapp', 2) - .2, wt('whatsapp', 2) + .3), prog(t, wt('webhook', 2), wt('webhook', 2) + .2) > .5);
+    botao(cx0 - 200, 1010, 'Create a webhook', prog(t, wt('create', 2) - .2, wt('create', 2) + .1), prog(t, wt('create', 2) + .2, wt('create', 2) + .6), AZ);
+    linhaTxt('webhook = o aviso de mensagem nova', 1180, wt('aviso', 2) - .2, SC[3] - .2, t, 42, CI);
+  },
+  // 3 · passo 2: conexão legacy
+  (t, lt) => { t2 = t;
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('CREATE A CONNECTION', 450, wt('create', 3) - .1, SC[4] - .2, t, 70, BR, 'CONNECTION', CI);
+    janela(560, 470, prog(t, wt('connection', 3) - .2, wt('connection', 3) + .2), 'Make · nova conexão', (x, y, w) => {
+      campo(x, y, w, 'Connection type', 'WhatsApp Business Cloud (legacy)', prog(t, wt('legacy', 3) - .2, wt('legacy', 3) + .2), 0);
+      campo(x, y + 120, w, 'Token', '••••••••••••••••', prog(t, wt('chave', 3) - .2, wt('chave', 3) + .2), 0);
+      campo(x, y + 240, w, 'WhatsApp Business Account ID', '••••••••••', prog(t, wt('conta', 3) - .2, wt('conta', 3) + .2), 1);
+    });
+    pilula('os dois vêm da tela API Setup', cx0, 1150, 760, prog(t, wt('meta', 3) - .2, wt('meta', 3) + .2), IN, 'META, EPISÓDIO 6', 1, 40);
+  },
+  // 4 · passo 3: evento Messages + webhook na Meta
+  (t, lt) => { t2 = t;
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('EVENTO: MESSAGES', 450, wt('messages', 4) - .3, SC[5] - .2, t, 76, BR, 'MESSAGES', CI);
+    janela(560, 330, prog(t, wt('meta', 4) - .3, wt('meta', 4)), 'Meta · WhatsApp · Configuration', (x, y, w) => {
+      campo(x, y, w, 'Webhook', prog(t, wt('endereco', 4), wt('endereco', 4) + .4) > .5 ? 'https://hook.make.com/…' : '', 1, 1);
+    });
+    setaH(cx0 - 300, cx0 + 220, 1000, prog(t, wt('avisa', 4) - .3, wt('avisa', 4) + .2), CI);
+    pilula('a Meta avisa o Make', cx0, 1130, 600, prog(t, wt('avisa', 4) - .1, wt('avisa', 4) + .3), VERDE, '', 1, 42);
+  },
+  // 5 · teste e limite
+  (t, lt) => { t2 = t;
+    titulo('MANDE UM OI', 380, SC[5], SC[6] - .2, t, 86, BR, 'OI', VERDE);
+    caminho(720, prog(t, wt('oi', 5), wt('rodar', 5)), t, prog(lt, 0, .3));
+    pilula('cenário rodou na hora', cx0, 1000, 640, prog(t, wt('rodar', 5) - .2, wt('rodar', 5) + .2), VERDE, '', 1, 42);
+    pilula('a chave de teste vence em 24 h', cx0, 1160, 760, prog(t, wt('vence', 5) - .2, wt('vence', 5) + .2), AMB, 'Make grátis: 1.000 créditos por mês', 1, 40);
+  },
+  // 6 · fim
+  (t, lt) => fim(t, lt, 'Salva e segue', 'segunda: o primeiro oi respondido'),
+];
+</script></body></html>

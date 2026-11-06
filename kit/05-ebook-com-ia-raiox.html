@@ -1,0 +1,97 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="raiox-kit.js"></script>
+<script>
+// Vídeo 05 (e-book com IA) refeito na identidade Raio-X. Serve de MODELO para os próximos vídeos:
+// copie este arquivo, troque EP, SC, CAPS e as funções s0..sN; o visual comum está em raiox-kit.js.
+const EP = '05';
+const SC = [0, 4.39, 11.04, 15.06, 22.88, 28.3, 37.3];
+const CAPS = [[0.0, 1.73, "Dá pra criar um e-book inteiro"], [1.73, 2.84, "com IA numa tarde."], [2.84, 4.51, "Olha o passo a passo."], [4.51, 6.54, "Um: escolha um problema real"], [6.54, 8.01, "do seu público."], [8.01, 9.56, "Por exemplo: como organizar"], [9.56, 11.16, "as finanças em 30 dias."], [11.16, 13.49, "Dois: peça pro ChatGPT o sumário."], [13.49, 15.18, "Dez capítulos curtos e práticos."], [15.18, 17.59, "Três: escreva capítulo por capítulo"], [17.59, 18.95, "com a IA, e revise"], [18.95, 20.28, "com a sua experiência."], [20.28, 22.03, "É isso que deixa o e-book"], [22.03, 23.0, "com a sua cara."], [23.0, 24.9, "Quatro: monte no Canva,"], [24.9, 26.96, "com um modelo de e-book,"], [26.96, 28.4, "e exporte em PDF."], [28.4, 29.25, "Pronto."], [29.25, 31.78, "Pra vender, crie uma conta grátis"], [31.78, 32.94, "na Hotmart ou na Kiwify."], [32.94, 35.14, "Você só paga uma taxa quando vende."], [35.14, 37.3, "Salva e me segue pra mais."]];
+
+function s0(t, lt) {
+  title(['E-book', 'inteiro', 'numa tarde'], lt, 0, 200, 92, 2);
+  fig('fig. 01 — um e-book por dentro', lt, .4, 530);
+  const p = easeInOut(prog(lt, .3, 1.6));
+  page(300, 640, 300, 420, p, true);
+  if (p > .6) { txt('FINANÇAS', 450, 760, EXP, 32, COL.ink, { align: 'center', alpha: prog(p, .6, 1) }); txt('em 30 dias', 450, 805, ARC, 26, COL.cyan, { align: 'center', weight: 600, alpha: prog(p, .6, 1) }); }
+  page(560, 680, 250, 360, prog(lt, .6, 1.8)); page(640, 720, 250, 360, prog(lt, .8, 2.0));
+  annot(330, 680, 160, 600, 'capa', prog(lt, 1.6, 2.0), 'R');
+  annot(860, 760, 920, 620, '10 capítulos', prog(lt, 2.0, 2.4), 'L');
+  annot(820, 1050, 920, 1160, 'PDF pronto', prog(lt, 2.4, 2.8), 'L');
+  dimLine(M, W - M, 1260, '13h → 18h · uma tarde', prog(lt, 2.8, 3.2));
+}
+function s1(t, lt) {
+  stepTag(1, 4, lt, 430);
+  title(['Um problema', 'real'], lt, .05, 200, 92, 1);
+  fig('fig. 02 — dúvidas do seu público', lt, .3, 430);
+  const qs = ['Como sair das dívidas?', 'Como montar um orçamento?', 'Como organizar as finanças?', 'Vale a pena investir?'];
+  const pick = prog(lt, 3.7, 4.1);
+  qs.forEach((q, i) => {
+    const y = 540 + i * 150, a = prog(lt, .5 + i * .45, 1.0 + i * .45); if (a <= 0) return;
+    const sel = i === 2 && pick > 0;
+    if (sel) { ctx.fillStyle = COL.blue; ctx.globalAlpha = pick; ctx.fillRect(M, y, W - 2 * M, 100); ctx.globalAlpha = 1; }
+    panel(M, y, W - 2 * M, 100, a);
+    txt(typed(q, prog(a, .3, 1)), M + 36, y + 52, ARC, 40, pick > 0 && !sel ? COL.dim : COL.ink, { weight: 600 });
+  });
+  annot(W - M - 40, 840, 760, 1210, 'esse vira o e-book', prog(lt, 4.3, 4.8), 'L', COL.cyan);
+}
+function s2(t, lt) {
+  stepTag(2, 4, lt, 320);
+  title(['O sumário'], lt, .05, 200, 92);
+  fig('fig. 03 — pedido ao chatgpt (grátis)', lt, .2, 320);
+  promptBox(M, 400, W - 2 * M, 'Crie o sumário de um e-book: organizar as finanças em 30 dias. 10 capítulos curtos.', prog(lt, .2, 1.6), t, 'você pede');
+  const caps = ['Onde está seu dinheiro', 'Corte o que não importa', 'Orçamento 50/30/20', 'Dívidas: por onde começar', 'Reserva de emergência', 'Metas de 30 dias', 'Apps que ajudam', 'Renda extra', 'Primeiros investimentos', 'Seu plano final'];
+  caps.forEach((c, i) => {
+    const p = prog(lt, 1.8 + i * .17, 2.1 + i * .17); if (p <= 0) return;
+    const y = 670 + i * 62;
+    txt(String(i + 1).padStart(2, '0'), M + 10, y, EXP, 30, COL.cyan, { alpha: p });
+    txt(typed(c, p), M + 90, y, ARC, 34, COL.ink, { weight: 600 });
+  });
+  dimLine(M, W - M, 1310, '10 capítulos', prog(lt, 3.6, 3.9));
+}
+function s3(t, lt) {
+  stepTag(3, 4, lt, 430);
+  title(['Escreva', '+ revise'], lt, .05, 200, 92, 1);
+  fig('fig. 04 — capítulo 3 em corte', lt, .3, 430);
+  panel(M, 520, W - 2 * M, 640, prog(lt, .2, .8), 'capítulo 3 · orçamento 50/30/20');
+  for (let i = 0; i < 5; i++) {
+    const f = prog(lt, .7 + i * .35, 1.0 + i * .35);
+    ctx.fillStyle = 'rgba(219,231,255,.35)'; ctx.fillRect(M + 40, 580 + i * 50, ((i % 3 === 2) ? 460 : 760) * f, 14);
+  }
+  ruler(M + 40, 880, W - 2 * M - 80, prog(lt, .7, 2.6), 'IA escrevendo');
+  const r1 = prog(lt, 2.9, 3.2);
+  txt('Economize sempre que puder.', M + 40, 1000, ARC, 36, COL.dim, { weight: 600, alpha: r1 });
+  strike(M + 30, 1000, measure('Economize sempre que puder.', ARC, 36, 600) + 20, prog(lt, 3.5, 3.9));
+  txt(typed('Eu cortei R$ 300 assim: ...', prog(lt, 4.1, 4.9)), M + 40, 1080, ARC, 36, COL.cyan, { weight: 600 });
+  stamp(W / 2, 1290, 'com a sua experiência', prog(lt, 5.6, 6.0));
+}
+function s4(t, lt) {
+  stepTag(4, 4, lt, 320);
+  title(['Canva → PDF'], lt, .05, 200, 92);
+  fig('fig. 05 — montagem e exportação', lt, .2, 320);
+  toolCard(W / 2, 450, 'Canva', 'canva.com · tem plano grátis', prog(lt, .1, .5), '#00c4cc');
+  [0, 1, 2].forEach(i => page(150 + i * 280, 600, 220, 310, prog(lt, .5 + i * .25, 1.1 + i * .25), i === 0));
+  if (lt > 1.1) txt('FINANÇAS', 260, 700, EXP, 26, COL.ink, { align: 'center', alpha: prog(lt, 1.1, 1.3) });
+  dimLine(150, 930, 960, 'modelo de e-book', prog(lt, 1.4, 1.7));
+  const e = prog(lt, 2.2, 4.2);
+  if (e > 0) ruler(M, 1100, W - 2 * M, easeInOut(e), 'exportando PDF');
+  if (e >= 1) txt('✓ financas-30-dias.pdf', M, 1230, ARC, 40, COL.cyan, { weight: 600, alpha: prog(lt, 4.2, 4.4) });
+}
+function s5(t, lt) {
+  title(['Onde', 'vender'], lt, .6, 200, 92, 1);
+  fig('fig. 06 — plataformas', lt, .9, 430);
+  toolCard(W / 2, 600, 'Hotmart', 'hotmart.com · cadastro grátis', prog(lt, 1.0, 1.4), '#f04e23');
+  toolCard(W / 2, 780, 'Kiwify', 'kiwify.com.br · cadastro grátis', prog(lt, 3.5, 3.9), '#14b866');
+  stamp(W / 2, 980, 'taxa só quando vender', prog(lt, 4.7, 5.1), 32);
+  endCard(t, SC[5] + 6.8);
+}
+const SCENES = [s0, s1, s2, s3, s4, s5];
+window.DURATION = SC[SC.length - 1];
+</script>
+</body></html>

@@ -1,0 +1,28 @@
+{
+ "blogId": "7280938",
+ "date": "2026-10-13T12:00:00-03:00",
+ "info": {
+  "text": "Vídeo com IA de graça, todo dia, no Google Flow 🎬\n1️⃣ Entre em labs.google/flow com sua conta Google: quem não assina ganha 50 créditos por dia\n2️⃣ Escolha o Veo 3.1 Lite: 10 créditos por vídeo, uns 5 vídeos por dia\n3️⃣ Descreva a cena em 4 partes: quem aparece, o que faz, a câmera e o estilo\nOs créditos grátis não acumulam de um dia pro outro.\nO modelo de prompt está no comentário fixado. Salva!\n\nFonte: Google Flow Help, \"Manage your AI Credits in Flow\" (support.google.com/flow/answer/16526234), conferido em 11/10/2026.\n\n#videocomia #googleflow #veo #inteligenciaartificial #ia #iagratis",
+  "firstCommentText": "Modelo de prompt pro Flow (troque o que está entre colchetes):\n\n[Quem aparece] [fazendo o quê], [onde]. Câmera: [se aproximando devagar / girando em volta / parada]. Estilo: [cinema / animação 3D / documentário], luz [suave / de fim de tarde].\n\nExemplo: Um gato astronauta flutuando dentro de uma estação espacial. Câmera se aproximando devagar. Estilo cinema, luz suave.",
+  "media": [
+   "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/13-ia-video-gratis-raiox-final.mp4"
+  ],
+  "autoPublish": true,
+  "draft": false,
+  "providers": [
+   {
+    "network": "instagram"
+   }
+  ],
+  "publicationDate": {
+   "dateTime": "2026-10-13T12:00:00",
+   "timezone": "America/Sao_Paulo"
+  },
+  "instagramData": {
+   "type": "REEL",
+   "showReelOnFeed": true,
+   "isAiGenerated": true
+  },
+  "videoThumbnailUrl": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-5yl5sn/videos/13-ia-video-gratis-raiox-final-capa.jpg"
+ }
+}

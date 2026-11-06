@@ -1,0 +1,110 @@
+{
+ "id": "2026-10-22-radar-ia-60s",
+ "serie": "Radar IA",
+ "data": "2026-10-22",
+ "horario": "12:00",
+ "titulo": "Radar IA: Claude Duet, GPT no Google Cloud e PyTorch em TPU",
+ "descricao": "Radar IA de hoje 📡\n1️⃣ Claude Duet (21/10): app da Anthropic que avisa o que precisa da sua atenção, faz tarefas e segue trabalhando quando você sai. Roda num computador virtual próprio e pede permissão antes de mandar mensagem, pagar ou apagar algo. Prévia só nos EUA, com lista de espera, pra quem assina Pro ou Max.\n2️⃣ Modelos da OpenAI no Google Cloud (21/10): GPT-6 e outros modelos entram no catálogo do Google Cloud, por enquanto em prévia fechada pra algumas empresas. Abertura geral prevista pras próximas semanas.\n3️⃣ TorchTPU virou código aberto (Google + Meta): o PyTorch, ferramenta mais usada pra treinar IA, agora roda direto nos chips TPU do Google. Grátis no GitHub, mas é pra programadores.\n\nTeste hoje: nenhuma das três abre pra todo mundo no Brasil ainda. Se você assina Claude Pro ou Max, fique de olho na lista de espera do Duet.\n\nFontes oficiais (conferidas em 22/10/2026): claude.com/resources/articles/claude-duet · support.claude.com (Get started with Claude Duet) · openai.com/index/openai-models-google-cloud · cloud.google.com/blog (TorchTPU is now open source)\n\n#ia #inteligenciaartificial #claude #openai #googlecloud #noticiasdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "r7",
+ "estilo": "neon",
+ "formato": "radar-60",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "A Anthropic lançou um agente que trabalha enquanto você dorme, o GPT chegou no Google Cloud e o Google abriu o código pra treinar IA nos chips dele.",
+     "legenda": "A Anthropic lançou um agente que trabalha enquanto você dorme, o GPT chegou no Google Cloud e o Google abriu o código pra treinar IA nos chips dele."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "São as três notícias de IA de hoje, no Radar IA.",
+     "legenda": "São as três notícias de IA de hoje, no Radar IA."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: o Claude Duet é um app que avisa o que precisa da sua atenção, faz tarefas e segue trabalhando quando você sai. Ele pede permissão antes de mandar mensagem ou pagar. Por enquanto, só nos Estados Unidos, com lista de espera.",
+     "legenda": "Um: o Claude Duet é um app que avisa o que precisa da sua atenção, faz tarefas e segue trabalhando quando você sai. Ele pede permissão antes de mandar mensagem ou pagar. Por enquanto, só nos Estados Unidos, com lista de espera."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: os modelos da OpenAI, como o GPT-6, vão entrar no Google Cloud, a nuvem do Google pra empresas. Agora é uma prévia fechada pra algumas empresas, e a abertura geral fica pras próximas semanas.",
+     "legenda": "Dois: os modelos da OpenAI, como o GPT-6, vão entrar no Google Cloud, a nuvem do Google pra empresas. Agora é uma prévia fechada pra algumas empresas, e a abertura geral fica pras próximas semanas."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: o Google e a Meta abriram o TorchTPU. Ele faz o PyTorch, a ferramenta mais usada pra treinar IA, rodar direto nos chips do Google. É grátis no GitHub, mas é coisa pra programador.",
+     "legenda": "Três: o Google e a Meta abriram o TorchTPU. Ele faz o PyTorch, a ferramenta mais usada pra treinar IA, rodar direto nos chips do Google. É grátis no GitHub, mas é coisa pra programador."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Qual testar hoje? Nenhuma abre pra todo mundo no Brasil ainda. Se você assina o Claude Pro ou Max, fica de olho na lista do Duet.",
+     "legenda": "Qual testar hoje? Nenhuma abre pra todo mundo no Brasil ainda. Se você assina o Claude Pro ou Max, fica de olho na lista do Duet."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segue pro Radar IA todo dia ao meio-dia.",
+     "legenda": "Segue pro Radar IA todo dia ao meio-dia."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Claude Duet: prévia de pesquisa nos EUA desde 21/10, lista de espera, Pro e Max, sem custo extra na prévia; pede antes de enviar mensagem, pagar, assinar ou apagar",
+   "fonte": "https://claude.com/resources/articles/claude-duet",
+   "conferido": "2026-10-22"
+  },
+  {
+   "dado": "Claude Duet: detalhes de limites e salvaguardas",
+   "fonte": "https://support.claude.com/en/articles/17631495-get-started-with-claude-duet",
+   "conferido": "2026-10-22"
+  },
+  {
+   "dado": "Modelos OpenAI (GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna) no Google Cloud: prévia privada pra empresas selecionadas desde 21/10, GA nas próximas semanas",
+   "fonte": "https://openai.com/index/openai-models-google-cloud/",
+   "conferido": "2026-10-22"
+  },
+  {
+   "dado": "TorchTPU open source, co-desenvolvido com a Meta (PyTorch), no GitHub google-pytorch/torch_tpu",
+   "fonte": "https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus",
+   "conferido": "2026-10-22"
+  }
+ ],
+ "registro": {
+  "tema": "radar IA 22/10: Claude Duet, modelos OpenAI no Google Cloud, TorchTPU open source",
+  "chaves": [
+   "claude duet",
+   "openai google cloud",
+   "torchtpu",
+   "radar 22/10"
+  ]
+ },
+ "video": "videos/2026-10-22-12h-radar-ia-60s-neon.mp4",
+ "fonte_html": "kit/2026-10-22-12h-radar-ia-60s-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-20-automacao-do-zero-02.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 20/10/2026 · 19h · Automação do zero #2: Google Formulários -> planilha (do próprio Google) + e-mail pelo Zapier (Zap de 2 passos). Neon.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const COR = [AZ, CI, AZ, CI, IN, CI, AZ];
+const HITS = [wt('planilha', 0), wt('automacao', 1), wt('respostas', 2), wt('zapier', 3), wt('send', 4), wt('100', 5)];
+const CL = { resp: wt('respostas', 2), ligar: wt('ligue', 2), zap: wt('zap', 3), ev: wt('new', 3), send: wt('send', 4), to: wt('quem', 4), pub: wt('publique', 4) };
+const CLIQUES = [CL.resp, CL.ligar, CL.zap, CL.ev, CL.send, CL.pub];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+function linhaPlan(x, y, w, cols, a, on = 0) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a * 2);
+  ctx.fillStyle = on ? '#dbe6ff' : '#ffffff'; rr(x, y, w, 60, 8); ctx.fill(); ctx.strokeStyle = '#c5d0e6'; ctx.lineWidth = 2; rr(x, y, w, 60, 8); ctx.stroke();
+  cols.forEach((c, i) => txt(c, x + 20 + i * w / cols.length, y + 38, ARC, 28, '#1b2440', { weight: 600 })); ctx.restore(); }
+const S = [
+  // 0 · gancho: formulário -> planilha + e-mail
+  (t, lt) => {
+    frase('Formulário respondido', 300, -1, SC[1] - .2, 76, { t, hot: 'respondido', cor: CI });
+    neon3d(P.legenda, cx0, 620, 130 * back(prog(lt, .05, .4)), .3 * Math.sin(t), .3, CI, prog(lt, .05, .3));
+    linhaPlan(160, 820, 760, ['Ana', 'ana@email.com', 'Sim'], prog(t, wt('linha', 0), wt('linha', 0) + .3), 1);
+    neon3d(P.envelope, cx0, 1060, 120 * back(prog(t, wt('email', 0), wt('email', 0) + .4)), -.3 * Math.sin(t), .3, AZ, prog(t, wt('email', 0), wt('email', 0) + .2));
+    exemplo(cx0, 1200, prog(lt, .4, .7));
+    frase('na hora', 1330, wt('na', 0) - .1, SC[1] - .2, 76, { t, hot: 'na hora', cor: CI });
+  },
+  // 1 · série
+  (t, lt) => {
+    neon3d(P.engrenagem, cx0, cy0 - 100, 210 * back(prog(lt, .05, .5)), .3 * Math.sin(t), .3, CI, prog(lt, .05, .3));
+    frase('Automação do zero', cy0 + 220, wt('automacao', 1) - .1, SC[2] - .2, 86, { t, hot: 'zero', cor: CI });
+    selo('episódio 2', cx0, cy0 + 360, prog(t, wt('episodio', 1), wt('episodio', 1) + .3));
+    linhaTxt('nada de copiar resposta à mão', cy0 + 480, wt('nada', 1), SC[2] - .2, t, 42);
+  },
+  // 2 · passo 1: Formulários > Respostas > ligar à planilha (sem Zapier)
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    frase('Formulário na planilha', 470, wt('google', 2) - .1, SC[3] - .2, 70, { t, hot: 'planilha', cor: CI });
+    janela(640, 480, prog(lt, .1, .4), 'Google Formulários', (x, y, w) => {
+      botao(x, y + 10, 'Respostas', prog(t, CL.resp - .3, CL.resp), prog(t, CL.resp, CL.resp + .3));
+      const a = prog(t, CL.ligar - .2, CL.ligar + .1); if (a > 0) { neon3d(P.check, x + 80, y + 230, 50 * back(a), 0, 0, AZ, a); txt('ligado a uma planilha', x + 150, y + 244, ARC, 36, '#1b2440', { weight: 600, alpha: clamp(a * 2) }); }
+    });
+    selo('sem Zapier, do próprio Google', cx0, 1240, prog(t, wt('sem', 2), wt('sem', 2) + .3));
+    exemplo(cx0, 1350, prog(lt, .4, .7));
+  },
+  // 3 · passo 2: Zap, gatilho Google Forms / New Form Response
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    frase('Gatilho: Google Forms', 470, wt('gatilho', 3) - .1, SC[4] - .2, 70, { t, hot: 'Google Forms', cor: CI });
+    janela(640, 440, prog(lt, .1, .4), 'Trigger', (x, y, w) => {
+      campo(x, y, w - 140, 'App', 'Google Forms', prog(t, wt('google', 3), wt('google', 3) + .3));
+      campo(x, y + 130, w - 140, 'Event', 'New Form Response', prog(t, CL.ev - .1, CL.ev + .2), prog(t, CL.ev, CL.ev + .2));
+    });
+    linhaTxt('o gatilho dispara tudo', 1200, wt('dispara', 3) - .2, SC[4] - .2, t, 44, CI);
+    exemplo(cx0, 1300, prog(lt, .4, .7));
+  },
+  // 4 · passo 3: ação Gmail / Send Email / To = quem respondeu / Publish
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    frase('Ação: Gmail', 470, wt('acao', 4) - .1, SC[5] - .2, 80, { t, hot: 'Gmail', cor: CI });
+    janela(600, 680, prog(lt, .1, .4), 'Action', (x, y, w) => {
+      campo(x, y, w - 140, 'App', 'Gmail', prog(t, wt('gmail', 4), wt('gmail', 4) + .3));
+      campo(x, y + 130, w - 140, 'Event', 'Send Email', prog(t, CL.send - .1, CL.send + .2), prog(t, CL.send, CL.send + .2));
+      campo(x, y + 260, w - 140, 'To', 'e-mail de quem respondeu', prog(t, CL.to - .3, CL.to), prog(t, CL.to, CL.to + .2));
+      botao(x, y + 400, 'Publish', prog(t, CL.pub - .4, CL.pub - .1), prog(t, CL.pub, CL.pub + .3));
+    });
+    exemplo(cx0, 1380, prog(lt, .4, .7));
+  },
+  // 5 · resultado + limite grátis
+  (t, lt) => {
+    for (let k = 0; k < 3; k++) linhaPlan(160, 520 + k * 76, 760, [['Ana', 'Bruno', 'Carla'][k], 'respondeu', '✓ e-mail'], prog(t, SC[5] + .2 + k * .5, SC[5] + .5 + k * .5));
+    frase('Planilha cheia', 860, wt('planilha', 5) - .1, SC[6] - .2, 76, { t, hot: 'cheia', cor: CI });
+    frase('e resposta automática', 960, wt('resposta', 5) - .1, SC[6] - .2, 60, { t });
+    selo('grátis: 100 tarefas por mês', cx0, 1120, prog(t, wt('gratis', 5), wt('gratis', 5) + .3));
+    linhaTxt('1 e-mail enviado = 1 tarefa', 1240, wt('gratis', 5) + .3, SC[6] - .2, t, 38, 'rgba(244,248,255,.8)');
+  },
+  // 6 · logo + chamada
+  (t, lt) => fim(t, lt, 'Salva pra fazer hoje', 'sábado: episódio 3'),
+];
+</script></body></html>

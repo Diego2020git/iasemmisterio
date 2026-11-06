@@ -1,0 +1,98 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-29-termo-de-ia-02.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 29/10/2026 · 19h · Termo de IA #2: token (padrão de entrega de 24/10). Neon + neon-entrega.js.
+// Mecanismo: texto → pedaços → números; tudo que entra e sai conta; limite e preço em tokens. Fonte: ai.google.dev/gemini-api/docs/tokens (≈4 caracteres).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, AZ, IN, CI, AMB, AZ];
+const HITS = [wt('palavras', 0), wt('tokens', 0), wt('token', 1), wt('limite', 1), wt('preco', 1), wt('corta', 2), wt('quatro', 2), wt('numero', 3), wt('resposta', 3), wt('manda', 4), wt('responde', 4), wt('preco', 4), wt('portugues', 5)];
+const PED = ['Bom', ' dia', ', tu', 'do', ' bem', '?'], NUM = ['8231', '1407', '311', '552', '7790', '30'];
+// frase inteira que se parte em pedaços (sp 0..1) e pedaços que viram números (nv 0..1)
+function picota(y, sp, nv, a, t) { if (a <= 0) return; const sz = 64, ws = PED.map(p => measure(p, EXP, sz) + 40), gap = 26 * sp, tot = ws.reduce((s, w) => s + w, 0) + gap * (PED.length - 1);
+  const sc = Math.min(1, 960 / tot); let x = cx0 - tot / 2; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(cx0, y); ctx.scale(sc, sc); ctx.translate(-cx0, -y);
+  PED.forEach((p, i) => { const c = i % 2 ? CI : AZ, w = ws[i], yy = y + (sp > 0 ? 10 * Math.sin(t * 3 + i) * sp : 0);
+    ctx.fillStyle = hex(c, .12 + .25 * sp); rr(x, yy - 56, w, 112, 18); ctx.fill(); if (sp > 0) { ctx.strokeStyle = hex(c, sp); ctx.lineWidth = 4; rr(x, yy - 56, w, 112, 18); ctx.stroke(); }
+    txt(p.trim() || '·', x + w / 2, yy + 4, EXP, sz, BR, { align: 'center', alpha: 1 - clamp(nv * 2 - i * .25) });
+    const q = clamp(nv * 2 - i * .25); if (q > 0) txt(NUM[i], x + w / 2, yy + 4, EXP, 44, CI, { align: 'center', alpha: q });
+    x += w + gap; }); ctx.restore(); }
+function contador(x, y, v, cor, rot, a) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); txt(rot, x, y - 60, ARC, 34, 'rgba(244,248,255,.8)', { align: 'center', weight: 600 });
+  ctx.shadowColor = cor; ctx.shadowBlur = 30; txt(String(Math.round(v)), x, y + 20, EXP, 96, cor, { align: 'center' }); ctx.restore(); }
+const S = [
+  // 0 · gancho: palavras viram pedaços
+  (t, lt) => {
+    titulo('A IA NÃO LÊ PALAVRAS', 380, -1, SC[1] - .2, t, 80, BR, 'PALAVRAS', VERM);
+    picota(700, prog(t, wt('tokens', 0) - .3, wt('tokens', 0) + .3), 0, prog(lt, 0, .2), t);
+    versao('lê TOKENS', cx0, 930, prog(t, wt('tokens', 0) - .1, wt('tokens', 0) + .3), CI, 0, 64);
+    linhaTxt('token = pedaço de texto', 1100, wt('pedacos', 0) - .2, SC[1] - .2, t, 48, CI);
+  },
+  // 1 · o termo + por que importa
+  (t, lt) => {
+    titulo('TOKEN', 420, SC[1], SC[2] - .2, t, 150, BR, 'TOKEN', CI);
+    pilula('Termo de IA', cx0, 620, 520, prog(t, wt('termo', 1), wt('termo', 1) + .3), CI, 'EPISÓDIO 2');
+    pilula('decide o LIMITE', cx0 - 200, 900, 370, prog(t, wt('limite', 1) - .2, wt('limite', 1) + .2), AMB, 'quanto cabe', 1, 40);
+    pilula('e o PREÇO', cx0 + 200, 900, 370, prog(t, wt('preco', 1) - .2, wt('preco', 1) + .2), VERDE, 'quanto custa', 1, 40);
+    neon3d(P.chip, cx0, 1150 + flut(t), 90 * back(prog(lt, .3, .7)), .4 * Math.sin(t * 1.1), .2, CI, prog(lt, .3, .6));
+  },
+  // 2 · passo 1: corta em pedaços (~4 caracteres)
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('CORTA EM PEDAÇOS', 450, wt('corta', 2) - .1, SC[3] - .2, t, 80, BR, 'PEDAÇOS', CI);
+    picota(680, prog(t, wt('pedacos', 2) - .4, wt('pedacos', 2)), 0, prog(lt, 0, .3), t);
+    versao('≈ 4 caracteres', cx0, 920, prog(t, wt('quatro', 2) - .2, wt('quatro', 2) + .2), CI, 0, 60);
+    linhaTxt('cada token no Gemini, segundo o Google', 1040, wt('quatro', 2), SC[3] - .2, t, 38);
+    contador(cx0, 1200, 6 * prog(t, wt('pedacos', 2), wt('gemini', 2)), AZ, 'pedaços nesta frase', prog(t, wt('pedacos', 2), wt('pedacos', 2) + .3));
+  },
+  // 3 · passo 2: vira número
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('CADA PEDAÇO VIRA NÚMERO', 450, wt('pedaco', 3) - .2, SC[4] - .2, t, 70, BR, 'NÚMERO', CI);
+    picota(680, 1, prog(t, wt('numero', 3) - .4, wt('numero', 3) + .4), prog(lt, 0, .3), t);
+    setaH(cx0 - 200, cx0 + 120, 880, prog(t, wt('numeros', 3) - .2, wt('numeros', 3) + .3), CI);
+    neon3d(P.chip, cx0, 1080 + flut(t), 100 * back(prog(t, wt('monta', 3) - .4, wt('monta', 3))), .4 * Math.sin(t), .2, CI, prog(t, wt('monta', 3) - .4, wt('monta', 3)));
+    pilula('a IA calcula a resposta', cx0, 1260, 640, prog(t, wt('resposta', 3) - .3, wt('resposta', 3) + .1), VERDE, '', 1, 38);
+  },
+  // 4 · passo 3: tudo conta; limite e preço
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('TUDO CONTA', 450, wt('manda', 4) - .3, SC[5] - .2, t, 90, BR, 'CONTA', CI);
+    const ma = wt('manda', 4), re = wt('responde', 4), li = wt('limite', 4), pr = wt('preco', 4);
+    const v1 = 120 * prog(t, ma - .2, ma + .8), v2 = 240 * prog(t, re - .2, re + .8);
+    const f = 1 - prog(t, li - .5, li - .2);
+    contador(cx0 - 230, 700, v1, AZ, 'você manda', prog(t, ma - .3, ma) * f);
+    contador(cx0 + 230, 700, v2, CI, 'ela responde', prog(t, re - .3, re) * f);
+    versao('= ' + Math.round(v1 + v2) + ' tokens', cx0, 920, prog(t, wt('tudo', 4) - .2, wt('tudo', 4) + .2) * f, CI, 0, 56);
+    medidor(660, prog(t, li, li + 1.2) * .7, prog(t, li - .3, li) , AMB, 'limite da janela', 'em tokens');
+    pilula('preço por milhão de tokens', cx0, 900, 760, prog(t, pr - .2, pr + .2), VERDE, 'na API, a conexão dos programadores', 1, 42);
+    linhaTxt('tudo medido nesses pedaços', 1100, wt('saem', 4) - .3, SC[5] - .2, t, 44, CI);
+  },
+  // 5 · limite: média do inglês
+  (t, lt) => {
+    titulo('CUIDADO COM A CONTA', 380, SC[5], SC[6] - .2, t, 76, BR, 'CONTA', AMB);
+    pilula('inglês: 100 tokens ≈ 60 a 80 palavras', cx0, 620, 900, prog(t, wt('ingles', 5) - .3, wt('ingles', 5) + .1), CI, 'SEGUNDO O GOOGLE', 1, 40);
+    pilula('português: só estimativa', cx0, 820, 760, prog(t, wt('portugues', 5) - .2, wt('portugues', 5) + .2), AMB, '', 1, 44);
+    neon3d(P.relogio, cx0, 1080 + flut(t), 90 * back(prog(lt, .2, .6)), .3 * Math.sin(t), .1, AMB, prog(lt, .2, .5));
+  },
+  // 6 · fim
+  (t, lt) => fim(t, lt, 'Salva e segue', 'quinta que vem: outro termo'),
+];
+function medidor(y, p, a, cor, rot, val) { if (a <= 0) return; const x = cx0 - 400, w = 800;
+  ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = 'rgba(244,248,255,.12)'; rr(x, y, w, 56, 28); ctx.fill();
+  ctx.shadowColor = cor; ctx.shadowBlur = 30; ctx.fillStyle = cor; rr(x, y, Math.max(56, w * ease(clamp(p))), 56, 28); ctx.fill(); ctx.shadowBlur = 0;
+  txt(rot, x, y - 40, ARC, 36, BR, { weight: 600 }); txt(val, x + w, y - 40, EXP, 40, cor, { align: 'right' }); ctx.restore(); }
+</script></body></html>

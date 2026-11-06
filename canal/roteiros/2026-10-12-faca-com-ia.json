@@ -1,0 +1,122 @@
+{
+  "id": "2026-10-12-faca-com-ia",
+  "serie": "Faça com IA",
+  "data": "2026-10-12",
+  "horario": "12:00",
+  "titulo": "Qual IA usar pra cada tarefa (todas com plano grátis)",
+  "descricao": "Não existe uma melhor IA. Existe a melhor pra cada tarefa 👇\n✍️ Texto, e-mail e ideias: ChatGPT (chatgpt.com)\n🎨 Imagem: Gemini (gemini.google.com)\n📚 Estudar com o seu material: NotebookLM (notebooklm.google)\n🎬 Vídeo: Google Flow (labs.google/flow)\nAs quatro têm plano grátis, com limite de uso por dia.\nSalva pra consultar depois!\n\nFonte: sites oficiais das ferramentas. Planos grátis conferidos em 11/10/2026 (Engadget sobre o ChatGPT grátis, ago/2026; Google Flow Help; TechRadar sobre o NotebookLM; DataCamp sobre imagens no Gemini).\n\n#qualamelhoria #chatgpt #gemini #notebooklm #inteligenciaartificial #ia",
+  "hashtags": [
+    "qualamelhoria",
+    "chatgpt",
+    "gemini",
+    "notebooklm",
+    "inteligenciaartificial",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "qual a melhor ia": {
+        "demanda_views_top10": 746338,
+        "concorrencia_canais_100k": 5
+      }
+    }
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "ChatGPT tem plano grátis",
+      "fonte": "https://engadget.com/2234173/chatgpt-free-features-2026",
+      "conferido": "2026-10-11"
+    },
+    {
+      "dado": "Gemini grátis gera imagens com limite diário",
+      "fonte": "https://www.datacamp.com/blog/best-free-ai-image-generators",
+      "conferido": "2026-10-11"
+    },
+    {
+      "dado": "NotebookLM tem plano grátis",
+      "fonte": "https://www.techradar.com/pro/notebooklm-review",
+      "conferido": "2026-10-11"
+    },
+    {
+      "dado": "Flow grátis: créditos diários",
+      "fonte": "https://support.google.com/flow/answer/16526234",
+      "conferido": "2026-10-11"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "qual ia usar para cada tarefa",
+    "chaves": [
+      "melhor ia",
+      "comparativo",
+      "cada tarefa",
+      "ferramentas gratis"
+    ]
+  },
+  "video": "videos/2026-10-12-12h-qual-ia-usar-raiox.mp4",
+  "fonte_html": "kit/2026-10-12-12h-qual-ia-usar-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "16",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Não existe a melhor IA. Existe a certa pra cada tarefa.",
+          "legenda": "Não existe a melhor IA. Existe a certa pra cada tarefa."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Texto e e-mail: ChatGPT.",
+          "legenda": "Texto e e-mail: ChatGPT."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Imagem: Gemini, do Google.",
+          "legenda": "Imagem: Gemini, do Google."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Estudar com o seu material: Notebook L M.",
+          "legenda": "Estudar com o seu material: NotebookLM."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Vídeo: o Flow, também do Google.",
+          "legenda": "Vídeo: o Flow, também do Google."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "As quatro têm plano grátis.",
+          "legenda": "As quatro têm plano grátis."
+        },
+        {
+          "fala": "Salva pra consultar depois e me segue pra mais.",
+          "legenda": "Salva pra consultar depois e me segue pra mais."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

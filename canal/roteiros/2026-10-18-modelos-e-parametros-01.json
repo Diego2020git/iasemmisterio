@@ -1,0 +1,95 @@
+{
+ "id": "2026-10-18-modelos-e-parametros-01",
+ "serie": "Modelos e parâmetros",
+ "data": "2026-10-18",
+ "horario": "19:00",
+ "titulo": "Modelos e parâmetros #1: mini, flash e pro, qual a diferença?",
+ "descricao": "Modelos e parâmetros, episódio 1 🧠\nMini, flash, lite, haiku, pro, opus: o nome diz o tamanho do modelo.\n1️⃣ Pequenos (mini, flash, lite, haiku): rápidos e baratos. Bons pra resumo, triagem e respostas curtas.\n2️⃣ Grandes (pro, opus): pensam mais em tarefa difícil, como código e análise, mas demoram e custam mais.\n3️⃣ No meio, o equilíbrio (ex.: Claude Sonnet).\nExemplo de preço oficial na API da Anthropic (acesso pra programadores), por milhão de tokens de entrada: Claude Haiku 5.5 US$ 0,10 (prompts até 100 mil tokens), Claude Sonnet 5.5 US$ 2, Claude Opus 5.5 US$ 4. Token é um pedaço de texto que a IA lê.\nDica: comece no pequeno e só suba se a resposta não servir.\nDomingo que vem: temperatura.\n\nFonte: platform.claude.com/docs/en/about-claude/pricing, conferido em 16/10/2026.\n\n#ia #inteligenciaartificial #chatgpt #gemini #claude #modelosdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "m1",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Mini, flash, pro: o que esses nomes dizem?",
+     "legenda": "Mini, flash, pro: o que esses nomes dizem?"
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Modelos e parâmetros, episódio um. Nomes que aparecem ao escolher o modelo.",
+     "legenda": "Modelos e parâmetros, episódio 1. Nomes que aparecem ao escolher o modelo."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: mini, flash, lite e haiku são os pequenos: rápidos e baratos.",
+     "legenda": "Um: mini, flash, lite e haiku são os pequenos: rápidos e baratos."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: pro e opus são do time dos grandes. Pensam mais, mas custam mais.",
+     "legenda": "Dois: pro e opus são do time dos grandes. Pensam mais, mas custam mais."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: no meio, o equilíbrio, como o Sonnet. Pra resumo, use o pequeno.",
+     "legenda": "Três: no meio, o equilíbrio, como o Sonnet. Pra resumo, use o pequeno."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Na Anthropic: Haiku, dez centavos de dólar por milhão de tokens, os pedaços de texto. Opus, quatro dólares.",
+     "legenda": "Na Anthropic: Haiku, 10 centavos de dólar por milhão de tokens, os pedaços de texto. Opus, 4 dólares."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Salva. Domingo que vem: temperatura.",
+     "legenda": "Salva. Domingo que vem: temperatura."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Claude Haiku 5.5 US$0,10 entrada (até 100 mil tokens), Sonnet 5.5 US$2, Opus 5.5 US$4 por milhão",
+   "fonte": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "conferido": "2026-10-16"
+  }
+ ],
+ "registro": {
+  "tema": "nomenclatura de modelos: mini, flash, pro",
+  "chaves": [
+   "mini",
+   "flash",
+   "pro",
+   "tamanho de modelo"
+  ]
+ },
+ "video": "videos/2026-10-18-19h-modelos-01-neon.mp4",
+ "fonte_html": "kit/2026-10-18-19h-modelos-01-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

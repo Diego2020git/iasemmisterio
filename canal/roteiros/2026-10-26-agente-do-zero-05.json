@@ -1,0 +1,100 @@
+{
+ "id": "2026-10-26-agente-do-zero-05",
+ "serie": "Agente do zero",
+ "data": "2026-10-26",
+ "horario": "19:00",
+ "titulo": "Agente do zero #5: o primeiro cenário no Make",
+ "descricao": "Agente do zero, episódio 5 🔗\nO agente sai do AI Studio e ganha as ligações: o primeiro cenário no Make.\n1️⃣ Crie sua conta grátis em make.com e clique em Create a new scenario\n2️⃣ Adicione o app Google Gemini AI, ação Create a Completion. Na conexão, cole a chave do episódio 2 (nunca mostre a chave pra ninguém)\n3️⃣ Escreva a mensagem de teste \"Abre domingo?\" e clique em Run once. A resposta aparece no balão do módulo.\nCusto: plano grátis do Make com 1.000 créditos por mês; cada módulo que roda gasta 1 crédito.\nEpisódio anterior: #4, dar conhecimento. Quarta: episódio 6, o número de teste do WhatsApp.\n\nFonte: make.com/pricing e make.com/en/integrations/gemini-ai, conferidos em 21/10/2026.\n\n#agentedeia #make #gemini #automacao #ia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "5",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Seu agente saiu do AI Studio: agora ele roda dentro do Make.",
+     "legenda": "Seu agente saiu do AI Studio: agora ele roda dentro do Make."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Agente do zero, episódio cinco. O Make é o que liga o cérebro ao WhatsApp.",
+     "legenda": "Agente do zero, episódio 5. O Make é o que liga o cérebro ao WhatsApp."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: crie a conta grátis no Make e clique em Create a new scenario.",
+     "legenda": "Um: crie a conta grátis no Make e clique em Create a new scenario."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: adicione Google Gemini AI, Create a Completion, com a chave do episódio dois.",
+     "legenda": "Dois: adicione Google Gemini AI, Create a Completion, com a chave do episódio 2."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: escreva abre domingo? e clique em Run once. A resposta aparece.",
+     "legenda": "Três: escreva \"Abre domingo?\" e clique em Run once. A resposta aparece."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Funcionou. Grátis: mil créditos por mês, um por módulo que roda.",
+     "legenda": "Funcionou. Grátis: 1.000 créditos por mês, 1 por módulo que roda."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Quarta tem o episódio seis: o número de teste do WhatsApp.",
+     "legenda": "Quarta tem o episódio 6: o número de teste do WhatsApp."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Make grátis: 1.000 créditos/mês, 1 crédito por ação de módulo, 2 cenários ativos, intervalo mínimo de 15 min",
+   "fonte": "https://www.make.com/en/pricing",
+   "conferido": "2026-10-25"
+  },
+  {
+   "dado": "Make: app Google Gemini AI com ação Create a Completion",
+   "fonte": "https://www.make.com/en/integrations/gemini-ai",
+   "conferido": "2026-10-25"
+  }
+ ],
+ "registro": {
+  "tema": "agente do zero ep 5: primeiro cenário no Make com o módulo Google Gemini AI",
+  "chaves": [
+   "make cenario",
+   "create a completion",
+   "run once",
+   "agente ep 5"
+  ]
+ },
+ "video": "videos/2026-10-26-19h-agente-do-zero-05-neon.mp4",
+ "fonte_html": "kit/2026-10-26-19h-agente-do-zero-05-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

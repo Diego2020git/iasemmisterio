@@ -1,0 +1,90 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-08-modelos-e-parametros-04.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 08/11/2026 · 19h · Modelos e parâmetros #4: modelo aberto x fechado (Gemma no LM Studio). Padrão de entrega de 24/10. Neon + neon-entrega.js.
+// Fontes: blog.google (Introducing Gemma 4 12B: Apache 2.0, ~16 GB de VRAM/memória unificada), ai.google.dev (Run Gemma with LM Studio / Ollama).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, VERM, VERDE, AZ, AMB, AZ];
+const HITS = [wt('computador', 0), wt('internet', 0), wt('chave', 1), wt('fechado', 1), wt('fechado', 2), wt('chave', 2), wt('aberto', 3), wt('pesos', 3), wt('casa', 3), wt('studio', 4), wt('gemma', 4), wt('gratis', 5), wt('memoria', 5), wt('gigas', 5)];
+// notebook com a IA rodando local
+function notebook(x, y, s, a, t, off) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(x, y); ctx.scale(s, s);
+  ctx.fillStyle = '#1b2440'; rr(-300, -200, 600, 380, 22); ctx.fill(); ctx.fillStyle = '#ffffff'; rr(-280, -182, 560, 344, 12); ctx.fill();
+  ctx.fillStyle = '#2b3550'; rr(-360, 180, 720, 34, 12); ctx.fill();
+  txt('Gemma · no seu computador', -250, -136, ARC, 26, '#1b2440', { weight: 700 });
+  ctx.fillStyle = '#e4ebff'; rr(-40, -96, 300, 64, 14); ctx.fill(); txt('Resume esse texto', -20, -56, ARC, 24, '#1b2440', { weight: 600 });
+  const q = clamp((t * 1.5) % 3 - .5); ctx.fillStyle = '#d9fdd3'; rr(-260, -12, 400 * clamp(q + .3), 64, 14); ctx.fill();
+  if (off > 0) { ctx.globalAlpha *= clamp(off); txt('sem internet', 250, 140, ARC, 24, '#c62828', { align: 'right', weight: 800 }); }
+  ctx.restore(); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    titulo('IA DO GOOGLE NO SEU PC', 360, -1, SC[1] - .2, t, 70, BR, 'PC', AZ);
+    notebook(cx0, 820, 1.1, prog(lt, 0, .3), t, prog(t, wt('internet', 0) - .3, wt('internet', 0) + .1));
+    exemplo(cx0, 1130, prog(lt, .3, .6));
+  },
+  // 1 · por que importa
+  (t, lt) => {
+    titulo('ABERTO OU FECHADO?', 560, SC[1], SC[2] - .2, t, 76, BR, 'FECHADO?', CI);
+    pilula('aberto', cx0 - 220, 940, 340, prog(t, wt('aberto', 1) - .2, wt('aberto', 1) + .2), VERDE, '', 1, 46);
+    pilula('fechado', cx0 + 220, 940, 340, prog(t, wt('fechado', 1) - .2, wt('fechado', 1) + .2), VERM, '', 1, 46);
+  },
+  // 2 · fechado
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('MODELO FECHADO', 450, wt('fechado', 2) - .2, SC[3] - .2, t, 80, BR, 'FECHADO', VERM);
+    neon3d(P.cadeado, cx0, 680 + flut(t), 110 * back(prog(t, wt('fechado', 2) - .3, wt('fechado', 2) + .1)), .4 * Math.sin(t * .8), .1, VERM, prog(t, wt('fechado', 2) - .3, wt('fechado', 2) + .1));
+    pilula('Gemini', cx0 - 210, 900, 340, prog(t, wt('gemini', 2) - .2, wt('gemini', 2) + .2), AZ, '', 1, 42);
+    pilula('ChatGPT', cx0 + 210, 900, 340, prog(t, wt('chatgpt', 2) - .2, wt('chatgpt', 2) + .2), VERDE, '', 1, 42);
+    pilula('site · app · chave', cx0, 1080, 780, prog(t, wt('site', 2) - .2, wt('chave', 2) + .2), VERM, 'RODA NOS COMPUTADORES DA EMPRESA', 1, 42);
+  },
+  // 3 · aberto
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('MODELO ABERTO', 450, wt('aberto', 3) - .2, SC[4] - .2, t, 84, BR, 'ABERTO', VERDE);
+    pilula('Gemma, do Google', cx0, 640, 520, prog(t, wt('gemma', 3) - .2, wt('google', 3) + .2), VERDE, '', 1, 44);
+    const q = prog(t, wt('pesos', 3) - .2, wt('modelo', 3) + .3);
+    if (q > 0) { ctx.save(); ctx.globalAlpha *= clamp(q); for (let i = 0; i < 4; i++) txt(['0.82  -1.37  0.05  2.91', '-0.44  0.17  1.03  -0.66', '1.58  -0.21  0.73  0.09', '-0.95  2.12  -0.38  0.61'][i], cx0, 810 + i * 50, EXP, 34, hex(VERDE, .9), { align: 'center' }); ctx.restore(); }
+    pilula('pesos = os números do modelo', cx0, 1060, 720, q, CI, 'LIBERADOS PRA BAIXAR', 1, 40);
+    pilula('roda em casa', cx0, 1230, 440, prog(t, wt('baixa', 3) - .2, wt('casa', 3) + .2), VERDE, '', 1, 44);
+  },
+  // 4 · LM Studio
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('TESTE NO LM STUDIO', 450, wt('instale', 4) - .2, SC[5] - .2, t, 72, BR, 'LM STUDIO', AZ);
+    janela(580, 600, prog(t, wt('studio', 4) - .3, wt('studio', 4)), 'LM Studio', (x, y, w) => {
+      campo(x + 20, y + 20, w - 40, 'Busca', 'Gemma', prog(t, wt('procure', 4) - .1, wt('gemma', 4) + .2), prog(t, wt('gemma', 4), wt('gemma', 4) + .3));
+      const L = ['Gemma (versão menor)', 'Gemma (sugerida pro seu PC)', 'Gemma (versão maior)'];
+      L.forEach((n, i) => { const a = prog(t, wt('baixe', 4) - .4 + i * .1, wt('baixe', 4) - .1 + i * .1); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+        const hl = i === 1 && prog(t, wt('sugere', 4) - .2, wt('sugere', 4) + .2) > .5; ctx.fillStyle = hl ? '#d9fdd3' : '#f4f6fb'; rr(x + 20, y + 170 + i * 100, w - 40, 84, 14); ctx.fill();
+        txt(n, x + 44, y + 220 + i * 100, ARC, 30, '#1b2440', { weight: hl ? 800 : 600 }); if (hl) txt('↓', x + w - 60, y + 222 + i * 100, ARC, 38, '#1e7e45', { weight: 800, align: 'right' }); ctx.restore(); }); });
+    exemplo(cx0, 1220, prog(t, wt('baixe', 4), wt('baixe', 4) + .3));
+  },
+  // 5 · grátis e limite
+  (t, lt) => {
+    titulo('GRÁTIS, MAS PEDE MÁQUINA', 380, SC[5], SC[6] - .2, t, 62, BR, 'MÁQUINA', AMB);
+    pilula('grátis', cx0 - 270, 620, 260, prog(t, wt('gratis', 5) - .2, wt('gratis', 5) + .2), VERDE, '', 1, 44);
+    pilula('a conversa fica aqui', cx0 + 170, 620, 500, prog(t, wt('conversa', 5) - .2, wt('maquina', 5) + .2), VERDE, '', 1, 36);
+    neon3d(P.chip, cx0, 850 + flut(t), 100 * back(prog(t, wt('memoria', 5) - .3, wt('memoria', 5) + .1)), .4 * Math.sin(t * .8), .1, AMB, prog(t, wt('memoria', 5) - .3, wt('memoria', 5) + .1));
+    pilula('≈ 16 GB de memória', cx0, 1060, 520, prog(t, wt('dezesseis', 5) - .2, wt('gigas', 5) + .2), AMB, 'GEMMA 4 DE 12 BILHÕES', 1, 44);
+    linhaTxt('versões menores pedem menos', 1200, wt('bilhoes', 5), SC[6] - .2, t, 34, CI);
+  },
+  // 6 · fim
+  (t, lt) => fim(t, lt, 'Salva e segue', 'domingo tem mais'),
+];
+</script></body></html>

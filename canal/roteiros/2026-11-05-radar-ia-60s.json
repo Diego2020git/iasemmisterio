@@ -1,0 +1,113 @@
+{
+ "id": "2026-11-05-radar-ia-60s",
+ "serie": "Radar IA",
+ "data": "2026-11-05",
+ "horario": "12:00",
+ "titulo": "Radar IA: GIF no ChatGPT, OpenAI compra a Pierre e IA de saúde",
+ "descricao": "Radar IA de hoje 📡\n1️⃣ ChatGPT Images 2.6 (04/11): geração de imagem mais rápida, criação de GIF animado (também a partir de uma foto parada) e imagens de referência salvas: mande uma foto, peça pra salvar como referência, dê um nome e depois use @nome no pedido. O GIF está chegando aos poucos, então pode ainda não aparecer na sua conta.\n2️⃣ OpenAI compra a Pierre (04/11): a empresa faz o Code Storage e bibliotecas que já mostram arquivos e mudanças no app do Codex. A ideia é ampliar o Git (o sistema que guarda as versões do código) pra times que programam com agentes. Os projetos abertos continuam abertos; a compra ainda depende de aprovação.\n3️⃣ IA de saúde (04/11): o Google publicou, com especialistas, o método que usa pra avaliar IA em saúde: notas de precisão, segurança e utilidade, combinando testes de perguntas fechadas, avaliadores automáticos e revisão de especialistas.\n\nTeste hoje: mande uma foto pro ChatGPT e peça pra salvar como referência.\n\nFontes oficiais (conferidas em 05/11/2026): help.openai.com (Images in ChatGPT; ChatGPT release notes) · openai.com (OpenAI to acquire Pierre Computer Company) · blog.google (framework for safer and more helpful AI for health)\n\n#ia #inteligenciaartificial #chatgpt #openai #google #noticiasdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "r21",
+ "estilo": "neon",
+ "formato": "radar-60",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "O ChatGPT agora faz GIF e guarda sua foto pra usar depois, a OpenAI comprou uma empresa de código e o Google mostrou como testa IA de saúde.",
+     "legenda": "O ChatGPT agora faz GIF e guarda sua foto pra usar depois, a OpenAI comprou uma empresa de código e o Google mostrou como testa IA de saúde."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Radar IA de hoje.",
+     "legenda": "Radar IA de hoje."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: chegou o Images dois ponto seis no ChatGPT. Ele gera imagem mais rápido e cria GIF animado, até a partir de uma foto sua.",
+     "legenda": "Um: chegou o Images dois ponto seis no ChatGPT. Ele gera imagem mais rápido e cria GIF animado, até a partir de uma foto sua."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "E dá pra salvar uma foto com nome, tipo Pepper, e depois pedir: retrato em aquarela de arroba Pepper.",
+     "legenda": "E dá pra salvar uma foto com nome, tipo Pepper, e depois pedir: retrato em aquarela de arroba Pepper."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: a OpenAI vai comprar a Pierre, que já faz partes do app do Codex. A ideia é melhorar o Git, o sistema que guarda as versões do código, pra quem programa com agentes.",
+     "legenda": "Dois: a OpenAI vai comprar a Pierre, que já faz partes do app do Codex. A ideia é melhorar o Git, o sistema que guarda as versões do código, pra quem programa com agentes."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: o Google publicou como avalia IA de saúde. A resposta ganha nota em três pontos: se está certa, se é segura e se ajuda de verdade.",
+     "legenda": "Três: o Google publicou como avalia IA de saúde. A resposta ganha nota em três pontos: se está certa, se é segura e se ajuda de verdade."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Teste hoje: mande uma foto pro ChatGPT e peça pra salvar como referência.",
+     "legenda": "Teste hoje: mande uma foto pro ChatGPT e peça pra salvar como referência."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segue pro Radar IA todo dia ao meio-dia.",
+     "legenda": "Segue pro Radar IA todo dia ao meio-dia."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "ChatGPT Images 2.6 (04/11/2026): mais rápido, GIF (rollout), animar foto, referência salva com nome e @nome",
+   "fonte": "https://help.openai.com/en/articles/11084440-images-in-chatgpt",
+   "conferido": "2026-11-05"
+  },
+  {
+   "dado": "OpenAI vai adquirir Pierre Computer Company (Code Storage; Trees e Diffs no app do Codex); open source continua; depende de aprovação",
+   "fonte": "https://openai.com/index/openai-to-acquire-pierre/",
+   "conferido": "2026-11-05"
+  },
+  {
+   "dado": "Google (04/11/2026): framework de avaliação de IA em saúde com precisão, segurança e utilidade; benchmarks, autoraters e especialistas",
+   "fonte": "https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/",
+   "conferido": "2026-11-05"
+  }
+ ],
+ "registro": {
+  "tema": "radar IA 05/11: ChatGPT Images 2.6 com GIF e referência salva, OpenAI compra Pierre (Git no Codex), Google avalia IA de saúde",
+  "chaves": [
+   "chatgpt images 2.6 gif",
+   "openai compra pierre",
+   "google ia saude avaliacao",
+   "radar 05/11"
+  ]
+ },
+ "video": "videos/2026-11-05-12h-radar-ia-60s-neon.mp4",
+ "fonte_html": "kit/2026-11-05-12h-radar-ia-60s-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

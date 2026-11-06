@@ -1,0 +1,108 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-22-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 22/10/2026 · 12h · Radar IA #7 (60 s): Claude Duet, modelos da OpenAI no Google Cloud, TorchTPU aberto. Neon.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const COR = [AZ, CI, AZ, IN, CI, AZ, AZ];
+const HITS = [wt('anthropic', 0), wt('gpt', 0), wt('chips', 0), wt('radar', 1), wt('duet', 2), wt('permissao', 2), wt('espera', 2), wt('gpt6', 3), wt('fechada', 3), wt('torchtpu', 4), wt('gratis', 4), wt('duet', 5)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0]];
+function fonte(str, t0, t1, t) { linhaTxt(str, 1560, t0, t1, t, 28, 'rgba(244,248,255,.6)'); }
+function codigo(x, y, a, t, titulo) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+  ctx.fillStyle = 'rgba(10,30,60,.95)'; rr(x - 380, y, 760, 330, 26); ctx.fill(); ctx.strokeStyle = CI; ctx.lineWidth = 3; ctx.shadowColor = CI; ctx.shadowBlur = 20; rr(x - 380, y, 760, 330, 26); ctx.stroke(); ctx.shadowBlur = 0;
+  ['#ff5c8a', '#ffd166', '#2ee6ff'].forEach((c, i) => { ctx.fillStyle = c; ctx.beginPath(); ctx.arc(x - 340 + i * 34, y + 34, 9, 0, 7); ctx.fill(); });
+  txt(titulo, x + 340, y + 44, ARC, 28, CI, { align: 'right', weight: 600 });
+  const L = [[0, .5, AZ], [1, .7, CI], [1, .55, BR], [2, .4, BR], [1, .62, CI], [0, .3, AZ]];
+  L.forEach((l, i) => { const q = clamp((t * 3) - i * .5 - 1); if (q <= 0) return; ctx.fillStyle = l[2]; ctx.globalAlpha = clamp(a) * .85; rr(x - 330 + l[0] * 50, y + 80 + i * 38, 560 * l[1] * q, 16, 8); ctx.fill(); });
+  ctx.restore(); }
+// linha do catálogo de modelos (ilustração)
+function linhaModelo(x, y, w, nome, dono, a, novo) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+  ctx.fillStyle = novo ? '#d6f7ff' : '#e9eefb'; rr(x, y, w, 96, 18); ctx.fill();
+  if (novo) { ctx.strokeStyle = '#08a6c9'; ctx.lineWidth = 4; rr(x, y, w, 96, 18); ctx.stroke(); }
+  txt(nome, x + 30, y + 48, ARC, 38, '#1b2440', { weight: 600 }); txt(dono, x + w - 30, y + 48, ARC, 28, '#5a6a8f', { align: 'right', weight: 600 });
+  ctx.restore(); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 22/10', 300, -1, SC[1] - .2, t, 34, CI);
+    frase('Agente que trabalha sozinho', 620, -1, SC[1] - .2, 62, { t, hot: 'sozinho', cor: CI });
+    frase('GPT no Google Cloud', 860, wt('gpt', 0) - .1, SC[1] - .2, 64, { t, hot: 'Google Cloud' });
+    frase('PyTorch nos chips do Google', 1100, wt('chips', 0) - .3, SC[1] - .2, 60, { t, hot: 'chips', cor: CI });
+  },
+  // 1 · o que é o radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, cy0 - 90, 220 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .3));
+    frase('Radar IA', cy0 + 230, wt('radar', 1) - .1, SC[2] - .2, 100, { t, hot: 'IA', cor: CI });
+    frase('as 3 notícias de hoje', cy0 + 350, wt('tres', 1) - .1, SC[2] - .2, 56, { t, hot: '3 notícias' });
+  },
+  // 2 · Claude Duet
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    frase('Claude Duet', 470, wt('duet', 2) - .1, SC[3] - .2, 84, { t, hot: 'Duet', cor: CI });
+    const f2 = 1 - prog(t, SC[3] - .45, SC[3] - .2);
+    const ac = prog(t, wt('atencao', 2) - .5, wt('atencao', 2)) * f2;
+    celular(cx0, 920, .75, .25 * Math.sin(t * .6), ac, (x, y, w, s) => {
+      let yy = y;
+      yy += msg(x, yy, w, '3 e-mails pedem sua resposta', 0, prog(t, wt('atencao', 2), wt('atencao', 2) + .4), s);
+      yy += msg(x, yy, w, 'Tarefa pronta: resumo das contas da semana', 0, prog(t, wt('tarefas', 2), wt('tarefas', 2) + .4), s);
+      yy += msg(x, yy, w, 'Posso pagar a conta de luz?', 0, prog(t, wt('permissao', 2) - .2, wt('permissao', 2) + .2), s);
+      msg(x, yy, w, 'Pode', 1, prog(t, wt('pagar', 2), wt('pagar', 2) + .3), s);
+    }, 'Claude Duet', AZ);
+    exemplo(cx0, 1285, ac);
+    selo('pede permissão antes de pagar', cx0, 1360, prog(t, wt('permissao', 2) - .2, wt('permissao', 2) + .1), CI, f2);
+    selo('só EUA, com lista de espera', cx0, 1460, prog(t, wt('estados', 2) - .2, wt('estados', 2) + .1), IN, f2);
+    fonte('Fonte: Anthropic (claude.com e ajuda, 21/10)', SC[2] + .4, SC[3] - .2, t);
+  },
+  // 3 · OpenAI no Google Cloud
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    frase('GPT-6 no Google Cloud', 470, wt('openai', 3) - .1, SC[4] - .2, 70, { t, hot: 'Google Cloud', cor: CI });
+    linhaTxt('a nuvem do Google pra empresas', 580, wt('nuvem', 3) - .2, SC[4] - .2, t, 40);
+    const f3 = 1 - prog(t, SC[4] - .45, SC[4] - .2);
+    janela(680, 470, prog(t, wt('cloud', 3) - .3, wt('cloud', 3) + .2) * f3, 'Catálogo de modelos', (x, y, w) => {
+      linhaModelo(x, y, w, 'Gemini', 'Google', 1, 0);
+      linhaModelo(x, y + 116, w, 'Claude', 'Anthropic', 1, 0);
+      linhaModelo(x, y + 232, w, 'GPT-6', 'OpenAI · novo', prog(t, wt('cloud', 3), wt('cloud', 3) + .4), 1);
+    });
+    exemplo(cx0, 1200, prog(t, wt('cloud', 3), wt('cloud', 3) + .3) * f3);
+    selo('prévia fechada pra empresas', cx0, 1290, prog(t, wt('fechada', 3) - .3, wt('fechada', 3)), IN, f3);
+    selo('abertura nas próximas semanas', cx0, 1390, prog(t, wt('semanas', 3) - .4, wt('semanas', 3)), CI, f3);
+    fonte('Fonte: OpenAI e Google Cloud (21/10)', SC[3] + .4, SC[4] - .2, t);
+  },
+  // 4 · TorchTPU
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    frase('TorchTPU agora é aberto', 470, wt('meta', 4) - .3, SC[5] - .2, 70, { t, hot: 'TorchTPU', cor: CI });
+    linhaTxt('PyTorch: a ferramenta mais usada pra treinar IA', 580, wt('pytorch', 4) - .2, SC[5] - .2, t, 36);
+    const f4 = 1 - prog(t, SC[5] - .45, SC[5] - .2);
+    codigo(cx0 - 60, 680, prog(t, wt('pytorch', 4) - .3, wt('pytorch', 4) + .2) * f4, t - wt('pytorch', 4) + .3, 'torch_tpu');
+    neon3d(P.chip, cx0 + 330, 1040, 110 * back(prog(t, wt('chips', 4) - .2, wt('chips', 4) + .3)), .4 * Math.sin(t * .9), .3, CI, prog(t, wt('chips', 4) - .2, wt('chips', 4) + .1) * f4);
+    selo('grátis no GitHub', cx0, 1190, prog(t, wt('github', 4) - .3, wt('github', 4)), CI, f4);
+    frase('é pra programador', 1330, wt('programador', 4) - .3, SC[5] - .2, 64, { t, hot: 'programador' });
+    fonte('Fonte: Google Cloud (blog oficial)', SC[4] + .4, SC[5] - .2, t);
+  },
+  // 5 · teste hoje
+  (t, lt) => {
+    frase('Teste hoje', 300, wt('qual', 5) - .1, SC[6] - .2, 80, { t, hot: 'hoje', cor: CI });
+    linhaTxt('nenhuma abre pra todos no Brasil ainda', 470, wt('nenhuma', 5) - .2, SC[6] - .2, t, 42);
+    neon3d(P.cadeado, cx0, 780, 150 * back(prog(t, wt('brasil', 5) - .3, wt('brasil', 5) + .2)), .4 * Math.sin(t * .9), .3, IN, prog(t, wt('brasil', 5) - .3, wt('brasil', 5)));
+    selo('assina Claude Pro ou Max?', cx0, 1060, prog(t, wt('assina', 5) - .2, wt('assina', 5) + .1), CI);
+    frase('fica de olho na lista do Duet', 1220, wt('assina', 5) + .8, SC[6] - .2, 58, { t, hot: 'lista do Duet', cor: CI });
+  },
+  // 6 · logo + chamada
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>

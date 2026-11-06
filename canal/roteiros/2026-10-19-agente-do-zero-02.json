@@ -1,0 +1,95 @@
+{
+ "id": "2026-10-19-agente-do-zero-02",
+ "serie": "Agente do zero",
+ "data": "2026-10-19",
+ "horario": "19:00",
+ "titulo": "Agente do zero #2: a chave grátis do Gemini",
+ "descricao": "Agente do zero, episódio 2 🔑\nA chave que deixa o Make conversar com o Gemini, o cérebro do agente. Grátis, sem cartão.\n1️⃣ Entre em aistudio.google.com com sua conta Google\n2️⃣ No menu da esquerda, clique em Get API key e depois em Create API key (se pedir, deixe criar um projeto novo)\n3️⃣ Copie a chave e guarde num lugar seguro, como o gerenciador de senhas. Nunca poste, nunca mande print e nunca cole em grupo.\nCusto: a camada grátis da API do Gemini vale para os modelos Flash, sem cartão, com limite por dia. Veja o seu limite na tela de limites do AI Studio.\nEpisódio anterior: #1, o mapa do agente. Quarta: episódio 3.\n\nFonte: ai.google.dev/gemini-api/docs/pricing e ai.google.dev/gemini-api/docs/api-key, conferido em 16/10/2026.\n\n#agentedeia #gemini #googleaistudio #whatsapp #make #ia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "z2",
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "A chave que liga o cérebro do seu agente. Grátis, em dois minutos.",
+     "legenda": "A chave que liga o cérebro do seu agente. Grátis, em 2 minutos."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Agente do zero, episódio dois. Sem essa chave, o Make não conversa com o Gemini.",
+     "legenda": "Agente do zero, episódio 2. Sem essa chave, o Make não conversa com o Gemini."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: entre no Google AI Studio com a sua conta Google.",
+     "legenda": "Um: entre no Google AI Studio com a sua conta Google."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: no menu da esquerda, clique em Get API key, a chave de conexão. Depois, Create API key.",
+     "legenda": "Dois: no menu da esquerda, clique em Get API key, a chave de conexão. Depois, Create API key."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: copie a chave e guarde num lugar seguro. Nunca poste nem mande pra ninguém.",
+     "legenda": "Três: copie a chave e guarde num lugar seguro. Nunca poste nem mande pra ninguém."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Pronto: chave criada. Grátis nos modelos Flash, com limite por dia.",
+     "legenda": "Pronto: chave criada. Grátis nos modelos Flash, com limite por dia."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Quarta tem o episódio três: as instruções do agente.",
+     "legenda": "Quarta tem o episódio 3: as instruções do agente."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Gemini API: camada grátis sem cartão para modelos Flash, limite por projeto na tela do AI Studio",
+   "fonte": "https://ai.google.dev/gemini-api/docs/pricing",
+   "conferido": "2026-10-18"
+  }
+ ],
+ "registro": {
+  "tema": "agente do zero ep 2: chave de API do Gemini no AI Studio",
+  "chaves": [
+   "chave de api",
+   "get api key",
+   "ai studio",
+   "create api key"
+  ]
+ },
+ "video": "videos/2026-10-19-19h-agente-do-zero-02-neon.mp4",
+ "fonte_html": "kit/2026-10-19-19h-agente-do-zero-02-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

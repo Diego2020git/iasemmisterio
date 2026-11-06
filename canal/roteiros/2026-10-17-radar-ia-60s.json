@@ -1,0 +1,113 @@
+{
+ "id": "2026-10-17-radar-ia-60s",
+ "serie": "Radar IA",
+ "data": "2026-10-17",
+ "horario": "15:30",
+ "titulo": "Radar IA: voz brasileira no ChatGPT, Meta abre modelo e Slides pago",
+ "descricao": "Radar IA de hoje 📡\n1️⃣ ChatGPT Voice ganhou o GPT-Live-1.1 (15/10): vozes novas, inclusive em português do Brasil, e sotaque mais natural. Chegando para todos os usuários; o modelo usado varia conforme o plano.\n2️⃣ Meta liberou o Muse Spark Open (15/10), modelo de pesos abertos com 816 bilhões de parâmetros para baixar no Hugging Face. Para rodar no Mac, a Meta indica 2 Mac Studio M5 Ultra de 512 GB (ou 4 de 256 GB). Uso sob a licença da Meta.\n3️⃣ ChatGPT Slides (16/10): pede a apresentação, edita e exporta para PowerPoint, PDF ou Google Slides. Só nos planos pagos Pro, Business e Enterprise.\n\nTeste hoje: no modo de voz do ChatGPT, escolha uma das vozes novas em português e peça: \"Fale como um professor paciente e me explique em 1 minuto o que é um modelo de pesos abertos.\"\n\nFontes oficiais (conferidas em 17/10/2026): help.openai.com/en/articles/6825453-chatgpt-release-notes · help.openai.com/en/articles/20001274-chatgpt-voice · research.meta.ai/blog/muse-spark-open · dev.meta.ai/docs/muse-spark-open/hardware-platforms\n\n#ia #inteligenciaartificial #chatgpt #meta #opensource #noticiasdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "r2",
+ "estilo": "neon",
+ "formato": "radar-60",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "O ChatGPT ganhou voz brasileira, a Meta liberou um modelo gigante e o ChatGPT faz slides.",
+     "legenda": "O ChatGPT ganhou voz brasileira, a Meta liberou um modelo gigante e o ChatGPT faz slides."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "São as três notícias de IA de hoje, no Radar IA.",
+     "legenda": "São as três notícias de IA de hoje, no Radar IA."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: o modo de voz do ChatGPT ganhou o GPT Live um ponto um. Tem vozes novas, inclusive em português do Brasil, e sotaque mais natural. Desde o dia quinze, está chegando pra todos.",
+     "legenda": "Um: o modo de voz do ChatGPT ganhou o GPT-Live-1.1. Tem vozes novas, inclusive em português do Brasil, e sotaque mais natural. Desde o dia 15, está chegando pra todos."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: a Meta liberou o Muse Spark Open, de pesos abertos: você baixa e roda na sua máquina. Mas são oitocentos e dezesseis bilhões de parâmetros, as peças que guardam o que aprendeu. Precisa de dois Mac Studio de quinhentos e doze gigas.",
+     "legenda": "Dois: a Meta liberou o Muse Spark Open, de pesos abertos: você baixa e roda na sua máquina. Mas são 816 bilhões de parâmetros, as peças que guardam o que aprendeu. Precisa de 2 Mac Studio de 512 GB."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: o ChatGPT agora faz slides: você pede e exporta pra PowerPoint, PDF ou Google Slides. Mas só nos planos pagos: Pro, Business e Enterprise.",
+     "legenda": "Três: o ChatGPT agora faz slides: você pede e exporta pra PowerPoint, PDF ou Google Slides. Mas só nos planos pagos: Pro, Business e Enterprise."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Qual testar hoje? A voz nova: no modo de voz, escolha uma voz em português e peça uma explicação. O pedido está na legenda.",
+     "legenda": "Qual testar hoje? A voz nova: no modo de voz, escolha uma voz em português e peça uma explicação. O pedido está na legenda."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segue pro Radar IA todo dia ao meio-dia.",
+     "legenda": "Segue pro Radar IA todo dia ao meio-dia."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "GPT-Live-1.1 e GPT-Live-1.1 Quip no ChatGPT Voice desde 15/10, vozes novas inclusive pt-BR; modelo varia por plano",
+   "fonte": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+   "conferido": "2026-10-17"
+  },
+  {
+   "dado": "Muse Spark Open 15/10: 816B parâmetros (42B ativos), pesos no Hugging Face, licença Muse Model License",
+   "fonte": "https://research.meta.ai/blog/muse-spark-open",
+   "conferido": "2026-10-17"
+  },
+  {
+   "dado": "Muse Spark Open no Mac: 2x Mac Studio M5 Ultra 512 GB ou 4x 256 GB (NVFP4, MLX)",
+   "fonte": "https://dev.meta.ai/docs/muse-spark-open/hardware-platforms",
+   "conferido": "2026-10-17"
+  },
+  {
+   "dado": "ChatGPT Slides 16/10 só Pro, Business e Enterprise; exporta PowerPoint, PDF e Google Slides",
+   "fonte": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+   "conferido": "2026-10-17"
+  }
+ ],
+ "registro": {
+  "tema": "radar IA 17/10: GPT-Live-1.1 voz pt-BR, Meta Muse Spark Open, ChatGPT Slides",
+  "chaves": [
+   "gpt-live",
+   "muse spark open",
+   "chatgpt slides",
+   "radar 17/10"
+  ]
+ },
+ "video": "videos/2026-10-17-12h-radar-ia-60s-neon.mp4",
+ "fonte_html": "kit/2026-10-17-12h-radar-ia-60s-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ],
+ "fora_da_grade": {
+  "aprovado": "Diego, card de 17/10 17:49Z: publicar 15h30 o Radar que perdeu as 12h"
+ }
+}

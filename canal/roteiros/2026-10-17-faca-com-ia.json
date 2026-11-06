@@ -1,0 +1,95 @@
+{
+  "id": "2026-10-17-faca-com-ia",
+  "serie": "Faça com IA",
+  "data": "2026-10-17",
+  "horario": "12:00",
+  "titulo": "Legenda automática de graça e sem marca d'água no Clipchamp",
+  "descricao": "Legenda automática no seu vídeo, de graça 🎬\n1️⃣ Entre em clipchamp.com com uma conta Microsoft (grátis)\n2️⃣ Suba o vídeo e arraste pra linha do tempo\n3️⃣ Na aba Legendas, ative as legendas automáticas\n4️⃣ Revise as palavras e exporte\nNo plano grátis exporta até 1080p, sem marca d'água. Recurso premium bloqueia a exportação até o upgrade.\nSalva e testa hoje.\n\nFonte: página de preços do Clipchamp (clipchamp.com/pt-br/pricing), conferido em 14/10/2026.\n\n#clipchamp #legenda #ediçãodevideo #videocomia #inteligenciaartificial #ia",
+  "hashtags": [
+    "clipchamp",
+    "legenda",
+    "ediçãodevideo",
+    "videocomia",
+    "inteligenciaartificial",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 14/10/2026",
+    "termos": {
+      "editar video com ia gratis": {
+        "demanda_views_top10": 283494,
+        "concorrencia_canais_100k": 1
+      }
+    }
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "Clipchamp grátis exporta até 1080p sem marca d'água, com legendas automáticas",
+      "fonte": "https://clipchamp.com/pt-br/pricing/",
+      "conferido": "2026-10-14"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ],
+  "registro": {
+    "tema": "legenda automática grátis no Clipchamp",
+    "chaves": [
+      "clipchamp",
+      "legenda",
+      "editar video"
+    ]
+  },
+  "video": "videos/2026-10-17-12h-legenda-clipchamp-neon.mp4",
+  "fonte_html": "kit/2026-10-17-12h-legenda-clipchamp-neon.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "24",
+  "estilo": "neon",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Legenda automática no seu vídeo, de graça e sem marca d'água.",
+          "legenda": "Legenda automática no seu vídeo, de graça e sem marca d'água."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Abra o Clipchamp, da Microsoft, e suba o seu vídeo.",
+          "legenda": "Abra o Clipchamp, da Microsoft, e suba o seu vídeo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Na aba Legendas, ative as legendas automáticas.",
+          "legenda": "Na aba Legendas, ative as legendas automáticas."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Em segundos a fala vira texto. Corrija o que precisar.",
+          "legenda": "Em segundos a fala vira texto. Corrija o que precisar."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Exporta em mil e oitenta no plano grátis. Salva e testa hoje.",
+          "legenda": "Exporta em 1080p no plano grátis. Salva e testa hoje."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

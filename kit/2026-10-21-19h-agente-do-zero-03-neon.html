@@ -1,0 +1,79 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-21-agente-do-zero-03.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 21/10/2026 · 19h · Agente do zero #3: as instruções do agente (System instructions no Google AI Studio). Neon.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const COR = [AZ, CI, AZ, CI, IN, CI, AZ];
+const HITS = [wt('agente', 0), wt('zero', 1), wt('system', 2), wt('pedido', 3), wt('futebol', 4), wt('pronto', 5)];
+const CLIQUES = [wt('system', 2)];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const VERDE = '#25d366';
+const PEDIDO = ['Você é o atendente da Padaria Sol.', 'Responda curto e com educação.', 'Fale só sobre a padaria.', 'Se não souber, chame a equipe.', 'Nunca invente preço nem horário.'];
+const S = [
+  // 0 · gancho: o agente com identidade
+  (t, lt) => {
+    frase('O agente sabe quem é', 300, -1, SC[1] - .2, 78, { t, hot: 'quem é', cor: CI });
+    neon3d(P.pessoa, cx0, cy0 - 20, 190 * back(prog(lt, .05, .5)), .35 * Math.sin(t * .9), .3, CI, prog(lt, .05, .3));
+    frase('e do que pode falar', 1230, wt('do', 0) - .1, SC[1] - .2, 70, { t, hot: 'pode falar', cor: CI });
+  },
+  // 1 · série
+  (t, lt) => {
+    neon3d(P.balao, cx0, cy0 - 110, 200 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .3));
+    frase('Agente do zero', cy0 + 200, wt('agente', 1) - .1, SC[2] - .2, 92, { t, hot: 'zero', cor: CI });
+    selo('episódio 3', cx0, cy0 + 340, prog(t, wt('episodio', 1), wt('episodio', 1) + .3));
+    linhaTxt('sem instruções, responde qualquer coisa', cy0 + 460, wt('sem', 1), SC[2] - .2, t, 42);
+  },
+  // 2 · passo 1: AI Studio, chat novo, System instructions
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    frase('System instructions', 470, wt('system', 2) - .2, SC[3] - .2, 74, { t, hot: 'instructions', cor: CI });
+    janela(640, 440, prog(lt, .1, .4), 'Google AI Studio', (x, y, w) => {
+      campo(x, y, w - 140, 'Chat', 'chat novo', prog(t, wt('chat', 2) - .2, wt('chat', 2) + .1));
+      campo(x, y + 130, w - 140, 'System instructions', '', prog(t, wt('system', 2) - .3, wt('system', 2)), prog(t, wt('system', 2), wt('system', 2) + .2));
+    });
+    exemplo(cx0, 1200, prog(lt, .4, .7));
+  },
+  // 3 · passo 2: o pedido completo na tela
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    frase('Cole o pedido', 470, wt('cole', 3) - .1, SC[4] - .2, 80, { t, hot: 'pedido', cor: CI });
+    janela(600, 640, prog(lt, .1, .4), 'System instructions', (x, y, w) => {
+      PEDIDO.forEach((l, k) => txt(l, x, y + 30 + k * 76, ARC, 34, '#1b2440', { weight: 600, alpha: prog(t, SC[3] + .4 + k * .45, SC[3] + .7 + k * .45) }));
+    });
+    linhaTxt('pedido completo na legenda', 1330, SC[3] + 2.5, SC[4] - .2, t, 38, 'rgba(244,248,255,.8)');
+  },
+  // 4 · passo 3: testar (horário ok, futebol recusado)
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    frase('Teste', 470, wt('teste', 4) - .1, SC[5] - .2, 84, { t, hot: 'Teste', cor: CI });
+    celular(cx0, 1000, .9, -.15 + .1 * sm(lt / 3), prog(lt, .1, .4), (x, y, w, s) => {
+      let yy = y; yy += msg(x, yy, w, 'Que horas vocês abrem?', false, prog(t, wt('horario', 4) - .2, wt('horario', 4)), s);
+      yy += msg(x, yy, w, 'Vou chamar alguém da equipe pra te passar o horário.', true, prog(t, wt('horario', 4) + .3, wt('horario', 4) + .6), s);
+      yy += msg(x, yy, w, 'Quem ganha o jogo hoje?', false, prog(t, wt('futebol', 4) - .2, wt('futebol', 4)), s);
+      yy += msg(x, yy, w, 'Desculpe, só posso ajudar com a padaria.', true, prog(t, wt('recusar', 4) - .2, wt('recusar', 4) + .1), s);
+    }, 'AI Studio', AZ);
+    exemplo(cx0, 1560, prog(lt, .4, .7));
+  },
+  // 5 · resultado + custo
+  (t, lt) => {
+    neon3d(P.check, cx0, cy0 - 120, 190 * back(prog(lt, .05, .5)), .3 * Math.sin(t * .8), .3, CI, prog(lt, .05, .3));
+    frase('Jeito definido', cy0 + 140, wt('jeito', 5) - .1, SC[6] - .2, 80, { t, hot: 'definido', cor: CI });
+    selo('custo: zero, no AI Studio', cx0, cy0 + 290, prog(t, wt('gratis', 5), wt('gratis', 5) + .3));
+  },
+  // 6 · logo + chamada
+  (t, lt) => fim(t, lt, 'Segue a série', 'sexta: episódio 4'),
+];
+</script></body></html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-01-modelos-e-parametros-03.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 01/11/2026 · 19h · Modelos e parâmetros #3: modelo com raciocínio (Thinking level low x high no Google AI Studio). Padrão de entrega de 24/10. Neon + neon-entrega.js.
+// Mecanismo: o modelo escreve etapas internas (raciocínio) antes da resposta; nível alto = mais etapas, mais acerto em conta e lógica, mais tempo e custo. Fontes: ai.google.dev/gemini-api/docs/thinking, whats-new-gemini-3.8.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [wt('high', 3) + .1];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, AZ, IN, CI, AMB, AZ];
+const HITS = [wt('demora', 0), wt('pensando', 0), wt('tres', 1), wt('etapas', 1), wt('gratis', 2), wt('flash', 2), wt('high', 3), wt('etapas', 3), wt('passos', 4), wt('acerta', 5), wt('gasta', 5), wt('low', 5)];
+const ETAPAS = ['1ª camiseta: R$ 49,90', '2ª e 3ª com 15% off: R$ 42,415 cada', '2 × 42,415 = R$ 84,83', 'Total: R$ 134,73'];
+// bolha de chat
+function bolha(x, y, w, str, mine, a, size = 30) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = mine ? '#dfe8ff' : '#ffffff'; rr(x, y, w, 76, 18); ctx.fill();
+  txt(str, x + 24, y + 40, ARC, size, '#1b2440', { weight: 600 }); ctx.restore(); }
+// "pensando" com três pontos
+function pensando(x, y, t, a) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); txt('Pensando', x, y, ARC, 32, '#5a6a8f', { weight: 600 });
+  for (let i = 0; i < 3; i++) { ctx.fillStyle = CI; ctx.globalAlpha = clamp(a) * (.3 + .7 * Math.abs(Math.sin(t * 4 - i * .6))); ctx.beginPath(); ctx.arc(x + 170 + i * 26, y, 8, 0, 7); ctx.fill(); } ctx.restore(); }
+// seletor low / medium / high
+function nivel(x, y, w, p, a) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const n = ['low', 'medium', 'high'], cw = w / 3;
+  txt('Thinking level', x, y - 30, ARC, 28, '#5a6a8f', { weight: 600 }); ctx.fillStyle = '#e6ecfa'; rr(x, y, w, 70, 35); ctx.fill();
+  const pos = x + lerp(0, 2 * cw, ease(clamp(p))); ctx.fillStyle = p > .5 ? '#2e6bff' : '#9fb0d6'; rr(pos + 4, y + 4, cw - 8, 62, 31); ctx.fill();
+  n.forEach((s, i) => txt(s, x + i * cw + cw / 2, y + 36, ARC, 30, Math.abs(i - 2 * clamp(p)) < .5 ? '#ffffff' : '#1b2440', { align: 'center', weight: 700 })); ctx.restore(); }
+const S = [
+  // 0 · gancho: a IA demora porque está pensando
+  (t, lt) => {
+    titulo('A IA ESTÁ PENSANDO', 380, -1, SC[1] - .2, t, 80, BR, 'PENSANDO', CI);
+    janela(480, 520, prog(lt, 0, .2), 'Chat', (x, y, w) => {
+      bolha(x + 140, y, w - 140, 'Quanto pago nas 3 camisetas?', 1, prog(lt, .1, .4));
+      pensando(x + 20, y + 140, t, prog(t, wt('demora', 0) - .3, wt('demora', 0)) * (1 - prog(t, wt('modelo', 0), wt('modelo', 0) + .3)));
+      ETAPAS.slice(0, 3).forEach((e, i) => { const q = prog(t, wt('pensando', 0) + i * .25 - .3, wt('pensando', 0) + i * .25); if (q > 0) txt('· ' + e, x + 20, y + 140 + i * 50, ARC, 28, '#5a6a8f', { weight: 600, alpha: q }); });
+      bolha(x, y + 320, w, 'Total: R$ 134,73', 0, prog(t, wt('pensando', 0) + .6, wt('pensando', 0) + 1), 34); });
+  },
+  // 1 · episódio: pensa em etapas
+  (t, lt) => {
+    titulo('MODELOS E PARÂMETROS', 400, SC[1], SC[2] - .2, t, 66, BR, 'PARÂMETROS', CI);
+    versao('EPISÓDIO 3', cx0, 580, prog(t, wt('episodio', 1) - .1, wt('episodio', 1) + .3), CI, 0, 56);
+    const r = wt('raciocinio', 1), e = wt('etapas', 1), rs = wt('responder', 1);
+    pilula('modelo com raciocínio', cx0, 760, 640, prog(t, r - .2, r + .2), IN, 'EM INGLÊS: THINKING', 1, 44);
+    ['etapa 1', 'etapa 2', 'etapa 3'].forEach((s, i) => { pilula(s, cx0 - 280 + i * 280, 960, 230, prog(t, e - .3 + i * .2, e + i * .2), CI, '', 1, 36); if (i) setaH(cx0 - 420 + i * 280, cx0 - 380 + i * 280, 960, prog(t, e + i * .2, e + .2 + i * .2), CI); });
+    txt('↓', cx0, 1060, ARC, 50, VERDE, { align: 'center', weight: 800, alpha: prog(t, rs - .3, rs) });
+    pilula('resposta', cx0, 1160, 320, prog(t, rs - .2, rs + .2), VERDE, '', 1, 42);
+  },
+  // 2 · passo 1: AI Studio + Flash
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('GOOGLE AI STUDIO', 450, wt('google', 2) - .1, SC[3] - .2, t, 76, BR, 'AI STUDIO', CI);
+    pilula('grátis', cx0, 580, 260, prog(t, wt('gratis', 2) - .2, wt('gratis', 2) + .2), VERDE, '', 1, 42);
+    janela(680, 400, prog(t, wt('escolha', 2) - .3, wt('escolha', 2)), 'aistudio.google.com', (x, y, w) => {
+      campo(x + 20, y + 40, w - 40, 'Model', 'Gemini Flash', prog(t, wt('flash', 2) - .3, wt('flash', 2) + .2), prog(t, wt('flash', 2), wt('flash', 2) + .3)); });
+  },
+  // 3 · passo 2: Thinking level high + conta
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('SUBA O NÍVEL', 450, wt('thinking', 3) - .1, SC[4] - .2, t, 84, BR, 'NÍVEL', IN);
+    janela(560, 560, prog(t, wt('thinking', 3) - .3, wt('thinking', 3)), 'Run settings', (x, y, w) => {
+      nivel(x + 20, y + 70, w - 40, prog(t, wt('high', 3) - .2, wt('high', 3) + .3), 1);
+      bolha(x, y + 200, w, '3 camisetas de R$ 49,90, com 15% off', 1, prog(t, wt('conta', 3) - .2, wt('conta', 3) + .2), 28);
+      bolha(x, y + 290, w, 'na 2ª e na 3ª. Quanto paguei?', 1, prog(t, wt('etapas', 3) - .3, wt('etapas', 3)), 28); });
+  },
+  // 4 · passo 3: ver o raciocínio
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('VEJA AS ETAPAS', 450, wt('abra', 4) - .1, SC[5] - .2, t, 80, BR, 'ETAPAS', CI);
+    ETAPAS.forEach((e, i) => { const t0 = wt('raciocinio', 4) + i * .55; pilula(e, cx0, 640 + i * 150, 820, prog(t, t0 - .2, t0 + .2), i === 3 ? VERDE : CI, i === 3 ? 'RESPOSTA' : 'ETAPA ' + (i + 1), 1, 38);
+      if (i) txt('↓', cx0, 572 + i * 150, ARC, 40, CI, { align: 'center', weight: 800, alpha: prog(t, t0 - .2, t0) }); });
+    exemplo(cx0, 1260, prog(t, wt('raciocinio', 4), wt('raciocinio', 4) + .3));
+  },
+  // 5 · quando vale pensar mais
+  (t, lt) => {
+    titulo('LOW OU HIGH?', 380, SC[5], SC[6] - .2, t, 90, BR, 'HIGH', AMB);
+    versao('HIGH', cx0 - 220, 540, prog(t, wt('pensar', 5) - .2, wt('pensar', 5) + .2), IN, 0, 56);
+    versao('LOW', cx0 + 220, 540, prog(t, wt('simples', 5) - .2, wt('simples', 5) + .2), CI, 0, 56);
+    [['acerta mais', wt('acerta', 5), VERDE], ['conta e lógica', wt('logica', 5), VERDE], ['demora mais', wt('demora', 5), AMB], ['gasta mais', wt('gasta', 5), AMB]].forEach(([s, t0, c], i) => pilula(s, cx0 - 220, 680 + i * 130, 400, prog(t, t0 - .2, t0 + .2), c, '', 1, 38));
+    [['rápido', wt('low', 5)], ['pergunta simples', wt('simples', 5)]].forEach(([s, t0], i) => pilula(s, cx0 + 220, 680 + i * 130, 400, prog(t, t0 - .2, t0 + .2), CI, '', 1, 38));
+  },
+  // 6 · fim
+  (t, lt) => fim(t, lt, 'Salva e segue', 'domingo: aberto x fechado'),
+];
+</script></body></html>

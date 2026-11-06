@@ -1,0 +1,92 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-04-agente-do-zero-09.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 04/11/2026 · 19h · Agente do zero #9: memória da conversa (Watch Events → Data store Get a record → Gemini → Send a Message → Data store Add/replace a record). Padrão de entrega de 24/10. Neon + neon-entrega.js.
+// Mecanismo: chave = número de quem mandou; o histórico guardado entra no pedido ao Gemini; depois da resposta, a última troca substitui o registro. Grátis: 1 MB de data store. Fontes: make.com/en/integrations/datastore, make.com/pricing, community.make.com.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, CI, AZ, VERDE, AMB, AZ];
+const HITS = [wt('lembrar', 0), wt('disse', 0), wt('nove', 1), wt('tabelinha', 2), wt('chave', 2), wt('get', 3), wt('pedido', 3), wt('addreplace', 4), wt('resposta', 4, 2), wt('mega', 5), wt('troca', 5), wt('dez', 6)];
+function conversa(x, y, w, s, t, t1, t2, t3, t4) {
+  const b = (str, mine, yy, a) => { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const bw = Math.min(w * .9, measure(str, ARC, 30 * s, 600) + 50 * s);
+    ctx.fillStyle = mine ? '#d9fdd3' : '#ffffff'; rr(mine ? x + w - bw : x, yy, bw, 70 * s, 18 * s); ctx.fill(); txt(str, (mine ? x + w - bw : x) + 24 * s, yy + 38 * s, ARC, 30 * s, '#1b2440', { weight: 600 }); ctx.restore(); };
+  b('meu nome é Ana', 1, y + 20 * s, prog(t, t1 - .2, t1 + .2)); b('Prazer, Ana!', 0, y + 110 * s, prog(t, t2 - .2, t2 + .2));
+  b('qual é meu nome?', 1, y + 200 * s, prog(t, t3 - .2, t3 + .2)); b('É Ana! 😊', 0, y + 290 * s, prog(t, t4 - .2, t4 + .2)); }
+function mod(x, y, a, cor, nome, sub, on) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const e = back(clamp(a)); ctx.translate(x, y); ctx.scale(e, e);
+  ctx.shadowColor = cor; ctx.shadowBlur = on ? 50 : 18; ctx.fillStyle = hex(cor, on ? .95 : .7); ctx.beginPath(); ctx.arc(0, 0, 58, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+  txt(nome, 0, 95, ARC, 24, BR, { align: 'center', weight: 700 }); txt(sub, 0, 128, ARC, 22, CI, { align: 'center', weight: 600 }); ctx.restore(); }
+const MODS = [['WhatsApp', 'Watch', VERDE], ['Data store', 'Get', AMB], ['Gemini', 'Completion', AZ], ['WhatsApp', 'Send', VERDE], ['Data store', 'Add/replace', AMB]];
+function cadeia(y, n, t, on) { const xs = MODS.map((_, i) => 130 + i * 205);
+  MODS.forEach(([a, b, c], i) => { mod(xs[i], y, clamp(n - i), c, a, b, on === i); if (i) fio(xs[i - 1] + 62, y, xs[i] - 62, y, clamp(n - i + .5), CI, t, true); }); }
+function tabela(x, y, w, t, a, linha, novo) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#ffffff'; rr(x, y, w, 260, 14); ctx.fill();
+  const c0 = 300; ['Chave', 'historico'].forEach((h, j) => { ctx.fillStyle = '#fff3d6'; ctx.fillRect(x + (j ? c0 : 0) + 2, y + 2, (j ? w - c0 : c0) - 4, 66); txt(h, x + (j ? c0 : 0) + 20, y + 36, ARC, 28, '#8a5a00', { weight: 800 }); });
+  if (linha > 0) { ctx.globalAlpha *= clamp(linha); txt('55 11 9xxxx-0000', x + 20, y + 120, ARC, 26, '#1b2440', { weight: 600 });
+    txt(novo > .5 ? 'cliente: qual é meu nome?' : 'cliente: meu nome é Ana', x + c0 + 20, y + 110, ARC, 24, '#1b2440', { weight: 600 });
+    txt(novo > .5 ? 'agente: É Ana!' : 'agente: Prazer, Ana!', x + c0 + 20, y + 150, ARC, 24, '#1b2440', { weight: 600 }); }
+  ctx.restore(); }
+const S = [
+  // 0 · gancho: o agente lembra
+  (t, lt) => {
+    titulo('O AGENTE LEMBRA', 360, -1, SC[1] - .2, t, 84, BR, 'LEMBRA', AZ);
+    celular(cx0, 900, .8, .15 * Math.sin(t * .6), prog(lt, 0, .3), (x, y, w, s) => conversa(x, y, w, s, t, .1, .7, wt('lembrar', 0), wt('disse', 0)), 'Padaria Sol', VERDE);
+    exemplo(cx0, 1330, prog(lt, .3, .6));
+  },
+  // 1 · episódio
+  (t, lt) => {
+    titulo('AGENTE DO ZERO', 520, SC[1], SC[2] - .2, t, 84, BR, 'ZERO', CI);
+    versao('EPISÓDIO 9', cx0, 720, prog(t, wt('episodio', 1) - .1, wt('episodio', 1) + .3), CI, 0, 60);
+    cadeia(1000, 5 * prog(lt, .2, 1.8), t, -1);
+  },
+  // 2 · passo 1: data store
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('CRIE UM DATA STORE', 450, wt('crie', 2) - .1, SC[3] - .2, t, 72, BR, 'DATA STORE', AMB);
+    pilula('uma tabelinha guardada no Make', cx0, 600, 760, prog(t, wt('tabelinha', 2) - .2, wt('tabelinha', 2) + .2), AMB, '', 1, 38);
+    tabela(cx0 - 420, 720, 840, t, prog(t, wt('historico', 2) - .3, wt('historico', 2)), prog(t, wt('chave', 2), wt('mandou', 2)), 0);
+    pilula('chave = número de quem mandou', cx0, 1110, 780, prog(t, wt('chave', 2) - .2, wt('mandou', 2) + .2), CI, '', 1, 38);
+    exemplo(cx0, 1230, prog(t, wt('chave', 2), wt('chave', 2) + .3));
+  },
+  // 3 · passo 2: Get a record antes do Gemini
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('LEIA ANTES DE RESPONDER', 450, wt('antes', 3) - .1, SC[4] - .2, t, 62, BR, 'ANTES', AMB);
+    cadeia(640, 5, t, prog(t, wt('get', 3) - .2, wt('get', 3) + .2) > .5 && t < wt('cole', 3) ? 1 : (t >= wt('cole', 3) ? 2 : -1));
+    janela(810, 480, prog(t, wt('record', 3) - .3, wt('record', 3)), 'Get a record → Gemini', (x, y, w) => {
+      campo(x + 20, y + 30, w - 40, 'Key', 'número de quem mandou', prog(t, wt('numero', 3) - .2, wt('numero', 3) + .2), prog(t, wt('numero', 3), wt('numero', 3) + .3));
+      campo(x + 20, y + 200, w - 40, 'Pedido ao Gemini', 'historico + mensagem nova', prog(t, wt('cole', 3) - .2, wt('pedido', 3) + .2), prog(t, wt('pedido', 3), wt('pedido', 3) + .3)); });
+  },
+  // 4 · passo 3: Add/replace depois da resposta
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('GUARDE A CONVERSA', 450, wt('depois', 4) - .1, SC[5] - .2, t, 76, BR, 'CONVERSA', VERDE);
+    cadeia(640, 5, t, prog(t, wt('addreplace', 4) - .2, wt('addreplace', 4) + .2) > .5 ? 4 : 3);
+    janela(870, 300, prog(t, wt('addreplace', 4) - .3, wt('addreplace', 4)), 'Add/replace a record', (x, y, w) => {
+      campo(x + 20, y + 30, w - 40, 'historico', 'mensagem do cliente + resposta', prog(t, wt('guarde', 4) - .2, wt('resposta', 4, 2) + .2), prog(t, wt('resposta', 4, 2), wt('resposta', 4, 2) + .3)); });
+    pilula('substitui o registro anterior', cx0, 1250, 720, prog(t, wt('resposta', 4, 2) - .1, wt('resposta', 4, 2) + .3), VERDE, '', 1, 36);
+  },
+  // 5 · limite do grátis
+  (t, lt) => {
+    titulo('LIMITE DO GRÁTIS', 360, SC[5], SC[6] - .2, t, 84, BR, 'GRÁTIS', AMB);
+    tabela(cx0 - 420, 520, 840, t, prog(lt, 0, .3), 1, prog(t, wt('ultima', 5) - .2, wt('troca', 5)));
+    pilula('1 MB de data store', cx0, 900, 560, prog(t, wt('mega', 5) - .2, wt('mega', 5) + .2), AMB, 'NO MAKE GRÁTIS', 1, 42);
+    pilula('guarde só a última troca', cx0, 1080, 660, prog(t, wt('ultima', 5) - .2, wt('troca', 5) + .2), VERDE, '', 1, 40);
+  },
+  // 6 · fim
+  (t, lt) => fim(t, lt, 'Salva e segue', 'sexta: episódio 10'),
+];
+</script></body></html>

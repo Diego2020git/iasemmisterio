@@ -1,0 +1,124 @@
+{
+ "id": "2026-11-03-radar-ia-60s",
+ "serie": "Radar IA",
+ "data": "2026-11-03",
+ "horario": "20:30",
+ "titulo": "Radar IA: anúncio no Modo IA, US$ 30 mil por falha e o teste LifeVal",
+ "descricao": "Radar IA de hoje 📡\n1️⃣ Anúncio no Modo IA: o Google está levando os anúncios do Modo IA da busca a 10 novos países e planeja chegar ao Brasil, ao México e ao Reino Unido no 4º trimestre de 2026. Eles aparecem abaixo ou dentro da resposta, quando fazem sentido, marcados como patrocinado. Nos EUA, também começam a aparecer nas perguntas de continuação.\n2️⃣ Prêmio maior por falha (02/11): a OpenAI mais que quadruplicou, em média, o meio das faixas de recompensa do Bug Bounty. Falha crítica em ChatGPT, Codex ou plataforma da API (a porta pra outros programas usarem a IA) vale até US$ 30 mil; casos excepcionais até US$ 100 mil, ou US$ 172 mil com bônus.\n3️⃣ LifeVal (02/11): a OpenAI publicou um teste que mede se a IA resolve tarefas do dia a dia, como finanças pessoais, cuidado com filhos, saúde e serviços do governo, montado a partir de pesquisas de uso do tempo. Segundo a OpenAI, os modelos mais novos vão muito bem em várias tarefas (o número é dela).\n\nTeste hoje: peça pra IA montar o passo a passo de um serviço do governo que você precisa.\n\nFontes oficiais (conferidas em 03/11/2026): blog.google (Ads in AI Mode expand to 10 new countries) · openai.com (Rewarding defenders with bigger bug bounties; LifeVal)\n\n#ia #inteligenciaartificial #google #openai #noticiasdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "r19",
+ "estilo": "neon",
+ "formato": "radar-60",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "O Google vai pôr anúncio nas respostas de IA no Brasil, a OpenAI paga até trinta mil dólares por falha e criou um teste de tarefas do dia a dia.",
+     "legenda": "O Google vai pôr anúncio nas respostas de IA no Brasil, a OpenAI paga até trinta mil dólares por falha e criou um teste de tarefas do dia a dia."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Radar IA de hoje.",
+     "legenda": "Radar IA de hoje."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: o Google anunciou que os anúncios no Modo IA da busca chegam ao Brasil, ao México e ao Reino Unido ainda este ano.",
+     "legenda": "Um: o Google anunciou que os anúncios no Modo IA da busca chegam ao Brasil, ao México e ao Reino Unido ainda este ano."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Eles aparecem dentro ou abaixo da resposta, marcados como patrocinado.",
+     "legenda": "Eles aparecem dentro ou abaixo da resposta, marcados como patrocinado."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: a OpenAI aumentou o prêmio pra quem acha falha de segurança. Uma falha crítica no ChatGPT ou no Codex agora vale até trinta mil dólares.",
+     "legenda": "Dois: a OpenAI aumentou o prêmio pra quem acha falha de segurança. Uma falha crítica no ChatGPT ou no Codex agora vale até trinta mil dólares."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Caso excepcional chega a cento e setenta e dois mil, com bônus.",
+     "legenda": "Caso excepcional chega a cento e setenta e dois mil, com bônus."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: a OpenAI lançou o LifeVal, um teste que mede se a IA resolve tarefas do dia a dia, como cuidar das contas, achar creche ou lidar com papelada do governo. Segundo ela, os modelos novos vão muito bem em várias.",
+     "legenda": "Três: a OpenAI lançou o LifeVal, um teste que mede se a IA resolve tarefas do dia a dia, como cuidar das contas, achar creche ou lidar com papelada do governo. Segundo ela, os modelos novos vão muito bem em várias."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Teste hoje: peça pra IA montar o passo a passo de um serviço do governo que você precisa.",
+     "legenda": "Teste hoje: peça pra IA montar o passo a passo de um serviço do governo que você precisa."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segue pro Radar IA todo dia ao meio-dia.",
+     "legenda": "Segue pro Radar IA todo dia ao meio-dia."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Ads no AI Mode em 10 novos países; Brasil, México e Reino Unido planejados no Q4 2026; marcados Sponsored; multiturn ads nos EUA",
+   "fonte": "https://blog.google/products/ads-commerce/ads-in-ai-mode-global/",
+   "conferido": "2026-11-03"
+  },
+  {
+   "dado": "OpenAI (02/11/2026) Security Bug Bounty: crítica em ChatGPT/Codex/API até US$ 30 mil; excepcional até US$ 100 mil, US$ 172 mil com bônus; retroativo 30 dias",
+   "fonte": "https://openai.com/index/rewarding-defenders-with-bigger-bug-bounties/",
+   "conferido": "2026-11-03"
+  },
+  {
+   "dado": "OpenAI LifeVal (02/11/2026): benchmark de tarefas do dia a dia (cuidado, saúde, educação, casa, finanças, compras, governo); modelos novos pontuam alto segundo a OpenAI",
+   "fonte": "https://openai.com/index/lifeval/",
+   "conferido": "2026-11-03"
+  }
+ ],
+ "registro": {
+  "tema": "radar IA 03/11: anúncios no Modo IA chegam ao Brasil no 4º tri, OpenAI aumenta bug bounty, LifeVal tarefas do dia a dia",
+  "chaves": [
+   "anuncios modo ia brasil",
+   "openai bug bounty 30 mil",
+   "openai lifeval",
+   "radar 03/11"
+  ]
+ },
+ "video": "videos/2026-11-03-12h-radar-ia-60s-neon.mp4",
+ "fonte_html": "kit/2026-11-03-12h-radar-ia-60s-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ],
+ "fora_da_grade": {
+  "aprovado": "Diego, thread de retenção 03/11 22:59Z ('ok' à página de aprovação)"
+ }
+}

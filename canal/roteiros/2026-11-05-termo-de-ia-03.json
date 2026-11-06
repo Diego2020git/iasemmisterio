@@ -1,0 +1,93 @@
+{
+ "id": "2026-11-05-termo-de-ia-03",
+ "serie": "Termo de IA",
+ "data": "2026-11-05",
+ "horario": "19:00",
+ "titulo": "Termo de IA: embedding, o texto que vira lista de números",
+ "descricao": "Termo de IA #3: embedding 🔢\nEmbedding é o texto transformado numa lista de números que guarda o sentido dele. É o que faz a busca entender o que você quis dizer, e não só as palavras exatas.\nComo funciona:\n1️⃣ Um modelo de embedding lê o texto e devolve uma lista de números. No Gemini Embedding 2, do Google, são 3.072 números por padrão.\n2️⃣ Textos de sentido parecido ganham listas parecidas. \"Quero trocar o produto\" e \"como faço a devolução\" ficam perto, mesmo sem palavra em comum.\n3️⃣ Na busca, a sua pergunta também vira números, e o sistema traz os trechos mais próximos. É assim que o RAG (Termo #1) acha a parte certa dos seus documentos.\nQuando usar: busca nos seus próprios arquivos, agrupar mensagens parecidas, achar perguntas repetidas.\nLimite: o embedding só mede proximidade de sentido. Ele não responde nada sozinho; quem escreve a resposta é outro modelo.\nEpisódios anteriores: #1 RAG, #2 token. Quinta que vem: outro termo.\n\nFontes (conferidas em 30/10/2026): ai.google.dev/gemini-api/docs/embeddings · blog.google (Gemini Embedding 2: our first natively multimodal embedding model)\n\n#ia #inteligenciaartificial #embedding #rag #gemini #termodeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": 3,
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Embedding é o seu texto virando uma lista de números que guarda o sentido.",
+     "legenda": "Embedding é o seu texto virando uma lista de números que guarda o sentido."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Termo de IA: embedding. Ele está por trás da busca que entende o que você quis dizer.",
+     "legenda": "Termo de IA: embedding. Ele está por trás da busca que entende o que você quis dizer."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: o modelo lê o texto e devolve uma lista de números. No Google, são mais de três mil por padrão.",
+     "legenda": "Um: o modelo lê o texto e devolve uma lista de números. No Google, são mais de três mil por padrão."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: frases de sentido parecido ganham números parecidos. Troca e devolução ficam perto, sem palavra em comum.",
+     "legenda": "Dois: frases de sentido parecido ganham números parecidos. Troca e devolução ficam perto, sem palavra em comum."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: sua pergunta também vira números, e a busca traz os trechos mais perto dela.",
+     "legenda": "Três: sua pergunta também vira números, e a busca traz os trechos mais perto dela."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Use pra buscar nos seus arquivos. Ele não responde sozinho: só mede o sentido.",
+     "legenda": "Use pra buscar nos seus arquivos. Ele não responde sozinho: só mede o sentido."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Salva e segue. Quinta que vem tem mais.",
+     "legenda": "Salva e segue. Quinta que vem tem mais."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Gemini Embedding 2 disponível na Gemini API; texto, imagem, vídeo, áudio e documentos no mesmo espaço; mais de 100 idiomas; 3.072 dimensões por padrão",
+   "fonte": "https://ai.google.dev/gemini-api/docs/embeddings",
+   "conferido": "2026-10-30"
+  }
+ ],
+ "registro": {
+  "tema": "termo de IA 3: embedding, texto vira lista de números que guarda o sentido, base da busca semântica e do RAG",
+  "chaves": [
+   "embedding lista de numeros",
+   "termo de ia 3"
+  ]
+ },
+ "video": "videos/2026-11-05-19h-termo-de-ia-03-neon.mp4",
+ "fonte_html": "kit/2026-11-05-19h-termo-de-ia-03-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

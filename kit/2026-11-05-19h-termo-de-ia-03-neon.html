@@ -1,0 +1,94 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-05-termo-de-ia-03.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 05/11/2026 · 19h · Termo de IA #3: embedding (padrão de entrega de 24/10). Neon + neon-entrega.js.
+// Mecanismo: texto → lista de números; sentido parecido = números perto; a pergunta vira números e a busca traz os trechos mais próximos. Fonte: ai.google.dev/gemini-api/docs/embeddings (Gemini Embedding 2, 3.072 dimensões por padrão).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, AZ, VERDE, CI, AMB, AZ];
+const HITS = [wt('numeros', 0), wt('sentido', 0), wt('embedding', 1), wt('busca', 1), wt('lista', 2), wt('mil', 2), wt('parecido', 3), wt('devolucao', 3), wt('comum', 3), wt('pergunta', 4), wt('trechos', 4), wt('arquivos', 5), wt('sozinho', 5)];
+const VET = ['0,12', '-0,83', '0,47', '0,05', '-0,31', '0,66'];
+// frase que vira coluna de números (v 0..1)
+function vetor(x, y, frase, v, a, t) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+  const fa = 1 - clamp(v * 1.6); if (fa > 0) { ctx.save(); ctx.globalAlpha *= fa; ctx.fillStyle = 'rgba(10,20,50,.85)'; ctx.strokeStyle = CI; ctx.lineWidth = 3; rr(x - 380, y - 60, 760, 120, 24); ctx.fill(); ctx.stroke();
+    txt(frase, x, y + 4, EXP, 44, BR, { align: 'center' }); ctx.restore(); }
+  VET.forEach((n, i) => { const q = clamp(v * 2 - .4 - i * .12); if (q <= 0) return; const xx = x - 350 + i * 140, yy = y + 8 * Math.sin(t * 2 + i);
+    ctx.save(); ctx.globalAlpha *= q; ctx.fillStyle = hex(i % 2 ? CI : AZ, .25); ctx.strokeStyle = i % 2 ? CI : AZ; ctx.lineWidth = 3; rr(xx - 60, yy - 50, 120, 100, 18); ctx.fill(); ctx.stroke();
+    txt(n, xx, yy + 4, EXP, 34, BR, { align: 'center' }); ctx.restore(); });
+  if (v > .9) txt('…', x + 410, y + 4, EXP, 50, CI, { align: 'center', alpha: clamp((v - .9) * 10) });
+  ctx.restore(); }
+// mapa de sentido: pontos (n = quantos aparecem), consulta q, ligação l
+const PTS = [['troca do produto', -150, -90, VERDE], ['devolução', -40, 30, VERDE], ['horário da loja', 230, 190, AMB], ['frete grátis', 200, -170, IN]];
+function mapa(cx, cy, t, n, q, l) { ctx.save(); ctx.strokeStyle = 'rgba(120,160,255,.25)'; ctx.lineWidth = 2; ctx.strokeRect(cx - 420, cy - 280, 840, 560);
+  for (let i = 1; i < 6; i++) { ctx.beginPath(); ctx.moveTo(cx - 420 + i * 140, cy - 280); ctx.lineTo(cx - 420 + i * 140, cy + 280); ctx.stroke(); }
+  for (let i = 1; i < 4; i++) { ctx.beginPath(); ctx.moveTo(cx - 420, cy - 280 + i * 140); ctx.lineTo(cx + 420, cy - 280 + i * 140); ctx.stroke(); } ctx.restore();
+  const Q = [cx + 60, cy - 40];
+  PTS.forEach(([s, x, y, c], i) => { const a = clamp(n - i); if (a <= 0) return; const px = cx + x, py = cy + y + 4 * Math.sin(t * 1.5 + i);
+    if (l > 0 && i < 2) fio(Q[0], Q[1], px, py, l, CI, t, false);
+    ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = c; ctx.shadowColor = c; ctx.shadowBlur = 24; ctx.beginPath(); ctx.arc(px, py, 22 * back(a), 0, 7); ctx.fill(); ctx.restore();
+    txt(s, px, py + 52, ARC, 32, BR, { align: 'center', weight: 600, alpha: a }); });
+  if (q > 0) { ctx.save(); ctx.globalAlpha *= clamp(q); ctx.fillStyle = BR; ctx.shadowColor = CI; ctx.shadowBlur = 36; ctx.beginPath(); ctx.arc(Q[0], Q[1] - 200 * (1 - ease(clamp(q))), 20, 0, 7); ctx.fill(); ctx.restore();
+    txt('como devolvo?', Q[0] + 36, Q[1] + 4 - 200 * (1 - ease(clamp(q))), ARC, 32, CI, { weight: 800, alpha: clamp(q) }); } }
+const S = [
+  // 0 · gancho: texto vira números
+  (t, lt) => {
+    titulo('TEXTO VIRA NÚMEROS', 380, -1, SC[1] - .2, t, 76, BR, 'NÚMEROS', CI);
+    vetor(cx0, 720, 'Quero trocar o produto', prog(t, wt('lista', 0) - .2, wt('numeros', 0) + .4), prog(lt, 0, .2), t);
+    linhaTxt('a lista guarda o sentido da frase', 960, wt('sentido', 0) - .3, SC[1] - .2, t, 42, CI);
+    exemplo(cx0, 1080, prog(lt, .3, .6));
+  },
+  // 1 · o termo
+  (t, lt) => {
+    titulo('EMBEDDING', 420, SC[1], SC[2] - .2, t, 130, BR, 'EMBEDDING', CI);
+    pilula('Termo de IA', cx0, 620, 520, prog(t, wt('termo', 1), wt('termo', 1) + .3), CI, 'EPISÓDIO 3');
+    pilula('a busca que entende o sentido', cx0, 840, 800, prog(t, wt('busca', 1) - .2, wt('busca', 1) + .2), VERDE, 'NÃO SÓ A PALAVRA EXATA', 1, 40);
+    neon3d(P.radar, cx0, 1120 + flut(t), 100 * back(prog(lt, .3, .7)), .4 * Math.sin(t * 1.1), .2, CI, prog(lt, .3, .6));
+  },
+  // 2 · passo 1: lista de números
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('UMA LISTA DE NÚMEROS', 450, wt('modelo', 2) - .2, SC[3] - .2, t, 70, BR, 'NÚMEROS', CI);
+    vetor(cx0, 700, 'Quero trocar o produto', prog(t, wt('devolve', 2) - .2, wt('numeros', 2) + .3), prog(lt, 0, .3), t);
+    versao('+ de 3.000 números', cx0, 930, prog(t, wt('mil', 2) - .3, wt('mil', 2) + .2), CI, 0, 56);
+    linhaTxt('no Gemini Embedding 2, do Google', 1060, wt('google', 2) - .2, SC[3] - .2, t, 38);
+  },
+  // 3 · passo 2: sentido parecido fica perto
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('SENTIDO PARECIDO FICA PERTO', 450, wt('frases', 3) - .2, SC[4] - .2, t, 56, BR, 'PERTO', VERDE);
+    mapa(cx0, 860, t, 4 * prog(t, wt('parecido', 3) - .3, wt('devolucao', 3) + .3), 0, 0);
+    pilula('sem palavra em comum', cx0, 1230, 560, prog(t, wt('palavra', 3) - .2, wt('comum', 3) + .2), VERDE, '', 1, 36);
+  },
+  // 4 · passo 3: a pergunta cai no mapa
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('A BUSCA ACHA O MAIS PERTO', 450, wt('pergunta', 4) - .2, SC[5] - .2, t, 58, BR, 'PERTO', CI);
+    mapa(cx0, 860, t, 4, prog(t, wt('vira', 4) - .2, wt('numeros', 4) + .3), prog(t, wt('traz', 4) - .1, wt('perto', 4) + .2));
+    pilula('traz os trechos mais próximos', cx0, 1230, 720, prog(t, wt('trechos', 4) - .2, wt('trechos', 4) + .2), CI, '', 1, 36);
+  },
+  // 5 · quando usar + limite
+  (t, lt) => {
+    titulo('QUANDO USAR', 380, SC[5], SC[6] - .2, t, 90, BR, 'USAR', AMB);
+    pilula('buscar nos seus arquivos', cx0, 620, 680, prog(t, wt('buscar', 5) - .2, wt('arquivos', 5) + .2), VERDE, '', 1, 44);
+    pilula('não responde sozinho', cx0, 800, 640, prog(t, wt('responde', 5) - .2, wt('sozinho', 5) + .2), AMB, 'QUEM ESCREVE É OUTRO MODELO', 1, 42);
+    pilula('só mede o sentido', cx0, 980, 520, prog(t, wt('mede', 5) - .2, wt('sentido', 5) + .2), CI, '', 1, 42);
+  },
+  // 6 · fim
+  (t, lt) => fim(t, lt, 'Salva e segue', 'quinta que vem: outro termo'),
+];
+</script></body></html>

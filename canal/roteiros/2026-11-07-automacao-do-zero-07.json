@@ -1,0 +1,99 @@
+{
+  "id": "2026-11-07-automacao-do-zero-07",
+  "serie": "Automação do zero",
+  "data": "2026-11-07",
+  "horario": "19:00",
+  "titulo": "Arquivo novo no Google Drive? O Gmail te avisa sozinho",
+  "descricao": "Automação do zero, episódio 7 📂\nAlguém colocou um arquivo na pasta do Drive? Chega um e-mail te avisando, com o arquivo anexado.\n1️⃣ No zapier.com, + Create → Zap. Gatilho (Trigger): app Google Drive, evento New File in Folder. Escolha o Drive e a pasta.\n2️⃣ Ação (Action): app Gmail, evento Send Email. Em To, coloque o seu e-mail. No assunto (Subject), ligue o nome do arquivo.\n3️⃣ Em Attachments, ligue o arquivo (File) pra ele vir anexado. Teste e clique em Publish.\nLimites: só dispara com arquivo colocado direto na pasta, não nas subpastas. No plano grátis o Zapier confere a cada 15 minutos, então o aviso pode levar até uns 15 minutos. Grátis até 100 tarefas por mês (cada e-mail conta 1). Arquivo que já estava na pasta não dispara de novo.\nTerça tem mais.\n\nFontes (conferidas em 04/11/2026): zapier.com/apps/gmail/integrations/google-drive · help.zapier.com (How to get started with Google Drive on Zapier) · zapier.com/pricing\n\n#ia #automacao #zapier #googledrive #gmail #produtividade",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "a7",
+  "estilo": "neon",
+  "formato": "completo",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Arquivo novo na sua pasta do Google Drive? O Gmail te avisa sozinho, com o arquivo anexado.",
+          "legenda": "Arquivo novo na sua pasta do Google Drive? O Gmail te avisa sozinho, com o arquivo anexado."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Sem programar e de graça, com o Zapier em três passos.",
+          "legenda": "Sem programar e de graça, com o Zapier em três passos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: no Zapier, gatilho, o que dispara tudo: Google Drive, New File in Folder. Escolha a pasta.",
+          "legenda": "Um: no Zapier, gatilho, o que dispara tudo: Google Drive, New File in Folder. Escolha a pasta."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: ação: Gmail, Send Email. Em To, seu email. No assunto, o nome do arquivo.",
+          "legenda": "Dois: ação: Gmail, Send Email. Em To, seu email. No assunto, o nome do arquivo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: em Attachments, ligue o arquivo pra ele vir anexado. Teste e clique em Publish.",
+          "legenda": "Três: em Attachments, ligue o arquivo pra ele vir anexado. Teste e clique em Publish."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Vale só pra arquivo direto na pasta, não nas subpastas. O grátis confere a cada quinze minutos.",
+          "legenda": "Vale só pra arquivo direto na pasta, não nas subpastas. O grátis confere a cada quinze minutos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva pra fazer hoje. Terça tem mais.",
+          "legenda": "Salva pra fazer hoje. Terça tem mais."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Zapier Google Drive New File in Folder (polling): arquivo criado, movido ou enviado direto na pasta, não subpastas; Gmail Send Email com anexo",
+      "fonte": "https://help.zapier.com/hc/en-us/articles/8495965163405-How-to-get-started-with-Google-Drive-on-Zapier",
+      "conferido": "2026-11-04"
+    },
+    {
+      "dado": "Zapier grátis: 100 tarefas/mês, Zaps de 2 passos, checagem a cada 15 min",
+      "fonte": "https://zapier.com/pricing",
+      "conferido": "2026-11-04"
+    }
+  ],
+  "registro": {
+    "tema": "automação do zero 7: arquivo novo na pasta do Google Drive manda e-mail com anexo (Zapier New File in Folder → Gmail Send Email)",
+    "chaves": [
+      "drive pasta aviso email",
+      "new file in folder",
+      "automacao do zero 7"
+    ]
+  },
+  "video": "videos/2026-11-07-19h-automacao-do-zero-07-neon.mp4",
+  "fonte_html": "kit/2026-11-07-19h-automacao-do-zero-07-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ]
+}

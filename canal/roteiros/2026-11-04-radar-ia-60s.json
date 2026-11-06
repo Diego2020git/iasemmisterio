@@ -1,0 +1,121 @@
+{
+ "id": "2026-11-04-radar-ia-60s",
+ "serie": "Radar IA",
+ "data": "2026-11-04",
+ "horario": "12:00",
+ "titulo": "Radar IA: Siri pros apps, IA desligada pra alunos e dots com Terra",
+ "descricao": "Radar IA de hoje 📡\n1️⃣ Siri AI aberta (03/11): a Apple liberou a integração com a Siri AI pra qualquer desenvolvedor, numa prévia nos betas do iOS 27.3, iPadOS 27.3, macOS 27.3 e visionOS 27.3. Os apps usam App Intents pra levar conteúdo e ações à Siri. Chega aos usuários em alguns meses; envio à App Store a partir da primavera do hemisfério norte. Siri AI segue indisponível na União Europeia.\n2️⃣ Escolas (03/11): o Google vai deixar Gemini, Gemini Notebook, Gemini no Classroom e a IA da Busca desligados em contas de aluno da educação básica até o administrador da escola ligar. O Classroom ganhou o Guided Learning, que guia o aluno por etapas em vez de entregar a resposta.\n3️⃣ Dots com Terra (03/11): os dots, agentes do ChatGPT que trabalham o tempo todo, passam a usar também o GPT-6.1 Terra. Dots são dos planos pagos Pro (fora da Europa e do Reino Unido) e Business Premium; o primeiro dot vem incluído no plano.\n\nTeste hoje: peça pra IA te ensinar um assunto passo a passo, sem dar a resposta pronta.\n\nFontes oficiais (conferidas em 04/11/2026): developer.apple.com (Siri AI is now open to all developers) · blog.google (Responsible AI for schools with Guided Learning) · openai.com (Introducing dots, atualização de 03/11)\n\n#ia #inteligenciaartificial #siri #gemini #chatgpt #noticiasdeia",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": "r20",
+ "estilo": "neon",
+ "formato": "radar-60",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "A nova Siri abriu pra qualquer aplicativo, o Google desligou a IA pros alunos da escola e os agentes do ChatGPT ganharam modelo novo.",
+     "legenda": "A nova Siri abriu pra qualquer aplicativo, o Google desligou a IA pros alunos da escola e os agentes do ChatGPT ganharam modelo novo."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Radar IA de hoje.",
+     "legenda": "Radar IA de hoje."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: a Apple abriu a Siri nova pra qualquer desenvolvedor, por enquanto na versão de teste do iOS vinte e sete ponto três.",
+     "legenda": "Um: a Apple abriu a Siri nova pra qualquer desenvolvedor, por enquanto na versão de teste do iOS vinte e sete ponto três."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Os apps poderão mostrar conteúdo e fazer ações direto pela Siri. Chega pro público nos próximos meses.",
+     "legenda": "Os apps poderão mostrar conteúdo e fazer ações direto pela Siri. Chega pro público nos próximos meses."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: nas contas de aluno da educação básica, o Google vai deixar Gemini, Notebook e a IA da busca desligados até a escola ligar.",
+     "legenda": "Dois: nas contas de aluno da educação básica, o Google vai deixar Gemini, Notebook e a IA da busca desligados até a escola ligar."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "E o Classroom ganhou o Guided Learning, que guia passo a passo em vez de dar a resposta pronta.",
+     "legenda": "E o Classroom ganhou o Guided Learning, que guia passo a passo em vez de dar a resposta pronta."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: os dots, os agentes do ChatGPT que trabalham o tempo todo, agora também usam o GPT seis ponto um Terra. Só nos planos pagos Pro e Business Premium.",
+     "legenda": "Três: os dots, os agentes do ChatGPT que trabalham o tempo todo, agora também usam o GPT seis ponto um Terra. Só nos planos pagos Pro e Business Premium."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Teste hoje: peça pra IA te ensinar um assunto passo a passo, sem dar a resposta pronta.",
+     "legenda": "Teste hoje: peça pra IA te ensinar um assunto passo a passo, sem dar a resposta pronta."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segue pro Radar IA todo dia ao meio-dia.",
+     "legenda": "Segue pro Radar IA todo dia ao meio-dia."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Siri AI aberta a qualquer desenvolvedor via Developer Preview nos betas 27.3 (iOS/iPadOS/macOS/visionOS), App Intents; usuários em alguns meses; App Store na primavera; indisponível na UE",
+   "fonte": "https://developer.apple.com/news/?id=gdk2umrf",
+   "conferido": "2026-11-04"
+  },
+  {
+   "dado": "Google (03/11/2026): Gemini, Gemini Notebook, Gemini no Classroom e Search IA desligados para contas de aluno K-12 até o admin ligar; Guided Learning no Classroom",
+   "fonte": "https://blog.google/products-and-platforms/products/education/ai-learning-era-updates-2026/",
+   "conferido": "2026-11-04"
+  },
+  {
+   "dado": "Dots (atualização 03/11/2026) passam a usar GPT-6.1 Terra; dots para Pro (18+, fora EEE/Suíça/UK) e Business Premium; primeiro dot incluído",
+   "fonte": "https://openai.com/index/introducing-dots/",
+   "conferido": "2026-11-04"
+  }
+ ],
+ "registro": {
+  "tema": "radar IA 04/11: Siri AI aberta a desenvolvedores, Google desliga IA para alunos K-12 e Guided Learning, dots do ChatGPT com GPT-6.1 Terra",
+  "chaves": [
+   "siri ai desenvolvedores",
+   "google ia alunos desligada",
+   "dots gpt 6.1 terra",
+   "radar 04/11"
+  ]
+ },
+ "video": "videos/2026-11-04-12h-radar-ia-60s-neon.mp4",
+ "fonte_html": "kit/2026-11-04-12h-radar-ia-60s-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

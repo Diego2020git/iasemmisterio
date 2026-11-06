@@ -1,0 +1,125 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="raiox-kit.js"></script>
+<script>
+// Vídeo 06 (carrossel com IA), identidade Raio-X.
+const EP = '06';
+const SC = [0, 4.86, 14.91, 20.14, 26.86, 33.75, 36.25];
+const CAPS = [[0.0, 2.24, "Dá pra criar um carrossel pro Instagram"], [2.24, 3.58, "em dez minutos com IA."], [3.58, 4.98, "Olha como."], [4.98, 6.97, "Um: peça pro ChatGPT o texto."], [6.97, 7.97, "Sete slides,"], [7.97, 9.62, "um gancho forte no primeiro,"], [9.62, 11.18, "uma ideia por slide"], [11.18, 12.59, "e uma chamada no último."], [12.59, 15.03, "O prompt pronto está no comentário."], [15.03, 16.64, "Dois: abra o Canva"], [16.64, 18.67, "e escolha um modelo de carrossel"], [18.67, 20.26, "no tamanho do Instagram."], [20.26, 23.08, "Três: cole um texto em cada slide."], [23.08, 24.55, "Frase curta, letra grande,"], [24.55, 25.65, "e troque as cores"], [25.65, 26.98, "pelas da sua marca."], [26.98, 28.59, "Quatro: baixe em PNG"], [28.59, 30.34, "e poste os slides na ordem."], [30.34, 31.72, "O ChatGPT e o Canva"], [31.72, 33.87, "funcionam no plano grátis."], [33.87, 36.25, "Salva esse vídeo e me segue pra mais."]];
+
+function slideFrame(x, y, w, h, p, fillCol) {
+  if (p <= 0) return;
+  ctx.save(); ctx.strokeStyle = COL.ink; ctx.lineWidth = 4;
+  if (fillCol && p > .5) { ctx.fillStyle = fillCol; ctx.globalAlpha = prog(p, .5, 1); ctx.fillRect(x, y, w, h); ctx.globalAlpha = 1; }
+  draw(p, 2 * (w + h), () => ctx.strokeRect(x, y, w, h));
+  ctx.restore();
+}
+function s0(t, lt) {
+  title(['Carrossel', 'em 10', 'minutos'], lt, 0, 200, 92, 2);
+  fig('fig. 01 — um carrossel por dentro', lt, .4, 530);
+  for (let i = 6; i >= 0; i--) {
+    const p = easeInOut(prog(lt, .3 + i * .12, 1.1 + i * .12));
+    const x = 150 + i * 90, y = 640 + i * 12;
+    if (p > 0) { ctx.fillStyle = COL.paper; ctx.globalAlpha = p; ctx.fillRect(x, y, 240, 300); ctx.globalAlpha = 1; }
+    slideFrame(x, y, 240, 300, p, i === 0 ? COL.blue : null);
+    if (i > 0 && p > .6) { ctx.save(); ctx.globalAlpha = prog(p, .6, 1); ctx.strokeStyle = COL.dim; ctx.lineWidth = 3; for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.moveTo(x + 150, y + 90 + k * 40); ctx.lineTo(x + 215, y + 90 + k * 40); ctx.stroke(); } ctx.restore(); }
+    if (i === 0 && p > .6) { txt('GANCHO', x + 120, y + 150, EXP, 30, COL.ink, { align: 'center', alpha: prog(p, .6, 1) }); }
+  }
+  annot(270, 950, 200, 1080, 'slide 1: o gancho', prog(lt, 1.6, 2.0), 'R');
+  annot(830, 1020, 900, 1160, '7 slides', prog(lt, 2.2, 2.6), 'L');
+  dimLine(M, W - M, 1290, 'do zero ao post · 10 min', prog(lt, 2.8, 3.2));
+}
+function s1(t, lt) {
+  stepTag(1, 4, lt, 320);
+  title(['O texto'], lt, .05, 200, 92);
+  fig('fig. 02 — pedido ao chatgpt (grátis)', lt, .2, 320);
+  promptBox(M, 400, W - 2 * M, 'Crie um carrossel de 7 slides sobre 5 erros no Instagram. Gancho no slide 1, uma ideia por slide, chamada no último.', prog(lt, .2, 2.0), t, 'você pede');
+  const rows = ['Você está postando errado', 'Erro 1: post sem gancho', 'Erro 2: texto demais', 'Erro 3: sem constância', 'Erro 4: ignorar comentários', 'Erro 5: não olhar os dados', 'Salva e me segue'];
+  const hi = [prog(lt, 3.0, 3.3), prog(lt, 4.7, 5.0), prog(lt, 6.3, 6.6)];
+  rows.forEach((r, i) => {
+    const p = prog(lt, 2.1 + i * .16, 2.4 + i * .16); if (p <= 0) return;
+    const y = 700 + i * 66;
+    const on = (i === 0 && hi[0] > 0) || (i > 0 && i < 6 && hi[1] > 0) || (i === 6 && hi[2] > 0);
+    txt(String(i + 1).padStart(2, '0'), M + 10, y, EXP, 30, COL.cyan, { alpha: p });
+    txt(typed(r, p), M + 90, y, ARC, 34, on ? COL.cyan : COL.ink, { weight: 600 });
+  });
+  annot(M + 110 + measure(rows[0], ARC, 34, 600), 700, 720, 700, 'gancho', hi[0], 'R', COL.cyan);
+  if (hi[1] > 0) { ctx.save(); ctx.globalAlpha = hi[1]; ctx.strokeStyle = COL.cyan; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(680, 750); ctx.lineTo(700, 750); ctx.lineTo(700, 1046); ctx.lineTo(680, 1046); ctx.stroke(); ctx.restore(); }
+  annot(700, 898, 720, 898, '1 ideia cada', hi[1], 'R', COL.cyan);
+  annot(M + 110 + measure(rows[6], ARC, 34, 600), 1096, 720, 1096, 'chamada', hi[2], 'R', COL.cyan);
+  stamp(W / 2, 1270, 'prompt no comentário', prog(lt, 7.8, 8.2), 38);
+}
+function s2(t, lt) {
+  stepTag(2, 4, lt, 320);
+  title(['O modelo'], lt, .05, 200, 92);
+  fig('fig. 03 — molde do instagram', lt, .2, 320);
+  toolCard(W / 2, 450, 'Canva', 'canva.com · tem plano grátis', prog(lt, .1, .5), '#00c4cc');
+  const x = 290, y = 600, w = 500, h = 625, p = prog(lt, 1.4, 2.4);
+  panel(x, y, w, h, p, 'modelo · carrossel');
+  const q = prog(lt, 2.2, 2.8);
+  if (q > 0) {
+    ctx.save(); ctx.globalAlpha = q;
+    ctx.fillStyle = 'rgba(47,107,255,.35)'; ctx.fillRect(x + 40, y + 60, w - 80, 170);
+    txt('TÍTULO AQUI', x + w / 2, y + 145, EXP, 34, COL.ink, { align: 'center' });
+    ctx.strokeStyle = COL.dim; ctx.lineWidth = 3;
+    for (let k = 0; k < 4; k++) { ctx.beginPath(); ctx.moveTo(x + 40, y + 300 + k * 50); ctx.lineTo(x + (k === 3 ? 260 : w - 40), y + 300 + k * 50); ctx.stroke(); }
+    txt('1/7', x + 40, y + h - 50, ARC, 28, COL.dim, { weight: 600 }); txt('→', x + w - 40, y + h - 50, EXP, 34, COL.cyan, { align: 'right' });
+    ctx.restore();
+  }
+  dimLine(x, x + w, 1290, '1080 × 1350 · 4:5', prog(lt, 3.6, 4.0));
+}
+function s3(t, lt) {
+  stepTag(3, 4, lt, 320);
+  title(['Monte'], lt, .05, 200, 92);
+  fig('fig. 04 — slide 1 em corte', lt, .2, 320);
+  const x = M, y = 420, w = 480, h = 600;
+  const brand = prog(lt, 4.6, 5.0);
+  if (brand > 0) { ctx.fillStyle = '#ff5a3c'; ctx.globalAlpha = brand; ctx.fillRect(x, y, w, h); ctx.globalAlpha = 1; }
+  panel(x, y, w, h, prog(lt, 0, .6), 'slide 01');
+  const lines = ['VOCÊ ESTÁ', 'POSTANDO', 'ERRADO'];
+  lines.forEach((l, i) => { const p = prog(lt, .5 + i * .35, .9 + i * .35); txt(typed(l, p), x + 40, y + 170 + i * 80, EXP, 50, brand > .5 ? '#fff' : COL.ink); });
+  txt('arrasta pro lado →', x + 40, y + h - 60, ARC, 30, brand > .5 ? '#fff' : COL.dim, { weight: 600, alpha: prog(lt, 1.6, 2.0) });
+  annot(x + w - 30, y + 170, 650, 520, 'frase curta', prog(lt, 2.9, 3.3), 'R');
+  annot(x + w - 30, y + 330, 650, 680, 'letra grande', prog(lt, 3.6, 4.0), 'R');
+  annot(x + w - 30, y + h - 80, 650, 900, 'cores da marca', prog(lt, 4.5, 4.9), 'R', COL.cyan);
+  const sw = ['#2f6bff', '#2ee6ff', '#ff5a3c', '#ffd23f', '#3ddc84'];
+  sw.forEach((c, i) => {
+    const a = prog(lt, 3.9 + i * .1, 4.2 + i * .1); if (a <= 0) return;
+    const sx = M + i * 100, sy = 1110;
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = c; ctx.fillRect(sx, sy, 76, 76);
+    if (i === 2 && brand > 0) { ctx.strokeStyle = COL.ink; ctx.lineWidth = 4; ctx.strokeRect(sx - 8, sy - 8, 92, 92); }
+    ctx.restore();
+  });
+  dimLine(M, M + 476, 1250, 'paleta da sua marca', prog(lt, 4.2, 4.5));
+}
+function s4(t, lt) {
+  stepTag(4, 4, lt, 320);
+  title(['Poste'], lt, .05, 200, 92);
+  fig('fig. 05 — exportação e ordem', lt, .2, 320);
+  ruler(M, 470, W - 2 * M, easeInOut(prog(lt, .2, 1.6)), 'baixando PNG');
+  for (let i = 0; i < 7; i++) {
+    const p = prog(lt, 1.8 + i * .18, 2.2 + i * .18); if (p <= 0) continue;
+    const x = M + i * 131, y = 600;
+    slideFrame(x, y, 112, 140, p, i === 0 ? COL.blue : null);
+    txt(String(i + 1).padStart(2, '0'), x + 56, y + 180, EXP, 26, COL.cyan, { align: 'center', alpha: p });
+    if (i > 0) { ctx.save(); ctx.globalAlpha = p; ctx.strokeStyle = COL.dim; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x - 17, y + 70); ctx.lineTo(x - 2, y + 70); ctx.stroke(); ctx.restore(); }
+  }
+  dimLine(M, W - M, 860, 'nessa ordem', prog(lt, 3.0, 3.3));
+  toolCard(W / 2, 1000, 'ChatGPT', 'chatgpt.com · plano grátis', prog(lt, 3.6, 4.0), '#10a37f');
+  toolCard(W / 2, 1160, 'Canva', 'canva.com · plano grátis', prog(lt, 4.2, 4.6), '#00c4cc');
+  stamp(W / 2, 1310, 'tudo no plano grátis', prog(lt, 5.4, 5.8), 34);
+}
+function s5(t, lt) {
+  title(['Salva', 'esse vídeo'], lt, 0, 200, 92, 1);
+  endCard(t, SC[5] + .1);
+}
+const SCENES = [s0, s1, s2, s3, s4, s5];
+window.DURATION = SC[SC.length - 1];
+</script>
+</body></html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-07-automacao-do-zero-07.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 07/11/2026 · 19h · Arquivo novo no Drive avisa no Gmail (Automação do zero #7): arquivo novo na pasta do Drive manda e-mail com anexo (Zapier, 2 passos). Padrão de entrega de 24/10. Neon + neon-entrega.js.
+// Mecanismo: Zapier olha a pasta a cada 15 min → arquivo novo direto na pasta (não subpastas) → Gmail Send Email com o arquivo em Attachments. Fontes: help.zapier.com (Google Drive on Zapier), zapier.com/apps/gmail/integrations/google-drive, zapier.com/pricing.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [wt('publish', 4) + .1];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, CI, VERDE, AZ, AMB, AZ];
+const HITS = [wt('pasta', 0), wt('gmail', 0), wt('graca', 1), wt('gatilho', 2), wt('folder', 2), wt('pasta', 2), wt('send', 3), wt('assunto', 3), wt('attachments', 4), wt('publish', 4), wt('subpastas', 5), wt('quinze', 5)];
+// pasta do Drive com arquivos
+function pastaDrive(x, y, w, a, t, novo) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#ffffff'; rr(x, y, w, 400, 18); ctx.fill();
+  ctx.fillStyle = '#e8eefc'; rr(x, y, w, 70, 18); ctx.fill(); ctx.fillRect(x, y + 50, w, 20); txt('Drive · Pasta Clientes', x + 24, y + 38, ARC, 28, '#1b2440', { weight: 700 });
+  const L = [['Orçamento março.pdf', 1], ['Contrato.pdf', 1], ['Nota fiscal 0482.pdf', novo]];
+  L.forEach(([n, al], i) => { if (al <= 0) return; const yy = y + 100 + i * 96; ctx.save(); ctx.globalAlpha *= clamp(al);
+    ctx.fillStyle = i === 2 ? '#fff4d6' : '#f4f6fb'; rr(x + 20, yy, w - 40, 80, 14); ctx.fill(); ctx.fillStyle = '#ea4335'; rr(x + 40, yy + 18, 34, 44, 6); ctx.fill();
+    txt(n, x + 96, yy + 48, ARC, 28, '#1b2440', { weight: 700 }); if (i === 2) txt('NOVO', x + w - 60, yy + 48, ARC, 24, '#b07d00', { weight: 800, align: 'right' }); ctx.restore(); });
+  ctx.restore(); }
+// e-mail de aviso
+function aviso(x, y, w, a, anexo) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const e = .92 + .08 * back(clamp(a)); ctx.translate(x + w / 2, y); ctx.scale(e, e); ctx.translate(-x - w / 2, -y);
+  ctx.fillStyle = '#ffffff'; rr(x, y, w, anexo ? 230 : 130, 18); ctx.fill(); ctx.fillStyle = '#ea4335'; ctx.beginPath(); ctx.arc(x + 50, y + 64, 26, 0, 7); ctx.fill(); txt('M', x + 50, y + 66, ARC, 30, '#fff', { align: 'center', weight: 800 });
+  txt('Arquivo novo: Nota fiscal 0482', x + 100, y + 50, ARC, 30, '#1b2440', { weight: 700 }); txt('para: voce@gmail.com', x + 100, y + 90, ARC, 26, '#5a6a8f', { weight: 600 });
+  if (anexo) { ctx.save(); ctx.globalAlpha *= clamp(anexo); ctx.fillStyle = '#f1f3f8'; rr(x + 40, y + 140, 440, 66, 12); ctx.fill(); ctx.fillStyle = '#ea4335'; rr(x + 56, y + 152, 30, 42, 5); ctx.fill();
+    txt('📎 Nota fiscal 0482.pdf', x + 100, y + 182, ARC, 26, '#1b2440', { weight: 600 }); ctx.restore(); }
+  ctx.restore(); }
+function passo(x, y, w, rot, app, ev, a, cor) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const e = .9 + .1 * back(clamp(a)); ctx.translate(x, y + 85); ctx.scale(e, e); ctx.translate(-x, -y - 85);
+  ctx.fillStyle = 'rgba(10,30,60,.95)'; rr(x - w / 2, y, w, 170, 24); ctx.fill(); ctx.strokeStyle = cor; ctx.lineWidth = 4; ctx.shadowColor = cor; ctx.shadowBlur = 24; rr(x - w / 2, y, w, 170, 24); ctx.stroke(); ctx.shadowBlur = 0;
+  txt(rot, x - w / 2 + 30, y + 42, ARC, 26, cor, { weight: 600, ls: 2 }); txt(app, x - w / 2 + 30, y + 95, ARC, 42, BR, { weight: 800 }); txt(ev, x - w / 2 + 30, y + 142, ARC, 34, 'rgba(244,248,255,.85)', { weight: 600 }); ctx.restore(); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    titulo('O GMAIL TE AVISA', 360, -1, SC[1] - .2, t, 84, BR, 'AVISA', AMB);
+    pastaDrive(cx0 - 410, 460, 820, prog(lt, 0, .2), t, prog(t, wt('novo', 0) - .2, wt('novo', 0) + .2));
+    aviso(cx0 - 410, 920, 820, prog(t, wt('gmail', 0) - .2, wt('gmail', 0) + .3), prog(t, wt('anexado', 0) - .3, wt('anexado', 0) + .1));
+    exemplo(cx0, 1210, prog(lt, .3, .6));
+  },
+  // 1 · por que importa
+  (t, lt) => {
+    titulo('SEM PROGRAMAR', 500, SC[1], SC[2] - .2, t, 84, BR, 'PROGRAMAR', CI);
+    versao('GRÁTIS', cx0, 700, prog(t, wt('graca', 1) - .1, wt('graca', 1) + .3), VERDE, 0, 60);
+    neon3d(P.pasta, cx0, 980 + flut(t), 120 * back(prog(lt, .1, .5)), .3 * Math.sin(t), .1, AMB, prog(lt, .1, .4));
+  },
+  // 2 · passo 1: gatilho
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('GATILHO: A PASTA', 450, wt('zapier', 2) - .1, SC[3] - .2, t, 80, BR, 'PASTA', CI);
+    linhaTxt('gatilho = o que dispara tudo', 550, wt('gatilho', 2) - .2, SC[3] - .2, t, 38, CI);
+    passo(cx0, 620, 820, 'GATILHO (TRIGGER)', 'Google Drive', 'New File in Folder', prog(t, wt('google', 2) - .2, wt('google', 2) + .3), CI);
+    pastaDrive(cx0 - 410, 860, 820, prog(t, wt('escolha', 2) - .2, wt('pasta', 2) + .2), t, 0);
+  },
+  // 3 · passo 2: Gmail Send Email
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('AÇÃO: GMAIL', 450, wt('acao', 3) - .1, SC[4] - .2, t, 84, BR, 'GMAIL', VERDE);
+    passo(cx0, 560, 820, 'AÇÃO (ACTION)', 'Gmail', 'Send Email', prog(t, wt('gmail', 3) - .2, wt('gmail', 3) + .3), VERDE);
+    janela(800, 380, prog(t, wt('to', 3) - .3, wt('to', 3)), 'Send Email', (x, y, w) => {
+      campo(x + 20, y + 20, w - 40, 'To', 'voce@gmail.com', prog(t, wt('to', 3) - .1, wt('email', 3, 2) + .2), prog(t, wt('email', 3, 2), wt('email', 3, 2) + .3));
+      campo(x + 20, y + 160, w - 40, 'Subject', 'Arquivo novo: (nome do arquivo)', prog(t, wt('assunto', 3) - .2, wt('arquivo', 3) + .2), prog(t, wt('arquivo', 3), wt('arquivo', 3) + .3)); });
+  },
+  // 4 · passo 3: Attachments + Publish
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('O ARQUIVO ANEXADO', 450, wt('attachments', 4) - .2, SC[5] - .2, t, 72, BR, 'ANEXADO', AZ);
+    janela(560, 200, prog(t, wt('attachments', 4) - .3, wt('attachments', 4)), 'Send Email', (x, y, w) => {
+      campo(x + 20, y + 20, w - 40, 'Attachments', '(arquivo do Google Drive)', prog(t, wt('ligue', 4) - .1, wt('arquivo', 4) + .2), prog(t, wt('arquivo', 4), wt('arquivo', 4) + .3)); });
+    aviso(cx0 - 410, 820, 820, prog(t, wt('anexado', 4) - .3, wt('anexado', 4)), prog(t, wt('anexado', 4) - .1, wt('anexado', 4) + .3));
+    pilula('Teste', cx0 - 200, 1170, 280, prog(t, wt('teste', 4) - .2, wt('teste', 4) + .2), CI, '', 1, 40);
+    botao(cx0 + 160, 1170, 'Publish', prog(t, wt('clique', 4) - .1, wt('clique', 4) + .2), prog(t, wt('publish', 4), wt('publish', 4) + .4), AZ);
+  },
+  // 5 · limites
+  (t, lt) => {
+    titulo('OS LIMITES', 380, SC[5], SC[6] - .2, t, 90, BR, 'LIMITES', AMB);
+    pilula('só direto na pasta', cx0, 620, 560, prog(t, wt('direto', 5) - .2, wt('pasta', 5) + .2), VERDE, 'ARQUIVO NA PASTA ESCOLHIDA', 1, 42);
+    pilula('subpasta não dispara', cx0, 800, 580, prog(t, wt('subpastas', 5) - .3, wt('subpastas', 5) + .2), VERM, '', 1, 42);
+    neon3d(P.relogio, cx0, 990 + flut(t), 80 * back(prog(t, wt('gratis', 5) - .3, wt('gratis', 5))), t * .5, .1, AMB, prog(t, wt('gratis', 5) - .3, wt('gratis', 5)));
+    pilula('grátis: confere a cada 15 min', cx0, 1180, 740, prog(t, wt('confere', 5) - .2, wt('minutos', 5) + .2), AMB, '100 TAREFAS POR MÊS', 1, 40);
+  },
+  // 6 · fim
+  (t, lt) => fim(t, lt, 'Salva e segue', 'terça tem mais'),
+];
+</script></body></html>

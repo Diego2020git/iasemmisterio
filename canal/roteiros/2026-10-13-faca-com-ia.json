@@ -1,0 +1,111 @@
+{
+  "id": "2026-10-13-faca-com-ia",
+  "serie": "Faça com IA",
+  "data": "2026-10-13",
+  "horario": "12:00",
+  "titulo": "IA que cria vídeo de graça todo dia (Google Flow)",
+  "descricao": "Vídeo com IA de graça, todo dia, no Google Flow 🎬\n1️⃣ Entre em labs.google/flow com sua conta Google: quem não assina ganha 50 créditos por dia\n2️⃣ Escolha o Veo 3.1 Lite: 10 créditos por vídeo, uns 5 vídeos por dia\n3️⃣ Descreva a cena em 4 partes: quem aparece, o que faz, a câmera e o estilo\nOs créditos grátis não acumulam de um dia pro outro.\nO modelo de prompt está no comentário fixado. Salva!\n\nFonte: Google Flow Help, \"Manage your AI Credits in Flow\" (support.google.com/flow/answer/16526234), conferido em 11/10/2026.\n\n#videocomia #googleflow #veo #inteligenciaartificial #ia #iagratis",
+  "hashtags": [
+    "videocomia",
+    "googleflow",
+    "veo",
+    "inteligenciaartificial",
+    "ia",
+    "iagratis"
+  ],
+  "comentario_fixado": "Modelo de prompt pro Flow (troque o que está entre colchetes):\n\n[Quem aparece] [fazendo o quê], [onde]. Câmera: [se aproximando devagar / girando em volta / parada]. Estilo: [cinema / animação 3D / documentário], luz [suave / de fim de tarde].\n\nExemplo: Um gato astronauta flutuando dentro de uma estação espacial. Câmera se aproximando devagar. Estilo cinema, luz suave.",
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "ia que cria videos gratis": {
+        "demanda_views_top10": 178818,
+        "concorrencia_canais_100k": 1
+      },
+      "como criar video com ia gratis": {
+        "demanda_views_top10": 108754,
+        "concorrencia_canais_100k": 3
+      },
+      "ia para fazer video": {
+        "demanda_views_top10": 220825,
+        "concorrencia_canais_100k": 4
+      }
+    }
+  },
+  "dados_que_envelhecem": [
+    {
+      "dado": "Flow grátis: 50 créditos por dia, não acumulam",
+      "fonte": "https://support.google.com/flow/answer/16526234",
+      "conferido": "2026-10-12"
+    },
+    {
+      "dado": "Veo 3.1 Lite: 10 créditos por geração",
+      "fonte": "https://support.google.com/flow/answer/16526234",
+      "conferido": "2026-10-12"
+    }
+  ],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "gerar vídeo com IA de graça",
+    "chaves": [
+      "google flow",
+      "veo",
+      "video com ia",
+      "gratis"
+    ]
+  },
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Vídeo com IA de graça, todo dia: é o Flow, do Google.",
+          "legenda": "Vídeo com IA de graça, todo dia: é o Flow, do Google."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Entra com a sua conta Google e ganha cinquenta créditos por dia.",
+          "legenda": "Entra com a sua conta Google e ganha 50 créditos por dia."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "No Veo três ponto um Lite, cada vídeo gasta dez. Dá uns cinco por dia.",
+          "legenda": "No Veo 3.1 Lite, cada vídeo gasta 10. Dá uns 5 por dia."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Descreve em quatro partes: quem aparece, o que faz, a câmera e o estilo.",
+          "legenda": "Descreve em 4 partes: quem aparece, o que faz, a câmera e o estilo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O modelo de prompt, o texto pronto, está no comentário.",
+          "legenda": "O modelo de prompt, o texto pronto, está no comentário."
+        },
+        {
+          "fala": "Salva e me segue.",
+          "legenda": "Salva e me segue."
+        }
+      ]
+    }
+  ],
+  "video": "videos/13-ia-video-gratis-raiox-final.mp4",
+  "fonte_html": "kit/13-ia-video-gratis-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "formato": "curto"
+}

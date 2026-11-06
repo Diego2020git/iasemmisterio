@@ -1,0 +1,77 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-26-agente-do-zero-05.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 26/10/2026 · 19h · Agente do zero #5: primeiro cenário no Make com Google Gemini AI (Create a Completion, Run once). Neon.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, AZ, CI, IN, CI, AZ];
+const HITS = [wt('make', 0), wt('zero', 1), wt('scenario', 2), wt('completion', 3), wt('once', 4), wt('1000', 5)];
+function modulo(x, y, r, rot, a, cor, pulso) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const e = back(clamp(a)); ctx.translate(x, y); ctx.scale(e, e);
+  ctx.shadowColor = cor; ctx.shadowBlur = 30 + 20 * (pulso || 0); ctx.fillStyle = cor; ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+  ctx.fillStyle = '#0b1a33'; ctx.beginPath(); ctx.arc(0, 0, r * .55, 0, 7); ctx.fill(); ctx.restore();
+  txt(rot, x, y + r + 50, ARC, 34, BR, { align: 'center', weight: 600, alpha: clamp(a) }); }
+const S = [
+  (t, lt) => {
+    frase('Agora ele roda no Make', 300, -1, SC[1] - .2, 76, { t, hot: 'Make', cor: CI });
+    modulo(cx0, 820, 130, 'Google Gemini AI', prog(lt, .3, .8), CI, .5 + .5 * Math.sin(t * 4));
+    exemplo(cx0, 1100, prog(lt, .6, .9));
+  },
+  (t, lt) => {
+    frase('Agente do zero', cy0 - 300, wt('agente', 1) - .1, SC[2] - .2, 92, { t, hot: 'zero', cor: CI });
+    selo('episódio 5', cx0, cy0 - 170, prog(t, wt('episodio', 1), wt('episodio', 1) + .3));
+    const a = prog(t, wt('make', 1) - .3, wt('make', 1) + .2);
+    neon3d(P.chip, cx0 - 300, cy0 + 120, 120 * back(prog(t, wt('cerebro', 1) - .3, wt('cerebro', 1))), 0, .2, CI, prog(t, wt('cerebro', 1) - .3, wt('cerebro', 1)));
+    modulo(cx0, cy0 + 120, 70, 'Make', a, IN, 0);
+    neon3d(P.balao, cx0 + 300, cy0 + 120, 120 * back(prog(t, wt('whatsapp', 1) - .3, wt('whatsapp', 1))), 0, .2, CI, prog(t, wt('whatsapp', 1) - .3, wt('whatsapp', 1)));
+    txt('cérebro', cx0 - 300, cy0 + 260, ARC, 34, BR, { align: 'center', weight: 600, alpha: prog(t, wt('cerebro', 1), wt('cerebro', 1) + .3) });
+    txt('WhatsApp', cx0 + 300, cy0 + 260, ARC, 34, BR, { align: 'center', weight: 600, alpha: prog(t, wt('whatsapp', 1), wt('whatsapp', 1) + .3) });
+  },
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    frase('Conta grátis no Make', 470, wt('conta', 2) - .1, SC[3] - .2, 76, { t, hot: 'grátis', cor: CI });
+    janela(640, 360, prog(lt, .1, .4), 'Make', (x, y, w) => {
+      const b = prog(t, wt('create', 2) - .2, wt('create', 2) + .2); if (b > 0) { ctx.save(); ctx.globalAlpha *= b; ctx.fillStyle = IN; rr(x + 60, y + 90, w - 260, 90, 45); ctx.fill();
+        txt('Create a new scenario', x + 60 + (w - 260) / 2, y + 135, ARC, 36, '#fff', { align: 'center', weight: 600 }); ctx.restore(); } });
+    exemplo(cx0, 1100, prog(lt, .4, .7));
+  },
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    frase('Adicione o Gemini', 470, wt('adicione', 3) - .1, SC[4] - .2, 76, { t, hot: 'Gemini', cor: CI });
+    modulo(cx0, 760, 110, 'Google Gemini AI', prog(t, wt('gemini', 3) - .3, wt('gemini', 3) + .2), CI, 0);
+    selo('Create a Completion', cx0, 1010, prog(t, wt('create', 3) - .1, wt('create', 3) + .2), CI);
+    selo('chave do episódio 2', cx0, 1100, prog(t, wt('chave', 3) - .1, wt('chave', 3) + .2), IN);
+    linhaTxt('nunca mostre sua chave', 1190, wt('chave', 3), SC[4] - .2, t, 36, 'rgba(244,248,255,.8)');
+    exemplo(cx0, 1270, prog(lt, .4, .7));
+  },
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    frase('Clique em Run once', 470, wt('clique', 4) - .1, SC[5] - .2, 76, { t, hot: 'Run once', cor: CI });
+    const o = wt('once', 4);
+    modulo(cx0, 760, 110, 'Google Gemini AI', prog(lt, .1, .4), CI, prog(t, o, o + .3) * (1 - prog(t, o + .6, o + 1.2)));
+    const m = prog(t, wt('abre', 4) - .2, wt('abre', 4) + .2); if (m > 0) { ctx.save(); ctx.globalAlpha *= m; ctx.fillStyle = 'rgba(244,248,255,.95)'; rr(cx0 - 330, 960, 660, 90, 24); ctx.fill(); txt('Abre domingo?', cx0 - 300, 1005, ARC, 36, '#1b2440', { weight: 600 }); ctx.restore(); }
+    const rsp = prog(t, wt('resposta', 4) - .2, wt('resposta', 4) + .2); if (rsp > 0) { ctx.save(); ctx.globalAlpha *= rsp; ctx.fillStyle = AZ; rr(cx0 - 330, 1080, 660, 90, 24); ctx.fill(); txt('Sim, das 7h às 12h.', cx0 - 300, 1125, ARC, 36, '#fff', { weight: 600 }); ctx.restore(); }
+    exemplo(cx0, 1230, prog(lt, .4, .7));
+  },
+  (t, lt) => {
+    neon3d(P.check, cx0, cy0 - 120, 190 * back(prog(lt, .05, .5)), .3 * Math.sin(t * .8), .3, CI, prog(lt, .05, .3));
+    frase('Funcionou', cy0 + 120, wt('funcionou', 5) - .1, SC[6] - .2, 84, { t, hot: 'Funcionou', cor: CI });
+    selo('grátis: 1.000 créditos por mês', cx0, cy0 + 250, prog(t, wt('gratis', 5) - .1, wt('gratis', 5) + .2));
+    linhaTxt('1 crédito por módulo que roda', cy0 + 350, wt('modulo', 5) - .2, SC[6] - .2, t, 40);
+  },
+  (t, lt) => fim(t, lt, 'Segue a série', 'quarta: episódio 6'),
+];
+</script></body></html>

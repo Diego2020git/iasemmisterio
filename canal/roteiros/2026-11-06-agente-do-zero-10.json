@@ -1,0 +1,109 @@
+{
+ "id": "2026-11-06-agente-do-zero-10",
+ "serie": "Agente do zero",
+ "data": "2026-11-06",
+ "horario": "19:00",
+ "titulo": "Agente do zero #10: quando chamar você e quanto custa",
+ "descricao": "Agente do zero, episódio 10 🙋\nNem tudo o agente deve resolver sozinho. Hoje ele passa a chamar você quando o cliente pede uma pessoa, e a gente faz a conta de quanto o agente gasta.\n1️⃣ Nas instruções do agente (episódio 3), acrescente: \"Se o cliente pedir para falar com uma pessoa, reclamar ou perguntar algo fora da lista, responda só: Vou chamar uma pessoa da equipe.\"\n2️⃣ No cenário do Make, depois do Google Gemini AI, crie um filtro: a resposta do Gemini contém \"pessoa da equipe\". Só o que passar nesse filtro segue pelo novo caminho.\n3️⃣ Nesse caminho, adicione Gmail → Send an Email para o seu e-mail, com o número e a mensagem do cliente. O cliente recebe a frase normal e você fica sabendo na hora.\nQuanto custa: no Make, cada módulo que roda gasta 1 crédito (filtro não gasta). O cenário da série tem uns 5 módulos por mensagem (Watch Events, Get a record, Gemini, Send a Message, Add/replace a record), então os 1.000 créditos grátis dão umas 200 mensagens por mês. Conta aproximada: cada aviso por Gmail gasta mais 1. Na Meta, desde 01/10/2026, as respostas dentro de 24 h contam: 1.000 grátis por mês por número; sem forma de pagamento, o excedente não é entregue. A chave do Gemini no plano grátis tem limite de uso.\nSegunda, episódio 11: marcar na agenda.\n\nFontes (conferidas em 01/11/2026): help.make.com/credits · make.com/pricing · developers.facebook.com (WhatsApp pricing, non-template messages) · make.com/how-to-guides (Gmail Send an Email com filtro)\n\n#ia #agentedeia #whatsapp #make #gemini #automacao",
+ "comentario_fixado": null,
+ "voz": "pt-BR-Chirp3-HD-Fenrir",
+ "ep": 10,
+ "estilo": "neon",
+ "formato": "completo",
+ "cenas": [
+  {
+   "frases": [
+    {
+     "fala": "Hoje o agente sabe a hora de chamar você, e quanto ele custa.",
+     "legenda": "Hoje o agente sabe a hora de chamar você, e quanto ele custa."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Agente do zero, episódio dez.",
+     "legenda": "Agente do zero, episódio dez."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Um: nas instruções, escreva: se pedirem uma pessoa, responda só: vou chamar uma pessoa da equipe.",
+     "legenda": "Um: nas instruções, escreva: se pedirem uma pessoa, responda só: vou chamar uma pessoa da equipe."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Dois: no Make, depois do Gemini, crie um filtro: a resposta contém pessoa da equipe.",
+     "legenda": "Dois: no Make, depois do Gemini, crie um filtro: a resposta contém pessoa da equipe."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Três: nesse caminho, Gmail, Send an Email, pra você, com o número do cliente.",
+     "legenda": "Três: nesse caminho, Gmail, Send an Email, pra você, com o número do cliente."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Custo: uns cinco créditos por mensagem. O Make grátis dá umas duzentas por mês.",
+     "legenda": "Custo: uns cinco créditos por mensagem. O Make grátis dá umas duzentas por mês."
+    }
+   ]
+  },
+  {
+   "frases": [
+    {
+     "fala": "Segunda, episódio onze: marcar na agenda.",
+     "legenda": "Segunda, episódio onze: marcar na agenda."
+    }
+   ]
+  }
+ ],
+ "dados_que_envelhecem": [
+  {
+   "dado": "Make: 1 operação = 1 crédito; filtro e router não gastam; trigger que traz vários itens conta 1",
+   "fonte": "https://help.make.com/credits",
+   "conferido": "2026-11-01"
+  },
+  {
+   "dado": "Make grátis: 1.000 créditos/mês, 2 cenários ativos",
+   "fonte": "https://www.make.com/en/pricing",
+   "conferido": "2026-11-01"
+  },
+  {
+   "dado": "Meta cobra mensagens de atendimento desde 01/10/2026: 1.000 grátis por mês por número; sem forma de pagamento, entrega só dentro da faixa grátis",
+   "fonte": "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/non-template-messages",
+   "conferido": "2026-11-01"
+  },
+  {
+   "dado": "Make Gmail: módulo Send an Email com filtro antes",
+   "fonte": "https://www.make.com/how-to-guides/how-to-automatically-send-emails-from-google-sheets",
+   "conferido": "2026-11-01"
+  }
+ ],
+ "registro": {
+  "tema": "agente do zero 10: regra no prompt pra chamar humano, filtro no Make (contém pessoa da equipe) e Gmail Send an Email; custo ~5 créditos por mensagem, ~200 mensagens no Make grátis, Meta 1.000 respostas grátis",
+  "chaves": [
+   "chamar humano filtro gmail",
+   "custo creditos make meta",
+   "agente do zero 10"
+  ]
+ },
+ "video": "videos/2026-11-06-19h-agente-do-zero-10-neon.mp4",
+ "fonte_html": "kit/2026-11-06-19h-agente-do-zero-10-neon.html",
+ "imagens": [
+  {
+   "id": "todas",
+   "origem": "gerada por código (kit neon)"
+  }
+ ]
+}

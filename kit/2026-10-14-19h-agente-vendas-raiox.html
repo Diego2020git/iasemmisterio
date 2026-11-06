@@ -1,0 +1,83 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-14-19h-agente-vendas.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="raiox-motion.js"></script>
+<script>
+// 14/10/2026 · Agente na Prática · agente de vendas que qualifica contatos (quente, morno, frio). Tempos em TEMPOS (voz.py).
+const EP = '20';
+const SC = TEMPOS.cenas, CAPS = TEMPOS.frases;
+const HEAT = [['quente', 'QUENTE', COL.red], ['morno', 'MORNO', '#f2b84b'], ['frio', 'FRIO', COL.cyan]];
+// pessoa em traço (cabeça + ombros)
+function person(cx, cy, r, a, color = COL.ink) {
+  if (a <= 0) return;
+  ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 5;
+  draw(a, 2 * Math.PI * r * 2.2, () => { ctx.beginPath(); ctx.arc(cx, cy - r * .5, r * .45, 0, 7); ctx.stroke(); ctx.beginPath(); ctx.arc(cx, cy + r * 1.05, r * .95, Math.PI * 1.12, Math.PI * 1.88); ctx.stroke(); });
+  ctx.restore();
+}
+
+// 0 · gancho (versão curta, 12/10): no quadro 1 os contatos já estão separados por cor; o quente vai pra você
+CAMS[0] = () => [[0, 0, 30, 1.04, 0], [cue('olhando'), 0, 0, 1, 0]];
+function s0(t, lt) {
+  kinetic([{ w: 'Quem compra', t: cue('comprar') }, { w: 'x quem olha', t: cue('olhando') }], M, 230, lt, { size: 84, hl: [0], maxW: 900 });
+  const cols = [COL.red, '#f2b84b', COL.cyan, COL.cyan, '#f2b84b'];
+  for (let i = 0; i < 5; i++) person(M + 90 + i * (W - 2 * M - 180) / 4, 560, 80, 1, cols[i]);
+  wire(Mesh.box(1, 1, 1), { x: W / 2, y: 900, s: 200, rx: -.4, ry: -.6, d: 4 }, 1, COL.cyan, 3);
+  const up = .5 + .5 * Math.sin(lt * 4);
+  ctx.save(); ctx.strokeStyle = COL.red; ctx.lineWidth = 6; ctx.globalAlpha = .4 + .6 * up; ctx.beginPath(); ctx.moveTo(M + 90, 700); ctx.lineTo(M + 90, 1080); ctx.lineTo(W / 2 - 60, 1080); ctx.stroke(); ctx.restore();
+  txt('QUENTE → VOCÊ', W / 2 + 40, 1090, EXP, 40, COL.red, { alpha: prog(lt, cue('comprar') - .1, cue('comprar') + .3) });
+  stamp(W / 2, 1270, 'agente de vendas', prog(lt, cue('agente') - .1, cue('agente') + .25), 34);
+}
+// 1 · 3 perguntas aparecem uma a uma
+CAMS[1] = () => [[0, 0, 0, 1, 0], [cue('investir'), 0, 30, 1.04, 0]];
+function s1(t, lt) {
+  title(['3 perguntas'], lt, 0, 200, 84, 0);
+  [['precisa', 'O que você precisa?'], ['quando', 'Pra quando?'], ['investir', 'Quanto quer investir?']].forEach(([w, q], i) => {
+    const a = prog(lt, cue(w) - .3, cue(w) + .3), y = 470 + i * 250;
+    panel(M, y, W - 2 * M, 190, prog(lt, i * .12, .4 + i * .12), 'pergunta ' + (i + 1));
+    txt(typed(q, a), M + 40, y + 115, ARC, 48, COL.ink, { weight: 600 });
+  });
+}
+// 2 · a nota: termômetro com três faixas
+CAMS[2] = () => [[0, 0, 0, 1, 0], [cue('frio'), 0, 30, 1.04, 0]];
+function s2(t, lt) {
+  title(['A nota'], lt, .05, 200, 92, 0);
+  fig('fig. 03 · cada contato recebe uma', lt, .2, 320);
+  const x = W / 2 - 60, y0 = 450, h = 780;
+  ctx.save(); ctx.globalAlpha = prog(lt, cue('nota') - .2, cue('nota') + .3); ctx.strokeStyle = COL.ink; ctx.lineWidth = 5; rr(x, y0, 120, h, 60); ctx.stroke(); ctx.restore();
+  HEAT.forEach(([w, l, c], i) => {
+    const a = prog(lt, cue(w) - .1, cue(w) + .3), y = y0 + 40 + i * 250;
+    if (a <= 0) return;
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = c; ctx.fillRect(x + 20, y, 80, 200 * a); ctx.restore();
+    txt(l, x + 170, y + 110, EXP, 64, c, { alpha: a });
+  });
+}
+// 3 · o destino de cada nota: quente para você, morno lembrete em 2 dias, frio conteúdo
+CAMS[3] = () => [[0, 0, 0, 1, 0], [cue('conteúdo'), 0, 30, 1.04, 0]];
+function s3(t, lt) {
+  title(['Destino'], lt, .05, 200, 92, 0);
+  const rows = [[cue('quente'), 'QUENTE', COL.red, 'direto pra você + resumo'], [cue('morno'), 'MORNO', '#f2b84b', 'ganha um lembrete'], [cue('frio'), 'FRIO', COL.cyan, 'recebe conteúdo']];
+  rows.forEach(([t0, l, c, d], i) => {
+    const a = prog(lt, t0 - .1, t0 + .4), y = 440 + i * 280;
+    if (a <= 0) return;
+    txt(l, M, y + 70, EXP, 56, c, { alpha: a });
+    draw(a, 400, () => { ctx.save(); ctx.strokeStyle = c; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(M + 330, y + 50); ctx.lineTo(M + 440, y + 50); ctx.stroke(); ctx.restore(); });
+    panel(M + 470, y - 20, W - 2 * M - 470, 150, a);
+    txt(typed(d, prog(a, .3, 1)), M + 500, y + 65, ARC, 34, COL.ink, { weight: 600 });
+  });
+
+}
+// 4 · card final
+function s4(t, lt) {
+  endCard(t, SC[4] + cue('salva') - .25);
+}
+const SCENES = [s0, s1, s2, s3, s4];
+window.DURATION = TEMPOS.duracao;
+</script>
+</body></html>

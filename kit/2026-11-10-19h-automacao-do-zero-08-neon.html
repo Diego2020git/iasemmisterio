@@ -1,0 +1,96 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-10-automacao-do-zero-08.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 10/11/2026 · 19h · Boleto no Gmail vira lembrete na Google Agenda (Automação do zero #8). Grade de engajamento de 06/11: gancho com o resultado, sem número na abertura.
+// Mecanismo: Zapier olha o Gmail a cada 15 min → email que bate com a busca "boleto" → Google Calendar Create Detailed Event, início "tomorrow at noon". Fontes: zapier.com/apps/gmail/integrations/google-calendar, help.zapier.com (Modify date and time formats), zapier.com/pricing.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [wt('publish', 4) + .1];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, CI, VERDE, AZ, AMB, AZ];
+const HITS = [wt('gmail', 0), wt('agenda', 0), wt('zapier', 1), wt('gatilho', 2), wt('search', 2), wt('boleto', 2), wt('calendar', 3), wt('assunto', 3), wt('tomorrow', 4), wt('publish', 4), wt('quinze', 5), wt('vencimento', 5)];
+// caixa do Gmail com o email do boleto
+function caixa(x, y, w, a, novo) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#ffffff'; rr(x, y, w, 330, 18); ctx.fill();
+  ctx.fillStyle = '#e8eefc'; rr(x, y, w, 70, 18); ctx.fill(); ctx.fillRect(x, y + 50, w, 20);
+  ctx.fillStyle = '#ea4335'; ctx.beginPath(); ctx.arc(x + 44, y + 36, 20, 0, 7); ctx.fill(); txt('M', x + 44, y + 38, ARC, 24, '#fff', { align: 'center', weight: 800 }); txt('Gmail · Caixa de entrada', x + 80, y + 38, ARC, 28, '#1b2440', { weight: 700 });
+  const L = [['Loja Exemplo', 'Seu pedido saiu pra entrega', 1], ['Escola', 'Reunião de pais', 1], ['Energia Exemplo', 'Seu boleto de novembro chegou', novo]];
+  L.forEach(([de, ass, al], i) => { if (al <= 0) return; const yy = y + 90 + i * 76; ctx.save(); ctx.globalAlpha *= clamp(al);
+    ctx.fillStyle = i === 2 ? '#fff4d6' : '#f4f6fb'; rr(x + 20, yy, w - 40, 64, 12); ctx.fill();
+    txt(de, x + 40, yy + 40, ARC, 26, '#1b2440', { weight: 800 }); txt(ass, x + 260, yy + 40, ARC, 26, '#3a4766', { weight: 600 });
+    if (i === 2) txt('NOVO', x + w - 44, yy + 40, ARC, 22, '#b07d00', { weight: 800, align: 'right' }); ctx.restore(); });
+  ctx.restore(); }
+// dia na Google Agenda com o lembrete
+function agendaDia(x, y, w, a, marcado) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#ffffff'; rr(x, y, w, 340, 18); ctx.fill();
+  ctx.fillStyle = '#e8eefc'; rr(x, y, w, 70, 18); ctx.fill(); ctx.fillRect(x, y + 50, w, 20); txt('Google Agenda · amanhã', x + 24, y + 38, ARC, 28, '#1b2440', { weight: 700 });
+  ['11:00', '12:00', '13:00'].forEach((h, i) => { const yy = y + 100 + i * 80; txt(h, x + 24, yy + 20, ARC, 26, '#5a6a8f', { weight: 600 }); ctx.strokeStyle = '#dde4f3'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x + 120, yy); ctx.lineTo(x + w - 20, yy); ctx.stroke(); });
+  if (marcado > 0) { ctx.save(); ctx.globalAlpha *= clamp(marcado); ctx.fillStyle = '#2e6bff'; rr(x + 130, y + 182, w - 160, 72, 12); ctx.fill(); txt('Seu boleto de novembro chegou', x + 150, y + 228, ARC, 26, '#ffffff', { weight: 700 }); ctx.restore(); }
+  ctx.restore(); }
+function passo(x, y, w, rot, app, ev, a, cor) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); const e = .9 + .1 * back(clamp(a)); ctx.translate(x, y + 85); ctx.scale(e, e); ctx.translate(-x, -y - 85);
+  ctx.fillStyle = 'rgba(10,30,60,.95)'; rr(x - w / 2, y, w, 170, 24); ctx.fill(); ctx.strokeStyle = cor; ctx.lineWidth = 4; ctx.shadowColor = cor; ctx.shadowBlur = 24; rr(x - w / 2, y, w, 170, 24); ctx.stroke(); ctx.shadowBlur = 0;
+  txt(rot, x - w / 2 + 30, y + 42, ARC, 26, cor, { weight: 600, ls: 2 }); txt(app, x - w / 2 + 30, y + 95, ARC, 42, BR, { weight: 800 }); txt(ev, x - w / 2 + 30, y + 142, ARC, 34, 'rgba(244,248,255,.85)', { weight: 600 }); ctx.restore(); }
+const S = [
+  // 0 · gancho: email do boleto vira evento
+  (t, lt) => {
+    titulo('O BOLETO VIRA LEMBRETE', 360, -1, SC[1] - .2, t, 64, BR, 'LEMBRETE', AMB);
+    caixa(cx0 - 410, 450, 820, prog(lt, 0, .2), prog(t, wt('boleto', 0) - .2, wt('boleto', 0) + .2));
+    agendaDia(cx0 - 410, 830, 820, prog(t, wt('vira', 0) - .2, wt('vira', 0) + .2), prog(t, wt('agenda', 0) - .3, wt('agenda', 0) + .1));
+    exemplo(cx0, 1220, prog(lt, .3, .6));
+  },
+  // 1 · por que importa
+  (t, lt) => {
+    titulo('SEM PROGRAMAR', 500, SC[1], SC[2] - .2, t, 84, BR, 'PROGRAMAR', CI);
+    versao('GRÁTIS', cx0, 700, prog(t, wt('graca', 1) - .1, wt('graca', 1) + .3), VERDE, 0, 60);
+    neon3d(P.relogio, cx0, 980 + flut(t), 110 * back(prog(lt, .1, .5)), .3 * Math.sin(t), .1, AMB, prog(lt, .1, .4));
+  },
+  // 2 · passo 1: gatilho Gmail
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('GATILHO: O GMAIL', 450, wt('gatilho', 2) - .1, SC[3] - .2, t, 80, BR, 'GMAIL', CI);
+    linhaTxt('gatilho = o que dispara tudo', 550, wt('gatilho', 2) - .2, SC[3] - .2, t, 38, CI);
+    passo(cx0, 620, 820, 'GATILHO (TRIGGER)', 'Gmail', 'New Email Matching Search', prog(t, wt('gmail', 2) - .2, wt('gmail', 2) + .3), CI);
+    janela(860, 180, prog(t, wt('busca', 2) - .3, wt('busca', 2)), 'New Email Matching Search', (x, y, w) => {
+      campo(x + 20, y + 20, w - 40, 'Search String', 'boleto', prog(t, wt('escreva', 2) - .1, wt('boleto', 2) + .2), prog(t, wt('boleto', 2), wt('boleto', 2) + .3)); });
+  },
+  // 3 · passo 2: Create Detailed Event
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('AÇÃO: A AGENDA', 450, wt('acao', 3) - .1, SC[4] - .2, t, 80, BR, 'AGENDA', VERDE);
+    passo(cx0, 560, 820, 'AÇÃO (ACTION)', 'Google Calendar', 'Create Detailed Event', prog(t, wt('calendar', 3) - .2, wt('calendar', 3) + .3), VERDE);
+    janela(800, 200, prog(t, wt('titulo', 3) - .3, wt('titulo', 3)), 'Create Detailed Event', (x, y, w) => {
+      campo(x + 20, y + 20, w - 40, 'Summary', '(assunto do email)', prog(t, wt('titulo', 3) - .1, wt('assunto', 3) + .2), prog(t, wt('assunto', 3), wt('assunto', 3) + .3)); });
+  },
+  // 4 · passo 3: data + Publish
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('AMANHÃ AO MEIO-DIA', 450, wt('start', 4) - .2, SC[5] - .2, t, 70, BR, 'MEIO-DIA', AZ);
+    janela(560, 200, prog(t, wt('start', 4) - .3, wt('start', 4)), 'Create Detailed Event', (x, y, w) => {
+      campo(x + 20, y + 20, w - 40, 'Start Date & Time', 'tomorrow at noon', prog(t, wt('escreva', 4) - .1, wt('noon', 4) + .2), prog(t, wt('noon', 4), wt('noon', 4) + .3)); });
+    agendaDia(cx0 - 410, 800, 820, prog(t, wt('amanha', 4) - .3, wt('amanha', 4)), prog(t, wt('meiodia', 4) - .2, wt('meiodia', 4) + .2));
+    pilula('Teste', cx0 - 200, 1220, 280, prog(t, wt('teste', 4) - .2, wt('teste', 4) + .2), CI, '', 1, 40);
+    botao(cx0 + 160, 1220, 'Publish', prog(t, wt('clique', 4) - .1, wt('clique', 4) + .2), prog(t, wt('publish', 4), wt('publish', 4) + .4), AZ);
+  },
+  // 5 · limites
+  (t, lt) => {
+    titulo('OS LIMITES', 380, SC[5], SC[6] - .2, t, 90, BR, 'LIMITES', AMB);
+    neon3d(P.relogio, cx0, 640 + flut(t), 80 * back(prog(t, wt('gratis', 5) - .3, wt('gratis', 5))), t * .5, .1, AMB, prog(t, wt('gratis', 5) - .3, wt('gratis', 5)));
+    pilula('grátis: confere a cada 15 min', cx0, 850, 740, prog(t, wt('confere', 5) - .2, wt('minutos', 5) + .2), AMB, '100 TAREFAS POR MÊS', 1, 40);
+    pilula('lembrete é pra amanhã', cx0, 1030, 600, prog(t, wt('confira', 5) - .3, wt('confira', 5) + .1), CI, '', 1, 40);
+    pilula('vencimento: veja no boleto', cx0, 1180, 680, prog(t, wt('vencimento', 5) - .2, wt('boleto', 5) + .2), VERDE, '', 1, 40);
+  },
+  // 6 · fim
+  (t, lt) => fim(t, lt, 'Salva e segue', 'sábado tem mais'),
+];
+</script></body></html>

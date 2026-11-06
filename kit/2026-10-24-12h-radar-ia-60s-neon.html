@@ -1,0 +1,102 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-24-radar-ia-60s.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 24/10/2026 · 12h · Radar IA #9 (60 s): Gemini Notebook revisa o roteiro, Docs Live no celular, Claude verifica segurança de 100+ bibliotecas. Neon.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const COR = [AZ, CI, AZ, IN, CI, AZ, AZ];
+const HITS = [wt('notebook', 0), wt('voz', 0), wt('falhas', 0), wt('radar', 1), wt('roteiro', 2), wt('mudancas', 2), wt('falando', 3), wt('pago', 3), wt('100', 4), wt('falhas', 4), wt('review', 5)];
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0]];
+function fonte(str, t0, t1, t) { linhaTxt(str, 1560, t0, t1, t, 28, 'rgba(244,248,255,.6)'); }
+const ROT = ['1. O problema', '2. Os números do mês', '3. O que muda agora', '4. Próximos passos'];
+function roteiro(x, y, w, t, t0, risca) { ROT.forEach((l, i) => { const a = prog(t, t0 + i * .3, t0 + i * .3 + .3); if (a <= 0) return;
+  ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = '#ffffff'; rr(x, y + i * 78, w, 66, 12); ctx.fill();
+  txt(i === 1 && risca > 0 ? '2. Exemplos da padaria' : l, x + 22, y + i * 78 + 34, ARC, 32, i === 1 && risca > 0 ? '#2e6bff' : '#1b2440', { weight: 600 }); ctx.restore(); }); }
+function onda(x, y, w, a, t) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.strokeStyle = CI; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.shadowColor = CI; ctx.shadowBlur = 20;
+  for (let i = 0; i < 17; i++) { const xx = x - w / 2 + i * w / 16, h = 20 + 60 * Math.abs(Math.sin(t * 5 + i * .8)); ctx.beginPath(); ctx.moveTo(xx, y - h / 2); ctx.lineTo(xx, y + h / 2); ctx.stroke(); } ctx.restore(); }
+function docLinhas(x, y, w, t, t0) { [[.9, 1], [.75, 0], [.85, 0], [.6, 0], [.8, 0]].forEach((l, i) => { const q = prog(t, t0 + i * .5, t0 + i * .5 + .4); if (q <= 0) return;
+  ctx.fillStyle = l[1] ? '#1b2440' : '#9aa6bf'; rr(x, y + i * 56, w * l[0] * q, l[1] ? 30 : 20, 8); ctx.fill(); }); }
+function codigo(x, y, a, t, achou) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+  ctx.fillStyle = 'rgba(10,30,60,.95)'; rr(x - 380, y, 760, 330, 26); ctx.fill(); ctx.strokeStyle = CI; ctx.lineWidth = 3; ctx.shadowColor = CI; ctx.shadowBlur = 20; rr(x - 380, y, 760, 330, 26); ctx.stroke(); ctx.shadowBlur = 0;
+  const L = [[0, .5, AZ], [1, .7, CI], [1, .55, BR], [2, .4, BR], [1, .62, CI], [0, .3, AZ]];
+  L.forEach((l, i) => { const q = clamp((t * 3) - i * .5 - 1); if (q <= 0) return; ctx.fillStyle = i === 3 && achou > 0 ? '#ff5c8a' : l[2]; ctx.globalAlpha = clamp(a) * .85; rr(x - 330 + l[0] * 50, y + 50 + i * 42, 560 * l[1] * q, 18, 9); ctx.fill(); });
+  if (achou > 0) { ctx.globalAlpha = clamp(a) * clamp(achou); ctx.strokeStyle = '#ff5c8a'; ctx.lineWidth = 5; ctx.shadowColor = '#ff5c8a'; ctx.shadowBlur = 25; rr(x - 250, y + 50 + 3 * 42 - 14, 300, 46, 12); ctx.stroke(); }
+  ctx.restore(); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    linhaTxt('RADAR IA · 24/10', 300, -1, SC[1] - .2, t, 34, CI);
+    frase('Revise antes de gerar', 620, -1, SC[1] - .2, 64, { t, hot: 'antes', cor: CI });
+    frase('Google Docs por voz', 860, wt('docs', 0) - .1, SC[1] - .2, 64, { t, hot: 'por voz' });
+    frase('Claude acha falhas antigas', 1100, wt('claude', 0) - .1, SC[1] - .2, 60, { t, hot: 'falhas', cor: CI });
+  },
+  // 1 · o que é o radar
+  (t, lt) => {
+    neon3d(P.radar, cx0, cy0 - 90, 220 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .05, .3));
+    frase('Radar IA', cy0 + 230, wt('radar', 1) - .1, SC[2] - .2, 100, { t, hot: 'IA', cor: CI });
+    frase('as 3 notícias de hoje', cy0 + 350, wt('tres', 1) - .1, SC[2] - .2, 56, { t, hot: '3 notícias' });
+  },
+  // 2 · Gemini Notebook
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    frase('Gemini Notebook', 470, wt('gemini', 2) - .1, SC[3] - .2, 80, { t, hot: 'Notebook', cor: CI });
+    linhaTxt('o antigo NotebookLM', 580, wt('antigo', 2) - .2, SC[3] - .2, t, 40, CI);
+    const f2 = 1 - prog(t, SC[3] - .45, SC[3] - .2);
+    janela(680, 470, prog(t, wt('roteiro', 2) - .4, wt('roteiro', 2)) * f2, 'Roteiro dos slides', (x, y, w) => roteiro(x, y, w, t, wt('roteiro', 2) - .2, prog(t, wt('mudancas', 2), wt('mudancas', 2) + .3)));
+    exemplo(cx0, 1190, prog(t, wt('roteiro', 2), wt('roteiro', 2) + .3) * f2);
+    selo('você pede a mudança antes', cx0, 1290, prog(t, wt('mudancas', 2) - .2, wt('mudancas', 2) + .1), CI, f2);
+    selo('sem apresentação errada', cx0, 1390, prog(t, wt('errada', 2) - .4, wt('errada', 2)), CI, f2);
+    fonte('Fonte: Google (blog e central de ajuda)', SC[2] + .4, SC[3] - .2, t);
+  },
+  // 3 · Docs Live
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    frase('Docs Live no celular', 470, wt('docs', 3) - .1, SC[4] - .2, 76, { t, hot: 'Live', cor: CI });
+    const f3 = 1 - prog(t, SC[4] - .45, SC[4] - .2);
+    onda(cx0, 680, 560, prog(t, wt('falando', 3) - .6, wt('falando', 3) - .2) * f3, t);
+    janela(780, 380, prog(t, wt('documento', 3) - .4, wt('documento', 3)) * f3, 'Google Docs', (x, y, w) => docLinhas(x, y, w, t, wt('documento', 3)));
+    exemplo(cx0, 1200, prog(t, wt('documento', 3), wt('documento', 3) + .3) * f3);
+    selo('é pago: Google AI Pro, Ultra e empresas', cx0, 1300, prog(t, wt('pago', 3) - .2, wt('pago', 3) + .1), IN, f3);
+    fonte('Fonte: Google Workspace Updates (21/10)', SC[3] + .4, SC[4] - .2, t);
+  },
+  // 4 · Claude e as falhas
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    frase('Claude confere a segurança', 470, wt('anthropic', 4) - .1, SC[5] - .2, 64, { t, hot: 'segurança', cor: CI });
+    const f4 = 1 - prog(t, SC[5] - .45, SC[5] - .2);
+    frase('100+ programas livres', 600, wt('100', 4) - .1, SC[5] - .2, 56, { t, hot: '100+' });
+    codigo(cx0, 720, prog(t, wt('programa', 4) - .3, wt('programa', 4) + .2) * f4, t - wt('programa', 4) + .3, prog(t, wt('falhas', 4) - .1, wt('falhas', 4) + .3));
+    selo('falhas escondidas há anos', cx0, 1120, prog(t, wt('anos', 4) - .3, wt('anos', 4)), IN, f4);
+    exemplo(cx0, 1200, prog(t, wt('programa', 4), wt('programa', 4) + .3) * f4);
+    linhaTxt('resultado divulgado pela própria Anthropic', 1300, wt('anos', 4), SC[5] - .2, t, 32, 'rgba(244,248,255,.7)');
+    fonte('Fonte: Anthropic (pesquisa)', SC[4] + .4, SC[5] - .2, t);
+  },
+  // 5 · teste hoje
+  (t, lt) => {
+    frase('Teste hoje', 300, wt('qual', 5) - .1, SC[6] - .2, 80, { t, hot: 'hoje', cor: CI });
+    janela(470, 360, prog(t, wt('notebook', 5) - .3, wt('notebook', 5) + .2), 'Gemini Notebook · Studio', (x, y, w) => {
+      const on = prog(t, wt('review', 5), wt('review', 5) + .3);
+      txt('Review outline notes', x + 10, y + 40, ARC, 38, '#1b2440', { weight: 600 });
+      ctx.fillStyle = on > .5 ? '#2e6bff' : '#c5d0e6'; rr(x + w - 120, y + 16, 100, 50, 25); ctx.fill(); ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(x + w - 95 + 50 * on, y + 41, 20, 0, 7); ctx.fill();
+      ctx.fillStyle = '#d3dbee'; rr(x + 10, y + 120, 300, 22, 11); ctx.fill(); rr(x + 10, y + 170, 220, 22, 11); ctx.fill();
+    });
+    exemplo(cx0, 880, prog(t, wt('review', 5), wt('review', 5) + .3));
+    selo('leia o roteiro e peça uma mudança', cx0, 1000, prog(t, wt('leia', 5) - .2, wt('leia', 5) + .1), CI);
+  },
+  // 6 · logo + chamada
+  (t, lt) => fim(t, lt, 'Siga o Radar IA', 'todo dia às 12h'),
+];
+</script></body></html>

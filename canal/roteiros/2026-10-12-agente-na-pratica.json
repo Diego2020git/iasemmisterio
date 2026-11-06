@@ -1,0 +1,100 @@
+{
+  "id": "2026-10-12-agente-na-pratica",
+  "serie": "Agente na Prática",
+  "data": "2026-10-12",
+  "horario": "19:00",
+  "titulo": "Agente de IA ou chatbot? A diferença em 20 segundos",
+  "descricao": "Chatbot conversa. Agente resolve 👇\n💬 Chatbot: responde o que você pergunta e para aí\n🤖 Agente: entende o pedido, usa ferramentas (agenda, planilha, e-mail) e executa a tarefa\nExemplo: \"marca uma reunião com o João na quinta\"\nO chatbot te diz como marcar. O agente olha a agenda, acha o horário livre e manda o convite.\nSalva e me segue pra ver agentes na prática.\n\nFonte: exemplo montado pelo canal, sem números de terceiros.\n\n#agentedeia #chatbot #inteligenciaartificial #automacao #ia",
+  "hashtags": [
+    "agentedeia",
+    "chatbot",
+    "inteligenciaartificial",
+    "automacao",
+    "ia"
+  ],
+  "comentario_fixado": null,
+  "pesquisa": {
+    "fonte": "YouTube Data API v3, últimos 30 dias, pt-BR, consultado em 11/10/2026",
+    "termos": {
+      "agente de ia vs chatbot": {
+        "demanda_views_top10": 86681,
+        "concorrencia_canais_100k": 1
+      },
+      "o que é agente de ia": {
+        "demanda_views_top10": 185863,
+        "concorrencia_canais_100k": 4
+      }
+    }
+  },
+  "dados_que_envelhecem": [],
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit Raio-X)"
+    }
+  ],
+  "registro": {
+    "tema": "diferença entre agente e chatbot",
+    "chaves": [
+      "chatbot",
+      "diferença",
+      "agente de ia",
+      "reunião"
+    ]
+  },
+  "video": "videos/2026-10-12-19h-agente-vs-chatbot-raiox.mp4",
+  "fonte_html": "kit/2026-10-12-19h-agente-vs-chatbot-raiox.html",
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "17",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "O chatbot conversa. O agente de IA resolve.",
+          "legenda": "O chatbot conversa. O agente de IA resolve."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Pede pro chatbot de conversa: marca uma reunião com o João na quinta. Ele só explica como.",
+          "legenda": "Pede pro chatbot de conversa: marca uma reunião com o João na quinta. Ele só explica como."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O agente abre a sua agenda e acha um horário livre na quinta.",
+          "legenda": "O agente abre a sua agenda e acha um horário livre na quinta."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Confirma às três da tarde e manda o convite por e-mail.",
+          "legenda": "Confirma às 15h e manda o convite por e-mail."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Ele tem ferramentas: agenda, e-mail e planilha.",
+          "legenda": "Ele tem ferramentas: agenda, e-mail e planilha."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e me segue pra ver agentes na prática.",
+          "legenda": "Salva e me segue pra ver agentes na prática."
+        }
+      ]
+    }
+  ],
+  "formato": "curto"
+}

@@ -1,0 +1,104 @@
+{
+  "id": "2026-11-10-automacao-do-zero-08",
+  "serie": "Automação do zero",
+  "data": "2026-11-10",
+  "horario": "19:00",
+  "titulo": "Boleto chegou no Gmail? Vira lembrete na sua Google Agenda",
+  "descricao": "Automação do zero, episódio 8 🧾\nChegou email com boleto? Vira lembrete na sua Google Agenda pra amanhã ao meio-dia, sem você abrir nada.\n1️⃣ No zapier.com, + Create → Zap. Gatilho (Trigger): app Gmail, evento New Email Matching Search. Na busca (Search String), escreva: boleto\n2️⃣ Ação (Action): app Google Calendar, evento Create Detailed Event. Escolha a agenda e, em Summary (título), ligue o assunto (Subject) do email.\n3️⃣ Em Start Date & Time escreva: tomorrow at noon (o Zapier entende datas escritas assim). Em End Date & Time: tomorrow at 1pm. Teste e clique em Publish.\nLimites: o lembrete marca amanhã, não a data de vencimento; confira o vencimento no boleto. No plano grátis o Zapier confere a cada 15 minutos e dá 100 tarefas por mês (cada evento conta 1). Se o Zapier não entender a data, ele usa a hora em que rodou: teste antes.\nSábado tem mais.\n\nFontes (conferidas em 06/11/2026): zapier.com/apps/gmail/integrations/google-calendar · help.zapier.com (Modify date and time formats in Zap workflows) · zapier.com/pricing\n\n#ia #automacao #zapier #gmail #googleagenda #produtividade",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "a8",
+  "estilo": "neon",
+  "formato": "completo",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Boleto chegou no Gmail? Ele vira lembrete na sua Google Agenda, sozinho.",
+          "legenda": "Boleto chegou no Gmail? Ele vira lembrete na sua Google Agenda, sozinho."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Sem programar e de graça, no Zapier.",
+          "legenda": "Sem programar e de graça, no Zapier."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: gatilho, o que dispara tudo: Gmail, New Email Matching Search. Na busca, escreva boleto.",
+          "legenda": "Um: gatilho, o que dispara tudo: Gmail, New Email Matching Search. Na busca, escreva boleto."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: ação: Google Calendar, Create Detailed Event. No título, ligue o assunto do email.",
+          "legenda": "Dois: ação: Google Calendar, Create Detailed Event. No título, ligue o assunto do email."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: em Start Date and Time, escreva tomorrow at noon, amanhã ao meio-dia. Teste e clique em Publish.",
+          "legenda": "Três: em Start Date and Time, escreva tomorrow at noon, amanhã ao meio-dia. Teste e clique em Publish."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O grátis confere a cada quinze minutos. E confira o vencimento no próprio boleto.",
+          "legenda": "O grátis confere a cada quinze minutos. E confira o vencimento no próprio boleto."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva pra fazer hoje. Sábado tem mais.",
+          "legenda": "Salva pra fazer hoje. Sábado tem mais."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Zapier: Gmail New Email Matching Search → Google Calendar Create Detailed Event",
+      "fonte": "https://zapier.com/apps/gmail/integrations/google-calendar",
+      "conferido": "2026-11-06"
+    },
+    {
+      "dado": "Campo de data do Zapier entende texto como \"tomorrow at noon\"; se não entender, usa a hora em que rodou",
+      "fonte": "https://help.zapier.com/hc/en-us/articles/8496257974029-Modify-date-and-time-formats-in-Zap-workflows",
+      "conferido": "2026-11-06"
+    },
+    {
+      "dado": "Zapier grátis: 100 tarefas/mês, Zaps de 2 passos, checagem a cada 15 min",
+      "fonte": "https://zapier.com/pricing",
+      "conferido": "2026-11-06"
+    }
+  ],
+  "registro": {
+    "tema": "automação do zero 8: email com boleto no Gmail vira evento lembrete na Google Agenda (Zapier New Email Matching Search → Create Detailed Event)",
+    "chaves": [
+      "boleto gmail agenda lembrete",
+      "create detailed event",
+      "automacao do zero 8"
+    ]
+  },
+  "video": "videos/2026-11-10-19h-automacao-do-zero-08-neon.mp4",
+  "fonte_html": "kit/2026-11-10-19h-automacao-do-zero-08-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ]
+}

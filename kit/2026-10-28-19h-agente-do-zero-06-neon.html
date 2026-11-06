@@ -1,0 +1,79 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-10-28-agente-do-zero-06.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script>
+// 28/10/2026 · 19h · Agente do zero #6: número de teste grátis do WhatsApp (Meta for Developers, API Setup). Neon.
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, CI, AZ, CI, IN, CI, AZ];
+const HITS = [wt('whatsapp', 0), wt('gratis', 0), wt('zero', 1), wt('app', 2), wt('start', 3), wt('teste', 3), wt('celular', 4), wt('make', 5)];
+function chega(x, y, s, a, t0, t) { celular(x, y, s, .2 * Math.sin(t * .6), a, (cx, cy, w, sc) => {
+    msg(cx, cy, w, 'Hello World', 0, prog(t, t0, t0 + .4), sc);
+  }, 'Número de teste', CI); }
+const S = [
+  (t, lt) => {
+    frase('Seu agente no WhatsApp', 300, -1, SC[1] - .2, 72, { t, hot: 'WhatsApp', cor: CI });
+    chega(cx0, 880, .85, prog(lt, .2, .6), wt('numero', 0), t);
+    exemplo(cx0, 1300, prog(lt, .5, .8));
+    selo('número de teste grátis', cx0, 1390, prog(t, wt('gratis', 0) - .3, wt('gratis', 0)), CI);
+  },
+  (t, lt) => {
+    frase('Agente do zero', cy0 - 300, wt('agente', 1) - .1, SC[2] - .2, 92, { t, hot: 'zero', cor: CI });
+    selo('episódio 6', cx0, cy0 - 170, prog(t, wt('episodio', 1), wt('episodio', 1) + .3));
+    neon3d(P.balao, cx0, cy0 + 60, 150 * back(prog(lt, .2, .6)), .4 * Math.sin(t * .9), .3, CI, prog(lt, .2, .5));
+    selo('sem chip novo', cx0 - 190, cy0 + 280, prog(t, wt('chip', 1) - .2, wt('chip', 1) + .1), CI);
+    selo('sem cartão', cx0 + 210, cy0 + 280, prog(t, wt('cartao', 1) - .3, wt('cartao', 1)), CI);
+  },
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    frase('Crie um app na Meta', 470, wt('meta', 2) - .1, SC[3] - .2, 76, { t, hot: 'app', cor: CI });
+    linhaTxt('developers.facebook.com', 580, wt('desenvolvedores', 2) - .2, SC[3] - .2, t, 40, CI);
+    janela(680, 400, prog(t, wt('crie', 2) - .2, wt('crie', 2) + .2), 'Meta for Developers', (x, y, w) => {
+      campo(x, y, w, 'App', 'Meu agente', prog(t, wt('app', 2) - .1, wt('app', 2) + .3), 1);
+      const a = prog(t, wt('adicione', 2) - .1, wt('adicione', 2) + .3); if (a > 0) { ctx.save(); ctx.globalAlpha *= a;
+        ctx.fillStyle = '#e3f9ec'; rr(x, y + 140, w, 90, 16); ctx.fill(); ctx.fillStyle = '#25d366'; ctx.beginPath(); ctx.arc(x + 50, y + 185, 26, 0, 7); ctx.fill();
+        txt('WhatsApp', x + 100, y + 187, ARC, 38, '#1b2440', { weight: 600 }); txt('✓ adicionado', x + w - 30, y + 187, ARC, 30, '#1a8f4c', { align: 'right', weight: 600 }); ctx.restore(); }
+    });
+    exemplo(cx0, 1130, prog(lt, .4, .7));
+  },
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    frase('Start using the API', 470, wt('start', 3) - .1, SC[4] - .2, 72, { t, hot: 'Start', cor: CI });
+    linhaTxt('API = a conexão do WhatsApp', 580, wt('conexao', 3) - .2, SC[4] - .2, t, 40, CI);
+    botao(cx0 - 230, 660, 'Start using the API', prog(t, wt('clique', 3) - .1, wt('clique', 3) + .2) * (1 - prog(t, wt('tela', 3) - .3, wt('tela', 3))), prog(t, wt('start', 3), wt('start', 3) + .4), AZ);
+    janela(680, 360, prog(t, wt('tela', 3) - .2, wt('tela', 3) + .2), 'API Setup', (x, y, w) => {
+      campo(x, y, w, 'From', 'Número de teste', prog(t, wt('aparece', 3) - .1, wt('aparece', 3) + .3), 1);
+    });
+    selo('criado automaticamente', cx0, 1100, prog(t, wt('aparece', 3) - .2, wt('aparece', 3) + .1), CI);
+    exemplo(cx0, 1190, prog(t, wt('tela', 3), wt('tela', 3) + .3));
+  },
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    frase('Mande o teste', 470, wt('mande', 4) - .1, SC[5] - .2, 80, { t, hot: 'teste', cor: CI });
+    janela(600, 260, prog(lt, .1, .4), 'API Setup', (x, y, w) => {
+      campo(x, y, w, 'To', '+55 seu WhatsApp', prog(t, wt('destino', 4) - .3, wt('destino', 4) + .1), 1);
+    });
+    chega(cx0, 1210, .7, prog(t, wt('chega', 4) - .4, wt('chega', 4)), wt('celular', 4) - .2, t);
+    exemplo(cx0, 1545, prog(t, wt('chega', 4), wt('chega', 4) + .3));
+  },
+  (t, lt) => {
+    neon3d(P.cadeado, cx0, cy0 - 160, 150 * back(prog(lt, .05, .5)), .4 * Math.sin(t * .9), .3, IN, prog(lt, .05, .3));
+    frase('Só pra testar', cy0 + 60, wt('so', 5) - .1, SC[6] - .2, 84, { t, hot: 'testar', cor: CI });
+    selo('próximo: ligar no Make', cx0, cy0 + 200, prog(t, wt('proximo', 5) - .2, wt('proximo', 5) + .2), CI);
+  },
+  (t, lt) => fim(t, lt, 'Salva e segue', 'sexta: episódio 7'),
+];
+</script></body></html>
