@@ -21,7 +21,7 @@ const DURATION = SC[7], IMPACTO = SC[6] + .4;
 const CLIQUES = [];
 const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
 const COR = [AZ, CI, VERM, VERDE, AZ, AMB, AZ];
-const HITS = [wt('computador', 0), wt('internet', 0), wt('quatro', 1), wt('fechado', 1), wt('fechado', 2), wt('chave', 2), wt('aberto', 3), wt('pesos', 3), wt('casa', 3), wt('studio', 4), wt('gemma', 4), wt('gratis', 5), wt('memoria', 5), wt('gigas', 5)];
+const HITS = [wt('computador', 0), wt('internet', 0), wt('chave', 1), wt('fechado', 1), wt('fechado', 2), wt('chave', 2), wt('aberto', 3), wt('pesos', 3), wt('casa', 3), wt('studio', 4), wt('gemma', 4), wt('gratis', 5), wt('memoria', 5), wt('gigas', 5)];
 // notebook com a IA rodando local
 function notebook(x, y, s, a, t, off) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(x, y); ctx.scale(s, s);
   ctx.fillStyle = '#1b2440'; rr(-300, -200, 600, 380, 22); ctx.fill(); ctx.fillStyle = '#ffffff'; rr(-280, -182, 560, 344, 12); ctx.fill();
@@ -34,14 +34,13 @@ function notebook(x, y, s, a, t, off) { if (a <= 0) return; ctx.save(); ctx.glob
 const S = [
   // 0 · gancho
   (t, lt) => {
-    titulo('IA NO SEU COMPUTADOR', 360, -1, SC[1] - .2, t, 70, BR, 'COMPUTADOR', AZ);
+    titulo('IA DO GOOGLE NO SEU PC', 360, -1, SC[1] - .2, t, 70, BR, 'PC', AZ);
     notebook(cx0, 820, 1.1, prog(lt, 0, .3), t, prog(t, wt('internet', 0) - .3, wt('internet', 0) + .1));
     exemplo(cx0, 1130, prog(lt, .3, .6));
   },
-  // 1 · episódio
+  // 1 · por que importa
   (t, lt) => {
-    titulo('MODELOS E PARÂMETROS', 500, SC[1], SC[2] - .2, t, 70, BR, 'PARÂMETROS', CI);
-    versao('EPISÓDIO 4', cx0, 700, prog(t, wt('episodio', 1) - .1, wt('episodio', 1) + .3), CI, 0, 60);
+    titulo('ABERTO OU FECHADO?', 560, SC[1], SC[2] - .2, t, 76, BR, 'FECHADO?', CI);
     pilula('aberto', cx0 - 220, 940, 340, prog(t, wt('aberto', 1) - .2, wt('aberto', 1) + .2), VERDE, '', 1, 46);
     pilula('fechado', cx0 + 220, 940, 340, prog(t, wt('fechado', 1) - .2, wt('fechado', 1) + .2), VERM, '', 1, 46);
   },
@@ -86,6 +85,6 @@ const S = [
     linhaTxt('versões menores pedem menos', 1200, wt('bilhoes', 5), SC[6] - .2, t, 34, CI);
   },
   // 6 · fim
-  (t, lt) => fim(t, lt, 'Salva e segue', 'domingo: episódio 5'),
+  (t, lt) => fim(t, lt, 'Salva e segue', 'domingo tem mais'),
 ];
 </script></body></html>

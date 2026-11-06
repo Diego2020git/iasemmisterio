@@ -24,6 +24,13 @@ DIAS_DA_SERIE.update({"Radar IA": range(7), "Agente do zero": [0, 2, 4], "Automa
 GRADE["Extra"] = "extra"; DIAS_DA_SERIE["Extra"] = range(7)
 SERIES_ANTIGAS = {"Faça com IA", "Agente na Prática"}  # só até 18/10
 SERIES_NOVAS = {"Radar IA", "Agente do zero", "Automação do zero", "Termo de IA", "Modelos e parâmetros"}
+# Grade de engajamento (Diego, card de 06/11/2026 02:11Z), valendo de 07/11: 12h "Em alta com IA" (tema do Google Trends BR /
+# YouTube em alta com ângulo de IA, o Diego escolhe 1 de 3 pautas); Radar IA deixa de ser diário (1 notícia grande, "livre");
+# 19h independente: título com o resultado, sem "#N" nem "episódio" no título ou no gancho. Ver operacao/analise-engajamento-2026-11-06.md.
+ENGAJAMENTO_DESDE = "2026-11-07"
+GRADE["Em alta com IA"] = "12:00"; DIAS_DA_SERIE["Em alta com IA"] = range(7)
+SERIES_NOVAS.add("Em alta com IA")
+GANCHO_PROIBIDO = ("episodio", "radar ia de hoje", "temporada")
 # formato "curto" (diretrizes de retenção do Diego, 11/10/2026): 15 a 25 s de fala, card final pode passar um pouco.
 # "demo" (padrão até aqui): 35 a 45 s, quando a demonstração exige.
 # "completo" (Diego, 16/10/2026, thread "Retenção: gancho e ritmo"): 35 s com passo a passo, ferramenta, pedido na tela,
@@ -98,7 +105,20 @@ def validar(caminho, sem_mp4=False, trocar_slot=False):
         formato = "demo"
     if formato == "curto" and dia > CURTO_ATE:
         erros.append(f"formato 'curto' acabou em {CURTO_ATE} (Diego, 16/10): use \"formato\": \"completo\" (35 s)")
-    if r.get("serie") == "Radar IA" and formato != "radar-60":
+    if dia >= ENGAJAMENTO_DESDE:
+        if serie == "Em alta com IA" and formato != "livre":
+            erros.append("Em alta com IA usa \"formato\": \"livre\" (35 a 90 s)")
+        if serie != "Extra":
+            if re.search(r"#\s*\d", r.get("titulo", "")) or "episodio" in norm(r.get("titulo", "")):
+                erros.append("desde 07/11 (Diego, card 06/11) o título diz o resultado, sem \"#N\" nem \"episódio\" (o número vai só na legenda)")
+            gancho = " ".join(frases_da_narracao(r)[:2])
+            for proibido in GANCHO_PROIBIDO:
+                if proibido in norm(gancho):
+                    erros.append(f"gancho (2 primeiras falas) com '{proibido}': desde 07/11 abre com nome conhecido, pergunta de curiosidade e o resultado")
+    if r.get("serie") == "Radar IA" and dia >= ENGAJAMENTO_DESDE:
+        if formato not in ("radar-60", "livre"):
+            erros.append("Radar IA desde 07/11 é 1 notícia grande, \"formato\": \"livre\"")
+    elif r.get("serie") == "Radar IA" and formato != "radar-60":
         erros.append("Radar IA usa \"formato\": \"radar-60\" (3 notícias, 55 a 65 s; Diego, 16/10)")
     elif formato == "radar-60" and r.get("serie") != "Radar IA":
         erros.append("formato 'radar-60' é só para a série Radar IA; as séries das 19h usam \"completo\" (35 s)")

@@ -25,6 +25,16 @@ Visual (cena que mostra o mecanismo):
 Entrega: página com o vídeo embutido (thread de retenção) e agendamento só com o ok do Diego.
 Render: se kit/render.mjs não achar o Chrome, ele tenta sozinho os caminhos de /opt/pw-browsers; dá pra forçar com CHROME=<caminho>.
 
+## Grade de engajamento (Diego, card de 06/11/2026 02:11Z): vale a partir de 07/11 e manda sobre as grades abaixo
+
+Motivo: os extras sugeridos pelo Diego fazem ~1.230 views por vídeo (IG+YT); a grade fica entre 40 e 260, e o Agente do zero em ~40. Análise em /mnt/project-files/operacao/analise-engajamento-2026-11-06.md.
+
+- 12h "Em alta com IA" (série "Em alta com IA", "formato": "livre", 35 a 90 s): toda manhã a VIGIA tira 3 pautas do Google Trends BR (RSS https://trends.google.com/trending/rss?geo=BR) e do YouTube em alta BR (videos chart=mostPopular regionCode=BR; vidIQ outliers quando houver crédito). Só entra pauta com ângulo honesto de IA ou tecnologia: como fazer, é verdade?, como funciona. As 3 vão à sessão de retenção; o Diego escolhe UMA; a vigia produz no padrão de entrega e só agenda com o ok dele. Sem escolha dele, nada sai às 12h.
+- Radar IA deixa de ser diário: só quando houver notícia grande com nome famoso, UMA notícia por vídeo ("formato": "livre"), no slot das 12h no lugar do Em alta, se o Diego preferir.
+- 19h: cada vídeo se entende sozinho. Título = o resultado ("Seu WhatsApp responde sozinho"), com produto famoso ou pergunta real; o número da série só na legenda. Nada de "episódio N", "temporada" ou "Radar IA de hoje" no título, nas 2 primeiras falas ou na tela de abertura (o validar.py barra). A 2ª temporada do Agente do zero está PAUSADA; Automação, Termo e Modelos seguem no rodízio. Seg/qua/sex depois de 09/11: usar Automação ou Termo com produto famoso até o Diego decidir.
+- Gancho em até 2 s: nome conhecido + pergunta de curiosidade + a imagem do resultado na tela.
+- Teste de 2 semanas (07 a 20/11): meta média acima de 300 views por vídeo e mais de 50% passando de 3 s no IG. A vigia compara no fim.
+
 ## Grade fixa (2 vídeos por dia, revisada em 11/10 após a escolha Buffer + Metricool)
 
 | Dia | Horário | Série | O que é |

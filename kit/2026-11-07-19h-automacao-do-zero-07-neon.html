@@ -13,7 +13,7 @@ html,body{margin:0;background:#000}canvas{display:block}
 <script src="neon-extra.js"></script>
 <script src="neon-entrega.js"></script>
 <script>
-// 07/11/2026 · 19h · Automação do zero #7: arquivo novo na pasta do Drive manda e-mail com anexo (Zapier, 2 passos). Padrão de entrega de 24/10. Neon + neon-entrega.js.
+// 07/11/2026 · 19h · Arquivo novo no Drive avisa no Gmail (Automação do zero #7): arquivo novo na pasta do Drive manda e-mail com anexo (Zapier, 2 passos). Padrão de entrega de 24/10. Neon + neon-entrega.js.
 // Mecanismo: Zapier olha a pasta a cada 15 min → arquivo novo direto na pasta (não subpastas) → Gmail Send Email com o arquivo em Attachments. Fontes: help.zapier.com (Google Drive on Zapier), zapier.com/apps/gmail/integrations/google-drive, zapier.com/pricing.
 const T0 = TEMPOS.cenas;
 const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
@@ -21,7 +21,7 @@ const DURATION = SC[7], IMPACTO = SC[6] + .4;
 const CLIQUES = [wt('publish', 4) + .1];
 const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
 const COR = [AZ, CI, CI, VERDE, AZ, AMB, AZ];
-const HITS = [wt('pasta', 0), wt('email', 0), wt('sete', 1), wt('gatilho', 2), wt('folder', 2), wt('pasta', 2), wt('send', 3), wt('assunto', 3), wt('attachments', 4), wt('publish', 4), wt('subpastas', 5), wt('quinze', 5)];
+const HITS = [wt('pasta', 0), wt('gmail', 0), wt('graca', 1), wt('gatilho', 2), wt('folder', 2), wt('pasta', 2), wt('send', 3), wt('assunto', 3), wt('attachments', 4), wt('publish', 4), wt('subpastas', 5), wt('quinze', 5)];
 // pasta do Drive com arquivos
 function pastaDrive(x, y, w, a, t, novo) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#ffffff'; rr(x, y, w, 400, 18); ctx.fill();
   ctx.fillStyle = '#e8eefc'; rr(x, y, w, 70, 18); ctx.fill(); ctx.fillRect(x, y + 50, w, 20); txt('Drive · Pasta Clientes', x + 24, y + 38, ARC, 28, '#1b2440', { weight: 700 });
@@ -43,15 +43,15 @@ function passo(x, y, w, rot, app, ev, a, cor) { if (a <= 0) return; ctx.save(); 
 const S = [
   // 0 · gancho
   (t, lt) => {
-    titulo('O DRIVE TE AVISA', 360, -1, SC[1] - .2, t, 84, BR, 'AVISA', AMB);
+    titulo('O GMAIL TE AVISA', 360, -1, SC[1] - .2, t, 84, BR, 'AVISA', AMB);
     pastaDrive(cx0 - 410, 460, 820, prog(lt, 0, .2), t, prog(t, wt('novo', 0) - .2, wt('novo', 0) + .2));
-    aviso(cx0 - 410, 920, 820, prog(t, wt('chega', 0) - .2, wt('chega', 0) + .3), prog(t, wt('junto', 0) - .3, wt('junto', 0) + .1));
+    aviso(cx0 - 410, 920, 820, prog(t, wt('gmail', 0) - .2, wt('gmail', 0) + .3), prog(t, wt('anexado', 0) - .3, wt('anexado', 0) + .1));
     exemplo(cx0, 1210, prog(lt, .3, .6));
   },
-  // 1 · episódio
+  // 1 · por que importa
   (t, lt) => {
-    titulo('AUTOMAÇÃO DO ZERO', 500, SC[1], SC[2] - .2, t, 76, BR, 'ZERO', CI);
-    versao('EPISÓDIO 7', cx0, 700, prog(t, wt('episodio', 1) - .1, wt('episodio', 1) + .3), CI, 0, 60);
+    titulo('SEM PROGRAMAR', 500, SC[1], SC[2] - .2, t, 84, BR, 'PROGRAMAR', CI);
+    versao('GRÁTIS', cx0, 700, prog(t, wt('graca', 1) - .1, wt('graca', 1) + .3), VERDE, 0, 60);
     neon3d(P.pasta, cx0, 980 + flut(t), 120 * back(prog(lt, .1, .5)), .3 * Math.sin(t), .1, AMB, prog(lt, .1, .4));
   },
   // 2 · passo 1: gatilho
@@ -90,6 +90,6 @@ const S = [
     pilula('grátis: confere a cada 15 min', cx0, 1180, 740, prog(t, wt('confere', 5) - .2, wt('minutos', 5) + .2), AMB, '100 TAREFAS POR MÊS', 1, 40);
   },
   // 6 · fim
-  (t, lt) => fim(t, lt, 'Salva e segue', 'terça: episódio 8'),
+  (t, lt) => fim(t, lt, 'Salva e segue', 'terça tem mais'),
 ];
 </script></body></html>
