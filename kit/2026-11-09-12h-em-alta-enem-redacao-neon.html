@@ -1,0 +1,93 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-09-em-alta-enem-redacao.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 09/11/2026 · 12h · Em alta com IA: redação do Enem 2026 (SUS), IA estima a nota pelas 5 competências do Inep. Tema escolhido pelo Diego (cartão 08/11 21:38Z).
+// Fontes: gov.br/inep (tema; datas e resultado em jan/2027), cartilha do participante 2026 (5 competências, 200 cada; proposta: agente, ação, meio/modo, finalidade, detalhamento).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8] + .7];
+const DURATION = SC[8], IMPACTO = SC[7] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [AZ, VERDE, CI, AZ, CI, AMB, VERM, AZ];
+const HITS = [wt('enem', 0), wt('nota', 0), wt('porem', 0), wt('sus', 1), wt('janeiro', 1), wt('cole', 2), wt('chatgpt', 2), wt('norma', 3), wt('tema', 3), wt('argumentos', 3), wt('coesao', 3), wt('intervencao', 3), wt('duzentos', 3), wt('fraca', 4), wt('agente', 5), wt('detalhamento', 5), wt('erra', 6), wt('treinar', 6)];
+// folha de redação com linhas e nota
+function folha(x, y, w, h, a, linhas, nota) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#fbfaf4'; rr(x, y, w, h, 16); ctx.fill();
+  txt('REDAÇÃO', x + 30, y + 52, ARC, 28, '#1b2440', { weight: 800, ls: 3 }); ctx.strokeStyle = '#d7dbe8'; ctx.lineWidth = 2;
+  const n = Math.floor((h - 100) / 34); for (let i = 0; i < n; i++) { const yy = y + 90 + i * 34; ctx.beginPath(); ctx.moveTo(x + 30, yy); ctx.lineTo(x + w - 30, yy); ctx.stroke();
+    const q = clamp(linhas * n - i); if (q > 0) { ctx.strokeStyle = '#3a4a7a'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 34, yy - 8); ctx.lineTo(x + 34 + (w - 90 - (i % 3) * 40) * q, yy - 8); ctx.stroke(); ctx.strokeStyle = '#d7dbe8'; ctx.lineWidth = 2; } }
+  if (nota > 0) { ctx.save(); const e = 1.5 - .5 * back(clamp(nota)); ctx.globalAlpha *= clamp(nota); ctx.translate(x + w - 130, y + 60); ctx.scale(e, e); ctx.rotate(-.12);
+    ctx.strokeStyle = VERM; ctx.lineWidth = 6; rr(-110, -44, 220, 88, 14); ctx.stroke(); txt('? / 1000', 0, 14, EXP, 38, VERM, { align: 'center' }); ctx.restore(); }
+  ctx.restore(); }
+const COMP = [['norma culta', 'norma'], ['tema', 'tema'], ['argumentos', 'argumentos'], ['coesão', 'coesao'], ['proposta de intervenção', 'intervencao']];
+function barras(y, t) { COMP.forEach(([rot, w], i) => { const q = prog(t, wt(w, 3) - .2, wt(w, 3) + .3); if (q <= 0) return; const yy = y + i * 120;
+  ctx.save(); ctx.globalAlpha *= q; txt('C' + (i + 1), 120, yy + 14, EXP, 40, CI); txt(rot, 210, yy - 20, ARC, 32, BR, { weight: 700 });
+  ctx.fillStyle = hex(AZ, .25); rr(210, yy, 620, 34, 12); ctx.fill(); ctx.fillStyle = CI; rr(210, yy, 620 * q, 34, 12); ctx.fill();
+  txt('200', 900, yy + 28, EXP, 36, CI, { alpha: q }); ctx.restore(); }); }
+const S = [
+  // 0 · gancho
+  (t, lt) => {
+    titulo('A IA DÁ NOTA?', 340, -1, SC[1] - .2, t, 90, BR, 'NOTA?', CI);
+    folha(cx0 - 360, 450, 720, 560, prog(lt, 0, .2), clamp(lt / 3), prog(t, wt('nota', 0) - .2, wt('nota', 0) + .2));
+    linhaTxt('mas tem um porém', 1120, wt('porem', 0) - .3, SC[1] - .2, t, 50, AMB);
+  },
+  // 1 · o tema e a data
+  (t, lt) => {
+    titulo('O TEMA DE ONTEM', 380, SC[1], SC[2] - .2, t, 76, BR, 'ONTEM', VERDE);
+    pilula('A valorização do SUS', cx0, 600, 720, prog(t, wt('valorizacao', 1) - .2, wt('valorizacao', 1) + .2), VERDE, 'ENEM 2026 · 8/11', 1, 46);
+    pilula('como direito universal', cx0, 760, 700, prog(t, wt('direito', 1) - .2, wt('universal', 1) + .2), VERDE, '', 1, 46);
+    neon3d(P.relogio, cx0, 980 + flut(t), 80 * back(prog(t, wt('oficial', 1) - .3, wt('oficial', 1))), t * .5, .1, AMB, prog(t, wt('oficial', 1) - .3, wt('oficial', 1)));
+    pilula('nota oficial: janeiro', cx0, 1190, 600, prog(t, wt('janeiro', 1) - .3, wt('janeiro', 1) + .1), AMB, 'SEGUNDO O INEP', 1, 44);
+  },
+  // 2 · cole o texto
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('COLE O SEU TEXTO', 450, SC[2], SC[3] - .2, t, 76, BR, 'TEXTO', CI);
+    folha(cx0 - 300, 560, 600, 420, prog(t, wt('reescreva', 2) - .2, wt('reescreva', 2) + .2), prog(t, wt('reescreva', 2), wt('lembrar', 2) + .3), 0);
+    pilula('Gemini', cx0 - 180, 1110, 280, prog(t, wt('gemini', 2) - .2, wt('gemini', 2) + .2), AZ, '', 1, 44);
+    pilula('ChatGPT', cx0 + 180, 1110, 300, prog(t, wt('chatgpt', 2) - .2, wt('chatgpt', 2) + .2), VERDE, '', 1, 44);
+  },
+  // 3 · as 5 competências
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('AS 5 COMPETÊNCIAS', 450, SC[3], SC[4] - .2, t, 70, BR, 'COMPETÊNCIAS', AZ);
+    barras(620, t);
+    linhaTxt('até 200 cada = 1.000', 1260, wt('duzentos', 3) - .3, SC[4] - .2, t, 46, CI);
+  },
+  // 4 · o porquê
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('PEÇA O PORQUÊ', 450, SC[4], SC[5] - .2, t, 80, BR, 'PORQUÊ', CI);
+    janela(600, 420, prog(t, wt('peca', 4) - .3, wt('peca', 4)), 'Seu pedido', (x, y, w) => {
+      campo(x + 20, y + 20, w - 40, 'Peça', 'Explique cada nota', prog(t, wt('porque', 4) - .2, wt('nota', 4) + .2), prog(t, wt('nota', 4), wt('nota', 4) + .3));
+      campo(x + 20, y + 170, w - 40, 'E também', 'Como melhorar a mais fraca?', prog(t, wt('exemplo', 4) - .2, wt('fraca', 4) + .2), prog(t, wt('fraca', 4), wt('fraca', 4) + .3)); });
+  },
+  // 5 · a proposta de intervenção
+  (t, lt) => {
+    titulo('A PROPOSTA', 380, SC[5], SC[6] - .2, t, 90, BR, 'PROPOSTA', AMB);
+    linhaTxt('os 5 elementos', 490, SC[5], SC[6] - .2, t, 44, AMB);
+    [['agente', 'agente'], ['ação', 'acao'], ['meio', 'meio'], ['finalidade', 'finalidade'], ['detalhamento', 'detalhamento']].forEach(([r, w], i) =>
+      pilula(r, cx0, 620 + i * 140, 480, prog(t, wt(w, 5) - .2, wt(w, 5) + .2), i % 2 ? CI : AMB, '', 1, 46));
+  },
+  // 6 · o porém
+  (t, lt) => {
+    titulo('O PORÉM', 400, SC[6], SC[7] - .2, t, 100, BR, 'PORÉM', VERM);
+    pilula('a IA erra nota', cx0, 640, 520, prog(t, wt('erra', 6) - .2, wt('nota', 6) + .2), VERM, '', 1, 46);
+    pilula('lembrado ≠ entregue', cx0, 820, 600, prog(t, wt('lembra', 6) - .2, wt('entregou', 6) + .2), AMB, 'O TEXTO MUDA', 1, 46);
+    pilula('use pra treinar', cx0, 1000, 520, prog(t, wt('treinar', 6) - .2, wt('treinar', 6) + .2), VERDE, 'NÃO COMO RESULTADO', 1, 46);
+  },
+  // 7 · fim
+  (t, lt) => fim(t, lt, 'Salva e manda', 'pra quem fez o Enem'),
+];
+</script></body></html>

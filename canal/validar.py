@@ -31,7 +31,10 @@ ENGAJAMENTO_DESDE = "2026-11-07"
 GRADE["Em alta com IA"] = "12:00"; DIAS_DA_SERIE["Em alta com IA"] = range(7)
 SERIES_NOVAS.add("Em alta com IA")
 # 2ª temporada do Agente do zero pausada: seg/qua/sex aceitam Automação ou Termo com produto famoso (Diego, 06/11).
-DIAS_DA_SERIE["Automação do zero"] = [0, 1, 2, 4, 5]; DIAS_DA_SERIE["Termo de IA"] = [0, 2, 3, 4]
+DIAS_DA_SERIE["Automação do zero"] = range(7); DIAS_DA_SERIE["Termo de IA"] = range(7); DIAS_DA_SERIE["Modelos e parâmetros"] = range(7)
+# Diego, 08/11 21:43Z ("os vídeos não estão conforme a proposta"): 19h também pode ser "Em alta com IA"; final não puxa próximo vídeo.
+SLOTS_EXTRA = {"Em alta com IA": {"19:00"}}
+FINAL_PROIBIDO = ("tem mais", "amanha:", "proximo episodio", "proximo video")
 GANCHO_PROIBIDO = ("episodio", "radar ia de hoje", "temporada")
 # formato "curto" (diretrizes de retenção do Diego, 11/10/2026): 15 a 25 s de fala, card final pode passar um pouco.
 # "demo" (padrão até aqui): 35 a 45 s, quando a demonstração exige.
@@ -88,7 +91,7 @@ def validar(caminho, sem_mp4=False, trocar_slot=False):
         if date.fromisoformat(dia).weekday() not in DIAS_DA_SERIE[serie]:
             erros.append(f"{serie} não sai em {dia}")
         # fora_da_grade: só com o ok do Diego registrado (ex.: {"aprovado": "Diego, card 17/10 17:49Z"})
-        if hora != GRADE[serie] and not (r.get("fora_da_grade") or {}).get("aprovado"):
+        if hora != GRADE[serie] and hora not in SLOTS_EXTRA.get(serie, ()) and not (r.get("fora_da_grade") or {}).get("aprovado"):
             erros.append(f"horário {hora} não é o slot de {serie} ({GRADE[serie]})")
         if serie in SERIES_ANTIGAS and dia >= GRADE_NOVA_DESDE:
             erros.append(f"'{serie}' saiu da grade em {GRADE_NOVA_DESDE} (Diego, 16/10): 12h é Radar IA e 19h segue o rodízio do dia")
@@ -114,6 +117,12 @@ def validar(caminho, sem_mp4=False, trocar_slot=False):
             if re.search(r"#\s*\d", r.get("titulo", "")) or "episodio" in norm(r.get("titulo", "")):
                 erros.append("desde 07/11 (Diego, card 06/11) o título diz o resultado, sem \"#N\" nem \"episódio\" (o número vai só na legenda)")
             gancho = " ".join(frases_da_narracao(r)[:2])
+            ultima = norm(frases_da_narracao(r)[-1]) if frases_da_narracao(r) else ""
+            for proibido in FINAL_PROIBIDO:
+                if proibido in ultima:
+                    erros.append(f"final com '{proibido}': desde 08/11 (Diego) o vídeo não puxa o próximo, só uma chamada")
+            if "?" not in " ".join(frases_da_narracao(r)[:1]):
+                erros.append("primeira fala sem pergunta: o gancho tem nome conhecido + pergunta de curiosidade (plano de 06/11)")
             for proibido in GANCHO_PROIBIDO:
                 if proibido in norm(gancho):
                     erros.append(f"gancho (2 primeiras falas) com '{proibido}': desde 07/11 abre com nome conhecido, pergunta de curiosidade e o resultado")

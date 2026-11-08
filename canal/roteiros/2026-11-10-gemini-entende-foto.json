@@ -1,0 +1,94 @@
+{
+  "id": "2026-11-10-gemini-entende-foto",
+  "serie": "Termo de IA",
+  "data": "2026-11-10",
+  "horario": "19:00",
+  "titulo": "Como o Gemini entende uma foto? Tem nome: multimodal",
+  "descricao": "Termo de IA, episódio 5 🖼️\nIA multimodal é a que entende mais de um tipo de coisa: texto, foto, áudio. Gemini, ChatGPT e Claude fazem isso.\n1️⃣ Como a foto entra: o Gemini corta a imagem em quadrados (até 768 x 768 pixels) e cada quadrado vira 258 tokens, os pedacinhos que a IA lê, igual faz com as palavras.\n2️⃣ O mesmo modelo lê o texto e a imagem juntos, por isso ele entende a sua pergunta sobre a foto.\n3️⃣ Pra testar: no app do Gemini, anexe a foto e pergunte (o que é isso?, quanto custa?, traduz a placa).\nLimites: no app é grátis, com limite de uso. Letra miúda e detalhe pequeno podem sair errados: número e nome, confira.\n\nFonte (conferida em 08/11/2026): ai.google.dev/gemini-api/docs/image-understanding\n\n#ia #gemini #chatgpt #inteligenciaartificial #multimodal",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": 5,
+  "estilo": "neon",
+  "formato": "completo",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Você manda uma foto e o Gemini explica o que tem nela. Como ele entende?",
+          "legenda": "Você manda uma foto e o Gemini explica o que tem nela. Como ele entende?"
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Tem nome: IA multimodal, que entende texto e imagem. ChatGPT e Claude também.",
+          "legenda": "Tem nome: IA multimodal, que entende texto e imagem. ChatGPT e Claude também."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: a foto é cortada em quadrados, e cada quadrado vira tokens, pedaços que a IA lê.",
+          "legenda": "Um: a foto é cortada em quadrados, e cada quadrado vira tokens, pedaços que a IA lê."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: o mesmo modelo lê o texto e a imagem juntos. Por isso entende a pergunta sobre a foto.",
+          "legenda": "Dois: o mesmo modelo lê o texto e a imagem juntos. Por isso entende a pergunta sobre a foto."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: no app do Gemini, anexe a foto e pergunte o que quiser.",
+          "legenda": "Três: no app do Gemini, anexe a foto e pergunte o que quiser."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "É grátis, mas detalhe pequeno pode sair errado. Número e nome, confira.",
+          "legenda": "É grátis, mas detalhe pequeno pode sair errado. Número e nome, confira."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e testa hoje com uma foto sua.",
+          "legenda": "Salva e testa hoje com uma foto sua."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Gemini API: imagem com os dois lados até 384 px = 258 tokens; maior é cortada em quadrados de 768x768, 258 tokens cada",
+      "fonte": "https://ai.google.dev/gemini-api/docs/image-understanding",
+      "conferido": "2026-11-08"
+    }
+  ],
+  "registro": {
+    "tema": "termo de ia 5: multimodal, como o Gemini entende uma foto (quadrados viram tokens, texto e imagem juntos)",
+    "chaves": [
+      "multimodal foto gemini",
+      "ia entende imagem",
+      "termo de ia 5"
+    ]
+  },
+  "video": "videos/2026-11-10-19h-gemini-entende-foto-neon.mp4",
+  "fonte_html": "kit/2026-11-10-19h-gemini-entende-foto-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ]
+}

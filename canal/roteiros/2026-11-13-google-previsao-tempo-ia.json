@@ -1,0 +1,99 @@
+{
+  "id": "2026-11-13-google-previsao-tempo-ia",
+  "serie": "Em alta com IA",
+  "data": "2026-11-13",
+  "horario": "19:00",
+  "titulo": "A previsão do tempo do Google é feita por IA? Veja como",
+  "descricao": "A previsão do tempo do Google é feita por IA? ☔\nSim: o WeatherNext, do Google DeepMind e do Google Research, alimenta o tempo na Pesquisa, no Gemini, no Pixel Weather e no Google Maps.\nComo funciona:\n1️⃣ Aprendeu com dados do clima (temperatura, vento, umidade).\n2️⃣ Gera centenas de cenários possíveis a partir do mesmo ponto de partida.\n3️⃣ Quanto mais cenários mostram chuva, maior a chance.\nSegundo o Google, cada previsão leva menos de um minuto em uma TPU (o chip de IA do Google), contra horas num supercomputador nos modelos de física. A versão 3 atualiza a previsão a cada hora.\nLimite: é chance, não certeza. Em alerta de temporal, siga a Defesa Civil.\n\nFontes (conferidas em 08/11/2026): blog.google (WeatherNext 2; Introducing WeatherNext 3)\n\n#previsaodotempo #google #ia #inteligenciaartificial #chuva #tecnologia",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "estilo": "neon",
+  "formato": "livre",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "A previsão do tempo do Google é feita por IA? É, e sai em menos de um minuto.",
+          "legenda": "A previsão do tempo do Google é feita por IA? É, e sai em menos de um minuto."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O modelo se chama WeatherNext, do Google DeepMind. Ele está na Pesquisa, no Gemini e no Maps.",
+          "legenda": "O modelo se chama WeatherNext, do Google DeepMind. Ele está na Pesquisa, no Gemini e no Maps."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: ele aprendeu com dados históricos do clima, como temperatura, vento e umidade.",
+          "legenda": "Um: ele aprendeu com dados históricos do clima, como temperatura, vento e umidade."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: em vez de uma previsão só, ele gera centenas de cenários possíveis pro tempo.",
+          "legenda": "Dois: em vez de uma previsão só, ele gera centenas de cenários possíveis pro tempo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: quanto mais cenários mostram chuva na sua região, maior a chance de chover.",
+          "legenda": "Três: quanto mais cenários mostram chuva na sua região, maior a chance de chover."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Cada previsão leva menos de um minuto num chip do Google. Os modelos de física levam horas num supercomputador.",
+          "legenda": "Cada previsão leva menos de um minuto num chip do Google. Os modelos de física levam horas num supercomputador."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e manda pra quem sempre esquece o guarda-chuva.",
+          "legenda": "Salva e manda pra quem sempre esquece o guarda-chuva."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "WeatherNext 2: centenas de cenários, menos de 1 minuto numa TPU vs horas em supercomputador; alimenta Pesquisa, Gemini, Pixel Weather e Maps",
+      "fonte": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/weathernext-2/",
+      "conferido": "2026-11-08"
+    },
+    {
+      "dado": "WeatherNext 3: previsão nova a cada hora, até 5 km, com satélites geoestacionários",
+      "fonte": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-weathernext-3/",
+      "conferido": "2026-11-08"
+    }
+  ],
+  "registro": {
+    "tema": "em alta: previsão do tempo do Google feita por IA (WeatherNext), cenários e chance de chuva",
+    "chaves": [
+      "previsao do tempo ia google",
+      "weathernext",
+      "chance de chuva ia"
+    ]
+  },
+  "video": "videos/2026-11-13-19h-google-previsao-tempo-ia-neon.mp4",
+  "fonte_html": "kit/2026-11-13-19h-google-previsao-tempo-ia-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ],
+  "ep": "google-previsao-tempo-ia"
+}

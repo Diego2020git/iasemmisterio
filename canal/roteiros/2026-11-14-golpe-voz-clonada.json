@@ -1,0 +1,99 @@
+{
+  "id": "2026-11-14-golpe-voz-clonada",
+  "serie": "Em alta com IA",
+  "data": "2026-11-14",
+  "horario": "19:00",
+  "titulo": "Pix urgente com a voz do seu filho? Pode ser golpe com IA",
+  "descricao": "Pix urgente com a voz do seu filho? 📞\nCom IA, golpistas imitam a voz de parentes usando áudios postados nas redes, e ligam pedindo dinheiro com pressa.\nComo se proteger:\n1️⃣ Combine com a família uma palavra secreta.\n2️⃣ Pediu dinheiro com urgência? Desligue e ligue de volta no número que você já tem salvo.\n3️⃣ Nunca passe senha, código ou token por ligação ou mensagem.\nSegundo a Febraban, banco não liga pedindo senha, token, transferência ou Pix. Na dúvida, desligue e procure o banco pelo app ou pelo número do cartão, de outro telefone.\n\nFontes (conferidas em 08/11/2026): portal.febraban.org.br (golpe da falsa central) · itau.com.br (alerta para golpes com deepfakes)\n\n#golpe #pix #ia #seguranca #deepfake #familia",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "estilo": "neon",
+  "formato": "livre",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Seu filho ligou pedindo Pix urgente? Pode ser a voz dele copiada por IA.",
+          "legenda": "Seu filho ligou pedindo Pix urgente? Pode ser a voz dele copiada por IA."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Golpistas pegam áudios dos seus parentes nas redes sociais e usam a IA pra imitar a voz deles.",
+          "legenda": "Golpistas pegam áudios dos seus parentes nas redes sociais e usam a IA pra imitar a voz deles."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: combine com a família uma palavra secreta, que só vocês sabem.",
+          "legenda": "Um: combine com a família uma palavra secreta, que só vocês sabem."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: pedido de dinheiro com pressa? Desligue e ligue de volta no número que você já tem.",
+          "legenda": "Dois: pedido de dinheiro com pressa? Desligue e ligue de volta no número que você já tem."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: nunca passe senha nem código por ligação ou mensagem, nem aquele número que o banco manda no celular.",
+          "legenda": "Três: nunca passe senha nem código por ligação ou mensagem, nem aquele número que o banco manda no celular."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Banco não liga pedindo senha nem Pix. Na dúvida, fale com o banco pelo app ou pelo número do cartão.",
+          "legenda": "Banco não liga pedindo senha nem Pix. Na dúvida, fale com o banco pelo app ou pelo número do cartão."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e manda pra sua mãe e pro seu pai.",
+          "legenda": "Salva e manda pra sua mãe e pro seu pai."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Febraban: banco não liga pedindo senha, token, transferência ou Pix; desligar e ligar pelos canais oficiais de outro telefone",
+      "fonte": "https://portal.febraban.org.br/noticia/4471/pt-br/",
+      "conferido": "2026-11-08"
+    },
+    {
+      "dado": "Itaú alerta para golpes com deepfakes (voz e imagem por IA)",
+      "fonte": "https://www.itau.com.br/relacoes-com-investidores/noticias/itau-unibanco-alerta-para-golpes-com-deepfakes-e-reforca-orientacoes-de-seguranca-digital/",
+      "conferido": "2026-11-08"
+    }
+  ],
+  "registro": {
+    "tema": "em alta: golpe do Pix com voz clonada por IA e como se proteger (palavra secreta, ligar de volta, Febraban)",
+    "chaves": [
+      "golpe voz clonada ia",
+      "pix urgente golpe",
+      "palavra secreta familia"
+    ]
+  },
+  "video": "videos/2026-11-14-19h-golpe-voz-clonada-neon.mp4",
+  "fonte_html": "kit/2026-11-14-19h-golpe-voz-clonada-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ],
+  "ep": "golpe-voz-clonada"
+}

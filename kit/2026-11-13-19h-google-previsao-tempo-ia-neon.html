@@ -1,0 +1,76 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-13-google-previsao-tempo-ia.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// 13/11/2026 · 19h · Em alta com IA: previsão do tempo do Google feita por IA (WeatherNext). Padrão de entrega de 24/10.
+// Fontes: blog.google WeatherNext 2 e Introducing WeatherNext 3 (conferidos 08/11/2026).
+const COR = [CI, AZ, CI, AZ, CI, AMB, AZ];
+const HITS = [wt('google', 0), wt('minuto', 0), wt('weathernext', 1), wt('pesquisa', 1), wt('gemini', 1), wt('maps', 1), wt('clima', 2), wt('vento', 2), wt('centenas', 3), wt('chuva', 4), wt('chance', 4), wt('minuto', 5), wt('horas', 5)];
+function cenarios(x0, y0, n, a, t, chuva) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.lineWidth = 4;
+  for (let i = 0; i < n; i++) { const k = i / (n - 1) - .5, rain = chuva && i % 10 < 7; ctx.strokeStyle = chuva ? (rain ? hex(AZ, .8) : hex(BR, .25)) : hex(CI, .55);
+    ctx.beginPath(); ctx.moveTo(x0, y0); for (let s = 1; s <= 20; s++) { const p = s / 20 * clamp(a * 1.4); ctx.lineTo(x0 + 780 * p, y0 + k * 560 * p + 30 * Math.sin(p * 6 + i)); } ctx.stroke(); }
+  ctx.restore(); }
+const S = [
+  (t, lt) => {
+    titulo('PREVISÃO DO GOOGLE É IA?', 360, -1, SC[1] - .2, t, 62, BR, 'IA?', CI);
+    const a = prog(lt, .1, .5); if (a > 0) { ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = '#ffffff'; rr(240, 560, 600, 420, 36); ctx.fill();
+      txt('Hoje', 290, 640, ARC, 34, '#1b2440', { weight: 700 }); txt('24°', 290, 780, EXP, 110, '#1b2440');
+      txt('Chuva 70%', 290, 900, ARC, 40, '#1565c0', { weight: 800 }); ctx.fillStyle = '#90a4c8'; [[650, 720, 50], [700, 700, 62], [750, 725, 46]].forEach(c => { ctx.beginPath(); ctx.arc(c[0], c[1], c[2], 0, 7); ctx.fill(); }); ctx.fillRect(650, 720, 100, 46); ctx.strokeStyle = '#1565c0'; ctx.lineWidth = 8; ctx.lineCap = 'round'; for (let i = 0; i < 3; i++) { const d = (t * 120 + i * 40) % 80; ctx.beginPath(); ctx.moveTo(660 + i * 40, 790 + d * .4); ctx.lineTo(650 + i * 40, 815 + d * .4); ctx.stroke(); } ctx.restore(); }
+    pilula('menos de 1 minuto', cx0, 1130, 560, prog(t, wt('menos', 0) - .2, wt('minuto', 0) + .1), CI, '', 1, 44);
+    exemplo(cx0, 1240, a);
+  },
+  (t, lt) => {
+    titulo('WEATHERNEXT', 480, SC[1], SC[2] - .2, t, 84, BR, 'NEXT', AZ);
+    linhaTxt('do Google DeepMind', 590, wt('deepmind', 1) - .3, SC[2] - .2, t, 40, CI);
+    pilula('Pesquisa', cx0, 780, 420, prog(t, wt('pesquisa', 1) - .2, wt('pesquisa', 1) + .2), AZ, '', 1, 44);
+    pilula('Gemini', cx0, 930, 420, prog(t, wt('gemini', 1) - .2, wt('gemini', 1) + .2), CI, '', 1, 44);
+    pilula('Maps', cx0, 1080, 420, prog(t, wt('maps', 1) - .2, wt('maps', 1) + .2), VERDE, '', 1, 44);
+  },
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('APRENDEU COM O CLIMA', 450, wt('aprendeu', 2) - .2, SC[3] - .2, t, 66, BR, 'CLIMA', CI);
+    neon3d(P.servidor, cx0, 700 + flut(t), 90 * back(prog(t, wt('dados', 2) - .3, wt('dados', 2) + .1)), .4 * Math.sin(t * .8), .1, CI, prog(t, wt('dados', 2) - .3, wt('dados', 2) + .1));
+    pilula('temperatura', cx0, 930, 460, prog(t, wt('temperatura', 2) - .2, wt('temperatura', 2) + .2), AMB, '', 1, 42);
+    pilula('vento', cx0, 1070, 460, prog(t, wt('vento', 2) - .2, wt('vento', 2) + .2), CI, '', 1, 42);
+    pilula('umidade', cx0, 1210, 460, prog(t, wt('umidade', 2) - .2, wt('umidade', 2) + .2), AZ, '', 1, 42);
+  },
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('CENTENAS DE CENÁRIOS', 450, wt('vez', 3) - .2, SC[4] - .2, t, 66, BR, 'CENÁRIOS', AZ);
+    const n = Math.round(2 + 38 * prog(t, wt('gera', 3) - .2, wt('possiveis', 3)));
+    cenarios(150, 900, n, prog(t, wt('previsao', 3) - .2, wt('previsao', 3) + .6), t, false);
+    pilula('não é uma previsão só', cx0, 1240, 620, prog(t, wt('previsao', 3) - .3, wt('so', 3) + .2), CI, '', 1, 42);
+  },
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('MAIS CENÁRIOS, MAIS CHANCE', 450, wt('quanto', 4) - .2, SC[5] - .2, t, 58, BR, 'CHANCE', CI);
+    cenarios(150, 880, 40, 1, t, t > wt('chuva', 4) - .2);
+    pilula('7 em 10 com chuva = 70%', cx0, 1240, 680, prog(t, wt('chance', 4) - .3, wt('chover', 4) + .1), AZ, 'EXEMPLO ILUSTRATIVO', 1, 42);
+  },
+  (t, lt) => {
+    titulo('MENOS DE 1 MINUTO', 400, SC[5], SC[6] - .2, t, 72, BR, '1 MINUTO', AMB);
+    neon3d(P.chip, cx0, 650 + flut(t), 90 * back(prog(t, wt('chip', 5) - .3, wt('chip', 5) + .1)), .4 * Math.sin(t * .8), .1, AMB, prog(t, wt('chip', 5) - .3, wt('chip', 5) + .1));
+    const a1 = prog(t, wt('minuto', 5) - .3, wt('minuto', 5) + .2), a2 = prog(t, wt('horas', 5) - .3, wt('supercomputador', 5) + .2);
+    if (a1 > 0) { txt('IA · chip do Google', 160, 860, ARC, 36, BR, { weight: 700, alpha: a1 }); ctx.fillStyle = VERDE; rr(160, 885, 90 * a1, 56, 16); ctx.fill(); txt('< 1 min', 280, 925, EXP, 38, VERDE, { alpha: a1 }); }
+    if (a2 > 0) { txt('Física · supercomputador', 160, 1040, ARC, 36, BR, { weight: 700, alpha: a2 }); ctx.fillStyle = VERM; rr(160, 1065, 760 * a2, 56, 16); ctx.fill(); txt('horas', 900, 1020, EXP, 38, VERM, { align: 'right', alpha: a2 }); }
+    linhaTxt('é chance, não certeza · Fonte: blog.google', 1260, wt('horas', 5), SC[6] - .2, t, 30, CI);
+  },
+  (t, lt) => fim(t, lt, 'Salva e manda', 'pra quem esquece o guarda-chuva'),
+];
+</script></body></html>

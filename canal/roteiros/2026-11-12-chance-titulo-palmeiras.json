@@ -1,0 +1,99 @@
+{
+  "id": "2026-11-12-chance-titulo-palmeiras",
+  "serie": "Em alta com IA",
+  "data": "2026-11-12",
+  "horario": "19:00",
+  "titulo": "Palmeiras com 13% de chance de título? Como o computador calcula",
+  "descricao": "Palmeiras com 13% de chance de título? ⚽\nSegundo a simulação do Departamento de Matemática da UFMG (projeto Probabilidades no Futebol, desde 2005), conferida em 08/11/2026: Flamengo 87,2% e Palmeiras 12,8% de chance de título do Brasileirão.\nComo o computador calcula:\n1️⃣ Mede a força de cada time pelos jogos que já aconteceram.\n2️⃣ Joga as rodadas que faltam com sorteio, levando em conta essa força.\n3️⃣ Repete o campeonato muitas vezes. A chance é a fração das simulações em que o time terminou campeão.\nLimite: não é previsão certa. O número muda a cada rodada, e a bola ainda decide.\n\nFonte: mat.ufmg.br/futebol (Campeão, Série A)\n\n#palmeiras #flamengo #brasileirao #futebol #tecnologia #ia",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "estilo": "neon",
+  "formato": "livre",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Palmeiras com só treze por cento de chance de título? Quem faz essa conta é um computador.",
+          "legenda": "Palmeiras com só treze por cento de chance de título? Quem faz essa conta é um computador."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "É a simulação da UFMG, que faz isso desde 2005. O Flamengo aparece com oitenta e sete.",
+          "legenda": "É a simulação da UFMG, que faz isso desde 2005. O Flamengo aparece com oitenta e sete."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: o computador mede a força de cada time pelos jogos que já aconteceram.",
+          "legenda": "Um: o computador mede a força de cada time pelos jogos que já aconteceram."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: ele joga todas as rodadas que faltam, com sorteio, como se fosse de verdade.",
+          "legenda": "Dois: ele joga todas as rodadas que faltam, com sorteio, como se fosse de verdade."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: repete o campeonato muitas vezes. Se o Palmeiras é campeão em treze de cada cem, a chance é treze por cento.",
+          "legenda": "Três: repete o campeonato muitas vezes. Se o Palmeiras é campeão em treze de cada cem, a chance é treze por cento."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Não é certeza: é quantas vezes deu certo na simulação. Quem decide ainda é a bola.",
+          "legenda": "Não é certeza: é quantas vezes deu certo na simulação. Quem decide ainda é a bola."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e manda pro amigo palmeirense.",
+          "legenda": "Salva e manda pro amigo palmeirense."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "UFMG Probabilidades no Futebol, título Série A 2026: Flamengo 87,2%, Palmeiras 12,8% (conferir antes de publicar, muda a cada rodada)",
+      "fonte": "https://www.mat.ufmg.br/futebol/campeao_seriea/",
+      "conferido": "2026-11-08"
+    },
+    {
+      "dado": "Projeto existe desde 2005; probabilidades por simulação a partir do perfil de cada equipe nos jogos já realizados",
+      "fonte": "https://www.mat.ufmg.br/extensao/probabilidade-no-futebol/",
+      "conferido": "2026-11-08"
+    }
+  ],
+  "registro": {
+    "tema": "em alta: chance de título do Palmeiras/Flamengo, como a simulação da UFMG calcula",
+    "chaves": [
+      "chance titulo palmeiras",
+      "simulacao ufmg futebol",
+      "probabilidade campeao brasileirao"
+    ]
+  },
+  "video": "videos/2026-11-12-19h-chance-titulo-palmeiras-neon.mp4",
+  "fonte_html": "kit/2026-11-12-19h-chance-titulo-palmeiras-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ],
+  "ep": "chance-titulo-palmeiras"
+}

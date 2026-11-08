@@ -1,0 +1,94 @@
+{
+  "id": "2026-11-09-chatgpt-inventa",
+  "serie": "Termo de IA",
+  "data": "2026-11-09",
+  "horario": "19:00",
+  "titulo": "Por que o ChatGPT inventa resposta? Tem nome: alucinação",
+  "descricao": "Termo de IA, episódio 4 🌀\nAlucinação é quando a IA inventa uma resposta que parece certa, mas não é. Acontece no ChatGPT, no Gemini, no Claude, em todas.\n1️⃣ Por quê: o modelo não consulta uma lista de fatos. Ele escreve a palavra mais provável, uma depois da outra.\n2️⃣ Quando falta informação, ele chuta em vez de dizer \"não sei\". Segundo a própria OpenAI (setembro de 2025), o jeito como os modelos são treinados e avaliados premia o chute mais do que admitir a dúvida.\n3️⃣ Pra reduzir: ligue a busca na web ou mande o documento, e peça a fonte de cada parte da resposta.\nLimite: nada zera a alucinação. Nome, número e data, confira sempre na fonte original.\n\nFonte: openai.com/index/why-language-models-hallucinate (OpenAI, 2025)\n\n#ia #chatgpt #gemini #inteligenciaartificial #alucinacao",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": 4,
+  "estilo": "neon",
+  "formato": "completo",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Por que o ChatGPT às vezes inventa uma resposta, com toda a certeza?",
+          "legenda": "Por que o ChatGPT às vezes inventa uma resposta, com toda a certeza?"
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Tem nome: alucinação. Acontece no Gemini, no Claude, em todas.",
+          "legenda": "Tem nome: alucinação. Acontece no Gemini, no Claude, em todas."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: a IA não consulta fatos. Ela escreve a palavra mais provável, uma depois da outra.",
+          "legenda": "Um: a IA não consulta fatos. Ela escreve a palavra mais provável, uma depois da outra."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: quando falta informação, ela chuta em vez de dizer não sei. Os testes premiam o chute.",
+          "legenda": "Dois: quando falta informação, ela chuta em vez de dizer não sei. Os testes premiam o chute."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: pra reduzir, ligue a busca na web ou mande o documento, e peça a fonte.",
+          "legenda": "Três: pra reduzir, ligue a busca na web ou mande o documento, e peça a fonte."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Nome, número e data: confira sempre na fonte original. Leva um minuto.",
+          "legenda": "Nome, número e data: confira sempre na fonte original. Leva um minuto."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e manda pra quem acredita em tudo da IA.",
+          "legenda": "Salva e manda pra quem acredita em tudo da IA."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "OpenAI: treino e avaliação padrão premiam o chute em vez de admitir incerteza; alucinação vem daí",
+      "fonte": "https://openai.com/index/why-language-models-hallucinate/",
+      "conferido": "2026-11-06"
+    }
+  ],
+  "registro": {
+    "tema": "termo de ia 4: alucinação, por que o ChatGPT inventa resposta e como reduzir (busca, documento, pedir fonte)",
+    "chaves": [
+      "alucinacao ia inventa",
+      "por que chatgpt inventa",
+      "termo de ia 4"
+    ]
+  },
+  "video": "videos/2026-11-09-19h-chatgpt-inventa-neon.mp4",
+  "fonte_html": "kit/2026-11-09-19h-chatgpt-inventa-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ]
+}

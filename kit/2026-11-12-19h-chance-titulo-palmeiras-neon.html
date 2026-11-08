@@ -1,0 +1,80 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-12-chance-titulo-palmeiras.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// 12/11/2026 · 19h · Em alta com IA: chance de título do Palmeiras (simulação UFMG). Padrão de entrega de 24/10.
+// Fonte: mat.ufmg.br/futebol/campeao_seriea (Flamengo 87,2%, Palmeiras 12,8%, conferido 08/11/2026).
+const COR = [VERDE, AZ, CI, AMB, VERDE, AMB, AZ];
+const HITS = [wt('treze', 0), wt('computador', 0), wt('ufmg', 1), wt('2005', 1), wt('flamengo', 1), wt('forca', 2), wt('jogos', 2), wt('sorteio', 3), wt('verdade', 3), wt('repete', 4), wt('cem', 4), wt('certeza', 5), wt('bola', 5)];
+function barra(nome, pct, txtPct, y, a, cor) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+  txt(nome, 160, y - 24, ARC, 40, BR, { weight: 700 }); ctx.fillStyle = hex(cor, .18); rr(160, y, 760, 64, 18); ctx.fill();
+  ctx.fillStyle = cor; rr(160, y, Math.max(40, 760 * pct * clamp(a)), 64, 18); ctx.fill();
+  txt(txtPct, 920, y - 24, EXP, 44, cor, { align: 'right' }); ctx.restore(); }
+const S = [
+  (t, lt) => {
+    titulo('PALMEIRAS COM 13%?', 360, -1, SC[1] - .2, t, 76, BR, '13%?', VERDE);
+    barra('Flamengo', .872, '87,2%', 700, prog(lt, .2, .8), VERM);
+    barra('Palmeiras', .128, '12,8%', 900, prog(t, wt('treze', 0) - .3, wt('treze', 0) + .3), VERDE);
+    pilula('quem calcula é um computador', cx0, 1130, 760, prog(t, wt('computador', 0) - .3, wt('computador', 0) + .1), CI, 'CHANCE DE TÍTULO · BRASILEIRÃO', 1, 40);
+    linhaTxt('UFMG · conferido em 08/11', 1280, .3, SC[1] - .2, t, 30, CI);
+  },
+  (t, lt) => {
+    titulo('SIMULAÇÃO DA UFMG', 480, SC[1], SC[2] - .2, t, 76, BR, 'UFMG', AZ);
+    neon3d(P.radar, cx0, 760 + flut(t), 100 * back(prog(t, wt('simulacao', 1) - .3, wt('simulacao', 1) + .1)), .4 * Math.sin(t * .8), .1, AZ, prog(t, wt('simulacao', 1) - .3, wt('simulacao', 1) + .1));
+    pilula('desde 2005', cx0, 1000, 420, prog(t, wt('2005', 1) - .3, wt('2005', 1) + .1), CI, '', 1, 44);
+    pilula('Flamengo 87%', cx0, 1160, 480, prog(t, wt('flamengo', 1) - .2, wt('sete', 1) + .1), VERM, '', 1, 44);
+  },
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('FORÇA DE CADA TIME', 450, wt('mede', 2) - .2, SC[3] - .2, t, 72, BR, 'FORÇA', CI);
+    const tm = ['Flamengo', 'Palmeiras', 'Cruzeiro', 'Bahia', 'Botafogo'], fz = [.92, .84, .7, .62, .58];
+    tm.forEach((n, i) => { const a = prog(t, wt('forca', 2) - .2 + i * .12, wt('forca', 2) + .2 + i * .12); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+      txt(n, 170, 660 + i * 110, ARC, 36, BR, { weight: 600 }); ctx.fillStyle = hex(CI, .2); rr(480, 630 + i * 110, 430, 40, 14); ctx.fill(); ctx.fillStyle = CI; rr(480, 630 + i * 110, 430 * fz[i] * clamp(a), 40, 14); ctx.fill(); ctx.restore(); });
+    pilula('pelos jogos que já aconteceram', cx0, 1280, 760, prog(t, wt('jogos', 2) - .3, wt('aconteceram', 2)), CI, '', 1, 38);
+    exemplo(cx0, 1350, prog(t, wt('forca', 2), wt('forca', 2) + .3));
+  },
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('JOGA O QUE FALTA', 450, wt('joga', 3) - .2, SC[4] - .2, t, 76, BR, 'FALTA', AMB);
+    const J = [['PAL', 'BAH'], ['FLA', 'CRU'], ['BOT', 'PAL'], ['FLA', 'BAH']];
+    J.forEach((j, i) => { const a = prog(t, wt('rodadas', 3) - .3 + i * .15, wt('rodadas', 3) + i * .15); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+      ctx.fillStyle = hex(AMB, .12); rr(170, 610 + i * 130, 740, 100, 22); ctx.fill();
+      const sp = t < wt('verdade', 3) ? Math.floor(t * 9 + i * 3) : i * 2 + 1; const g1 = sp % 3, g2 = (sp * 7 + i) % 3;
+      txt(j[0], 260, 675 + i * 130, EXP, 40, BR); txt(j[1], 820, 675 + i * 130, EXP, 40, BR, { align: 'right' });
+      txt(g1 + ' x ' + g2, cx0, 677 + i * 130, EXP, 46, AMB, { align: 'center' }); ctx.restore(); });
+    pilula('com sorteio', cx0, 1200, 440, prog(t, wt('sorteio', 3) - .3, wt('sorteio', 3) + .1), AMB, 'PLACARES ILUSTRATIVOS', 1, 44);
+  },
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('REPETE MUITAS VEZES', 450, wt('repete', 4) - .2, SC[5] - .2, t, 70, BR, 'MUITAS', VERDE);
+    const n = Math.floor(100 * prog(t, wt('repete', 4), wt('palmeiras', 4)));
+    for (let i = 0; i < 100; i++) { if (i >= n) break; const c = i % 10, r = Math.floor(i / 10), win = [3, 11, 19, 27, 38, 46, 52, 61, 69, 77, 84, 90, 98].includes(i);
+      const on = win && t > wt('treze', 4) - .2; ctx.fillStyle = on ? VERDE : hex(BR, .22); ctx.beginPath(); ctx.arc(225 + c * 70, 590 + r * 60, on ? 24 : 20, 0, 7); ctx.fill(); }
+    pilula('13 em 100 = 13%', cx0, 1250, 560, prog(t, wt('treze', 4, 1) - .3, wt('cento', 4) + .1), VERDE, 'CAMPEÃO NAS SIMULAÇÕES', 1, 46);
+  },
+  (t, lt) => {
+    titulo('NÃO É CERTEZA', 420, SC[5], SC[6] - .2, t, 84, BR, 'CERTEZA', AMB);
+    neon3d(P.escudo, cx0, 720 + flut(t), 100 * back(prog(t, wt('certeza', 5) - .3, wt('certeza', 5) + .1)), .4 * Math.sin(t * .8), .1, AMB, prog(t, wt('certeza', 5) - .3, wt('certeza', 5) + .1));
+    pilula('é quantas vezes deu certo', cx0, 960, 700, prog(t, wt('quantas', 5) - .2, wt('simulacao', 5) + .1), AMB, 'NA SIMULAÇÃO', 1, 42);
+    pilula('muda a cada rodada', cx0, 1130, 560, prog(t, wt('decide', 5) - .3, wt('bola', 5)), CI, '', 1, 42);
+    pilula('quem decide é a bola', cx0, 1280, 560, prog(t, wt('bola', 5) - .3, wt('bola', 5) + .1), VERDE, '', 1, 42);
+  },
+  (t, lt) => fim(t, lt, 'Salva e manda', 'pro amigo palmeirense'),
+];
+</script></body></html>

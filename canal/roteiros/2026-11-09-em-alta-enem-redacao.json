@@ -1,0 +1,115 @@
+{
+  "id": "2026-11-09-em-alta-enem-redacao",
+  "serie": "Em alta com IA",
+  "data": "2026-11-09",
+  "horario": "12:00",
+  "titulo": "Redação do Enem sobre o SUS: dá pra IA estimar sua nota?",
+  "descricao": "Fez a redação do Enem 2026? 📝\nO tema do dia 8/11 foi \"A valorização do Sistema Único de Saúde (SUS) como direito universal\". A nota oficial só sai em meados de janeiro de 2027, segundo o Inep.\nComo usar IA pra treinar (grátis no Gemini ou no ChatGPT):\n1️⃣ Reescreva o seu texto do jeito que lembrar e cole na conversa.\n2️⃣ Peça: \"Dê uma nota de 0 a 200 em cada uma das 5 competências da redação do Enem (norma culta, compreensão do tema, argumentos, coesão e proposta de intervenção), explicando o porquê.\"\n3️⃣ Peça um exemplo de como melhorar a competência mais fraca.\nNa proposta de intervenção, confira os 5 elementos que a cartilha do Inep pede: agente, ação, meio ou modo, finalidade e detalhamento, respeitando os direitos humanos.\nLimites: a IA erra nota e não substitui os corretores do Inep. O texto que você lembra não é igual ao que entregou. Use pra treinar, não como resultado.\n\nFontes (conferidas em 08/11/2026): gov.br/inep (tema da redação do Enem 2026; datas do Enem 2026) · download.inep.gov.br (A redação do Enem 2026, cartilha do participante)\n\n#enem #enem2026 #redacao #ia #chatgpt #gemini",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "estilo": "neon",
+  "formato": "livre",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Fez a redação do Enem sobre o SUS? Dá pra pedir pra IA estimar sua nota. Mas tem um porém.",
+          "legenda": "Fez a redação do Enem sobre o SUS? Dá pra pedir pra IA estimar sua nota. Mas tem um porém."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O tema de ontem foi a valorização do SUS como direito universal. A nota oficial só sai em janeiro.",
+          "legenda": "O tema de ontem foi a valorização do SUS como direito universal. A nota oficial só sai em janeiro."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: reescreva o seu texto do jeito que lembrar, e cole no Gemini ou no ChatGPT.",
+          "legenda": "Um: reescreva o seu texto do jeito que lembrar, e cole no Gemini ou no ChatGPT."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: peça a nota pelas cinco competências do Inep: norma culta, tema, argumentos, coesão e proposta de intervenção. Cada uma vale até duzentos.",
+          "legenda": "Dois: peça a nota pelas cinco competências do Inep: norma culta, tema, argumentos, coesão e proposta de intervenção. Cada uma vale até duzentos."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: peça o porquê de cada nota e um exemplo de como melhorar a mais fraca.",
+          "legenda": "Três: peça o porquê de cada nota e um exemplo de como melhorar a mais fraca."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Na proposta, confira os cinco elementos: agente, ação, meio, finalidade e detalhamento.",
+          "legenda": "Na proposta, confira os cinco elementos: agente, ação, meio, finalidade e detalhamento."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "O porém: a IA erra nota, e o texto que você lembra não é o que entregou. Use pra treinar, não como resultado.",
+          "legenda": "O porém: a IA erra nota, e o texto que você lembra não é o que entregou. Use pra treinar, não como resultado."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e manda pra quem fez o Enem ontem.",
+          "legenda": "Salva e manda pra quem fez o Enem ontem."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Tema da redação Enem 2026 (8/11): A valorização do Sistema Único de Saúde (SUS) como direito universal",
+      "fonte": "https://www.gov.br/inep/pt-br/centrais-de-conteudo/noticias/enem/tema-da-redacao-a-valorizacao-do-sistema-unico-de-saude-sus-como-direito-universal",
+      "conferido": "2026-11-08"
+    },
+    {
+      "dado": "Enem 2026 em 8 e 15/11; resultado individual previsto para meados de janeiro de 2027",
+      "fonte": "https://www.gov.br/inep/pt-br/centrais-de-conteudo/noticias/enem/enem-2026-falta-um-mes-para-o-primeiro-dia-de-provas",
+      "conferido": "2026-11-08"
+    },
+    {
+      "dado": "Redação: 5 competências, até 200 pontos cada; proposta com agente, ação, meio/modo, finalidade e detalhamento, respeitando direitos humanos",
+      "fonte": "https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/cartilha_enem_2026.pdf",
+      "conferido": "2026-11-08"
+    }
+  ],
+  "registro": {
+    "tema": "em alta: redação do Enem 2026 (SUS) e como usar Gemini/ChatGPT pra estimar a nota pelas 5 competências do Inep",
+    "chaves": [
+      "redacao enem ia nota",
+      "enem 2026 sus redacao",
+      "competencias inep ia"
+    ]
+  },
+  "video": "videos/2026-11-09-12h-em-alta-enem-redacao-neon.mp4",
+  "fonte_html": "kit/2026-11-09-12h-em-alta-enem-redacao-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ],
+  "ep": "e1",
+  "escolha_do_tema": {
+    "aprovado": "Diego, cartão do thread de retenção 2026-11-08T21:38:56Z (cmsg_01L1NVBKWgPhLZPw6PVck3zh9tghje5Vd94fCYwpUW2rV3)"
+  }
+}

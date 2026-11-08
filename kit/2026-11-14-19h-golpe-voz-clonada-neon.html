@@ -1,0 +1,76 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-14-golpe-voz-clonada.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// 14/11/2026 · 19h · Em alta com IA: golpe do Pix com voz clonada. Padrão de entrega de 24/10.
+// Fontes: portal.febraban.org.br (golpe da falsa central), itau.com.br (alerta deepfakes), conferidos 08/11/2026.
+const COR = [VERM, AMB, VERDE, CI, VERDE, VERM, AZ];
+const HITS = [wt('pix', 0), wt('voz', 0), wt('audios', 1), wt('imitar', 1), wt('palavra', 2), wt('secreta', 2), wt('desligue', 3), wt('volta', 3), wt('senha', 4), wt('codigo', 4), wt('banco', 5), wt('pix', 5), wt('cartao', 5)];
+function chamada(x, y, a, t) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(x, y);
+  ctx.fillStyle = '#ffffff'; rr(-280, -330, 560, 660, 48); ctx.fill(); txt('Chamando…', 0, -250, ARC, 30, '#5a6480', { align: 'center', weight: 600 });
+  ctx.fillStyle = '#e4ebff'; ctx.beginPath(); ctx.arc(0, -120, 80, 0, 7); ctx.fill(); txt('F', 0, -95, EXP, 70, '#1b2440', { align: 'center' });
+  txt('Filho', 0, 20, ARC, 48, '#1b2440', { align: 'center', weight: 800 });
+  ctx.fillStyle = '#ffe3e3'; rr(-240, 70, 480, 120, 22); ctx.fill(); txt('Mãe, faz um Pix', 0, 120, ARC, 32, '#1b2440', { align: 'center', weight: 700 }); txt('urgente pra mim?', 0, 165, ARC, 32, '#1b2440', { align: 'center', weight: 700 });
+  ctx.fillStyle = '#e53935'; ctx.beginPath(); ctx.arc(-110, 260, 46, 0, 7); ctx.fill(); ctx.fillStyle = '#2e7d32'; ctx.beginPath(); ctx.arc(110, 260, 46 + 4 * Math.sin(t * 8), 0, 7); ctx.fill(); ctx.restore(); }
+const S = [
+  (t, lt) => {
+    titulo('PIX URGENTE DO SEU FILHO?', 330, -1, SC[1] - .2, t, 60, BR, 'URGENTE', VERM);
+    chamada(cx0, 760, prog(lt, .1, .5), t);
+    pilula('pode ser voz copiada por IA', cx0, 1180, 720, prog(t, wt('voz', 0) - .3, wt('copiada', 0) + .1), VERM, '', 1, 40);
+    exemplo(cx0, 1290, prog(lt, .3, .6));
+  },
+  (t, lt) => {
+    titulo('VOZ COPIADA POR IA', 480, SC[1], SC[2] - .2, t, 76, BR, 'IA', AMB);
+    const a = prog(t, wt('audios', 1) - .3, wt('audios', 1) + .2); if (a > 0) { ctx.save(); ctx.globalAlpha *= clamp(a); ctx.fillStyle = AMB;
+      for (let i = 0; i < 30; i++) { const h = 20 + 120 * Math.abs(Math.sin(i * 1.7 + t * 5)) * (t > wt('imitar', 1) - .2 ? 1 : .5); rr(150 + i * 26, 800 - h / 2, 16, h, 8); ctx.fill(); } ctx.restore(); }
+    pilula('áudios das redes sociais', cx0, 1040, 640, prog(t, wt('redes', 1) - .3, wt('sociais', 1) + .1), CI, '', 1, 42);
+    pilula('a IA imita a voz', cx0, 1190, 500, prog(t, wt('imitar', 1) - .3, wt('voz', 1) + .1), AMB, '', 1, 42);
+  },
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('PALAVRA SECRETA', 450, wt('combine', 2) - .2, SC[3] - .2, t, 78, BR, 'SECRETA', VERDE);
+    neon3d(P.cadeado, cx0, 720 + flut(t), 110 * back(prog(t, wt('palavra', 2) - .3, wt('palavra', 2) + .1)), .4 * Math.sin(t * .8), .1, VERDE, prog(t, wt('palavra', 2) - .3, wt('palavra', 2) + .1));
+    pilula('combine com a família', cx0, 980, 620, prog(t, wt('familia', 2) - .3, wt('familia', 2) + .1), VERDE, '', 1, 42);
+    pilula('só vocês sabem', cx0, 1130, 480, prog(t, wt('so', 2) - .3, wt('sabem', 2) + .1), CI, '', 1, 42);
+  },
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('DESLIGUE E LIGUE DE VOLTA', 450, wt('desligue', 3) - .3, SC[4] - .2, t, 58, BR, 'DE VOLTA', CI);
+    pilula('pedido com pressa', cx0, 680, 560, prog(t, wt('pedido', 3) - .2, wt('pressa', 3) + .1), VERM, '', 1, 42);
+    pilula('desligue', cx0, 860, 380, prog(t, wt('desligue', 3) - .3, wt('desligue', 3) + .1), VERM, '', 1, 44);
+    pilula('no número que você já tem', cx0, 1060, 700, prog(t, wt('numero', 3) - .3, wt('tem', 3) + .1), VERDE, 'SALVO NA AGENDA', 1, 42);
+  },
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('NUNCA PASSE CÓDIGOS', 450, wt('nunca', 4) - .2, SC[5] - .2, t, 70, BR, 'CÓDIGOS', VERDE);
+    neon3d(P.escudo, cx0, 700 + flut(t), 100 * back(prog(t, wt('nunca', 4) - .3, wt('nunca', 4) + .1)), .4 * Math.sin(t * .8), .1, VERDE, prog(t, wt('nunca', 4) - .3, wt('nunca', 4) + .1));
+    pilula('senha', cx0 - 220, 940, 340, prog(t, wt('senha', 4) - .2, wt('senha', 4) + .2), VERM, '', 1, 42);
+    pilula('código', cx0 + 220, 940, 340, prog(t, wt('codigo', 4) - .2, wt('codigo', 4) + .2), VERM, '', 1, 42);
+    pilula('número que o banco manda', cx0, 1100, 700, prog(t, wt('aquele', 4) - .2, wt('celular', 4) + .1), VERM, 'NO CELULAR', 1, 40);
+  },
+  (t, lt) => {
+    titulo('BANCO NÃO LIGA PEDINDO PIX', 400, SC[5], SC[6] - .2, t, 56, BR, 'PIX', VERM);
+    neon3d(P.check, cx0, 680 + flut(t), 90 * back(prog(t, wt('duvida', 5) - .3, wt('duvida', 5) + .1)), .4 * Math.sin(t * .8), .1, VERDE, prog(t, wt('duvida', 5) - .3, wt('duvida', 5) + .1));
+    pilula('fale pelo app do banco', cx0, 920, 620, prog(t, wt('app', 5) - .3, wt('app', 5) + .1), VERDE, '', 1, 42);
+    pilula('ou pelo número do cartão', cx0, 1070, 660, prog(t, wt('cartao', 5) - .4, wt('cartao', 5) + .1), VERDE, '', 1, 42);
+    linhaTxt('Fonte: Febraban', 1230, wt('banco', 5), SC[6] - .2, t, 30, CI);
+  },
+  (t, lt) => fim(t, lt, 'Salva e manda', 'pra sua mãe e seu pai'),
+];
+</script></body></html>
