@@ -1275,6 +1275,174 @@
     "instagram": "6aea67cb10b188665aebcc25"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-06-19h-agente-do-zero-10-neon.mp4"
+  },
+  {
+   "id": "2026-11-09-em-alta-enem-redacao",
+   "data": "2026-11-10",
+   "horario": "12:00",
+   "serie": "Em alta com IA",
+   "titulo": "Redação do Enem sobre o SUS: dá pra IA estimar sua nota?",
+   "narracao": "Fez a redação do Enem sobre o SUS? Dá pra pedir pra IA estimar sua nota. Mas tem um porém. O tema de ontem foi a valorização do SUS como direito universal. A nota oficial só sai em janeiro. Um: reescreva o seu texto do jeito que lembrar, e cole no Gemini ou no ChatGPT. Dois: peça a nota pelas cinco competências do Inep: norma culta, tema, argumentos, coesão e proposta de intervenção. Cada uma vale até duzentos. Três: peça o porquê de cada nota e um exemplo de como melhorar a mais fraca. Na proposta, confira os cinco elementos: agente, ação, meio, finalidade e detalhamento. O porém: a IA erra nota, e o texto que você lembra não é o que entregou. Use pra treinar, não como resultado. Salva e manda pra quem fez o Enem ontem.",
+   "video": "videos/2026-11-09-12h-em-alta-enem-redacao-neon.mp4",
+   "registro": {
+    "tema": "em alta: redação do Enem 2026 (SUS) e como usar Gemini/ChatGPT pra estimar a nota pelas 5 competências do Inep",
+    "chaves": [
+     "redacao enem ia nota",
+     "enem 2026 sus redacao",
+     "competencias inep ia"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6af31b2aab69ec4b27ec47a9",
+    "instagram": "6af31b2bab69ec4b27ec4800"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-09-12h-em-alta-enem-redacao-neon.mp4"
+  },
+  {
+   "id": "2026-11-10-gemini-entende-foto",
+   "data": "2026-11-10",
+   "horario": "19:00",
+   "serie": "Termo de IA",
+   "titulo": "Como o Gemini entende uma foto? Tem nome: multimodal",
+   "narracao": "Você manda uma foto e o Gemini explica o que tem nela. Como ele entende? Tem nome: IA multimodal, que entende texto e imagem. ChatGPT e Claude também. Um: a foto é cortada em quadrados, e cada quadrado vira tokens, pedaços que a IA lê. Dois: o mesmo modelo lê o texto e a imagem juntos. Por isso entende a pergunta sobre a foto. Três: no app do Gemini, anexe a foto e pergunte o que quiser. É grátis, mas detalhe pequeno pode sair errado. Número e nome, confira. Salva e testa hoje com uma foto sua.",
+   "video": "videos/2026-11-10-19h-gemini-entende-foto-neon.mp4",
+   "registro": {
+    "tema": "termo de ia 5: multimodal, como o Gemini entende uma foto (quadrados viram tokens, texto e imagem juntos)",
+    "chaves": [
+     "multimodal foto gemini",
+     "ia entende imagem",
+     "termo de ia 5"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6af31b38efda8cf29ac6a265",
+    "instagram": "6af31b380391d4e67a4510ba"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-10-19h-gemini-entende-foto-neon.mp4"
+  },
+  {
+   "id": "2026-11-11-ia-google-sem-internet",
+   "data": "2026-11-11",
+   "horario": "19:00",
+   "serie": "Modelos e parâmetros",
+   "titulo": "Dá pra rodar a IA do Google no seu PC, sem internet?",
+   "narracao": "Dá pra rodar uma IA do Google no seu computador, sem internet? Dá, de graça. A chave é: modelo aberto ou fechado. Um: o fechado, como Gemini e ChatGPT, só roda pelo site, pelo app ou pela chave da empresa. Dois: no aberto, como o Gemma do Google, os pesos, os números do modelo, são liberados. Você baixa e roda em casa. Três: instale o LM Studio, procure Gemma e baixe a versão que ele sugere pro seu computador. É grátis e a conversa fica na sua máquina. Mas pede memória: uns dezesseis gigas no Gemma de doze bilhões. Salva e testa.",
+   "video": "videos/2026-11-11-19h-ia-google-sem-internet-neon.mp4",
+   "registro": {
+    "tema": "modelos e parâmetros 4: modelo aberto x fechado, Gemma no LM Studio, pesos, roda local",
+    "chaves": [
+     "modelo aberto fechado",
+     "gemma lm studio",
+     "modelos e parametros 4"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6af31b3aab43be496988d619",
+    "instagram": "6af31b3aab69ec4b27ec5532"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-11-19h-ia-google-sem-internet-neon.mp4"
+  },
+  {
+   "id": "2026-11-12-chance-titulo-palmeiras",
+   "data": "2026-11-12",
+   "horario": "19:00",
+   "serie": "Em alta com IA",
+   "titulo": "Palmeiras com 13% de chance de título? Como o computador calcula",
+   "narracao": "Palmeiras com só treze por cento de chance de título? Quem faz essa conta é um computador. É a simulação da UFMG, que faz isso desde 2005. O Flamengo aparece com oitenta e sete. Um: o computador mede a força de cada time pelos jogos que já aconteceram. Dois: ele joga todas as rodadas que faltam, com sorteio, como se fosse de verdade. Três: repete o campeonato muitas vezes. Se o Palmeiras é campeão em treze de cada cem, a chance é treze por cento. Não é certeza: é quantas vezes deu certo na simulação. Quem decide ainda é a bola. Salva e manda pro amigo palmeirense.",
+   "video": "videos/2026-11-12-19h-chance-titulo-palmeiras-neon.mp4",
+   "registro": {
+    "tema": "em alta: chance de título do Palmeiras/Flamengo, como a simulação da UFMG calcula",
+    "chaves": [
+     "chance titulo palmeiras",
+     "simulacao ufmg futebol",
+     "probabilidade campeao brasileirao"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6af31b3b933007bada7ab1ea",
+    "instagram": "6af31b3cb7c40e4eb4118698"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-12-19h-chance-titulo-palmeiras-neon.mp4"
+  },
+  {
+   "id": "2026-11-13-google-previsao-tempo-ia",
+   "data": "2026-11-13",
+   "horario": "19:00",
+   "serie": "Em alta com IA",
+   "titulo": "A previsão do tempo do Google é feita por IA? Veja como",
+   "narracao": "A previsão do tempo do Google é feita por IA? É, e sai em menos de um minuto. O modelo se chama WeatherNext, do Google DeepMind. Ele está na Pesquisa, no Gemini e no Maps. Um: ele aprendeu com dados históricos do clima, como temperatura, vento e umidade. Dois: em vez de uma previsão só, ele gera centenas de cenários possíveis pro tempo. Três: quanto mais cenários mostram chuva na sua região, maior a chance de chover. Cada previsão leva menos de um minuto num chip do Google. Os modelos de física levam horas num supercomputador. Salva e manda pra quem sempre esquece o guarda-chuva.",
+   "video": "videos/2026-11-13-19h-google-previsao-tempo-ia-neon.mp4",
+   "registro": {
+    "tema": "em alta: previsão do tempo do Google feita por IA (WeatherNext), cenários e chance de chuva",
+    "chaves": [
+     "previsao do tempo ia google",
+     "weathernext",
+     "chance de chuva ia"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6af31b3d933007bada7ab25e",
+    "instagram": "6af31b3eab69ec4b27ec563f"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-13-19h-google-previsao-tempo-ia-neon.mp4"
+  },
+  {
+   "id": "2026-11-14-golpe-voz-clonada",
+   "data": "2026-11-14",
+   "horario": "19:00",
+   "serie": "Em alta com IA",
+   "titulo": "Pix urgente com a voz do seu filho? Pode ser golpe com IA",
+   "narracao": "Seu filho ligou pedindo Pix urgente? Pode ser a voz dele copiada por IA. Golpistas pegam áudios dos seus parentes nas redes sociais e usam a IA pra imitar a voz deles. Um: combine com a família uma palavra secreta, que só vocês sabem. Dois: pedido de dinheiro com pressa? Desligue e ligue de volta no número que você já tem. Três: nunca passe senha nem código por ligação ou mensagem, nem aquele número que o banco manda no celular. Banco não liga pedindo senha nem Pix. Na dúvida, fale com o banco pelo app ou pelo número do cartão. Salva e manda pra sua mãe e pro seu pai.",
+   "video": "videos/2026-11-14-19h-golpe-voz-clonada-neon.mp4",
+   "registro": {
+    "tema": "em alta: golpe do Pix com voz clonada por IA e como se proteger (palavra secreta, ligar de volta, Febraban)",
+    "chaves": [
+     "golpe voz clonada ia",
+     "pix urgente golpe",
+     "palavra secreta familia"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6af31b3f0391d4e67a451292",
+    "instagram": "6af31b40b7c40e4eb4118788"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-14-19h-golpe-voz-clonada-neon.mp4"
+  },
+  {
+   "id": "2026-11-09-chatgpt-inventa",
+   "data": "2026-11-15",
+   "horario": "19:00",
+   "serie": "Termo de IA",
+   "titulo": "Por que o ChatGPT inventa resposta? Tem nome: alucinação",
+   "narracao": "Por que o ChatGPT às vezes inventa uma resposta, com toda a certeza? Tem nome: alucinação. Acontece no Gemini, no Claude, em todas. Um: a IA não consulta fatos. Ela escreve a palavra mais provável, uma depois da outra. Dois: quando falta informação, ela chuta em vez de dizer não sei. Os testes premiam o chute. Três: pra reduzir, ligue a busca na web ou mande o documento, e peça a fonte. Nome, número e data: confira sempre na fonte original. Leva um minuto. Salva e manda pra quem acredita em tudo da IA.",
+   "video": "videos/2026-11-09-19h-chatgpt-inventa-neon.mp4",
+   "registro": {
+    "tema": "termo de ia 4: alucinação, por que o ChatGPT inventa resposta e como reduzir (busca, documento, pedir fonte)",
+    "chaves": [
+     "alucinacao ia inventa",
+     "por que chatgpt inventa",
+     "termo de ia 4"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6af31b41efda8cf29ac6aa87",
+    "instagram": "6af31b42933007bada7ab3da"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-09-19h-chatgpt-inventa-neon.mp4"
   }
  ]
 }
