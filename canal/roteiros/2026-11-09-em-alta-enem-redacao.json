@@ -1,7 +1,7 @@
 {
   "id": "2026-11-09-em-alta-enem-redacao",
   "serie": "Em alta com IA",
-  "data": "2026-11-09",
+  "data": "2026-11-10",
   "horario": "12:00",
   "titulo": "Redação do Enem sobre o SUS: dá pra IA estimar sua nota?",
   "descricao": "Fez a redação do Enem 2026? 📝\nO tema do dia 8/11 foi \"A valorização do Sistema Único de Saúde (SUS) como direito universal\". A nota oficial só sai em meados de janeiro de 2027, segundo o Inep.\nComo usar IA pra treinar (grátis no Gemini ou no ChatGPT):\n1️⃣ Reescreva o seu texto do jeito que lembrar e cole na conversa.\n2️⃣ Peça: \"Dê uma nota de 0 a 200 em cada uma das 5 competências da redação do Enem (norma culta, compreensão do tema, argumentos, coesão e proposta de intervenção), explicando o porquê.\"\n3️⃣ Peça um exemplo de como melhorar a competência mais fraca.\nNa proposta de intervenção, confira os 5 elementos que a cartilha do Inep pede: agente, ação, meio ou modo, finalidade e detalhamento, respeitando os direitos humanos.\nLimites: a IA erra nota e não substitui os corretores do Inep. O texto que você lembra não é igual ao que entregou. Use pra treinar, não como resultado.\n\nFontes (conferidas em 08/11/2026): gov.br/inep (tema da redação do Enem 2026; datas do Enem 2026) · download.inep.gov.br (A redação do Enem 2026, cartilha do participante)\n\n#enem #enem2026 #redacao #ia #chatgpt #gemini",
@@ -111,5 +111,6 @@
   "ep": "e1",
   "escolha_do_tema": {
     "aprovado": "Diego, cartão do thread de retenção 2026-11-08T21:38:56Z (cmsg_01L1NVBKWgPhLZPw6PVck3zh9tghje5Vd94fCYwpUW2rV3)"
-  }
+  },
+  "remarcado": "perdeu 09/11 sem ok; Diego aprovou os 7 em 10/11 13:23Z; movido pra 2026-11-10"
 }

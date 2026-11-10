@@ -1,7 +1,7 @@
 {
   "id": "2026-11-09-chatgpt-inventa",
   "serie": "Termo de IA",
-  "data": "2026-11-09",
+  "data": "2026-11-15",
   "horario": "19:00",
   "titulo": "Por que o ChatGPT inventa resposta? Tem nome: alucinação",
   "descricao": "Termo de IA, episódio 4 🌀\nAlucinação é quando a IA inventa uma resposta que parece certa, mas não é. Acontece no ChatGPT, no Gemini, no Claude, em todas.\n1️⃣ Por quê: o modelo não consulta uma lista de fatos. Ele escreve a palavra mais provável, uma depois da outra.\n2️⃣ Quando falta informação, ele chuta em vez de dizer \"não sei\". Segundo a própria OpenAI (setembro de 2025), o jeito como os modelos são treinados e avaliados premia o chute mais do que admitir a dúvida.\n3️⃣ Pra reduzir: ligue a busca na web ou mande o documento, e peça a fonte de cada parte da resposta.\nLimite: nada zera a alucinação. Nome, número e data, confira sempre na fonte original.\n\nFonte: openai.com/index/why-language-models-hallucinate (OpenAI, 2025)\n\n#ia #chatgpt #gemini #inteligenciaartificial #alucinacao",
@@ -90,5 +90,6 @@
       "id": "todas",
       "origem": "gerada por código (kit neon)"
     }
-  ]
+  ],
+  "remarcado": "perdeu 09/11 sem ok; Diego aprovou os 7 em 10/11 13:23Z; movido pra 2026-11-15"
 }
