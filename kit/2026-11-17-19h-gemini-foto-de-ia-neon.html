@@ -1,0 +1,73 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-17-gemini-foto-de-ia.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// 17/11/2026 · 19h · Termo de IA: SynthID, conferir no Gemini se a imagem é de IA. Padrão de entrega de 24/10.
+// Fontes: support.google.com/gemini/answer/16722517 e blog.google (AI image verification), conferidos 11/11/2026.
+const COR = [CI, AZ, AZ, CI, VERDE, AMB, AZ];
+const HITS = [wt('ia', 0), wt('gemini', 0), wt('invisivel', 1), wt('synthid', 1), wt('app', 2), wt('imagem', 2), wt('pergunta', 3), wt('ia', 3), wt('marca', 4), wt('google', 4), wt('prova', 5), wt('desconfie', 5)];
+function foto(x, y, s, a, t, marca) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(x, y); ctx.scale(s, s);
+  const g = ctx.createLinearGradient(0, -220, 0, 220); g.addColorStop(0, '#ff9a5a'); g.addColorStop(.55, '#ffcf7a'); g.addColorStop(.56, '#2f6f5e'); g.addColorStop(1, '#1d4a3f');
+  ctx.fillStyle = g; rr(-300, -220, 600, 440, 24); ctx.fill(); ctx.fillStyle = '#fff3c4'; ctx.beginPath(); ctx.arc(120, -40, 60, 0, 7); ctx.fill();
+  ctx.fillStyle = '#16362e'; ctx.beginPath(); ctx.moveTo(-300, 60); ctx.lineTo(-120, -60); ctx.lineTo(40, 60); ctx.closePath(); ctx.fill();
+  if (marca > 0) { ctx.globalAlpha *= clamp(marca); ctx.fillStyle = CI; for (let i = 0; i < 12; i++) for (let j = 0; j < 9; j++) { const p = .5 + .5 * Math.sin(t * 4 + i * .7 + j * 1.3); ctx.globalAlpha = clamp(marca) * .6 * p; ctx.fillRect(-280 + i * 48, -200 + j * 48, 6, 6); } }
+  ctx.restore(); }
+const S = [
+  (t, lt) => {
+    titulo('ESSA FOTO É DE IA?', 340, -1, SC[1] - .2, t, 76, BR, 'IA?', CI);
+    foto(cx0, 760, 1.1, prog(lt, .1, .5), t, 0);
+    txt('?', cx0 + 260, 560, EXP, 160, CI, { align: 'center', alpha: prog(lt, .4, .8) });
+    pilula('o Gemini confere', cx0, 1120, 520, prog(t, wt('gemini', 0) - .3, wt('conferir', 0) + .1), CI, '', 1, 44);
+    exemplo(cx0, 1240, prog(lt, .3, .6));
+  },
+  (t, lt) => {
+    titulo('MARCA D’ÁGUA INVISÍVEL', 440, SC[1], SC[2] - .2, t, 64, BR, 'INVISÍVEL', AZ);
+    foto(cx0, 780, .95, prog(t, SC[1], SC[1] + .4), t, prog(t, wt('marca', 1) - .2, wt('invisivel', 1) + .3));
+    pilula('SynthID', cx0, 1110, 360, prog(t, wt('synthid', 1) - .3, wt('synthid', 1) + .1), AZ, 'NAS IMAGENS DA IA DO GOOGLE', 1, 46);
+  },
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('MANDE A IMAGEM', 450, wt('abra', 2) - .2, SC[3] - .2, t, 76, BR, 'IMAGEM', AZ);
+    janela(580, 560, prog(t, wt('app', 2) - .3, wt('gemini', 2)), 'Gemini', (x, y, w) => {
+      const a = prog(t, wt('mande', 2) - .2, wt('imagem', 2) + .2); if (a > 0) { ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(x + w - 220, y + 200); ctx.scale(.42, .42); ctx.translate(0, 0); ctx.restore(); foto(x + w - 220, y + 200, .42 * a, a, t, 0); }
+      pilula('uma de cada vez', x + w / 2, y + 420, 480, prog(t, wt('uma', 2, 1) - .3, wt('vez', 2)), AZ, '', 1, 38); });
+  },
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('PERGUNTE', 450, wt('escreva', 3) - .2, SC[4] - .2, t, 84, BR, 'PERGUNTE', CI);
+    janela(580, 520, prog(t, wt('escreva', 3) - .3, wt('escreva', 3)), 'Gemini', (x, y, w) => {
+      foto(x + w - 200, y + 150, .3, 1, t, 0);
+      campo(x + 20, y + 300, w - 40, 'Pergunta', 'Essa imagem foi feita com IA?', prog(t, wt('pergunta', 3) - .2, wt('ia', 3) + .2), prog(t, wt('essa', 3), wt('ia', 3) + .2)); });
+  },
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('ACHOU A MARCA', 450, wt('achar', 4) - .2, SC[5] - .2, t, 80, BR, 'MARCA', VERDE);
+    neon3d(P.check, cx0, 720 + flut(t), 100 * back(prog(t, wt('achar', 4) - .3, wt('achar', 4) + .1)), .4 * Math.sin(t * .8), .1, VERDE, prog(t, wt('achar', 4) - .3, wt('achar', 4) + .1));
+    pilula('criada ou editada', cx0, 960, 520, prog(t, wt('criada', 4) - .3, wt('editada', 4) + .1), VERDE, 'PELA IA DO GOOGLE', 1, 44);
+  },
+  (t, lt) => {
+    titulo('NÃO ACHOU? NÃO PROVA NADA', 420, SC[5], SC[6] - .2, t, 56, BR, 'NÃO PROVA', AMB);
+    neon3d(P.escudo, cx0, 680 + flut(t), 90 * back(prog(t, wt('prova', 5) - .3, wt('prova', 5) + .1)), .4 * Math.sin(t * .8), .1, AMB, prog(t, wt('prova', 5) - .3, wt('prova', 5) + .1));
+    pilula('outras IAs não deixam essa marca', cx0, 920, 800, prog(t, wt('outras', 5) - .3, wt('marca', 5) + .1), AMB, '', 1, 40);
+    pilula('desconfie mesmo assim', cx0, 1070, 560, prog(t, wt('desconfie', 5) - .3, wt('assim', 5) + .1), VERM, '', 1, 42);
+    linhaTxt('Fonte: Ajuda do Gemini (support.google.com)', 1210, wt('outras', 5), SC[6] - .2, t, 28, CI);
+  },
+  (t, lt) => fim(t, lt, 'Salva e confere', 'antes de compartilhar'),
+];
+</script></body></html>

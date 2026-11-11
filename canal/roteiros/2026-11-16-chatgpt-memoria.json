@@ -1,0 +1,94 @@
+{
+  "id": "2026-11-16-chatgpt-memoria",
+  "serie": "Termo de IA",
+  "data": "2026-11-16",
+  "horario": "19:00",
+  "titulo": "O ChatGPT lembra de você? Veja o que ele guarda e onde apagar",
+  "descricao": "O ChatGPT lembra de você? 🧠\nSim: a memória guarda detalhes que você contou, como nome, trabalho e preferências, e também pode usar o histórico das suas conversas.\n1️⃣ Clique na sua foto > Configurações > Personalização.\n2️⃣ Em Gerenciar memórias, veja e apague o que quiser.\n3️⃣ Quer conversar sem memória? Use o Chat temporário.\nLimite: desligar a memória não apaga o que já foi guardado. Apague em Gerenciar memórias. Os nomes dos menus podem mudar um pouco conforme o plano e o app.\n\nFonte: help.openai.com (Memory FAQ), conferido em 11/11/2026\n\nTermo de IA, episódio 6\n#chatgpt #ia #privacidade #inteligenciaartificial #dicas",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": 6,
+  "estilo": "neon",
+  "formato": "completo",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "O ChatGPT lembra de você de uma conversa pra outra? Lembra, e você pode ver o quê.",
+          "legenda": "O ChatGPT lembra de você de uma conversa pra outra? Lembra, e você pode ver o quê."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Isso se chama memória. Ela guarda coisas como seu nome, seu trabalho e o jeito que você gosta da resposta.",
+          "legenda": "Isso se chama memória. Ela guarda coisas como seu nome, seu trabalho e o jeito que você gosta da resposta."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: clique na sua foto, depois em Configurações e em Personalização.",
+          "legenda": "Um: clique na sua foto, depois em Configurações e em Personalização."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: em Gerenciar memórias, você vê tudo que ele guardou e apaga o que quiser.",
+          "legenda": "Dois: em Gerenciar memórias, você vê tudo que ele guardou e apaga o que quiser."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: pra uma conversa sem memória, use o Chat temporário.",
+          "legenda": "Três: pra uma conversa sem memória, use o Chat temporário."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Desligar não apaga o que já foi guardado. Pra isso, apague em Gerenciar memórias.",
+          "legenda": "Desligar não apaga o que já foi guardado. Pra isso, apague em Gerenciar memórias."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e confere a sua hoje.",
+          "legenda": "Salva e confere a sua hoje."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Memória: Settings > Personalization; Manage memories; desligar não apaga o que já foi lembrado; Temporary Chat sem memória",
+      "fonte": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt-remembering-what-you-chat-about",
+      "conferido": "2026-11-11"
+    }
+  ],
+  "registro": {
+    "tema": "termo de ia 6: memória do ChatGPT, o que ele guarda, onde ver e apagar, chat temporário",
+    "chaves": [
+      "chatgpt memoria",
+      "chatgpt lembra de mim",
+      "apagar memoria chatgpt"
+    ]
+  },
+  "video": "videos/2026-11-16-19h-chatgpt-memoria-neon.mp4",
+  "fonte_html": "kit/2026-11-16-19h-chatgpt-memoria-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ]
+}

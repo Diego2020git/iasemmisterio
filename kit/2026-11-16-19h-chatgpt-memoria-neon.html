@@ -1,0 +1,78 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-16-chatgpt-memoria.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// 16/11/2026 · 19h · Termo de IA: memória do ChatGPT. Padrão de entrega de 24/10.
+// Fonte: help.openai.com Memory FAQ (Settings > Personalization, Manage memories, Temporary Chat), conferido 11/11/2026.
+const COR = [VERDE, CI, AZ, VERDE, CI, AMB, AZ];
+const HITS = [wt('lembra', 0, 1), wt('ver', 0), wt('memoria', 1), wt('nome', 1), wt('trabalho', 1), wt('foto', 2), wt('configuracoes', 2), wt('personalizacao', 2), wt('gerenciar', 3), wt('apaga', 3), wt('temporario', 4), wt('desligar', 5), wt('apague', 5)];
+function chat(x, y, a, t) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(x, y);
+  ctx.fillStyle = '#ffffff'; rr(-400, -260, 800, 520, 36); ctx.fill(); txt('ChatGPT', -360, -200, ARC, 30, '#1b2440', { weight: 800 });
+  ctx.fillStyle = '#e4ebff'; rr(-40, -150, 400, 80, 20); ctx.fill(); txt('Me sugere um almoço', -20, -100, ARC, 28, '#1b2440', { weight: 600 });
+  const q = clamp((t - .6) * 1.2); ctx.fillStyle = '#d9fdd3'; rr(-360, -40, 620 * q + 40, 210, 20); ctx.fill();
+  if (q > .6) { txt('Como você é', -330, 10, ARC, 30, '#1b2440', { weight: 700 }); txt('vegetariano, que tal', -330, 55, ARC, 30, '#1b2440', { weight: 700 }); txt('um risoto de cogumelo?', -330, 100, ARC, 30, '#1b2440', { weight: 700 });
+    ctx.strokeStyle = '#1e7e45'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(-330, 22); ctx.lineTo(-330 + 190, 22); ctx.stroke(); }
+  ctx.restore(); }
+const S = [
+  (t, lt) => {
+    titulo('O CHATGPT LEMBRA DE VOCÊ?', 330, -1, SC[1] - .2, t, 60, BR, 'LEMBRA', VERDE);
+    chat(cx0, 760, prog(lt, .1, .5), t);
+    pilula('ele lembrou que você é vegetariano', cx0, 1110, 800, prog(t, wt('lembra', 0, 1) - .3, wt('lembra', 0, 1) + .1), VERDE, '', 1, 38);
+    exemplo(cx0, 1230, prog(lt, .3, .6));
+  },
+  (t, lt) => {
+    titulo('ISSO SE CHAMA MEMÓRIA', 460, SC[1], SC[2] - .2, t, 68, BR, 'MEMÓRIA', CI);
+    neon3d(P.pasta, cx0, 680 + flut(t), 100 * back(prog(t, wt('memoria', 1) - .3, wt('memoria', 1) + .1)), .4 * Math.sin(t * .8), .1, CI, prog(t, wt('memoria', 1) - .3, wt('memoria', 1) + .1));
+    pilula('seu nome', cx0, 900, 420, prog(t, wt('nome', 1) - .2, wt('nome', 1) + .2), CI, '', 1, 42);
+    pilula('seu trabalho', cx0, 1040, 420, prog(t, wt('trabalho', 1) - .2, wt('trabalho', 1) + .2), AZ, '', 1, 42);
+    pilula('o jeito da resposta', cx0, 1180, 560, prog(t, wt('jeito', 1) - .2, wt('resposta', 1) + .2), VERDE, '', 1, 42);
+  },
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('SUA FOTO › CONFIGURAÇÕES', 450, wt('clique', 2) - .2, SC[3] - .2, t, 58, BR, 'CONFIGURAÇÕES', AZ);
+    janela(560, 560, prog(t, wt('clique', 2) - .3, wt('foto', 2)), 'ChatGPT', (x, y, w) => {
+      ['Configurações', 'Personalização'].forEach((n, i) => { const k = ['configuracoes', 'personalizacao'][i]; const a = prog(t, wt(k, 2) - .3, wt(k, 2)); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+        ctx.fillStyle = '#d9fdd3'; rr(x + 20, y + 40 + i * 140, w - 40, 110, 18); ctx.fill(); txt(n, x + 50, y + 108 + i * 140, ARC, 38, '#1b2440', { weight: 800 }); ctx.restore(); });
+      ctx.fillStyle = '#e4ebff'; ctx.beginPath(); ctx.arc(x + w - 70, y + 380, 50, 0, 7); ctx.fill(); txt('D', x + w - 70, y + 396, EXP, 44, '#1b2440', { align: 'center' }); });
+  },
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('GERENCIAR MEMÓRIAS', 450, wt('gerenciar', 3) - .2, SC[4] - .2, t, 68, BR, 'MEMÓRIAS', VERDE);
+    janela(560, 640, prog(t, wt('gerenciar', 3) - .3, wt('gerenciar', 3)), 'Gerenciar memórias', (x, y, w) => {
+      ['Se chama Ana', 'Trabalha com vendas', 'É vegetariano', 'Gosta de resposta curta'].forEach((n, i) => { const a = prog(t, wt('ve', 3) - .2 + i * .15, wt('ve', 3) + i * .15); if (a <= 0) return;
+        const del = i === 2 ? prog(t, wt('apaga', 3), wt('apaga', 3) + .5) : 0; ctx.save(); ctx.globalAlpha *= clamp(a) * (1 - .8 * del);
+        ctx.fillStyle = '#f4f6fb'; rr(x + 20, y + 30 + i * 130, w - 40, 104, 16); ctx.fill(); txt(n, x + 44, y + 94 + i * 130, ARC, 32, '#1b2440', { weight: 600 });
+        txt('🗑', x + w - 70, y + 96 + i * 130, ARC, 36, i === 2 ? '#c62828' : '#5a6480', { align: 'center' }); ctx.restore(); }); });
+    exemplo(cx0, 1300, prog(t, wt('ve', 3), wt('ve', 3) + .3));
+  },
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('CHAT TEMPORÁRIO', 450, wt('conversa', 4) - .2, SC[5] - .2, t, 76, BR, 'TEMPORÁRIO', CI);
+    neon3d(P.relogio, cx0, 720 + flut(t), 100 * back(prog(t, wt('chat', 4) - .3, wt('chat', 4) + .1)), .4 * Math.sin(t * .8), .1, CI, prog(t, wt('chat', 4) - .3, wt('chat', 4) + .1));
+    pilula('conversa sem memória', cx0, 980, 560, prog(t, wt('sem', 4) - .3, wt('memoria', 4) + .1), CI, '', 1, 44);
+  },
+  (t, lt) => {
+    titulo('DESLIGAR NÃO APAGA', 420, SC[5], SC[6] - .2, t, 72, BR, 'NÃO APAGA', AMB);
+    pilula('desligar a memória', cx0, 680, 560, prog(t, wt('desligar', 5) - .3, wt('desligar', 5) + .1), AMB, 'O QUE JÁ FOI GUARDADO FICA', 1, 42);
+    pilula('apague em Gerenciar memórias', cx0, 900, 760, prog(t, wt('apague', 5) - .3, wt('memorias', 5) + .1), VERDE, '', 1, 42);
+    linhaTxt('Fonte: help.openai.com · menus variam por app e plano', 1080, wt('apague', 5), SC[6] - .2, t, 28, CI);
+  },
+  (t, lt) => fim(t, lt, 'Salva e confere', 'a sua memória hoje'),
+];
+</script></body></html>

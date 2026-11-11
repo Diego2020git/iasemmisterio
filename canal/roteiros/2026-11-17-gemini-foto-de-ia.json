@@ -1,0 +1,94 @@
+{
+  "id": "2026-11-17-gemini-foto-de-ia",
+  "serie": "Termo de IA",
+  "data": "2026-11-17",
+  "horario": "19:00",
+  "titulo": "Essa foto é de IA? O Gemini confere a marca d’água invisível",
+  "descricao": "Essa foto é de IA? 🔍\nO Gemini confere: as imagens feitas ou editadas pela IA do Google levam o SynthID, uma marca d’água invisível.\n1️⃣ Abra o app do Gemini e envie a imagem (uma por vez, até 100 MB).\n2️⃣ Pergunte: \"Essa imagem foi feita com IA?\"\n3️⃣ Se ele achar o SynthID, a imagem foi criada ou editada pela IA do Google.\nLimite: se não achar, não prova que é real. O Gemini só reconhece conteúdo da IA do Google, e muita edição pode apagar a marca. Há limite diário de checagens.\n\nFonte: support.google.com/gemini (Verify AI-generated images, videos and audio) e blog.google, conferidos em 11/11/2026\n\nTermo de IA, episódio 7\n#gemini #ia #fakenews #deepfake #google",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": 7,
+  "estilo": "neon",
+  "formato": "completo",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Essa foto foi feita por IA? O Gemini consegue conferir pra você.",
+          "legenda": "Essa foto foi feita por IA? O Gemini consegue conferir pra você."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "As imagens criadas pela IA do Google saem com uma marca d’água invisível, chamada SynthID.",
+          "legenda": "As imagens criadas pela IA do Google saem com uma marca d’água invisível, chamada SynthID."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: abra o app do Gemini e mande a imagem, uma de cada vez.",
+          "legenda": "Um: abra o app do Gemini e mande a imagem, uma de cada vez."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: escreva a pergunta: essa imagem foi feita com IA? E espere a resposta.",
+          "legenda": "Dois: escreva a pergunta: essa imagem foi feita com IA? E espere a resposta."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: se ele achar a marca, a imagem foi criada ou editada pela IA do Google.",
+          "legenda": "Três: se ele achar a marca, a imagem foi criada ou editada pela IA do Google."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Se não achar, não prova nada: outras IAs não deixam essa marca. Desconfie mesmo assim.",
+          "legenda": "Se não achar, não prova nada: outras IAs não deixam essa marca. Desconfie mesmo assim."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e confere antes de compartilhar no grupo da família.",
+          "legenda": "Salva e confere antes de compartilhar no grupo da família."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Gemini verifica SynthID: só conteúdo da IA do Google; ausência não prova que é real; 1 arquivo por vez até 100 MB; limite diário",
+      "fonte": "https://support.google.com/gemini/answer/16722517",
+      "conferido": "2026-11-11"
+    }
+  ],
+  "registro": {
+    "tema": "termo de ia 7: SynthID, conferir no Gemini se uma imagem foi feita por IA do Google",
+    "chaves": [
+      "foto feita por ia como saber",
+      "synthid gemini",
+      "verificar imagem ia"
+    ]
+  },
+  "video": "videos/2026-11-17-19h-gemini-foto-de-ia-neon.mp4",
+  "fonte_html": "kit/2026-11-17-19h-gemini-foto-de-ia-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ]
+}
