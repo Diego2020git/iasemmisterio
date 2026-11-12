@@ -1,0 +1,103 @@
+{
+  "id": "2026-11-12-claude-fable-5-2",
+  "serie": "Radar IA",
+  "data": "2026-11-12",
+  "horario": "12:00",
+  "titulo": "Claude Fable 5.2: a IA que montou um sistema operacional?",
+  "descricao": "Uma IA que monta um sistema operacional inteiro? 🤖\nA Anthropic lançou o Claude Fable 5.2 em 09/11/2026, o modelo da empresa para o trabalho técnico mais ambicioso.\n1️⃣ Segundo a Anthropic, num experimento ele coordenou mais de 1.000 agentes por oito dias, a partir de uma pasta vazia, e entregou um protótipo de sistema operacional que liga num notebook, com drivers, janelas, tela de login e instalador.\n2️⃣ Um time de 1.000 agentes formalizou em 30 horas a prova do Último Teorema de Fermat em Lean, uma linguagem em que o computador confere a prova. Eles receberam uma lista de enunciados e lemas já provados como ponto de partida.\n3️⃣ Projetou do zero três aparelhos que funcionaram: uma central de assistente de voz, um viva-voz USB e um bichinho virtual de bolso.\nTambém: respostas até 30% mais rápidas que o Fable 5.1 e, pra quem desenvolve, US$ 8 por milhão de tokens de entrada e US$ 40 de saída (token é o pedaço de texto que a IA lê e escreve).\nNo plano Pro e no Team padrão, o Fable entra em até 50% do limite semanal. O anúncio não detalha o plano grátis.\nLimite: são relatos da própria Anthropic. Para a maioria das tarefas, ela recomenda começar pelo Claude Opus 5.5.\n\nFonte (conferida em 12/11/2026): anthropic.com/claude-fable-and-mythos-5-2\n\n#claude #anthropic #ia #inteligenciaartificial #programacao #tecnologia",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "estilo": "neon",
+  "formato": "livre",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Uma IA que monta um sistema operacional inteiro? A Anthropic diz que o novo Claude fez isso.",
+          "legenda": "Uma IA que monta um sistema operacional inteiro? A Anthropic diz que o novo Claude fez isso."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "É o Claude Fable 5.2, lançado em nove de novembro. É o modelo da empresa pras tarefas mais longas e difíceis de programação e ciência.",
+          "legenda": "É o Claude Fable 5.2, lançado em nove de novembro. É o modelo da empresa pras tarefas mais longas e difíceis de programação e ciência."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: segundo a Anthropic, ele coordenou mais de mil cópias dele mesmo, os agentes, por oito dias. Saiu um protótipo de sistema operacional que liga num notebook.",
+          "legenda": "Um: segundo a Anthropic, ele coordenou mais de mil cópias dele mesmo, os agentes, por oito dias. Saiu um protótipo de sistema operacional que liga num notebook."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: outro time de mil agentes escreveu, em trinta horas, a prova de um teorema famoso da matemática num formato que o computador confere linha por linha.",
+          "legenda": "Dois: outro time de mil agentes escreveu, em trinta horas, a prova de um teorema famoso da matemática num formato que o computador confere linha por linha."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: ele projetou do zero três aparelhos eletrônicos que funcionaram, como um viva-voz e um bichinho virtual de bolso.",
+          "legenda": "Três: ele projetou do zero três aparelhos eletrônicos que funcionaram, como um viva-voz e um bichinho virtual de bolso."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "E ficou até trinta por cento mais rápido que a versão anterior. No plano Pro do Claude, dá pra usar em até metade do limite da semana.",
+          "legenda": "E ficou até trinta por cento mais rápido que a versão anterior. No plano Pro do Claude, dá pra usar em até metade do limite da semana."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Atenção: esses feitos são relatos da própria Anthropic. E pro dia a dia ela mesma recomenda começar por outro modelo, o Opus 5.5.",
+          "legenda": "Atenção: esses feitos são relatos da própria Anthropic. E pro dia a dia ela mesma recomenda começar por outro modelo, o Opus 5.5."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e manda pra quem programa.",
+          "legenda": "Salva e manda pra quem programa."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "Anúncio de 09/11/2026 (editado 11/11): SO protótipo com mais de 1.000 subagentes em 8 dias; Fermat em Lean por 1.000 agentes em 30 h; 3 aparelhos eletrônicos; até 30% mais rápido que 5.1; US$ 8/40; Pro e Team padrão até 50% do limite semanal; recomendação Opus 5.5",
+      "fonte": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "conferido": "2026-11-12"
+    }
+  ],
+  "registro": {
+    "tema": "radar: lançamento do Claude Fable 5.2 e suas capacidades (pedido do Diego 12/11)",
+    "chaves": [
+      "claude fable 5.2",
+      "anthropic novo modelo",
+      "ia monta sistema operacional"
+    ]
+  },
+  "video": "videos/2026-11-12-12h-claude-fable-5-2-neon.mp4",
+  "fonte_html": "kit/2026-11-12-12h-claude-fable-5-2-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ],
+  "ep": "claude-fable-5-2",
+  "pedido": "Diego, thread Agendamento pelo Buffer, 12/11 02:30Z: vídeo de atualização do Fable 5.2 e suas capacidades"
+}

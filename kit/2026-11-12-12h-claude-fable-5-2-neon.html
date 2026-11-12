@@ -1,0 +1,93 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-12-claude-fable-5-2.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+// 12/11/2026 · 12h · Radar IA (uma notícia): lançamento de modelo da Anthropic. Padrão de entrega de 24/10.
+// Fonte: anthropic.com/claude-fable-and-mythos-5-2 (09/11/2026, conferido 12/11/2026).
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7], T0[8] + .7];
+const DURATION = SC[8], IMPACTO = SC[7] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+const COR = [CI, AZ, CI, VERDE, AMB, AZ, AMB, AZ];
+const HITS = [wt('operacional', 0), wt('claude', 0), wt('fable', 1), wt('novembro', 1), wt('mil', 2), wt('oito', 2), wt('notebook', 2), wt('trinta', 3), wt('teorema', 3), wt('aparelhos', 4), wt('funcionaram', 4), wt('rapido', 5), wt('pro', 5), wt('atencao', 6), wt('opus', 6)];
+function note(x, y, s, a, t, boot) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(x, y); ctx.scale(s, s);
+  ctx.fillStyle = '#1b2440'; rr(-320, -220, 640, 410, 24); ctx.fill(); ctx.fillStyle = '#0b1020'; rr(-298, -200, 596, 370, 12); ctx.fill();
+  ctx.fillStyle = '#2b3550'; rr(-380, 190, 760, 36, 12); ctx.fill();
+  if (boot > 0) { ctx.globalAlpha *= clamp(boot); ctx.fillStyle = '#16233f'; rr(-270, -175, 330, 210, 10); ctx.fill(); ctx.fillStyle = CI; ctx.fillRect(-270, -175, 330, 26);
+    ctx.fillStyle = '#16233f'; rr(-60, -60, 330, 200, 10); ctx.fill(); ctx.fillStyle = VERDE; ctx.fillRect(-60, -60, 330, 26);
+    for (let i = 0; i < 4; i++) { ctx.fillStyle = hex(BR, .5); ctx.fillRect(-250, -130 + i * 34, 120 + 60 * ((i * 7) % 3), 10); } ctx.fillStyle = hex(BR, .25); ctx.fillRect(-298, 140, 596, 30); }
+  else { const n = Math.floor(t * 6) % 4; txt('iniciando' + '.'.repeat(n), 0, 0, EXP, 34, CI, { align: 'center' }); }
+  ctx.restore(); }
+function enxame(cx, cy, n, a, t, cor) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a);
+  for (let i = 0; i < n; i++) { const c = i % 25, r = Math.floor(i / 25); const p = .45 + .55 * Math.abs(Math.sin(t * 3 + i * .9)); ctx.fillStyle = hex(cor, p); ctx.beginPath(); ctx.arc(cx - 360 + c * 30, cy + r * 30, 9, 0, 7); ctx.fill(); }
+  ctx.restore(); }
+const S = [
+  (t, lt) => {
+    titulo('IA CRIA SISTEMA OPERACIONAL?', 330, -1, SC[1] - .2, t, 58, BR, 'SISTEMA OPERACIONAL?', CI);
+    note(cx0, 780, 1.15, prog(lt, .1, .5), t, prog(t, wt('operacional', 0), wt('operacional', 0) + .5));
+    pilula('a Anthropic diz que o novo Claude fez', cx0, 1150, 820, prog(t, wt('anthropic', 0) - .3, wt('claude', 0) + .1), CI, '', 1, 38);
+    exemplo(cx0, 1270, prog(lt, .3, .6));
+  },
+  (t, lt) => {
+    titulo('CLAUDE FABLE 5.2', 440, SC[1], SC[2] - .2, t, 84, BR, 'FABLE 5.2', AZ);
+    pilula('lançado em 9 de novembro', cx0, 660, 640, prog(t, wt('lancado', 1) - .3, wt('novembro', 1) + .1), CI, 'ANTHROPIC · 2026', 1, 42);
+    pilula('programação', cx0 - 220, 900, 380, prog(t, wt('programacao', 1) - .3, wt('programacao', 1) + .1), AZ, '', 1, 42);
+    pilula('ciência', cx0 + 220, 900, 380, prog(t, wt('ciencia', 1) - .3, wt('ciencia', 1) + .1), VERDE, '', 1, 42);
+    linhaTxt('tarefas longas e difíceis', 1060, wt('tarefas', 1) - .2, SC[2] - .2, t, 40, BR);
+  },
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('MAIS DE 1.000 AGENTES', 450, wt('coordenou', 2) - .2, SC[3] - .2, t, 66, BR, '1.000', CI);
+    const n = Math.floor(250 * prog(t, wt('mil', 2) - .3, wt('agentes', 2) + .3));
+    enxame(cx0, 590, n, prog(t, wt('mil', 2) - .3, wt('mil', 2)), t, CI);
+    pilula('8 dias, sem parar', cx0 - 210, 1010, 400, prog(t, wt('oito', 2) - .3, wt('dias', 2) + .1), AMB, '', 1, 40);
+    pilula('liga num notebook', cx0 + 220, 1010, 420, prog(t, wt('liga', 2) - .3, wt('notebook', 2) + .1), VERDE, '', 1, 40);
+    pilula('protótipo de sistema operacional', cx0, 1170, 800, prog(t, wt('prototipo', 2) - .3, wt('operacional', 2) + .1), CI, 'SEGUNDO A ANTHROPIC · EXPERIMENTO', 1, 40);
+    linhaTxt('cada ponto = 4 agentes (ilustração)', 1310, wt('mil', 2), SC[3] - .2, t, 26, CI);
+  },
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('PROVA EM 30 HORAS', 450, wt('outro', 3) - .2, SC[4] - .2, t, 76, BR, '30 HORAS', VERDE);
+    const q = prog(t, wt('prova', 3) - .3, wt('linha', 3, 1) + .3);
+    if (q > 0) { ctx.save(); ctx.globalAlpha *= clamp(q * 3); ['theorem fermat (n > 2) :', '  a^n + b^n ≠ c^n := by', '  intro h', '  apply lema_47', '  exact resultado'].forEach((l, i) => { const ok = q * 5 > i + .5; txt(l, 170, 660 + i * 76, EXP, 34, ok ? hex(VERDE, .95) : hex(BR, .35)); if (ok) txt('✓', 910, 660 + i * 76, ARC, 40, VERDE, { align: 'right', weight: 800 }); }); ctx.restore(); }
+    pilula('o computador confere linha por linha', cx0, 1130, 800, prog(t, wt('computador', 3) - .3, wt('confere', 3) + .1), VERDE, 'ÚLTIMO TEOREMA DE FERMAT · 1.000 AGENTES', 1, 38);
+    exemplo(cx0, 1260, q);
+  },
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('3 APARELHOS DO ZERO', 450, wt('projetou', 4) - .2, SC[5] - .2, t, 72, BR, '3 APARELHOS', AMB);
+    neon3d(P.chip, cx0, 700 + flut(t), 100 * back(prog(t, wt('aparelhos', 4) - .3, wt('aparelhos', 4) + .1)), .4 * Math.sin(t * .8), .1, AMB, prog(t, wt('aparelhos', 4) - .3, wt('aparelhos', 4) + .1));
+    pilula('central de voz', cx0, 930, 480, prog(t, wt('funcionaram', 4) - .3, wt('funcionaram', 4) + .1), AMB, '', 1, 40);
+    pilula('viva-voz USB', cx0, 1060, 480, prog(t, wt('vivavoz', 4) - .3, wt('vivavoz', 4) + .1), CI, '', 1, 40);
+    pilula('bichinho virtual de bolso', cx0, 1190, 600, prog(t, wt('bichinho', 4) - .3, wt('bolso', 4) + .1), VERDE, '', 1, 40);
+  },
+  (t, lt) => {
+    titulo('ATÉ 30% MAIS RÁPIDO', 400, SC[5], SC[6] - .2, t, 72, BR, '30%', AZ);
+    const a1 = prog(t, wt('trinta', 5) - .3, wt('rapido', 5) + .2);
+    if (a1 > 0) { txt('versão anterior', 160, 610, ARC, 36, BR, { weight: 700, alpha: a1 }); ctx.fillStyle = hex(BR, .35); rr(160, 635, 760 * a1, 50, 16); ctx.fill();
+      txt('Fable 5.2', 160, 770, ARC, 36, BR, { weight: 700, alpha: a1 }); ctx.fillStyle = AZ; rr(160, 795, 532 * a1, 50, 16); ctx.fill(); txt('tempo de resposta', 920, 610, ARC, 28, CI, { align: 'right', alpha: a1 }); }
+    pilula('plano Pro do Claude', cx0, 1010, 560, prog(t, wt('plano', 5) - .3, wt('claude', 5) + .1), CI, '', 1, 42);
+    pilula('até metade do limite da semana', cx0, 1160, 760, prog(t, wt('metade', 5) - .3, wt('semana', 5) + .1), AMB, '', 1, 40);
+  },
+  (t, lt) => {
+    titulo('QUEM DIZ É A ANTHROPIC', 400, SC[6], SC[7] - .2, t, 62, BR, 'ANTHROPIC', AMB);
+    neon3d(P.escudo, cx0, 660 + flut(t), 90 * back(prog(t, wt('atencao', 6) - .2, wt('atencao', 6) + .2)), .4 * Math.sin(t * .8), .1, AMB, prog(t, wt('atencao', 6) - .2, wt('atencao', 6) + .2));
+    pilula('relatos da própria empresa', cx0, 900, 680, prog(t, wt('relatos', 6) - .3, wt('anthropic', 6) + .1), AMB, '', 1, 42);
+    pilula('pro dia a dia: Opus 5.5', cx0, 1060, 640, prog(t, wt('recomenda', 6) - .3, wt('opus', 6) + .1), VERDE, 'RECOMENDAÇÃO DA ANTHROPIC', 1, 42);
+    linhaTxt('Fonte: anthropic.com · 09/11/2026', 1230, wt('relatos', 6), SC[7] - .2, t, 28, CI);
+  },
+  (t, lt) => fim(t, lt, 'Salva e manda', 'pra quem programa'),
+];
+</script></body></html>
