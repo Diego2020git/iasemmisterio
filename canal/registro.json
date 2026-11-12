@@ -1443,6 +1443,54 @@
     "instagram": "6af31b42933007bada7ab3da"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-09-19h-chatgpt-inventa-neon.mp4"
+  },
+  {
+   "id": "2026-11-17-gemini-foto-de-ia",
+   "data": "2026-11-17",
+   "horario": "19:00",
+   "serie": "Termo de IA",
+   "titulo": "Essa foto é de IA? O Gemini confere a marca d’água invisível",
+   "narracao": "Essa foto foi feita por IA? O Gemini consegue conferir pra você. As imagens criadas pela IA do Google saem com uma marca d’água invisível, chamada SynthID. Um: abra o app do Gemini e mande a imagem, uma de cada vez. Dois: escreva a pergunta: essa imagem foi feita com IA? E espere a resposta. Três: se ele achar a marca, a imagem foi criada ou editada pela IA do Google. Se não achar, não prova nada: outras IAs não deixam essa marca. Desconfie mesmo assim. Salva e confere antes de compartilhar no grupo da família.",
+   "video": "videos/2026-11-17-19h-gemini-foto-de-ia-neon.mp4",
+   "registro": {
+    "tema": "termo de ia 7: SynthID, conferir no Gemini se uma imagem foi feita por IA do Google",
+    "chaves": [
+     "foto feita por ia como saber",
+     "synthid gemini",
+     "verificar imagem ia"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6af524c62f7f0a6952e6310a",
+    "instagram": "6af524c72f7f0a6952e6315b"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-17-19h-gemini-foto-de-ia-neon.mp4"
+  },
+  {
+   "id": "2026-11-16-chatgpt-memoria",
+   "data": "2026-11-16",
+   "horario": "19:00",
+   "serie": "Termo de IA",
+   "titulo": "O ChatGPT lembra de você? Veja o que ele guarda e onde apagar",
+   "narracao": "O ChatGPT lembra de você de uma conversa pra outra? Lembra, e você pode ver o quê. Isso se chama memória. Ela guarda coisas como seu nome, seu trabalho e o jeito que você gosta da resposta. Um: clique na sua foto, depois em Configurações e em Personalização. Dois: em Gerenciar memórias, você vê tudo que ele guardou e apaga o que quiser. Três: pra uma conversa sem memória, use o Chat temporário. Desligar não apaga o que já foi guardado. Pra isso, apague em Gerenciar memórias. Salva e confere a sua hoje.",
+   "video": "videos/2026-11-16-19h-chatgpt-memoria-neon.mp4",
+   "registro": {
+    "tema": "termo de ia 6: memória do ChatGPT, o que ele guarda, onde ver e apagar, chat temporário",
+    "chaves": [
+     "chatgpt memoria",
+     "chatgpt lembra de mim",
+     "apagar memoria chatgpt"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6af524dbcb4c7286fd0b1cbf",
+    "instagram": "6af524db3d8c751bfd0c3b38"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-16-19h-chatgpt-memoria-neon.mp4"
   }
  ]
 }
