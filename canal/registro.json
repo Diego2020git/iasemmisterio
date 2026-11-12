@@ -1491,6 +1491,30 @@
     "instagram": "6af524db3d8c751bfd0c3b38"
    },
    "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-16-19h-chatgpt-memoria-neon.mp4"
+  },
+  {
+   "id": "2026-11-12-claude-fable-5-2",
+   "data": "2026-11-12",
+   "horario": "12:00",
+   "serie": "Radar IA",
+   "titulo": "Claude Fable 5.2: a IA que montou um sistema operacional?",
+   "narracao": "Uma IA que monta um sistema operacional inteiro? A Anthropic diz que o novo Claude fez isso. É o Claude Fable 5.2, lançado em nove de novembro. É o modelo da empresa pras tarefas mais longas e difíceis de programação e ciência. Um: segundo a Anthropic, ele coordenou mais de mil cópias dele mesmo, os agentes, por oito dias. Saiu um protótipo de sistema operacional que liga num notebook. Dois: outro time de mil agentes escreveu, em trinta horas, a prova de um teorema famoso da matemática num formato que o computador confere linha por linha. Três: ele projetou do zero três aparelhos eletrônicos que funcionaram, como um viva-voz e um bichinho virtual de bolso. E ficou até trinta por cento mais rápido que a versão anterior. No plano Pro do Claude, dá pra usar em até metade do limite da semana. Atenção: esses feitos são relatos da própria Anthropic. E pro dia a dia ela mesma recomenda começar por outro modelo, o Opus 5.5. Salva e manda pra quem programa.",
+   "video": "videos/2026-11-12-12h-claude-fable-5-2-neon.mp4",
+   "registro": {
+    "tema": "radar: lançamento do Claude Fable 5.2 e suas capacidades (pedido do Diego 12/11)",
+    "chaves": [
+     "claude fable 5.2",
+     "anthropic novo modelo",
+     "ia monta sistema operacional"
+    ]
+   },
+   "status": "agendado",
+   "agendador": "Buffer",
+   "buffer": {
+    "youtube": "6af52ca68a1a2f52b51c5903",
+    "instagram": "6af52ca7bc9f3773a1b85c7f"
+   },
+   "media": "https://raw.githubusercontent.com/Diego2020git/iasemmisterio/claude/project-thread-gp4dva/videos/2026-11-12-12h-claude-fable-5-2-neon.mp4"
   }
  ]
 }
