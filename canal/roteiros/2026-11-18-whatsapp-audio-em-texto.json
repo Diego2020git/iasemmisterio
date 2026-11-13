@@ -1,0 +1,94 @@
+{
+  "id": "2026-11-18-whatsapp-audio-em-texto",
+  "serie": "Automação do zero",
+  "data": "2026-11-18",
+  "horario": "19:00",
+  "titulo": "Áudio longo no WhatsApp? O app transforma em texto pra você",
+  "descricao": "Áudio de três minutos no WhatsApp? 🎧\nO próprio app transforma em texto: é a transcrição de mensagens de voz, feita no seu celular.\n1️⃣ Configurações → Conversas → ative Transcrição de mensagens de voz.\n2️⃣ Toque em Escolher idioma e selecione o português.\n3️⃣ No áudio, toque e segure e escolha Transcrever.\nGrátis. O WhatsApp avisa que o recurso ainda não chegou em todos os aparelhos; no iPhone pede iOS 16 ou mais novo. Quem mandou o áudio não vê a transcrição.\n\nFonte: Central de Ajuda do WhatsApp (faq.whatsapp.com, Como ativar ou desativar a transcrição de mensagens de voz), conferida em 13/11/2026\n\nAutomação do zero, episódio 9\n#whatsapp #dicas #audio #tecnologia #ia",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": "a9",
+  "estilo": "neon",
+  "formato": "completo",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "Áudio de três minutos no WhatsApp? O próprio app transforma em texto pra você ler.",
+          "legenda": "Áudio de três minutos no WhatsApp? O próprio app transforma em texto pra você ler."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "É a transcrição de mensagens de voz. Ela é feita no seu celular e ninguém mais vê.",
+          "legenda": "É a transcrição de mensagens de voz. Ela é feita no seu celular e ninguém mais vê."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: abra Configurações, toque em Conversas e ative Transcrição de mensagens de voz.",
+          "legenda": "Um: abra Configurações, toque em Conversas e ative Transcrição de mensagens de voz."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: toque em Escolher idioma e selecione o português.",
+          "legenda": "Dois: toque em Escolher idioma e selecione o português."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: no áudio, toque, segure e escolha Transcrever. O texto aparece embaixo.",
+          "legenda": "Três: no áudio, toque, segure e escolha Transcrever. O texto aparece embaixo."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "É grátis, mas ainda não chegou em todos os aparelhos. Se não aparecer, atualize o app.",
+          "legenda": "É grátis, mas ainda não chegou em todos os aparelhos. Se não aparecer, atualize o app."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e manda pra quem só te manda áudio.",
+          "legenda": "Salva e manda pra quem só te manda áudio."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "WhatsApp: Configurações > Conversas > Transcrição de mensagens de voz > Escolher idioma; tocar e segurar > Transcrever; feita no aparelho; português na lista; lançado só em alguns dispositivos; iOS 16+",
+      "fonte": "https://faq.whatsapp.com/241617298315321/?locale=pt_BR",
+      "conferido": "2026-11-13"
+    }
+  ],
+  "registro": {
+    "tema": "automação 9: transcrição de mensagens de voz do WhatsApp, áudio vira texto",
+    "chaves": [
+      "whatsapp audio em texto",
+      "transcricao mensagem de voz whatsapp",
+      "transcrever audio whatsapp"
+    ]
+  },
+  "video": "videos/2026-11-18-19h-whatsapp-audio-em-texto-neon.mp4",
+  "fonte_html": "kit/2026-11-18-19h-whatsapp-audio-em-texto-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ]
+}

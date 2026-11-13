@@ -1,0 +1,74 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-19-chatgpt-sabe-de-ontem.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// 19/11/2026 · 19h · Termo de IA: data de corte e busca na web do ChatGPT. Padrão de entrega de 24/10.
+// Fonte: help.openai.com/pt-br/articles/9237897-chatgpt-search, conferida 13/11/2026.
+const COR = [CI, AZ, AMB, CI, AZ, VERDE, AZ];
+const HITS = [wt('chatgpt', 0), wt('ontem', 0), wt('busca', 0), wt('data', 1), wt('corte', 1), wt('nada', 2), wt('aprendeu', 2), wt('sites', 3), wt('fontes', 3), wt('mais', 4), wt('pesquisa', 4), wt('gratis', 5), wt('conferir', 5)];
+function tempo(y, a, t, depois = 0) { if (a <= 0) return; const x0 = 140, x1 = 940, xc = 640, p = ease(clamp(a)); ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.lineCap = 'round';
+  ctx.strokeStyle = CI; ctx.shadowColor = CI; ctx.shadowBlur = 24; ctx.lineWidth = 12; ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x0 + (xc - x0) * p, y); ctx.stroke(); ctx.shadowBlur = 0;
+  ctx.strokeStyle = 'rgba(244,248,255,.22)'; ctx.setLineDash([4, 26]); ctx.beginPath(); ctx.moveTo(xc + 20, y); ctx.lineTo(x1, y); ctx.stroke(); ctx.setLineDash([]);
+  for (let i = 0; i < 5; i++) { const x = x0 + i * 125; if (x > x0 + (xc - x0) * p) break; ctx.fillStyle = BR; ctx.beginPath(); ctx.arc(x, y, 12, 0, 7); ctx.fill(); }
+  if (p > .9) { ctx.strokeStyle = VERM; ctx.shadowColor = VERM; ctx.shadowBlur = 24; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(xc, y - 110); ctx.lineTo(xc, y + 110); ctx.stroke(); ctx.shadowBlur = 0; }
+  txt('o que ele aprendeu', (x0 + xc) / 2, y - 60, ARC, 32, CI, { align: 'center', alpha: p });
+  if (depois > 0) txt('?', (xc + x1) / 2 + 10, y - 40, EXP, 120, AMB, { align: 'center', alpha: clamp(depois) });
+  ctx.restore(); }
+const S = [
+  (t, lt) => {
+    titulo('O CHATGPT SABE DE ONTEM?', 340, -1, SC[1] - .2, t, 62, BR, 'ONTEM?', CI);
+    neon3d(P.calendario, cx0, 700 + flut(t), 100 * back(prog(lt, .1, .5)), .4 * Math.sin(t * .8), .1, CI, prog(lt, .1, .5));
+    txt('?', cx0 + 230, 560, EXP, 160, AMB, { align: 'center', alpha: prog(lt, .4, .8) });
+    pilula('só com a busca na web', cx0, 1020, 640, prog(t, wt('so', 0) - .2, wt('web', 0) + .1), CI, '', 1, 44);
+  },
+  (t, lt) => {
+    titulo('DATA DE CORTE', 430, wt('data', 1) - .3, SC[2] - .2, t, 84, BR, 'CORTE', VERM);
+    tempo(760, prog(t, SC[1], wt('dia', 1) + .2), t);
+    pilula('a IA aprende até um certo dia', cx0, 1020, 720, prog(t, wt('aprende', 1) - .3, wt('dia', 1) + .1), AZ, '', 1, 40);
+  },
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('DEPOIS DISSO, NADA', 450, wt('depois', 2) - .2, SC[3] - .2, t, 72, BR, 'NADA', AMB);
+    tempo(740, 1, t, prog(t, wt('nao', 2) - .2, wt('nada', 2) + .2));
+    pilula('sem busca: só o que aprendeu', cx0, 1020, 740, prog(t, wt('sem', 2) - .3, wt('aprendeu', 2) + .1), AMB, '', 1, 40);
+  },
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('LÊ SITES NA HORA', 450, wt('com', 3) - .2, SC[4] - .2, t, 76, BR, 'NA HORA', CI);
+    neon3d(P.radar, cx0, 720 + flut(t), 95 * back(prog(t, wt('busca', 3) - .3, wt('busca', 3) + .1)), .4 * Math.sin(t * .8), .1, CI, prog(t, wt('busca', 3) - .3, wt('busca', 3) + .1));
+    pilula('busca na web', cx0, 970, 480, prog(t, wt('busca', 3) - .2, wt('web', 3) + .1), CI, '', 1, 46);
+    pilula('mostra os links das fontes', cx0, 1110, 680, prog(t, wt('mostra', 3) - .3, wt('fontes', 3) + .1), VERDE, '', 1, 40);
+  },
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('LIGUE A BUSCA', 450, wt('pra', 4) - .2, SC[5] - .2, t, 80, BR, 'BUSCA', AZ);
+    const a = prog(t, wt('toque', 4) - .3, wt('mais', 4) + .1);
+    if (a > 0) { const e = back(clamp(a)); ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.translate(cx0, 700); ctx.scale(e, e); ctx.shadowColor = AZ; ctx.shadowBlur = 40; ctx.fillStyle = 'rgba(8,16,34,.95)'; ctx.beginPath(); ctx.arc(0, 0, 90, 0, 7); ctx.fill(); ctx.strokeStyle = AZ; ctx.lineWidth = 6; ctx.stroke(); ctx.shadowBlur = 0; ctx.strokeStyle = BR; ctx.lineWidth = 14; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(-42, 0); ctx.lineTo(42, 0); ctx.moveTo(0, -42); ctx.lineTo(0, 42); ctx.stroke(); ctx.restore(); }
+    pilula('pesquisa na web', cx0, 930, 560, prog(t, wt('escolha', 4) - .2, wt('web', 4) + .1), CI, 'ANTES DE PERGUNTAR', 1, 46);
+    exemplo(cx0, 1090, prog(t, wt('toque', 4), wt('toque', 4) + .3));
+  },
+  (t, lt) => {
+    titulo('GRÁTIS, COM LIMITE', 420, SC[5], SC[6] - .2, t, 72, BR, 'GRÁTIS', VERDE);
+    pilula('plano grátis', cx0, 660, 520, prog(t, wt('plano', 5) - .3, wt('gratis', 5) + .1), VERDE, 'DENTRO DO LIMITE DE USO', 1, 48);
+    neon3d(P.check, cx0, 880, 55 * back(prog(t, wt('abra', 5) - .2, wt('abra', 5) + .2)), 0, .1, AMB, prog(t, wt('abra', 5) - .2, wt('abra', 5) + .2));
+    pilula('abra o link e confira', cx0, 1070, 600, prog(t, wt('abra', 5) - .2, wt('noticia', 5) + .1), AMB, '', 1, 44);
+  },
+  (t, lt) => fim(t, lt, 'Salva e pergunta', 'com a busca ligada'),
+];
+</script></body></html>

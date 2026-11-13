@@ -1,0 +1,80 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"AX";src:url(fontes/ArchivoExpanded-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:"AR";src:url(fontes/Archivo-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<img id="logo" src="marca/logo.png" style="display:none">
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="audio/2026-11-18-whatsapp-audio-em-texto.tempos.js"></script>
+<script src="raiox-kit.js"></script>
+<script src="neon-kit.js"></script>
+<script src="neon-extra.js"></script>
+<script src="neon-entrega.js"></script>
+<script>
+const T0 = TEMPOS.cenas;
+const SC = [T0[0], T0[1], T0[2], T0[3], T0[4], T0[5], T0[6], T0[7] + .7];
+const DURATION = SC[7], IMPACTO = SC[6] + .4;
+const CLIQUES = [];
+const CK = [[0, 0, 0, 0, 0], [DURATION, 0, 0, 0, 0]];
+// 18/11/2026 · 19h · Automação do zero: transcrição de mensagens de voz do WhatsApp. Padrão de entrega de 24/10.
+// Fonte: faq.whatsapp.com/241617298315321 (pt_BR), conferida 13/11/2026.
+const COR = [VERDE, AZ, AZ, CI, VERDE, AMB, AZ];
+const HITS = [wt('whatsapp', 0), wt('texto', 0), wt('transcricao', 1), wt('celular', 1), wt('configuracoes', 2), wt('conversas', 2), wt('ative', 2), wt('escolher', 3), wt('portugues', 3), wt('segure', 4), wt('transcrever', 4), wt('gratis', 5), wt('atualize', 5)];
+function audio(x, y, s, a, t, tempo = '3:02') { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); ctx.translate(x, y); ctx.scale(s * back(clamp(a)), s * back(clamp(a)));
+  ctx.shadowColor = VERDE; ctx.shadowBlur = 30; ctx.fillStyle = 'rgba(10,40,28,.95)'; rr(-330, -80, 660, 160, 40); ctx.fill(); ctx.shadowBlur = 0; ctx.strokeStyle = VERDE; ctx.lineWidth = 4; rr(-330, -80, 660, 160, 40); ctx.stroke();
+  ctx.fillStyle = VERDE; ctx.beginPath(); ctx.moveTo(-280, -34); ctx.lineTo(-226, 0); ctx.lineTo(-280, 34); ctx.closePath(); ctx.fill();
+  for (let i = 0; i < 26; i++) { const h = 14 + 44 * Math.abs(Math.sin(i * 1.7 + 1) * Math.sin(t * 3 + i * .5)); ctx.fillStyle = i < 26 * ((t * .12) % 1) ? BR : 'rgba(244,248,255,.4)'; rr(-190 + i * 15, -h / 2, 8, h, 4); ctx.fill(); }
+  txt(tempo, 250, 8, ARC, 38, BR, { align: 'center' }); ctx.restore(); }
+function linhas(x, y, w, n, a, cor = BR) { if (a <= 0) return; const L = [1, .92, .78, .6]; for (let i = 0; i < n; i++) { const p = clamp(a * n - i); if (p <= 0) continue; ctx.fillStyle = hex(cor, .85); rr(x - w / 2, y + i * 46, w * L[i % 4] * p, 16, 8); ctx.fill(); } }
+const S = [
+  (t, lt) => {
+    titulo('ÁUDIO DE 3 MINUTOS?', 340, -1, SC[1] - .2, t, 76, BR, '3 MINUTOS?', VERDE);
+    audio(cx0, 620, 1.15, prog(lt, .1, .5), t);
+    setaH(cx0 - 1, cx0, 0, 0);
+    txt('↓', cx0, 800, EXP, 90, CI, { align: 'center', alpha: prog(t, wt('transforma', 0) - .2, wt('transforma', 0) + .2) });
+    const a = prog(t, wt('texto', 0) - .3, wt('ler', 0) + .2);
+    if (a > 0) { ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.fillStyle = 'rgba(8,16,34,.92)'; ctx.shadowColor = CI; ctx.shadowBlur = 30; rr(cx0 - 380, 880, 760, 240, 30); ctx.fill(); ctx.restore(); linhas(cx0, 930, 660, 4, a, CI); }
+    exemplo(cx0, 1210, prog(lt, .3, .6));
+  },
+  (t, lt) => {
+    titulo('TRANSCRIÇÃO DE VOZ', 430, SC[1], SC[2] - .2, t, 70, BR, 'TRANSCRIÇÃO', AZ);
+    neon3d(P.cadeado, cx0, 720 + flut(t), 95 * back(prog(t, wt('feita', 1) - .3, wt('feita', 1) + .1)), .4 * Math.sin(t * .8), .1, AZ, prog(t, wt('feita', 1) - .3, wt('feita', 1) + .1));
+    pilula('feita no seu celular', cx0, 980, 600, prog(t, wt('feita', 1) - .2, wt('celular', 1) + .1), AZ, '', 1, 44);
+    pilula('ninguém mais vê', cx0, 1120, 520, prog(t, wt('ninguem', 1) - .3, wt('ve', 1) + .1), VERDE, '', 1, 44);
+  },
+  (t, lt) => {
+    numero(1, 300, SC[2], SC[3] - .2, t);
+    titulo('ATIVE NO WHATSAPP', 450, wt('abra', 2) - .2, SC[3] - .2, t, 72, BR, 'ATIVE', AZ);
+    pilula('Configurações', cx0, 660, 560, prog(t, wt('configuracoes', 2) - .3, wt('configuracoes', 2) + .1), AZ, '', 1, 46);
+    pilula('Conversas', cx0, 820, 560, prog(t, wt('conversas', 2) - .3, wt('conversas', 2) + .1), AZ, '', 1, 46);
+    const a = prog(t, wt('ative', 2) - .2, wt('transcricao', 2) + .2);
+    pilula('Transcrição de mensagens de voz', cx0 - 60, 990, 720, a, VERDE, '', 1, 36);
+    if (a > 0) { const on = ease(prog(t, wt('transcricao', 2), wt('voz', 2))); ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.fillStyle = on > .5 ? VERDE : '#445'; rr(cx0 + 320, 962, 110, 56, 28); ctx.fill(); ctx.fillStyle = BR; ctx.beginPath(); ctx.arc(cx0 + 348 + 54 * on, 990, 22, 0, 7); ctx.fill(); ctx.restore(); }
+  },
+  (t, lt) => {
+    numero(2, 300, SC[3], SC[4] - .2, t);
+    titulo('ESCOLHA O IDIOMA', 450, wt('toque', 3) - .2, SC[4] - .2, t, 76, BR, 'IDIOMA', CI);
+    pilula('Escolher idioma', cx0, 700, 600, prog(t, wt('escolher', 3) - .3, wt('idioma', 3) + .1), CI, '', 1, 46);
+    pilula('Português', cx0, 900, 520, prog(t, wt('selecione', 3) - .2, wt('portugues', 3) + .1), VERDE, '', 1, 50);
+    neon3d(P.check, cx0, 1110, 60 * back(prog(t, wt('portugues', 3), wt('portugues', 3) + .3)), 0, .1, VERDE, prog(t, wt('portugues', 3), wt('portugues', 3) + .3));
+  },
+  (t, lt) => {
+    numero(3, 300, SC[4], SC[5] - .2, t);
+    titulo('TOQUE E SEGURE', 450, wt('audio', 4) - .2, SC[5] - .2, t, 80, BR, 'SEGURE', VERDE);
+    audio(cx0, 660, 1, prog(t, wt('audio', 4) - .3, wt('audio', 4) + .1), t);
+    pilula('Transcrever', cx0, 860, 480, prog(t, wt('escolha', 4) - .2, wt('transcrever', 4) + .1), VERDE, '', 1, 50);
+    const a = prog(t, wt('texto', 4) - .2, wt('embaixo', 4) + .3);
+    if (a > 0) { ctx.save(); ctx.globalAlpha *= clamp(a * 2); ctx.fillStyle = 'rgba(8,16,34,.92)'; ctx.shadowColor = CI; ctx.shadowBlur = 30; rr(cx0 - 380, 970, 760, 220, 30); ctx.fill(); ctx.restore(); linhas(cx0, 1010, 660, 4, a, CI); }
+    exemplo(cx0, 1260, prog(t, wt('texto', 4), wt('texto', 4) + .3));
+  },
+  (t, lt) => {
+    titulo('GRÁTIS, MAS NEM EM TODOS', 420, SC[5], SC[6] - .2, t, 58, BR, 'GRÁTIS', VERDE);
+    pilula('grátis', cx0, 640, 400, prog(t, wt('gratis', 5) - .3, wt('gratis', 5) + .1), VERDE, '', 1, 54);
+    pilula('ainda não chegou em todos os aparelhos', cx0, 830, 860, prog(t, wt('ainda', 5) - .3, wt('aparelhos', 5) + .1), AMB, '', 1, 36);
+    pilula('não apareceu? atualize o app', cx0, 1020, 720, prog(t, wt('se', 5) - .2, wt('app', 5) + .1), CI, '', 1, 40);
+  },
+  (t, lt) => fim(t, lt, 'Salva e manda', 'pra quem só manda áudio'),
+];
+</script></body></html>

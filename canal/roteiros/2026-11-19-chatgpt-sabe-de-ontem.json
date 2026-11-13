@@ -1,0 +1,94 @@
+{
+  "id": "2026-11-19-chatgpt-sabe-de-ontem",
+  "serie": "Termo de IA",
+  "data": "2026-11-19",
+  "horario": "19:00",
+  "titulo": "O ChatGPT sabe o que aconteceu ontem? Só com a busca na web",
+  "descricao": "O ChatGPT sabe o que aconteceu ontem? 📅\nSó quando usa a busca na web. Todo modelo de IA aprende até um certo dia: é a data de corte.\n1️⃣ Depois desse dia ele não viu mais nada; sem busca, responde só com o que aprendeu.\n2️⃣ Com a busca na web, ele lê sites na hora e mostra os links das fontes.\n3️⃣ Pra forçar: toque no + e escolha a pesquisa na web antes de perguntar (ou digite /).\nFunciona no plano grátis, dentro do limite de uso do plano. Abra o link e confira a notícia na fonte.\n\nFonte: Central de Ajuda da OpenAI (help.openai.com, Como pesquisar na web com o ChatGPT), conferida em 13/11/2026\n\nTermo de IA, episódio 8\n#chatgpt #ia #dicas #tecnologia #inteligenciaartificial",
+  "comentario_fixado": null,
+  "voz": "pt-BR-Chirp3-HD-Fenrir",
+  "ep": 8,
+  "estilo": "neon",
+  "formato": "completo",
+  "cenas": [
+    {
+      "frases": [
+        {
+          "fala": "O ChatGPT sabe o que aconteceu ontem? Só quando ele usa a busca na web.",
+          "legenda": "O ChatGPT sabe o que aconteceu ontem? Só quando ele usa a busca na web."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Todo modelo de IA aprende até um certo dia. Isso se chama data de corte.",
+          "legenda": "Todo modelo de IA aprende até um certo dia. Isso se chama data de corte."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Um: depois desse dia, ele não viu mais nada. Sem busca, responde só com o que aprendeu.",
+          "legenda": "Um: depois desse dia, ele não viu mais nada. Sem busca, responde só com o que aprendeu."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Dois: com a busca na web, ele lê sites na hora e mostra os links das fontes.",
+          "legenda": "Dois: com a busca na web, ele lê sites na hora e mostra os links das fontes."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Três: pra forçar, toque no mais e escolha a pesquisa na web antes de perguntar.",
+          "legenda": "Três: pra forçar, toque no mais e escolha a pesquisa na web antes de perguntar."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Funciona no plano grátis, dentro do limite de uso. E abra o link pra conferir a notícia.",
+          "legenda": "Funciona no plano grátis, dentro do limite de uso. E abra o link pra conferir a notícia."
+        }
+      ]
+    },
+    {
+      "frases": [
+        {
+          "fala": "Salva e pergunta de novo, agora com a busca ligada.",
+          "legenda": "Salva e pergunta de novo, agora com a busca ligada."
+        }
+      ]
+    }
+  ],
+  "dados_que_envelhecem": [
+    {
+      "dado": "ChatGPT: busca na web disponível no plano Free, sujeita aos limites do plano; acionar pelo + (ferramentas) ou /; respostas com citações e fontes",
+      "fonte": "https://help.openai.com/pt-br/articles/9237897-chatgpt-search",
+      "conferido": "2026-11-13"
+    }
+  ],
+  "registro": {
+    "tema": "termo de ia 8: data de corte, por que o ChatGPT não sabe de ontem sem a busca na web",
+    "chaves": [
+      "data de corte ia",
+      "chatgpt sabe noticias de hoje",
+      "chatgpt pesquisa na web"
+    ]
+  },
+  "video": "videos/2026-11-19-19h-chatgpt-sabe-de-ontem-neon.mp4",
+  "fonte_html": "kit/2026-11-19-19h-chatgpt-sabe-de-ontem-neon.html",
+  "imagens": [
+    {
+      "id": "todas",
+      "origem": "gerada por código (kit neon)"
+    }
+  ]
+}
